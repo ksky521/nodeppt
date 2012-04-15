@@ -1,0 +1,22 @@
+{
+    
+	"/hi.ppt": {
+        "template": "hi.html",
+		"title":"测试nodePPTtitle",
+		"dataJS":"demo.js",
+        "password": "test"
+    },
+	"/world.ppt": {
+        "template": "hi.html",
+		"title":"测试nodePPTtitle",
+		"dataJS":"demo.js",
+        "password": "test"
+    },
+    "/udc.ppt": {
+        "template": "udc.html",
+		"title":"测试nodePPTtitle",
+		"dataJS":"demo.js",
+        "password": "test"
+    }
+
+}

@@ -1,0 +1,211 @@
+/* Layout */
+.codecolorer { padding: 5px; text-align: left; }
+code.codecolorer { padding: 2px; }
+.codecolorer-container { margin-bottom: 10px; text-align: left; }
+.codecolorer, .codecolorer *, .codecolorer-container, .codecolorer-container * { font: 18px/1.4em Monaco,Lucida Console, monospace,"Microsoft Yahei";}
+.codecolorer-container{margin:0 auto;}
+
+.codecolorer-container table { border: 0px; }
+.codecolorer-container table td { margin: 0px; padding: 0px; border: 0px; }
+.codecolorer-container table td.line-numbers { padding: 5px; text-align: right; }
+.codecolorer-container table td.line-numbers div { width: 23px; }
+
+/* Layout styles */
+.codecolorer-container { border: 1px solid #9F9F9F; }
+.codecolorer-container table td.line-numbers { color: #888888; background-color: #EEEEEE; border-right: 1px solid #9F9F9F; }
+.codecolorer-noborder, .codecolorer-noborder table td.line-numbers { border: 0px; }
+
+/* "Slush & Poppies" color scheme (default) */
+.codecolorer-container, .codecolorer { color: #000000; background-color: #F1F1F1; }
+/* Comment */
+.codecolorer .co0, .codecolorer .co1, .codecolorer .co2, .codecolorer .co3, .codecolorer .co4, .codecolorer .coMULTI { color: #406040; font-style: italic; }
+/* Constant */
+.codecolorer .nu0, .codecolorer .re3 { color: #0080A0; }
+/* String */
+.codecolorer .st0, .codecolorer .st_h, .codecolorer .es0, .codecolorer .es1 { color: #C03030; }
+/* Entity */
+.codecolorer .me1, .codecolorer .me2 { color: #0080FF; }
+/* Keyword */
+.codecolorer .kw1, .codecolorer .kw2, .codecolorer .sy1 { color: #2060A0; }
+/* Storage */
+.codecolorer .kw3, .codecolorer .kw4, .codecolorer .kw5, .codecolorer .re2 { color: #008080; }
+/* Variable */
+.codecolorer .re0, .codecolorer .re1 { color: #A08000; }
+/* Global color */
+.codecolorer .br0, .codecolorer .sy0 { color: #000000; }
+/* Storage */
+.twitlight .xml .re1 { color: #008080; }
+/* Constant */
+.twitlight .xml .re0 { color: #0080A0; }
+/* Highlight lines */
+.codecolorer .ln-xtra { background-color: #ffff66; }
+
+/* "Twitlight" color scheme */
+.twitlight, .twitlight .codecolorer { color: #F8F8F8; background-color: #141414; }
+.twitlight .codecolorer .co0, .twitlight .codecolorer .co1, .twitlight .codecolorer .co2, .twitlight .codecolorer .co3, .twitlight .codecolorer .co4, .twitlight .codecolorer .coMULTI,
+	code.twitlight .co0, code.twitlight .co1, code.twitlight .co2, code.twitlight .co3, code.twitlight .co4, code.twitlight .coMULTI
+	{ color: #5F5A60; font-style: italic; }
+.twitlight .codecolorer .nu0, .twitlight .codecolorer .re3,
+	code.twitlight .nu0, code.twitlight .re3
+	{ color: #CF6A4C; }
+.twitlight .codecolorer .st0, .twitlight .codecolorer .st_h, .twitlight .codecolorer .es0, .twitlight .codecolorer .es1
+	{ color: #8F9D6A; }
+.twitlight .codecolorer .me1, .twitlight .codecolorer .me2,
+	code.twitlight .me1, code.twitlight .me2
+	{ color: #9B703F; }
+.twitlight .codecolorer .kw1, .twitlight .codecolorer .kw2, .twitlight .codecolorer .sy1,
+	code.twitlight .kw1, code.twitlight .kw2, code.twitlight .sy1
+	{ color: #CDA869; }
+.twitlight .codecolorer .kw3, .twitlight .codecolorer .kw4, .twitlight .codecolorer .kw5, .twitlight .codecolorer .re2,
+	code.twitlight .kw3, code.twitlight .kw4, code.twitlight .kw5, code.twitlight .re2
+	{ color: #F9EE98; }
+.twitlight .codecolorer .re0, .twitlight .codecolorer .re1,
+	code.twitlight .re0, code.twitlight .re1
+	{ color: #7587A6; }
+.twitlight .codecolorer .br0, .twitlight .codecolorer .sy0,
+	code.twitlight .br0, code.twitlight .sy0
+	{ color: #F8F8F8; }
+.twitlight .xml .re1 { color: #F9EE98; }
+.twitlight .xml .re0 { color: #CF6A4C; }
+
+/* "Dawn" color scheme */
+.dawn, .dawn .codecolorer { color: #080808; background-color: #F9F9F9; }
+.dawn .codecolorer .co0, .dawn .codecolorer .co1, .dawn .codecolorer .co2, .dawn .codecolorer .co3, .dawn .codecolorer .co4, .dawn .codecolorer .coMULTI,
+	code.dawn .co0, code.dawn .co1, code.dawn .co2, code.dawn .co3, code.dawn .co4, code.dawn .coMULTI
+	{ color: #5A525F; font-style: italic; }
+.dawn .codecolorer .nu0, .dawn .codecolorer .re3,
+	code.dawn .nu0, code.dawn .re3
+	{ color: #811F24; }
+.dawn .codecolorer .st0, .dawn .codecolorer .st_h, .dawn .codecolorer .es0, .dawn .codecolorer .es1,
+	code.dawn .st0, code.dawn .st_h, code.dawn .es0, code.dawn .es1
+	{ color: #0B6125; }
+.dawn .codecolorer .me1, .dawn .codecolorer .me2,
+	code.dawn .me1, code.dawn .me2
+	{ color: #BF4F24; }
+.dawn .codecolorer .kw1, .dawn .codecolorer .kw2, .dawn .codecolorer .sy1,
+	code.dawn .kw1, code.dawn .kw2, code.dawn .sy1
+	{ color: #794938; }
+.dawn .codecolorer .kw3, .dawn .codecolorer .kw4, .dawn .codecolorer .kw5, .dawn .codecolorer .re2,
+	code.dawn .kw3, code.dawn .kw4, code.dawn .kw5, code.dawn .re2
+	{ color: #A71D5D; }
+.dawn .codecolorer .re0, .dawn .codecolorer .re1,
+	code.dawn .re0, code.dawn .re1
+	{ color: #234A97; }
+.dawn .codecolorer .br0, .dawn .codecolorer .sy0,
+	code.dawn .br0, code.dawn .sy0
+	{ color: #080808; }
+.dawn .xml .re1 { color: #A71D5D; }
+.dawn .xml .re0 { color: #811F24; }
+
+/* "Blackboard" color scheme */
+.blackboard, .blackboard .codecolorer { color: #F8F8F8; background-color: #0C1021; }
+.blackboard .codecolorer .co0, .blackboard .codecolorer .co1, .blackboard .codecolorer .co2, .blackboard .codecolorer .co3, .blackboard .codecolorer .co4, .blackboard .codecolorer .coMULTI,
+	code.blackboard .co0, code.blackboard .co1, code.blackboard .co2, code.blackboard .co3, code.blackboard .co4, code.blackboard .coMULTI
+	{ color: #AEAEAE; font-style: italic; }
+.blackboard .codecolorer .nu0, .blackboard .codecolorer .re3,
+	code.blackboard .nu0, code.blackboard .re3
+	{ color: #D8FA3C; }
+.blackboard .codecolorer .st0, .blackboard .codecolorer .st_h, .blackboard .codecolorer .es0, .blackboard .codecolorer .es1,
+	code.blackboard .st0, code.blackboard .st_h, code.blackboard .es0, code.blackboard .es1
+	{ color: #61CE3C; }
+.blackboard .codecolorer .me1, .blackboard .codecolorer .me2,
+	code.blackboard .me1, code.blackboard .me2
+	{ color: #FF6400; }
+.blackboard .codecolorer .kw1, .blackboard .codecolorer .kw2, .blackboard .codecolorer .sy1,
+	code.blackboard .kw1, code.blackboard .kw2, code.blackboard .sy1
+	{ color: #FBDE2D; }
+.blackboard .codecolorer .kw3, .blackboard .codecolorer .kw4, .blackboard .codecolorer .kw5, .blackboard .codecolorer .re2,
+	code.blackboard .kw3, code.blackboard .kw4, code.blackboard .kw5, code.blackboard .re2
+	{ color: #FBDE2D; }
+.blackboard .codecolorer .re0, .blackboard .codecolorer .re1,
+	code.blackboard .re0, code.blackboard .re1
+	{ color: #F8F8F8; }
+.blackboard .codecolorer .br0, .blackboard .codecolorer .sy0,
+	code.blackboard .br0, code.blackboard .sy0
+	{ color: #F8F8F8; }
+.blackboard .xml .re1 { color: #FBDE2D; }
+.blackboard .xml .re0 { color: #D8FA3C; }
+
+/* "Mac Classic" color scheme */
+.mac-classic, .mac-classic .codecolorer { color: #000000; background-color: #FFFFFF; }
+.mac-classic .codecolorer .co0, .mac-classic .codecolorer .co1, .mac-classic .codecolorer .co2, .mac-classic .codecolorer .co3, .mac-classic .codecolorer .co4, .mac-classic .codecolorer .coMULTI,
+	code.mac-classic .co0, code.mac-classic .co1, code.mac-classic .co2, code.mac-classic .co3, code.mac-classic .co4, code.mac-classic .coMULTI
+	{ color: #0066FF; font-style: italic; }
+.mac-classic .codecolorer .nu0, .mac-classic .codecolorer .re3,
+	code.mac-classic .nu0, code.mac-classic .re3
+	{ color: #0000CD; }
+.mac-classic .codecolorer .st0, .mac-classic .codecolorer .st_h, .mac-classic .codecolorer .es0, .mac-classic .codecolorer .es1,
+	code.mac-classic .st0, code.mac-classic .st_h, code.mac-classic .es0, code.mac-classic .es1
+	{ color: #036A07; }
+.mac-classic .codecolorer .me1, .mac-classic .codecolorer .me2,
+	code.mac-classic .me1, code.mac-classic .me2
+	{ color: #0000A2; }
+.mac-classic .codecolorer .kw1, .mac-classic .codecolorer .kw2, .mac-classic .codecolorer .sy1,
+	code.mac-classic .kw1, code.mac-classic .kw2, code.mac-classic .sy1
+	{ color: #0000FF; }
+.mac-classic .codecolorer .kw3, .mac-classic .codecolorer .kw4, .mac-classic .codecolorer .kw5, .mac-classic .codecolorer .re2,
+	code.mac-classic .kw3, code.mac-classic .kw4, code.mac-classic .kw5, code.mac-classic .re2
+	{ color: #0000FF; }
+.mac-classic .codecolorer .re0, .mac-classic .codecolorer .re1,
+	code.mac-classic .re0, code.mac-classic .re1
+	{ color: #318495; }
+.mac-classic .codecolorer .br0, .mac-classic .codecolorer .sy0,
+	code.mac-classic .br0, code.mac-classic .sy0
+	{ color: #000000; }
+.mac-classic .xml .re1 { color: #0000FF; }
+.mac-classic .xml .re0 { color: #0000CD; }
+
+/* "Vibrant Ink" color scheme */
+.vibrant, .vibrant .codecolorer { color: #FFFFFF; background-color: #000000; }
+.vibrant .codecolorer .co0, .vibrant .codecolorer .co1, .vibrant .codecolorer .co2, .vibrant .codecolorer .co3, .vibrant .codecolorer .co4, .vibrant .codecolorer .coMULTI,
+	code.vibrant .co0, code.vibrant .co1, code.vibrant .co2, code.vibrant .co3, code.vibrant .co4, code.vibrant .coMULTI
+	{ color: #9933CC; font-style: italic; }
+.vibrant .codecolorer .nu0, .vibrant .codecolorer .re3,
+	code.vibrant .nu0, code.vibrant .re3
+	{ color: #339999; }
+.vibrant .codecolorer .st0, .vibrant .codecolorer .st_h, .vibrant .codecolorer .es0, .vibrant .codecolorer .es1,
+	code.vibrant .st0, code.vibrant .st_h, code.vibrant .es0, code.vibrant .es1
+	{ color: #66FF00; }
+.vibrant .codecolorer .me1, .vibrant .codecolorer .me2,
+	code.vibrant .me1, code.vibrant .me2
+	{ color: #FFCC00; }
+.vibrant .codecolorer .kw1, .vibrant .codecolorer .kw2, .vibrant .codecolorer .sy1,
+	code.vibrant .kw1, code.vibrant .kw2, code.vibrant .sy1
+	{ color: #FF6600; }
+.vibrant .codecolorer .kw3, .vibrant .codecolorer .kw4, .vibrant .codecolorer .kw5, .vibrant .codecolorer .re2,
+	code.vibrant .kw3, code.vibrant .kw4, code.vibrant .kw5, code.vibrant .re2
+	{ color: #FFCC00; }
+.vibrant .codecolorer .re0, .vibrant .codecolorer .re1,
+	code.vibrant .re0, code.vibrant .re1
+	{ color: #FFFFFF; }
+.vibrant .codecolorer .br0, .vibrant .codecolorer .sy0,
+	code.vibrant .br0, code.vibrant .sy0
+	{ color: #FFFFFF; }
+.vibrant .xml .re1 { color: #FFCC00; }
+.vibrant .xml .re0 { color: #339999; }
+
+/* Railscasts theme */
+.railscasts, .railscasts .codecolorer { color: #E6E1DC; background-color: #2B2B2B; }
+/* Selection Color */
+.railscasts ::selection, .railscasts .codecolorer ::selection { background:#adb9d2; }
+.railscasts ::-moz-selection, .railscasts .codecolorer ::-moz-selection { background:#566381; }
+.railscasts .codecolorer .co0, .railscasts .codecolorer .co1, .railscasts .codecolorer .co2, .railscasts .codecolorer .co3, .railscasts .codecolorer .co4, .railscasts .codecolorer .coMULTI
+	{ color: #BC9458; font-style: italic; }
+.railscasts .codecolorer .nu0, .railscasts .codecolorer .re3
+	{ color: #6D9CBE; }
+.railscasts .codecolorer .st0, .railscasts .codecolorer .st_h, .railscasts .codecolorer .es0, .railscasts .codecolorer .es1
+	{ color: #A5C261; }
+.railscasts .codecolorer .me1, .railscasts .codecolorer .me2
+	{ color: #FFC66D; }
+.railscasts .codecolorer .kw1, .railscasts .codecolorer .kw2, .railscasts .codecolorer .sy1
+	{ color: #CC7833; }
+.railscasts .codecolorer .kw3, .railscasts .codecolorer .kw4, .railscasts .codecolorer .kw5, .railscasts .codecolorer .re2
+	{ color: #6E9CBE; }
+.railscasts .codecolorer .railscasts .re0, .railscasts .codecolorer .re1
+	{ color: #D0D0FF; }
+.railscasts .codecolorer .br0,  .railscasts .codecolorer .sy0
+	{ color: #E6E1DC; }
+.railscasts .xml .re1
+	{ color: #6E9CBE; }
+.railscasts .xml .re0
+	{ color: #6D9CBE; }

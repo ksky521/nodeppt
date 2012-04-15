@@ -1,0 +1,45 @@
+doctype 5
+html
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    title #{title}
+    link(rel='stylesheet', type='text/css', href='/css/nodeppt.css')
+    
+  body
+  
+    #loading
+        h1 #{title}
+        p.progress
+            span#loadProgress
+        p Loading...
+        
+    script
+        var $progress = document.getElementById('loadProgress'),count = 1;
+        
+        var timer = setInterval(function(){
+            if(count===10){
+                clearInterval(timer);
+            }
+          $progress.style.width = (5*count)+'%';    
+          count++;
+        },120);
+    #slide
+        .progress
+            span
+    canvas#myCanvas(width="1024",height="768") 您的浏览器不支持HTML5,请升级或更换您的浏览器,强烈推荐您使用chrome浏览器。
+    
+    menu.controls#slideCtrl
+        span.tool.home(onclick="location.hash='#cover'") \!
+        span.tool.paint p
+        span.tool.clearIt d
+        
+    script(src="/ppt/#{dataJS}")
+    link(rel='stylesheet', type='text/css', href='/js/highlight/default.css')
+    link(rel='stylesheet', type='text/css', href='/js/highlight/googlecode.css')
+    script(src="/js/highlight/highlight.pack.js")
+    script
+        timer = clearInterval(timer);
+        $progress.style.width = '95%';
+    script(src="/js/slide.js")
+    
+   

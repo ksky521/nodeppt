@@ -1,0 +1,88 @@
+/*reset*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    overflow:hidden;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body{
+	font: 14px/1.5em "Microsoft Yahei",Arial,sans-serif;
+    background: #eee;
+}
+
+#all {
+    
+	width:300px;
+	margin:50px auto;
+	padding:20px;
+
+}
+h1.title{
+	text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
+	text-align:center;
+}
+.center{
+	text-align:center;
+	margin:5px auto;
+}
+dl.inputDiv{
+	width:100%;
+	text-align:center;
+}
+dl.inputDiv dt{
+	width:20%;
+	float:left;
+}
+dl.inputDiv dd{
+	width:80%;
+	float:left;
+}
+dl.inputDiv dd input{
+	width:70%;
+	
+}
+input[type='submit']{
+	border:1px solid #888;
+	padding:3px 10px;
+}

@@ -1,0 +1,17 @@
+#all
+    h1.title= title
+    form(method='post')#loginForm
+        dl.inputDiv
+            dt #{nameText} 
+            dd
+              input(type='text',
+                name='#{name}')
+        dl.inputDiv
+            dt 密码            
+            dd
+              input(type='password',
+                name='password')
+        div.center
+            input(type='submit'
+                value='登录')  
+            

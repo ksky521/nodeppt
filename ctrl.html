@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>控制页面</title> 
+    <link rel="stylesheet" href="/jquery.mobile-1.0.1.min.css" />
+    <script src="/jquery-1.6.4.min.js"></script>
+    <script src="/jquery.mobile-1.0.1.min.js"></script>
+	
+	<!--<script src="/js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.mobile.scrollview.js"></script>
+	<script src="/js/scrollview.js"></script>-->
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/js/ctrl.js"></script>
+</head>
+<body>
+<div data-role="page" id="ctrl">
+    <div data-role="collapsible-set" data-theme="d" data-content-theme="d" id="slideList">
+    </div>     
+     
+    <div data-role="footer" data-theme="a" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="arrow-l" onclick="slideSocket.send('prev');">Prev</a></li>
+                <li><a href="#popup" data-icon="gear" data-rel="dialog" data-transition="pop">Setup</a></li>
+                <li><a href="#" data-icon="arrow-r" onclick="slideSocket.send('next');">Next</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+</div>
+
+<!-- 控制界面popup -->
+<div data-role="page" id="popup">
+
+    <div data-role="header" data-theme="d">
+        <h1>用户列表</h1>
+    </div><!-- /header -->
+    <div data-role="content" data-theme="c">    
+        <h4>选择控制的用户</h4>
+        <div data-role="fieldcontain" id="usersContent">
+            <fieldset data-role="controlgroup" id="users">
+                
+            </fieldset>
+        </div>      
+        <div style="text-align:center;">
+            <a href="#ctrl" data-rel="back" data-role="button" data-inline="true" data-icon="back">取消</a>
+            <a href="#ctrl" data-role="button" data-inline="true" onclick="slideSocket.ctrl()">选择控制</a>
+        </div>
+    </div><!-- /content -->
+    
+</div><!-- /page popup -->
+
+    <script type="text/javascript">
+    	slideSocket.init();
+    </script>
+</body>
+</html>
