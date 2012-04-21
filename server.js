@@ -78,13 +78,11 @@ io.of('/ctrl').on('connection',function(socket){
         }
 	});
 	
-	console.log(users);
-	
 	ctrlWS[pptid] && ctrlWS[pptid].emit('user list', {
 		users: users[pptid]
 	});
 	
-	slides[r] && ctrlWS[r].emit('ppt slide list',slides[r]);
+	slides[pptid] && ctrlWS[pptid].emit('ppt slide list',slides[pptid]);
 });
 
 /*******************************通过router的json来控制ppt*******************************************/
@@ -119,7 +117,7 @@ function unqUser(route,uname){
 	var r = true, user = users[route]||[];
 	var i = user.length;
 	while(i--){
-		var temp = user[i].uname||'';
+		var temp = user[i].uname || '';
         if(temp === uname){
             r = false;
             break;
@@ -166,10 +164,14 @@ for(var r in routes){
 			if(!uid || !uname){
 				return;
 		    }
-			
+			if(unqUser(r,uname)){
+                users[r].push(session[r]);  
+            }
 			var wsIndex = r + uid;
 			WS[wsIndex] && delete WS[wsIndex];
 			WS[wsIndex] = socket;
+			
+			
 			
 			socket.on('disconnect', function(){
 				if(ctrlWS[r]){
@@ -189,8 +191,7 @@ for(var r in routes){
 			});
 	
 			socket.on('ppt slide list',function(data){
-				ctrlWS[r] &&
-	            ctrlWS[r].emit('ppt slide list',data);
+				ctrlWS[r] && ctrlWS[r].emit('ppt slide list',data);
 				slides[r] = data;
 			});
 			
@@ -260,27 +261,11 @@ for(var r in routes){
 	}(r,routes[r]));
 }
 
-/*******************************首页，列出list******************************************************/
+/****************************************首页******************************************************/
 //
 app.get('/', function(req, res){
-	var session = req.session;
-	if (session.pptID) {
-		res.send('你已经访问了一个ppt文件，是否继续访问？<a href="' + session.pptID + '">继续</a>');
-	}
-	if (session.ctrlPPTID) {
-		res.send('你已经<span style="color:red">控制</span>了一个ppt文件，是否继续访问？<a href="' +
-		session.ctrlPPTID + '">继续</a>');
-	}
 	
-	fs.readFile(__dirname + '/index.html', function(err, data){
-		if (err) {
-			res.writeHead(500);
-			return res.end('Error loading index.html');
-		}
-		
-		//res.writeHead(200);
-		res.end(data);
-	});
+	res.redirect('/hi.ppt');
 });
 
 

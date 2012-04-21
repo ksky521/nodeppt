@@ -71,6 +71,7 @@
    		output += '<div data-build>';
    		return output;
    	});
+	
    	str = str.replace(/<a/ig, '<a target="_blank"');
    	if (hasAction) {
    		str += '</div>';
@@ -350,7 +351,7 @@
 		});
 		
 		//将页面信息传给控制端
-		
+		console.log(slideList);
 		socket.emit('ppt slide list', {
 			list: slideList
 		});

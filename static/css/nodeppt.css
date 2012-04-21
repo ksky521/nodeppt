@@ -185,6 +185,7 @@ section[data-animate="normal"]{
 }
 
 section[data-animate="metro"] {
+	display:none;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
@@ -206,7 +207,7 @@ section[data-animate="metro"].future {
     -ms-transform: translate3d(100%, 0, 0) rotateY(-30deg);
     transform: translate3d(100%, 0, 0) rotateY(-30deg);
 }
-section[data-animate="metro"].future {
+section[data-animate="metro"].past {
     -webkit-transform: translate3d(100%, 0, 0) rotateY(30deg);
     -moz-transform: translate3d(100%, 0, 0) rotateY(30deg);
     -ms-transform: translate3d(100%, 0, 0) rotateY(30deg);
@@ -366,9 +367,25 @@ a{
     -o-transform:rotate(-45deg);
     transform:rotate(-45deg);
 }
+.transformRight{
+    text-align:center;
+    color:#fff;
+    background:#333;
+    width:200px;
+    position:absolute;
+    right:-43px;
+    top:40px;
+    font-size:18px;
+    line-height:2em;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
 .slide li{
 	list-style:square inside;
-	line-height:1.5em;
+	line-height:2em;
 	padding-left: 1em;
 	font-size:20px;
 }
@@ -491,7 +508,12 @@ span.tool {
 	transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
 }
 .slideContent{display:none;}
-
+.txtCenter{
+	text-align:center;
+}
+.center{
+    margin:0 auto;
+}
 /* Let's get this party started */
 ::-webkit-scrollbar {
     width: 8px;
@@ -500,13 +522,66 @@ span.tool {
  
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
-    border-radius: 4px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.2); 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
-    border-radius: 4px;
-    background: rgba(0,128,128,0.25);
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.7); 
+    background: rgba(250, 250,250,0.05);
+}
+pre{
+	box-shadow:2px 2px 5px #aaa;
+}
+pre code{
+	font: 18px/1.4em Monaco,Lucida Console, monospace,"Microsoft Yahei";
+	overflow:hidden;
+}
+
+pre code:hover {
+    background: #FFF;
+	overflow:auto;
+	box-shadow:2px 2px 5px #666;
+}
+
+.img{
+    max-width:600px;
+    margin:20px auto;
+}
+.slide li ul{
+	list-style:none;
+}
+.slide li ul li{
+	list-style:none;
+	margin-left:2em;
+	border-left:3px solid #999;
+}
+.slide div.bgred,.slide div.bggreen,.slide div.bgblue{
+	border-radius: 8px;
+    line-height:2em;
+    text-shadow:2px 2px 2px #000;
+    font-size:24px;
+	margin-top:50px;
+	border:2px solid #FFF;
+}
+.slide div.bgred{
+	color:#fff;
+	background:#FF5335;
+}
+.slide div.bgblue{
+	color:#FFF;
+	background:#69ADFF;
+	border:2px solid #558BCC;
+}
+.slide div.bggreen{
+	color:#F4F6D4;
+	background:#85DB18;
+}
+.slide .orange{
+	color:#FF5335;
+	text-shadow:1px 1px 2px #666;
+	padding:0 3px;
+}
+.slide .tindent{
+	text-indent:2em;
 }
