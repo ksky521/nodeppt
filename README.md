@@ -1,4 +1,4 @@
-# nodePPT — nodejs做的手机端控制PC端的PPT演示文档javascript框架
+# nodePPT — 手机端控制PC端的PPT演示文档
 [nodePPT](https://github.com/ksky521/nodePPT)使用nodejs写的，可以手机端控制pc端的演示文档框架。nodePPT是在[webSlide](https://github.com/ksky521/webSlide)基础上二次开发的，使用nodejs做服务器，通过websocket来实现手机端和PC的通信，主要功能是手机端可以控制pc端PPT播放进度，并且手机端可以给每张PPT做备注。
 
 第一次做个程序的nodejs作品，并且测试时间比较短，肯定会有很多问题和bug，希望大家一起斧正。另外页面样式css高手可以自己写，包括动画自定义都可以在css文件中直接修改添加。
