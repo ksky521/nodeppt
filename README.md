@@ -10,7 +10,7 @@
 建议浏览器chrome 16+，全屏模式（F11），以达到最佳动画效果。在Firefox下会出现拖尾现象，个人认为是Firefox 8下对CSS3动画效果渲染太慢导致，其他浏览器未测试。
 
 #### 使用说明
-> * 1、安装模块：npm install express socket.io jade connect
+> * 1、安装模块：`npm install express socket.io jade connect`
 > * 2、配置route.json
 > * 3、配置ppt的文件
 > * 4、启动node：node server.js
