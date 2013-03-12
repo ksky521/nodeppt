@@ -12,6 +12,13 @@ module.exports = function(grunt) {
 			},
 			files: ['src/js/*.js']
 		},
+		compass: {
+			dist: {
+				options: {
+					config: 'src/config.rb'
+				}
+			}
+		},
 		concat: {
 			options: {
 				separator: ';'
@@ -37,7 +44,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	// grunt.loadNpmTasks('grunt-contrib-qunit');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 

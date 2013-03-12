@@ -3,12 +3,61 @@
 <head>
 	<meta charset="UTF-8">
 	<title>nodePPT demo</title>
-	<link rel="stylesheet" href="build/css/nodeppt.css" />
-	<link rel="stylesheet" href="build/css/demo.css" media="all" />
-	<script src="build/js/nodeppt-cli.js"></script>
-	<script src="build/js/demo.js"></script>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" media="all" href="src/css/nodeppt.css">
+	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="src/css/phone.css">
 </head>
 <body>
 
+<slides id="container" class="layout-widescreen">
+	<slide class="slide current"></slide>
+	<slide class="slide">
+		<h1>这是第一页</h1>
+	</slide>
+	<slide class="slide">
+		<h1>哈哈~这是第一页</h1>
+	</slide>
+	<slide class="slide">
+		<h1>发达司法发</h1>
+	</slide>
+	<slide class="slide">
+		<h1>阿的发放的凤飞飞</h1>
+	</slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<slide class="slide"></slide>
+	<div class="slideTip" id="tip"></div>
+</slides>
+<canvas id="drawBroad" width="800" height="600"></canvas>
+<div class="progress"><span id="progress"></span></div>
+	
+<script src="src/js/nodeppt.js"></script>
+<script>
+	slide.init({
+		containerID:'container',
+		isControlDevice:false,
+		doWebSocket:true,
+		drawBroadID:'drawBroad',
+		slideClass:'.slide',
+		buildClass:'.build',
+		progressID:'progress',
+		transition:'horizontal3d',
+		tipID:'tip',
+		webSocketHost:'',
+		stepWidth:800
+	});
+</script>	
 </body>
 </html>

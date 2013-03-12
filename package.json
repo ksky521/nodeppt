@@ -1,5 +1,6 @@
 {
   "name": "nodePPT",
+  "jsname":"nodeppt",
   "version": "0.2.0",
   "devDependencies": {
     "grunt": "~0.4.0",
