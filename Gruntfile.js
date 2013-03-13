@@ -10,12 +10,12 @@ module.exports = function(grunt) {
 					module: true
 				}
 			},
-			files: ['src/js/*.js']
+			files: ['src/js/nodeppt.js']
 		},
 		compass: {
 			dist: {
 				options: {
-					config: 'src/config.rb'
+					config: 'config.rb'
 				}
 			}
 		},
@@ -38,7 +38,12 @@ module.exports = function(grunt) {
 				src: 'src/js/*.js',
 				dest: 'build/js/<%= pkg.name %>.js'
 			}
+		},
+		watch: {
+			files: ['src/scss/*.scss'],
+			tasks: ['compass']
 		}
+
 	});
 
 

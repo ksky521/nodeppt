@@ -10,12 +10,14 @@
 	var doHash = true;
 	var touchDX = 0;//touch事件x数据
     var touchDY = 0;//touch事件y数据
-	var stepWidth = 800;//翻页单步宽度
+	var slideWidth;//单页宽度
+	var slideHeight;
 	var curIndex = 0;//当前幻灯片索引
 	var $progress;//进度条
 	var $container;//幻灯片容器
 	var $slides;//幻灯片集合
 	var $drawBoard;//画板
+	
 
 	var slideCount;//幻灯片总页数-1
 
@@ -81,11 +83,11 @@
 	function preload(node){
 		var self = arguments.callee;
 		if(node && node.nodeType===1){
-		  var $preload = $('preload',node),len = $preload.length;
-		  	while(len--){
+			var $preload = $('preload',node),len = $preload.length;
+			while(len--){
 				var tmpNode = $preload[len],
-				    dataset = $preload[len].dataset, 
-				    type = dataset.type,
+					dataset = $preload[len].dataset, 
+					type = dataset.type,
 					url = dataset.url;
 				var fn = $win['load'+type.toUpperCase()];
 				typeof fn === 'function' && fn(url,function(tmpNode) {
@@ -107,7 +109,7 @@
 		toBuild[0].classList.remove('to-build', '');
 		
 		return true;
-	};
+	}
 	//设置单行页面添加
 	function makeBuildLists() {
 		var i = slideCount,slide;
@@ -123,12 +125,12 @@
             slide.dataset.transition = transition;
 		}
 
-	};
+	}
 	
 	//切换动画
 	function doSlide(slideID){
 		slideID = slideID || curIndex;
-		// $container.style.marginLeft = -(slideID * stepWidth) + 'px';
+		// $container.style.marginLeft = -(slideID * slideWidth) + 'px';
 		updateSlideClass();
         setProgress();
 		doWebSocket && sendWebSoketMessage({slideID:slideID});
@@ -159,7 +161,7 @@
                 updateSlideClass_(i);
                 break;
             }
-          };
+          }
     }
     function updateSlideClass_(slideNo, className) {
         var el = $slides[slideNo];
@@ -184,7 +186,7 @@
 	function connWebSoket(){
 		try{
 			if(doWebSocket){
-		        doWebSocket = false;
+				doWebSocket = false;
 				webSocket = io.connect(webSocketHost);
 				
 				//系统消息
@@ -289,7 +291,6 @@
     //显示tips
 	function showTips(msg){
 		if(!$slideTip){
-			showTips = emptyFn;
 			return;
 		}
 		$slideTip.innerHTML = msg;
@@ -304,8 +305,6 @@
 		if(doWebSocket && webSocket && ctrlType!=='unbind'){
 			
 			webSocket.emit(defaultOptions.isControlDevice?'order':'update',json);
-		}else{
-			sendWebSoketMessage = emptyFn;
 		}
 	}
 	//发送webSocket执行函数命令
@@ -315,9 +314,7 @@
 //			console.log('send order');
             
             webSocket.emit(defaultOptions.isControlDevice?'handle by server':'handle by client',{handleFnName:handleFnName,args:args});
-        }else{
-			sendWebSoketOrder = emptyFn;
-		}
+        }
 	}
 	/*************************events***************/
 	
@@ -334,22 +331,22 @@
                 removePaint();
                 break;
 			//上一页
-			case 33:; // pg up
-            case 37:; // left
+			case 33: // pg up
+            case 37: // left
             case 38: // up
                 (defaultOptions.isControlDevice || ctrlType!=='bindAll') && prevSlide();
                 break;
 			//下一页
-            case 9:; // tab
-            case 32:; // space
-            case 34:; // pg down
-            case 39:; // right
+            case 9: // tab
+            case 32: // space
+            case 34: // pg down
+            case 39: // right
             case 40: // down
                 (defaultOptions.isControlDevice || ctrlType!=='bindAll') && nextSlide()
                 break;
 		}
 		
-//		$container.style.marginLeft = -(curIndex * stepWidth) + 'px';
+//		$container.style.marginLeft = -(curIndex * slideWidth) + 'px';
 //		setProgress();
 //		setHistory();
 	}
@@ -365,7 +362,7 @@
 			$body.addEventListener('touchmove', evtTouchMove, true);
 			$body.addEventListener('touchend', evtTouchEnd, true);
 		}
-	};
+	}
 	//touch事件
 	function evtTouchMove(event){
 		if (event.touches.length > 1) {
@@ -375,7 +372,7 @@
 			touchDX = event.touches[0].pageX - touchStartX;
 			touchDY = event.touches[0].pageY - touchStartY;
 		}
-	};
+	}
 	//touchend事件
 	function evtTouchEnd(event){
 		var dx = Math.abs(touchDX);
@@ -390,12 +387,12 @@
 			}
 		}
 		cancelTouch();
-	};
+	}
 	//取消绑定
 	function cancelTouch(){
 		$body.removeEventListener('touchmove', evtTouchMove, true);
 		$body.removeEventListener('touchend', evtTouchEnd, true);
-	};
+	}
 	//绑定事件
 	function bindEvent(){
 		$doc.addEventListener('keyup',evtDocDown,false);
@@ -405,9 +402,9 @@
 			if(location.hash){
 				doHash = false;
 				slideOutCallBack($slides[curIndex]);
-	            curIndex = location.hash.substr(1) | 0;
+				curIndex = location.hash.substr(1) | 0;
 				doSlide();
-	            doHash = true;
+				doHash = true;
 			}
 			
 		},true);
@@ -427,9 +424,7 @@
     }
 	//显示画板
     function showPaint(){
-        if (!$drawBoard) {
-            return;
-        }
+        
         drawCanvasReady();
         $drawBoard.style.display = '';
 		
@@ -440,17 +435,12 @@
     }
     //清除画板内容
     function clearPaint(){
-        if (!$drawBoard) {
-            return;
-        }
-        $drawBoard.context && $drawBoard.context.clearRect(0, 0, 800, 600);
+       
+        $drawBoard.context && $drawBoard.context.clearRect(0, 0, slideWidth, slideHeight);
         $drawBoard.style.display = 'none';
     }
 	//删除画板
     var removePaint = function(){
-        if (!$drawBoard) {
-            return;
-        }
         clearPaint();
         $drawBoard.removeEventListener('mousedown', pMouseDown);
         $drawBoard.removeEventListener('mouseup', pMouseUp);
@@ -501,14 +491,15 @@
 		containerID:'container',
 		isControlDevice:false,
 		doWebSocket:true,
-		drawBroadID:'drawBoard',
+		drawBoardID:'drawBoard',
 		slideClass:'.slide',
 		buildClass:'.build',
 		progressID:'progress',
 		transition:'',
 		tipID:'tip',
 		webSocketHost:'',
-		stepWidth:800
+		width:900,
+		height:700
 	};
 	
     //初始化变量
@@ -516,15 +507,18 @@
 		
 		$slideTip = $$(defaultOptions.tipID);
 		$container =  $$(defaultOptions.containerID);
-		stepWidth = defaultOptions.stepWidth;
+		slideWidth = defaultOptions.width;
+		slideHeight = defaultOptions.height;
 		$progress = $$(defaultOptions.progressID);
 		$slides = toArray($(defaultOptions.slideClass,$container));
 		slideCount = $slides.length;//幻灯片总页数-1
-		// $container.style.width = slideCount*stepWidth + 'px';//设置容器总宽度
+		// $container.style.width = slideCount*slideWidth + 'px';//设置容器总宽度
 		slideCount--;
 		$drawBoard = $$(defaultOptions.drawBoardID);
 		if($drawBoard){
 			$drawBoard.style.display = 'none';
+			$drawBoard.width = slideWidth;
+			$drawBoard.height = slideHeight;
 			$doc.onselectstart = function(){return false}
 		}
 	}

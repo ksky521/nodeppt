@@ -1,8 +1,9 @@
+@charset "UTF-8";
 @import "base";
 @import "compass/css3/columns";
 @import "compass/css3/user-interface";
 
-$social-tags: '#yourhashtag';
+$social-tags: '#Name';
 $brand-small-icon-size: 30px;
 
 $gray-1: #e6e6e6;
@@ -28,6 +29,7 @@ $brand-green-secondary2: #009f5d;
 
 $slide-width: 900px;
 $slide-height: 700px;
+
 $slide-width-widescreen: 1100px;
 $slide-top-bottom-padding: 40px;
 $slide-left-right-padding: 60px;
@@ -94,14 +96,12 @@ $article-content-top-padding: 45px;
 body {
   background: black;
 }
-.qcanvas {
-    width: 1100px;
-    height: 700px;
+.draw-board {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -550px;
-    margin-top: -350px;
+    margin-left: - $slide-width/2;
+    margin-top: - $slide-height/2;
     cursor: url(pen.cur),default;
 }
 .slideTip {
@@ -297,6 +297,10 @@ slides.layout-widescreen,
 slides.layout-faux-widescreen {
 
   $translateX: 1130px;
+
+  .draw-board {
+    margin-left: - $slide-width-widescreen/2;
+  }
 
   > slide {
     margin-left: -$slide-width-widescreen / 2;

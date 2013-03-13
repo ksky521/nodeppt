@@ -39,24 +39,23 @@
 	<slide class="slide"></slide>
 	<slide class="slide"></slide>
 	<div class="slideTip" id="tip"></div>
+	<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
 </slides>
-<canvas id="drawBroad" width="800" height="600"></canvas>
 <div class="progress"><span id="progress"></span></div>
-	
 <script src="src/js/nodeppt.js"></script>
 <script>
 	slide.init({
 		containerID:'container',
 		isControlDevice:false,
 		doWebSocket:true,
-		drawBroadID:'drawBroad',
+		drawBoardID:'drawBoard',
 		slideClass:'.slide',
 		buildClass:'.build',
 		progressID:'progress',
 		transition:'horizontal3d',
 		tipID:'tip',
 		webSocketHost:'',
-		stepWidth:800
+		width:1100
 	});
 </script>	
 </body>
