@@ -16,6 +16,18 @@
 	</slide>
 	<slide class="slide">
 		<h1>哈哈~这是第一页</h1>
+		<ul class="build">
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+			<li>第一行</li>
+		</ul>
 	</slide>
 	<slide class="slide">
 		<h1>发达司法发</h1>
@@ -42,21 +54,30 @@
 	<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
 </slides>
 <div class="progress"><span id="progress"></span></div>
-<script src="src/js/nodeppt.js"></script>
+<script src="https://raw.github.com/ksky521/MixJS/master/mix-0.2.js"></script>
+<!-- <script src="https://raw.github.com/ksky521/MixJS/master/event/broadcast.js"></script>
+<script src="src/js/nodeppt.js"></script> -->
 <script>
-	slide.init({
-		containerID:'container',
-		isControlDevice:false,
-		doWebSocket:true,
-		drawBoardID:'drawBoard',
-		slideClass:'.slide',
-		buildClass:'.build',
-		progressID:'progress',
-		transition:'horizontal3d',
-		tipID:'tip',
-		webSocketHost:'',
-		width:1100
+MixJS.use('event/broadcast',function($){
+	$.loadJS('src/js/nodeppt.js',function(){
+		Slide.init({
+			containerID:'container',
+			drawBoardID:'drawBoard',
+			slideClass:'.slide',
+			buildClass:'.build',
+			progressID:'progress',
+			transition:'horizontal3d',
+			tipID:'tip',
+			width:1100,
+			//控制相关
+			control:{
+				type:'socket',
+				args:[]
+			}
+
+		});
 	});
+});
 </script>	
 </body>
 </html>
