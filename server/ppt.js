@@ -1,33 +1,26 @@
 var io = require('socket.io').listen(3000);
-var ctrlSocket,userSocket,ctrlType = 'bind';
-var ctrlDeviceNum = 0;
+
 //控制端
-ctrlSocket = io.of('/pptcontrol')
+ctrlSocket = io.of('/control')
 .on('connection', function(socket) {
-	ctrlDeviceNum++;
 	userSocket.emit('system', {
 		msg: '已经有管理员用户连接上了，小心被控制'
 	});
 	
-	ctrlSocket.emit('system', {
+	userSocket.emit('system', {
         msg: '控制端登录成功'
     });
 	
 	//控制端监听
-	socket.on('order', function(data) {
-		userSocket.emit('server order', data);
+	socket.on('from client user update', function(data) {
+		userSocket.emit('from client update', data);
 	});
-	socket.on('handle by server', function(json) {
-		userSocket.emit('server handle', json);
-	});
-	socket.on('server bind update',function(json){
-		ctrlType = json.state;
-		userSocket.emit('server control message',json);
+	socket.on('from client user updateItem', function(json) {
+		userSocket.emit('from client updateItem', json);
 	});
 	
 	
 	socket.on('disconnect', function() {
-		ctrlDeviceNum--;
         userSocket.emit('system', {
             msg: '管理员离开，失去通信',
 			dowhat:'free'
@@ -35,20 +28,23 @@ ctrlSocket = io.of('/pptcontrol')
     });
 });
 //用户端，即被控制端
-userSocket = io.of('/pptuser')
+userSocket = io.of('/client')
 .on('connection', function(socket) {
 	ctrlSocket.emit('system', {
 		msg: '已经有用户连接上了'
 	});
-	ctrlDeviceNum>0 && userSocket.emit('server control message',{state:ctrlType});
 	
 	//pc端监听
-	socket.on('update', function(data) {
-		ctrlSocket.emit('server update', data);
+	socket.on('from control user update', function(data) {
+		ctrlSocket.emit('from control update', data);
 	});
-	socket.on('handle by client', function(json) {
-		ctrlSocket.emit('client handle', json);
+	socket.on('from control user updateItem', function(json) {
+		ctrlSocket.emit('from control updateItem', json);
 	});
+	socket.on('from control user order',function(json){
+		ctrlSocket.emit('from control order',json);
+	});
+	
 	
 	socket.on('disconnect', function() {
 		ctrlSocket.emit('system', {

@@ -1,14 +1,14 @@
-(function($win, $doc, $B, loadJS,loadCSS undefined) {
+(function($win, $doc, $B, loadJS, loadCSS, undefined) {
 	//用于单页ppt预加载资源
 	var preloadFn = {
-		loadJS:loadJS,
-		loadCSS:loadCSS
+		loadJS: loadJS,
+		loadCSS: loadCSS
 	};
 
 	var $body = $doc.body;
 	var emptyFn = function() {};
 	var emptyArr = [];
-	
+
 	var touchDX = 0; //touch事件x数据
 	var touchDY = 0; //touch事件y数据
 	var touchStartX = 0;
@@ -16,7 +16,7 @@
 
 	var ctrlType = 'bind';
 	var doHash = true;
-
+	var lockSlide = false;
 	var slideWidth; //单页宽度
 	var slideHeight;
 	var curIndex = 0; //当前幻灯片索引
@@ -77,6 +77,7 @@
 	}
 	//slide切入回调incallback
 	//<slide data-incallback=""
+
 	function slideInCallBack() {
 		var $cur = $slides[curIndex];
 		if (!$cur || ($cur && $cur.nodeType !== 1)) {
@@ -88,6 +89,7 @@
 	}
 	//slide切出回调outcallback
 	//<slide data-outcallback=""
+
 	function slideOutCallBack(prev) {
 		if (!prev || (prev && prev.nodeType !== 1)) {
 			return;
@@ -98,6 +100,7 @@
 	}
 	//预加载资源
 	//<preload data-type="js||css" data-url="">
+
 	function preload(node) {
 		var self = arguments.callee;
 		if (node && node.nodeType === 1) {
@@ -139,10 +142,11 @@
 		if (!toBuild.length) {
 			return false;
 		}
+
 		var item = toBuild.item(0);
-		$B.fire('slide do build',{
-			slideID:curIndex,
-			build:item
+		$B.fire('slide do build', {
+			slideID: curIndex,
+			build: item.dataset.index
 		})
 		list = item.classList;
 
@@ -165,6 +169,7 @@
 				var t = item.classList
 				if (t) {
 					t.add('to-build');
+					item.dataset.index = j;
 				}
 			}
 			if (!dataset.transition) {
@@ -176,18 +181,22 @@
 
 	//切换动画
 
-	function doSlide(slideID) {
-		slideID = slideID || curIndex;
+	function doSlide(slideID, isSync) {
+		isSync = typeof isSync==='boolean'?isSync:true;
+		slideID = slideID===undefined? curIndex:(slideID|0);
+		curIndex = slideID;
 
 		// $container.style.marginLeft = -(slideID * slideWidth) + 'px';
 		updateSlideClass();
 		setProgress();
 		//发布slide切换状态广播
-		$B.fire('slide change ID',{
-			slideID:slideID
-		})
-	
-		doHash && ($win.location.hash = "#" + slideID);
+		isSync && $B.fire('slide change ID', {
+			slideID: slideID
+		});
+		if (doHash) {
+			lockSlide = true;
+			$win.location.hash = "#" + slideID;
+		}
 		slideInCallBack();
 		removePaint();
 	}
@@ -239,6 +248,7 @@
 	}
 
 	//显示tips
+
 	function showTips(msg) {
 		if (!$slideTip) {
 			return;
@@ -250,7 +260,7 @@
 		}, 3E3);
 	}
 
-	
+
 	/*************************events***************/
 
 	//pc键盘翻页事件逻辑
@@ -273,7 +283,7 @@
 				// left
 			case 38:
 				// up
-				(defaultOptions.isControlDevice || ctrlType !== 'bindAll') && prevSlide();
+				prevSlide();
 				break;
 				//下一页
 			case 9:
@@ -286,7 +296,7 @@
 				// right
 			case 40:
 				// down
-				(defaultOptions.isControlDevice || ctrlType !== 'bindAll') && nextSlide()
+				nextSlide()
 				break;
 		}
 
@@ -348,14 +358,14 @@
 		$body.addEventListener('touchstart', evtTouchStart, false);
 
 		$win.addEventListener('hashchange', function() {
-			if (location.hash) {
+			if (location.hash && !lockSlide) {
 				doHash = false;
 				slideOutCallBack($slides[curIndex]);
 				curIndex = location.hash.substr(1) | 0;
 				doSlide();
 				doHash = true;
 			}
-
+			lockSlide = false;
 		}, true);
 	}
 
@@ -425,7 +435,6 @@
 		}
 	};
 
-	
 	//代理函数
 
 	function proxyFn(fnName, args) {
@@ -447,7 +456,9 @@
 		tipID: 'tip',
 		webSocketHost: '',
 		width: 900,
-		height: 700
+		dir: './',
+		height: 700,
+		control: false
 	};
 
 	//初始化变量
@@ -459,7 +470,8 @@
 		slideWidth = defaultOptions.width;
 		slideHeight = defaultOptions.height;
 		$progress = $$(defaultOptions.progressID);
-		$slides = toArray($(defaultOptions.slideClass, $container));
+		Slide.$slides = $slides = toArray($(defaultOptions.slideClass, $container));
+
 		slideCount = $slides.length; //幻灯片总页数-1
 		// $container.style.width = slideCount*slideWidth + 'px';//设置容器总宽度
 		slideCount--;
@@ -474,14 +486,7 @@
 		}
 
 	}
-	//初始化广播事件监听
-	function bindBroadcast(){
-		$B.on('slide control order',function(json){
-			var fnName = json.fnName;
-			var args = json.args;
-			proxyFn(fnName,args);
-		})
-	}
+
 	//初始化
 
 	function init(options) {
@@ -492,7 +497,13 @@
 				defaultOptions[key] = options[key];
 			}
 		}
-		bindBroadcast();
+		Slide.dir = defaultOptions.dir;
+		if (defaultOptions.control) {
+			var control = defaultOptions.control;
+			loadJS(defaultOptions.dir + 'nodeppt.control.js', function() {
+				Slide.Control.load(control.type, control.args);
+			});
+		}
 		initVar(); //初始化变量
 
 		makeBuildLists();
@@ -509,10 +520,10 @@
 		$body.style.opacity = 1;
 	}
 	var Slide = {
-		$slides:$slides,
 		init: init,
 		next: nextSlide,
 		prev: prevSlide,
+		doSlide: doSlide,
 		proxyFn: proxyFn
 	}
 

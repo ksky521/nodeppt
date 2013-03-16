@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>nodePPT demo</title>
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="stylesheet" media="all" href="src/css/nodeppt.css">
-	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="src/css/phone.css">
+	<link rel="stylesheet" media="all" href="css/nodeppt.css">
+	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="css/phone.css">
 </head>
 <body>
 
@@ -59,7 +59,7 @@
 <script src="src/js/nodeppt.js"></script> -->
 <script>
 MixJS.use('event/broadcast',function($){
-	$.loadJS('src/js/nodeppt.js',function(){
+	$.loadJS('js/nodeppt.js',function(){
 		Slide.init({
 			containerID:'container',
 			drawBoardID:'drawBoard',
@@ -69,10 +69,11 @@ MixJS.use('event/broadcast',function($){
 			transition:'horizontal3d',
 			tipID:'tip',
 			width:1100,
+			dir:'./js/',
 			//控制相关
 			control:{
 				type:'socket',
-				args:[]
+				args:{isControl:location.hash==='#control',host:'http://127.0.0.1:3000'}
 			}
 
 		});

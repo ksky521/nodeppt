@@ -1,139 +1,79 @@
-var ctrlType = 'unbind';
-	
-	//重写代理函数，变为发送广播
-	Slide.proxyFn = function(fnName, args){
-		ctrlType !== 'unbind' && $B.fire('slide control order',{
-			fnName:fnName,
-			args:args
-		})
-	}
-	//发送webSocket消息
+var socketIOURL = 'js/socket.io.js';
+MixJS.loadJS(socketIOURL);
+Slide.Control.add('socket', function(S, broadcast) {
 
-	function sendWebSoketMessage(json) {
-		if (doWebSocket && webSocket && ctrlType !== 'unbind') {
+	var timer;
+	//检查是否加载完成socket.io.js
+	var check = function() {
+		timer && clearTimeout(timer);
 
-			webSocket.emit(defaultOptions.isControlDevice ? 'order' : 'update', json);
-		}
-	}
-	//发送webSocket执行函数命令
-
-	function sendWebSoketOrder(handleFnName, args) {
-		//		console.log(handleFnName);
-		if (doWebSocket && webSocket && ctrlType !== 'unbind') {
-			//			console.log('send order');
-
-			webSocket.emit(defaultOptions.isControlDevice ? 'handle by server' : 'handle by client', {
-				handleFnName: handleFnName,
-				args: args
-			});
-		}
-	}
-	//链接websoket
-
-	function connWebSoket() {
-		try {
-			if (doWebSocket) {
-				doWebSocket = false;
-				webSocket = io.connect(webSocketHost);
-
-				//系统消息
-				webSocket.on('system', function(data) {
-					doWebSocket = true;
-					showTips(data.msg);
-					if (data.dowhat === 'free') {
-						ctrlType = 'bind';
-					}
-				});
-				if (defaultOptions.isControlDevice) {
-					//如果是控制端，则接收pc端更新消息:update
-					webSocket.on('server update', function(data) {
-						doWebsocketUpdate(data);
-					});
-					webSocket.on('client handle', function(data) {
-						if (data.handleFnName && typeof window[data.handleFnName] === 'function') {
-							window[data.handleFnName].call({}, data.args);
-						}
-					});
-
-
-				} else {
-					//如果是pc端，则接收控制消息:order
-					webSocket.on('server order', function(data) {
-						doWebsocketUpdate(data);
-					});
-					webSocket.on('server handle', function(data) {
-						if (data.handleFnName && typeof window[data.handleFnName] === 'function') {
-							window[data.handleFnName].apply({}, data.args);
-						}
-					});
-
-					webSocket.on('server control message', function(data) {
-						switch (data.state) {
-							case 'bind':
-								//完全同步
-								ctrlType = data.state;
-								showTips('状态转化：目前是完全同步状态');
-								break;
-							case 'unbind':
-								//释放状态
-								ctrlType = data.state;
-								showTips('状态转化：目前是释放控制状态');
-								break;
-							case 'bindAll':
-								//完全绑定
-								ctrlType = data.state;
-								showTips('状态转化：目前是完全控制状态');
-								break;
-						}
-					});
-				}
+		timer = setTimeout(function() {
+			if (io && io.connect) {
+				Socket.connect();
+			} else {
+				check();
 			}
-		} catch (e) {
-			throw new Error('websocket connect error!');
-		}
+		}, 100);
 	}
-	//控制状态
-
-	function sendControlState(state) {
-		//bind
-		//bindAll
-		//unbind
-		if (defaultOptions.isControlDevice && defaultOptions.doWebSocket && webSocket) {
-			ctrlType = state;
-			webSocket.emit('server bind update', {
-				state: state
+	var webSocket;
+	var Socket = {
+		host: '',
+		role: '', //角色
+		clientConnect: function() {
+			//角色是client，即被控制端，则连控制端服务器
+			webSocket = io.connect(this.host + '/control');
+			webSocket.on('system', function(data) {
+				console.log(data);
 			});
-			'bind bindAll unbind'.replace(/\S+/g, function(a) {
-				$$(a).classList.remove('orange');
-				if (state === a) {
-					$$(state).classList.add('orange');
-				}
+			webSocket.on('from control update', function(data) {
+
+				broadcast.fire('from control update', data.id);
 			});
+			webSocket.on('from control updateItem', function(data) {
+				broadcast.fire('from control updateItem', data.id, data.item);
+			});
+			webSocket.on('from control proxyFn', function(data) {
+				var fnName = data.fnName;
+				var args = data.args;
+			});
+		},
+		controlConnect: function() {
+			//角色是控制端，则连被控制端（client）服务器
+			webSocket = io.connect(this.host + '/client');
+			webSocket.on('system', function(data) {
+				console.log(data);
+			});
+			webSocket.on('from client update', function(data) {
+				broadcast.fire('from control update', data.id);
+			});
+			webSocket.on('from client updateItem', function(data) {
+				broadcast.fire('from control updateItem', data.id, data.item);
+			});
+			// webSocket.on('from client proxyFn', function(data) {
+			// 	var fnName = data.fnName;
+			// 	var args = data.args;
+			// });
+		},
+		connect: function() {
+			this[this.role + 'Connect']();
+		},
+		update: function(id) {
+			webSocket.emit(this.role === 'control' ? 'from control user update' : 'from client user update', {
+				id: id
+			});
+		},
+		updateItem: function(id, item) {
+			webSocket.emit(this.role === 'control' ? 'from control user updateItem' : 'from client user updateItem', {
+				id: id,
+				item: item
+			});
+		},
+		init: function(args) {
+			this.host = args.host || location.href;
+			//角色，是否为控制端
+			this.role = args.isControl ? 'control' : 'client';
+			check();
 		}
-	}
-
-	//控制端代码=========================>
-
-	function doWebsocketUpdate(data) {
-		//控制端
-		doWebSocket = 0;
-		if (data.donext && curIndex === data.donext) {
-			nextSlide();
-			doWebSocket = 1;
-			return;
-		}
-		curIndex = data.slideID;
-
-		doSlide();
-		preload($slides[curIndex])($slides[curIndex + 1]);
-		doWebSocket = 1;
-
-
-		if (defaultOptions.doWebSocket && defaultOptions.webSocketHost !== '') {
-			doWebSocket = 1;
-			webSocketHost = defaultOptions.webSocketHost + (defaultOptions.isControlDevice ? 'pptcontrol' : 'pptuser'); //'http://192.168.2.4:3000'
-			loadJS('js/socket.io.js', connWebSoket);
-		} else {
-			doWebSocket = 0;
-		}
-	}
+	};
+	return Socket;
+});
