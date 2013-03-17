@@ -1,6 +1,6 @@
 var io = require('socket.io').listen(3000, {
 	// log: false,
-	origins: '*:*'//解决同源策略
+	origins: '*:*' //解决同源策略
 });
 
 //控制端
@@ -41,6 +41,12 @@ userSocket = io.of('/client')
 	socket.on('from control user update', function(data) {
 		ctrlSocket.emit('from control update', data);
 	});
+	//用户按键检测事件
+	socket.on('from control user key event', function(data) {
+		console.log('control user key event',data );
+		ctrlSocket.emit('from control key event', data);
+	});
+
 	socket.on('from control user updateItem', function(json) {
 		ctrlSocket.emit('from control updateItem', json);
 	});
