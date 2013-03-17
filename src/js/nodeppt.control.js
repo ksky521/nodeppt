@@ -76,10 +76,10 @@
 			var methods = this.methods;
 
 			if (override || !methods[name]) {
-
 				methods[name] = factory(Slide, $B);
-				//必须包括两个函数一个是监控翻页的update
+				//必须包括三个函数一个是监控翻页的update
 				//另外一个是updateItem
+				//一个是init
 			}
 		},
 		load: function(type, args) {

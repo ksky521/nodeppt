@@ -72,7 +72,7 @@ MixJS.use('event/broadcast',function($){
 			dir:'./js/',
 			//控制相关
 			control:{
-				type:'socket',
+				type:'postMessage',
 				args:{isControl:location.hash==='#control',host:'http://127.0.0.1:3000'}
 			}
 

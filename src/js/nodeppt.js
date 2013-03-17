@@ -182,8 +182,8 @@
 	//切换动画
 
 	function doSlide(slideID, isSync) {
-		isSync = typeof isSync==='boolean'?isSync:true;
-		slideID = slideID===undefined? curIndex:(slideID|0);
+		isSync = typeof isSync === 'boolean' ? isSync : true;
+		slideID = slideID === undefined ? curIndex : (slideID | 0);
 		curIndex = slideID;
 
 		// $container.style.marginLeft = -(slideID * slideWidth) + 'px';
@@ -199,6 +199,10 @@
 		}
 		slideInCallBack();
 		removePaint();
+		if ($doc.body.classList.contains('overview')) {
+		    focusOverview_();
+		    return;
+		  }
 	}
 
 	function updateSlideClass() {
@@ -227,6 +231,18 @@
 		}
 	}
 
+	function overview() {
+		$doc.body.classList.toggle('overview');
+		focusOverview_();
+	}
+	function focusOverview_(){
+		var isOV = $doc.body.classList.contains('overview');
+		for (var i = 0, slide; slide = $slides[i]; i++) {
+			slide.style.webkitTransform = slide.style.msTransform = slide.style.mozTransform = isOV ?
+				'translateZ(-2500px) translate(' + ((i - curIndex) * 105) +
+				'%, 0%)' : '';
+		}
+	}
 	function updateSlideClass_(slideNo, className) {
 		var el = $slides[slideNo];
 
@@ -267,8 +283,40 @@
 
 	function evtDocDown(e) {
 		var key = e.keyCode;
-
+		var target = e.target;
+		if (/^(input|textarea)$/i.test(target.nodeName) || target.isContentEditable) {
+			return;
+		}
 		switch (key) {
+			case 13:
+				// Enter
+				if ($doc.body.classList.contains('overview')) {
+					overview();
+				}
+				break;
+			case 72:
+				// H: Toggle code highlighting
+				$doc.body.classList.toggle('highlight-code');
+				break;
+			case 87:
+				// W: Toggle widescreen
+				// Only respect 'w' on body. Don't want to capture keys from an <input>.
+				if (target == $doc.body && !(e.shiftKey && e.metaKey)) {
+					$container.classList.toggle('layout-widescreen');
+				}
+				break;
+			case 79:
+				// O: Toggle overview
+				overview();
+				break;
+				// case 80:
+				// 	// P
+				// 	if (Slide.Control && this.controller.isPopup) {
+				// 		document.body.classList.toggle('with-notes');
+				// 	} else if (this.controller && !this.controller.popup) {
+				// 		document.body.classList.toggle('with-notes');
+				// 	}
+				// 	break;
 			case 80:
 				showPaint();
 				break;
