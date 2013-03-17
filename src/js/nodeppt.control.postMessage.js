@@ -48,6 +48,8 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 				
 			} else {
 				this.role = 'control';
+				document.body.classList.add('popup');
+				document.body.classList.add('with-notes');
 				postWin = window.opener;
 			}
 		}

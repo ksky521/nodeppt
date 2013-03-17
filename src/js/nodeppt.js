@@ -309,14 +309,11 @@
 				// O: Toggle overview
 				overview();
 				break;
-				// case 80:
-				// 	// P
-				// 	if (Slide.Control && this.controller.isPopup) {
-				// 		document.body.classList.toggle('with-notes');
-				// 	} else if (this.controller && !this.controller.popup) {
-				// 		document.body.classList.toggle('with-notes');
-				// 	}
-				// 	break;
+			case 78:
+				// N
+					
+				$doc.body.classList.toggle('with-notes');
+				break;
 			case 80:
 				showPaint();
 				break;
@@ -410,6 +407,7 @@
 				doHash = false;
 				slideOutCallBack($slides[curIndex]);
 				curIndex = location.hash.substr(1) | 0;
+
 				doSlide();
 				doHash = true;
 			}

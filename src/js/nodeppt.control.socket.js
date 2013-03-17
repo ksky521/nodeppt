@@ -72,6 +72,9 @@ Slide.Control.add('socket', function(S, broadcast) {
 			this.host = args.host || location.href;
 			//角色，是否为控制端
 			this.role = args.isControl ? 'control' : 'client';
+			if(args.isControl){
+				document.body.classList.add('popup with-notes');
+			}
 			check();
 		}
 	};
