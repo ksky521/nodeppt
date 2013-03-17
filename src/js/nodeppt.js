@@ -200,9 +200,9 @@
 		slideInCallBack();
 		removePaint();
 		if ($doc.body.classList.contains('overview')) {
-		    focusOverview_();
-		    return;
-		  }
+			focusOverview_();
+			return;
+		}
 	}
 
 	function updateSlideClass() {
@@ -235,7 +235,8 @@
 		$doc.body.classList.toggle('overview');
 		focusOverview_();
 	}
-	function focusOverview_(){
+
+	function focusOverview_() {
 		var isOV = $doc.body.classList.contains('overview');
 		for (var i = 0, slide; slide = $slides[i]; i++) {
 			slide.style.webkitTransform = slide.style.msTransform = slide.style.mozTransform = isOV ?
@@ -243,6 +244,7 @@
 				'%, 0%)' : '';
 		}
 	}
+
 	function updateSlideClass_(slideNo, className) {
 		var el = $slides[slideNo];
 
@@ -281,11 +283,25 @@
 
 	//pc键盘翻页事件逻辑
 
-	function evtDocDown(e) {
+	function evtDocUp(e) {
 		var key = e.keyCode;
 		var target = e.target;
+		//防止input和textarea，和可以编辑tag
 		if (/^(input|textarea)$/i.test(target.nodeName) || target.isContentEditable) {
 			return;
+		}
+		if (!e.isFromControl) {
+			switch (key) {
+				case 13:
+				case 72:
+				case 87:
+				case 79:
+				case 78:
+				case 80:
+				case 67:
+					$B.fire('slide event keyup', e);
+					break;
+			}
 		}
 		switch (key) {
 			case 13:
@@ -293,6 +309,7 @@
 				if ($doc.body.classList.contains('overview')) {
 					overview();
 				}
+
 				break;
 			case 72:
 				// H: Toggle code highlighting
@@ -301,17 +318,18 @@
 			case 87:
 				// W: Toggle widescreen
 				// Only respect 'w' on body. Don't want to capture keys from an <input>.
-				if (target == $doc.body && !(e.shiftKey && e.metaKey)) {
+				if (!(e.shiftKey && e.metaKey)) {
 					$container.classList.toggle('layout-widescreen');
 				}
 				break;
 			case 79:
 				// O: Toggle overview
 				overview();
+
 				break;
 			case 78:
 				// N
-					
+
 				$doc.body.classList.toggle('with-notes');
 				break;
 			case 80:
@@ -399,7 +417,7 @@
 	//绑定事件
 
 	function bindEvent() {
-		$doc.addEventListener('keyup', evtDocDown, false);
+		$doc.addEventListener('keyup', evtDocUp, false);
 		$body.addEventListener('touchstart', evtTouchStart, false);
 
 		$win.addEventListener('hashchange', function() {
@@ -481,8 +499,7 @@
 		}
 	};
 
-	//代理函数
-
+	//代理函数，用于函数控制
 	function proxyFn(fnName, args) {
 		$win[fnName](args);
 	}

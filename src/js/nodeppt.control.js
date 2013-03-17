@@ -12,14 +12,16 @@
 		var list;
 		var index = itemID;
 
-		while (itemID>=0) {
+		while (itemID >= 0) {
 			list = toBuild.item(itemID).classList;
 			list.remove('to-build');
 			list.add(itemID === index ? 'building' : 'build-fade');
 			itemID--;
 		}
 	}
-
+	function getType(obj){
+		 return ({}).toString.call(obj).slice(8, -1)
+	}
 
 	var Control = {
 		state: 'unbind',
@@ -40,46 +42,61 @@
 				var buildItem = json.build;
 				//发送请求
 				t.sendUpdateItem(slideID, buildItem);
-			});
+			}).on('slide event keyup', function(e) {
+				t.sendKeyEvent(e.keyCode);
+			})
 			//监听控制来的广播
 			$B.on('from control order', function(json) {
 				var fnName = json.fnName;
 				var args = json.args;
 				Slide.proxyFn(fnName, args);
-			});
-			$B.on('from control update', function(id) {
-				doSlide(id,false);
-			});
-			$B.on('from control updateItem', function(id, item) {
-				doSlide(id,false);
+			}).on('from control update', function(id) {
+				doSlide(id, false);
+			}).on('from control updateItem', function(id, item) {
+				doSlide(id, false);
 				doItem(id, item);
-			});
+			}).on('from control key event', function(keyCode) {
+				t.createKeyEvent_(keyCode);
+			})
+		},
+		createKeyEvent_: function(keyCode) {
+			var evt = document.createEvent('Event');
+			evt.initEvent('keyup', true, true);
+			evt.keyCode = keyCode;
+			evt.isFromControl = true;
+
+			document.dispatchEvent(evt);
+		},
+		send_: function(fnName, args) {
+			var methods = this.methods;
+			var method;
+			args = getType(args) === 'Array' ? args : [args];
+			for (var i in methods) {
+				method = methods[i];
+				method = method[fnName];
+				typeof method === 'function' && method.apply(Slide, args);
+			}
 		},
 		sendUpdate: function(slideID) {
-			var methods = this.methods;
-			var method;
-			for (var i in methods) {
-				method = methods[i];
-				typeof method.update === 'function' && method.update(slideID);
-			}
+			this.send_('update', [slideID]);
 		},
 		sendUpdateItem: function(id, buildItem) {
-			var methods = this.methods;
-			var method;
-			for (var i in methods) {
-				method = methods[i];
-				typeof method.updateItem === 'function' && method.updateItem(id, buildItem);
-			}
+			this.send_('updateItem', [id, buildItem]);
 		},
+		sendKeyEvent: function(keycode) {
+			this.send_('keyEvent', [keycode]);
+		},
+		
 		//添加一个新的监控
 		add: function(name, factory, override) {
 			var methods = this.methods;
 
 			if (override || !methods[name]) {
 				methods[name] = factory(Slide, $B);
-				//必须包括三个函数一个是监控翻页的update
+				//必须包括4个函数一个是监控翻页的update
 				//另外一个是updateItem
 				//一个是init
+				//keyEvent;
 			}
 		},
 		load: function(type, args) {
