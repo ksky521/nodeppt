@@ -394,15 +394,15 @@ MixJS.use('event/broadcast',function($){
 			tipID:'tip',
 			width:1100,
 			dir:'./js/',
-			control:{
-				type:'socket',
-				args:{isControl:location.hash==='#control',host:'http://127.0.0.1:3000'}
-			}
-			//控制相关
 			// control:{
-			// 	type:'postMessage',
+			// 	type:'socket',
 			// 	args:{isControl:location.hash==='#control',host:'http://127.0.0.1:3000'}
 			// }
+			//控制相关
+			control:{
+				type:'postMessage',
+				args:{isControl:location.hash==='#control',host:'http://127.0.0.1:3000'}
+			}
 
 		});
 
