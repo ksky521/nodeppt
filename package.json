@@ -1,0 +1,11 @@
+{
+  "name": "nodePPT",
+  "jsname":"nodeppt",
+  "version": "0.2.0",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-nodeunit": "~0.1.2"
+  }
+}

@@ -1,8 +1,0 @@
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io.connect('http://127.0.0.1:3000/ctrl');
-  socket.on('message', function (data) {
-    console.log(data);
-    socket.emit('message', { my: 'data' });
-  });
-</script>
