@@ -18,7 +18,8 @@
     "dependencies": {
         "read": "~1.0.4",
         "colors": "~0.6.0-1",
-        "socket.io": "~0.9.13"
+        "socket.io": "~0.9.13",
+        "passport.socketio": "~1.0.1"
     },
     "devDependencies": {
         "grunt": "~0.4.0",

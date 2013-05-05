@@ -1,4 +1,4 @@
-var socketIOURL = Slide.dir + 'socket.io.js';
+var socketIOURL = '//' + location.host + '/socket.io/socket.io.js';
 MixJS.loadJS(socketIOURL)
 Slide.Control.add('socket', function(S, broadcast) {
 
@@ -21,7 +21,7 @@ Slide.Control.add('socket', function(S, broadcast) {
 		host: '',
 		role: '', //角色
 		clientConnect: function() {
-
+			console.log(this.host + '/control');
 			//角色是client，即被控制端，则连控制端服务器
 			webSocket = io.connect(this.host + '/control');
 			webSocket.on('system', function(data) {
@@ -46,6 +46,7 @@ Slide.Control.add('socket', function(S, broadcast) {
 			});
 		},
 		controlConnect: function() {
+
 			//控制端不在直接运行函数，而是变成发送socket给client
 			//注意参数，进行了json处理哦~
 			Slide.proxyFn = function(fnName, args) {

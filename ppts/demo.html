@@ -62,20 +62,20 @@ MixJS.config({
 MixJS.use('event/broadcast', function($){
     $.loadJS('/js/nodeppt.js',function(){
         Slide.init({
-            containerID:'container',
-            drawBoardID:'drawBoard',
-            slideClass:'.slide',
-            buildClass:'.build',
-            progressID:'progress',
-            transition:'horizontal3d',
-            tipID:'tip',
-            width:1100,
-            dir:'/js/',
+            containerID: 'container',
+            drawBoardID: 'drawBoard',
+            slideClass: '.slide',
+            buildClass: '.build',
+            progressID: 'progress',
+            transition: 'horizontal3d',
+            tipID: 'tip',
+            width: 1100,
+            dir: '/js/',
             control:{
-                type:'socket',
+                type: 'socket',
                 args:{
                     isControl: location.hash === '#control',
-                    host: location.protocol + '//' + location.host+'socket.io/',
+                    host: base + '',
                     shake: true
                 }
             }
