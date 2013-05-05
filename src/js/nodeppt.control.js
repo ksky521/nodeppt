@@ -19,8 +19,9 @@
 			itemID--;
 		}
 	}
-	function getType(obj){
-		 return ({}).toString.call(obj).slice(8, -1)
+
+	function getType(obj) {
+		return ({}).toString.call(obj).slice(8, -1)
 	}
 
 	var Control = {
@@ -46,7 +47,7 @@
 				t.sendKeyEvent(e.keyCode);
 			})
 			//监听控制来的广播
-			$B.on('from control order', function(json) {
+			.on('from control order', function(json) {
 				var fnName = json.fnName;
 				var args = json.args;
 				Slide.proxyFn(fnName, args);
@@ -57,7 +58,7 @@
 				doItem(id, item);
 			}).on('from control key event', function(keyCode) {
 				t.createKeyEvent_(keyCode);
-			})
+			});
 		},
 		createKeyEvent_: function(keyCode) {
 			var evt = document.createEvent('Event');
@@ -86,7 +87,7 @@
 		sendKeyEvent: function(keycode) {
 			this.send_('keyEvent', [keycode]);
 		},
-		
+
 		//添加一个新的监控
 		add: function(name, factory, override) {
 			var methods = this.methods;

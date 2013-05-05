@@ -74,8 +74,8 @@ MixJS.use('event/broadcast', function($){
             control:{
                 type: 'socket',
                 args:{
-                    isControl: location.hash === '#control',
-                    host: base + '',
+                    isControl: location.hash.slice(1,8) === 'control',
+                    host: base,
                     shake: true
                 }
             }
