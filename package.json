@@ -1,11 +1,28 @@
 {
-  "name": "nodePPT",
-  "jsname":"nodeppt",
-  "version": "0.2.0",
-  "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-nodeunit": "~0.1.2"
-  }
+    "name": "nodePPT",
+    "jsname": "nodeppt",
+    "description": "A node PPT",
+    "version": "0.2.5",
+    "author": {
+        "name": "Theo Wang",
+        "email": "ksky521@gmail.com"
+    },
+    "bin": {
+        "nodeppt": "bin/nodeppt"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ksky521/nodePPT"
+    },
+    "dependencies": {
+        "read": "~1.0.4",
+        "colors": "~0.6.0-1",
+        "socket.io": "~0.9.13"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.0",
+        "grunt-contrib-jshint": "~0.1.1",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-nodeunit": "~0.1.2"
+    }
 }
