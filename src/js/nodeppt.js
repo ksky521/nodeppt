@@ -66,7 +66,7 @@
 	function nextSlide() {
 		if (buildNextItem()) {
 			// $B.fire('slide change ID',{
-			// 	slideID:curIndex
+			//	slideID:curIndex
 			// })
 			return;
 		}

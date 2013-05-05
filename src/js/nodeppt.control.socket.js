@@ -1,4 +1,4 @@
-var socketIOURL = 'js/socket.io.js';
+var socketIOURL = Slide.dir + 'socket.io.js';
 MixJS.loadJS(socketIOURL)
 Slide.Control.add('socket', function(S, broadcast) {
 
@@ -105,7 +105,7 @@ Slide.Control.add('socket', function(S, broadcast) {
 			}
 			if (args.shake) {
 				//添加shake
-				MixJS.loadJS('js/shake.js', function() {
+				MixJS.loadJS(Slide.dir + 'shake.js', function() {
 					var lastTime = +new Date;
 					addShakeEvent(function() {
 						var now = +new Date;
