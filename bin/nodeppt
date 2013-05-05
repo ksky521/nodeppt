@@ -19,7 +19,7 @@ var action = argv.slice(2, 3).toString();
 
 if (typeof nodePPT[action] === 'function') {
     nodePPT.cwd = process.cwd();
-    nodePPT[action](argv.slice(2));
+    nodePPT[action](argv.slice(3));
 } else {
     nodePPT.help();
 }
