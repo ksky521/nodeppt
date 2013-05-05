@@ -1,0 +1,61 @@
+<!--
+    Powered By nodePPT
+    version: <%= version %>
+    site: <%= site %> 
+    date: <%= grunt.template.today('yyyy-mm-dd') %>
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %> - By <%= speaker %></title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="../src/css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../src/css/phone.css">
+</head>
+<body>
+
+<slides id="container" class="layout-widescreen">
+    <slide class="slide ">
+      <article class="flexbox vcenter">
+          <h1><%= title %></h1>
+          <h3><a href="#"><%= speaker %></a></h3>
+      </article>
+    </slide>
+    <slide class="slide">
+        <hgroup>
+            <h2>目录</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>这里是目录。。</li>
+            </ul>
+        </article>
+    </slide>
+  
+    <slide class="slide thank-you-slide segue nobackground">
+        <article class="flexbox vleft auto-fadein">
+            <h2>&lt;Thank You!&gt;</h2>
+        </article>
+    </slide>
+    <slide class="slide">
+        <hgroup>
+            <h2>参考资料</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li><a href="https://github.com/ksky521/nodePPT" target="_blank">Powered By nodePPT</a></li>
+            </ul>
+        </article>
+    </slide>
+    <div class="slideTip" id="tip"></div>
+    <canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+</slides>
+<div class="progress"><span id="progress"></span></div>
+
+<script src="https://gist.github.com/ksky521/5519468/raw/17ebd7450d7605c6e320206aaf5790a6cdd76d8e/gistfile1.js"></script>
+<script>
+    
+</script>
+</body>
+</html>

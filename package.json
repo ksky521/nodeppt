@@ -3,6 +3,7 @@
     "jsname": "nodeppt",
     "description": "A node PPT",
     "version": "0.2.5",
+    "site": "https://github.com/ksky521/nodePPT",
     "author": {
         "name": "Theo Wang",
         "email": "ksky521@gmail.com"
