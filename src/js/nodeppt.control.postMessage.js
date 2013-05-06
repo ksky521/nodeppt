@@ -41,13 +41,13 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 			var data = e.data;
 			switch (data.action) {
 				case 'update':
-					broadcast.fire('from control update', data.id);
+					broadcast.fire('from control update', data);
 					break;
 				case 'updateItem':
-					broadcast.fire('from control updateItem', data.id, data.item);
+					broadcast.fire('from control updateItem', data);
 					break;
 				case 'keyEvent':
-					broadcast.fire('from control key event', data.keyCode);
+					broadcast.fire('from control key event', data);
 					break;
 				case 'userOrder':
 					var fnName = data.fn;

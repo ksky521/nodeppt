@@ -16,27 +16,28 @@
  * @author  theowang
  * $Id: broadcast.js 65871 2012-11-05 01:51:42Z theowang $
  */
-MixJS.define('event/broadcast',function($){
+MixJS.define('event/broadcast', function($) {
     var _cache = {};
     var broadcast = {
-        
+
         /**
-         * 派发         
+         * 派发
          * @param  {[type]} type 事件类型
          * @param  {[type]} data 回调数据
          * @return {[type]}      [description]
          */
-        fire:function(type, data){
-            var listeners = _cache[type],len = 0;
-            if(!$.isUndefined(listeners)){
+        fire: function(type, data) {
+            var listeners = _cache[type],
+                len = 0;
+            if (!$.isUndefined(listeners)) {
                 var args = [].slice.call(arguments, 0);
-                args = args.length > 2 ? args.splice(2, args.length-1) : [];
+                args = args.length > 2 ? args.splice(2, args.length - 1) : [];
                 args = [data].concat(args);
 
                 len = listeners.length;
-                for(var i = 0; i<len;i++){
+                for (var i = 0; i < len; i++) {
                     var listener = listeners[i];
-                    if(listener && listener.callback) {
+                    if (listener && listener.callback) {
                         args = args.concat(listener.args);
                         listener.callback.apply(listener.scope, args);
                     }
@@ -51,22 +52,26 @@ MixJS.define('event/broadcast',function($){
          * @param  {[type]}   scope    回调函数上下文
          * @return {[type]}            this
          */
-        on:function(types, callback, scope){
+        on: function(types, callback, scope) {
             types = types || [];
             var args = [].slice.call(arguments);
 
-            if($.isString(types)){
+            if ($.isString(types)) {
                 types = types.split(',');
             }
             var len = types.length;
-            if(len===0){
+            if (len === 0) {
                 return this;
             }
-            args = args.length > 3 ? args.splice(3, args.length-1) : [];
-            for(var i = 0;i<len;i++){
+            args = args.length > 3 ? args.splice(3, args.length - 1) : [];
+            for (var i = 0; i < len; i++) {
                 var type = types[i];
                 _cache[type] = _cache[type] || [];
-                _cache[type].push({callback:callback,scope:scope,args:args});
+                _cache[type].push({
+                    callback: callback,
+                    scope: scope,
+                    args: args
+                });
             }
             return this;
         },
@@ -76,31 +81,30 @@ MixJS.define('event/broadcast',function($){
          * @param  {Function} callback 假如传入则移出传入的监控事件，否则移出全部
          * @return {[type]}            [description]
          */
-        un:function(type, callback, scope){
+        un: function(type, callback, scope) {
             var listeners = _cache[type];
             if (!listeners) {
                 return this;
             }
-            if(callback){
+            if (callback) {
                 var len = listeners.length,
                     tmp = [];
-                
-                for(var i=0; i<len; i++) {
+
+                for (var i = 0; i < len; i++) {
                     var listener = listeners[i];
-                    if(listener.callback == callback && listener.scope == scope) {
-                    } else {
+                    if (listener.callback == callback && listener.scope == scope) {} else {
                         tmp.push(listener);
                     }
                 }
                 listeners = tmp;
-            }else{
+            } else {
                 listeners.length = 0;
             }
             return this;
         },
-        
-        
-        removeAll:function(){
+
+
+        removeAll: function() {
             _cache = {};
             return this;
         }

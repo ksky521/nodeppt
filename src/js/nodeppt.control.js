@@ -51,13 +51,13 @@
 				var fnName = json.fnName;
 				var args = json.args;
 				Slide.proxyFn(fnName, args);
-			}).on('from control update', function(id) {
-				doSlide(id, false);
-			}).on('from control updateItem', function(id, item) {
-				doSlide(id, false);
-				doItem(id, item);
-			}).on('from control key event', function(keyCode) {
-				t.createKeyEvent_(keyCode);
+			}).on('from control update', function(json) {
+				doSlide(json.id, false);
+			}).on('from control updateItem', function(json) {
+				doSlide(json.id, false);
+				doItem(json.id, json.item);
+			}).on('from control key event', function(json) {
+				t.createKeyEvent_(json.keyCode);
 			});
 		},
 		createKeyEvent_: function(keyCode) {
