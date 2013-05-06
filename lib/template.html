@@ -52,10 +52,38 @@
     <canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
 </slides>
 <div class="progress"><span id="progress"></span></div>
-
-<script src="https://gist.github.com/ksky521/5519468/raw/17ebd7450d7605c6e320206aaf5790a6cdd76d8e/gistfile1.js"></script>
+<script src="https://raw.github.com/ksky521/MixJS/master/lib/mix.0.3.0.min.js"></script>
 <script>
-    
+var base = location.protocol + '//' + location.host + '/';
+MixJS.config({
+    baseURL:base + 'js/'
+});
+MixJS.use('event/broadcast', function($){
+    $.loadJS('/js/nodeppt.js',function(){
+        Slide.init({
+            containerID: 'container',
+            drawBoardID: 'drawBoard',
+            slideClass: '.slide',
+            buildClass: '.build',
+            progressID: 'progress',
+            transition: 'horizontal3d',
+            tipID: 'tip',
+            width: 1100,
+            dir: '/js/',
+            control:{
+                type: 'socket',
+                args:{
+                    isControl: location.hash.slice(1,8) === 'control',
+                    host: base,
+                    shake: true
+                }
+            }
+        });
+    }).loadJS('/js/prettify.js',function(){
+        prettyPrint();
+    });
+});
 </script>
+    
 </body>
 </html>
