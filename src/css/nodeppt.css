@@ -369,7 +369,7 @@ slides > slide.dark {
 /* line 252, ../scss/nodeppt.scss */
 slides > slide.title-slide:after {
   content: '';
-  /*background: url(../../images/io2012_logo.png) no-repeat 100% 50%;*/
+  background: url(../../images/io2012_logo.png) no-repeat 100% 50%;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -1642,4 +1642,28 @@ slide[data-transition="vertical3d"].past {
   -o-transform: translate3d(0, -75%, 0) rotateX(-60deg) translate3d(0, -75%, 0);
   transform: translate3d(0, -75%, 0) rotateX(-60deg) translate3d(0, -75%, 0);
   top: -350px;
+}
+
+/* line 1206, ../scss/nodeppt.scss */
+.qrcode {
+  display: none;
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  top: 20%;
+  margin-left: -170px;
+  background: white;
+  padding: 20px;
+}
+/* line 1216, ../scss/nodeppt.scss */
+.qrcode #qrcode {
+  width: 256px;
+  height: 256px;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+/* line 1222, ../scss/nodeppt.scss */
+.qrcode p {
+  text-align: center;
 }

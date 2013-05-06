@@ -1,22 +1,36 @@
 var socketIOURL = '//' + location.host + '/socket.io/socket.io.js';
-MixJS.loadJS(socketIOURL);
 
 Slide.Control.add('socket', function(S, broadcast) {
 	S.clientUID = 0;
 
-	var timer;
-	//检查是否加载完成socket.io.js
-	var check = function() {
-		timer && clearTimeout(timer);
-
-		timer = setTimeout(function() {
-			if (io && io.connect) {
-				Socket.connect();
-			} else {
-				check();
+	var qrcodeLink = function() {
+		//按 q显示控制区域二维码
+		document.addEventListener('keydown', function(e) {
+			if (e.keyCode === 81) {
+				showQrcode(e);
 			}
-		}, 100);
+		}, true);
+		var $layer = document.createElement('div');
+		$layer.className = 'qrcode';
+		$layer.id = 'qrcodeBox';
+		$layer.innerHTML = '<div id="qrcode"></div><p><a id="ctrlLink" href="#" target="_blank">打开控制端</a></p>';
+		var $body = document.getElementsByTagName('body')[0];
+		$body.appendChild($layer);
+		var $container = document.getElementById('container');
+
+		function showQrcode(e) {
+			if (showQrcode.isShow) {
+				$container.style.display = 'block';
+				$layer.style.display = 'none';
+				showQrcode.isShow = false;
+			} else {
+				$container.style.display = 'none';
+				$layer.style.display = 'block';
+				showQrcode.isShow = true;
+			}
+		}
 	}
+
 	var webSocket;
 
 	var Socket = {
@@ -27,16 +41,8 @@ Slide.Control.add('socket', function(S, broadcast) {
 
 			webSocket.on('data from another client', function(data) {
 				var action = data.action;
+
 				switch (action) {
-					case 'from control update':
-						broadcast.fire('from control update', data.id);
-						break;
-					case 'from control updateItem':
-						broadcast.fire('from control updateItem', data.id, data.item);
-						break;
-					case 'from control key event':
-						broadcast.fire('from control key event', data.keyCode);
-						break;
 					case 'from control order':
 						var fnName = data.fn;
 						var args = data.args;
@@ -45,6 +51,8 @@ Slide.Control.add('socket', function(S, broadcast) {
 						} catch (e) {}
 						Slide.proxyFn(fnName, args);
 						break;
+					default:
+						broadcast.fire(action, data);
 				}
 			});
 
@@ -68,15 +76,16 @@ Slide.Control.add('socket', function(S, broadcast) {
 
 			webSocket.on('data from another client', function(data) {
 				var action = data.action;
-				switch (action) {
-					case 'from client update':
-						broadcast.fire('from control update', data.id);
-						break;
-					case 'from client updateItem':
-						broadcast.fire('from control updateItem', data.id, data.item);
-						break;
-
-				}
+				action = action.replace('client', 'control');
+				broadcast.fire(action, data);
+				// switch (action) {
+				//     case 'from client update':
+				//         broadcast.fire('from control update', data);
+				//         break;
+				//     case 'from client updateItem':
+				//         broadcast.fire('from control updateItem', data);
+				//         break;
+				// }
 			});
 
 		},
@@ -84,6 +93,18 @@ Slide.Control.add('socket', function(S, broadcast) {
 			webSocket = io.connect(this.host);
 			webSocket.on('UUID', function(uid) {
 				webSocket.uid = uid;
+				if (Socket.role === 'client') {
+					MixJS.loadJS('/js/qrcode.js', function() {
+						qrcodeLink();
+						var url = location.href.split('#')[0] + '#control' + uid;
+						var qrcode = new QRCode('qrcode', {
+							text: url,
+							width: 256,
+							height: 256
+						});
+						document.getElementById('ctrlLink').href = url;
+					});
+				}
 			});
 			webSocket.on('system', function(data) {
 				console.log(data);
@@ -114,7 +135,7 @@ Slide.Control.add('socket', function(S, broadcast) {
 		init: function(args) {
 			this.host = args.host || location.href;
 			this.clientUID = location.hash.slice(8);
-			console.log(this.clientUID);
+			// console.log(this.clientUID);
 			//角色，是否为控制端
 			if (args.isControl) {
 				console.log(this.clientUID);
@@ -138,7 +159,10 @@ Slide.Control.add('socket', function(S, broadcast) {
 					});
 				});
 			}
-			check();
+
+			MixJS.loadJS(socketIOURL, function() {
+				Socket.connect();
+			});
 		}
 	};
 	return Socket;
