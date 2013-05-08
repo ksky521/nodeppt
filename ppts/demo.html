@@ -29,10 +29,328 @@
         <article>
             <ul>
                 <li>这里是目录。。</li>
+                <li>要显示的slide标签要加上class:slide 哦</li>
+                <li>pc测试socket功能，注意session哦~</li>
+                <li>手机测试socket功能，注意两者是否在同一网络环境哦~</li>
             </ul>
         </article>
     </slide>
-  
+    <slide>这一页slide并不显示</slide>
+    <slide class="slide">
+        <hgroup>
+              <h2>按条显示</h2>
+              <h3>一步一步显示list</h3>
+        </hgroup>
+        <article>
+            <p>下面的信息隐藏，使用[↓]键来显示</p>
+            <ul class="build">
+                <li>要显示这样的按条显示功能</li>
+                <li>父节点class设置为build</li>
+                <li>则所有的子节点会按条显示</li>
+            </ul>
+            <p>下面的信息也是隐藏，使用[↓]键来显示</p>
+            <ul class="build fade">
+                <li>渐隐渐现</li>
+                <li>鼠标滑上fade的那条试试↑</li>
+            </ul>
+        </article>
+    </slide>
+    <slide class="slide">
+        <hgroup>
+              <h2>快捷键：</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li>h：高亮代码</li>
+                <li>o：概览模式</li>
+                <li>p：画笔</li>
+                <li>c：清除笔迹</li>
+                <li>方向键：切换页面</li>
+                <li>n：显示笔记（限控制页面）</li>
+                <li>q：开启qrcode，用于socket手机控制时扫码</li>
+            </ul>
+
+        </article>
+    </slide>
+    <slide class="slide">
+        <hgroup>
+            <h2>小字体</h2>
+        </hgroup>
+        <article class="smaller">
+            <p>按键H显示高亮：使用 (<code>&lt;b&gt;</code>)</p>
+      <pre class="prettyprint" data-lang="javascript">
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    <b>for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }</b>
+  }
+&lt;/script&gt;
+</pre>
+        </article>
+    </slide>
+    <slide class="slide">
+        <hgroup>
+            <h2>Code Slide (Smaller Font)</h2>
+        </hgroup>
+        <article class="smaller">
+          <pre class="prettyprint" data-lang="javascript">
+// Say hello world until the user starts questioning
+// the meaningfulness of their existence.
+function helloWorld(world) {
+for (var i = 42; --i &gt;= 0;) {
+alert('Hello ' + String(world));
+}
+}
+</pre>
+        <pre class="prettyprint" data-lang="css">
+&lt;style&gt;
+p { color: pink }
+b { color: blue }
+&lt;/style&gt;
+</pre>
+        <pre class="prettyprint" data-lang="html">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;title>My Awesome Page&lt;/title>
+&lt;/head>
+&lt;body>
+&lt;p&gt;Hello world&lt;/p&gt;
+&lt;body>
+&lt;/html>
+</pre>
+        </article>
+    </slide>
+    <slide class="slide">
+        <hgroup>
+              <h2>支持socket和postMessage两种方式控制</h2>
+        </hgroup>
+        <article>
+            <p>socket适合手机和电脑互动</p>
+            <ul class="build">
+                <li>有摇一摇下一页哦</li>
+            </ul>
+            <p>postMessage适合一机双屏</p>
+            <ul class="build">
+                <li>受google的slide启发，改写的</li>
+                <li>剩下的页面就不多说了，样式全部是来自<a href="http://io-2012-slides.googlecode.com/git/template.html#1">google slide template</a></li>
+                <li>哦，对了，切换效果很好多玩法哦~具体看下scss文件</li>
+                <li>哦，还有incallback/outcallback/prload多种好玩功能哦</li>
+            </ul>
+        </article>
+    </slide>
+    <slide class="slide" data-incallback="incallback">
+        <hgroup>
+              <h2>这个页面会触发incallback函数</h2>
+        </hgroup>
+        <article>
+            <p>同理：也有data-outcallback哦~</p>
+            <p>还有 preload 来预加载资源</p>
+        </article>
+    </slide>
+    <slide class="slide">
+        <aside class="note">
+          <section>
+            <ul>
+              <li>Point I wanted to make #1</li>
+              <li>Point I wanted to make #2</li>
+              <li>Point I wanted to make #3</li>
+              <li>Example <a href="#">link</a> in notes.</li>
+            </ul>
+            <p><b>Remember to say this tag line!</b></p>
+          </section>
+        </aside>
+        <hgroup>
+            <h2>Slide with Speaker Notes</h2>
+        </hgroup>
+        <article>
+            <p>Press 'N' to toggle speaker notes.</p>
+        </article>
+    </slide>
+
+  <slide class="slide">
+    <hgroup>
+      <h2>Slide with Image</h2>
+    </hgroup>
+    <article>
+      <img src="http://io-2012-slides.googlecode.com/git/images/chart.png" class="reflect" alt="Description" title="Description">
+      <footer class="source">source: place source info here</footer>
+    </article>
+  </slide>
+
+  <slide class="slide">
+    <hgroup>
+      <h2>Slide with Image (Centered horz/vert)</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="http://io-2012-slides.googlecode.com/git/images/barchart.png" alt="Description" title="Description">
+      <footer class="source">source: place source info here</footer>
+    </article>
+  </slide>
+
+  <slide class="slide">
+    <hgroup>
+      <h2>Table Option A</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+    <article>
+      <table>
+        <tr>
+          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
+        </tr>
+        <tr>
+          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide class="slide">
+    <hgroup>
+      <h2>Table Option A (Smaller Text)</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+    <article class="smaller">
+      <table>
+        <tr>
+          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
+        </tr>
+        <tr>
+          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide class="slide">
+    <hgroup>
+      <h2>Table Option B</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+    <article>
+      <table class="rows">
+        <tr>
+          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide class="slide">
+    <hgroup>
+      <h2>Slide Styles</h2>
+    </hgroup>
+    <article class="smaller">
+      <div class="columns-2">
+        <ul>
+          <li class="red">class="red"</li>
+          <li class="red2">class="red2"</li>
+          <li class="red3">class="red3"</li>
+          <li class="blue">class="blue"</li>
+          <li class="blue2">class="blue2"</li>
+          <li class="blue3">class="blue3"</li>
+          <li class="green">class="green"</li>
+          <li class="green2">class="green2"</li>
+        </ul>
+        <ul>
+          <li class="green3">class="green3"</li>
+          <li class="yellow">class="yellow"</li>
+          <li class="yellow2">class="yellow2"</li>
+          <li class="yellow3">class="yellow3"</li>
+          <li class="gray">class="gray"</li>
+          <li class="gray2">class="gray2"</li>
+          <li class="gray3">class="gray3"</li>
+          <li class="gray4">class="gray4"</li>
+        </ul>
+      </div>
+      <div class="centered" style="margin-top:2em">
+        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
+      </div>
+    </article>
+  </slide>
+
+  <slide class="slide segue dark nobackground">
+    <aside class="gdbar"><img src="http://io-2012-slides.googlecode.com/git/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Segue Slide</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="slide fill nobackground" style="background-image: url(http://io-2012-slides.googlecode.com/git/images/sky.jpg)">
+    <hgroup>
+      <h2 class="white">Full Image (with Optional Header)</h2>
+    </hgroup>
+    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
+  </slide>
+
+  <slide class="slide segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="http://io-2012-slides.googlecode.com/git/images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+        This is an example of quote text.
+      </q>
+      <div class="author">
+        Name<br>
+        Company
+      </div>
+    </article>
+  </slide>
+
+  <slide class="slide">
+    <hgroup>
+      <h2>Slide with Iframe</h2>
+    </hgroup>
+    <article>
+      <iframe data-src="http://www.google.com/doodle4google/resources/history.html"></iframe>
+    </article>
+  </slide>
+
+  <slide class="slide">
+    <article>
+      <iframe data-src="http://www.google.com/doodle4google/resources/history.html"></iframe>
+    </article>
+  </slide>
+
     <slide class="slide thank-you-slide segue nobackground">
         <article class="flexbox vleft auto-fadein">
             <h2>&lt;Thank You!&gt;</h2>
@@ -78,11 +396,20 @@ MixJS.use('event/broadcast', function($){
                     shake: true
                 }
             }
+            //打开下面的注释就开启postMessage方式
+            //访问网址127.0.0.1:8080/ppt/demo#client
+            // control:{
+            //     type: 'postMessage'
+            // }
         });
     }).loadJS('/js/prettify.js',function(){
         prettyPrint();
     });
 });
+
+function incallback(){
+    alert('fire!');
+}
 </script>
 </body>
 </html>

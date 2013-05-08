@@ -86,6 +86,15 @@
 		var cb = $cur.dataset.incallback;
 		//如果有data-incallback那么就执行callback
 		cb && typeof $win[cb] === 'function' && proxyFn(cb);
+		//检测iframe
+		var $iframe = toArray($('iframe[data-src]', $cur));
+		if ($iframe.length) {
+			$iframe.forEach(function(v) {
+				var src = v.dataset.src;
+				v.src = src;
+			})
+
+		}
 	}
 	//slide切出回调outcallback
 	//<slide data-outcallback=""
@@ -500,6 +509,7 @@
 	};
 
 	//代理函数，用于函数控制
+
 	function proxyFn(fnName, args) {
 		$win[fnName](args);
 	}

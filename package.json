@@ -16,11 +16,11 @@
         "url": "git://github.com/ksky521/nodePPT"
     },
     "dependencies": {
-        "read": "~1.0.4",
-        "colors": "~0.6.0-1",
-        "connect": "~2.7.8",
-        "cookie": "~0.1.0",
-        "socket.io": "~0.9.13"
+        "read": "1.0.4",
+        "colors": "0.6.0-1",
+        "connect": "2.7.8",
+        "cookie": "0.1.0",
+        "socket.io": "0.9.13"
     },
     "devDependencies": {
         "grunt": "~0.4.0",

@@ -75,9 +75,15 @@ MixJS.use('event/broadcast', function($){
                 args:{
                     isControl: location.hash.slice(1,8) === 'control',
                     host: base,
+                    //摇一摇
                     shake: true
                 }
             }
+            //打开下面的注释就开启postMessage方式
+            //访问网址127.0.0.1:8080/ppt/demo#client
+            // control:{
+            //     type: 'postMessage'
+            // }
         });
     }).loadJS('/js/prettify.js',function(){
         prettyPrint();

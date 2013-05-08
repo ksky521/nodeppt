@@ -1,0 +1,27 @@
+//更多的动画效果~
+.build {
+  > * {
+    @include transition(all 0.5s ease-in-out 0.2s);
+  }
+
+  .to-build {
+    opacity: 0;
+    @include transform(translate3d(60px,0,0));
+  }
+}
+
+slide[data-transition="horizontal3d"]{
+    @include transition(all 0.8s ease);
+    @include transform-origin(50% 50% -450px)
+}
+.layout-widescreen slide[data-transition="horizontal3d"]{
+    @include transition(all 0.8s ease);
+    @include transform-origin(50% 50% -550px)
+}
+
+slide[data-transition="horizontal3d"].next {
+  @include transform(rotateY(90deg));
+}
+slide[data-transition="horizontal3d"].past {
+  @include transform(rotateY(-90deg))
+}
