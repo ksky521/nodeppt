@@ -1,7 +1,7 @@
 {
     "name": "nodePPT",
     "jsname": "nodeppt",
-    "description": "A node PPT",
+    "description": "A node slideshow",
     "version": "0.2.5",
     "site": "https://github.com/ksky521/nodePPT",
     "author": {
@@ -23,9 +23,17 @@
         "socket.io": "0.9.13"
     },
     "devDependencies": {
-        "grunt": "~0.4.0",
-        "grunt-contrib-jshint": "~0.1.1",
+        "grunt": "0.4.0",
+        "grunt-contrib-jshint": "0.1.1",
         "grunt-contrib-uglify": "*",
-        "grunt-contrib-nodeunit": "~0.1.2"
-    }
+        "grunt-contrib-nodeunit": "0.1.2"
+    },
+    "keywords": [
+            "slide",
+            "ppt",
+            "slideshow"
+    ],   
+    "readmeFilename": "README.md",
+    "_id": "nodeppt@0.2.5",
+    "_from": "nodeppt@"
 }
