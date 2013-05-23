@@ -2,7 +2,7 @@
     "name": "nodeppt",
     "jsname": "nodeppt",
     "description": "A node slideshow",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "site": "https://github.com/ksky521/nodePPT",
     "author": {
         "name": "Theo Wang",
@@ -16,6 +16,7 @@
         "url": "git://github.com/ksky521/nodePPT"
     },
     "dependencies": {
+        "grunt": "0.4.0",
         "read": "1.0.4",
         "colors": "0.6.0-1",
         "connect": "2.7.8",
@@ -34,6 +35,6 @@
             "slideshow"
     ],   
     "readmeFilename": "README.md",
-    "_id": "nodeppt@0.2.5",
+    "_id": "nodeppt@0.2.6",
     "_from": "nodeppt@"
 }
