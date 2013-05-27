@@ -7,7 +7,14 @@ coming soon!!!!
  * 添加按键事件同步，添加overview等多种状态
  * 引用google slide template的css
 
+## 安装
+
+```shell
+npm install -g nodeppt
+```
+
 ## shell使用
+
 ### 启动
 
 ```shell
