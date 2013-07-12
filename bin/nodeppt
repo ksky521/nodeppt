@@ -11,7 +11,8 @@ var nodePPT = require(join(root, './lib/nodePPT'));
 
 var opts = {
     '-v': '--version',
-    '-p': '--port'
+    '-p': '--port',
+    '-d': '--dir'
 }
 
 var argv = parseArgs(process.argv);
@@ -19,6 +20,7 @@ var action = argv.slice(2, 3).toString();
 
 if (typeof nodePPT[action] === 'function') {
     nodePPT.cwd = process.cwd();
+    
     nodePPT[action](argv.slice(3));
 } else {
     nodePPT.help();

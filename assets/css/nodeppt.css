@@ -369,11 +369,6 @@ slides > slide.dark {
 /* line 252, ../scss/nodeppt.scss */
 slides > slide.title-slide:after {
   content: '';
-  background: url(../../images/io2012_logo.png) no-repeat 100% 50%;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
   position: absolute;
   bottom: 40px;
   right: 40px;

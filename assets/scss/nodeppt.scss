@@ -251,8 +251,8 @@ slides > slide {
     &.title-slide {
         &:after {
             content: '';
-            background: url(../../images/io2012_logo.png) no-repeat 100% 50%;
-            @include background-size(contain);
+            //background: url(../../images/io2012_logo.png) no-repeat 100% 50%;
+            //@include background-size(contain);
             position: absolute;
             bottom: $slide-top-bottom-padding;
             right: $slide-top-bottom-padding;
