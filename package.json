@@ -2,7 +2,7 @@
     "name": "nodeppt",
     "jsname": "nodeppt",
     "description": "A node slideshow",
-    "version": "0.2.7",
+    "version": "0.2.8",
     "site": "https://github.com/ksky521/nodePPT",
     "author": {
         "name": "Theo Wang",
