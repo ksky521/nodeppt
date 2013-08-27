@@ -287,7 +287,10 @@ slides > slide {
 
     > article:only-child {
         height: 100%;
-
+        > pre{
+            overflow-y: auto;
+            max-height: 98%;
+        }
         > iframe {
             height: 98%;
         }

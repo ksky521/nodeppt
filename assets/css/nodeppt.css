@@ -406,6 +406,10 @@ slides > slide > hgroup + article p {
 slides > slide > article:only-child {
   height: 100%;
 }
+slides > slide > article:only-child > pre{
+  overflow-y: auto;
+  max-height: 98%;
+}
 /* line 291, ../scss/nodeppt.scss */
 slides > slide > article:only-child > iframe {
   height: 98%;
