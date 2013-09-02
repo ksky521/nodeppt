@@ -39,6 +39,6 @@
     <ul>
         <%= list %>
     </ul>
-    
+    <center>Powered by <a href="https://github.com/ksky521/nodePPT" target="_blank">NodePPT</a></center>
 </body>
 </html>
