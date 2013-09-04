@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态加载js状态测试</title>
+</head>
+<body>
+    <ul id="log">
+        
+    </ul>
+    <button onclick="loadJS('js.php')">加载js</button>
+    <button onclick="loadJS('js.php?t='+(+new Date()))">加载不缓存的js</button>
+    <script>
+    var loadJS = function(url){
+        var js = document.createElement('script');
+        js.src = url;
+        js.onload = js.onreadystatechange = function(e){
+            e = e || {};
+            var li = document.createElement('li');
+            li.innerHTML = 'type:'+e.type+';readyState:'+js.readyState;
+            document.getElementById('log').appendChild(li);
+        }
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(js);
+    }
+    
+    </script>
+</body>
+</html>

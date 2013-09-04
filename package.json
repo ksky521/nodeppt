@@ -2,7 +2,7 @@
     "name": "nodeppt",
     "jsname": "nodeppt",
     "description": "A node slideshow",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "site": "https://github.com/ksky521/nodePPT",
     "author": {
         "name": "Theo Wang",
@@ -17,10 +17,11 @@
     },
     "dependencies": {
         "grunt": "0.4.0",
-        "read": "1.0.4",
-        "colors": "0.6.0-1",
+        "read": "~1.0.4",
+        "colors": "~0.6.0-1",
         "connect": "2.7.8",
         "cookie": "0.1.0",
+        "marked": "0.2.9",
         "socket.io": "0.9.13"
     },
     "devDependencies": {
@@ -30,10 +31,10 @@
         "grunt-contrib-nodeunit": "0.1.2"
     },
     "keywords": [
-            "slide",
-            "ppt",
-            "slideshow"
-    ],   
+        "ppt",
+        "slideshow",
+        "markdown"
+    ],
     "readmeFilename": "README.md",
     "_id": "nodeppt@0.2.9",
     "_from": "nodeppt@"
