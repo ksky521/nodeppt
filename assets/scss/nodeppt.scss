@@ -34,9 +34,9 @@ $brand-green-secondary: #00a86d;
 $brand-green-secondary2: #009f5d;
 
 $slide-width: 900px;
-$slide-height: 700px;
+$slide-height: 600px;
 
-$slide-width-widescreen: 1100px;
+$slide-width-widescreen: 900px;
 $slide-top-bottom-padding: 40px;
 $slide-left-right-padding: 60px;
 $slide-border-radius: 5px;
@@ -205,17 +205,12 @@ slides > slide {
 
     &.next {
         display: block;
-        //@include transform(translate($translateX) rotateY(-$rotateY) rotateX($rotateX));
-        //@include transform(translate3d($translateX, 0, 0) rotateY(-$rotateY) rotateX($rotateX));
+        
         opacity: 0;
-        // pointer-events: none;
     }
 
     &.far-next {
-        //display: block;
         display: none;
-        //@include transform(translate($translateX * 2));
-        //@include transform(translate3d($translateX * 2, 0, 0));
     }
 
     &.dark {
@@ -223,29 +218,7 @@ slides > slide {
     }
 
     &:not(.nobackground) {
-        //background: white url(../../images/google_developers_icon_128.png) ($brand-small-icon-size * 2) 98% no-repeat;
-        //@include background-size($brand-small-icon-size $brand-small-icon-size);
-
-        // &:before {
-        //     font-size: 12pt;
-        //     content: $social-tags;
-        //     position: absolute;
-        //     bottom: $slide-top-bottom-padding / 2;
-        //     left: $slide-left-right-padding;
-        //     background: url(../../images/google_developers_icon_128.png) no-repeat 0 50%;
-        //     @include background-size($brand-small-icon-size $brand-small-icon-size);
-        //     padding-left: $brand-small-icon-size + 10;
-        //     height: $brand-small-icon-size;
-        //     line-height: 1.9;
-        // }
-        // &:after {
-        //     font-size: 12pt;
-        //     content: attr(data-slide-num) '/' attr(data-total-slides);
-        //     position: absolute;
-        //     bottom: $slide-top-bottom-padding / 2;
-        //     right: $slide-left-right-padding;
-        //     line-height: 1.9;
-        // }
+       
     }
 
     &.title-slide {
@@ -282,15 +255,23 @@ slides > slide {
 
         p {
             margin-bottom: 1em;
+            line-height: 1.5em;
+        }
+        p>img:only-child{
+            margin-bottom: -1em;
         }
     }
 
     > article:only-child {
+        h2{
+            font-weight: normal;
+        }
         height: 100%;
         > pre{
             overflow-y: auto;
             max-height: 98%;
         }
+        
         > iframe {
             height: 98%;
         }
@@ -360,7 +341,7 @@ slides.layout-faux-widescreen {
     }
 }
 
-b {
+b, strong{
     font-weight: 600;
 }
 
@@ -378,21 +359,28 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
-h2 {
+h1 {
     font-size: 45px;
     line-height: 45px;
     letter-spacing: -2px;
     color: $gray-4;
+    margin-bottom: 0.5em;
 }
 
-h3 {
+h2 {
     font-size: 30px;
     letter-spacing: -1px;
     line-height: 2;
+    // font-weight: inherit;
+    color: $gray-3;
+}
+h3 {
+    font-size: 28px;
+    letter-spacing: -1px;
+    line-height: 1.5;
     font-weight: inherit;
     color: $gray-3;
 }
-
 ul {
     margin-left: 1.2em;
     margin-bottom: 1em;
@@ -430,7 +418,7 @@ ul {
         opacity: 0.25;
         @include transition(opacity 0.5s ease-in);
     }
-    b {
+    b , strong{
         opacity: 1;
     }
 }
@@ -439,7 +427,7 @@ pre {
     font-family: 'Source Code Pro', 'Courier New', monospace;
     font-size: 20px;
     line-height: 28px;
-    padding: 10px 0 10px $slide-left-right-padding;
+    // padding: 10px 0 10px $slide-left-right-padding;
     letter-spacing: -1px;
     margin-bottom: 20px;
     width: 106%;
@@ -582,7 +570,7 @@ table {
         color: $gray-4;
     }
 
-    tr:nth-child(odd) {
+    tr:nth-child(even) {
         background-color: $gray-1;
     }
 
@@ -668,14 +656,6 @@ article.smaller {
     .to-build {
         opacity: 0;
     }
-
-    .build-fade {
-        opacity: 0.3;
-
-        &:hover {
-            opacity: 1.0;
-        }
-    }
 }
 
 .popup .next .build {
@@ -688,37 +668,7 @@ article.smaller {
     }
 }
 
-/* Pretty print */
 
-.prettyprint .str, /* string content */
-.prettyprint .atv { /* a markup attribute value */
-    color: $brand-green-secondary2; //rgb(0, 138, 53);
-}
-.prettyprint .kwd, /* a keyword */
-.prettyprint .tag { /* a markup tag name */
-    color: rgb(0, 102, 204);
-}
-.prettyprint .com { /* a comment */
-    color: $gray-3; //rgb(127, 127, 127);
-    font-style: italic;
-}
-.prettyprint .lit { /* a literal value */
-    color: rgb(127, 0, 0);
-}
-.prettyprint .pun, /* punctuation, lisp open bracket, lisp close bracket */
-.prettyprint .opn,
-.prettyprint .clo {
-    color: $gray-4; //rgb(127, 127, 127);
-}
-.prettyprint .typ, /* a type name */
-.prettyprint .atn, /* a markup attribute name */
-.prettyprint .dec,
-.prettyprint .var { /* a declaration; a variable name */
-    color: $brand-red-secondary2; //rgb(127, 0, 127);
-}
-.prettyprint .pln {
-    color: $gray-4;
-}
 
 .note {
     position: absolute;
@@ -736,7 +686,8 @@ article.smaller {
     @include border-radius($slide-border-radius);
 
     @include box-sizing(border-box);
-    @include transform(translateY($slide-height / 2));@include transition(all 0.4s ease-in-out);
+    @include transform(translateY($slide-height / 2));
+    @include transition(all 0.4s ease-in-out);
 
     > section {
         background: #fff;
@@ -932,6 +883,11 @@ article.smaller {
     h2 {
         font-size: 60px;
         color: inherit;
+    }
+    h3{
+        font-size: 52px;
+        color: inherit;   
+        text-align: right;
     }
 
     article > p {
@@ -1226,3 +1182,5 @@ slide[data-transition="vertical3d"].past {
         text-align: center;
     }
 }
+
+
