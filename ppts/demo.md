@@ -89,6 +89,29 @@ npm install -g feinit
 
 [slide]
 
+## 哦 忘记说了
+---
+本页面网址改成 url#client，支持多窗口演示哦！
+
+另外支持多种动画哦：
+
+ * horizontal3d
+ * horizontal
+ * vertical3d
+
+[slide]
+## 怎么用？
+### 修改 markdown 文件头部内容
+----
+
+``` javascript
+title: nodeppt markdown 演示 //眼睛名字
+speaker: Theo Wang //演讲者名称
+url: https://github.com/ksky521/nodePPT //网址
+transition: zoomin //动画名称
+```
+[slide]
+
 ## 更多demo
 ---
 https://github.com/ksky521/nodePPT
