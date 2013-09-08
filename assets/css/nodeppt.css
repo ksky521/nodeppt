@@ -814,7 +814,7 @@ table tr > td:first-child, table th {
   color: #515151;
 }
 /* line 573, ../scss/nodeppt.scss */
-table tr:nth-child(odd) {
+table tr:nth-child(even) {
   background-color: #e6e6e6;
 }
 /* line 577, ../scss/nodeppt.scss */

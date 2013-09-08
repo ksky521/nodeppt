@@ -570,7 +570,7 @@ table {
         color: $gray-4;
     }
 
-    tr:nth-child(odd) {
+    tr:nth-child(even) {
         background-color: $gray-1;
     }
 

@@ -11,7 +11,7 @@
     <title><%= title %> - By <%= speaker %></title>
     <link rel="stylesheet" media="all" href="/css/nodeppt.css">
     <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/phone.css">
-    <link rel="stylesheet" href="/js/highlight/solarized_dark.css">
+    <link rel="stylesheet" href="/js/highlight/monokai.css">
 </head>
 <body>
 
