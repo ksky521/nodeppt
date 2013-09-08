@@ -69,7 +69,7 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 				window.open(url, 'ppt', temp);
 				window.addEventListener('message', this.evtClient, false);
 
-			} else {
+			} else if (location.hash === '#control') {
 				this.role = 'control';
 				//如果是控制端，则重写proxyFn函数
 				Slide.proxyFn = function(fnName, args) {

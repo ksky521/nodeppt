@@ -12,7 +12,8 @@ var nodePPT = require(join(root, './lib/nodePPT'));
 var opts = {
     '-v': '--version',
     '-p': '--port',
-    '-d': '--dir'
+    '-d': '--dir',
+    '-f': '--file'
 }
 
 var argv = parseArgs(process.argv);
