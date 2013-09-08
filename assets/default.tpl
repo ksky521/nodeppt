@@ -12,6 +12,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" media="all" href="/css/nodeppt.css">
     <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/phone.css">
+    <link rel="stylesheet" href="/js/highlight/solarized_dark.css">
 </head>
 <body>
 
@@ -85,8 +86,10 @@ MixJS.use('event/broadcast', function($){
             //     type: 'postMessage'
             // }
         });
-    }).loadJS('/js/prettify.js',function(){
-        prettyPrint();
+    }).loadJS('/js/highlight/highlight.pack.js',function(){
+       
+        hljs.tabReplace = '    ';
+        hljs.initHighlightingOnLoad();
     });
 });
 </script>
