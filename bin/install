@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+console.log('Done!');
+console.log('执行：nodeppt start 查看demo');
