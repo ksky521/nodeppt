@@ -105,7 +105,7 @@ npm install -g feinit
 ----
 
 ``` javascript
-title: nodeppt markdown 演示 //眼睛名字
+title: nodeppt markdown 演示 //演讲主题名字
 speaker: Theo Wang //演讲者名称
 url: https://github.com/ksky521/nodePPT //网址
 transition: zoomin //动画名称
