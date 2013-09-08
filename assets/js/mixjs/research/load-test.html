@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Load Test</title>
+    <style>
+    .green{
+        color:green;
+    }
+    .red{
+        color:red;
+    }
+    .bold{
+        font-weight:bold;
+    }
+    </style>
+</head>
+<body>
+    <ul id="result">
+        <li class="green">-------------start--------------</li>
+    </ul>
+<script>
+    var dom = document.getElementById('result');
+    var head = document.getElementsByTagName('head')[0];
+    var jsin = false;
+    var cssin = false;
+    function loadJS(url, str) {
+        var js = document.createElement('script');
+        if(!jsin){
+            dom.innerHTML += '<li>+++<span class="red">js</span>-onreadystatechange in jsdom:【<span class="red">'+('onreadystatechange' in js)+'</span>】</li>';
+            dom.innerHTML += '<li>+++<span class="red">js</span>-onerror in jsdom:【<span class="red">'+('onerror' in js)+'</span>】</li>';
+            dom.innerHTML += '<li>+++<span class="red">js</span>-onload in jsdom:【<span class="red">'+('onload' in js)+'</span>】</li>';
+            jsin = true;
+        }
+        js.onreadystatechange = function(e) {
+            e = e || {};
+            dom.innerHTML += '<li><span class="bold"><span class="red">js</span>:</span> readystatechange:【<span class="red">' + this.readyState + '</span>】; e.type 【<span class="red">' + e.type + '</span>】;' + str + '</li>';
+        }
+        js.onload = function(e) {
+            e = e || {};
+            dom.innerHTML += '<li><span class="bold"><span class="red">js</span>:</span> load:【<span class="red">' + this.readyState + '</span>】; e.type 【<span class="red">' + e.type + '</span>】;' + str + '</li>';
+        }
+        js.onerror = function(e) {
+            e = e || {};
+            dom.innerHTML += '<li><span class="bold"><span class="red">js</span>:</span> error:【<span class="red">' + this.readyState + '</span>】; e.type 【<span class="red">' + e.type + '</span>】;' + str + '</li>';
+        }
+        js.src = url;
+        head.appendChild(js);
+    }
+    function loadCSS(url, str){
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        if(!cssin){
+            dom.innerHTML += '<li>------<span class="red">css</span>-onerror in cssdom:【<span class="red">'+('onerror' in link)+'</span>】</li>';
+            dom.innerHTML += '<li>------<span class="red">css</span>-onload in cssdom:【<span class="red">'+('onload' in link)+'</span>】</li>';
+            dom.innerHTML += '<li>------<span class="red">css</span>-onreadystatechange in cssdom:【<span class="red">'+('onreadystatechange' in link)+'</span>】</li>';
+            cssin = true;
+        }
+        
+        link.onreadystatechange = function(e) {
+            e = e || {};
+            dom.innerHTML += '<li>=====<span class="bold"><span class="red">css</span>:</span> readystatechange:【<span class="red">' + this.readyState + '</span>】; e.type 【<span class="red">' + e.type + '】</span>;' + str + '</li>';
+        }
+        link.onerror = function(e) {
+            e = e || {};
+            dom.innerHTML += '<li>=====<span class="bold"><span class="red">css</span>:</span> error:【<span class="red">' + this.readyState + '</span>】; e.type 【' + e.type + '】;' + str + '</li>';
+        }
+        link.onload = function(e) {
+            e = e || {};
+            dom.innerHTML += '<li>=====<span class="bold"><span class="red">css</span>:</span> load:【<span class="red">' + this.readyState + '</span>】; e.type 【' + e.type + '】;' + str + '</li>';
+        }
+
+        var img = new Image();
+        img.onerror = function(e){
+            e = e || {};
+            dom.innerHTML += '<li>=======img=======<span class="bold"><span class="red">css</span>:</span> new Image-error:【<span class="red">' + e.type + '</span>】; ' + str + '</li>';
+        }
+        img.src = url;
+        var img2  = document.createElement('img');
+        img2.onerror = function(e){
+            e = e || {};
+            dom.innerHTML += '<li>=======img=======<span class="bold"><span class="red">css</span>:</span> createElement img-error:【<span class="red">' + e.type + '</span>】; ' + str + '</li>';
+        }
+        img2.src = url;
+        link.href = url;
+        head.appendChild(link);
+    }
+    dom.innerHTML+='<li>Browser Info:'+window.navigator.userAgent+'</li>';
+    loadJS('http://code.jquery.com/jquery-1.9.1.js','200');
+    loadJS('http://code.jquery.com/121211212.js','404');
+    loadCSS('http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css','200');
+    loadCSS('http://code.jquery.com/121211212.css','404');
+</script>
+</body>
+</html>
