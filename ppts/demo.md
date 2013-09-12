@@ -50,12 +50,12 @@ nodeppt：https://github.com/ksky521/nodePPT
 环境 |js/nodejs | Ruby | nodejs
 扩展名 | .less | .sass/.scss | .styl
 特点 | 老牌，用户多，支持js解析 | 功能全，有成型框架，发展快 | 语法多样，小众
-案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) | 
+案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) |
 
 [slide]
 
 ## 代码格式化
-### 使用 **highlightjs** 
+### 使用 **highlightjs**
 ----
 
 ```javascript
@@ -88,6 +88,32 @@ nodeppt：https://github.com/ksky521/nodePPT
 npm install -g feinit
 
 [slide]
+[note]
+##这里是note
+
+使用n键，才能显示
+[/note]
+## 使用note笔记
+### note笔记是多窗口，或者自己做一些笔记用的
+---
+按下键盘【n】键测试下note，
+
+markdown语法如下：
+```markdown
+[note]
+这里是note，{ 要换成中括号啊！！
+{/note]
+```
+[slide]
+
+## 使用画笔
+### 使用画笔做标记哦~你也可以随便作画啊！
+---
+按下键盘【p】键。按下鼠标左键，在此处乱花下看看效果。
+
+按下键盘【c】键。清空画板
+
+[slide]
 
 ## 哦 忘记说了
 ---
@@ -98,6 +124,10 @@ npm install -g feinit
  * horizontal3d
  * horizontal
  * vertical3d
+ * zoomin
+ * zoomout
+
+当然你可以自己写更炫的动画啊，记得pull给我动画代码哦~
 
 [slide]
 ## 怎么用？
