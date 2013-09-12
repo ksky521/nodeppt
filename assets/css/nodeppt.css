@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* line 17, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,45 +21,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -249,7 +249,7 @@ slide.fill img {
 /* line 102, ../scss/nodeppt.scss */
 body {
   background: black;
-  font-family: 'YaHei Consolas Hybrid';
+  font-family: 'YaHei Consolas Hybrid','Microsoft Yahei',Arial,Helvetica,sans-serif;
 }
 
 /* line 108, ../scss/nodeppt.scss */
@@ -439,13 +439,13 @@ slides.layout-faux-widescreen > slide {
 /* line 290, ../scss/nodeppt.scss */
 slides.layout-widescreen .draw-board,
 slides.layout-faux-widescreen .draw-board {
-  margin-left: -450px;
+  margin-left: -550px;
 }
 /* line 294, ../scss/nodeppt.scss */
 slides.layout-widescreen > slide,
 slides.layout-faux-widescreen > slide {
-  margin-left: -450px;
-  width: 900px;
+  margin-left: -550px;
+  width: 1100px;
 }
 /* line 299, ../scss/nodeppt.scss */
 slides.layout-widescreen > slide.far-past,
@@ -500,12 +500,12 @@ slides.layout-faux-widescreen > slide.far-next {
 /* line 335, ../scss/nodeppt.scss */
 slides.layout-widescreen #prev-slide-area,
 slides.layout-faux-widescreen #prev-slide-area {
-  margin-left: -550px;
+  margin-left: -650px;
 }
 /* line 339, ../scss/nodeppt.scss */
 slides.layout-widescreen #next-slide-area,
 slides.layout-faux-widescreen #next-slide-area {
-  margin-left: 450px;
+  margin-left: 550px;
 }
 
 /* line 344, ../scss/nodeppt.scss */
@@ -993,11 +993,11 @@ article.smaller q:before, article.smaller q:after {
 /* line 709, ../scss/nodeppt.scss */
 .with-notes.popup slides.layout-widescreen slide.next,
 .with-notes.popup slides.layout-faux-widescreen slide.next {
-  -webkit-transform: translate3d(590px, 80px, 0) scale(0.35);
-  -moz-transform: translate3d(590px, 80px, 0) scale(0.35);
-  -ms-transform: translate3d(590px, 80px, 0) scale(0.35);
-  -o-transform: translate3d(590px, 80px, 0) scale(0.35);
-  transform: translate3d(590px, 80px, 0) scale(0.35);
+  -webkit-transform: translate3d(690px, 80px, 0) scale(0.35);
+  -moz-transform: translate3d(690px, 80px, 0) scale(0.35);
+  -ms-transform: translate3d(690px, 80px, 0) scale(0.35);
+  -o-transform: translate3d(690px, 80px, 0) scale(0.35);
+  transform: translate3d(690px, 80px, 0) scale(0.35);
 }
 /* line 712, ../scss/nodeppt.scss */
 .with-notes.popup slides.layout-widescreen slide .note,
@@ -1217,7 +1217,7 @@ article.smaller q:before, article.smaller q:after {
 
 /* line 843, ../scss/nodeppt.scss */
 #prev-slide-area {
-  margin-left: -450px;
+  margin-left: -550px;
 }
 
 /* line 848, ../scss/nodeppt.scss */
@@ -1570,11 +1570,11 @@ slide[data-transition="horizontal"].past {
 
 /* line 1138, ../scss/nodeppt.scss */
 slides.layout-widescreen > slide[data-transition="horizontal"].next {
-  left: 450px;
+  left: 550px;
 }
 /* line 1141, ../scss/nodeppt.scss */
 slides.layout-widescreen > slide[data-transition="horizontal"].past {
-  left: -450px;
+  left: -550px;
 }
 
 /**vertical 3D*/

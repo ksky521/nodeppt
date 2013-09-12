@@ -1,7 +1,7 @@
 <!--
     Powered By nodePPT
     version: <%= nodeppt_version %>
-    site: <%= nodeppt_site %> 
+    site: <%= nodeppt_site %>
     date: <%= grunt.template.today('yyyy-mm-dd') %>
 -->
 <!doctype html>
@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<slides id="container" class="layout-widescreen">
+<slides id="container">
     <slide class="slide ">
       <article class="flexbox vcenter">
           <h1><%= title %></h1>
@@ -28,12 +28,12 @@
             <h2>Q &amp; A</h2>
             <h3>&lt;Thank You!&gt;</h3>
         </article>
-    </slide> 
+    </slide>
     <slide class="slide logoslide dark nobackground">
         <article class="flexbox vcenter">
           <h2 style="color: white;">Powered By nodePPT v<%= nodeppt_version %></h2>
         </article>
-      </slide>   
+      </slide>
     <div class="slideTip" id="tip"></div>
     <canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
 </slides>
@@ -72,12 +72,12 @@ MixJS.use('event/broadcast', function($){
             }
         });
     }).loadJS('/js/highlight/highlight.pack.js',function(){
-       
+
         hljs.tabReplace = '    ';
         hljs.initHighlightingOnLoad();
     });
 });
 </script>
-    
+
 </body>
 </html>

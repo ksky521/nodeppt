@@ -465,7 +465,12 @@
 		$drawBoard.addEventListener('mousedown', pMouseDown, true);
 		$drawBoard.addEventListener('mouseup', pMouseUp, true);
 		$drawBoard.addEventListener('mousemove', pMouseMove, true);
+		$doc.addEventListener('selectstart', stopSelect, true);
 
+	}
+	//禁止选中
+	function stopSelect(){
+		return false;
 	}
 	//清除画板内容
 
@@ -480,6 +485,7 @@
 		$drawBoard.removeEventListener('mousedown', pMouseDown);
 		$drawBoard.removeEventListener('mouseup', pMouseUp);
 		$drawBoard.removeEventListener('mousemove', pMouseMove);
+		$doc.removeEventListener('selectstart', stopSelect, true);
 	};
 	var pMouseDown = function(e) {
 		$drawBoard.isMouseDown = true;
@@ -553,9 +559,7 @@
 			$drawBoard.style.display = 'none';
 			$drawBoard.width = slideWidth;
 			$drawBoard.height = slideHeight;
-			$doc.onselectstart = function() {
-				return false
-			}
+
 		}
 
 	}

@@ -1,7 +1,7 @@
 <!--
     Powered By nodePPT
     version: <%= version %>
-    site: <%= site %> 
+    site: <%= site %>
     date: <%= grunt.template.today('yyyy-mm-dd') %>
 -->
 <!doctype html>
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<slides id="container" class="layout-widescreen">
+<slides id="container">
     <slide class="slide ">
       <article class="flexbox vcenter">
           <h1><%= title %></h1>
@@ -33,7 +33,7 @@
             </ul>
         </article>
     </slide>
-  
+
     <slide class="slide thank-you-slide segue nobackground">
         <article class="flexbox vleft auto-fadein">
             <h2>&lt;Thank You!&gt;</h2>
@@ -87,12 +87,12 @@ MixJS.use('event/broadcast', function($){
             // }
         });
     }).loadJS('/js/highlight/highlight.pack.js',function(){
-       
+
         hljs.tabReplace = '    ';
         hljs.initHighlightingOnLoad();
     });
 });
 </script>
-    
+
 </body>
 </html>
