@@ -115,6 +115,14 @@ markdown语法如下：
 
 [slide]
 
+## 使用宽屏模式
+---
+按下键盘【w】键。看下效果。
+
+再按下键盘【w】键。
+
+[slide]
+
 ## 哦 忘记说了
 ---
 本页面网址改成 url#client，支持多窗口演示哦！
@@ -142,10 +150,11 @@ transition: zoomin //动画名称
 ```
 [slide]
 
-## 更多demo
+## 更多玩法
 ---
 https://github.com/ksky521/nodePPT
 
+什么？这些功能还不够用？
 
-
+极客模式：查看源码的nodeppt.js，相信你会找到牛逼的手机互动（摇一摇换页）功能
 
