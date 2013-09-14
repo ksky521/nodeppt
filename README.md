@@ -42,11 +42,6 @@ transition: zoomin
 
 [slide]
 
-# 封面样式2 {:&.flexbox.vleft}
-## 左对齐
-
-[slide]
-
 [bgimage]/img/bg1.png[/bgimage]
 
 # 背景图片 {:&.flexbox.vleft}
@@ -90,26 +85,10 @@ nodeppt：https://github.com/ksky521/nodePPT
 ### 使用 **highlightjs**
 ----
 
-```javascript
-(function(window, document){
-    var a = 1;
-    var test = function(){
-        var b = 1;
-        alert(b);
-    };
-    //泛数组转换为数组
-    function toArray(arrayLike) {
-        return [].slice.call(arrayLike);
-    }
-}(window, document));
-```
-
 [slide]
 ## iframe
 ----
 <iframe data-src="http://www.google.com/doodle4google/resources/history.html" src="about:blank;"></iframe>
-
-
 [slide]
 [note]
 ##这里是note
@@ -121,12 +100,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 ---
 按下键盘【n】键测试下note，
 
-markdown语法如下：
-```markdown
-[note]
-这里是note，{ 要换成中括号啊！！
-{/note]
-```
+
 [slide]
 
 ## 使用画笔
@@ -161,17 +135,6 @@ markdown语法如下：
 
 当然你可以自己写更炫的动画啊，记得pull给我动画代码哦~
 
-[slide]
-## 怎么用？
-### 修改 markdown 文件头部内容
-----
-
-``` javascript
-title: nodeppt markdown 演示 //演讲主题名字
-speaker: Theo Wang //演讲者名称
-url: https://github.com/ksky521/nodePPT //网址
-transition: zoomin //动画名称
-```
 [slide]
 
 ## 更多玩法
