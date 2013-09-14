@@ -134,6 +134,7 @@ markdown语法如下：
  * vertical3d
  * zoomin
  * zoomout
+ * cards
 
 当然你可以自己写更炫的动画啊，记得pull给我动画代码哦~
 
