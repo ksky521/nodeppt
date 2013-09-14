@@ -20,6 +20,16 @@ transition: zoomin
 # 背景图片 {:&.flexbox.vleft}
 ## 使用方法：[bgimage]/img/bg.jpg[/bgimage]
 
+[slide]
+## 使用.class/#id/自定义属性样式
+----
+
+```html
+使用：.class{:.class}
+使用：#id{:#id}
+组合使用：{:.class.class2 width="200px"}
+父元素样式：{:&.class}
+```
 
 [slide]
 
@@ -39,6 +49,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 * 列表支持淡入淡出 {:&.build}
     * 上下左右方向键翻页 {:&.build}
     * 支持多级列表
+    * 使用方法，markdown列表第一条加上：{:&.build}
 * 完全基于markdown语法哦
 
 [slide]
@@ -120,7 +131,15 @@ markdown语法如下：
 按下键盘【w】键。看下效果。
 
 再按下键盘【w】键。
+[slide]
 
+## 使用overview模式
+---
+按下键盘【o】键。看下效果。
+
+在overview模式下，方向键下一页，【enter】键进入选中页
+
+或者按下键盘【o】键，退出overview模式
 [slide]
 
 ## 哦 忘记说了
@@ -136,7 +155,7 @@ markdown语法如下：
  * zoomout
  * cards
 
-当然你可以自己写更炫的动画啊，记得pull给我动画代码哦~
+当然你可以自己写更炫的动画啊，记得[fork](https://github.com/ksky521/nodePPT)代码然后push给我哦~
 
 [slide]
 ## 怎么用？
