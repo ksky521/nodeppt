@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* line 17, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,45 +21,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -1508,17 +1508,8 @@ aside.gdbar img {
   }
 }
 /**翻页效果**/
-/* line 1110, ../scss/nodeppt.scss */
-slide[data-transition="horizontal3d"] {
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  -o-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
 /**zoomout***/
-/* line 1115, ../scss/nodeppt.scss */
+/* line 1112, ../scss/nodeppt.scss */
 slide[data-transition="zoomout"].past,
 slide[data-transition="zoomin"].next {
   -webkit-transform: scale(1.2);
@@ -1528,7 +1519,7 @@ slide[data-transition="zoomin"].next {
   transform: scale(1.2);
 }
 
-/* line 1119, ../scss/nodeppt.scss */
+/* line 1116, ../scss/nodeppt.scss */
 slide[data-transition="zoomin"].past,
 slide[data-transition="zoomout"].next {
   -webkit-transform: scale(0.8);
@@ -1539,7 +1530,7 @@ slide[data-transition="zoomout"].next {
 }
 
 /**horizontal*/
-/* line 1124, ../scss/nodeppt.scss */
+/* line 1121, ../scss/nodeppt.scss */
 slide[data-transition="horizontal"].current {
   -webkit-transform-origin: 20% 80% 50%;
   -moz-transform-origin: 20% 80% 50%;
@@ -1548,7 +1539,7 @@ slide[data-transition="horizontal"].current {
   transform-origin: 20% 80% 50%;
 }
 
-/* line 1128, ../scss/nodeppt.scss */
+/* line 1125, ../scss/nodeppt.scss */
 slide[data-transition="horizontal"].next,
 slide[data-transition="horizontal"].past {
   -webkit-transform: rotate(-30deg);
@@ -1558,45 +1549,76 @@ slide[data-transition="horizontal"].past {
   transform: rotate(-30deg);
 }
 
-/* line 1131, ../scss/nodeppt.scss */
+/* line 1128, ../scss/nodeppt.scss */
 slide[data-transition="horizontal"].next {
   left: 450px;
 }
 
-/* line 1134, ../scss/nodeppt.scss */
+/* line 1131, ../scss/nodeppt.scss */
 slide[data-transition="horizontal"].past {
   left: -450px;
 }
 
-/* line 1138, ../scss/nodeppt.scss */
+/* line 1135, ../scss/nodeppt.scss */
 slides.layout-widescreen > slide[data-transition="horizontal"].next {
   left: 550px;
 }
-/* line 1141, ../scss/nodeppt.scss */
+/* line 1138, ../scss/nodeppt.scss */
 slides.layout-widescreen > slide[data-transition="horizontal"].past {
   left: -550px;
 }
 
-/**vertical 3D*/
-/* line 1147, ../scss/nodeppt.scss */
-slide[data-transition="horizontal3d"].next {
-  -webkit-transform: translate3d(75%, 0, 0) rotateY(60deg) translate3d(75%, 0, 0);
-  -moz-transform: translate3d(75%, 0, 0) rotateY(60deg) translate3d(75%, 0, 0);
-  -ms-transform: translate3d(75%, 0, 0) rotateY(60deg) translate3d(75%, 0, 0);
-  -o-transform: translate3d(75%, 0, 0) rotateY(60deg) translate3d(75%, 0, 0);
-  transform: translate3d(75%, 0, 0) rotateY(60deg) translate3d(75%, 0, 0);
+/**horizontal 3D*/
+/* line 1144, ../scss/nodeppt.scss */
+slide[data-transition="horizontal3d"] {
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50% -450px 50%;
+  -moz-transform-origin: 50% 50% -450px 50%;
+  -ms-transform-origin: 50% 50% -450px 50%;
+  -o-transform-origin: 50% 50% -450px 50%;
+  transform-origin: 50% 50% -450px 50%;
 }
 
-/* line 1150, ../scss/nodeppt.scss */
-slide[data-transition="horizontal3d"].past {
-  -webkit-transform: translate3d(-75%, 0, 0) rotateY(-60deg) translate3d(-75%, 0, 0);
-  -moz-transform: translate3d(-75%, 0, 0) rotateY(-60deg) translate3d(-75%, 0, 0);
-  -ms-transform: translate3d(-75%, 0, 0) rotateY(-60deg) translate3d(-75%, 0, 0);
-  -o-transform: translate3d(-75%, 0, 0) rotateY(-60deg) translate3d(-75%, 0, 0);
-  transform: translate3d(-75%, 0, 0) rotateY(-60deg) translate3d(-75%, 0, 0);
+/* line 1149, ../scss/nodeppt.scss */
+.layout-widescreen slide[data-transition="horizontal3d"] {
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  -webkit-transform-origin: 50% 50% -550px 50%;
+  -moz-transform-origin: 50% 50% -550px 50%;
+  -ms-transform-origin: 50% 50% -550px 50%;
+  -o-transform-origin: 50% 50% -550px 50%;
+  transform-origin: 50% 50% -550px 50%;
 }
 
 /* line 1154, ../scss/nodeppt.scss */
+slide[data-transition="horizontal3d"].next {
+  -webkit-transform: rotateY(90deg);
+  -moz-transform: rotateY(90deg);
+  -ms-transform: rotateY(90deg);
+  -o-transform: rotateY(90deg);
+  transform: rotateY(90deg);
+}
+
+/* line 1157, ../scss/nodeppt.scss */
+slide[data-transition="horizontal3d"].past {
+  -webkit-transform: rotateY(-90deg);
+  -moz-transform: rotateY(-90deg);
+  -ms-transform: rotateY(-90deg);
+  -o-transform: rotateY(-90deg);
+  transform: rotateY(-90deg);
+}
+
+/* line 1162, ../scss/nodeppt.scss */
 slide[data-transition="vertical3d"].next {
   top: 300px;
   -webkit-transform: translate3d(0, 75%, 0) rotateX(60deg) translate3d(0, 75%, 0);
@@ -1606,7 +1628,7 @@ slide[data-transition="vertical3d"].next {
   transform: translate3d(0, 75%, 0) rotateX(60deg) translate3d(0, 75%, 0);
 }
 
-/* line 1158, ../scss/nodeppt.scss */
+/* line 1166, ../scss/nodeppt.scss */
 slide[data-transition="vertical3d"].past {
   -webkit-transform: translate3d(0, -75%, 0) rotateX(-60deg) translate3d(0, -75%, 0);
   -moz-transform: translate3d(0, -75%, 0) rotateX(-60deg) translate3d(0, -75%, 0);
@@ -1616,7 +1638,45 @@ slide[data-transition="vertical3d"].past {
   top: -300px;
 }
 
-/* line 1165, ../scss/nodeppt.scss */
+/* line 1172, ../scss/nodeppt.scss */
+slide[data-transition="cards"] {
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 0 100% 0 50%;
+  -moz-transform-origin: 0 100% 0 50%;
+  -ms-transform-origin: 0 100% 0 50%;
+  -o-transform-origin: 0 100% 0 50%;
+  transform-origin: 0 100% 0 50%;
+}
+
+/* line 1178, ../scss/nodeppt.scss */
+slide[data-transition="cards"].next {
+  -webkit-transform: translate3d(50px, 0, -100px);
+  -moz-transform: translate3d(50px, 0, -100px);
+  -ms-transform: translate3d(50px, 0, -100px);
+  -o-transform: translate3d(50px, 0, -100px);
+  transform: translate3d(50px, 0, -100px);
+  opacity: 0;
+}
+
+/* line 1182, ../scss/nodeppt.scss */
+slide[data-transition="cards"].past {
+  -webkit-transform: translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg);
+  -moz-transform: translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg);
+  -ms-transform: translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg);
+  -o-transform: translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg);
+  transform: translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg);
+  opacity: 0;
+}
+
+/* line 1187, ../scss/nodeppt.scss */
 .qrcode {
   display: none;
   position: fixed;
@@ -1628,14 +1688,14 @@ slide[data-transition="vertical3d"].past {
   background: white;
   padding: 20px;
 }
-/* line 1175, ../scss/nodeppt.scss */
+/* line 1197, ../scss/nodeppt.scss */
 .qrcode #qrcode {
   width: 256px;
   height: 256px;
   vertical-align: middle;
   margin: 0 auto;
 }
-/* line 1181, ../scss/nodeppt.scss */
+/* line 1203, ../scss/nodeppt.scss */
 .qrcode p {
   text-align: center;
 }

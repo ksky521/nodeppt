@@ -1107,9 +1107,6 @@ aside.gdbar {
 
 
 /**翻页效果**/
-slide[data-transition="horizontal3d"]{
-    @include transform-style(preserve-3d);
-}
 /**zoomout***/
 slide[data-transition="zoomout"].past,
 slide[data-transition="zoomin"].next{
@@ -1143,13 +1140,24 @@ slides.layout-widescreen{
     }
 }
 
-/**vertical 3D*/
+/**horizontal 3D*/
+slide[data-transition="horizontal3d"]{
+    @include transition(all 0.8s ease);
+    @include transform-style(preserve-3d);
+    @include transform-origin(50% 50% $slide-width/-2)
+}
+.layout-widescreen slide[data-transition="horizontal3d"]{
+    @include transition(all 0.8s ease);
+    @include transform-origin(50% 50% $slide-width-widescreen/-2)
+}
+
 slide[data-transition="horizontal3d"].next {
-    @include transform(translate3d(75%, 0, 0) rotateY(60deg) translate3d(75%, 0, 0));
+  @include transform(rotateY(90deg));
 }
 slide[data-transition="horizontal3d"].past {
-    @include transform(translate3d(-75%, 0, 0) rotateY(-60deg) translate3d(-75%, 0, 0))
+  @include transform(rotateY(-90deg))
 }
+
 // vertical 3d
 slide[data-transition="vertical3d"].next {
     top: $slide-height/2;
@@ -1160,7 +1168,21 @@ slide[data-transition="vertical3d"].past {
     top: -$slide-height/2;
 }
 
+// cards
+slide[data-transition="cards"]{
+    @include transition(all 0.8s ease);
+    @include transform-style(preserve-3d);
+    @include transform-origin(0 100% 0);
+}
 
+slide[data-transition="cards"].next {
+  @include transform(translate3d(50px, 0, -100px));
+  opacity: 0;
+}
+slide[data-transition="cards"].past {
+  @include transform(translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg));
+  opacity: 0;
+}
 
 .qrcode{
     display: none;
