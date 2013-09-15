@@ -1,0 +1,68 @@
+/* line 2, ../scss/pdf.scss */
+* {
+  -webkit-print-color-adjust: exact;
+}
+
+/* line 6, ../scss/pdf.scss */
+body {
+  margin: 0 auto !important;
+  border: 0;
+  padding: 0;
+  float: none !important;
+  overflow: visible;
+}
+
+/* line 14, ../scss/pdf.scss */
+html {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* line 20, ../scss/pdf.scss */
+slides > slide, slides > .slide {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  position: static;
+  width: 100%;
+  left: auto;
+  top: auto;
+  margin: 0 auto 10pt !important;
+  overflow: visible;
+  display: block;
+  -webkit-perspective: none;
+  -moz-perspective: none;
+  -ms-perspective: none;
+  -o-perspective: none;
+  perspective: none;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  -o-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -o-transform: none !important;
+  transform: none !important;
+}
+/* line 38, ../scss/pdf.scss */
+slides > slide div, slides > slide article, slides > slide p, slides > slide li, slides > slide ul, slides > slide h1, slides > slide h3, slides > slide h2, slides > slide span, slides > .slide div, slides > .slide article, slides > .slide p, slides > .slide li, slides > .slide ul, slides > .slide h1, slides > .slide h3, slides > .slide h2, slides > .slide span {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* line 42, ../scss/pdf.scss */
+slides > slide .note, slides > .slide .note {
+  display: none !important;
+}
+
+/* line 48, ../scss/pdf.scss */
+#drawBoard, .progress, #tip {
+  display: none !important;
+}
