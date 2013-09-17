@@ -13,7 +13,8 @@ var opts = {
     '-v': '--version',
     '-p': '--port',
     '-d': '--dir',
-    '-f': '--file'
+    '-f': '--file',
+    '-o': '--output'
 }
 
 var argv = parseArgs(process.argv);
