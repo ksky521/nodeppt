@@ -1,6 +1,6 @@
-nodePPT v0.4.0
+nodePPT v0.4.6
 =============
-![nodePPT演示](demo.gif "nodePPT演示")
+![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
 
  * 重构代码，对MixJS依赖
  * 添加postMessage支持
