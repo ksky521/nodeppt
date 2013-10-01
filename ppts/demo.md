@@ -1,7 +1,8 @@
 title: nodeppt markdown 演示
 speaker: Theo Wang
 url: https://github.com/ksky521/nodePPT
-transition: zoomin
+transition: cards
+files: /js/demo.js,/css/demo.css
 
 [slide]
 
@@ -13,12 +14,10 @@ transition: zoomin
 # 封面样式2 {:&.flexbox.vleft}
 ## 左对齐
 
-[slide]
-
-[bgimage]/img/bg1.png[/bgimage]
+[slide style="background-image:url('/img/bg1.png')"]
 
 # 背景图片 {:&.flexbox.vleft}
-## 使用方法：[bgimage]/img/bg.jpg[/bgimage]
+## 使用方法：&#91;slide style="background-image:url('/img/bg1.png')"&#93;
 
 [slide]
 ## 使用.class/#id/自定义属性样式
@@ -140,13 +139,20 @@ markdown语法如下：
 在overview模式下，方向键下一页，【enter】键进入选中页
 
 或者按下键盘【o】键，退出overview模式
+
 [slide]
 
-## 哦 忘记说了
+## 多窗口演示
+## 双屏演示不out！
 ---
 本页面网址改成 url#client，支持多窗口演示哦！
 
-另外支持多种动画哦：
+跟powderpoint一样的双屏功能，带有备注信息。
+
+[slide]
+## 多种转场动画随心换
+----
+支持的动画包括：
 
  * horizontal3d
  * horizontal
@@ -157,8 +163,36 @@ markdown语法如下：
 
 当然你可以自己写更炫的动画啊，记得[fork](https://github.com/ksky521/nodePPT)代码然后push给我哦~
 
+[slide data-transition="zoomin"]
+
+## 这是一个zoomin的动画
+----
+使用方法：
+
+&#91;slide data-transition="zoomin"&#93;
+
+[slide data-transition="vertical3d"]
+
+## 这是一个vertical3d的动画
+----
+使用方法：
+
+&#91;slide data-transition="vertical3d"&#93;
+
+[slide data-outcallback="outcallback" data-incallback="incallback" ]
+## 使用回调
+----
+使用方法：
+
+&#91;slide data-outcallback="outcallback" data-incallback="incallback"&#93;
+
+即：
+
+ * 进入执行回调incallback函数
+ * 退出执行outcallback函数
+
 [slide]
-## 怎么用？
+## 设置slide？
 ### 修改 markdown 文件头部内容
 ----
 
@@ -166,7 +200,8 @@ markdown语法如下：
 title: nodeppt markdown 演示 //演讲主题名字
 speaker: Theo Wang //演讲者名称
 url: https://github.com/ksky521/nodePPT //网址
-transition: zoomin //动画名称
+transition: zoomin //通用动画名称，可在
+files: /js/demo.js,/css/demo.css //引入的文件，在页面底部
 ```
 [slide]
 
@@ -178,3 +213,4 @@ https://github.com/ksky521/nodePPT
 
 极客模式：查看源码的nodeppt.js，相信你会找到牛逼的手机互动（摇一摇换页）功能
 
+查看项目目录ppts获取更多帮助信息

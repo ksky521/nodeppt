@@ -78,6 +78,6 @@ MixJS.use('event/broadcast', function($){
     });
 });
 </script>
-
+<%= files %>
 </body>
 </html>
