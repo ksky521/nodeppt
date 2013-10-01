@@ -81,6 +81,28 @@ nodeppt：https://github.com/ksky521/nodePPT
     }
 }(window, document));
 ```
+[slide]
+## 支持 HTML 语法插入
+----
+[code]
+<div class="file-setting">
+    <p>这是html</p>
+</div>
+<p id="css-demo">这是css样式</p>
+<p>使用&#91;code]&#91;/code]包裹的代码，会直接插入到页面</p>
+<p>具体看下项目中 ppts/demo.md 代码</p>
+<script>
+    function testScriptTag(){
+
+    }
+    console.log(typeof testScriptTag);
+</script>
+<style>
+#css-demo{
+    color: red;
+}
+</style>
+[/code]
 
 [slide]
 ## iframe
@@ -130,8 +152,8 @@ markdown语法如下：
 按下键盘【w】键。看下效果。
 
 再按下键盘【w】键。
-[slide]
 
+[slide]
 ## 使用overview模式
 ---
 按下键盘【o】键。看下效果。
