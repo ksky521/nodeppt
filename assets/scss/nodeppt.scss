@@ -106,48 +106,51 @@ body {
     // @include background-size(1920px 1080px);
 }
 .draw-board {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: - $slide-width/2;
-        margin-top: - $slide-height/2;
-        cursor: url(pen.cur),default;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: - $slide-width/2;
+    margin-top: - $slide-height/2;
+    cursor: url(pen.cur),default;
 }
 .slideTip {
-        display: none;
-        padding:10px 0;
-        width:300px;
-        background: rgba(0,0,0,.3);
-        border-radius: 5px;
-        padding: 10px;
-        margin: 0 auto;
-        color: #FFF;
-        position: fixed;
-        top: 40%;
-        left:50%;
-        margin-left:-150px;
-        text-align: center;
+    display: none;
+    padding:10px 0;
+    width:300px;
+    background: rgba(0,0,0,.3);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto;
+    color: #FFF;
+    position: fixed;
+    top: 40%;
+    left:50%;
+    margin-left:-150px;
+    text-align: center;
 }
 
 .progress {
-        position: fixed;
-        height: 3px;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        background: #000;
+    position: fixed;
+    height: 3px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: #000;
 }
 
 .progress span{
-        display: block;
-        background: #2187E7;
-        height: 100%;
-        width: 0;
-        border: none;
+    display: block;
+    background: #2187E7;
+    height: 100%;
+    width: 0;
+    border: none;
 
-        @include border-radius(0 2px 2px 0);
-        @include box-shadow(0px 0px 5px 1px #4387fd);
-        @include transition(width 0.8s cubic-bezier(0.260, 0.860, 0.440, 0.985));
+    @include border-radius(0 2px 2px 0);
+    @include box-shadow(0px 0px 5px 1px #4387fd);
+    @include transition(width 0.8s cubic-bezier(0.260, 0.860, 0.440, 0.985));
+}
+.with-notes .progress{
+    display: none;
 }
 slides > slide {
     display: none;
@@ -1206,3 +1209,9 @@ slide[data-transition="cards"].past {
 }
 
 
+#_timer_{
+    display: block;
+    position: fixed;
+    bottom: 1em;
+    left: 0.5em;
+}

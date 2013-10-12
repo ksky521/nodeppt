@@ -1,11 +1,9 @@
-nodePPT v0.4.8
+nodePPT v0.4.9
 =============
 ![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
 
- * 重构代码，对MixJS依赖
- * 添加postMessage支持
+ * 添加双屏互动支持，进度样式修改
  * 添加按键事件同步，添加overview等多种状态
- * 引用google slide template的css
  * 支持 markdown 语法，访问ppts目录查看demo
 
 ## 安装
@@ -67,7 +65,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 更多demo，查看 ```ppts``` 目录的demo
 
-### 帮助
+### 查看帮助
 
 ```shell
 nodeppt -h
@@ -75,7 +73,5 @@ nodeppt -h
 
 ## demo演示 & 使用方法
 
- * 执行 nodeppt start -p 8080
- * 访问 http://127.0.0.1:8080/
-
-
+ * 执行 ```nodeppt start```
+ * 访问 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)

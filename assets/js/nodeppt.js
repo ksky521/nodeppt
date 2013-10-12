@@ -33,7 +33,11 @@
 	//设置底部进度条
 
 	function setProgress() {
-		$progress.style.width = ((curIndex + 1) / (slideCount + 1)) * 100 + '%';
+		//添加dataset
+		Slide.current = curIndex + 1;
+		if ($progress) {
+			$progress.style.width = ((curIndex + 1) / (slideCount + 1)) * 100 + '%';
+		}
 	}
 
 	//泛数组转换为数组
@@ -469,7 +473,8 @@
 
 	}
 	//禁止选中
-	function stopSelect(){
+
+	function stopSelect() {
 		return false;
 	}
 	//清除画板内容
@@ -552,6 +557,8 @@
 		Slide.$slides = $slides = toArray($(defaultOptions.slideClass, $container));
 
 		slideCount = $slides.length; //幻灯片总页数-1
+		Slide.count = slideCount;
+
 		// $container.style.width = slideCount*slideWidth + 'px';//设置容器总宽度
 		slideCount--;
 		$drawBoard = $$(defaultOptions.drawBoardID);

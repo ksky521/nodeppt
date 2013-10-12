@@ -1,7 +1,7 @@
 <!--
     Powered By nodePPT
     version: <%= version %>
-    site: <%= site %> 
+    site: <%= site %>
     date: <%= grunt.template.today('yyyy-mm-dd') %>
 -->
 <!doctype html>
@@ -11,34 +11,58 @@
     <title>nodePPT List</title>
     <style>
     body{
-        color:#888;
+        width: 600px;
+        margin: 0 auto;
+        color:#2C3E50;
     }
-    ul,li{
+    a{
+        color:#1295D8;
+        text-decoration: none;
+    }
+    ol, li{
         list-style:none;
         padding:0;
         margin:0;
     }
+    ol{
+        -webkit-text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        -moz-text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        -ms-text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        -o-text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    }
     li{
-        line-height: 2em;
-    }
-    a,a:visited{
-        color:#4183c4;
+        font-size: 110%;
         font-weight: bold;
-        text-decoration: none;
+        padding: 1.5em;
+        border-bottom:1px dashed #ccc;
     }
-    a::before{
-        content:'☆ ';
+    li:hover{
+        background-color: #eee;
     }
-    a:visited:before{
-        content:'★ ';
+
+    .copyright{
+        font-weight: normal;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        line-height: 24px;
+        position: fixed;
+        bottom: 1em;
+        left: 50%;
+        margin-left: -74px;
     }
+    .copyright a{
+        color: #E76035;
+    }
+
     </style>
 </head>
 <body>
     <h3>当前路径：<%= dir %></h3>
-    <ul>
+    <ol>
         <%= list %>
-    </ul>
-    <center>Powered by <a href="https://github.com/ksky521/nodePPT" target="_blank">NodePPT</a></center>
+    </ol>
+    <h4 class="copyright">Powered by <a title="使用NodePPT" href="<%=site%>" target="_blank">NodePPT <%=version%></a></h4>
 </body>
 </html>

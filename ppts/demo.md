@@ -167,7 +167,7 @@ markdown语法如下：
 ## 多窗口演示
 ## 双屏演示不out！
 ---
-本页面网址改成 url#client，支持多窗口演示哦！
+本页面网址改成 url?_muliscreen=1，支持多屏演示哦！
 
 跟powderpoint一样的双屏功能，带有备注信息。
 

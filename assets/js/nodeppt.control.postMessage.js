@@ -3,8 +3,16 @@
  *
  */
 Slide.Control.add('postMessage', function(S, broadcast) {
+	function parseQuery(url) {
+		var back = {};
+		(url || location.search.substring(1)).split('&').forEach(function(v) {
+			v = v.split('=');
+			back[v[0].toLowerCase()] = v[1];
+		});
+		return back;
+	}
 
-	var postWin;
+	var postWin, popup, timer;
 	var postMSG = {
 		role: '', //角色
 		update: function(id) {
@@ -60,16 +68,30 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 			}
 
 		},
+		closeClient: function() {
+			if (popup) {
+				popup.close();
+			}
+			timer && clearInterval(timer);
+		},
 		init: function(args) {
 			var t = this;
-			if (location.hash === '#client') {
-				this.role = 'client';
-				var url = location.href.split('#')[0] + '#control';
-				var temp = 'height=300, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=no, status=yes';
-				window.open(url, 'ppt', temp);
-				window.addEventListener('message', this.evtClient, false);
+			var params = parseQuery();
 
-			} else if (location.hash === '#control') {
+			if (params._multiscreen === '1') {
+				this.role = 'client';
+				var url = location.href.replace('_multiscreen=1', '_multiscreen=control');
+
+				var sWidth = screen.width,
+					sHeight = screen.height,
+					tWidth = sWidth / 2,
+					tHeight = sHeight / 2;
+
+				var temp = 'height=' + tHeight + ',width=' + tWidth + ',top=' + tHeight / 3 + ',left=' + tWidth / 2 + ',toolbar=no,menubar=no,location=yes,resizable=yes,scrollbars=no,status=no';
+				popup = window.open(url, 'ppt', temp);
+				window.addEventListener('message', this.evtClient, false);
+				window.addEventListener('beforeunload', this.closeClient, false);
+			} else if (params._multiscreen === 'control') {
 				this.role = 'control';
 				//如果是控制端，则重写proxyFn函数
 				Slide.proxyFn = function(fnName, args) {
@@ -80,11 +102,34 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 						args: args
 					}, '*');
 				}
-				document.body.classList.add('popup');
-				document.body.classList.add('with-notes');
+				var $body = document.body;
+				$body.classList.add('popup');
+				$body.classList.add('with-notes');
+				var $timer = document.createElement('time');
+				$timer.id = '_timer_';
+				$body.appendChild($timer);
+				var hour = 0,
+					sec = 0,
+					min = 0;
+				timer = setInterval(function() {
+					sec++;
+					if (sec === 60) {
+						sec = 0;
+						min++;
+					}
+					if (min === 60) {
+						hour++;
+					}
+					$timer.innerHTML = ['时间：'+time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
+				}, 1000);
 				postWin = window.opener;
 			}
 		}
 	};
+
+	function time2str(time) {
+		time = '00' + time;
+		return time.substr(-2);
+	}
 	return postMSG;
 });
