@@ -115,7 +115,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 ----
 {:.flexbox.vcenter}
 
-![FEinit帮助界面](https://github.com/ksky521/FEinit/raw/master/pic/feinit.png "FEinit帮助界面")
+![FEinit帮助界面](https://raw.github.com/ksky521/FEinit/master/pic/feinit.png "FEinit帮助界面")
 
 npm install -g feinit
 

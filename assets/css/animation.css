@@ -1,4 +1,4 @@
-/* line 17, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, c:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -78,7 +78,6 @@ body {
   padding: 0;
   opacity: 0;
   height: 100%;
-  min-height: 740px;
   width: 100%;
   overflow: hidden;
   color: #fff;
@@ -92,22 +91,22 @@ body {
   -o-transition: opacity 800ms ease-in 100ms;
   transition: opacity 800ms ease-in 100ms;
 }
-/* line 71, ../scss/_base.scss */
+/* line 68, ../scss/_base.scss */
 body.loaded {
   opacity: 1 !important;
 }
 
-/* line 76, ../scss/_base.scss */
+/* line 73, ../scss/_base.scss */
 input, button {
   vertical-align: middle;
 }
 
-/* line 80, ../scss/_base.scss */
+/* line 77, ../scss/_base.scss */
 slides > slide[hidden] {
   display: none !important;
 }
 
-/* line 84, ../scss/_base.scss */
+/* line 81, ../scss/_base.scss */
 slides {
   width: 100%;
   height: 100%;
@@ -136,7 +135,7 @@ slides {
   transition: opacity 800ms ease-in 100ms;
 }
 
-/* line 96, ../scss/_base.scss */
+/* line 93, ../scss/_base.scss */
 slides > slide {
   display: block;
   position: absolute;
@@ -149,7 +148,7 @@ slides > slide {
 }
 
 /* Slide styles */
-/* line 108, ../scss/_base.scss */
+/* line 105, ../scss/_base.scss */
 article.fill iframe {
   position: absolute;
   left: 0;
@@ -166,7 +165,7 @@ article.fill iframe {
   z-index: -1;
 }
 
-/* line 123, ../scss/_base.scss */
+/* line 120, ../scss/_base.scss */
 slide.fill {
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -175,7 +174,7 @@ slide.fill {
   background-size: cover;
 }
 
-/* line 128, ../scss/_base.scss */
+/* line 125, ../scss/_base.scss */
 slide.fill img {
   position: absolute;
   left: 0;
@@ -183,6 +182,11 @@ slide.fill img {
   min-width: 100%;
   min-height: 100%;
   z-index: -1;
+}
+
+/* line 135, ../scss/_base.scss */
+.transparent {
+  opacity: 0;
 }
 
 /* line 4, ../scss/animation.scss */

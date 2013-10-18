@@ -55,13 +55,10 @@ html {
 body {
   margin: 0;
   padding: 0;
-
   opacity: 0;
 
   height: 100%;
-  min-height: 740px;
   width: 100%;
-
   overflow: hidden;
 
   color: #fff;
@@ -135,3 +132,6 @@ slide.fill img {
   z-index: -1;
 }
 
+.transparent {
+  opacity: 0;
+}

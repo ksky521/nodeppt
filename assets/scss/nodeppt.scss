@@ -106,12 +106,13 @@ body {
     // @include background-size(1920px 1080px);
 }
 .draw-board {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: - $slide-width/2;
-    margin-top: - $slide-height/2;
+    position: fixed;
     cursor: url(pen.cur),default;
+    z-index: 9999;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
 }
 .slideTip {
     display: none;
@@ -176,7 +177,10 @@ slides > slide {
     //$translateX: 1020px;
     //$rotateY: 30deg;
     //$rotateX: 45deg;
-
+    img{
+        max-width: $slide-width - $slide-left-right-padding*2;
+        max-height: $slide-height - $slide-top-bottom-padding*2;
+    }
     &.far-past {
         //display: block;
         display: none;
@@ -283,6 +287,8 @@ slides > slide {
 
 slides.layout-faux-widescreen > slide {
     padding: $slide-top-bottom-padding 160px;
+
+
 }
 
 slides.layout-widescreen,
@@ -290,13 +296,15 @@ slides.layout-faux-widescreen {
 
     $translateX: 1130px;
 
-    .draw-board {
-        margin-left: - $slide-width-widescreen/2;
-    }
+
 
     > slide {
         margin-left: -$slide-width-widescreen / 2;
         width: $slide-width-widescreen;
+
+        img{
+            max-width: $slide-width-widescreen - $slide-left-right-padding*2;
+        }
     }
 
     > slide.far-past {
@@ -1106,7 +1114,75 @@ aside.gdbar {
         font-family: monospace !important;
     }
 }
+.qrcode{
+    display: none;
+    position: fixed;
+    width:300px;
+    height:300px;
+    left:50%;
+    top:20%;
+    margin-left:-170px;
+    background:white;
+    padding:20px;
+    #qrcode{
+        width:256px;
+        height:256px;
+        vertical-align: middle;
+        margin:0 auto;
+    }
+    p{
+        text-align: center;
+    }
+}
 
+
+#_timer_{
+    display: block;
+    position: fixed;
+    bottom: 1em;
+    left: 0.5em;
+}
+.img-full{
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+
+    @include transition(800ms opacity);
+    background-color: #000;
+    bottom: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: none;
+    img{
+        background: #000;
+        color: #333;
+        padding: 0;
+        position: fixed;
+        min-width: 100px;
+        z-index: 0;
+        top: 20px;
+        left: 50%;
+        -webkit-transition: 800ms -webkit-transform;
+        -moz-transition: 800ms -moz-transform;
+        transition: 800ms transform;
+    }
+    img.transparent{
+        @include transform(scale(0.99) translateY(-20px));
+    }
+}
 
 
 /**翻页效果**/
@@ -1187,31 +1263,4 @@ slide[data-transition="cards"].past {
   opacity: 0;
 }
 
-.qrcode{
-    display: none;
-    position: fixed;
-    width:300px;
-    height:300px;
-    left:50%;
-    top:20%;
-    margin-left:-170px;
-    background:white;
-    padding:20px;
-    #qrcode{
-        width:256px;
-        height:256px;
-        vertical-align: middle;
-        margin:0 auto;
-    }
-    p{
-        text-align: center;
-    }
-}
 
-
-#_timer_{
-    display: block;
-    position: fixed;
-    bottom: 1em;
-    left: 0.5em;
-}

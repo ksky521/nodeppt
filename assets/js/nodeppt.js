@@ -1,3 +1,4 @@
+;
 (function($win, $doc, $B, loadJS, loadCSS, undefined) {
 	//用于单页ppt预加载资源
 	var preloadFn = {
@@ -25,10 +26,7 @@
 	var $slides; //幻灯片集合
 	var $drawBoard; //画板
 	var $slideTip;
-
 	var slideCount; //幻灯片总页数-1
-
-
 
 	//设置底部进度条
 
@@ -451,20 +449,24 @@
 	//画图前准备
 
 	function drawCanvasReady() {
-		if (!$drawBoard) {
-			return;
-		}
 		$drawBoard.context = $drawBoard.getContext('2d');
-		$drawBoard.context.lineWidth = 3;
-		$drawBoard.context.lineCap = 'round';
-		$drawBoard.context.strokeStyle = "red";
+		var context = $drawBoard.context;
+		context.lineWidth = 3;
+		context.lineCap = 'round';
+		context.strokeStyle = "red";
 	}
 	//显示画板
 
 	function showPaint() {
-
+		if (!$drawBoard) {
+			return;
+		}
+		$drawBoard.width = $body.clientWidth;
+		$drawBoard.height = $body.clientHeight;
 		drawCanvasReady();
+
 		$drawBoard.style.display = '';
+		$container.style.overflow = 'hidden';
 
 		$drawBoard.addEventListener('mousedown', pMouseDown, true);
 		$drawBoard.addEventListener('mouseup', pMouseUp, true);
@@ -480,7 +482,7 @@
 	//清除画板内容
 
 	function clearPaint() {
-
+		$container.style.overflow = '';
 		$drawBoard.context && $drawBoard.context.clearRect(0, 0, slideWidth, slideHeight);
 		$drawBoard.style.display = 'none';
 	}
@@ -510,10 +512,11 @@
 			//            var iY = e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop);
 			var iX = e.layerX || e.offsetX || (e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft));
 			var iY = e.layerY || e.offsetY || (e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop));
-			$drawBoard.context.beginPath();
-			$drawBoard.context.moveTo($drawBoard.iLastX, $drawBoard.iLastY);
-			$drawBoard.context.lineTo(iX, iY);
-			$drawBoard.context.stroke();
+			var context = $drawBoard.context;
+			context.beginPath();
+			context.moveTo($drawBoard.iLastX, $drawBoard.iLastY);
+			context.lineTo(iX, iY);
+			context.stroke();
 			$drawBoard.iLastX = iX;
 			$drawBoard.iLastY = iY;
 		}
@@ -556,6 +559,8 @@
 		$progress = $$(defaultOptions.progressID);
 		Slide.$slides = $slides = toArray($(defaultOptions.slideClass, $container));
 
+
+
 		slideCount = $slides.length; //幻灯片总页数-1
 		Slide.count = slideCount;
 
@@ -564,13 +569,17 @@
 		$drawBoard = $$(defaultOptions.drawBoardID);
 		if ($drawBoard) {
 			$drawBoard.style.display = 'none';
-			$drawBoard.width = slideWidth;
-			$drawBoard.height = slideHeight;
-
 		}
-
 	}
 
+	function fullImg() {
+
+		loadJS(defaultOptions.dir + 'img.screenfull.js', function() {
+			//图片处理
+			var $imgs = toArray($(defaultOptions.slideClass + ' img', $container));
+			screenfull($imgs);
+		});
+	}
 	//初始化
 
 	function init(options) {
@@ -588,9 +597,11 @@
 				Slide.Control.load(control.type, control.args);
 			});
 		}
-		initVar(); //初始化变量
 
+
+		initVar(); //初始化变量
 		makeBuildLists();
+		fullImg(); //图片全屏
 		bindEvent();
 
 		if (location.hash && (curIndex = (location.hash.substr(1) | 0))) {

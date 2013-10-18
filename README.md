@@ -1,4 +1,4 @@
-nodePPT v0.4.9
+nodePPT v0.5
 =============
 ![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
 

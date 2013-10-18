@@ -50,8 +50,8 @@
         </article>
     </slide>
     <div class="slideTip" id="tip"></div>
-    <canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
 </slides>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
 <div class="progress"><span id="progress"></span></div>
 <script src="http://rawgithub.com/ksky521/MixJS/master/lib/mix.0.3.0.min.js"></script>
 <script>
