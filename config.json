@@ -1,0 +1,7 @@
+{
+    "url": "http://js8.in",
+    "speaker": "nodeppt demo",
+    "assetsDir": "./assets",
+    "pptDir": "./ppts",
+    "port": 8080
+}
