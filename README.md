@@ -6,6 +6,8 @@ nodePPT v0.5
  * 添加按键事件同步，添加overview等多种状态
  * 支持 markdown 语法，访问ppts目录查看demo
 
+查看demo：[http://ppt.js8.in/](http://ppt.js8.in/)
+
 ## 安装
 
 ```shell
