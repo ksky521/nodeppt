@@ -2,7 +2,7 @@
     "name": "nodeppt",
     "jsname": "nodeppt",
     "description": "Create a PowerPoint presentation with Markdown",
-    "version": "0.5",
+    "version": "0.6.0",
     "site": "https://github.com/ksky521/nodePPT",
     "author": {
         "name": "Theo Wang",
@@ -16,13 +16,13 @@
         "url": "git://github.com/ksky521/nodePPT"
     },
     "dependencies": {
-        "grunt": ">=0.4.0",
+        "ejs": "0.8.4",
         "read": ">=1.0.4",
         "colors": ">=0.6.0-1",
-        "connect": ">=2.7.8",
+        "connect": "2.11.0",
         "cookie": ">=0.1.0",
         "marked": "0.2.9",
-        "socket.io": ">=0.9.13"
+        "socket.io": "0.9.13"
     },
     "devDependencies": {
         "grunt": ">=0.4.0",
