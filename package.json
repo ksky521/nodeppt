@@ -2,7 +2,7 @@
     "name": "nodeppt",
     "jsname": "nodeppt",
     "description": "Create a PowerPoint presentation with Markdown",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "site": "https://github.com/ksky521/nodePPT",
     "author": {
         "name": "Theo Wang",
@@ -37,7 +37,5 @@
         "slideshow",
         "markdown"
     ],
-    "readmeFilename": "README.md",
-    "_id": "nodeppt@0.2.9",
-    "_from": "nodeppt@"
+    "readmeFilename": "README.md"
 }

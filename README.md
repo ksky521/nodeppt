@@ -1,8 +1,9 @@
-nodePPT v0.6 —— 让每个人都能写出高大上的网页版ppt！
+nodePPT v0.6.1 —— 让每个人都能写出高大上的网页版ppt！
 =============
 ![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
-## 0.6
- * 新增导出功能：```nodeppt generate```
+## 0.6.1
+ * 修复复制图片资源等bug
+ * 新增导出功能：``nodeppt generate``
  * 去除grunt依赖
  * 模板升级到ejs
  * 重新组织了下lib下的代码
