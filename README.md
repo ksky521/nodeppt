@@ -1,4 +1,4 @@
-nodePPT v0.6
+nodePPT v0.6 —— 让每个人都能写出高大上的网页版ppt！
 =============
 ![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
 ## 0.6
@@ -54,6 +54,9 @@ url: 可以设置链接
 transition: 转场效果，例如：zoomin
 files: 引入js和css的地址，如果有的话~自动放在页面底部
 ```
+**目录关系**：可以在md同级目录下创建img、js、css等文件夹，然后在markdown里面引用，nodeppt默认会先查找md文件同级目录下面的静态资源，没有再找默认的```assets```文件夹下静态内容
+
+
 支持的转场动画包括：
 
  * horizontal3d
@@ -146,6 +149,39 @@ nodeppt：https://github.com/ksky521/nodePPT
 使用```data-src```作为iframe的url，这样只有切换到当前页才会加载url内容~
 ```markdown
 <iframe data-src="http://www.google.com/doodle4google/resources/history.html" src="about:blank;"></iframe>
+```
+
+### 导出ppt
+这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
+
+导出ppt有两种，一种是**pdf版**，一种是**html版**
+
+#### pdf版
+需要安装[phantomJS](http://phantomjs.org/)。
+
+```shell
+# 安装phantomjs，如果安装了，请忽略
+npm install -g phantomjs
+# 启动nodeppt server
+nodeppt start
+# 导出文件
+nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
+```
+#### html版
+
+```shell
+# 使用generate命令
+nodeppt generate filepath
+# 导出全部，包括nodeppt的js、img和css文件夹
+# 默认导出在publish文件夹
+nodeppt generate ./ppts/demo.md -a
+# 指定导出文件夹
+nodeppt generate ./ppts/demo.md -a -o output/path
+```
+导出目录下所有ppt，并且生成ppt list首页：
+
+```shell
+nodeppt path -o output/path -a
 ```
 
 #### 示例

@@ -30,9 +30,6 @@
         "grunt-contrib-uglify": ">=0.2",
         "grunt-contrib-nodeunit": ">=0.1.2"
     },
-    "scripts": {
-        "install": "node ./bin/install"
-    },
     "keywords": [
         "ppt",
         "presentation",
