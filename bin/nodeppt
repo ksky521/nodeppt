@@ -14,7 +14,8 @@ var opts = {
     '-p': '--port',
     '-d': '--dir',
     '-f': '--file',
-    '-o': '--output'
+    '-o': '--output',
+    '-a': '--all'
 }
 
 var argv = parseArgs(process.argv);

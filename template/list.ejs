@@ -1,8 +1,7 @@
 <!--
     Powered By nodePPT
-    version: <%= version %>
-    site: <%= site %>
-    date: <%= grunt.template.today('yyyy-mm-dd') %>
+    version: <%-version %>
+    site: <%-site %>
 -->
 <!doctype html>
 <html>
@@ -59,10 +58,10 @@
     </style>
 </head>
 <body>
-    <h3>当前路径：<%= dir %></h3>
+    <h3>当前路径：<%-dir %></h3>
     <ol>
-        <%= list %>
+        <%- list %>
     </ol>
-    <h4 class="copyright">Powered by <a title="使用NodePPT" href="<%=site%>" target="_blank">NodePPT <%=version%></a></h4>
+    <h4 class="copyright">Powered by <a title="使用NodePPT" href="<%-site%>" target="_blank">NodePPT <%-version%></a></h4>
 </body>
 </html>
