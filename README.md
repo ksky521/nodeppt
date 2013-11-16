@@ -11,7 +11,7 @@ nodePPT v0.6 —— 让每个人都能写出高大上的网页版ppt！
 
 ## 安装
 
-```shell
+```bash
 npm install -g nodeppt
 ```
 
@@ -19,24 +19,24 @@ npm install -g nodeppt
 
 ### 启动
 
-```shell
+```bash
 nodeppt start -p port
 ```
 
-```shell
+```bash
 nodeppt start -p port -d path/for/ppts
 ```
 
 ### 创建
 支持markdown语法快速创建网页幻灯片。
 
-```shell
+```bash
 nodeppt create ppt-name
 ```
 
 按照提示输入基本信息后就可以创建，默认创建是markdown版本，如果需要创建html版本，可以使用：
 
-```shell
+```bash
 nodeppt create ppt-name.html
 # or
 nodeppt create ppt-name.htm
@@ -159,7 +159,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 #### pdf版
 需要安装[phantomJS](http://phantomjs.org/)。
 
-```shell
+```bash
 # 安装phantomjs，如果安装了，请忽略
 npm install -g phantomjs
 # 启动nodeppt server
@@ -169,7 +169,7 @@ nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
 ```
 #### html版
 
-```shell
+```bash
 # 使用generate命令
 nodeppt generate filepath
 # 导出全部，包括nodeppt的js、img和css文件夹
@@ -180,7 +180,7 @@ nodeppt generate ./ppts/demo.md -a -o output/path
 ```
 导出目录下所有ppt，并且生成ppt list首页：
 
-```shell
+```bash
 nodeppt path -o output/path -a
 ```
 
@@ -225,7 +225,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 ### 查看帮助
 
-```shell
+```bash
 nodeppt -h
 ```
 
