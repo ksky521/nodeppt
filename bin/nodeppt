@@ -15,8 +15,9 @@ var opts = {
     '-d': '--dir',
     '-f': '--file',
     '-o': '--output',
-    '-a': '--all'
-}
+    '-a': '--all',
+    '-h': '--host'
+};
 
 var argv = parseArgs(process.argv);
 var action = argv.slice(2, 3).toString();
