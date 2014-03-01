@@ -14,6 +14,7 @@
 	var touchDY = 0; //touch事件y数据
 	var touchStartX = 0;
 	var touchStartY = 0;
+	var ISSYNC = false;
 
 	var ctrlType = 'bind';
 	var doHash = true;
@@ -193,7 +194,7 @@
 	//切换动画
 
 	function doSlide(slideID, isSync) {
-		isSync = typeof isSync === 'boolean' ? isSync : true;
+		ISSYNC = typeof isSync === 'boolean' ? isSync : true;
 		slideID = slideID === undefined ? curIndex : (slideID | 0);
 		curIndex = slideID;
 
@@ -201,7 +202,7 @@
 		updateSlideClass();
 		setProgress();
 		//发布slide切换状态广播
-		isSync && $B.fire('slide change ID', {
+		ISSYNC && $B.fire('slide change ID', {
 			slideID: slideID
 		});
 		if (doHash) {

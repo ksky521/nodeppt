@@ -1,14 +1,10 @@
-nodePPT v0.6.2 —— 让每个人都能写出高大上的网页版ppt！
+nodePPT v0.6.4 —— 让每个人都能写出高大上的网页版ppt！
 =============
 ![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
-## 0.6.1
- * 修复复制图片资源等bug
- * 新增导出功能：``nodeppt generate``
- * 去除grunt依赖
- * 模板升级到ejs
- * 重新组织了下lib下的代码
-
-查看demo：[http://ppt.js8.in/](http://ppt.js8.in/)
+## 0.6.4
+ * 添加--controller命令
+ * 解决host绑定bug
+ * 解决页面刷新后，websocket通信失败的bug
 
 ## 安装
 
@@ -25,8 +21,16 @@ nodeppt start -p port
 ```
 
 ```bash
-nodeppt start -p port -d path/for/ppts
+nodeppt start -p 8090 -d path/for/ppts
+# 绑定host，默认绑定0.0.0.0
+nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
+# 使用socket通信（按Q键显示/关闭二维码，手机扫描，即可控制）
+# socket须知：1、注意手机和pc要可以相互访问，2、防火墙，3、ip
+nodeppt start -c socket
+# 不加-c默认使用postMessage，窗口联动，即list页面【多窗口】链接
 ```
+
+
 
 ### 创建
 支持markdown语法快速创建网页幻灯片。

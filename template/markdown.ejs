@@ -46,23 +46,27 @@ MixJS.use('event/broadcast', function($){
             buildClass: '.build',
             progressID: 'progress',
             transition: '<%- transition %>',
-            tipID: 'tip',
             width: 1100,
             dir: '/js/',
-            // control:{
-            //     type: 'socket',
-            //     args:{
-            //         isControl: location.hash.slice(1,8) === 'control',
-            //         host: base,
-            //         //摇一摇
-            //         shake: true
-            //     }
-            // }
+            <% if (query.controller === 'socket'){ %>
+            control:{
+                type: 'socket',
+                args:{
+                    isControl: <% if (query.iscontroller) {%>true<%} else{%> false<%}%>,
+                    host: base,
+                    clientId: <% if (query.clientid) {%><%-query.clientid%><%} else{%> 0<%}%>,
+                    //摇一摇
+                    shake: <% if (!query.noshake) {%>true<%} else{%> false<%}%>
+                }
+            },
+            <% } else { %>
             //打开下面的注释就开启postMessage方式
             //访问网址127.0.0.1:8080/ppt/demo#client
             control:{
                 type: 'postMessage'
-            }
+            },
+            <% } %>
+            tipID: 'tip'
         });
     }).loadJS('/js/highlight/highlight.pack.js',function(){
 

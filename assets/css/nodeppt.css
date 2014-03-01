@@ -1544,6 +1544,7 @@ aside.gdbar img {
 /* line 1133, ../scss/nodeppt.scss */
 .qrcode p {
   text-align: center;
+  line-height: 44px;
 }
 
 /* line 1139, ../scss/nodeppt.scss */

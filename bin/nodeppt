@@ -16,10 +16,12 @@ var opts = {
     '-f': '--file',
     '-o': '--output',
     '-a': '--all',
-    '-h': '--host'
+    '-h': '--host',
+    '-c': '--controller'
 };
 
 var argv = parseArgs(process.argv);
+
 var action = argv.slice(2, 3).toString();
 
 if (typeof nodePPT[action] === 'function') {

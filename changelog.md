@@ -1,3 +1,8 @@
+## 0.6.4
+ * 添加--controller命令，简写-c
+ * 解决host绑定bug
+ * 解决页面刷新后，websocket通信失败的bug
+
 ## 0.6.3
  * 添加--host
  * 添加port占用报错

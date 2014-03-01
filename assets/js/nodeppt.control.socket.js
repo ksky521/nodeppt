@@ -3,6 +3,10 @@ var socketIOURL = '//' + location.host + '/socket.io/socket.io.js';
 Slide.Control.add('socket', function(S, broadcast) {
 	S.clientUID = 0;
 
+	function time2str(time) {
+		time = '00' + time;
+		return time.substr(-2);
+	}
 	var qrcodeLink = function() {
 		//按 q显示控制区域二维码
 		document.addEventListener('keydown', function(e) {
@@ -38,10 +42,8 @@ Slide.Control.add('socket', function(S, broadcast) {
 		role: '', //角色
 		clientConnect: function() {
 			//角色是client，即被控制端，则连控制端服务器
-
 			webSocket.on('data from another client', function(data) {
 				var action = data.action;
-
 				switch (action) {
 					case 'from control order':
 						var fnName = data.fn;
@@ -96,7 +98,9 @@ Slide.Control.add('socket', function(S, broadcast) {
 				if (Socket.role === 'client') {
 					MixJS.loadJS('/js/qrcode.js', function() {
 						qrcodeLink();
-						var url = location.href.split('#')[0] + '#control' + uid;
+						var url = location.href.split('#')[0];
+						url += (!~url.indexOf('?')) ? '?' : '&';
+						url += 'iscontroller=1&clientid=' + uid;
 						var qrcode = new QRCode('qrcode', {
 							text: url,
 							width: 256,
@@ -134,15 +138,32 @@ Slide.Control.add('socket', function(S, broadcast) {
 
 		init: function(args) {
 			this.host = args.host || location.href;
-			this.clientUID = location.hash.slice(8);
+			this.clientUID = args.clientId;
 			// console.log(this.clientUID);
 			//角色，是否为控制端
 			if (args.isControl) {
 				console.log(this.clientUID);
 				this.role = 'control';
-				document.body.classList.add('popup');
-				document.body.classList.add('with-notes');
-
+				var $body = document.body;
+				$body.classList.add('popup');
+				$body.classList.add('with-notes');
+				var $timer = document.createElement('time');
+				$timer.id = '_timer_';
+				$body.appendChild($timer);
+				var hour = 0,
+					sec = 0,
+					min = 0;
+				timer = setInterval(function() {
+					sec++;
+					if (sec === 60) {
+						sec = 0;
+						min++;
+					}
+					if (min === 60) {
+						hour++;
+					}
+					$timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
+				}, 1000);
 			} else {
 				this.role = 'client';
 			}
