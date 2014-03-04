@@ -1,4 +1,4 @@
-nodePPT v0.6.4 —— 让每个人都能写出高大上的网页版ppt！
+nodePPT v0.6.5 —— 让每个人都能写出高大上的网页版ppt！
 =============
 ![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
 ## 0.6.4
