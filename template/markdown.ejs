@@ -48,7 +48,7 @@ MixJS.use('event/broadcast', function($){
             transition: '<%- transition %>',
             width: 1100,
             dir: '/js/',
-            <% if (query.controller === 'socket'){ %>
+            <% if (query && query.controller === 'socket'){ %>
             control:{
                 type: 'socket',
                 args:{
