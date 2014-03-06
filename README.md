@@ -238,4 +238,4 @@ nodeppt -h
 
  * 执行 ```nodeppt start```
  * 访问 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
- * 查看在线demo：[http://ppt.js8.in/](http://ppt.js8.in/)
+ * 查看在线demo：[http://myslide.duapp.com/](http://myslide.duapp.com/)
