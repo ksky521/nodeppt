@@ -16,17 +16,23 @@ var opts = {
     '-f': '--file',
     '-o': '--output',
     '-a': '--all',
-    '-h': '--host',
+    '-h': '--help',
+    '-H': '--host',
     '-c': '--controller'
 };
 
 var argv = parseArgs(process.argv);
 
-var action = argv.slice(2, 3).toString();
+var command = argv.slice(2, 3).toString();
 
-if (typeof nodePPT[action] === 'function') {
+if (typeof nodePPT[command] === 'function') {
     nodePPT.cwd = process.cwd();
-    nodePPT[action](argv.slice(3));
+    var args = argv.slice(3);
+    if (args.length === 1 && args[0] === '--help') {
+        //命令行帮助
+        return nodePPT.help(command);
+    }
+    nodePPT[command](args);
 } else {
     nodePPT.help();
 }

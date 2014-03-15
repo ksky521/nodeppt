@@ -1,3 +1,10 @@
+## 0.6.6
+ * 添加slide动画
+ * 修改帮助
+ * overview状态下bugfix
+## 0.6.5
+ * bug fix
+
 ## 0.6.4
  * 添加--controller命令，简写-c
  * 解决host绑定bug

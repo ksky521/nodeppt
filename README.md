@@ -1,10 +1,10 @@
-nodePPT v0.6.5 —— 让每个人都能写出高大上的网页版ppt！
+nodePPT - 让每个人都能写出高大上的网页版ppt！
 =============
 ![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
-## 0.6.4
- * 添加--controller命令
- * 解决host绑定bug
- * 解决页面刷新后，websocket通信失败的bug
+## 0.6.6
+ * 添加slide动画
+ * 修改帮助
+ * overview状态下bugfix
 
 ## 安装
 
@@ -17,7 +17,10 @@ npm install -g nodeppt
 ### 启动
 
 ```bash
-nodeppt start -p port
+# 获取帮助
+nodeppt start -h
+# 绑定端口
+nodeppt start -p <port>
 ```
 
 ```bash
@@ -29,14 +32,46 @@ nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
 nodeppt start -c socket
 # 不加-c默认使用postMessage，窗口联动，即list页面【多窗口】链接
 ```
+### 导出ppt
+这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
 
+导出ppt有两种，一种是**pdf版**，一种是**html版**
 
+#### pdf版
+需要安装[phantomJS](http://phantomjs.org/)。
+
+```bash
+# 安装phantomjs，如果安装了，请忽略
+npm install -g phantomjs
+# 启动nodeppt server
+nodeppt start
+# 导出文件
+nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
+```
+#### html版
+
+```bash
+# 获取generate帮助
+nodeppt generate -h
+# 使用generate命令
+nodeppt generate filepath
+# 导出全部，包括nodeppt的js、img和css文件夹
+# 默认导出在publish文件夹
+nodeppt generate ./ppts/demo.md -a
+# 指定导出文件夹
+nodeppt generate ./ppts/demo.md -a -o output/path
+```
+导出目录下所有ppt，并且生成ppt list首页：
+
+```bash
+nodeppt path -o output/path -a
+```
 
 ### 创建
 支持markdown语法快速创建网页幻灯片。
 
 ```bash
-nodeppt create ppt-name
+nodeppt create markdown_file_name
 ```
 
 按照提示输入基本信息后就可以创建，默认创建是markdown版本，如果需要创建html版本，可以使用：
@@ -56,7 +91,7 @@ nodeppt是支持**marked**语法的，但是为了制作出来更加完美的ppt
 title: 这是演讲的题目
 speaker: 演讲者名字
 url: 可以设置链接
-transition: 转场效果，例如：zoomin
+transition: 转场效果，例如：zoomin/cards/slide
 files: 引入js和css的地址，如果有的话~自动放在页面底部
 ```
 **目录关系**：可以在md同级目录下创建img、js、css等文件夹，然后在markdown里面引用，nodeppt默认会先查找md文件同级目录下面的静态资源，没有再找默认的```assets```文件夹下静态内容
@@ -70,6 +105,7 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
  * zoomin
  * zoomout
  * cards
+ * slide
 
 如果设置单页动画，请参考下面的**单页动画设置**部分~
 
@@ -153,41 +189,9 @@ nodeppt：https://github.com/ksky521/nodePPT
 #### 插入iframe
 使用```data-src```作为iframe的url，这样只有切换到当前页才会加载url内容~
 ```markdown
-<iframe data-src="http://www.google.com/doodle4google/resources/history.html" src="about:blank;"></iframe>
+<iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
 ```
 
-### 导出ppt
-这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
-
-导出ppt有两种，一种是**pdf版**，一种是**html版**
-
-#### pdf版
-需要安装[phantomJS](http://phantomjs.org/)。
-
-```bash
-# 安装phantomjs，如果安装了，请忽略
-npm install -g phantomjs
-# 启动nodeppt server
-nodeppt start
-# 导出文件
-nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
-```
-#### html版
-
-```bash
-# 使用generate命令
-nodeppt generate filepath
-# 导出全部，包括nodeppt的js、img和css文件夹
-# 默认导出在publish文件夹
-nodeppt generate ./ppts/demo.md -a
-# 指定导出文件夹
-nodeppt generate ./ppts/demo.md -a -o output/path
-```
-导出目录下所有ppt，并且生成ppt list首页：
-
-```bash
-nodeppt path -o output/path -a
-```
 
 #### 示例
 类似下面的语法：(更多用法查看ppts/demo.md文件)
@@ -232,6 +236,8 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 ```bash
 nodeppt -h
+# 任何命令都可以输入-h查看帮助
+nodeppt start -h
 ```
 
 ## demo演示 & 使用方法

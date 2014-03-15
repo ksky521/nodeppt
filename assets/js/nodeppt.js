@@ -251,9 +251,11 @@
 	function focusOverview_() {
 		var isOV = $doc.body.classList.contains('overview');
 		for (var i = 0, slide; slide = $slides[i]; i++) {
-			slide.style.webkitTransform = slide.style.msTransform = slide.style.mozTransform = isOV ?
+			slide.style.transform = slide.style.webkitTransform = slide.style.msTransform = slide.style.mozTransform = isOV ?
 				'translateZ(-2500px) translate(' + ((i - curIndex) * 105) +
 				'%, 0%)' : '';
+			slide.style.animation = slide.style.webkitAnimation = slide.style.msAnimation = slide.style.mozAnimation = isOV ?
+				'none' : '';
 		}
 	}
 
