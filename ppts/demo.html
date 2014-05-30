@@ -378,6 +378,8 @@ MixJS.config({
 });
 MixJS.use('event/broadcast', function($){
     $.loadJS('/js/nodeppt.js',function(){
+      var s = location.search,
+          cid = s.match(/clientid=(\d+)/i);
         Slide.init({
             containerID: 'container',
             drawBoardID: 'drawBoard',
@@ -391,7 +393,8 @@ MixJS.use('event/broadcast', function($){
             control:{
                 type: 'socket',
                 args:{
-                    isControl: location.hash.slice(1,8) === 'control',
+                    isControl: s.indexOf("iscontroller") !== -1,
+                    clientId: cid && cid[1],
                     host: base,
                     shake: true
                 }
