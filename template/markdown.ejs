@@ -8,27 +8,28 @@
 <head>
     <meta charset="UTF-8">
     <title><%= title %> - By <%= speaker %></title>
-    <link rel="stylesheet" media="all" href="/css/nodeppt.css">
+    <link rel="stylesheet" media="all" href="/css/nodeppt2.0.css">
     <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/phone.css">
-    <link rel="stylesheet" href="/js/highlight/monokai.css">
+    <link rel="stylesheet" href="/js/highlight/styles/googlecode.css">
 </head>
 <body>
-
-<slides id="container">
-    <%- content %>
-    <slide class="slide thank-you-slide segue nobackground">
-        <article class="flexbox vleft auto-fadein">
-            <h2>Q &amp; A</h2>
-            <h3>&lt;Thank You!&gt;</h3>
-        </article>
-    </slide>
-    <slide class="slide logoslide dark nobackground">
-        <article class="flexbox vcenter">
-          <h2 style="color: white;">Powered By nodePPT v<%= nodeppt_version %></h2>
-        </article>
-      </slide>
-    <div class="slideTip" id="tip"></div>
-</slides>
+<div class="slides">
+    <slides id="container">
+        <%- content %>
+        <slide class="slide thank-you-slide segue nobackground">
+            <article class="flexbox vleft auto-fadein">
+                <h2>Q &amp; A</h2>
+                <h3>&lt;Thank You!&gt;</h3>
+            </article>
+        </slide>
+        <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+              <h2 style="color: white;">Powered By nodePPT v<%= nodeppt_version %></h2>
+            </article>
+          </slide>
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
 <canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
 <div class="progress"><span id="progress"></span></div>
 <script src="/js/mixjs/lib/mix.0.3.0.min.js"></script>
@@ -68,8 +69,7 @@ MixJS.use('event/broadcast', function($){
             <% } %>
             tipID: 'tip'
         });
-    }).loadJS('/js/highlight/highlight.pack.js',function(){
-
+    }).loadJS('/js/highlight/hljs-0.8.js',function(){
         hljs.tabReplace = '  ';
         hljs.initHighlightingOnLoad();
     });

@@ -107,7 +107,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 [slide]
 ## iframe
 ----
-<iframe data-src="http://www.google.com/doodle4google/resources/history.html" src="about:blank;"></iframe>
+<iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
 
 [slide]
 

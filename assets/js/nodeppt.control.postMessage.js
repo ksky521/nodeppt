@@ -84,10 +84,10 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 
 				var sWidth = screen.width,
 					sHeight = screen.height,
-					tWidth = sWidth / 2,
-					tHeight = sHeight / 2;
+					tWidth = sWidth * 0.8,
+					tHeight = sHeight * 0.8;
 
-				var temp = 'height=' + tHeight + ',width=' + tWidth + ',top=' + tHeight / 3 + ',left=' + tWidth / 2 + ',toolbar=no,menubar=no,location=yes,resizable=yes,scrollbars=no,status=no';
+				var temp = 'height=' + tHeight + ',width=' + tWidth + ',top=' + 10 + ',left=' + (sWidth - tWidth) / 2 + ',toolbar=no,menubar=no,location=yes,resizable=yes,scrollbars=no,status=no';
 				popup = window.open(url, 'ppt', temp);
 				window.addEventListener('message', this.evtClient, false);
 				window.addEventListener('beforeunload', this.closeClient, false);
@@ -120,7 +120,7 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 					if (min === 60) {
 						hour++;
 					}
-					$timer.innerHTML = ['时间：'+time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
+					$timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
 				}, 1000);
 				postWin = window.opener;
 			}
