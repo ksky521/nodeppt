@@ -1,10 +1,10 @@
 nodePPT - 让每个人都能写出高大上的网页版ppt！
 =============
-![nodePPT演示](https://raw.github.com/ksky521/nodePPT/master/demo.gif "nodePPT演示")
-## 0.6.6
+## 0.7.0
  * 添加slide动画
- * 修改帮助
- * overview状态下bugfix
+ * bug fix
+ * 修改样式
+ * 添加highlightjs最新版
 
 ## 安装
 
@@ -105,7 +105,10 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
  * zoomin
  * zoomout
  * cards
- * slide
+ * kontext
+ * glue
+ * move
+ * newspaper
 
 如果设置单页动画，请参考下面的**单页动画设置**部分~
 
