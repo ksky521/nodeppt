@@ -21,6 +21,7 @@
     var slideWidth; //单页宽度
     var slideHeight;
     var curIndex = 0; //当前幻灯片索引
+    var pastIndex = 0; //上一个幻灯片索引
     var $progress; //进度条
     var $container; //幻灯片容器
     var $slides; //幻灯片集合
@@ -57,14 +58,14 @@
 
 
     //上一页
-
     function prevSlide() {
+
         slideOutCallBack($slides[curIndex]);
+        pastIndex = curIndex;
         --curIndex < 0 && (curIndex = 0);
         doSlide();
     }
     //下一页
-
     function nextSlide() {
         if (buildNextItem()) {
             // $B.fire('slide change ID',{
@@ -73,6 +74,7 @@
             return;
         }
         slideOutCallBack($slides[curIndex]);
+        pastIndex = curIndex;
         ++curIndex > slideCount && (curIndex = slideCount);
         doSlide();
         preload($slides[curIndex])($slides[curIndex + 1]);
@@ -218,22 +220,30 @@
 
     function updateSlideClass() {
         var curSlide = curIndex;
+        var pageClass = 'pagedown';
+        if (pastIndex > curIndex) {
+            //往前翻页
+            pageClass = 'pageup';
+        } else {
+            //往后翻页
+
+        }
         for (var i = 0, len = $slides.length; i < len; ++i) {
             switch (i) {
                 case curSlide - 2:
-                    updateSlideClass_(i, 'far-past');
+                    updateSlideClass_(i, 'far-past', pageClass);
                     break;
                 case curSlide - 1:
-                    updateSlideClass_(i, 'past');
+                    updateSlideClass_(i, 'past', pageClass);
                     break;
                 case curSlide:
-                    updateSlideClass_(i, 'current');
+                    updateSlideClass_(i, 'current', pageClass);
                     break;
                 case curSlide + 1:
-                    updateSlideClass_(i, 'next');
+                    updateSlideClass_(i, 'next', pageClass);
                     break;
                 case curSlide + 2:
-                    updateSlideClass_(i, 'far-next');
+                    updateSlideClass_(i, 'far-next', pageClass);
                     break;
                 default:
                     updateSlideClass_(i);
@@ -258,20 +268,22 @@
         }
     }
 
-    function updateSlideClass_(slideNo, className) {
+    function updateSlideClass_(slideNo, className, pageClass) {
         var el = $slides[slideNo];
 
         if (!el) {
             return;
         }
-
         if (className) {
             el.classList.add(className);
         }
+        if (pageClass && location.href.indexOf('_multiscreen=control') === -1) {
+            el.classList.add(pageClass);
+        }
 
-        var arr = ['next', 'past', 'far-next', 'far-past', 'current'];
+        var arr = ['next', 'past', 'far-next', 'far-past', 'current', 'pagedown', 'pageup'];
         arr.forEach(function(v) {
-            if (className !== v) {
+            if (className !== v && pageClass !== v) {
                 el.classList.remove(v);
             }
         });
@@ -442,6 +454,7 @@
             if (location.hash && !lockSlide) {
                 doHash = false;
                 slideOutCallBack($slides[curIndex]);
+                pastIndex = curIndex;
                 curIndex = location.hash.substr(1) | 0;
 
                 doSlide();
@@ -610,7 +623,7 @@
         makeBuildLists();
         fullImg(); //图片全屏
         bindEvent();
-
+        pastIndex = curIndex;
         if (location.hash && (curIndex = (location.hash.substr(1) | 0))) {
             doSlide();
         } else {

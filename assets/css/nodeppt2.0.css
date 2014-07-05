@@ -320,83 +320,123 @@ body {
   -ms-border-radius: 0 2px 2px 0;
   -o-border-radius: 0 2px 2px 0;
   border-radius: 0 2px 2px 0;
-  -webkit-box-shadow: 0px 0px 5px 1px #4387fd;
-  -moz-box-shadow: 0px 0px 5px 1px #4387fd;
-  box-shadow: 0px 0px 5px 1px #4387fd;
   -webkit-transition: width 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -o-transition: width 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
 }
 
-/* line 162, ../scss/nodeppt2.0.scss */
+/* line 161, ../scss/nodeppt2.0.scss */
 .with-notes .progress {
   display: none;
 }
 
-/* line 165, ../scss/nodeppt2.0.scss */
+/* line 164, ../scss/nodeppt2.0.scss */
 .slides {
   width: 100%;
   height: 100%;
   text-align: center;
 }
 
-/* line 170, ../scss/nodeppt2.0.scss */
+/* line 169, ../scss/nodeppt2.0.scss */
+p {
+  line-height: 1.5em;
+}
+
+/* line 172, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper {
   width: 900px;
   height: 600px;
   text-align: center;
   margin: 0 auto;
 }
-/* line 176, ../scss/nodeppt2.0.scss */
+/* line 179, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > hgroup + article {
   margin-top: 45px;
 }
-/* line 180, ../scss/nodeppt2.0.scss */
+/* line 183, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > hgroup + article.flexbox.vcenter, slides > slide .slide-wrapper > hgroup + article.flexbox.vleft, slides > slide .slide-wrapper > hgroup + article.flexbox.vright {
   height: 80%;
 }
-/* line 185, ../scss/nodeppt2.0.scss */
-slides > slide .slide-wrapper > hgroup + article p {
-  margin-bottom: 1em;
-  line-height: 1.5em;
-}
-/* line 189, ../scss/nodeppt2.0.scss */
+/* line 188, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > hgroup + article p > img:only-child {
   margin-bottom: -1em;
 }
-/* line 194, ../scss/nodeppt2.0.scss */
+/* line 193, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > article:only-child {
   height: 100%;
 }
-/* line 195, ../scss/nodeppt2.0.scss */
+/* line 194, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > article:only-child h2 {
   font-weight: normal;
 }
-/* line 199, ../scss/nodeppt2.0.scss */
+/* line 198, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > article:only-child > pre {
   overflow-y: auto;
   max-height: 98%;
 }
-/* line 204, ../scss/nodeppt2.0.scss */
+/* line 203, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > article:only-child > iframe {
   height: 98%;
 }
-/* line 208, ../scss/nodeppt2.0.scss */
+/* line 207, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper img {
   max-width: 780px;
   max-height: 520px;
 }
-/* line 212, ../scss/nodeppt2.0.scss */
+/* line 211, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper .note {
   color: darkgrey;
 }
-/* line 214, ../scss/nodeppt2.0.scss */
+/* line 213, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper .note h1, slides > slide .slide-wrapper .note h2, slides > slide .slide-wrapper .note h3, slides > slide .slide-wrapper .note h4 {
   color: black;
 }
+/* line 217, ../scss/nodeppt2.0.scss */
+slides > slide .slide-wrapper blockquote {
+  font-size: 28px;
+  line-height: 1.5em;
+  padding: 5px 5px 5px 20px;
+  background-color: #F9FF95;
+  border-left: 5px solid #3E87CF;
+  color: black;
+  text-align: left;
+}
+/* line 226, ../scss/nodeppt2.0.scss */
+slides > slide .slide-wrapper blockquote small {
+  display: block;
+  line-height: 20px;
+  color: #999999;
+}
+/* line 230, ../scss/nodeppt2.0.scss */
+slides > slide .slide-wrapper blockquote small::before {
+  content: '\2014 \00A0';
+}
+/* line 234, ../scss/nodeppt2.0.scss */
+slides > slide .slide-wrapper blockquote p {
+  margin-bottom: 0 !important;
+  font-size: 17.5px;
+  font-weight: 300;
+  line-height: 1.25;
+}
+/* line 241, ../scss/nodeppt2.0.scss */
+slides > slide .slide-wrapper blockquote.pull-right {
+  padding-left: 15px;
+  border-right: 5px solid #3E87CF;
+  text-align: right;
+  padding-right: 20px;
+  border-left: none;
+}
+/* line 248, ../scss/nodeppt2.0.scss */
+slides > slide .slide-wrapper blockquote.pull-right small::before {
+  content: '';
+}
+/* line 251, ../scss/nodeppt2.0.scss */
+slides > slide .slide-wrapper blockquote.pull-right small::after {
+  content: '\00A0 \2014';
+}
 
-/* line 219, ../scss/nodeppt2.0.scss */
+/* line 257, ../scss/nodeppt2.0.scss */
 slides > slide {
   display: none;
   font-size: 26px;
@@ -417,46 +457,52 @@ slides > slide {
   -moz-transition: all 0.6s ease-in-out;
   -o-transition: all 0.6s ease-in-out;
   transition: all 0.6s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
-/* line 234, ../scss/nodeppt2.0.scss */
+/* line 274, ../scss/nodeppt2.0.scss */
 slides > slide.far-past {
   display: none;
 }
-/* line 238, ../scss/nodeppt2.0.scss */
+/* line 278, ../scss/nodeppt2.0.scss */
 slides > slide.past {
   display: block;
   opacity: 0;
 }
-/* line 243, ../scss/nodeppt2.0.scss */
+/* line 283, ../scss/nodeppt2.0.scss */
 slides > slide.current {
   display: block;
   opacity: 1;
 }
-/* line 246, ../scss/nodeppt2.0.scss */
+/* line 286, ../scss/nodeppt2.0.scss */
 slides > slide.current .auto-fadein {
   opacity: 1;
 }
-/* line 249, ../scss/nodeppt2.0.scss */
+/* line 289, ../scss/nodeppt2.0.scss */
 slides > slide.current .gdbar {
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -o-background-size: 100% 100%;
   background-size: 100% 100%;
 }
-/* line 254, ../scss/nodeppt2.0.scss */
+/* line 294, ../scss/nodeppt2.0.scss */
 slides > slide.next {
   display: block;
   opacity: 0;
 }
-/* line 259, ../scss/nodeppt2.0.scss */
+/* line 299, ../scss/nodeppt2.0.scss */
 slides > slide.far-next {
   display: none;
 }
-/* line 263, ../scss/nodeppt2.0.scss */
+/* line 303, ../scss/nodeppt2.0.scss */
 slides > slide.dark {
   background: #515151 !important;
 }
-/* line 272, ../scss/nodeppt2.0.scss */
+/* line 312, ../scss/nodeppt2.0.scss */
 slides > slide.title-slide:after {
   content: '';
   position: absolute;
@@ -465,7 +511,7 @@ slides > slide.title-slide:after {
   width: 100%;
   height: 60px;
 }
-/* line 282, ../scss/nodeppt2.0.scss */
+/* line 322, ../scss/nodeppt2.0.scss */
 slides > slide.backdrop {
   z-index: -10;
   display: block !important;
@@ -476,35 +522,47 @@ slides > slide.backdrop {
   background: linear-gradient(#ffffff, #ffffff 85%, #e6e6e6);
   background-color: white;
 }
-/* line 287, ../scss/nodeppt2.0.scss */
+/* line 327, ../scss/nodeppt2.0.scss */
 slides > slide.backdrop:after, slides > slide.backdrop:before {
   display: none;
 }
-/* line 291, ../scss/nodeppt2.0.scss */
-slides > slide:nth-child(2n+1) {
+/* line 331, ../scss/nodeppt2.0.scss */
+slides > slide:nth-child(6n+1) {
   background-color: #dc6c5f;
 }
-/* line 294, ../scss/nodeppt2.0.scss */
-slides > slide:nth-child(3n+2) {
+/* line 334, ../scss/nodeppt2.0.scss */
+slides > slide:nth-child(6n+2) {
   background-color: #95dc84;
 }
+/* line 337, ../scss/nodeppt2.0.scss */
+slides > slide:nth-child(6n+3) {
+  background-color: #60d7a9;
+}
+/* line 340, ../scss/nodeppt2.0.scss */
+slides > slide:nth-child(6n+4) {
+  background-color: #fdc162;
+}
+/* line 343, ../scss/nodeppt2.0.scss */
+slides > slide:nth-child(6n+5) {
+  background-color: #f68dbb;
+}
 
-/* line 300, ../scss/nodeppt2.0.scss */
+/* line 349, ../scss/nodeppt2.0.scss */
 slides.layout-faux-widescreen > slide {
   padding: 40px 160px;
 }
 
-/* line 308, ../scss/nodeppt2.0.scss */
+/* line 357, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide .slide-wrapper,
 slides.layout-faux-widescreen > slide .slide-wrapper {
   width: 1100px;
 }
-/* line 310, ../scss/nodeppt2.0.scss */
+/* line 359, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide .slide-wrapper img,
 slides.layout-faux-widescreen > slide .slide-wrapper img {
   max-width: 980px;
 }
-/* line 315, ../scss/nodeppt2.0.scss */
+/* line 364, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide.far-past,
 slides.layout-faux-widescreen > slide.far-past {
   display: block;
@@ -520,25 +578,25 @@ slides.layout-faux-widescreen > slide.far-past {
   -o-transform: translate3d(-2260px, 0, 0);
   transform: translate3d(-2260px, 0, 0);
 }
-/* line 322, ../scss/nodeppt2.0.scss */
+/* line 371, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide.past,
 slides.layout-faux-widescreen > slide.past {
   display: block;
   opacity: 0;
 }
-/* line 327, ../scss/nodeppt2.0.scss */
+/* line 376, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide.current,
 slides.layout-faux-widescreen > slide.current {
   display: block;
   opacity: 1;
 }
-/* line 332, ../scss/nodeppt2.0.scss */
+/* line 381, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide.next,
 slides.layout-faux-widescreen > slide.next {
   display: block;
   opacity: 0;
 }
-/* line 337, ../scss/nodeppt2.0.scss */
+/* line 386, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide.far-next,
 slides.layout-faux-widescreen > slide.far-next {
   display: block;
@@ -554,101 +612,103 @@ slides.layout-faux-widescreen > slide.far-next {
   -o-transform: translate3d(2260px, 0, 0);
   transform: translate3d(2260px, 0, 0);
 }
-/* line 344, ../scss/nodeppt2.0.scss */
+/* line 393, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen #prev-slide-area,
 slides.layout-faux-widescreen #prev-slide-area {
   margin-left: -650px;
 }
-/* line 348, ../scss/nodeppt2.0.scss */
+/* line 397, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen #next-slide-area,
 slides.layout-faux-widescreen #next-slide-area {
   margin-left: 550px;
 }
 
-/* line 353, ../scss/nodeppt2.0.scss */
+/* line 402, ../scss/nodeppt2.0.scss */
 b, strong {
   font-weight: 600;
 }
 
-/* line 357, ../scss/nodeppt2.0.scss */
+/* line 406, ../scss/nodeppt2.0.scss */
 a {
-  color: #DE9DD6;
+  color: #FF8C78;
+  background-color: #FFF2B5;
+  padding: 0 3px;
   text-decoration: none;
-  border-bottom: 1px solid #DE9DD6;
+  border-bottom: 1px dashed #FF8C78;
+  cursor: help;
 }
-/* line 361, ../scss/nodeppt2.0.scss */
+/* line 414, ../scss/nodeppt2.0.scss */
 a:hover {
-  color: #DBF977 !important;
+  background-color: #F9FF95;
 }
 
-/* line 366, ../scss/nodeppt2.0.scss */
+/* line 419, ../scss/nodeppt2.0.scss */
 h1, h2, h3 {
   font-weight: 600;
+  text-shadow: 1px 1px 1px black;
 }
 
-/* line 370, ../scss/nodeppt2.0.scss */
+/* line 424, ../scss/nodeppt2.0.scss */
 h1 {
   font-size: 45px;
   line-height: 45px;
-  letter-spacing: -2px;
   color: white;
   margin-bottom: 0.5em;
+  text-shadow: 1px 2px 1px black;
 }
 
-/* line 378, ../scss/nodeppt2.0.scss */
+/* line 432, ../scss/nodeppt2.0.scss */
 h2 {
   font-weight: bold;
   font-size: 34px;
-  letter-spacing: -1px;
   line-height: 2;
   color: white;
 }
 
-/* line 385, ../scss/nodeppt2.0.scss */
+/* line 438, ../scss/nodeppt2.0.scss */
 h3 {
   font-size: 28px;
-  letter-spacing: -1px;
   line-height: 1.5;
   font-weight: inherit;
   color: white;
 }
 
-/* line 392, ../scss/nodeppt2.0.scss */
+/* line 444, ../scss/nodeppt2.0.scss */
 ul {
   margin-left: 1.2em;
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
   position: relative;
   list-style: disc inside;
   text-align: left;
 }
-/* line 399, ../scss/nodeppt2.0.scss */
+/* line 451, ../scss/nodeppt2.0.scss */
 ul li {
-  margin-bottom: 0.5em;
+  line-height: 1.75em;
 }
-/* line 401, ../scss/nodeppt2.0.scss */
+/* line 453, ../scss/nodeppt2.0.scss */
 ul li ul {
   margin-left: 2em;
   margin-bottom: 0;
   list-style-type: none;
 }
-/* line 405, ../scss/nodeppt2.0.scss */
+/* line 457, ../scss/nodeppt2.0.scss */
 ul li ul li:before {
   content: '-';
   font-weight: 600;
 }
-/* line 412, ../scss/nodeppt2.0.scss */
+/* line 464, ../scss/nodeppt2.0.scss */
 ul > li:before {
   content: '\00B7';
   margin-left: -1em;
   position: absolute;
   font-weight: 600;
 }
-/* line 419, ../scss/nodeppt2.0.scss */
+/* line 471, ../scss/nodeppt2.0.scss */
 ul ul {
   margin-top: .5em;
 }
 
-/* line 426, ../scss/nodeppt2.0.scss */
+/* line 478, ../scss/nodeppt2.0.scss */
 .highlight-code slide.current pre > * {
   opacity: 0.25;
   -webkit-transition: opacity 0.5s ease-in;
@@ -656,12 +716,12 @@ ul ul {
   -o-transition: opacity 0.5s ease-in;
   transition: opacity 0.5s ease-in;
 }
-/* line 430, ../scss/nodeppt2.0.scss */
+/* line 482, ../scss/nodeppt2.0.scss */
 .highlight-code slide.current b, .highlight-code slide.current strong {
   opacity: 1;
 }
 
-/* line 435, ../scss/nodeppt2.0.scss */
+/* line 487, ../scss/nodeppt2.0.scss */
 pre {
   font-family: 'Source Code Pro', 'Courier New', monospace;
   font-size: 20px;
@@ -676,7 +736,7 @@ pre {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 448, ../scss/nodeppt2.0.scss */
+/* line 500, ../scss/nodeppt2.0.scss */
 pre[data-lang]:after {
   content: attr(data-lang);
   background-color: darkgrey;
@@ -689,19 +749,19 @@ pre[data-lang]:after {
   text-transform: uppercase;
 }
 
-/* line 461, ../scss/nodeppt2.0.scss */
+/* line 513, ../scss/nodeppt2.0.scss */
 pre[data-lang="go"] {
   color: #333;
 }
 
-/* line 465, ../scss/nodeppt2.0.scss */
+/* line 517, ../scss/nodeppt2.0.scss */
 code {
   font-size: 95%;
   font-family: 'Source Code Pro', 'Courier New', monospace;
   color: black;
 }
 
-/* line 471, ../scss/nodeppt2.0.scss */
+/* line 523, ../scss/nodeppt2.0.scss */
 iframe {
   width: 100%;
   height: 430px;
@@ -711,12 +771,12 @@ iframe {
   box-sizing: border-box;
 }
 
-/* line 478, ../scss/nodeppt2.0.scss */
+/* line 530, ../scss/nodeppt2.0.scss */
 dt {
   font-weight: bold;
 }
 
-/* line 482, ../scss/nodeppt2.0.scss */
+/* line 534, ../scss/nodeppt2.0.scss */
 button {
   display: inline-block;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #f9f9f9), color-stop(70%, #e3e3e3));
@@ -741,12 +801,12 @@ button {
   font-size: 10pt;
 }
 
-/* line 496, ../scss/nodeppt2.0.scss */
+/* line 548, ../scss/nodeppt2.0.scss */
 button:not(:disabled):hover {
   border-color: #515151;
 }
 
-/* line 500, ../scss/nodeppt2.0.scss */
+/* line 552, ../scss/nodeppt2.0.scss */
 button:not(:disabled):active {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #e3e3e3), color-stop(70%, #f9f9f9));
   background: -webkit-linear-gradient(#e3e3e3 40%, #f9f9f9 70%);
@@ -755,102 +815,102 @@ button:not(:disabled):active {
   background: linear-gradient(#e3e3e3 40%, #f9f9f9 70%);
 }
 
-/* line 504, ../scss/nodeppt2.0.scss */
+/* line 556, ../scss/nodeppt2.0.scss */
 :disabled {
   color: darkgrey;
 }
 
-/* line 508, ../scss/nodeppt2.0.scss */
+/* line 560, ../scss/nodeppt2.0.scss */
 .blue {
   color: #4387fd;
 }
 
-/* line 511, ../scss/nodeppt2.0.scss */
+/* line 563, ../scss/nodeppt2.0.scss */
 .blue2 {
   color: #3c8ef3;
 }
 
-/* line 514, ../scss/nodeppt2.0.scss */
+/* line 566, ../scss/nodeppt2.0.scss */
 .blue3 {
   color: #2a7cdf;
 }
 
-/* line 517, ../scss/nodeppt2.0.scss */
+/* line 569, ../scss/nodeppt2.0.scss */
 .yellow {
   color: #ffd14d;
 }
 
-/* line 520, ../scss/nodeppt2.0.scss */
+/* line 572, ../scss/nodeppt2.0.scss */
 .yellow2 {
   color: #f9cc46;
 }
 
-/* line 523, ../scss/nodeppt2.0.scss */
+/* line 575, ../scss/nodeppt2.0.scss */
 .yellow3 {
   color: #f6c000;
 }
 
-/* line 526, ../scss/nodeppt2.0.scss */
+/* line 578, ../scss/nodeppt2.0.scss */
 .green {
   color: #0da861;
 }
 
-/* line 529, ../scss/nodeppt2.0.scss */
+/* line 581, ../scss/nodeppt2.0.scss */
 .green2 {
   color: #00a86d;
 }
 
-/* line 532, ../scss/nodeppt2.0.scss */
+/* line 584, ../scss/nodeppt2.0.scss */
 .green3 {
   color: #009f5d;
 }
 
-/* line 535, ../scss/nodeppt2.0.scss */
+/* line 587, ../scss/nodeppt2.0.scss */
 .red {
   color: #f44a3f;
 }
 
-/* line 538, ../scss/nodeppt2.0.scss */
+/* line 590, ../scss/nodeppt2.0.scss */
 .red2 {
   color: #e0543e;
 }
 
-/* line 541, ../scss/nodeppt2.0.scss */
+/* line 593, ../scss/nodeppt2.0.scss */
 .red3 {
   color: #d94d3a;
 }
 
-/* line 544, ../scss/nodeppt2.0.scss */
+/* line 596, ../scss/nodeppt2.0.scss */
 .gray {
   color: #e6e6e6;
 }
 
-/* line 547, ../scss/nodeppt2.0.scss */
+/* line 599, ../scss/nodeppt2.0.scss */
 .gray2 {
   color: darkgrey;
 }
 
-/* line 550, ../scss/nodeppt2.0.scss */
+/* line 602, ../scss/nodeppt2.0.scss */
 .gray3 {
   color: #797979;
 }
 
-/* line 553, ../scss/nodeppt2.0.scss */
+/* line 605, ../scss/nodeppt2.0.scss */
 .gray4 {
   color: #515151;
 }
 
-/* line 557, ../scss/nodeppt2.0.scss */
+/* line 609, ../scss/nodeppt2.0.scss */
 .white {
   color: white !important;
 }
 
-/* line 560, ../scss/nodeppt2.0.scss */
+/* line 612, ../scss/nodeppt2.0.scss */
 .black {
   color: black !important;
 }
 
-/* line 564, ../scss/nodeppt2.0.scss */
+/* line 616, ../scss/nodeppt2.0.scss */
 .columns-2 {
   -webkit-column-count: 2;
   -moz-column-count: 2;
@@ -859,72 +919,54 @@ button:not(:disabled):active {
   column-count: 2;
 }
 
-/* line 568, ../scss/nodeppt2.0.scss */
+/* line 620, ../scss/nodeppt2.0.scss */
 table {
   width: 100%;
+  color: black;
   border-collapse: -moz-initial;
   border-collapse: initial;
-  border-spacing: 2px;
+  border-spacing: 1px;
   border-bottom: 1px solid #797979;
 }
-/* line 575, ../scss/nodeppt2.0.scss */
-table tr > td:first-child, table th {
-  font-weight: 600;
-  color: #515151;
+/* line 628, ../scss/nodeppt2.0.scss */
+table thead th {
+  background-color: #e6e6e6;
+  font-weight: bold;
 }
-/* line 580, ../scss/nodeppt2.0.scss */
+/* line 632, ../scss/nodeppt2.0.scss */
+table tr > td:first-child, table th {
+  font-weight: bolder;
+}
+/* line 635, ../scss/nodeppt2.0.scss */
+table tr {
+  background-color: white;
+}
+/* line 638, ../scss/nodeppt2.0.scss */
 table tr:nth-child(even) {
   background-color: #e6e6e6;
 }
-/* line 584, ../scss/nodeppt2.0.scss */
+/* line 642, ../scss/nodeppt2.0.scss */
 table th {
-  color: white;
   font-size: 18px;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #4387fd), color-stop(80%, #2a7cdf)) no-repeat;
-  background: -webkit-linear-gradient(top, #4387fd 40%, #2a7cdf 80%) no-repeat;
-  background: -moz-linear-gradient(top, #4387fd 40%, #2a7cdf 80%) no-repeat;
-  background: -o-linear-gradient(top, #4387fd 40%, #2a7cdf 80%) no-repeat;
-  background: linear-gradient(top, #4387fd 40%, #2a7cdf 80%) no-repeat;
 }
-/* line 590, ../scss/nodeppt2.0.scss */
+/* line 646, ../scss/nodeppt2.0.scss */
 table td, table th {
   font-size: 18px;
   padding: 1em 0.5em;
 }
-/* line 595, ../scss/nodeppt2.0.scss */
+/* line 651, ../scss/nodeppt2.0.scss */
 table td.highlight {
-  color: #515151;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #ffd14d), color-stop(80%, #f6c000)) no-repeat;
-  background: -webkit-linear-gradient(top, #ffd14d 40%, #f6c000 80%) no-repeat;
-  background: -moz-linear-gradient(top, #ffd14d 40%, #f6c000 80%) no-repeat;
-  background: -o-linear-gradient(top, #ffd14d 40%, #f6c000 80%) no-repeat;
-  background: linear-gradient(top, #ffd14d 40%, #f6c000 80%) no-repeat;
+  font-weight: bold;
+  color: #468847;
+  background-color: #dff0d8 !important;
 }
-/* line 600, ../scss/nodeppt2.0.scss */
+/* line 657, ../scss/nodeppt2.0.scss */
 table.rows {
   border-bottom: none;
   border-right: 1px solid #797979;
 }
 
-/* line 606, ../scss/nodeppt2.0.scss */
-q {
-  font-size: 45px;
-  line-height: 72px;
-}
-/* line 610, ../scss/nodeppt2.0.scss */
-q:before {
-  content: ' ';
-  position: absolute;
-  margin-left: -0.5em;
-}
-/* line 615, ../scss/nodeppt2.0.scss */
-q:after {
-  content: ' ';
-  position: absolute;
-  margin-left: 0.1em;
-}
-
-/* line 622, ../scss/nodeppt2.0.scss */
+/* line 665, ../scss/nodeppt2.0.scss */
 slide.fill {
   background-repeat: no-repeat;
   -webkit-border-radius: 5px;
@@ -939,34 +981,34 @@ slide.fill {
 }
 
 /* Size variants */
-/* line 631, ../scss/nodeppt2.0.scss */
+/* line 674, ../scss/nodeppt2.0.scss */
 article.smaller p, article.smaller ul {
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0;
 }
-/* line 637, ../scss/nodeppt2.0.scss */
+/* line 680, ../scss/nodeppt2.0.scss */
 article.smaller table td, article.smaller table th {
   font-size: 14px;
 }
-/* line 641, ../scss/nodeppt2.0.scss */
+/* line 684, ../scss/nodeppt2.0.scss */
 article.smaller pre {
   font-size: 15px;
   line-height: 20px;
   letter-spacing: 0;
 }
-/* line 646, ../scss/nodeppt2.0.scss */
+/* line 689, ../scss/nodeppt2.0.scss */
 article.smaller q {
   font-size: 40px;
   line-height: 48px;
 }
-/* line 650, ../scss/nodeppt2.0.scss */
+/* line 693, ../scss/nodeppt2.0.scss */
 article.smaller q:before, article.smaller q:after {
   font-size: 60px;
 }
 
 /* Builds */
-/* line 658, ../scss/nodeppt2.0.scss */
+/* line 701, ../scss/nodeppt2.0.scss */
 .build > * {
   -webkit-transition: opacity 0.5s ease-in-out;
   -webkit-transition-delay: 0.2s;
@@ -974,21 +1016,21 @@ article.smaller q:before, article.smaller q:after {
   -o-transition: opacity 0.5s ease-in-out 0.2s;
   transition: opacity 0.5s ease-in-out 0.2s;
 }
-/* line 662, ../scss/nodeppt2.0.scss */
+/* line 705, ../scss/nodeppt2.0.scss */
 .build .to-build {
   opacity: 0;
 }
 
-/* line 668, ../scss/nodeppt2.0.scss */
+/* line 711, ../scss/nodeppt2.0.scss */
 .popup .next .build .to-build {
   opacity: 1;
 }
-/* line 672, ../scss/nodeppt2.0.scss */
+/* line 715, ../scss/nodeppt2.0.scss */
 .popup .next .build .build-fade {
   opacity: 1;
 }
 
-/* line 679, ../scss/nodeppt2.0.scss */
+/* line 722, ../scss/nodeppt2.0.scss */
 .note {
   position: absolute;
   z-index: 100;
@@ -1034,7 +1076,7 @@ article.smaller q:before, article.smaller q:after {
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
-/* line 698, ../scss/nodeppt2.0.scss */
+/* line 741, ../scss/nodeppt2.0.scss */
 .note > section {
   background: #fff;
   -webkit-border-radius: 5px;
@@ -1049,7 +1091,7 @@ article.smaller q:before, article.smaller q:after {
   padding: 2em;
 }
 
-/* line 714, ../scss/nodeppt2.0.scss */
+/* line 757, ../scss/nodeppt2.0.scss */
 .with-notes.popup slides.layout-widescreen slide.next,
 .with-notes.popup slides.layout-faux-widescreen slide.next {
   -webkit-transform: translate3d(690px, 80px, 0) scale(0.35);
@@ -1058,7 +1100,7 @@ article.smaller q:before, article.smaller q:after {
   -o-transform: translate3d(690px, 80px, 0) scale(0.35);
   transform: translate3d(690px, 80px, 0) scale(0.35);
 }
-/* line 717, ../scss/nodeppt2.0.scss */
+/* line 760, ../scss/nodeppt2.0.scss */
 .with-notes.popup slides.layout-widescreen slide .note,
 .with-notes.popup slides.layout-faux-widescreen slide .note {
   -webkit-transform: translate3d(300px, 700px, 0) scale(1.5);
@@ -1067,7 +1109,7 @@ article.smaller q:before, article.smaller q:after {
   -o-transform: translate3d(300px, 700px, 0) scale(1.5);
   transform: translate3d(300px, 700px, 0) scale(1.5);
 }
-/* line 723, ../scss/nodeppt2.0.scss */
+/* line 766, ../scss/nodeppt2.0.scss */
 .with-notes.popup slide {
   width: 1100px;
   overflow: visible;
@@ -1081,7 +1123,21 @@ article.smaller q:before, article.smaller q:after {
   -o-transform-origin: 0 0;
   transform-origin: 0 0;
 }
-/* line 728, ../scss/nodeppt2.0.scss */
+/* line 772, ../scss/nodeppt2.0.scss */
+.with-notes.popup slide[data-transition].current, .with-notes.popup slide[data-transition].next, .with-notes.popup slide[data-transition].past {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-animation-name: none;
+  animation-name: none;
+}
+/* line 778, ../scss/nodeppt2.0.scss */
 .with-notes.popup slide:not(.backdrop) {
   -webkit-transform: scale(0.6) translate3d(0.5em, 0.5em, 0);
   -moz-transform: scale(0.6) translate3d(0.5em, 0.5em, 0);
@@ -1092,7 +1148,7 @@ article.smaller q:before, article.smaller q:after {
   -moz-box-shadow: 0 0 10px #797979;
   box-shadow: 0 0 10px #797979;
 }
-/* line 733, ../scss/nodeppt2.0.scss */
+/* line 783, ../scss/nodeppt2.0.scss */
 .with-notes.popup slide.backdrop {
   background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 600, color-stop(0%, #b1dfff), color-stop(100%, #4387fd));
   background-image: -webkit-radial-gradient(50% 50%, #b1dfff 0%, #4387fd 600px);
@@ -1100,7 +1156,7 @@ article.smaller q:before, article.smaller q:after {
   background-image: -o-radial-gradient(50% 50%, #b1dfff 0%, #4387fd 600px);
   background-image: radial-gradient(50% 50%, #b1dfff 0%, #4387fd 600px);
 }
-/* line 737, ../scss/nodeppt2.0.scss */
+/* line 787, ../scss/nodeppt2.0.scss */
 .with-notes.popup slide.next {
   -webkit-transform: translate3d(690px, 80px, 0) scale(0.35);
   -moz-transform: translate3d(690px, 80px, 0) scale(0.35);
@@ -1109,11 +1165,11 @@ article.smaller q:before, article.smaller q:after {
   transform: translate3d(690px, 80px, 0) scale(0.35);
   opacity: 1 !important;
 }
-/* line 741, ../scss/nodeppt2.0.scss */
+/* line 791, ../scss/nodeppt2.0.scss */
 .with-notes.popup slide.next .note {
   display: none !important;
 }
-/* line 747, ../scss/nodeppt2.0.scss */
+/* line 797, ../scss/nodeppt2.0.scss */
 .with-notes.popup .note {
   width: 109%;
   height: 210px;
@@ -1132,7 +1188,7 @@ article.smaller q:before, article.smaller q:after {
   -o-transition: opacity 400ms ease-in-out;
   transition: opacity 400ms ease-in-out;
 }
-/* line 758, ../scss/nodeppt2.0.scss */
+/* line 808, ../scss/nodeppt2.0.scss */
 .with-notes.popup .note > section {
   background: #fff;
   -webkit-border-radius: 5px;
@@ -1151,7 +1207,7 @@ article.smaller q:before, article.smaller q:after {
   overflow: auto;
   padding: 1em;
 }
-/* line 771, ../scss/nodeppt2.0.scss */
+/* line 821, ../scss/nodeppt2.0.scss */
 .with-notes .note {
   opacity: 1;
   -webkit-transform: translateY(0);
@@ -1162,7 +1218,7 @@ article.smaller q:before, article.smaller q:after {
   pointer-events: auto;
 }
 
-/* line 778, ../scss/nodeppt2.0.scss */
+/* line 828, ../scss/nodeppt2.0.scss */
 .source {
   font-size: 14px;
   color: darkgrey;
@@ -1172,12 +1228,12 @@ article.smaller q:before, article.smaller q:after {
   left: 60px;
 }
 
-/* line 787, ../scss/nodeppt2.0.scss */
+/* line 837, ../scss/nodeppt2.0.scss */
 .centered {
   text-align: center;
 }
 
-/* line 791, ../scss/nodeppt2.0.scss */
+/* line 841, ../scss/nodeppt2.0.scss */
 .reflect {
   -webkit-box-reflect: below 3px -webkit-linear-gradient(rgba(255, 255, 255, 0) 85%, white 150%);
   -moz-box-reflect: below 3px -moz-linear-gradient(rgba(255, 255, 255, 0) 85%, white 150%);
@@ -1186,7 +1242,7 @@ article.smaller q:before, article.smaller q:after {
   box-reflect: below 3px linear-gradient(rgba(255, 255, 255, 0) 85%, #ffffff 150%);
 }
 
-/* line 799, ../scss/nodeppt2.0.scss */
+/* line 849, ../scss/nodeppt2.0.scss */
 .flexbox {
   display: -webkit-box !important;
   display: -moz-box !important;
@@ -1195,7 +1251,7 @@ article.smaller q:before, article.smaller q:after {
   display: box !important;
 }
 
-/* line 803, ../scss/nodeppt2.0.scss */
+/* line 853, ../scss/nodeppt2.0.scss */
 .flexbox.vcenter {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
@@ -1213,7 +1269,7 @@ article.smaller q:before, article.smaller q:after {
   width: 100%;
 }
 
-/* line 809, ../scss/nodeppt2.0.scss */
+/* line 859, ../scss/nodeppt2.0.scss */
 .flexbox.vleft {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
@@ -1229,9 +1285,10 @@ article.smaller q:before, article.smaller q:after {
   box-pack: center;
   height: 100%;
   width: 100%;
+  text-align: left;
 }
 
-/* line 815, ../scss/nodeppt2.0.scss */
+/* line 866, ../scss/nodeppt2.0.scss */
 .flexbox.vright {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
@@ -1249,7 +1306,7 @@ article.smaller q:before, article.smaller q:after {
   width: 100%;
 }
 
-/* line 821, ../scss/nodeppt2.0.scss */
+/* line 873, ../scss/nodeppt2.0.scss */
 .auto-fadein {
   -webkit-transition: opacity 0.6s ease-in;
   -webkit-transition-delay: 1s;
@@ -1260,7 +1317,7 @@ article.smaller q:before, article.smaller q:after {
 }
 
 /* Clickable/tappable areas */
-/* line 827, ../scss/nodeppt2.0.scss */
+/* line 879, ../scss/nodeppt2.0.scss */
 .slide-area {
   z-index: 1000;
   position: absolute;
@@ -1274,65 +1331,65 @@ article.smaller q:before, article.smaller q:after {
   margin-top: -300px;
 }
 
-/* line 843, ../scss/nodeppt2.0.scss */
+/* line 895, ../scss/nodeppt2.0.scss */
 #prev-slide-area {
   margin-left: -550px;
 }
 
-/* line 846, ../scss/nodeppt2.0.scss */
+/* line 898, ../scss/nodeppt2.0.scss */
 #next-slide-area {
   margin-left: 450px;
 }
 
 /* ===== SLIDE CONTENT ===== */
-/* line 852, ../scss/nodeppt2.0.scss */
+/* line 904, ../scss/nodeppt2.0.scss */
 .logoslide img {
   width: 383px;
   height: 92px;
 }
 
-/* line 858, ../scss/nodeppt2.0.scss */
+/* line 910, ../scss/nodeppt2.0.scss */
 .segue {
   padding: 60px 120px;
 }
-/* line 861, ../scss/nodeppt2.0.scss */
+/* line 913, ../scss/nodeppt2.0.scss */
 .segue h2 {
   color: #e6e6e6;
   font-size: 60px;
 }
-/* line 865, ../scss/nodeppt2.0.scss */
+/* line 917, ../scss/nodeppt2.0.scss */
 .segue h3 {
   color: #e6e6e6;
   line-height: 2.8;
 }
-/* line 869, ../scss/nodeppt2.0.scss */
+/* line 921, ../scss/nodeppt2.0.scss */
 .segue hgroup {
   position: absolute;
   bottom: 225px;
 }
 
-/* line 875, ../scss/nodeppt2.0.scss */
+/* line 927, ../scss/nodeppt2.0.scss */
 .thank-you-slide {
   background: #4387fd !important;
   color: white;
 }
-/* line 879, ../scss/nodeppt2.0.scss */
+/* line 931, ../scss/nodeppt2.0.scss */
 .thank-you-slide h2 {
   font-size: 60px;
   color: inherit;
 }
-/* line 883, ../scss/nodeppt2.0.scss */
+/* line 935, ../scss/nodeppt2.0.scss */
 .thank-you-slide h3 {
   font-size: 52px;
   color: inherit;
   text-align: right;
 }
-/* line 889, ../scss/nodeppt2.0.scss */
+/* line 941, ../scss/nodeppt2.0.scss */
 .thank-you-slide article > p {
   margin-top: 2em;
   font-size: 20pt;
 }
-/* line 894, ../scss/nodeppt2.0.scss */
+/* line 946, ../scss/nodeppt2.0.scss */
 .thank-you-slide > p {
   position: absolute;
   bottom: 80px;
@@ -1340,7 +1397,7 @@ article.smaller q:before, article.smaller q:after {
   line-height: 1.3;
 }
 
-/* line 902, ../scss/nodeppt2.0.scss */
+/* line 954, ../scss/nodeppt2.0.scss */
 aside.gdbar {
   height: 97px;
   width: 215px;
@@ -1368,7 +1425,7 @@ aside.gdbar {
   transition: all 0.5s ease-out 0.5s;
   /* Better to transition only on background-size, but not sure how to do that with the mixin. */
 }
-/* line 913, ../scss/nodeppt2.0.scss */
+/* line 965, ../scss/nodeppt2.0.scss */
 aside.gdbar.right {
   right: 0;
   left: -moz-initial;
@@ -1381,7 +1438,7 @@ aside.gdbar.right {
   -o-transform: rotateZ(180deg);
   transform: rotateZ(180deg);
 }
-/* line 920, ../scss/nodeppt2.0.scss */
+/* line 972, ../scss/nodeppt2.0.scss */
 aside.gdbar.right img {
   -webkit-transform: rotateZ(180deg);
   -moz-transform: rotateZ(180deg);
@@ -1389,13 +1446,13 @@ aside.gdbar.right img {
   -o-transform: rotateZ(180deg);
   transform: rotateZ(180deg);
 }
-/* line 925, ../scss/nodeppt2.0.scss */
+/* line 977, ../scss/nodeppt2.0.scss */
 aside.gdbar.bottom {
   top: -moz-initial;
   top: initial;
   bottom: 60px;
 }
-/* line 931, ../scss/nodeppt2.0.scss */
+/* line 983, ../scss/nodeppt2.0.scss */
 aside.gdbar img {
   width: 85px;
   height: 85px;
@@ -1404,24 +1461,24 @@ aside.gdbar img {
   margin: 8px 15px;
 }
 
-/* line 942, ../scss/nodeppt2.0.scss */
+/* line 994, ../scss/nodeppt2.0.scss */
 .title-slide hgroup {
   bottom: 100px;
 }
-/* line 945, ../scss/nodeppt2.0.scss */
+/* line 997, ../scss/nodeppt2.0.scss */
 .title-slide hgroup h1 {
   font-size: 65px;
   line-height: 1.4;
   letter-spacing: -3px;
   color: #515151;
 }
-/* line 952, ../scss/nodeppt2.0.scss */
+/* line 1004, ../scss/nodeppt2.0.scss */
 .title-slide hgroup h2 {
   font-size: 34px;
   color: darkgrey;
   font-weight: inherit;
 }
-/* line 958, ../scss/nodeppt2.0.scss */
+/* line 1010, ../scss/nodeppt2.0.scss */
 .title-slide hgroup p {
   font-size: 20px;
   color: #797979;
@@ -1429,11 +1486,11 @@ aside.gdbar img {
   margin-top: 2em;
 }
 
-/* line 967, ../scss/nodeppt2.0.scss */
+/* line 1019, ../scss/nodeppt2.0.scss */
 .quote {
   color: #e6e6e6;
 }
-/* line 970, ../scss/nodeppt2.0.scss */
+/* line 1022, ../scss/nodeppt2.0.scss */
 .quote .author {
   font-size: 24px;
   position: absolute;
@@ -1441,54 +1498,49 @@ aside.gdbar img {
   line-height: 1.4;
 }
 
-/* line 979, ../scss/nodeppt2.0.scss */
+/* line 1031, ../scss/nodeppt2.0.scss */
 [data-config-contact] a {
   color: white;
   border-bottom: none;
 }
-/* line 983, ../scss/nodeppt2.0.scss */
+/* line 1035, ../scss/nodeppt2.0.scss */
 [data-config-contact] span {
   width: 115px;
   display: inline-block;
 }
 
-/* line 991, ../scss/nodeppt2.0.scss */
+/* line 1043, ../scss/nodeppt2.0.scss */
 .overview.popup .note {
   display: none !important;
 }
-/* line 996, ../scss/nodeppt2.0.scss */
+/* line 1048, ../scss/nodeppt2.0.scss */
 .overview slides slide {
-  color: black;
   display: block;
   cursor: pointer;
   opacity: 0.5;
   pointer-events: auto !important;
   width: 1100px;
 }
-/* line 997, ../scss/nodeppt2.0.scss */
+/* line 1049, ../scss/nodeppt2.0.scss */
 .overview slides slide.backdrop {
   display: none !important;
 }
-/* line 1013, ../scss/nodeppt2.0.scss */
+/* line 1064, ../scss/nodeppt2.0.scss */
 .overview slides slide.far-past, .overview slides slide.past, .overview slides slide.next, .overview slides slide.far-next, .overview slides slide.far-past {
   opacity: 0.5;
   display: block;
 }
-/* line 1018, ../scss/nodeppt2.0.scss */
+/* line 1069, ../scss/nodeppt2.0.scss */
 .overview slides slide.current {
   opacity: 1;
 }
-/* line 1021, ../scss/nodeppt2.0.scss */
-.overview slides slide h1, .overview slides slide h2, .overview slides slide h3, .overview slides slide h4 {
-  color: black;
-}
-/* line 1027, ../scss/nodeppt2.0.scss */
+/* line 1076, ../scss/nodeppt2.0.scss */
 .overview .slide-area {
   display: none;
 }
 
 @media print {
-  /* line 1034, ../scss/nodeppt2.0.scss */
+  /* line 1083, ../scss/nodeppt2.0.scss */
   slides slide {
     display: block !important;
     position: relative;
@@ -1507,46 +1559,46 @@ aside.gdbar img {
     opacity: 1 !important;
     color: #555;
   }
-  /* line 1053, ../scss/nodeppt2.0.scss */
+  /* line 1102, ../scss/nodeppt2.0.scss */
   slides slide.far-past, slides slide.past, slides slide.next, slides slide.far-next, slides slide.far-past, slides slide.current {
     opacity: 1 !important;
     display: block !important;
   }
-  /* line 1059, ../scss/nodeppt2.0.scss */
+  /* line 1108, ../scss/nodeppt2.0.scss */
   slides slide .build > * {
     -webkit-transition: none;
     -moz-transition: none;
     -o-transition: none;
     transition: none;
   }
-  /* line 1064, ../scss/nodeppt2.0.scss */
+  /* line 1113, ../scss/nodeppt2.0.scss */
   slides slide .build .to-build,
   slides slide .build .build-fade {
     opacity: 1;
   }
-  /* line 1069, ../scss/nodeppt2.0.scss */
+  /* line 1118, ../scss/nodeppt2.0.scss */
   slides slide .auto-fadein {
     opacity: 1 !important;
   }
-  /* line 1073, ../scss/nodeppt2.0.scss */
+  /* line 1122, ../scss/nodeppt2.0.scss */
   slides slide.backdrop {
     display: none !important;
   }
-  /* line 1077, ../scss/nodeppt2.0.scss */
+  /* line 1126, ../scss/nodeppt2.0.scss */
   slides slide table.rows {
     border-right: 0;
   }
-  /* line 1082, ../scss/nodeppt2.0.scss */
+  /* line 1131, ../scss/nodeppt2.0.scss */
   slides slide[hidden] {
     display: none !important;
   }
 
-  /* line 1087, ../scss/nodeppt2.0.scss */
+  /* line 1136, ../scss/nodeppt2.0.scss */
   .slide-area {
     display: none;
   }
 
-  /* line 1091, ../scss/nodeppt2.0.scss */
+  /* line 1140, ../scss/nodeppt2.0.scss */
   .reflect {
     -webkit-box-reflect: none;
     -moz-box-reflect: none;
@@ -1555,12 +1607,12 @@ aside.gdbar img {
     box-reflect: none;
   }
 
-  /* line 1099, ../scss/nodeppt2.0.scss */
+  /* line 1148, ../scss/nodeppt2.0.scss */
   pre, code {
     font-family: monospace !important;
   }
 }
-/* line 1103, ../scss/nodeppt2.0.scss */
+/* line 1152, ../scss/nodeppt2.0.scss */
 .qrcode {
   display: none;
   position: fixed;
@@ -1572,20 +1624,20 @@ aside.gdbar img {
   background: white;
   padding: 20px;
 }
-/* line 1113, ../scss/nodeppt2.0.scss */
+/* line 1162, ../scss/nodeppt2.0.scss */
 .qrcode #qrcode {
   width: 256px;
   height: 256px;
   vertical-align: middle;
   margin: 0 auto;
 }
-/* line 1119, ../scss/nodeppt2.0.scss */
+/* line 1168, ../scss/nodeppt2.0.scss */
 .qrcode p {
   text-align: center;
   line-height: 44px;
 }
 
-/* line 1126, ../scss/nodeppt2.0.scss */
+/* line 1175, ../scss/nodeppt2.0.scss */
 #_timer_ {
   display: block;
   position: fixed;
@@ -1593,7 +1645,7 @@ aside.gdbar img {
   left: 0.5em;
 }
 
-/* line 1132, ../scss/nodeppt2.0.scss */
+/* line 1181, ../scss/nodeppt2.0.scss */
 .img-full {
   -webkit-box-align: center;
   -moz-box-align: center;
@@ -1620,7 +1672,7 @@ aside.gdbar img {
   top: 0;
   display: none;
 }
-/* line 1156, ../scss/nodeppt2.0.scss */
+/* line 1205, ../scss/nodeppt2.0.scss */
 .img-full img {
   background: #000;
   color: #333;
@@ -1634,7 +1686,7 @@ aside.gdbar img {
   -moz-transition: 800ms -moz-transform;
   transition: 800ms transform;
 }
-/* line 1169, ../scss/nodeppt2.0.scss */
+/* line 1218, ../scss/nodeppt2.0.scss */
 .img-full img.transparent {
   -webkit-transform: scale(0.99) translateY(-20px);
   -moz-transform: scale(0.99) translateY(-20px);
@@ -1645,7 +1697,7 @@ aside.gdbar img {
 
 /**翻页效果**/
 /**zoomout***/
-/* line 1178, ../scss/nodeppt2.0.scss */
+/* line 1261, ../scss/nodeppt2.0.scss */
 slide[data-transition="zoomout"].past,
 slide[data-transition="zoomin"].next {
   -webkit-transform: scale(1.2);
@@ -1655,7 +1707,7 @@ slide[data-transition="zoomin"].next {
   transform: scale(1.2);
 }
 
-/* line 1182, ../scss/nodeppt2.0.scss */
+/* line 1265, ../scss/nodeppt2.0.scss */
 slide[data-transition="zoomin"].past,
 slide[data-transition="zoomout"].next {
   -webkit-transform: scale(0.8);
@@ -1666,7 +1718,7 @@ slide[data-transition="zoomout"].next {
 }
 
 /**horizontal*/
-/* line 1187, ../scss/nodeppt2.0.scss */
+/* line 1270, ../scss/nodeppt2.0.scss */
 slide[data-transition="horizontal"].current {
   -webkit-transform-origin: 20% 80% 50%;
   -moz-transform-origin: 20% 80% 50%;
@@ -1675,7 +1727,7 @@ slide[data-transition="horizontal"].current {
   transform-origin: 20% 80% 50%;
 }
 
-/* line 1191, ../scss/nodeppt2.0.scss */
+/* line 1274, ../scss/nodeppt2.0.scss */
 slide[data-transition="horizontal"].next,
 slide[data-transition="horizontal"].past {
   -webkit-transform: rotate(-30deg);
@@ -1685,27 +1737,27 @@ slide[data-transition="horizontal"].past {
   transform: rotate(-30deg);
 }
 
-/* line 1194, ../scss/nodeppt2.0.scss */
+/* line 1277, ../scss/nodeppt2.0.scss */
 slide[data-transition="horizontal"].next {
   left: 450px;
 }
 
-/* line 1197, ../scss/nodeppt2.0.scss */
+/* line 1280, ../scss/nodeppt2.0.scss */
 slide[data-transition="horizontal"].past {
   left: -450px;
 }
 
-/* line 1201, ../scss/nodeppt2.0.scss */
+/* line 1284, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide[data-transition="horizontal"].next {
   left: 550px;
 }
-/* line 1204, ../scss/nodeppt2.0.scss */
+/* line 1287, ../scss/nodeppt2.0.scss */
 slides.layout-widescreen > slide[data-transition="horizontal"].past {
   left: -550px;
 }
 
 /**horizontal 3D*/
-/* line 1210, ../scss/nodeppt2.0.scss */
+/* line 1293, ../scss/nodeppt2.0.scss */
 slide[data-transition="horizontal3d"] {
   -webkit-transition: all 0.8s ease;
   -moz-transition: all 0.8s ease;
@@ -1723,7 +1775,7 @@ slide[data-transition="horizontal3d"] {
   transform-origin: 50% 50% -450px 50%;
 }
 
-/* line 1215, ../scss/nodeppt2.0.scss */
+/* line 1298, ../scss/nodeppt2.0.scss */
 .layout-widescreen slide[data-transition="horizontal3d"] {
   -webkit-transition: all 0.8s ease;
   -moz-transition: all 0.8s ease;
@@ -1736,7 +1788,7 @@ slide[data-transition="horizontal3d"] {
   transform-origin: 50% 50% -550px 50%;
 }
 
-/* line 1220, ../scss/nodeppt2.0.scss */
+/* line 1303, ../scss/nodeppt2.0.scss */
 slide[data-transition="horizontal3d"].next {
   -webkit-transform: rotateY(90deg);
   -moz-transform: rotateY(90deg);
@@ -1745,7 +1797,7 @@ slide[data-transition="horizontal3d"].next {
   transform: rotateY(90deg);
 }
 
-/* line 1223, ../scss/nodeppt2.0.scss */
+/* line 1306, ../scss/nodeppt2.0.scss */
 slide[data-transition="horizontal3d"].past {
   -webkit-transform: rotateY(-90deg);
   -moz-transform: rotateY(-90deg);
@@ -1754,7 +1806,7 @@ slide[data-transition="horizontal3d"].past {
   transform: rotateY(-90deg);
 }
 
-/* line 1228, ../scss/nodeppt2.0.scss */
+/* line 1311, ../scss/nodeppt2.0.scss */
 slide[data-transition="vertical3d"].next {
   top: 300px;
   -webkit-transform: translate3d(0, 75%, 0) rotateX(60deg) translate3d(0, 75%, 0);
@@ -1764,7 +1816,7 @@ slide[data-transition="vertical3d"].next {
   transform: translate3d(0, 75%, 0) rotateX(60deg) translate3d(0, 75%, 0);
 }
 
-/* line 1232, ../scss/nodeppt2.0.scss */
+/* line 1315, ../scss/nodeppt2.0.scss */
 slide[data-transition="vertical3d"].past {
   -webkit-transform: translate3d(0, -75%, 0) rotateX(-60deg) translate3d(0, -75%, 0);
   -moz-transform: translate3d(0, -75%, 0) rotateX(-60deg) translate3d(0, -75%, 0);
@@ -1774,7 +1826,7 @@ slide[data-transition="vertical3d"].past {
   top: -300px;
 }
 
-/* line 1238, ../scss/nodeppt2.0.scss */
+/* line 1321, ../scss/nodeppt2.0.scss */
 slide[data-transition="cards"] {
   -webkit-transition: all 0.8s ease;
   -moz-transition: all 0.8s ease;
@@ -1792,7 +1844,7 @@ slide[data-transition="cards"] {
   transform-origin: 0 100% 0 50%;
 }
 
-/* line 1244, ../scss/nodeppt2.0.scss */
+/* line 1327, ../scss/nodeppt2.0.scss */
 slide[data-transition="cards"].next {
   -webkit-transform: translate3d(50px, 0, -100px);
   -moz-transform: translate3d(50px, 0, -100px);
@@ -1802,7 +1854,7 @@ slide[data-transition="cards"].next {
   opacity: 0;
 }
 
-/* line 1248, ../scss/nodeppt2.0.scss */
+/* line 1331, ../scss/nodeppt2.0.scss */
 slide[data-transition="cards"].past {
   -webkit-transform: translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg);
   -moz-transform: translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg);
@@ -1812,141 +1864,2043 @@ slide[data-transition="cards"].past {
   opacity: 0;
 }
 
-/* line 1254, ../scss/nodeppt2.0.scss */
-slide[data-transition="slide"].current {
-  -webkit-animation: rotateSlideIn 1s both ease;
-  -moz-animation: rotateSlideIn 1s both ease;
-  animation: rotateSlideIn 1s both ease;
+/* line 1338, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="glue"].current {
+  -webkit-animation: moveFromRight .6s ease both;
+  animation: moveFromRight .6s ease both;
+  -webkit-animation-delay: .3s;
+  animation-delay: .3s;
+  z-index: 999;
 }
 
-/* line 1260, ../scss/nodeppt2.0.scss */
-slide[data-transition="slide"].next {
-  opacity: 0;
+/* line 1345, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="glue"].next {
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-animation: rotateRightSideFirst .8s both ease-in;
+  animation: rotateRightSideFirst .8s both ease-in;
+  opacity: 1;
 }
 
-/* line 1263, ../scss/nodeppt2.0.scss */
-slide[data-transition="slide"].past {
-  -webkit-animation: rotateSlideOut 1s both ease;
-  -moz-animation: rotateSlideOut 1s both ease;
-  animation: rotateSlideOut 1s both ease;
+/* line 1352, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="glue"].past {
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
 }
 
+/* line 1357, ../scss/nodeppt2.0.scss */
+slide.pageup[data-transition="glue"].current {
+  -webkit-animation: moveFromLeft .6s ease both;
+  animation: moveFromLeft .6s ease both;
+  -webkit-animation-delay: .3s;
+  animation-delay: .3s;
+  z-index: 999;
+}
+
+/* line 1363, ../scss/nodeppt2.0.scss */
+slide.pageup[data-transition="glue"].next {
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+}
+
+/* line 1368, ../scss/nodeppt2.0.scss */
+slide.pageup[data-transition="glue"].past {
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+  -webkit-animation: rotateLeftSideFirst .8s both ease-in;
+  animation: rotateLeftSideFirst .8s both ease-in;
+  opacity: 1;
+}
+
+/* line 1377, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="kontext"] {
+  -webkit-transform: translateZ(-100px);
+  -moz-transform: translateZ(-100px);
+  -ms-transform: translateZ(-100px);
+  -o-transform: translateZ(-100px);
+  transform: translateZ(-100px);
+}
+
+/* line 1380, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="kontext"].current {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: show-right 1s forwards ease;
+  animation: show-right 1s forwards ease;
+  z-index: 999;
+}
+
+/* line 1386, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="kontext"].past {
+  -webkit-animation: hide-right 1s forwards ease;
+  animation: hide-right 1s forwards ease;
+  opacity: 1;
+  z-index: 99;
+}
+
+/* line 1392, ../scss/nodeppt2.0.scss */
+slide.pageup[data-transition="kontext"].current {
+  -webkit-animation: show-left 1s forwards ease;
+  animation: show-left 1s forwards ease;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* line 1397, ../scss/nodeppt2.0.scss */
+slide.pageup[data-transition="kontext"].next {
+  -webkit-animation: hide-left 1s forwards ease;
+  animation: hide-left 1s forwards ease;
+  opacity: 1;
+  z-index: 99;
+}
+
+/* line 1408, ../scss/nodeppt2.0.scss */
+slide[data-transition="newspaper"].current {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: rotateInNewspaper .5s both ease-out;
+  animation: rotateInNewspaper .5s both ease-out;
+  -webkit-animation-delay: .5s;
+  animation-delay: .5s;
+  z-index: 999;
+}
+
+/* line 1416, ../scss/nodeppt2.0.scss */
+slide[data-transition="newspaper"].past {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: rotateOutNewspaper .5s both ease-in;
+  animation: rotateOutNewspaper .5s both ease-in;
+  opacity: 1;
+  z-index: 99;
+}
+
+/* line 1424, ../scss/nodeppt2.0.scss */
+slide[data-transition="newspaper"].next {
+  z-index: 99;
+}
+
+/* line 1430, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="move"] {
+  z-index: 99;
+}
+
+/* line 1433, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="move"].current {
+  -webkit-animation: moveFromRight .6s ease both;
+  animation: moveFromRight .6s ease both;
+  z-index: 999;
+}
+
+/* line 1438, ../scss/nodeppt2.0.scss */
+slide.pagedown[data-transition="move"].past {
+  -webkit-animation: moveToLeft .7s ease-in-out both;
+  animation: moveToLeft .7s ease-in-out both;
+  opacity: 1;
+  z-index: 999;
+}
+
+/* line 1444, ../scss/nodeppt2.0.scss */
+slide.pageup[data-transition="move"].current {
+  -webkit-animation: moveFromLeft .6s ease both;
+  animation: moveFromLeft .6s ease both;
+  z-index: 999;
+}
+
+/* line 1449, ../scss/nodeppt2.0.scss */
+slide.pageup[data-transition="move"].next {
+  -webkit-animation: moveToRight .7s ease-in-out both;
+  animation: moveToRight .7s ease-in-out both;
+  opacity: 1;
+  z-index: 99;
+}
+
+/********************************* keyframes **************************************/
+@-webkit-keyframes show-right {
+  /* line 1459, ../scss/nodeppt2.0.scss */
+  0% {
+    -webkit-transform: translateZ(-200px);
+  }
+
+  /* line 1460, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+
+  /* line 1461, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: translateZ(0px);
+  }
+}
+
+@-webkit-keyframes hide-right {
+  /* line 1465, ../scss/nodeppt2.0.scss */
+  0% {
+    -webkit-transform: translateZ(0px);
+    visibility: visible;
+  }
+
+  /* line 1466, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+
+  /* line 1467, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: translateZ(-200px);
+    visibility: hidden;
+  }
+}
+
+@-moz-keyframes show-right {
+  /* line 1471, ../scss/nodeppt2.0.scss */
+  0% {
+    -moz-transform: translateZ(-200px);
+  }
+
+  /* line 1472, ../scss/nodeppt2.0.scss */
+  40% {
+    -moz-transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+
+  /* line 1473, ../scss/nodeppt2.0.scss */
+  100% {
+    -moz-transform: translateZ(0px);
+  }
+}
+
+@-moz-keyframes hide-right {
+  /* line 1477, ../scss/nodeppt2.0.scss */
+  0% {
+    -moz-transform: translateZ(0px);
+    visibility: visible;
+  }
+
+  /* line 1478, ../scss/nodeppt2.0.scss */
+  40% {
+    -moz-transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+
+  /* line 1479, ../scss/nodeppt2.0.scss */
+  100% {
+    -moz-transform: translateZ(-200px);
+    visibility: hidden;
+  }
+}
+
+@keyframes show-right {
+  /* line 1483, ../scss/nodeppt2.0.scss */
+  0% {
+    transform: translateZ(-200px);
+  }
+
+  /* line 1484, ../scss/nodeppt2.0.scss */
+  40% {
+    transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+
+  /* line 1485, ../scss/nodeppt2.0.scss */
+  100% {
+    transform: translateZ(0px);
+  }
+}
+
+@keyframes hide-right {
+  /* line 1489, ../scss/nodeppt2.0.scss */
+  0% {
+    transform: translateZ(0px);
+    visibility: visible;
+  }
+
+  /* line 1490, ../scss/nodeppt2.0.scss */
+  40% {
+    transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+
+  /* line 1491, ../scss/nodeppt2.0.scss */
+  100% {
+    transform: translateZ(-200px);
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes show-left {
+  /* line 1496, ../scss/nodeppt2.0.scss */
+  0% {
+    -webkit-transform: translateZ(-200px);
+  }
+
+  /* line 1497, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+
+  /* line 1498, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: translateZ(0px);
+  }
+}
+
+@-webkit-keyframes hide-left {
+  /* line 1502, ../scss/nodeppt2.0.scss */
+  0% {
+    -webkit-transform: translateZ(0px);
+    visibility: visible;
+  }
+
+  /* line 1503, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+
+  /* line 1504, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: translateZ(-200px);
+    visibility: hidden;
+  }
+}
+
+@-moz-keyframes show-left {
+  /* line 1508, ../scss/nodeppt2.0.scss */
+  0% {
+    -moz-transform: translateZ(-200px);
+  }
+
+  /* line 1509, ../scss/nodeppt2.0.scss */
+  40% {
+    -moz-transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+
+  /* line 1510, ../scss/nodeppt2.0.scss */
+  100% {
+    -moz-transform: translateZ(0px);
+  }
+}
+
+@-moz-keyframes hide-left {
+  /* line 1514, ../scss/nodeppt2.0.scss */
+  0% {
+    -moz-transform: translateZ(0px);
+    visibility: visible;
+  }
+
+  /* line 1515, ../scss/nodeppt2.0.scss */
+  40% {
+    -moz-transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+
+  /* line 1516, ../scss/nodeppt2.0.scss */
+  100% {
+    -moz-transform: translateZ(-200px);
+    visibility: hidden;
+  }
+}
+
+@keyframes show-left {
+  /* line 1520, ../scss/nodeppt2.0.scss */
+  0% {
+    transform: translateZ(-200px);
+  }
+
+  /* line 1521, ../scss/nodeppt2.0.scss */
+  40% {
+    transform: translate(-40%, 0) scale(0.8) rotateY(20deg);
+  }
+
+  /* line 1522, ../scss/nodeppt2.0.scss */
+  100% {
+    transform: translateZ(0px);
+  }
+}
+
+@keyframes hide-left {
+  /* line 1526, ../scss/nodeppt2.0.scss */
+  0% {
+    transform: translateZ(0px);
+    visibility: visible;
+  }
+
+  /* line 1527, ../scss/nodeppt2.0.scss */
+  40% {
+    transform: translate(40%, 0) scale(0.8) rotateY(-20deg);
+  }
+
+  /* line 1528, ../scss/nodeppt2.0.scss */
+  100% {
+    transform: translateZ(-200px);
+    visibility: hidden;
+  }
+}
+
+/* move from / to  */
+@-webkit-keyframes moveToLeft {
+  /* line 1535, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes moveToLeft {
+  /* line 1539, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes moveFromLeft {
+  /* line 1543, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes moveFromLeft {
+  /* line 1546, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes moveToRight {
+  /* line 1551, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateX(100%);
+  }
+}
+
+@keyframes moveToRight {
+  /* line 1555, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes moveFromRight {
+  /* line 1559, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateX(100%);
+  }
+}
+
+@keyframes moveFromRight {
+  /* line 1562, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes moveToTop {
+  /* line 1567, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+@keyframes moveToTop {
+  /* line 1571, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+@-webkit-keyframes moveFromTop {
+  /* line 1575, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+@keyframes moveFromTop {
+  /* line 1578, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+@-webkit-keyframes moveToBottom {
+  /* line 1583, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateY(100%);
+  }
+}
+
+@keyframes moveToBottom {
+  /* line 1587, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+@-webkit-keyframes moveFromBottom {
+  /* line 1591, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateY(100%);
+  }
+}
+
+@keyframes moveFromBottom {
+  /* line 1594, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+/* fade */
+@-webkit-keyframes fade {
+  /* line 1601, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+  }
+}
+
+@keyframes fade {
+  /* line 1605, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+  }
+}
+
+/* move from / to and fade */
+@-webkit-keyframes moveToLeftFade {
+  /* line 1612, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes moveToLeftFade {
+  /* line 1616, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes moveFromLeftFade {
+  /* line 1620, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes moveFromLeftFade {
+  /* line 1623, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes moveToRightFade {
+  /* line 1628, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateX(100%);
+  }
+}
+
+@keyframes moveToRightFade {
+  /* line 1632, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes moveFromRightFade {
+  /* line 1636, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateX(100%);
+  }
+}
+
+@keyframes moveFromRightFade {
+  /* line 1639, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes moveToTopFade {
+  /* line 1644, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+@keyframes moveToTopFade {
+  /* line 1648, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+@-webkit-keyframes moveFromTopFade {
+  /* line 1652, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+@keyframes moveFromTopFade {
+  /* line 1655, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+@-webkit-keyframes moveToBottomFade {
+  /* line 1660, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateY(100%);
+  }
+}
+
+@keyframes moveToBottomFade {
+  /* line 1664, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+@-webkit-keyframes moveFromBottomFade {
+  /* line 1668, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateY(100%);
+  }
+}
+
+@keyframes moveFromBottomFade {
+  /* line 1671, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+/********************************* keyframes **************************************/
+/* scale and fade */
+@-webkit-keyframes scaleDown {
+  /* line 1681, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.8);
+  }
+}
+
+@keyframes scaleDown {
+  /* line 1685, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@-webkit-keyframes scaleUp {
+  /* line 1689, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.8);
+  }
+}
+
+@keyframes scaleUp {
+  /* line 1692, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@-webkit-keyframes scaleUpDown {
+  /* line 1696, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+  }
+}
+
+@keyframes scaleUpDown {
+  /* line 1699, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+
+@-webkit-keyframes scaleDownUp {
+  /* line 1704, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+  }
+}
+
+@keyframes scaleDownUp {
+  /* line 1708, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+
+@-webkit-keyframes scaleDownCenter {
+  /* line 1713, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+  }
+}
+
+@keyframes scaleDownCenter {
+  /* line 1717, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+}
+
+@-webkit-keyframes scaleUpCenter {
+  /* line 1721, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+  }
+}
+
+@keyframes scaleUpCenter {
+  /* line 1724, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+}
+
+/********************************* keyframes **************************************/
+/* rotate sides first and scale */
+@-webkit-keyframes rotateRightSideFirst {
+  /* line 1734, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateY(15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  /* line 1735, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateRightSideFirst {
+  /* line 1739, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateY(15deg);
+    transform: rotateY(15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  /* line 1740, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotateLeftSideFirst {
+  /* line 1745, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateY(-15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  /* line 1746, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateLeftSideFirst {
+  /* line 1750, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateY(-15deg);
+    transform: rotateY(-15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  /* line 1751, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotateTopSideFirst {
+  /* line 1756, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateX(15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  /* line 1757, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateTopSideFirst {
+  /* line 1761, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateX(15deg);
+    transform: rotateX(15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  /* line 1762, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotateBottomSideFirst {
+  /* line 1767, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateX(-15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  /* line 1768, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateBottomSideFirst {
+  /* line 1772, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateX(-15deg);
+    transform: rotateX(-15deg);
+    opacity: .8;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  /* line 1773, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: scale(0.8) translateZ(-200px);
+    transform: scale(0.8) translateZ(-200px);
+    opacity: 0;
+  }
+}
+
+/* flip */
+@-webkit-keyframes flipOutRight {
+  /* line 1780, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateY(90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipOutRight {
+  /* line 1784, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateY(90deg);
+    transform: translateZ(-1000px) rotateY(90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipInLeft {
+  /* line 1788, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipInLeft {
+  /* line 1791, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+    transform: translateZ(-1000px) rotateY(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipOutLeft {
+  /* line 1796, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipOutLeft {
+  /* line 1800, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+    transform: translateZ(-1000px) rotateY(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipInRight {
+  /* line 1804, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateY(90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipInRight {
+  /* line 1807, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateY(90deg);
+    transform: translateZ(-1000px) rotateY(90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipOutTop {
+  /* line 1812, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateX(90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipOutTop {
+  /* line 1816, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateX(90deg);
+    transform: translateZ(-1000px) rotateX(90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipInBottom {
+  /* line 1820, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateX(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipInBottom {
+  /* line 1823, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateX(-90deg);
+    transform: translateZ(-1000px) rotateX(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipOutBottom {
+  /* line 1828, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateX(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipOutBottom {
+  /* line 1832, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-1000px) rotateX(-90deg);
+    transform: translateZ(-1000px) rotateX(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipInTop {
+  /* line 1836, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateX(90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipInTop {
+  /* line 1839, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-1000px) rotateX(90deg);
+    transform: translateZ(-1000px) rotateX(90deg);
+    opacity: 0.2;
+  }
+}
+
+/* fall */
+@-webkit-keyframes rotateFall {
+  /* line 1845, ../scss/nodeppt2.0.scss */
+  0% {
+    -webkit-transform: rotateZ(0deg);
+  }
+
+  /* line 1846, ../scss/nodeppt2.0.scss */
+  20% {
+    -webkit-transform: rotateZ(10deg);
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  /* line 1847, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateZ(17deg);
+  }
+
+  /* line 1848, ../scss/nodeppt2.0.scss */
+  60% {
+    -webkit-transform: rotateZ(16deg);
+  }
+
+  /* line 1849, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: translateY(100%) rotateZ(17deg);
+  }
+}
+
+@keyframes rotateFall {
+  /* line 1852, ../scss/nodeppt2.0.scss */
+  0% {
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+  }
+
+  /* line 1853, ../scss/nodeppt2.0.scss */
+  20% {
+    -webkit-transform: rotateZ(10deg);
+    transform: rotateZ(10deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  /* line 1854, ../scss/nodeppt2.0.scss */
+  40% {
+    -webkit-transform: rotateZ(17deg);
+    transform: rotateZ(17deg);
+  }
+
+  /* line 1855, ../scss/nodeppt2.0.scss */
+  60% {
+    -webkit-transform: rotateZ(16deg);
+    transform: rotateZ(16deg);
+  }
+
+  /* line 1856, ../scss/nodeppt2.0.scss */
+  100% {
+    -webkit-transform: translateY(100%) rotateZ(17deg);
+    transform: translateY(100%) rotateZ(17deg);
+  }
+}
+
+/* newspaper */
+@-webkit-keyframes rotateOutNewspaper {
+  /* line 1863, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-3000px) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateOutNewspaper {
+  /* line 1867, ../scss/nodeppt2.0.scss */
+  to {
+    -webkit-transform: translateZ(-3000px) rotateZ(360deg);
+    transform: translateZ(-3000px) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotateInNewspaper {
+  /* line 1871, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-3000px) rotateZ(-360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateInNewspaper {
+  /* line 1874, ../scss/nodeppt2.0.scss */
+  from {
+    -webkit-transform: translateZ(-3000px) rotateZ(-360deg);
+    transform: translateZ(-3000px) rotateZ(-360deg);
+    opacity: 0;
+  }
+}
+
+/* push */
+@-webkit-keyframes rotatePushLeft {
+  /* line 1881, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateY(90deg);
+  }
+}
+
+@keyframes rotatePushLeft {
+  /* line 1885, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotatePushRight {
+  /* line 1890, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateY(-90deg);
+  }
+}
+
+@keyframes rotatePushRight {
+  /* line 1894, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateY(-90deg);
+    transform: rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes rotatePushTop {
+  /* line 1899, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg);
+  }
+}
+
+@keyframes rotatePushTop {
+  /* line 1903, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+  }
+}
+
+@-webkit-keyframes rotatePushBottom {
+  /* line 1908, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateX(90deg);
+  }
+}
+
+@keyframes rotatePushBottom {
+  /* line 1912, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+  }
+}
+
+/* pull */
+@-webkit-keyframes rotatePullRight {
+  /* line 1918, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateY(-90deg);
+  }
+}
+
+@keyframes rotatePullRight {
+  /* line 1921, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateY(-90deg);
+    transform: rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes rotatePullLeft {
+  /* line 1925, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateY(90deg);
+  }
+}
+
+@keyframes rotatePullLeft {
+  /* line 1928, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotatePullTop {
+  /* line 1932, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg);
+  }
+}
+
+@keyframes rotatePullTop {
+  /* line 1935, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+  }
+}
+
+@-webkit-keyframes rotatePullBottom {
+  /* line 1939, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateX(90deg);
+  }
+}
+
+@keyframes rotatePullBottom {
+  /* line 1942, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+  }
+}
+
+/* fold */
+@-webkit-keyframes rotateFoldRight {
+  /* line 1949, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+  }
+}
+
+@keyframes rotateFoldRight {
+  /* line 1953, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+    transform: translateX(100%) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateFoldLeft {
+  /* line 1958, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateFoldLeft {
+  /* line 1962, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+    transform: translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes rotateFoldTop {
+  /* line 1967, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+  }
+}
+
+@keyframes rotateFoldTop {
+  /* line 1971, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+    transform: translateY(-100%) rotateX(90deg);
+  }
+}
+
+@-webkit-keyframes rotateFoldBottom {
+  /* line 1976, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+  }
+}
+
+@keyframes rotateFoldBottom {
+  /* line 1980, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+    transform: translateY(100%) rotateX(-90deg);
+  }
+}
+
+/* unfold */
+@-webkit-keyframes rotateUnfoldLeft {
+  /* line 1986, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateUnfoldLeft {
+  /* line 1989, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+    transform: translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes rotateUnfoldRight {
+  /* line 1993, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+  }
+}
+
+@keyframes rotateUnfoldRight {
+  /* line 1996, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+    transform: translateX(100%) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateUnfoldTop {
+  /* line 2000, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+  }
+}
+
+@keyframes rotateUnfoldTop {
+  /* line 2003, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+    transform: translateY(-100%) rotateX(90deg);
+  }
+}
+
+@-webkit-keyframes rotateUnfoldBottom {
+  /* line 2007, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+  }
+}
+
+@keyframes rotateUnfoldBottom {
+  /* line 2010, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+    transform: translateY(100%) rotateX(-90deg);
+  }
+}
+
+/* room walls */
+@-webkit-keyframes rotateRoomLeftOut {
+  /* line 2017, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(90deg);
+  }
+}
+
+@keyframes rotateRoomLeftOut {
+  /* line 2021, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(90deg);
+    transform: translateX(-100%) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoomLeftIn {
+  /* line 2025, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateRoomLeftIn {
+  /* line 2028, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(-90deg);
+    transform: translateX(100%) rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoomRightOut {
+  /* line 2033, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateRoomRightOut {
+  /* line 2037, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(-90deg);
+    transform: translateX(100%) rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoomRightIn {
+  /* line 2041, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(90deg);
+  }
+}
+
+@keyframes rotateRoomRightIn {
+  /* line 2044, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(90deg);
+    transform: translateX(-100%) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoomTopOut {
+  /* line 2049, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(-90deg);
+  }
+}
+
+@keyframes rotateRoomTopOut {
+  /* line 2053, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(-90deg);
+    transform: translateY(-100%) rotateX(-90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoomTopIn {
+  /* line 2057, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(90deg);
+  }
+}
+
+@keyframes rotateRoomTopIn {
+  /* line 2060, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(90deg);
+    transform: translateY(100%) rotateX(90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoomBottomOut {
+  /* line 2065, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(90deg);
+  }
+}
+
+@keyframes rotateRoomBottomOut {
+  /* line 2069, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(90deg);
+    transform: translateY(100%) rotateX(90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoomBottomIn {
+  /* line 2073, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(-90deg);
+  }
+}
+
+@keyframes rotateRoomBottomIn {
+  /* line 2076, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(-90deg);
+    transform: translateY(-100%) rotateX(-90deg);
+  }
+}
+
+/* cube */
+@-webkit-keyframes rotateCubeLeftOut {
+  /* line 2083, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateX(-50%) translateZ(-200px) rotateY(-45deg);
+  }
+
+  /* line 2084, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateCubeLeftOut {
+  /* line 2088, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateX(-50%) translateZ(-200px) rotateY(-45deg);
+    transform: translateX(-50%) translateZ(-200px) rotateY(-45deg);
+  }
+
+  /* line 2089, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+    transform: translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes rotateCubeLeftIn {
+  /* line 2093, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+  }
+
+  /* line 2094, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateX(50%) translateZ(-200px) rotateY(45deg);
+  }
+}
+
+@keyframes rotateCubeLeftIn {
+  /* line 2097, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+    transform: translateX(100%) rotateY(90deg);
+  }
+
+  /* line 2098, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateX(50%) translateZ(-200px) rotateY(45deg);
+    transform: translateX(50%) translateZ(-200px) rotateY(45deg);
+  }
+}
+
+@-webkit-keyframes rotateCubeRightOut {
+  /* line 2103, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateX(50%) translateZ(-200px) rotateY(45deg);
+  }
+
+  /* line 2104, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+  }
+}
+
+@keyframes rotateCubeRightOut {
+  /* line 2108, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateX(50%) translateZ(-200px) rotateY(45deg);
+    transform: translateX(50%) translateZ(-200px) rotateY(45deg);
+  }
+
+  /* line 2109, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+    transform: translateX(100%) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateCubeRightIn {
+  /* line 2113, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+  }
+
+  /* line 2114, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateX(-50%) translateZ(-200px) rotateY(-45deg);
+  }
+}
+
+@keyframes rotateCubeRightIn {
+  /* line 2117, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+    transform: translateX(-100%) rotateY(-90deg);
+  }
+
+  /* line 2118, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateX(-50%) translateZ(-200px) rotateY(-45deg);
+    transform: translateX(-50%) translateZ(-200px) rotateY(-45deg);
+  }
+}
+
+@-webkit-keyframes rotateCubeTopOut {
+  /* line 2123, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateY(-50%) translateZ(-200px) rotateX(45deg);
+  }
+
+  /* line 2124, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+  }
+}
+
+@keyframes rotateCubeTopOut {
+  /* line 2128, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateY(-50%) translateZ(-200px) rotateX(45deg);
+    transform: translateY(-50%) translateZ(-200px) rotateX(45deg);
+  }
+
+  /* line 2129, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+    transform: translateY(-100%) rotateX(90deg);
+  }
+}
+
+@-webkit-keyframes rotateCubeTopIn {
+  /* line 2133, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+  }
+
+  /* line 2134, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateY(50%) translateZ(-200px) rotateX(-45deg);
+  }
+}
+
+@keyframes rotateCubeTopIn {
+  /* line 2137, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+    transform: translateY(100%) rotateX(-90deg);
+  }
+
+  /* line 2138, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateY(50%) translateZ(-200px) rotateX(-45deg);
+    transform: translateY(50%) translateZ(-200px) rotateX(-45deg);
+  }
+}
+
+@-webkit-keyframes rotateCubeBottomOut {
+  /* line 2143, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateY(50%) translateZ(-200px) rotateX(-45deg);
+  }
+
+  /* line 2144, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+  }
+}
+
+@keyframes rotateCubeBottomOut {
+  /* line 2148, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateY(50%) translateZ(-200px) rotateX(-45deg);
+    transform: translateY(50%) translateZ(-200px) rotateX(-45deg);
+  }
+
+  /* line 2149, ../scss/nodeppt2.0.scss */
+  100% {
+    opacity: .3;
+    -webkit-transform: translateY(100%) rotateX(-90deg);
+    transform: translateY(100%) rotateX(-90deg);
+  }
+}
+
+@-webkit-keyframes rotateCubeBottomIn {
+  /* line 2153, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+  }
+
+  /* line 2154, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-transform: translateY(-50%) translateZ(-200px) rotateX(45deg);
+  }
+}
+
+@keyframes rotateCubeBottomIn {
+  /* line 2157, ../scss/nodeppt2.0.scss */
+  0% {
+    opacity: .3;
+    -webkit-transform: translateY(-100%) rotateX(90deg);
+    transform: translateY(-100%) rotateX(90deg);
+  }
+
+  /* line 2158, ../scss/nodeppt2.0.scss */
+  50% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-transform: translateY(-50%) translateZ(-200px) rotateX(45deg);
+    transform: translateY(-50%) translateZ(-200px) rotateX(45deg);
+  }
+}
+
+/* carousel */
+@-webkit-keyframes rotateCarouselLeftOut {
+  /* line 2165, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(-150%) scale(0.4) rotateY(-65deg);
+  }
+}
+
+@keyframes rotateCarouselLeftOut {
+  /* line 2169, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(-150%) scale(0.4) rotateY(-65deg);
+    transform: translateX(-150%) scale(0.4) rotateY(-65deg);
+  }
+}
+
+@-webkit-keyframes rotateCarouselLeftIn {
+  /* line 2173, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(200%) scale(0.4) rotateY(65deg);
+  }
+}
+
+@keyframes rotateCarouselLeftIn {
+  /* line 2176, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(200%) scale(0.4) rotateY(65deg);
+    transform: translateX(200%) scale(0.4) rotateY(65deg);
+  }
+}
+
+@-webkit-keyframes rotateCarouselRightOut {
+  /* line 2181, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(200%) scale(0.4) rotateY(65deg);
+  }
+}
+
+@keyframes rotateCarouselRightOut {
+  /* line 2185, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateX(200%) scale(0.4) rotateY(65deg);
+    transform: translateX(200%) scale(0.4) rotateY(65deg);
+  }
+}
+
+@-webkit-keyframes rotateCarouselRightIn {
+  /* line 2189, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(-200%) scale(0.4) rotateY(-65deg);
+  }
+}
+
+@keyframes rotateCarouselRightIn {
+  /* line 2192, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateX(-200%) scale(0.4) rotateY(-65deg);
+    transform: translateX(-200%) scale(0.4) rotateY(-65deg);
+  }
+}
+
+@-webkit-keyframes rotateCarouselTopOut {
+  /* line 2197, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(-200%) scale(0.4) rotateX(65deg);
+  }
+}
+
+@keyframes rotateCarouselTopOut {
+  /* line 2201, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(-200%) scale(0.4) rotateX(65deg);
+    transform: translateY(-200%) scale(0.4) rotateX(65deg);
+  }
+}
+
+@-webkit-keyframes rotateCarouselTopIn {
+  /* line 2205, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(200%) scale(0.4) rotateX(-65deg);
+  }
+}
+
+@keyframes rotateCarouselTopIn {
+  /* line 2208, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(200%) scale(0.4) rotateX(-65deg);
+    transform: translateY(200%) scale(0.4) rotateX(-65deg);
+  }
+}
+
+@-webkit-keyframes rotateCarouselBottomOut {
+  /* line 2213, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(200%) scale(0.4) rotateX(-65deg);
+  }
+}
+
+@keyframes rotateCarouselBottomOut {
+  /* line 2217, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: .3;
+    -webkit-transform: translateY(200%) scale(0.4) rotateX(-65deg);
+    transform: translateY(200%) scale(0.4) rotateX(-65deg);
+  }
+}
+
+@-webkit-keyframes rotateCarouselBottomIn {
+  /* line 2221, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(-200%) scale(0.4) rotateX(65deg);
+  }
+}
+
+@keyframes rotateCarouselBottomIn {
+  /* line 2224, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: .3;
+    -webkit-transform: translateY(-200%) scale(0.4) rotateX(65deg);
+    transform: translateY(-200%) scale(0.4) rotateX(65deg);
+  }
+}
+
+/* sides */
+@-webkit-keyframes rotateSidesOut {
+  /* line 2231, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateZ(-500px) rotateY(90deg);
+  }
+}
+
+@keyframes rotateSidesOut {
+  /* line 2235, ../scss/nodeppt2.0.scss */
+  to {
+    opacity: 0;
+    -webkit-transform: translateZ(-500px) rotateY(90deg);
+    transform: translateZ(-500px) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateSidesIn {
+  /* line 2239, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateZ(-500px) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateSidesIn {
+  /* line 2242, ../scss/nodeppt2.0.scss */
+  from {
+    opacity: 0;
+    -webkit-transform: translateZ(-500px) rotateY(-90deg);
+    transform: translateZ(-500px) rotateY(-90deg);
+  }
+}
+
+/* slide */
 @-webkit-keyframes rotateSlideOut {
-  /* line 1271, ../scss/nodeppt2.0.scss */
+  /* line 2249, ../scss/nodeppt2.0.scss */
   25% {
     opacity: .5;
     -webkit-transform: translateZ(-500px);
   }
 
-  /* line 1272, ../scss/nodeppt2.0.scss */
+  /* line 2250, ../scss/nodeppt2.0.scss */
   75% {
     opacity: .5;
     -webkit-transform: translateZ(-500px) translateX(-200%);
   }
 
-  /* line 1273, ../scss/nodeppt2.0.scss */
+  /* line 2251, ../scss/nodeppt2.0.scss */
   100% {
     opacity: .5;
     -webkit-transform: translateZ(-500px) translateX(-200%);
-  }
-}
-
-@-moz-keyframes rotateSlideOut {
-  /* line 1276, ../scss/nodeppt2.0.scss */
-  25% {
-    opacity: .5;
-    -moz-transform: translateZ(-500px);
-  }
-
-  /* line 1277, ../scss/nodeppt2.0.scss */
-  75% {
-    opacity: .5;
-    -moz-transform: translateZ(-500px) translateX(-200%);
-  }
-
-  /* line 1278, ../scss/nodeppt2.0.scss */
-  100% {
-    opacity: .5;
-    -moz-transform: translateZ(-500px) translateX(-200%);
   }
 }
 
 @keyframes rotateSlideOut {
-  /* line 1281, ../scss/nodeppt2.0.scss */
+  /* line 2255, ../scss/nodeppt2.0.scss */
   25% {
     opacity: .5;
+    -webkit-transform: translateZ(-500px);
     transform: translateZ(-500px);
   }
 
-  /* line 1282, ../scss/nodeppt2.0.scss */
+  /* line 2256, ../scss/nodeppt2.0.scss */
   75% {
     opacity: .5;
+    -webkit-transform: translateZ(-500px) translateX(-200%);
     transform: translateZ(-500px) translateX(-200%);
   }
 
-  /* line 1283, ../scss/nodeppt2.0.scss */
+  /* line 2257, ../scss/nodeppt2.0.scss */
   100% {
     opacity: .5;
+    -webkit-transform: translateZ(-500px) translateX(-200%);
     transform: translateZ(-500px) translateX(-200%);
   }
 }
 
 @-webkit-keyframes rotateSlideIn {
-  /* line 1286, ../scss/nodeppt2.0.scss */
+  /* line 2261, ../scss/nodeppt2.0.scss */
   0%, 25% {
     opacity: .5;
     -webkit-transform: translateZ(-500px) translateX(200%);
   }
 
-  /* line 1287, ../scss/nodeppt2.0.scss */
+  /* line 2262, ../scss/nodeppt2.0.scss */
   75% {
     opacity: .5;
     -webkit-transform: translateZ(-500px);
   }
 
-  /* line 1288, ../scss/nodeppt2.0.scss */
+  /* line 2263, ../scss/nodeppt2.0.scss */
   100% {
     opacity: 1;
     -webkit-transform: translateZ(0) translateX(0);
   }
 }
 
-@-moz-keyframes rotateSlideIn {
-  /* line 1291, ../scss/nodeppt2.0.scss */
-  0%, 25% {
-    opacity: .5;
-    -moz-transform: translateZ(-500px) translateX(200%);
-  }
-
-  /* line 1292, ../scss/nodeppt2.0.scss */
-  75% {
-    opacity: .5;
-    -moz-transform: translateZ(-500px);
-  }
-
-  /* line 1293, ../scss/nodeppt2.0.scss */
-  100% {
-    opacity: 1;
-    -moz-transform: translateZ(0) translateX(0);
-  }
-}
-
 @keyframes rotateSlideIn {
-  /* line 1296, ../scss/nodeppt2.0.scss */
+  /* line 2266, ../scss/nodeppt2.0.scss */
   0%, 25% {
     opacity: .5;
+    -webkit-transform: translateZ(-500px) translateX(200%);
     transform: translateZ(-500px) translateX(200%);
   }
 
-  /* line 1297, ../scss/nodeppt2.0.scss */
+  /* line 2267, ../scss/nodeppt2.0.scss */
   75% {
     opacity: .5;
+    -webkit-transform: translateZ(-500px);
     transform: translateZ(-500px);
   }
 
-  /* line 1298, ../scss/nodeppt2.0.scss */
+  /* line 2268, ../scss/nodeppt2.0.scss */
   100% {
     opacity: 1;
+    -webkit-transform: translateZ(0) translateX(0);
     transform: translateZ(0) translateX(0);
   }
 }

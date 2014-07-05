@@ -1,13 +1,14 @@
 title: nodeppt markdown 演示
 speaker: Theo Wang
 url: https://github.com/ksky521/nodePPT
-transition: cards
+transition: kontext
 files: /js/demo.js,/css/demo.css
 
 [slide]
 
 # 封面样式
 ## h1是作为封面用的，内部的都用h2
+<small>演讲者：xxx</small>
 
 [slide]
 
@@ -61,6 +62,91 @@ nodeppt：https://github.com/ksky521/nodePPT
 扩展名 | .less | .sass/.scss | .styl
 特点 | 老牌，用户多，支持js解析 | 功能全，有成型框架，发展快 | 语法多样，小众
 案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) |
+
+[slide]
+## 表格示例2
+### 市面上主要的css预处理器：less\sass\stylus
+---
+[code]
+    <table>
+        <thead>
+            <tr>
+            <th align="left"></th>
+            <th align="center">less</th>
+            <th align="right">sass</th>
+            <th>stylus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td align="left">环境</td>
+            <td align="center"  class="highlight">js/nodejs</td>
+            <td align="right">Ruby</td>
+            <td>nodejs</td>
+            </tr>
+            <tr>
+            <td align="left">扩展名</td>
+            <td align="center">.less</td>
+            <td align="right"  class="highlight">.sass/.scss</td>
+            <td>.styl</td>
+            </tr>
+            <tr>
+            <td align="left">特点</td>
+            <td align="center">老牌，用户多，支持js解析</td>
+            <td align="right">功能全，有成型框架，发展快</td>
+            <td>语法多样，小众</td>
+            </tr>
+            <tr>
+            <td align="left">案例/框架</td>
+            <td align="center"><a href="http://getbootstrap.com/">Bootstrap</a></td>
+            <td align="right"><a href="http://compass-style.org">compass</a> <a href="http://bourbon.io">bourbon</a></td>
+            <td></td>
+            </tr>
+        </tbody>
+    </table>
+[/code]
+
+[slide]
+## 一些Tag的样式，多个背景
+----
+
+<button>按钮</button>
+
+<a href="#">链接</a>
+
+> 这是一个blockquote <small>small一下</small>
+
+这是一个p标签
+
+> 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
+
+[slide]
+## 一些Tag的样式，多个背景
+----
+
+<button>按钮</button>
+
+<a href="#">链接</a>
+
+> 这是一个blockquote <small>small一下</small>
+
+这是一个p标签
+
+> 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
+
+[slide]
+## 一些Tag的样式，多个背景
+----
+
+<button>按钮</button>
+
+<a href="#">链接</a>
+
+> 这是一个blockquote <small>small一下</small>
+
+这是一个p标签
+
+> 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
 
 [slide]
 
@@ -174,8 +260,10 @@ markdown语法如下：
 [slide]
 ## 多种转场动画随心换
 ----
-支持的动画包括：
-
+ * newspaper
+ * glue
+ * kontext
+ * move
  * horizontal3d
  * horizontal
  * vertical3d
@@ -183,7 +271,14 @@ markdown语法如下：
  * zoomout
  * cards
 
-当然你可以自己写更炫的动画啊，记得[fork](https://github.com/ksky521/nodePPT)代码然后push给我哦~
+[slide data-transition="newspaper"]
+
+## 这是一个newspaper的动画
+----
+使用方法：
+
+&#91;slide data-transition="newspaper"&#93;
+
 
 [slide data-transition="zoomin"]
 
