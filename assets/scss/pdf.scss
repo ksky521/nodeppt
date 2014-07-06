@@ -17,27 +17,30 @@ html {
     overflow: visible;
 }
 slides{
-    > slide, > .slide{
+    > slide .slide-wrapper{
         opacity: 1 !important;
         visibility: visible !important;
         display: block !important;
         position: static;
-        width: 100%;
-
-        left: auto;
-        top: auto;
+        width: 1100px !important;
+        color: white !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
         margin: 0 auto 10pt !important;
 
         overflow: visible;
         display: block;
-        @include perspective(none);
-        @include perspective-origin(50% 50%);
-        @include border-radius(0);
+        @include perspective(none !important);
+        @include perspective-origin(50% 50% !important);
+        @include border-radius(0 !important);
         @include transform(none !important);
 
         div, article,p,li,ul,h1,h3,h2,span{
             opacity: 1 !important;
             visibility: visible !important;
+            color: white !important;
         }
         .note{
             display: none !important;

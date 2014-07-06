@@ -239,11 +239,7 @@
             focusOverview_();
             return;
         }
-        var $curSlide = $slides[curIndex].querySelectorAll('.slide-wrapper')[0];
-        if ($curSlide) {
-            // console.log(getAbsoluteHeight($curSlide));
-            $curSlide.style.top = Math.max((290 - getAbsoluteHeight($curSlide) / 2), 0) + 'px';
-        }
+
     }
 
     function updateSlideClass() {
@@ -277,6 +273,11 @@
                     updateSlideClass_(i);
                     break;
             }
+        }
+        var $curSlide = $slides[curIndex].querySelectorAll('.slide-wrapper')[0];
+        if ($curSlide) {
+            // console.log(getAbsoluteHeight($curSlide));
+            $curSlide.style.top = Math.max((290 - getAbsoluteHeight($curSlide) / 2), 0) + 'px';
         }
     }
 
