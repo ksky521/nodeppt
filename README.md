@@ -6,6 +6,18 @@ nodePPT - 做最好的网页版ppt
  * 修改样式
  * 添加highlightjs最新版
 
+## 特点
+* [转场动画多](#transition)
+* [支持socket](#socket)
+* [支持多窗口互动](#postmessage)
+* 手机可以摇一摇
+* markdown语法就可以写ppt
+* [支持导出html](#export-html)
+* [支持导出pdf](#export-pdf)
+* [支持转场回调](#callback)
+* [支持html和markdown语法混编](#mixed-code)
+
+
 ## 安装
 
 ```bash
@@ -32,11 +44,38 @@ nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
 nodeppt start -c socket
 # 不加-c默认使用postMessage，窗口联动，即list页面【多窗口】链接
 ```
+
+#### 启用socket控制
+
+##### 方法一：使用`start`命令行
+
+```bash
+nodeppt start -c socket
+```
+在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页
+
+##### 方法二：使用url参数
+
+```bash
+http://127.0.0.1:8080/md/demo.md?controller=socket
+```
+
+在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页
+
+#### 启用postMessage控制
+默认使用postMessage多窗口控制，打开方法：
+
+```bash
+http://127.0.0.1:8080/md/demo.md?_multiscreen=1
+```
+
+
 ### 导出ppt
 这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
 
 导出ppt有两种，一种是**pdf版**，一种是**html版**
 
+<a name="export-pdf"></a>
 #### pdf版
 需要安装[phantomJS](http://phantomjs.org/)。
 
@@ -48,6 +87,8 @@ nodeppt start
 # 导出文件
 nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
 ```
+
+<a name="export-html"></a>
 #### html版
 
 ```bash
@@ -96,7 +137,7 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
 ```
 **目录关系**：可以在md同级目录下创建img、js、css等文件夹，然后在markdown里面引用，nodeppt默认会先查找md文件同级目录下面的静态资源，没有再找默认的```assets```文件夹下静态内容
 
-
+<a name="transition"></a>
 支持的转场动画包括：
 
  * horizontal3d
@@ -110,7 +151,7 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
  * move
  * newspaper
 
-如果设置单页动画，请参考下面的**单页动画设置**部分~
+如果设置单页动画，请参考下面的**[单页动画设置](#transition-page)**部分~
 
 #### 分页
 通过```[slide]```作为每页ppt的间隔，如果需要添加单页背景，使用下面的语法：
@@ -135,6 +176,8 @@ nodeppt：https://github.com/ksky521/nodePPT
 #### 代码格式化
 语法跟**Github Flavored Markdown** 一样~
 
+
+<a name="transition-page"></a>
 #### 单页动画设置
 在md文件，顶部 ```配置``` 可以设置全局转场动画，如果要设置单页的转场动画，可以通过下面的语法
 
@@ -143,6 +186,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 这是一个vertical3d的动画
 ```
 
+<a name="mixed-code"></a>
 #### 插入html代码
 如果需要完全diy自己的ppt内容，可以使用```[code][/code]``` 来包裹html代码。例如：
 
@@ -168,7 +212,8 @@ nodeppt：https://github.com/ksky521/nodePPT
 [/code]
 ```
 
-#### 出入回调
+<a name="callback"></a>
+#### 转场回调
 前端的ppt，难免会在页面中演示一些demo，除了上面的插入html语法：```[code][/code]``` 之外，还提供了```in-callback```和```out-callback```，分别用于：切换（切走）到当前ppt，执行的js函数名。例如：
 
 ```markdown

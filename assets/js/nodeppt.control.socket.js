@@ -113,9 +113,6 @@ Slide.Control.add('socket', function(S, broadcast) {
 			webSocket.on('system', function(data) {
 				console.log(data);
 			});
-			webSocket.on('connect', function(data){
-				console.log(data);
-			});
 
 			this[this.role + 'Connect']();
 		},
