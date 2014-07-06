@@ -153,20 +153,37 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 代码格式化
 ### 使用 **highlightjs**
 ----
+[code]
+<div class="columns-2">
+    <pre><code class="javascript">
+    (function(window, document){
+        var a = 1;
+        var test = function(){
+            var b = 1;
+            alert(b);
+        };
+        //泛数组转换为数组
+        function toArray(arrayLike) {
+            return [].slice.call(arrayLike);
+        }
+    }(window, document));
+    </code></pre>
+    <pre><code class="javascript">
+    (function(window, document){
+        var a = 1;
+        var test = function(){
+            var b = 1;
+            alert(b);
+        };
+        //泛数组转换为数组
+        function toArray(arrayLike) {
+            return [].slice.call(arrayLike);
+        }
+    }(window, document));
+    </code></pre>
+</div>
+[/code]
 
-```javascript
-(function(window, document){
-    var a = 1;
-    var test = function(){
-        var b = 1;
-        alert(b);
-    };
-    //泛数组转换为数组
-    function toArray(arrayLike) {
-        return [].slice.call(arrayLike);
-    }
-}(window, document));
-```
 [slide]
 ## 支持 HTML 语法插入
 ----

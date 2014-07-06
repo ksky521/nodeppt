@@ -55,7 +55,7 @@ $slide-border-radius: 5px;
 
 $slide-tap-area-width: 100px;
 
-$article-content-top-padding: 45px;
+$article-content-top-padding: 20px;
 
 @mixin highlight-color($color: $brand-yellow) {
     -webkit-tap-highlight-color: $color;
@@ -167,14 +167,14 @@ body {
     text-align: center;
 }
 p {
-    line-height: 1.5em;
+    line-height: 1.75em;
 }
 slides > slide .slide-wrapper{
     width: $slide-width;
-    height: $slide-height;
+    // height: $slide-height;
     text-align: center;
     margin: 0 auto;
-
+    position: relative;
 
     > hgroup + article {
         margin-top: $article-content-top-padding;

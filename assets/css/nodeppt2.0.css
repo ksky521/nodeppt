@@ -340,19 +340,19 @@ body {
 
 /* line 169, ../scss/nodeppt2.0.scss */
 p {
-  line-height: 1.5em;
+  line-height: 1.75em;
 }
 
 /* line 172, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper {
   width: 900px;
-  height: 600px;
   text-align: center;
   margin: 0 auto;
+  position: relative;
 }
 /* line 179, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > hgroup + article {
-  margin-top: 45px;
+  margin-top: 20px;
 }
 /* line 183, ../scss/nodeppt2.0.scss */
 slides > slide .slide-wrapper > hgroup + article.flexbox.vcenter, slides > slide .slide-wrapper > hgroup + article.flexbox.vleft, slides > slide .slide-wrapper > hgroup + article.flexbox.vright {
@@ -764,7 +764,7 @@ code {
 /* line 523, ../scss/nodeppt2.0.scss */
 iframe {
   width: 100%;
-  height: 430px;
+  height: 480px;
   background: white;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
