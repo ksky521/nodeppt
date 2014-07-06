@@ -1113,15 +1113,15 @@ article.smaller q:before, article.smaller q:after {
 .with-notes.popup slide {
   width: 1100px;
   overflow: visible;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-  -webkit-transform-origin: 0 0;
-  -moz-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  -o-transform-origin: 0 0;
-  transform-origin: 0 0;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+  -webkit-transform-origin: 0 0 !important;
+  -moz-transform-origin: 0 0 !important;
+  -ms-transform-origin: 0 0 !important;
+  -o-transform-origin: 0 0 !important;
+  transform-origin: 0 0 !important;
 }
 /* line 772, ../scss/nodeppt2.0.scss */
 .with-notes.popup slide[data-transition].current, .with-notes.popup slide[data-transition].next, .with-notes.popup slide[data-transition].past {
@@ -1609,7 +1609,7 @@ aside.gdbar img {
 
   /* line 1148, ../scss/nodeppt2.0.scss */
   pre, code {
-    font-family: monospace !important;
+    font-family: 'Source Code Pro',monospace !important;
   }
 }
 /* line 1152, ../scss/nodeppt2.0.scss */

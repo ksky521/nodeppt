@@ -766,8 +766,8 @@ article.smaller {
         slide{
             width: 1100px;
             overflow: visible;
-            @include transition(none);
-            @include transform-origin(0, 0);
+            @include transition(none !important);
+            @include transform-origin(0, 0 !important);
 
             &[data-transition].current,&[data-transition].next,&[data-transition].past{
                 @include transition(none);
@@ -1146,7 +1146,7 @@ aside.gdbar {
     }
 
     pre, code {
-        font-family: monospace !important;
+        font-family: 'Source Code Pro',monospace !important;
     }
 }
 .qrcode{

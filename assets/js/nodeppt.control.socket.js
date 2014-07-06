@@ -33,7 +33,7 @@ Slide.Control.add('socket', function(S, broadcast) {
 				showQrcode.isShow = true;
 			}
 		}
-	}
+	};
 
 	var webSocket;
 
@@ -72,8 +72,8 @@ Slide.Control.add('socket', function(S, broadcast) {
 					action: 'from control order',
 					fn: fnName,
 					args: args
-				})
-			}
+				});
+			};
 			//角色是控制端，则连被控制端（client）服务器
 
 			webSocket.on('data from another client', function(data) {
@@ -111,6 +111,9 @@ Slide.Control.add('socket', function(S, broadcast) {
 				}
 			});
 			webSocket.on('system', function(data) {
+				console.log(data);
+			});
+			webSocket.on('connect', function(data){
 				console.log(data);
 			});
 

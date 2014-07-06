@@ -277,7 +277,7 @@
         if (className) {
             el.classList.add(className);
         }
-        if (pageClass && location.href.indexOf('_multiscreen=control') === -1) {
+        if (pageClass && location.href.indexOf('_multiscreen=control') === -1  && location.href.indexOf('iscontroller=1') === -1) {
             el.classList.add(pageClass);
         }
 
