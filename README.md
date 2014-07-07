@@ -1,13 +1,13 @@
 nodePPT - 做最好的网页版ppt
 =============
-## 0.7.0
- * 添加slide动画
+## 0.7 版本更新
+ * 添加更多转场动效
  * bug fix
  * 修改样式
  * 添加highlightjs最新版
 
 ## 特点
-* [转场动画多](#transition)
+* [转场动效多](#transition)
 * [支持socket](#socket)
 * [支持多窗口互动](#postmessage)
 * 手机可以摇一摇
@@ -16,6 +16,7 @@ nodePPT - 做最好的网页版ppt
 * [支持导出pdf](#export-pdf)
 * [支持转场回调](#callback)
 * [支持html和markdown语法混编](#mixed-code)
+* 支持画板标注功能
 
 
 ## 安装
