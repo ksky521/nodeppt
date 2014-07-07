@@ -168,29 +168,7 @@
 
         return true;
     }
-    //获取Element的高度
-    function getAbsoluteHeight(element) {
-        var height = 0;
-        if (element) {
-            var absoluteChildren = 0;
-            toArray(element.childNodes).forEach(function(child) {
 
-                if (typeof child.offsetTop === 'number' && child.style) {
-                    if (child.style.position === 'absolute') {
-                        absoluteChildren += 1;
-                    }
-                    height = Math.max(height, child.offsetTop + child.offsetHeight);
-                }
-
-            });
-            if (absoluteChildren === 0) {
-                height = element.offsetHeight;
-            }
-
-        }
-        return height;
-
-    }
     //设置单行页面添加
 
     function makeBuildLists() {
@@ -250,7 +228,6 @@
             pageClass = 'pageup';
         } else {
             //往后翻页
-
         }
         for (var i = 0, len = $slides.length; i < len; ++i) {
             switch (i) {
@@ -274,11 +251,7 @@
                     break;
             }
         }
-        var $curSlide = $slides[curIndex].querySelectorAll('.slide-wrapper')[0];
-        if ($curSlide) {
-            // console.log(getAbsoluteHeight($curSlide));
-            $curSlide.style.top = Math.max((290 - getAbsoluteHeight($curSlide) / 2), 0) + 'px';
-        }
+
     }
 
     function overview() {
