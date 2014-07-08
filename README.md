@@ -1,4 +1,4 @@
-nodePPT - 做最好的网页版ppt
+nodePPT - 让你爱上做分享！
 =============
 ## 0.8 版本更新
  * 直接支持html和markdown混编，不在使用[code]语法
