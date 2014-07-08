@@ -1,5 +1,12 @@
 nodePPT - 做最好的网页版ppt
 =============
+## 0.8 版本更新
+ * 直接支持html和markdown混编，不在使用[code]语法
+ * 添加更多列表渐显动效：moveIn/fadeIn/zoomIn/bounceIn
+ * 支持加粗和强调，按键【H】动效
+ * 修改不合理的样式
+ * 持续优化~
+
 ## 0.7 版本更新
  * 添加更多转场动效
  * bug fix
@@ -109,19 +116,7 @@ nodeppt generate ./ppts/demo.md -a -o output/path
 nodeppt path -o output/path -a
 ```
 
-### 创建
-支持markdown语法快速创建网页幻灯片。
 
-```bash
-nodeppt create markdown_file_name
-```
-
-按照提示输入基本信息后就可以创建，默认创建是markdown版本，如果需要创建html版本，可以使用：
-
-```bash
-nodeppt create ppt-name.html
-# or
-nodeppt create ppt-name.htm
 ```
 
 #### markdown语法
@@ -189,15 +184,13 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 <a name="mixed-code"></a>
 #### 插入html代码
-如果需要完全diy自己的ppt内容，可以使用```[code][/code]``` 来包裹html代码。例如：
+如果需要完全diy自己的ppt内容，可以**直接使用** html标签，支持markdown和html混编。例如：
 
 ```markdown
-[code]
 <div class="file-setting">
     <p>这是html</p>
 </div>
 <p id="css-demo">这是css样式</p>
-<p>使用&#91;code]&#91;/code]包裹的代码，会直接插入到页面</p>
 <p>具体看下项目中 ppts/demo.md 代码</p>
 <script>
     function testScriptTag(){
@@ -210,12 +203,11 @@ nodeppt：https://github.com/ksky521/nodePPT
     color: red;
 }
 </style>
-[/code]
 ```
 
 <a name="callback"></a>
 #### 转场回调
-前端的ppt，难免会在页面中演示一些demo，除了上面的插入html语法：```[code][/code]``` 之外，还提供了```in-callback```和```out-callback```，分别用于：切换（切走）到当前ppt，执行的js函数名。例如：
+前端的ppt，难免会在页面中演示一些demo，除了上面的插入html语法外，还提供了```incallback```和```outcallback```，分别用于：切入（切走）到当前ppt，执行的js函数名。例如：
 
 ```markdown
 [slide data-outcallback="outcallback" data-incallback="incallback"]
@@ -293,7 +285,6 @@ nodeppt start -h
 
  * 执行 ```nodeppt start```
  * 访问 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
- * 查看在线demo：[http://myslide.duapp.com/](http://myslide.duapp.com/)
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ksky521/nodeppt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

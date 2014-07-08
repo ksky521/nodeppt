@@ -28,7 +28,7 @@ files: /js/demo.js,/css/demo.css
 使用：.class{:.class}
 使用：#id{:#id}
 组合使用：{:.class.class2 width="200px"}
-父元素样式：{:&.class}
+父元素样式使用&：{:&.class}
 ```
 
 [slide]
@@ -46,11 +46,45 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 这是一个列表
 ---
 
-* 列表支持淡入淡出 {:&.build}
-    * 上下左右方向键翻页 {:&.build}
+* 上下左右方向键翻页
+    * 列表支持渐显动画 {:&.moveIn}
     * 支持多级列表
-    * 使用方法，markdown列表第一条加上：{:&.build}
+    * 这个动画是moveIn
 * 完全基于markdown语法哦
+
+
+[slide]
+## 列表渐显动画：fadeIn
+----
+* 列表支持渐显动画哦 {:&.fadeIn}
+    * 使用方法，markdown列表第一条加上：{:&.动画类型}
+* 动画类型
+    * fadeIn
+    * bounceIn
+    * moveIn
+    * zoomIn
+
+[slide]
+## 列表渐显动画：zoomIn
+----
+* 列表支持渐显动画哦 {:&.zoomIn}
+* 动画类型
+    * fadeIn
+    * bounceIn
+    * moveIn
+    * zoomIn
+
+[slide]
+## 列表渐显动画：bounceIn
+----
+* 列表支持渐显动画哦 {:&.bounceIn}
+* 动画类型
+    * fadeIn
+    * bounceIn
+    * moveIn
+    * zoomIn
+
+
 
 [slide]
 ## 表格示例
@@ -58,56 +92,14 @@ nodeppt：https://github.com/ksky521/nodePPT
 ---
  |less| sass | stylus
 :-------|:------:|-------:|--------
-环境 |js/nodejs | Ruby | nodejs
+环境 |js/nodejs | Ruby(这列右对齐) | nodejs(高亮) {:.highlight}
 扩展名 | .less | .sass/.scss | .styl
 特点 | 老牌，用户多，支持js解析 | 功能全，有成型框架，发展快 | 语法多样，小众
 案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) |
 
-[slide]
-## 表格示例2
-### 市面上主要的css预处理器：less\sass\stylus
----
-[code]
-    <table>
-        <thead>
-            <tr>
-            <th align="left"></th>
-            <th align="center">less</th>
-            <th align="right">sass</th>
-            <th>stylus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td align="left">环境</td>
-            <td align="center"  class="highlight">js/nodejs</td>
-            <td align="right">Ruby</td>
-            <td>nodejs</td>
-            </tr>
-            <tr>
-            <td align="left">扩展名</td>
-            <td align="center">.less</td>
-            <td align="right"  class="highlight">.sass/.scss</td>
-            <td>.styl</td>
-            </tr>
-            <tr>
-            <td align="left">特点</td>
-            <td align="center">老牌，用户多，支持js解析</td>
-            <td align="right">功能全，有成型框架，发展快</td>
-            <td>语法多样，小众</td>
-            </tr>
-            <tr>
-            <td align="left">案例/框架</td>
-            <td align="center"><a href="http://getbootstrap.com/">Bootstrap</a></td>
-            <td align="right"><a href="http://compass-style.org">compass</a> <a href="http://bourbon.io">bourbon</a></td>
-            <td></td>
-            </tr>
-        </tbody>
-    </table>
-[/code]
 
 [slide]
-## 一些Tag的样式，多个背景
+## 一些Tag的样式，多个背景测试
 ----
 
 <button>按钮</button>
@@ -121,7 +113,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 > 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
 
 [slide]
-## 一些Tag的样式，多个背景
+## 一些Tag的样式，多个背景测试
 ----
 
 <button>按钮</button>
@@ -135,7 +127,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 > 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
 
 [slide]
-## 一些Tag的样式，多个背景
+## 一些Tag的样式，多个背景测试
 ----
 
 <button>按钮</button>
@@ -151,76 +143,81 @@ nodeppt：https://github.com/ksky521/nodePPT
 [slide]
 
 ## 代码格式化
-### 使用 **highlightjs**
+### 使用 `highlightjs` 进行语法高亮
 ----
-[code]
 <div class="columns-2">
-    <pre><code class="javascript">
-    (function(window, document){
-        var a = 1;
-        var test = function(){
-            var b = 1;
-            alert(b);
-        };
-        //泛数组转换为数组
-        function toArray(arrayLike) {
-            return [].slice.call(arrayLike);
-        }
-    }(window, document));
+    <pre><code class="javascript">(function(window, document){
+    var a = 1;
+    var test = function(){
+        var b = 1;
+        alert(b);
+    };
+    //泛数组转换为数组
+    function toArray(arrayLike) {
+        return [].slice.call(arrayLike);
+    }
+}(window, document));
     </code></pre>
-    <pre><code class="javascript">
-    (function(window, document){
-        var a = 1;
-        var test = function(){
-            var b = 1;
-            alert(b);
-        };
-        //泛数组转换为数组
-        function toArray(arrayLike) {
-            return [].slice.call(arrayLike);
-        }
-    }(window, document));
+    <pre><code class="javascript">(function(window, document){
+    var a = 1;
+    var test = function(){
+        var b = 1;
+        alert(b);
+    };
+    //泛数组转换为数组
+    function toArray(arrayLike) {
+        return [].slice.call(arrayLike);
+    }
+}(window, document));
     </code></pre>
 </div>
-[/code]
 
-[slide]
-## 支持 HTML 语法插入
+[slide data-incallback="testScriptTag"]
+## 支持 HTML 和 markdown 语法混编
 ----
-[code]
+
 <div class="file-setting">
     <p>这是html</p>
 </div>
 <p id="css-demo">这是css样式</p>
-<p>使用&#91;code]&#91;/code]包裹的代码，会直接插入到页面</p>
-<p>具体看下项目中 ppts/demo.md 代码</p>
+<p>将html代码直接混编到**markdown**文件中即可</p>
+
+我是js控制的颜色 black {:#testScriptTag}
+
 <script>
     function testScriptTag(){
-
+        document.getElementById('testScriptTag').style.color = 'black';
     }
-    console.log(typeof testScriptTag);
+
 </script>
 <style>
 #css-demo{
     color: red;
 }
 </style>
-[/code]
+
 
 [slide]
-## iframe
+## iframe效果
 ----
 <iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
 
 [slide]
-
-## 居中图片
+## 动画样式强调
 ----
-{:.flexbox.vcenter}
 
-![FEinit帮助界面](https://raw.github.com/ksky521/FEinit/master/pic/feinit.png "FEinit帮助界面")
+这段话里面的**加粗**和*em*字体会动画哦~
 
-npm install -g feinit
+按下【H】键查看效果
+
+
+[slide]
+
+## 图片，点击全屏
+----
+
+![小萝莉](/girl.jpg "小萝莉")
+
 
 [slide]
 [note]
@@ -231,7 +228,7 @@ npm install -g feinit
 ## 使用note笔记
 ### note笔记是多窗口，或者自己做一些笔记用的
 ---
-按下键盘【n】键测试下note，
+按下键盘【N】键测试下note，
 
 markdown语法如下：
 ```markdown
@@ -244,26 +241,31 @@ markdown语法如下：
 ## 使用画笔
 ### 使用画笔做标记哦~你也可以随便作画啊！
 ---
-按下键盘【p】键。按下鼠标左键，在此处乱花下看看效果。
+按下键盘【P】键。按下鼠标左键，在此处乱花下看看效果。
 
-按下键盘【c】键。清空画板
+按下键盘【C】键。清空画板
 
 [slide]
 
-## 使用宽屏模式
+## 宽度不够？？
 ---
-按下键盘【w】键。看下效果。
+按下键盘【W】键，切换到更宽的页面看效果，第二次按键返回
 
-再按下键盘【w】键。
+ |less| sass | stylus
+:-------|:------:|-------:|--------
+环境 |js/nodejs | Ruby(这列右对齐) | nodejs(高亮) {:.highlight}
+扩展名 | .less | .sass/.scss | .styl
+特点 | 老牌，用户多，支持js解析 | 功能全，有成型框架，发展快 | 语法多样，小众
+案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) |
 
 [slide]
 ## 使用overview模式
 ---
-按下键盘【o】键。看下效果。
+按下键盘【O】键。看下效果。
 
 在overview模式下，方向键下一页，【enter】键进入选中页
 
-或者按下键盘【o】键，退出overview模式
+或者按下键盘【O】键，退出overview模式
 
 [slide]
 

@@ -175,9 +175,9 @@
         var i = slideCount;
         var slide;
         var transition = defaultOptions.transition;
-
+        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *';
         while (slide = $slides[i--]) {
-            var items = $('.build > *', slide);
+            var items = $(buildClass, slide);
             var dataset = slide.dataset;
             for (var j = 0, item; item = items[j]; j++) {
                 var t = item.classList
@@ -341,7 +341,11 @@
             case 72:
                 // H: Toggle code highlighting
                 $doc.body.classList.toggle('highlight-code');
+                setTimeout(function(){
+                    $doc.body.classList.toggle('highlight-code');
+                },2000);
                 break;
+            // 下掉宽屏模式，默认width：100%
             case 87:
                 // W: Toggle widescreen
                 // Only respect 'w' on body. Don't want to capture keys from an <input>.
