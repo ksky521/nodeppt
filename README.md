@@ -285,6 +285,7 @@ nodeppt start -h
 
  * 执行 ```nodeppt start```
  * 访问 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+ * 在线demo： http://qdemo.sinaapp.com/
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ksky521/nodeppt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
