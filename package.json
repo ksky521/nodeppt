@@ -1,40 +1,41 @@
 {
-    "name": "nodeppt",
-    "jsname": "nodeppt",
-    "description": "Create a PowerPoint presentation with Markdown",
-    "version": "0.8.0",
-    "site": "https://github.com/ksky521/nodePPT",
-    "author": {
-        "name": "Theo Wang",
-        "email": "ksky521@gmail.com"
-    },
-    "bin": {
-        "nodeppt": "bin/nodeppt"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/ksky521/nodePPT"
-    },
-    "dependencies": {
-        "ejs": "0.8.4",
-        "read": ">=1.0.4",
-        "colors": ">=0.6.0-1",
-        "connect": "2.11.0",
-        "cookie": ">=0.1.0",
-        "socket.io": "0.9.13"
-    },
-    "devDependencies": {
-        "grunt": ">=0.4.0",
-        "grunt-contrib-jshint": ">=0.1.1",
-        "grunt-contrib-uglify": ">=0.2",
-        "grunt-contrib-nodeunit": ">=0.1.2"
-    },
-    "keywords": [
-        "ppt",
-        "presentation",
-        "PowerPoint",
-        "slideshow",
-        "markdown"
-    ],
-    "readmeFilename": "README.md"
+  "name": "nodeppt",
+  "jsname": "nodeppt",
+  "description": "Create a PowerPoint presentation with Markdown",
+  "version": "0.8.0",
+  "site": "https://github.com/ksky521/nodePPT",
+  "author": {
+    "name": "Theo Wang",
+    "email": "ksky521@gmail.com"
+  },
+  "bin": {
+    "nodeppt": "bin/nodeppt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ksky521/nodePPT"
+  },
+  "dependencies": {
+    "colors": ">=0.6.0-1",
+    "commander": "^2.2.0",
+    "connect": "2.11.0",
+    "cookie": ">=0.1.0",
+    "ejs": "0.8.4",
+    "read": ">=1.0.4",
+    "socket.io": "0.9.13"
+  },
+  "devDependencies": {
+    "grunt": ">=0.4.0",
+    "grunt-contrib-jshint": ">=0.1.1",
+    "grunt-contrib-uglify": ">=0.2",
+    "grunt-contrib-nodeunit": ">=0.1.2"
+  },
+  "keywords": [
+    "ppt",
+    "presentation",
+    "PowerPoint",
+    "slideshow",
+    "markdown"
+  ],
+  "readmeFilename": "README.md"
 }

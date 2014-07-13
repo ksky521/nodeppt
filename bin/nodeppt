@@ -2,46 +2,121 @@
 
 var fs = require('fs');
 var path = require('path');
-var join = path.join;
+var nodePPT = require('../lib/nodePPT');
+var versions = require('../package').version;
+var program = require('commander');
 
+program
+    .version(versions);
 
-var root = join(__dirname, '../');
-var nodePPT = require(join(root, './lib/nodePPT'));
-
-
-var opts = {
-    '-v': '--version',
-    '-p': '--port',
-    '-d': '--dir',
-    '-f': '--file',
-    '-o': '--output',
-    '-a': '--all',
-    '-h': '--help',
-    '-H': '--host',
-    '-c': '--controller'
-};
-
-var argv = parseArgs(process.argv);
-
-var command = argv.slice(2, 3).toString();
-
-if (typeof nodePPT[command] === 'function') {
-    nodePPT.cwd = process.cwd();
-    var args = argv.slice(3);
-    if (args.length === 1 && args[0] === '--help') {
-        //命令行帮助
-        return nodePPT.help(command);
-    }
-    nodePPT[command](args);
-} else {
-    nodePPT.help();
-}
-
-function parseArgs(args) {
-    return args.map(function(v) {
-        if (v in opts) {
-            return opts[v];
+program
+    .command('create')
+    .usage('[filename] [option]')
+    .description('create a slide')
+    .option('-d, --dir [path]','set slide file destination path')
+    .action(function (filename, options) {
+        if(typeof filename === 'object'){
+            console.log('ERROR: please input filename！'.bold.red);
+            this.commands[0].outputHelp()
+            return;
         }
-        return v;
+
+        nodePPT.create(filename, options)
+    }).on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('  nodeppt create myslide');
+        console.log('  nodeppt create myslide -d D:/webppt');
+        console.log();
     });
+
+program
+    .command('generate')
+    .usage('[file_path] [save_path]')
+    .description('export html file')
+    .option('-o, --output [path]', 'output path')
+    .option('-a, --all [false]','output all style(include js,css) file', false)
+    .action(function (cmd, options){
+         var filename = '';
+         var shouldAll = false;
+         var output = '';
+
+         if(typeof cmd === 'string'){
+             filename = cmd;
+             shouldAll = options.all;
+             output = options.output;
+         }else if(typeof cmd === 'object'){
+             shouldAll = cmd.all;
+             output = cmd.output;
+         }
+
+        nodePPT.generate(filename, output, shouldAll);
+
+    })
+    .on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('  nodeppt generate D:/webppt/demo.md D:/output');
+        console.log('  nodeppt generate D:/webppt/ D:/output -a');
+        console.log();
+    });
+
+
+program
+    .command('start')
+    .description('start local sever show slide')
+    .option('-d, --dir [dir]', 'set slide path')
+    .option('-p, --port [port]', 'set server port ', 8080)
+    .option('-c, --controller [socket]', 'support websocket mutil screen controller')
+    .option('-H, --host [host]', 'set host address', '0.0.0.0')
+    .action(function (cmd){
+        if(typeof  cmd !== 'object'){
+            this.commands[2].outputHelp()
+            return;
+        }
+
+        nodePPT.start(cmd)
+    })
+    .on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('  nodeppt start -d D:/webppt -p 8080');
+        console.log('  nodeppt start -d D:/webppt -c socket');
+        console.log();
+    });
+
+
+
+
+program
+    .command('pdf')
+    .usage('[http_url] [save_path.pdf]')
+    .description('export pdf file')
+    .action(function (http_url, save_path) {
+        if(typeof  http_url !== 'string' || typeof  save_path !== 'string'){
+            console.log('ERROR: pdf need a URL'.bold.red);
+            this.commands[3].outputHelp()
+            return;
+        }
+
+        nodePPT.pdf([http_url,save_path])
+    })
+    .on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('  nodeppt pdf http://127.0.0.1:8080/md/demo.md demo.pdf\n');
+        console.log('  Notice: '.bold.red + 'should install phantomjs before');
+        console.log('  npm install -g phantomjs');
+        console.log();
+    });
+
+
+
+
+program.parse(process.argv);
+
+
+if (!program.args[0]) {
+    process.stdout.write(program.helpInformation());
+    program.emit('--help');
 }
