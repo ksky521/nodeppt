@@ -65,7 +65,7 @@ program
 program
     .command('start')
     .description('start local sever show slide')
-    .option('-d, --dir [dir]', 'set slide path')
+    .option('-d, --dir [dir]', 'set slide path', '')
     .option('-p, --port [port]', 'set server port ', 8080)
     .option('-c, --controller [socket]', 'support websocket mutil screen controller')
     .option('-H, --host [host]', 'set host address', '0.0.0.0')
