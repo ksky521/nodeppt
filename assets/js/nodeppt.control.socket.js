@@ -7,6 +7,7 @@ Slide.Control.add('socket', function(S, broadcast) {
         time = '00' + time;
         return time.substr(-2);
     }
+    var showQrcode;
     var qrcodeLink = function() {
         //按 q显示控制区域二维码
         document.addEventListener('keydown', function(e) {
@@ -22,17 +23,17 @@ Slide.Control.add('socket', function(S, broadcast) {
         $body.appendChild($layer);
         var $container = document.getElementById('container');
 
-        function showQrcode(e) {
+        showQrcode = function (e) {
             if (showQrcode.isShow) {
-                $container.style.display = 'block';
+                // $container.style.display = 'block';
                 $layer.style.display = 'none';
                 showQrcode.isShow = false;
             } else {
-                $container.style.display = 'none';
+                // $container.style.display = 'none';
                 $layer.style.display = 'block';
                 showQrcode.isShow = true;
             }
-        }
+        };
     };
 
     var webSocket;
@@ -111,7 +112,10 @@ Slide.Control.add('socket', function(S, broadcast) {
                 }
             });
             webSocket.on('system', function(data) {
-                console.log(data);
+                // console.log(data);
+                if(showQrcode && showQrcode.isShow){
+                    showQrcode();
+                }
             });
 
             this[this.role + 'Connect']();
@@ -170,14 +174,15 @@ Slide.Control.add('socket', function(S, broadcast) {
             if (args.shake) {
                 //添加shake
                 MixJS.loadJS(Slide.dir + 'shake.js', function() {
-                    var lastTime = +new Date;
-                    addShakeEvent(function() {
-                        var now = +new Date;
-                        if (now - lastTime > 1000) {
+                    var lastTime = Date.now();
+                    window.addEventListener('shake', function(){
+                        var now = Date.now();
+                        if (now - lastTime > 3000) {
                             lastTime = now;
                             Slide.next();
                         }
-                    });
+                    }, true);
+
                 });
             }
 

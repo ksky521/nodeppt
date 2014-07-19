@@ -130,7 +130,7 @@
                         //将该标签删除，释放内存
                         tmpNode.parentNode && tmpNode.parentNode.removeChild(tmpNode);
                         tmpNode = null;
-                    }
+                    };
                 }(tmpNode));
             }
         }

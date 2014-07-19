@@ -1,8 +1,8 @@
 {
   "name": "nodeppt",
   "jsname": "nodeppt",
-  "description": "Create a PowerPoint presentation with Markdown",
-  "version": "0.8.0",
+  "description": "A simple, in-browser, markdown-driven presentation tool",
+  "version": "0.8.1",
   "site": "https://github.com/ksky521/nodePPT",
   "author": {
     "name": "Theo Wang",

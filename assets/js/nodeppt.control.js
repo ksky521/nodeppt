@@ -8,7 +8,8 @@
     function doItem(id, itemID) {
         itemID = itemID | 0;
         var $curSlide = $slides[id];
-        var toBuild = $curSlide.querySelectorAll('.build > *');
+        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *';
+        var toBuild = $curSlide.querySelectorAll(buildClass);
         var list;
         var index = itemID;
 
@@ -106,7 +107,7 @@
                 Slide.Control.methods[type].init(args);
             });
         }
-    }
+    };
     Control.init();
     Slide.Control = Control;
 }(window, document, MixJS.event.broadcast, Slide, MixJS.loadJS));

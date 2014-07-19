@@ -228,13 +228,7 @@ slides > slide .slide-wrapper{
         max-width: $slide-width-widescreen - $slide-left-right-padding*2;
         max-height: $slide-height - $slide-top-bottom-padding*2;
     }
-    .note{
-        color: $gray-2;
-        h1,h2,h3,h4{
-            color: black;
-            @include text-shadow(none);
-        }
-    }
+
     blockquote {
         font-size: 28px;
         line-height: 1.5em;
@@ -384,6 +378,14 @@ slides > slide {
     }
     &:nth-child(6n+5){
         background-color: #f68dbb
+    }
+
+    .note{
+        color: $gray-2;
+        h1,h2,h3,h4{
+            color: black;
+            @include text-shadow(none);
+        }
     }
 }
 
@@ -1241,22 +1243,28 @@ aside.gdbar {
 .qrcode{
     display: none;
     position: fixed;
-    width:300px;
-    height:300px;
-    left:50%;
-    top:20%;
-    margin-left:-170px;
-    background:white;
-    padding:20px;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    background: rgba(0,0,0,0.5);
+
     #qrcode{
         width:256px;
-        height:256px;
+        height:300px;
         vertical-align: middle;
         margin:0 auto;
+        position: relative;
+        background-color: white;
+        padding: 20px 20px 10px;
+        top: 100px;
     }
     p{
         text-align: center;
         line-height: 44px;
+        position: absolute;
+        top: 380px;
+        width: 100%;
     }
 }
 

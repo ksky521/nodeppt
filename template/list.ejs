@@ -10,12 +10,12 @@
     <title>nodePPT List</title>
     <style>
     body{
-        width: 600px;
+        width: 900px;
         margin: 0 auto;
-        color:#2C3E50;
+        color: #2C3E50;
     }
     a{
-        color:#1295D8;
+        color:#4fc3f7;
         text-decoration: none;
     }
     ol, li{
@@ -24,16 +24,16 @@
         margin:0;
     }
     ol{
-        -webkit-text-shadow: 0 1px 0 rgba(255,255,255,.5);
-        -moz-text-shadow: 0 1px 0 rgba(255,255,255,.5);
-        -ms-text-shadow: 0 1px 0 rgba(255,255,255,.5);
-        -o-text-shadow: 0 1px 0 rgba(255,255,255,.5);
-        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+        -webkit-text-shadow: 1px 1px 1px rgba(201, 201, 201, 0.5);
+        -moz-text-shadow: 1px 1px 1px rgba(201, 201, 201, 0.5);
+        -ms-text-shadow: 1px 1px 1px rgba(201, 201, 201, 0.5);
+        -o-text-shadow: 1px 1px 1px rgba(201, 201, 201, 0.5);
+        text-shadow: 1px 1px 1px rgba(201, 201, 201, 0.5);
     }
     li{
         font-size: 110%;
         font-weight: bold;
-        padding: 1.5em;
+        padding: .75em 0;
         border-bottom:1px dashed #ccc;
     }
     li:hover{
@@ -47,18 +47,18 @@
         margin: 0;
         line-height: 24px;
         position: fixed;
-        bottom: 1em;
-        left: 50%;
+        bottom: 0.5em;
+        right: 0.5em;
         margin-left: -74px;
     }
     .copyright a{
-        color: #E76035;
+        color: #ea7373;
     }
 
     </style>
 </head>
 <body>
-    <h3>当前路径：<%-dir %></h3>
+    <h4>当前路径：<%-dir %></h4>
     <ol>
         <%- list %>
     </ol>
