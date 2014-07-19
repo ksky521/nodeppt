@@ -222,6 +222,7 @@
 
     function updateSlideClass() {
         var curSlide = curIndex;
+
         var pageClass = 'pagedown';
         if (pastIndex > curIndex) {
             //往前翻页

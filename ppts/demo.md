@@ -1,7 +1,7 @@
 title: nodeppt markdown 演示
 speaker: Theo Wang
 url: https://github.com/ksky521/nodePPT
-transition: kontext
+transition: slide
 files: /js/demo.js,/css/demo.css
 
 [slide]
@@ -277,27 +277,53 @@ markdown语法如下：
 跟powderpoint一样的双屏功能，带有备注信息。
 
 [slide]
-## 多种转场动画随心换
+## 18种转场动画随心换
 ----
+ * slide/slide2/slide3
  * newspaper
  * glue
- * kontext
- * move
- * horizontal3d
- * horizontal
+ * kontext/vkontext
+ * move/circle
+ * horizontal/horizontal3d
  * vertical3d
- * zoomin
- * zoomout
+ * zoomin/zoomout
  * cards
+ * earthquake/pulse/stick...
 
 [slide data-transition="newspaper"]
 
 ## 这是一个newspaper的动画
 ----
-使用方法：
+使用方法（全局） 1：
+
+> transition: newspaper
+
+
+[slide data-transition="newspaper"]
+
+## 这是一个newspaper的动画
+----
+使用方法 2：
 
 &#91;slide data-transition="newspaper"&#93;
 
+
+[slide data-transition="glue"]
+
+## 这是一个glue的动画
+----
+使用方法（全局） 1：
+
+> transition: glue
+
+
+[slide data-transition="glue"]
+
+## 这是一个glue的动画
+----
+使用方法 2：
+
+&#91;slide data-transition="glue"&#93;
 
 [slide data-transition="zoomin"]
 

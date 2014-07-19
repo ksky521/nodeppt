@@ -56,8 +56,8 @@ program
     .on('--help', function() {
         console.log('  Examples:');
         console.log();
-        console.log('  nodeppt generate D:/webppt/demo.md D:/output');
-        console.log('  nodeppt generate D:/webppt/ D:/output -a');
+        console.log('  nodeppt generate D:/webppt/demo.md -o D:/output');
+        console.log('  nodeppt generate D:/webppt/ -o D:/output -a');
         console.log();
     });
 

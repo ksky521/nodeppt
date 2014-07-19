@@ -14,14 +14,14 @@ nodePPT - 让你爱上做分享！
  * 添加highlightjs最新版
 
 ## 特点
-* [转场动效多](#transition)
+* [18种转场动效](#transition)
 * [支持socket](#socket)
 * [支持多窗口互动](#postmessage)
 * 手机可以摇一摇
 * markdown语法就可以写ppt
 * [支持导出html](#export-html)
 * [支持导出pdf](#export-pdf)
-* [支持转场回调](#callback)
+* [支持转场回调，做demo更顺手](#callback)
 * [支持html和markdown语法混编](#mixed-code)
 * 支持画板标注功能
 
@@ -136,16 +136,25 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
 <a name="transition"></a>
 支持的转场动画包括：
 
+ * kontext
+ * vkontext
+ * circle
+ * earthquake
+ * cards
+ * glue
+ * stick
+ * move
+ * newspaper
+ * slide
+ * slide2
+ * slide3
  * horizontal3d
  * horizontal
  * vertical3d
  * zoomin
  * zoomout
- * cards
- * kontext
- * glue
- * move
- * newspaper
+ * pulse
+
 
 如果设置单页动画，请参考下面的**[单页动画设置](#transition-page)**部分~
 
@@ -290,3 +299,7 @@ nodeppt start -h
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ksky521/nodeppt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+## Thanks
+* http://tympanus.net/Development/ItemTransitions/index2.html
+* http://tympanus.net/Development/PageTransitions/
+* https://github.com/daneden/animate.css
