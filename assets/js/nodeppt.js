@@ -81,8 +81,17 @@
     }
     //slide切入回调incallback
     //<slide data-incallback=""
+    var slideInTimer;
 
     function slideInCallBack() {
+        if (slideInTimer) {
+            clearTimeout(slideInTimer);
+        }
+        slideInTimer = setTimeout(slideInCallBack_, 1500);
+
+    }
+
+    function slideInCallBack_() {
         var $cur = $slides[curIndex];
         if (!$cur || ($cur && $cur.nodeType !== 1)) {
             return;
@@ -102,15 +111,26 @@
     }
     //slide切出回调outcallback
     //<slide data-outcallback=""
+    var slideOutTimer;
 
     function slideOutCallBack(prev) {
         if (!prev || (prev && prev.nodeType !== 1)) {
             return;
         }
+        if (slideOutTimer) {
+            clearTimeout(slideOutTimer);
+        }
+        slideOutTimer = setTimeout(function(){
+            slideOutCallBack_(prev);
+        }, 1500);
+    }
+
+    function slideOutCallBack_(prev) {
         var cb = prev.dataset.outcallback;
         //如果有data-outcallback那么就执行callback
         cb && typeof $win[cb] === 'function' && proxyFn(cb);
     }
+
     //预加载资源
     //<preload data-type="js||css" data-url="">
 
@@ -222,8 +242,13 @@
 
     function updateSlideClass() {
         var curSlide = curIndex;
-
         var pageClass = 'pagedown';
+        if(pastIndex===curIndex){
+            $cur = $slides[curIndex];
+            if($cur.classList.contains('pageup')){
+                return;
+            }
+        }
         if (pastIndex > curIndex) {
             //往前翻页
             pageClass = 'pageup';
@@ -342,11 +367,11 @@
             case 72:
                 // H: Toggle code highlighting
                 $doc.body.classList.toggle('highlight-code');
-                setTimeout(function(){
+                setTimeout(function() {
                     $doc.body.classList.toggle('highlight-code');
-                },2000);
+                }, 2000);
                 break;
-            // 下掉宽屏模式，默认width：100%
+                // 下掉宽屏模式，默认width：100%
             case 87:
                 // W: Toggle widescreen
                 // Only respect 'w' on body. Don't want to capture keys from an <input>.
@@ -647,7 +672,7 @@
         prev: prevSlide,
         doSlide: doSlide,
         proxyFn: proxyFn
-    }
+    };
 
     $win.Slide = Slide;
 

@@ -1,7 +1,7 @@
 function outcallback(){
-    alert('outcallback fire');
+    document.getElementById('outcallback').innerHTML = 'outcallback fire';
 }
 
 function incallback(){
-    alert('incallback fire');
+    document.getElementById('incallback').innerHTML = 'incallback fire';
 }

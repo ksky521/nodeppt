@@ -344,14 +344,19 @@ markdown语法如下：
 [slide data-outcallback="outcallback" data-incallback="incallback" ]
 ## 使用回调
 ----
-使用方法：
 
-&#91;slide data-outcallback="outcallback" data-incallback="incallback"&#93;
+* &#91;slide data-outcallback="fnName"&#93;
+    * 进入执行回调incallback函数
+* &#91;slide data-incallback="fnName"&#93;
+    * 退出执行outcallback函数
 
-即：
+亦可以组合写：
 
- * 进入执行回调incallback函数
- * 退出执行outcallback函数
+> &#91;slide data-outcallback="foo" data-incallback="bar"&#93;
+
+
+<p id="incallback"></p>
+<p id="outcallback"></p>
 
 [slide]
 ## 设置slide？
@@ -373,6 +378,6 @@ https://github.com/ksky521/nodePPT
 
 什么？这些功能还不够用？
 
-极客模式：查看源码的nodeppt.js，相信你会找到牛逼的手机互动（摇一摇换页）功能
+socket远程控制可以在手机上摇一摇换页哦~
 
 查看项目目录ppts获取更多帮助信息
