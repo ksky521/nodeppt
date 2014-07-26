@@ -88,14 +88,14 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 [slide]
 ## 表格示例
-### 市面上主要的css预处理器：less\sass\stylus
+### 市面上主要的css预处理器：Less\Sass\Stylus
 ---
- |less| sass | stylus
+| | Less | Sass | Stylus
 :-------|:------:|-------:|--------
 环境 |js/nodejs | Ruby(这列右对齐) | nodejs(高亮) {:.highlight}
-扩展名 | .less | .sass/.scss | .styl
+扩展名 | .less | .scss/.sass | .styl
 特点 | 老牌，用户多，支持js解析 | 功能全，有成型框架，发展快 | 语法多样，小众
-案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) |
+案例/框架 | [Bootstrap](http://getbootstrap.com/) | [Compass](http://beta.compass-style.org) [Bootstrap](http://getbootstrap.com/css/#sass) [Foundation](http://foundation.zurb.com/) [Bourbon](http://bourbon.io) [Base.Sass](https://github.com/jsw0528/base.sass) |
 
 
 [slide]
