@@ -128,7 +128,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 表格示例
 ### 市面上主要的css预处理器：Less\Sass\Stylus
 ---
-| | Less | Sass | Stylus
+| Less | Sass | Stylus
 :-------|:------:|-------:|--------
 环境 |js/nodejs | Ruby(这列右对齐) | nodejs(高亮) {:.highlight}
 扩展名 | .less | .scss/.sass | .styl
@@ -310,7 +310,7 @@ markdown语法如下：
 ## 多窗口演示
 ## 双屏演示不out！
 ---
-本页面网址改成 url?_muliscreen=1，支持多屏演示哦！
+本页面网址改成 [url?_multiscreen=1](?_multiscreen=1)，支持多屏演示哦！
 
 跟powderpoint一样的双屏功能，带有备注信息。
 

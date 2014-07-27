@@ -12,6 +12,9 @@ nodePPT - 让你爱上做分享！
  * 可以单页ppt内部动画，单步动画
  * [支持进入/退出回调](#callback)，做在线demo很方便
 
+## demo
+ * http://qdemo.sinaapp.com/
+ * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
 
 
 ## 安装
