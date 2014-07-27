@@ -816,8 +816,9 @@ article.smaller {
     background: rgba(0, 0, 0, 0.3);
     opacity: 0;
     // pointer-events: none;
-    @include flexbox;
+    // @include flexbox;
     @include flex-center-center;
+    display:none;
     // @include border-radius($slide-border-radius);
 
     @include box-sizing(border-box);
@@ -848,6 +849,7 @@ article.smaller {
                 }
                 .note {
                     @include transform(translate3d(300px, $slide-height + 100, 0) scale(1.5));
+
                 }
             }
         }
@@ -913,6 +915,7 @@ article.smaller {
     }
 
     .note {
+        @include display-box();
         opacity: 1;
         @include transform(translateY(0));
         pointer-events: auto; // Allow people to do things like open links embedded in the speaker notes.
