@@ -6,7 +6,7 @@ nodePPT - 让你爱上做分享！
  * [导出网页](#export-html)或者[pdf](#export-pdf)更容易分享
  * 支持[18种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
- * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页
+ * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad控制做分享更酷哦~
  * 可以使用画板，可以使用note做备注
  * 支持语法高亮，自由选择highlight样式
  * 可以单页ppt内部动画，单步动画
