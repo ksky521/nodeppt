@@ -96,9 +96,9 @@ $article-content-top-padding: 20px;
 }
 
 ::-webkit-scrollbar {
-    height: 16px;
+    height: 10px;
     overflow: visible;
-    width: 16px;
+    width: 10px;
 }
 ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, .1);
@@ -453,7 +453,7 @@ a {
     text-decoration: none;
     border-bottom: 1px dashed #FF8C78;
     cursor: help;
-
+    margin:0 5px;
     &:hover {
         background-color: #F9FF95;
     }
@@ -502,16 +502,11 @@ ul {
             display: block;
             li:before {
                 content: '-';
+                position: absolute;
+                margin-left: -1em;
                 font-weight: 600;
             }
         }
-    }
-
-    > li:before {
-        content: '\00B7';
-        margin-left: -1em;
-        position: absolute;
-        font-weight: 600;
     }
 
     ul {
@@ -535,6 +530,7 @@ ul {
 
 pre {
     display: inline-block;
+    overflow: auto;
     font-family: 'Source Code Pro', 'Courier New', monospace;
     font-size: 20px;
     line-height: 1.2em;
@@ -563,7 +559,8 @@ code{
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     border: 1px solid #ddd;
     background-color: #f8f8f8;
-    padding: 0 5px;
+    padding: 0 3px;
+    margin: 0 5px;
     vertical-align: middle;
     color: #dd1144;
     @include text-shadow(none);
