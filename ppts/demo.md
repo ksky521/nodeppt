@@ -12,16 +12,54 @@ files: /js/demo.js,/css/demo.css
 
 [slide]
 
-# 封面样式2 {:&.flexbox.vleft}
-## 左对齐
+# 样式展示 {:&.flexbox.vleft}
+> nodePPT 让每个人都爱上做分享！
+
+[slide]
+## 为什么选择nodePPT
+----
+* 基于GFM的markdown语法编写 {:&.moveIn}
+* 支持html混排，在复杂的demo也可以做！
+* 导出网页或者pdf更容易分享
+* 支持18种转场动画，可以设置单页动画
+* 支持单页背景图片
+* 多种模式：overview模式，双屏模式，socket远程控制，摇一摇换页
+* 可以使用画板，可以使用note做备注
+* 支持语法高亮，自由选择highlight样式
+* 可以单页ppt内部动画，单步动画
+* 支持进入/退出回调，做在线demo很方便
+
+[slide]
+## 基本语法指南
+----
+
+<pre><code class="markdown">/* 先写总的配置 */
+title: 这是title，网页名称
+speaker: 演讲者名称
+url: https://github.com/ksky521/nodePPT
+transition: 全局转场动画
+files: 引入的js和css文件，多个以半角逗号隔开
+hightStyle: 代码高亮样式，默认monokai_sublime
+
+/* 以&#91;slide&#93; 隔开每个ppt页面 */
+&#91;slide&#93;
+## 二级标题
+这里写内容即可
+
+&#91;slide&#93;
+...
+</code>
+</pre>
+
+
 
 [slide style="background-image:url('/img/bg1.png')"]
 
-# 背景图片 {:&.flexbox.vleft}
+# 支持单页添加背景图片 {:&.flexbox.vleft}
 ## 使用方法：&#91;slide style="background-image:url('/img/bg1.png')"&#93;
 
 [slide]
-## 使用.class/#id/自定义属性样式
+## 支持.class/#id/自定义属性样式
 ----
 
 ```html
@@ -358,18 +396,7 @@ markdown语法如下：
 <p id="incallback"></p>
 <p id="outcallback"></p>
 
-[slide]
-## 设置slide？
-### 修改 markdown 文件头部内容
-----
 
-``` javascript
-title: nodeppt markdown 演示 //演讲主题名字
-speaker: Theo Wang //演讲者名称
-url: https://github.com/ksky521/nodePPT //网址
-transition: zoomin //通用动画名称，可在
-files: /js/demo.js,/css/demo.css //引入的文件，在页面底部
-```
 [slide]
 
 ## 更多玩法

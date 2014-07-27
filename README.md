@@ -1,29 +1,17 @@
 nodePPT - 让你爱上做分享！
 =============
-## 0.8 版本更新
- * 直接支持html和markdown混编，不在使用[code]语法
- * 添加更多列表渐显动效：moveIn/fadeIn/zoomIn/bounceIn
- * 支持加粗和强调，按键【H】动效
- * 修改不合理的样式
- * 持续优化~
+## 为什么选择nodePPT
+ * 基于GFM的markdown语法编写
+ * 支持[html混排](#mixed-code)，在复杂的demo也可以做！
+ * [导出网页](#export-html)或者[pdf](#export-pdf)更容易分享
+ * 支持[18种转场动画](#transition)，可以设置单页动画
+ * 支持单页背景图片
+ * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页
+ * 可以使用画板，可以使用note做备注
+ * 支持语法高亮，自由选择highlight样式
+ * 可以单页ppt内部动画，单步动画
+ * [支持进入/退出回调](#callback)，做在线demo很方便
 
-## 0.7 版本更新
- * 添加更多转场动效
- * bug fix
- * 修改样式
- * 添加highlightjs最新版
-
-## 特点
-* [18种转场动效](#transition)
-* [支持socket](#socket)
-* [支持多窗口互动](#postmessage)
-* 手机可以摇一摇
-* markdown语法就可以写ppt
-* [支持导出html](#export-html)
-* [支持导出pdf](#export-pdf)
-* [支持转场回调，做demo更顺手](#callback)
-* [支持html和markdown语法混编](#mixed-code)
-* 支持画板标注功能
 
 
 ## 安装
