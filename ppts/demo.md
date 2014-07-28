@@ -19,7 +19,7 @@ files: /js/demo.js,/css/demo.css
 ## 为什么选择nodePPT
 ----
 * 基于GFM的markdown语法编写 {:&.moveIn}
-* 支持html混排，在复杂的demo也可以做！
+* 支持html混排，再复杂的demo也可以做！
 * 导出网页或者pdf更容易分享
 * 支持18种转场动画，可以设置单页动画
 * 支持单页背景图片
@@ -395,6 +395,27 @@ markdown语法如下：
 
 <p id="incallback"></p>
 <p id="outcallback"></p>
+
+[slide]
+## 远程执行函数
+----
+在多屏和远程模式中，可以使用`proxyFn`来远程执行函数。
+
+```html
+<script>
+function globalFunc(){
+}
+</script>
+<button onclick="Slide.proxyFn('globalFunc')">远程执行函数</button>
+```
+
+<button onclick="Slide.proxyFn('globalFunc','args')">测试远程执行函数</button>
+<a href="?_multiscreen=1#33">在多屏中测试远程执行</a>
+<script>
+    function globalFunc(a){
+        alert('proxyFn success: '+a);
+    }
+</script>
 
 
 [slide]

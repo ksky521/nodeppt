@@ -2,7 +2,7 @@ nodePPT - 让你爱上做分享！
 =============
 ## 为什么选择nodePPT
  * 基于GFM的markdown语法编写
- * 支持[html混排](#mixed-code)，在复杂的demo也可以做！
+ * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
  * [导出网页](#export-html)或者[pdf](#export-pdf)更容易分享
  * 支持[18种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
