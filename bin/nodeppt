@@ -5,6 +5,7 @@ var path = require('path');
 var nodePPT = require('../lib/nodePPT');
 var versions = require('../package').version;
 var program = require('commander');
+var ipv4 = require('ipv4');
 
 program
     .version(versions);
@@ -68,7 +69,7 @@ program
     .option('-d, --dir [dir]', 'set slide path', '')
     .option('-p, --port [port]', 'set server port ', 8080)
     .option('-c, --controller [socket]', 'support websocket mutil screen controller')
-    .option('-H, --host [host]', 'set host address', '0.0.0.0')
+    .option('-H, --host [host]', 'set host address', ipv4 || '0.0.0.0')
     .action(function (cmd){
         if(typeof  cmd !== 'object'){
             this.commands[2].outputHelp()
