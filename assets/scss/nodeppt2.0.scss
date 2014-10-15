@@ -225,7 +225,7 @@ slides > slide .slide-wrapper{
         }
     }
     img{
-        max-width: $slide-width-widescreen - $slide-left-right-padding*2;
+        max-width: 100%;
         max-height: $slide-height - $slide-top-bottom-padding*2;
     }
 
@@ -291,7 +291,7 @@ slides > slide {
     display: none;
     font-size: 26px;
     color: white;
-    background-color: #4FC5C7;
+    background-color: #03C8CB;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -368,16 +368,16 @@ slides > slide {
         background-color: #dc6c5f
     }
     &:nth-child(6n+2){
-        background-color: #95dc84
+        background-color: #04AA55
     }
     &:nth-child(6n+3){
-        background-color: #60d7a9
+        background-color: #487BD3
     }
     &:nth-child(6n+4){
-        background-color: #fdc162
+        background-color: #049DBF
     }
     &:nth-child(6n+5){
-        background-color: #f68dbb
+        background-color: #DA4A89
     }
 
     .note{
@@ -466,7 +466,7 @@ h1, h2, h3 {
 
 h1 {
     font-size: 45px;
-    line-height: 45px;
+    line-height: 1.5;
     color: white;
     margin-bottom: 0.5em;
     @include text-shadow(2px 3px 4px black);
@@ -515,7 +515,8 @@ ul {
 }
 
 // Code highlighting only effects the current slide.
-.highlight-code slide.current {
+.highlight-code slide.current,
+slide.current .hljs{
     b,strong{
         @include shake();
         -webkit-animation-duration: 1.5s;
@@ -527,10 +528,22 @@ ul {
         animation-duration: 1.5s;
     }
 }
+.highlight-code slide.current .hljs{
+    b,strong{
+        @include flash();
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+    }
+    em{
+        @include shake();
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+    }
 
+}
 pre {
-    display: inline-block;
-    overflow: auto;
+    // display: inline-block;
+    // overflow: auto;
     font-family: 'Source Code Pro', 'Courier New', monospace;
     font-size: 20px;
     line-height: 1.2em;
