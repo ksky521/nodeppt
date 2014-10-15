@@ -15,7 +15,7 @@ nodePPT - 让你爱上做分享！
 ## demo
  * http://qdemo.sinaapp.com/
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
-
+ * 手机百度前端之路：http://qdemo.sinaapp.com/box-fe-road.htm
 
 ## 安装
 
