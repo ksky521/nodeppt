@@ -700,13 +700,10 @@ table {
         background-color: $gray-1;
     }
 
-    th {
-        font-size: 18px;
-    }
-
     td, th {
         font-size: 18px;
         padding: 1em 0.5em;
+        line-height: 1.5;
     }
 
     td.highlight {
