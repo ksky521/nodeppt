@@ -120,7 +120,7 @@
         if (slideOutTimer) {
             clearTimeout(slideOutTimer);
         }
-        slideOutTimer = setTimeout(function(){
+        slideOutTimer = setTimeout(function() {
             slideOutCallBack_(prev);
         }, 1500);
     }
@@ -159,6 +159,9 @@
     //单行前进
 
     function buildNextItem() {
+        if ($body.classList.contains('overview')) {
+            return false;
+        }
         $curSlide = $slides[curIndex];
         var builded = toArray($('.building'), $curSlide);
         var list;
@@ -243,9 +246,9 @@
     function updateSlideClass() {
         var curSlide = curIndex;
         var pageClass = 'pagedown';
-        if(pastIndex===curIndex){
+        if (pastIndex === curIndex) {
             $cur = $slides[curIndex];
-            if($cur.classList.contains('pageup')){
+            if ($cur.classList.contains('pageup')) {
                 return;
             }
         }
@@ -280,9 +283,12 @@
 
     }
 
-    function overview() {
-        $doc.body.classList.toggle('overview');
+    function overview(isFromControl) {
+        $body.classList.toggle('overview');
         focusOverview_();
+        if (!isFromControl) {
+            $B.fire('overview');
+        }
     }
 
     function focusOverview_() {
@@ -360,7 +366,7 @@
             case 13:
                 // Enter
                 if ($doc.body.classList.contains('overview')) {
-                    overview();
+                    overview(e.isFromControl);
                 }
 
                 break;
@@ -382,7 +388,7 @@
                 break;
             case 79:
                 // O: Toggle overview
-                overview();
+                overview(e.isFromControl);
 
                 break;
             case 78:
@@ -392,13 +398,14 @@
                 break;
             case 80:
                 //P
-                if (!$body.classList.contains('popup'))
-                    showPaint();
+                if (!$body.classList.contains('popup')) {
+                    showPaint(e.isFromControl);
+                }
                 break;
             case 67:
                 //c
                 if (!$body.classList.contains('popup')) {
-                    removePaint();
+                    removePaint(e.isFromControl);
                 }
                 break;
                 //上一页
@@ -430,9 +437,10 @@
         //        setHistory();
     }
     /******************************** Touch events *********************/
+    var isStopTouchEvent = false;
 
     function evtTouchStart(event) {
-        if (event.touches.length == 1) {
+        if (!isStopTouchEvent && event.touches.length === 1) {
             touchDX = 0;
             touchDY = 0;
             var touch = event.touches[0];
@@ -454,6 +462,8 @@
             touchDX = touch.pageX - touchStartX;
             touchDY = touch.pageY - touchStartY;
         }
+        event.preventDefault();
+
     }
     //touchend事件
 
@@ -481,6 +491,55 @@
     function bindEvent() {
         $doc.addEventListener('keyup', evtDocUp, false);
         $body.addEventListener('touchstart', evtTouchStart, false);
+        $$('_btn-bar').addEventListener('click', function() {
+            var isOpen = false;
+            return function() {
+                if (!isOpen) {
+                    this.classList.remove('fa-bars');
+                    this.classList.add('fa-close');
+                    $$('_btn-box').style.display = 'inline-block';
+                } else {
+                    this.classList.remove('fa-close');
+                    this.classList.add('fa-bars');
+                    $$('_btn-box').style.display = 'none';
+
+                }
+                isOpen = !isOpen;
+            };
+        }(), false);
+        $$('_btn-prev').addEventListener('click', prevSlide, false);
+        $$('_btn-next').addEventListener('click', nextSlide, false);
+        $$('_btn-overview').addEventListener('click', function() {
+            var isOpen = false;
+            return function() {
+
+                if (isOpen) {
+                    this.classList.add('fa-compress');
+                    this.classList.remove('fa-expand');
+                } else {
+                    this.classList.add('fa-expand');
+                    this.classList.remove('fa-compress');
+                }
+
+                overview();
+                isOpen = !isOpen;
+            };
+        }(), false);
+        $$('_btn-brush').addEventListener('click', function() {
+            var isOpen = false;
+            return function() {
+                if (isOpen) {
+                    this.classList.add('fa-paint-brush');
+                    this.classList.remove('fa-eraser');
+                    removePaint();
+                } else {
+                    showPaint();
+                    this.classList.add('fa-eraser');
+                    this.classList.remove('fa-paint-brush');
+                }
+                isOpen = !isOpen;
+            }
+        }(), false);
 
         $win.addEventListener('hashchange', function() {
             if (location.hash && !lockSlide) {
@@ -508,10 +567,20 @@
         context.strokeStyle = "red";
     }
     //显示画板
+    var isControl = 0;
 
-    function showPaint() {
+    function showPaint(isFromControl) {
         if (!$drawBoard) {
             return;
+        }
+
+        //1、将翻页停止
+        isStopTouchEvent = true;
+        //2、将管理模式去掉
+        if ($body.classList.contains('with-notes')) {
+            isControl = 1;
+            $body.classList.remove('with-notes');
+            $body.classList.remove('popup');
         }
         $drawBoard.width = $body.clientWidth;
         $drawBoard.height = $body.clientHeight;
@@ -523,8 +592,16 @@
         $drawBoard.addEventListener('mousedown', pMouseDown, true);
         $drawBoard.addEventListener('mouseup', pMouseUp, true);
         $drawBoard.addEventListener('mousemove', pMouseMove, true);
-        $doc.addEventListener('selectstart', stopSelect, true);
+        //滑动
+        $drawBoard.addEventListener('touchmove', pMouseMove, true);
+        $drawBoard.addEventListener('touchend', pMouseUp, true);
+        $drawBoard.addEventListener('touchcancel', pMouseUp, true);
+        $drawBoard.addEventListener('touchstart', pMouseDown, true);
 
+        $doc.addEventListener('selectstart', stopSelect, true);
+        if (!isFromControl) {
+            $B.fire('show paint');
+        }
     }
     //禁止选中
 
@@ -539,25 +616,63 @@
         $drawBoard.style.display = 'none';
     }
     //删除画板
-    var removePaint = function() {
+    var removePaint = function(isFromControl) {
         clearPaint();
+        if (isControl) {
+            $body.classList.add('with-notes');
+            $body.classList.add('popup');
+        }
+        isStopTouchEvent = false;
         $drawBoard.removeEventListener('mousedown', pMouseDown);
         $drawBoard.removeEventListener('mouseup', pMouseUp);
         $drawBoard.removeEventListener('mousemove', pMouseMove);
+        //滑动
+        $drawBoard.removeEventListener('touchstart', pMouseDown);
+        $drawBoard.removeEventListener('touchmove', pMouseMove);
+        $drawBoard.removeEventListener('touchend', pMouseUp);
+        $drawBoard.removeEventListener('touchcancel', pMouseUp);
+
+
         $doc.removeEventListener('selectstart', stopSelect, true);
+        if (!isFromControl) {
+            $B.fire('remove paint');
+        }
     };
     var pMouseDown = function(e) {
         $drawBoard.isMouseDown = true;
         //        $drawBoard.iLastX = e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft);
         //        $drawBoard.iLastY = e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop);
-        $drawBoard.iLastX = e.layerX || e.offsetX || (e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft));
-        $drawBoard.iLastY = e.layerY || e.offsetY || (e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop));
+        var x = $drawBoard.iLastX = e.layerX || e.offsetX || (e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft));
+        var y = $drawBoard.iLastY = e.layerY || e.offsetY || (e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop));
     };
-    var pMouseUp = function() {
+    var pPoints = [];
+    var pMouseUp = function(e) {
         $drawBoard.isMouseDown = false;
         $drawBoard.iLastX = -1;
         $drawBoard.iLastY = -1;
+        if (!e.isFromControl) {
+            $B.fire('paint points', pPoints);
+        }
+        pPoints.length = 0;
     };
+    $B.on('from control paint points', function(data) {
+        // console.log(data);
+        var points = data.points;
+        var wh = data.screen;
+        var iw = $body.offsetWidth / wh.width;
+        var ih = $body.offsetHeight / wh.height;
+
+        var context = $drawBoard.context;
+        context.beginPath();
+        var startX = points[0].x * iw;
+        var startY = points[0].y * ih;
+        // console.log(startX, points[0].x, startY, iw, wh);
+        context.moveTo(startX, startY);
+        for (var i = 0, len = points.length; i < len; i++) {
+            context.lineTo(points[i].x * iw, points[i].y * ih);
+        }
+        context.stroke();
+    });
     var pMouseMove = function(e) {
         if ($drawBoard.isMouseDown) {
             //            var iX = e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft);
@@ -571,9 +686,13 @@
             context.stroke();
             $drawBoard.iLastX = iX;
             $drawBoard.iLastY = iY;
+            pPoints.push({
+                x: iX,
+                y: iY
+            });
+            e.preventDefault();
         }
     };
-
     //代理函数，用于函数控制
 
     function proxyFn(fnName, args) {
@@ -671,7 +790,9 @@
         next: nextSlide,
         prev: prevSlide,
         doSlide: doSlide,
-        proxyFn: proxyFn
+        proxyFn: proxyFn,
+        showPaint: showPaint,
+        removePaint: removePaint
     };
 
     $win.Slide = Slide;

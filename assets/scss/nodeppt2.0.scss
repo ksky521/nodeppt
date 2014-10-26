@@ -1181,7 +1181,9 @@ aside.gdbar {
         display: none;
     }
 }
-
+.with-notes.popup.overview slide.next{
+    opacity: 0.5 !important;
+}
 @media print {
     slides {
         slide {
@@ -1281,6 +1283,7 @@ aside.gdbar {
     }
 }
 
+//控制台
 
 #_timer_{
     display: block;
@@ -1331,6 +1334,39 @@ aside.gdbar {
 }
 
 
+#_buttons{
+    position:fixed;
+    bottom:0.25em;
+    z-index: 9999;
+    right: 0.25em;
+    ._btn-box{
+        display: inline-block;
+    }
+    button{
+        font-size: 1rem;
+        background:none;
+        border: 0 none;
+        color: rgba(0,0,0,0.3);
+        @include text-shadow(0 0 transparent);
+        &:hover{
+            color: black;
+        }
+    }
+}
+
+.popup.with-notes #_buttons,
+.overview #_buttons{
+    ._btn-box{
+        display: inline-block !important;
+    }
+    #_btn-bar{
+        display: none !important;
+    }
+    button{
+        color: white;
+    }
+
+}
 /**翻页效果**/
 
 @mixin ani-delay100 {

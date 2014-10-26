@@ -15,6 +15,14 @@ Slide.Control.add('postMessage', function(S, broadcast) {
     var postWin, popup, timer;
     var postMSG = {
         role: '', //角色
+        broadcast: function(evtName, data) {
+            if (postWin) {
+                window.opener.postMessage({
+                    action: evtName,
+                    data: data
+                }, '*');
+            }
+        },
         update: function(id) {
             if (postWin) {
                 window.opener.postMessage({
@@ -65,6 +73,8 @@ Slide.Control.add('postMessage', function(S, broadcast) {
                     } catch (e) {}
                     Slide.proxyFn(fnName, args);
                     break;
+                default:
+                    broadcast.fire('from control '+data.action, data.data);
             }
 
         },

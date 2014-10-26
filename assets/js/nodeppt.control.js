@@ -46,6 +46,21 @@
                 t.sendUpdateItem(slideID, buildItem);
             }).on('slide event keyup', function(e) {
                 t.sendKeyEvent(e.keyCode);
+            }).on('overview', function(e) {
+                t.sendKeyEvent(79);
+            }).on('show paint', function(e){
+                t.sendKeyEvent(80);
+            }).on('remove paint', function(){
+                t.sendKeyEvent(67);
+            }).on('paint points', function(points) {
+                var data = {
+                    points: points,
+                    screen: {
+                        width: $doc.body.offsetWidth,
+                        height: $doc.body.offsetHeight
+                    }
+                };
+                t.send_('broadcast', ['paint points', data]);
             })
             //监听控制来的广播
             .on('from control order', function(json) {
@@ -59,7 +74,7 @@
                 doItem(json.id, json.item);
             }).on('from control key event', function(json) {
                 t.createKeyEvent_(json.keyCode);
-            });
+            })
         },
         createKeyEvent_: function(keyCode) {
             var evt = document.createEvent('Event');

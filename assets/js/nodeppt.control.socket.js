@@ -23,7 +23,7 @@ Slide.Control.add('socket', function(S, broadcast) {
         $body.appendChild($layer);
         var $container = document.getElementById('container');
 
-        showQrcode = function (e) {
+        showQrcode = function(e) {
             if (showQrcode.isShow) {
                 // $container.style.display = 'block';
                 $layer.style.display = 'none';
@@ -54,8 +54,13 @@ Slide.Control.add('socket', function(S, broadcast) {
                         } catch (e) {}
                         Slide.proxyFn(fnName, args);
                         break;
-                    default:
+                    case 'from control updateItem':
+                    case 'from control update':
+                    case 'from control key event':
                         broadcast.fire(action, data);
+                        break;
+                    default:
+                        broadcast.fire(action, data.data);
                 }
             });
 
@@ -79,8 +84,13 @@ Slide.Control.add('socket', function(S, broadcast) {
 
             webSocket.on('data from another client', function(data) {
                 var action = data.action;
+                if (action.indexOf('client') !== -1) {
+                    return;
+                }
                 action = action.replace('client', 'control');
+
                 broadcast.fire(action, data);
+
                 // switch (action) {
                 //     case 'from client update':
                 //         broadcast.fire('from control update', data);
@@ -113,12 +123,18 @@ Slide.Control.add('socket', function(S, broadcast) {
             });
             webSocket.on('system', function(data) {
                 // console.log(data);
-                if(showQrcode && showQrcode.isShow){
+                if (showQrcode && showQrcode.isShow) {
                     showQrcode();
                 }
             });
 
             this[this.role + 'Connect']();
+        },
+        broadcast: function(evtName, data) {
+            webSocket.emit('repost data', {
+                action: 'from control ' + evtName,
+                data: data
+            });
         },
         update: function(id) {
             webSocket.emit('repost data', {
@@ -175,7 +191,7 @@ Slide.Control.add('socket', function(S, broadcast) {
                 //添加shake
                 MixJS.loadJS(Slide.dir + 'shake.js', function() {
                     var lastTime = Date.now();
-                    window.addEventListener('shake', function(){
+                    window.addEventListener('shake', function() {
                         var now = Date.now();
                         if (now - lastTime > 3000) {
                             lastTime = now;

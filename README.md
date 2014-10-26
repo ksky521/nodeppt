@@ -7,10 +7,15 @@ nodePPT - 让你爱上做分享！
  * 支持[18种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
  * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad控制做分享更酷哦~
- * 可以使用画板，可以使用note做备注
+ * 可以使用画板，双屏同步画板内容！可以使用note做备注
  * 支持语法高亮，自由选择[highlight样式](https://highlightjs.org/)
  * 可以单页ppt内部动画，单步动画
  * [支持进入/退出回调](#callback)，做在线demo很方便
+
+## 0.9.0新功能
+ * 添加画板多端同步
+ * 添加按钮控制进度
+ * 修复一些bug
 
 ## demo
  * http://qdemo.sinaapp.com/
