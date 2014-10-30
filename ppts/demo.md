@@ -1,7 +1,7 @@
 title: nodeppt markdown 演示
 speaker: Theo Wang
 url: https://github.com/ksky521/nodePPT
-transition: slide
+transition: move
 files: /js/demo.js,/css/demo.css
 
 [slide]

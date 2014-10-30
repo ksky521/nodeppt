@@ -1,0 +1,114 @@
+@import "compass/css3";
+
+$gray-1: #e6e6e6;
+$gray-2: #a9a9a9;
+$gray-3: #797979;
+$gray-4: #515151;
+::selection {
+    color: white;
+    background-color:#d33682;
+    @include text-shadow(none);
+}
+a {
+    color: #268bd2;
+    background-color: transparent;
+    border-bottom: 0;
+    &:hover {
+        color: #78b9e6;
+        background-color: transparent;
+    }
+}
+h1, h2, h3 {
+    @include text-shadow(2px 2px 2px black);
+}
+
+h1 {
+    color: #eee8d5;
+    @include text-shadow(2px 3px 4px black);
+}
+
+h2 {
+    color: #eee8d5;
+}
+h3 {
+    color: #eee8d5;
+}
+
+button {
+    @include background(linear-gradient(#F9F9F9 40%, #E3E3E3 70%));
+    border: 1px solid $gray-2;
+    @include text-shadow(1px 1px #fff);
+}
+button:not(:disabled):hover {
+    border-color: $gray-4;
+}
+
+button:not(:disabled):active {
+    @include background(linear-gradient(#E3E3E3 40%, #F9F9F9 70%));
+}
+table {
+    width: 100%;
+    color: black;
+    border-bottom: 1px solid $gray-3;
+
+    thead th{
+        background-color: $gray-1;
+    }
+    tr{
+        background-color: white;
+    }
+    tr:nth-child(even) {
+        background-color: $gray-1;
+    }
+
+
+    td.highlight {
+        color: #468847;
+        background-color: #dff0d8 !important;
+    }
+
+    &.rows {
+        border-right: 1px solid $gray-3;
+    }
+}
+slides > slide{
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #93a1a1;
+    background-color: #002b36;
+    &:nth-child(6n+1){
+        background-color: #002b36
+    }
+    &:nth-child(6n+2){
+        background-color: #002b36
+    }
+    &:nth-child(6n+3){
+        background-color: #002b36
+    }
+    &:nth-child(6n+4){
+        background-color: #002b36
+    }
+    &:nth-child(6n+5){
+        background-color: #002b36
+    }
+    .slide-wrapper{
+        blockquote {
+            background-color: transparent;
+            border-left: 0 none;
+            color: #0790AB;
+            padding: 0px;
+            p {
+                font-size: 22px;
+            }
+            small{
+                color: #999;
+                &::before{
+                    content: '\2014 \00A0';
+                }
+            }
+        }
+    }
+}
+
+.progress span{
+    background: #2187E7;
+}
