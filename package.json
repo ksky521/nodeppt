@@ -2,7 +2,7 @@
   "name": "nodeppt",
   "jsname": "nodeppt",
   "description": "A simple, in-browser, markdown-driven presentation framework",
-  "version": "0.9.0",
+  "version": "0.9.2",
   "site": "https://github.com/ksky521/nodePPT",
   "author": {
     "name": "Theo Wang",
@@ -34,11 +34,12 @@
   "keywords": [
     "ppt",
     "slide",
-    "reveal",
+    "revealjs",
     "impressjs",
     "presentation",
     "powerpoint",
     "slideshow",
+    "keynote",
     "markdown"
   ],
   "readmeFilename": "README.md"

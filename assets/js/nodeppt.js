@@ -644,6 +644,10 @@
         //        $drawBoard.iLastY = e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop);
         var x = $drawBoard.iLastX = e.layerX || e.offsetX || (e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft));
         var y = $drawBoard.iLastY = e.layerY || e.offsetY || (e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop));
+        pPoints.push({
+            x: x,
+            y: y
+        });
     };
     var pPoints = [];
     var pMouseUp = function(e) {
@@ -658,18 +662,27 @@
     $B.on('from control paint points', function(data) {
         // console.log(data);
         var points = data.points;
+        //远程来的屏幕
         var wh = data.screen;
-        var iw = $body.offsetWidth / wh.width;
-        var ih = $body.offsetHeight / wh.height;
+        var tOX = wh.width / 2,
+            tOY = wh.height / 2;
+
+        var width = $body.offsetWidth;
+        var height = $body.offsetHeight;
+        var cOX = width / 2,
+            cOY = height / 2;
+
+        var iw = width / wh.width;
+        var ih = height / wh.height;
 
         var context = $drawBoard.context;
         context.beginPath();
-        var startX = points[0].x * iw;
-        var startY = points[0].y * ih;
+        var startX = cOX - (tOX - points[0].x) * iw;
+        var startY = cOY - (tOY - points[0].y) * ih;
         // console.log(startX, points[0].x, startY, iw, wh);
         context.moveTo(startX, startY);
         for (var i = 0, len = points.length; i < len; i++) {
-            context.lineTo(points[i].x * iw, points[i].y * ih);
+            context.lineTo(cOX - (tOX - points[i].x) * iw, cOY - (tOY - points[i].y) * ih);
         }
         context.stroke();
     });
