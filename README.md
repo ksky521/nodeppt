@@ -6,8 +6,8 @@ nodePPT - 让你爱上做分享！
  * [导出网页](#export-html)或者[pdf](#export-pdf)更容易分享
  * 支持[18种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
- * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad控制做分享更酷哦~
- * 可以使用画板，双屏同步画板内容！可以使用note做备注
+ * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad/iphone控制翻页更酷哦~
+ * 可以使用画板，**双屏同步画板**内容！可以使用note做备注
  * 支持语法高亮，自由选择[highlight样式](https://highlightjs.org/)
  * 可以单页ppt内部动画，单步动画
  * [支持进入/退出回调](#callback)，做在线demo很方便
@@ -21,6 +21,19 @@ nodePPT - 让你爱上做分享！
  * http://qdemo.sinaapp.com/
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
  * 手机百度前端之路：http://qdemo.sinaapp.com/box-fe-road.htm
+
+## theme 自定义
+感觉默认的模板不符合新意？可以支持自定义模板，查看[theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
+
+自定义后的模板路径在markdown的设置里填写：
+
+```markdown
+title: 这是演讲的题目
+speaker: 演讲者名字
+url: 可以设置链接
+transition: 转场效果，例如：zoomin/cards/slide
+files: /css/theme.moon.css
+```
 
 ## 安装
 
@@ -45,8 +58,6 @@ nodeppt start -p 8090 -d path/for/ppts
 nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
 # 使用socket通信（按Q键显示/关闭二维码，手机扫描，即可控制）
 # socket须知：1、注意手机和pc要可以相互访问，2、防火墙，3、ip
-nodeppt start -c socket
-# 不加-c默认使用postMessage，窗口联动，即list页面【多窗口】链接
 ```
 
 #### 启用socket控制
