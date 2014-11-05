@@ -55,7 +55,7 @@ nodePPT - just enjoy presentation
  files: /path/to/your/theme.css
  ```
 
- ## install
+## install
 
  ```bash
  # get help
@@ -66,14 +66,14 @@ nodePPT - just enjoy presentation
 
 ```bash
 nodeppt start -p 8090 -d path/for/ppts
-# bing host, default value: (0.0.0.0)
+# bind host, default value: (0.0.0.0)
 nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
-# socket (type 'Q' to show/hide QR Code, use your phone scan it, and you can control the slider :D)
+# socket (type 'Q' to show/hide QR Code, use your phone scan it, and you can control the slider)
 # if your want to use socket, notice the follow: 
 		* 1, make sure that your phone and your pc/mac is allowed to access to each other
 		* 2, the firewall
 		* 3, ip
-
+```
 
 
 #### how to start socket?
@@ -119,7 +119,7 @@ nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
 ```
 
 a name="export-html"></a>
-#### html版
+#### export to html
 
 ```bash
 # get generate help
@@ -179,7 +179,7 @@ if you want set single page animation, go to **[single page animation setting](#
 ```markdown
 [slide style="background-image:url('/img/bg1.png')"]
 # slide with background image
-## I'm sub title
+## I'm subtitle
 ```
 
 #### single page ppt top-down layout
