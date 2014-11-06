@@ -1,5 +1,7 @@
 nodePPT - 让你爱上做分享！
 =============
+[This is a readme file in English](./README_EN.md)
+
 ## 为什么选择nodePPT
 
 **这可能是迄今为止最好的网页版PPT**
