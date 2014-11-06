@@ -14,7 +14,7 @@ nodePPT - just enjoy presentation
 	
  * Setting one page background image different than others;
 
- * overview mode, multiscreen mode, remote control with socket, shark to page-flipping with ipad/iphone;
+ * overview mode, multiscreen mode, remote control with socket, shake to page-flipping with ipad/iphone;
 
  * canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
 
@@ -26,7 +26,7 @@ nodePPT - just enjoy presentation
 
 ## 0.9.0 new features
 
- * real time sync canvas drawing across multiple device
+ * real time sync canvas drawing across multiple devices
 
  * add buttons to control page-flipping
 
