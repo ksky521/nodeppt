@@ -2,7 +2,7 @@ nodePPT - just enjoy presentation
 ==================================
 ## why nodePPT?
 
-**Maybe the best PPT webapp ever**
+**This is probably by far the best web presentation tool**
 	
  * markdown based on GFM;
 
@@ -228,7 +228,7 @@ For example:
 
 <a name="callback"></a>
 #### transition callback
-you can use ```incallback```和```outcallback``` to define your callback function while the page forward and backward.
+you can use ```incallback```or```outcallback``` to define your callback function while the page forward and backward.
 suck like this:
 ```markdown
 [slide data-outcallback="outcallback" data-incallback="incallback"]
@@ -306,8 +306,6 @@ nodeppt start -h
  * visit [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
  * online demo： http://qdemo.sinaapp.com/
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ksky521/nodeppt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ## Thanks
 * http://tympanus.net/Development/ItemTransitions/index2.html
