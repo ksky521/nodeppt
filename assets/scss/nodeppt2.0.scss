@@ -86,9 +86,8 @@ $article-content-top-padding: 20px;
     -webkit-animation-name: flash;
     animation-name: flash
 }
-/**
- * Theme Styles
- */
+
+//选种颜色，滚动条等
 ::selection {
     color: white;
     background-color: $brand-yellow;

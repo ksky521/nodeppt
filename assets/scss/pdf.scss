@@ -1,4 +1,12 @@
 @import 'compass/css3';
+@import "compass/css3/box";
+@mixin flexbox {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-box !important;
+  display: -o-box !important;
+  display: box !important;
+}
 * {
     -webkit-print-color-adjust: exact;
 }
@@ -20,7 +28,10 @@ slides{
     > slide .slide-wrapper{
         opacity: 1 !important;
         visibility: visible !important;
-        display: block !important;
+        @include flexbox;
+        @include box-orient(vertical);
+        @include box-pack(center);
+
         position: static;
         width: 1100px !important;
         color: white !important;
@@ -31,16 +42,17 @@ slides{
         margin: 0 auto 10pt !important;
 
         overflow: visible;
-        display: block;
         @include perspective(none !important);
         @include perspective-origin(50% 50% !important);
         @include border-radius(0 !important);
         @include transform(none !important);
 
-        div, article,p,li,ul,h1,h3,h2,span{
+        *{
             opacity: 1 !important;
             visibility: visible !important;
-            color: white !important;
+            @include transform(none !important);
+
+            // color: white !important;
         }
         .note{
             display: none !important;
@@ -48,6 +60,6 @@ slides{
     }
 }
 
-#drawBoard, .progress, #tip{
+#_buttons,#drawBoard, .progress, #tip{
     display: none !important;
 }
