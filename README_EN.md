@@ -1,17 +1,17 @@
-nodePPT - just enjoy presentation
+nodePPT - This is probably the best web presentation tool so far!
 ==================================
+中文说明：[README](./README.md)
+
 ## why nodePPT?
 
-**This is probably by far the best web presentation tool**
-	
  * markdown based on GFM;
 
  * mix-code with html and markdown
 
  * export your work with html and pdf format;
-	
+
  * 18 different transition animations, and you can choose single page animation well;
-	
+
  * Setting one page background image different than others;
 
  * overview mode, multiscreen mode, remote control with socket, shake to page-flipping with ipad/iphone;
@@ -39,7 +39,7 @@ nodePPT - just enjoy presentation
  * sync multiscreen in real time: http://qdemo.sinaapp.com/?_multiscreen=1 (make sure alert is allowed in your browser)
 
  * front-end experience of mobile baidu: http://qdemo.sinaapp.com/box-fe-road.htm
-	
+
 
 ## customize your theme
 
@@ -69,7 +69,7 @@ nodeppt start -p 8090 -d path/for/ppts
 # bind host, default value: (0.0.0.0)
 nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
 # socket (type 'Q' to show/hide QR Code, use your phone scan it, and you can control the slider)
-# if your want to use socket, notice the follow: 
+# if your want to use socket, notice the follow:
 		* 1, make sure that your phone and your pc/mac is allowed to access to each other
 		* 2, the firewall
 		* 3, ip
@@ -149,7 +149,7 @@ transition: zoomin/cards/slide/...
 files: path/to/js/or/css/files
 ```
 
-**directory relationship**: 
+**directory relationship**:
 
 <a name="transition"></a>
 support the followed animations:
@@ -171,7 +171,7 @@ support the followed animations:
  * vertical3d
  * zoomin
  * zoomout
- * pulse 
+ * pulse
 
 if you want set single page animation, go to **[single page animation setting](#transition-page)**
 
