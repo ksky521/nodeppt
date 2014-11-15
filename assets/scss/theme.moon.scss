@@ -20,12 +20,12 @@ a {
 }
 h1, h2, h3 {
     color: #E8F0F3;
-    @include text-shadow(3px 4px 2px #000);
+    @include text-shadow(1px 2px 0px #152E4F,3px 5px 0px rgba(0, 0, 0, 0.8));
     letter-spacing: 4px;
 }
 
 h1 {
-    @include text-shadow(3px 5px 3px #000);
+    @include text-shadow(1px 2px 0px #152E4F,3px 5px 0px rgba(0, 0, 0, 0.9));
 }
 
 button {
@@ -70,13 +70,13 @@ slides > slide{
     -webkit-font-smoothing: subpixel-antialiased;
     color: #E8F0F3;
     letter-spacing: 2px;
-    background: #152E4F;
+    background-color: #152E4F;
     &:nth-child(6n+1),
     &:nth-child(6n+2),
     &:nth-child(6n+3),
     &:nth-child(6n+4),
     &:nth-child(6n+5){
-        background: #152E4F
+        background-color: #152E4F
     }
     &.fill{
         @include background-size(cover);

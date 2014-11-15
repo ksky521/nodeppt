@@ -20,13 +20,13 @@ a {
 }
 h1, h2, h3 {
     color: #fff;
-    @include text-shadow(none);
+    @include text-shadow(1px 2px 0px #699B98, 2px 4px 0px rgba(0, 0, 0, 0.15));
     letter-spacing: 4px;
     font-weight: bolder;
 }
 
 h1 {
-    @include text-shadow(none);
+    @include text-shadow(1px 2px 0px #699B98,3px 5px 0px rgba(0, 0, 0, 0.15));
 }
 
 button {
