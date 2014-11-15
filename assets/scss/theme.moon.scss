@@ -4,28 +4,46 @@ $gray-1: #e6e6e6;
 $gray-2: #a9a9a9;
 $gray-3: #797979;
 $gray-4: #515151;
+//colors
+$bg-color: #152E4F;
+$font-color: #E8F0F3;
+$strong-color: #16D5B5;
+$quote-bg-color: #0B6C96;
+$quote-color: #E5DCDC;
+$title-color: #E8F0F3;
+
+$link-color: #F9D905;
+$link-hover-color: #F5BE78;
+$link-bg-color: transparent;
+$link-hover-bg-color: transparent;
+
+$progress-color: #2187E7;
+$selection-color: white;
+$selection-bg-color: #d33682;
+
 ::selection {
-    color: white;
-    background-color:#d33682;
+    color: $selection-color;
+    background-color: $selection-bg-color;
     @include text-shadow(none);
 }
 a {
-    color: #F9D905;
-    background-color: transparent;
+    color: $link-color;
+    background-color: $link-bg-color;
     border-bottom: 0;
     &:hover {
-        color: #F5BE78;
-        background-color: transparent;
+        color: $link-hover-color;
+        background-color: $link-hover-bg-color;
     }
 }
 h1, h2, h3 {
-    color: #E8F0F3;
-    @include text-shadow(1px 2px 0px #152E4F,3px 5px 0px rgba(0, 0, 0, 0.8));
+    color: $title-color;
+    @include text-shadow(1px 2px 0px $bg-color,3px 5px 0px rgba(0, 0, 0, 0.2));
     letter-spacing: 4px;
+    font-weight: bolder;
 }
 
 h1 {
-    @include text-shadow(1px 2px 0px #152E4F,3px 5px 0px rgba(0, 0, 0, 0.9));
+    @include text-shadow(1px 2px 0px $bg-color,3px 5px 0px rgba(0, 0, 0, 0.2));
 }
 
 button {
@@ -68,38 +86,38 @@ table {
 }
 slides > slide{
     -webkit-font-smoothing: subpixel-antialiased;
-    color: #E8F0F3;
+    color: $font-color;
     letter-spacing: 2px;
-    background-color: #152E4F;
+    background-color: $bg-color;
     &:nth-child(6n+1),
     &:nth-child(6n+2),
     &:nth-child(6n+3),
     &:nth-child(6n+4),
     &:nth-child(6n+5){
-        background-color: #152E4F
-    }
-    &.fill{
-        @include background-size(cover);
+        background-color: $bg-color;
     }
     .slide-wrapper{
         strong{
-            color: #16D5B5
+            @include text-shadow(none);
+            font-weight: bolder;
+            color: $strong-color;
         }
         blockquote {
             &.pull-right{
                 border-right:0 none;
+                padding: 5px 28px 5px 5px;
+                ::before{
+                    font:normal normal normal 14px/1 FontAwesome;
+                    content:"\f10e";
+                    right: 6px;
+                    position: absolute;
+                    top: 6px;
+                }
                 small::after{
                     position: absolute;
                     content: '';
                 }
-
             }
-            padding: 5px 5px 5px 28px;
-            border-left: 0 none;
-            color: #E5DCDC;
-            position: relative;
-            background-color: #0B6C96;
-            @include text-shadow(2px 3px 1px #000);
             ::before{
                 font:normal normal normal 14px/1 FontAwesome;
                 content:"\f10d";
@@ -107,7 +125,12 @@ slides > slide{
                 position: absolute;
                 top: 6px;
             }
-
+            position: relative;
+            background-color: $quote-bg-color;
+            border-left: 0 none;
+            color: $quote-color;
+            padding: 5px 5px 5px 28px;
+            @include text-shadow(none);
             p {
                 font-size: 22px;
                 line-height: 1.7em;
@@ -127,5 +150,5 @@ slides > slide{
 }
 
 .progress span{
-    background: #2187E7;
+    background: $progress-color;
 }
