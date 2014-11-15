@@ -144,35 +144,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 <a href="#">链接</a>
 
-> 这是一个blockquote <small>small一下</small>
-
-这是一个p标签
-
-> 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
-
-[slide]
-## 一些Tag的样式，多个背景测试
-----
-
-<button>按钮</button>
-
-<a href="#">链接</a>
-
-> 这是一个blockquote <small>small一下</small>
-
-这是一个p标签
-
-> 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
-
-[slide]
-## 一些Tag的样式，多个背景测试
-----
-
-<button>按钮</button>
-
-<a href="#">链接</a>
-
-> 这是一个blockquote <small>small一下</small>
+> nodeppt可能是迄今为止最好用的web presentation <small>三水清</small>
 
 这是一个p标签
 
@@ -350,7 +322,7 @@ markdown语法如下：
 
 ## 这是一个glue的动画
 ----
-使用方法（全局） 1：
+使用方法（全局设置） 1：
 
 > transition: glue
 
