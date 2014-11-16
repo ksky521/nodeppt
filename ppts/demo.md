@@ -1,7 +1,7 @@
 title: nodeppt markdown 演示
 speaker: Theo Wang
 url: https://github.com/ksky521/nodePPT
-transition: move
+transition: cover-diamond
 files: /js/demo.js,/css/demo.css
 
 [slide]
@@ -137,7 +137,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 
 [slide]
-## 一些Tag的样式，多个背景测试
+## 多种样式展示
 ----
 
 <button>按钮</button>
@@ -146,7 +146,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 > nodeppt可能是迄今为止最好用的web presentation <small>三水清</small>
 
-这是一个p标签
+**注意**下一页效果高能！提前预警！！
 
 > 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
 
@@ -287,13 +287,14 @@ markdown语法如下：
 跟powderpoint一样的双屏功能，带有备注信息。
 
 [slide]
-## 18种转场动画随心换
+## 20种转场动画随心换
 ----
  * slide/slide2/slide3
  * newspaper
  * glue
  * kontext/vkontext
  * move/circle
+ * cover-circle/cover-diamond
  * horizontal/horizontal3d
  * vertical3d
  * zoomin/zoomout

@@ -60,45 +60,45 @@ MixJS.config({
     baseURL: [ base, 'js'].join('/')+'/'
 });
 <% } %>
-
-MixJS.use('event/broadcast', function($){
-    $.loadJS('nodeppt.js',function(){
-        Slide.init({
-            containerID: 'container',
-            drawBoardID: 'drawBoard',
-            slideClass: '.slide',
-            buildClass: '.build',
-            progressID: 'progress',
-            transition: '<%- transition %>',
-            width: 1100,
-            dir: './',
-            <% if (query && query.controller === 'socket'){ %>
-            control:{
-                type: 'socket',
-                args:{
-                    isControl: <% if (query.iscontroller) {%>true<%} else{%> false<%}%>,
-                    host: base,
-                    clientId: <% if (query.clientid) {%><%-query.clientid%><%} else{%> 0<%}%>,
-                    //摇一摇
-                    shake: <% if (!query.noshake) {%>true<%} else{%> false<%}%>
-                }
-            },
-            <% } else { %>
-            //打开下面的注释就开启postMessage方式
-            //访问网址127.0.0.1:8080/ppt/demo#client
-            control:{
-                type: 'postMessage',
-                args:{
-                    isControl: <% if (query._multiscreen=='controller') {%>true<%} else{%> false<%}%>
-                }
-            },
-            <% } %>
-            tipID: 'tip'
-        });
-    }).loadJS('highlight/hljs-0.8.js',function(){
-        hljs.tabReplace = '  ';
-        hljs.initHighlightingOnLoad();
-    });
+</script>
+<script src="/js/mixjs/lib/event/broadcast.js"></script>
+<script src="/js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: '<%- transition %>',
+    width: 1100,
+    dir: './',
+    <% if (query && query.controller === 'socket'){ %>
+    control:{
+        type: 'socket',
+        args:{
+            isControl: <% if (query.iscontroller) {%>true<%} else{%> false<%}%>,
+            host: base,
+            clientId: <% if (query.clientid) {%><%-query.clientid%><%} else{%> 0<%}%>,
+            //摇一摇
+            shake: <% if (!query.noshake) {%>true<%} else{%> false<%}%>
+        }
+    },
+    <% } else { %>
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl: <% if (query._multiscreen=='controller') {%>true<%} else{%> false<%}%>
+        }
+    },
+    <% } %>
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/hljs-0.8.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
 });
 </script>
 <%- files %>

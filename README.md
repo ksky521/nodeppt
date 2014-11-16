@@ -9,17 +9,19 @@ nodePPT - 让你爱上做分享！
  * 基于GFM的markdown语法编写
  * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
  * [导出网页](#export-html)或者[pdf](#export-pdf)更容易分享
- * 支持[18种转场动画](#transition)，可以设置单页动画
+ * 支持[20种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
  * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad/iphone控制翻页更酷哦~
  * 可以使用画板，**双屏同步画板**内容！可以使用note做备注
  * 支持语法高亮，自由选择[highlight样式](https://highlightjs.org/)
  * 可以单页ppt内部动画，单步动画
  * [支持进入/退出回调](#callback)，做在线demo很方便
+ * 支持事件update函数，查看[demo](http://qdemo.sinaapp.com/#12)
 
 ## 0.9.0新功能
  * 添加画板多端同步
  * 添加按钮控制进度
+ * 新增两种转场动效，增加事件绑定方法：`Slide.on`
  * 修复一些bug
 
 ## demo
@@ -89,11 +91,29 @@ http://127.0.0.1:8080/md/demo.md?controller=socket
 http://127.0.0.1:8080/md/demo.md?_multiscreen=1
 ```
 
+### 事件绑定
+使用函数`Slide.on`，目前支持update函数，即转场后的回调。示例代码：
+
+```javascript
+Slide.on('update', function(i, cls) {
+//接受两个参数：index和方向pageup/pagedown
+    Puff.add('#FFC524' /*colors[i % 6]*/ , ctx, 20, 700, width / 2, height / 2, width / 1.8, 400);
+    clearInterval(timer);
+    //第十三个有动效
+    if (i === 13 || i === 14) {
+        timer = setInterval(function() {
+            Puff.draw(1);
+        }, 1E3 / FPS);
+    }
+
+})
+```
+demo中[第13张](http://qdemo.sinaapp.com/#13)使用回调做了魔幻翻页效果
 
 ### 导出ppt
 这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
 
-导出ppt有两种，一种是**pdf版**，一种是**html版**
+导出ppt有三种，一种最简单直接**ctrl+P**，一种是**pdf版**，一种是**html版**
 
 <a name="export-pdf"></a>
 #### pdf版
@@ -151,6 +171,8 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
  * kontext
  * vkontext
  * circle
+ * cover-circle
+ * cover-diamond
  * earthquake
  * cards
  * glue
@@ -329,15 +351,15 @@ nodePPT - just enjoy presentation
 ## why nodePPT?
 
 **Maybe the best PPT webapp ever**
-	
+
  * markdown based on GFM;
 
  * mix-code with html and markdown
 
  * export your work with html and pdf format;
-	
+
  * 18 different transition animations, and you can choose single page animation well;
-	
+
  * Setting one page background image different than others;
 
  * overview mode, multiscreen mode, remote control with socket, shark to page-flipping with ipad/iphone;
@@ -365,7 +387,7 @@ nodePPT - just enjoy presentation
  * sync multiscreen in real time: http://qdemo.sinaapp.com/?_multiscreen=1 (make sure alert is allowed in your browser)
 
  * front-end experience of mobile baidu: http://qdemo.sinaapp.com/box-fe-road.htm
-	
+
 
 ## customize your theme
 
@@ -395,7 +417,7 @@ nodeppt start -p 8090 -d path/for/ppts
 # bind host, default value: (0.0.0.0)
 nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
 # socket (type 'Q' to show/hide QR Code, use your phone scan it, and you can control the slider)
-# if your want to use socket, notice the follow: 
+# if your want to use socket, notice the follow:
 		* 1, make sure that your phone and your pc/mac is allowed to access to each other
 		* 2, the firewall
 		* 3, ip
@@ -475,7 +497,7 @@ transition: zoomin/cards/slide/...
 files: path/to/js/or/css/files
 ```
 
-**directory relationship**: 
+**directory relationship**:
 
 <a name="transition"></a>
 support the followed animations:
@@ -497,7 +519,7 @@ support the followed animations:
  * vertical3d
  * zoomin
  * zoomout
- * pulse 
+ * pulse
 
 if you want set single page animation, go to **[single page animation setting](#transition-page)**
 
