@@ -25,16 +25,20 @@ html {
     overflow: visible;
 }
 slides{
+    > slide {
+        -webkit-clip-path: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
     > slide .slide-wrapper{
         opacity: 1 !important;
         visibility: visible !important;
         @include flexbox;
         @include box-orient(vertical);
         @include box-pack(center);
-
         position: static;
         width: 1100px !important;
-        color: white !important;
+        // color: white !important;
         left: 0;
         top: 0;
         right: 0;
@@ -60,6 +64,6 @@ slides{
     }
 }
 
-#_buttons,#drawBoard, .progress, #tip{
+#_buttons,#drawBoard,.progress, #tip{
     display: none !important;
 }
