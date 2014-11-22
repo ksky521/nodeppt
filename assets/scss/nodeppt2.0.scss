@@ -190,9 +190,10 @@ slides > slide .slide-wrapper{
     margin: 0 auto;
     position: relative;
 
-    @include flexbox;
-    @include box-orient(vertical);
-    @include box-pack(center);
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-content(center);
     height: 100%;
 
     > hgroup + article {
@@ -223,6 +224,7 @@ slides > slide .slide-wrapper{
         }
     }
     img{
+        @include justify-content( space-around);
         max-width: 100%;
         max-height: $slide-height - $slide-top-bottom-padding*2;
     }
@@ -379,7 +381,7 @@ slides > slide {
     }
 
     .note{
-        color: $gray-2;
+        color: black;
         h1,h2,h3,h4{
             color: black;
             @include text-shadow(none);
@@ -753,6 +755,38 @@ article.smaller {
 }
 
 /* Builds */
+.fade {
+    @include display-flex;
+    @include justify-content(center);
+    @include align-content(center);
+    > *{
+        opacity: 0;
+        @include transition(opacity 0.5s ease-in-out 0.2s);
+    }
+    > .to-build:first-child{
+        @include display-flex;
+        // opacity: 1;
+        visibility: hidden;
+    }
+    > .build-fade{
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+    > .build-fade:last-child{
+        opacity: 1;
+        @include display-flex;
+        visibility: visible;
+    }
+    > .building{
+        @include display-flex;
+        opacity: 1;
+    }
+    .to-build{
+        opacity: 0;
+        display: none;
+    }
+}
 .fadeIn {
     > * {
         @include transition(opacity 0.5s ease-in-out 0.2s);
@@ -821,18 +855,21 @@ article.smaller {
     background: rgba(0, 0, 0, 0.3);
     opacity: 0;
     // pointer-events: none;
-    // @include flexbox;
-    @include flex-center-center;
-    display:none;
+    @include display-flex;
+    @include flex-flow(row);
+    @include justify-content(center);
+
     // @include border-radius($slide-border-radius);
 
     @include box-sizing(border-box);
-    @include transform(translateY($slide-height / 2));
+    // @include transform(translateY($slide-height / 2));
     @include transition(all 0.4s ease-in-out);
 
-
-
     > section {
+        @include display-flex;
+        @include flex-flow(column);
+        @include justify-content(center);
+        @include align-content(center);
         background: #fff;
         @include border-radius($slide-border-radius);
         @include box-shadow(inset 0 0 10px #6F6F6F);
@@ -890,20 +927,17 @@ article.smaller {
                 opacity: 1 !important;
 
                 .note {
-                    display: none !important; // Prevents seeing notes if we go to previous slide.
+                    display: none !important;
                 }
             }
         }
 
         .note {
-            width: 109%;
+            width: 100%;
             height: $slide-height / 2 - 90;
-            background: $gray-1;
             padding: 0;
 
-            @include box-shadow(0 0 10px $gray-3);
-
-            @include transform(translate3d(250px, $slide-height + 150, 0) scale(1.5));
+            @include transform(translate3d(350px, $slide-height + 250, 0) scale(1.5));
             @include transition(opacity 400ms ease-in-out);
 
             > section {
@@ -917,16 +951,27 @@ article.smaller {
                 padding: 1em;
             }
         }
+
     }
 
     .note {
-        @include display-box();
+        @include display-flex;
         opacity: 1;
         @include transform(translateY(0));
-        pointer-events: auto; // Allow people to do things like open links embedded in the speaker notes.
+        pointer-events: auto;
     }
 }
-
+@media screen and (min-width:1200px){
+    .with-notes {
+    &.popup {
+        .note{
+            @include transform(translate3d(350px, $slide-height + 450, 0) scale(1.5));
+        }
+        slide.next {
+            @include transform(translate3d($slide-width / 2 + 440, 80px, 0) scale(0.35));
+        }
+    }}
+}
 .source {
     font-size: 14px;
     color: $gray-2;
@@ -949,7 +994,8 @@ article.smaller {
 }
 
 .flexbox {
-    @include flexbox;
+    @include display-flex;
+    @include flex-flow(row);
 }
 
 .flexbox.vcenter {
@@ -1845,7 +1891,6 @@ slide.pageup[data-transition="slide3"].next {
 }
 
 slide[data-transition="cover-diamond"]{
-    z-index:99;
     @include transition(opacity 0s, -webkit-clip-path 1s);
     opacity: 0;
     -webkit-clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
@@ -1863,7 +1908,6 @@ slide[data-transition="cover-diamond"].past {
 
 
 slide[data-transition="cover-circle"]{
-    z-index:99;
     @include transition(opacity 0s, -webkit-clip-path 1s);
     opacity: 0;
     -webkit-clip-path: circle(5%, 50%, 50%);

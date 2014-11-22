@@ -95,8 +95,11 @@ http://127.0.0.1:8080/md/demo.md?_multiscreen=1
 使用函数`Slide.on`，目前支持update函数，即转场后的回调。示例代码：
 
 ```javascript
-Slide.on('update', function(i, cls) {
-//接受两个参数：index和方向pageup/pagedown
+Slide.on('update', function(i, itemIndex, cls) {
+//接受三个参数：
+//* 当前slide的index
+//* itemIndex当前slide进入的第几个build动画，从1开始
+//* 方向pageup/pagedown
     Puff.add('#FFC524' /*colors[i % 6]*/ , ctx, 20, 700, width / 2, height / 2, width / 1.8, 400);
     clearInterval(timer);
     //第十三个有动效

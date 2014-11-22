@@ -185,7 +185,7 @@
             build: item.dataset.index
         })
         list = item.classList;
-
+        $B.fire('slide.update',curIndex|0, item.dataset.index|0+1);
         list.remove('to-build');
         list.add('building');
 
@@ -198,7 +198,7 @@
         var i = slideCount;
         var slide;
         var transition = defaultOptions.transition;
-        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *';
+        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *,.fade > *';
         while (slide = $slides[i--]) {
             var items = $(buildClass, slide);
             var dataset = slide.dataset;
@@ -236,9 +236,12 @@
         }
         slideInCallBack();
         removePaint();
+
         if ($doc.body.classList.contains('overview')) {
             focusOverview_();
             return;
+        }else if(!$doc.body.classList.contains('popup')){
+            $doc.body.classList.remove('with-notes');
         }
 
     }
@@ -280,7 +283,7 @@
                     break;
             }
         }
-        $B.fire('slide.update', curIndex, pageClass);
+        $B.fire('slide.update', curIndex,0, pageClass);
 
     }
 

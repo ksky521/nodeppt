@@ -1,12 +1,5 @@
 @import 'compass/css3';
-@import "compass/css3/box";
-@mixin flexbox {
-  display: -webkit-box !important;
-  display: -moz-box !important;
-  display: -ms-box !important;
-  display: -o-box !important;
-  display: box !important;
-}
+@import "compass/css3/flexbox";
 * {
     -webkit-print-color-adjust: exact;
 }
@@ -29,13 +22,59 @@ slides{
         -webkit-clip-path: none !important;
         opacity: 1 !important;
         visibility: visible !important;
+        padding: 0;
     }
-    > slide .slide-wrapper{
+    // > slide.hasnote{
+    //     @include flex-flow(row !important);
+    //     display: -webkit-flex !important;
+    //     display: flex !important;
+    //     @include justify-content(space-around);
+
+    //     .note{
+    //         opacity: 1 !important;
+    //         display: block !important;
+    //         background: transparent;
+    //         //
+    //         font-size: 12px !important;
+    //         color: black;
+    //         padding:0;
+    //         position: static !important;
+    //         @include flex(2);
+    //         @include order(2 !important);
+    //         &::before{
+    //             content:'备注';
+    //             position: absolute;
+    //             top: 0.5em;
+    //             font-size: 20px;
+    //         }
+    //         section{
+
+    //             display: block;
+    //             width: 100%;
+    //             height: 100%;
+    //             padding: 3em 0 1em;
+    //             @include border-radius(0);
+    //             h1,h2,h3,h4{
+    //                 font-size: 12px;
+    //             }
+    //         }
+    //     }
+    //     .slide-wrapper{
+    //         @include flex(8);
+    //         @include order(1 !important);
+    //     }
+
+    // }
+    > slide .slide-wrapper,
+    > slide.past .slide-wrapper,
+    > slide.far-past .slide-wrapper,
+    > slide.far-next .slide-wrapper,
+    > slide.next .slide-wrapper{
         opacity: 1 !important;
         visibility: visible !important;
-        @include flexbox;
-        @include box-orient(vertical);
-        @include box-pack(center);
+        @include display-flex;
+        @include justify-content(center);
+        @include align-content(center);
         position: static;
         width: 1100px !important;
         // color: white !important;
@@ -51,15 +90,21 @@ slides{
         @include border-radius(0 !important);
         @include transform(none !important);
 
+        .build-fade,.to-buid,.building{
+            opacity: 1 !important;
+            visibility: visible !important;
+            @include transform(none !important);
+        }
+
         *{
             opacity: 1 !important;
             visibility: visible !important;
             @include transform(none !important);
-
             // color: white !important;
         }
+
         .note{
-            display: none !important;
+            // display: none !important;
         }
     }
 }
