@@ -8,7 +8,7 @@
     function doItem(id, itemID) {
         itemID = itemID | 0;
         var $curSlide = $slides[id];
-        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *';
+        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *,.fade > *';
         var toBuild = $curSlide.querySelectorAll(buildClass);
         var list;
         var index = itemID;

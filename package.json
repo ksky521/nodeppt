@@ -2,7 +2,7 @@
   "name": "nodeppt",
   "jsname": "nodeppt",
   "description": "A simple, in-browser, markdown-driven presentation framework",
-  "version": "0.9.8-1",
+  "version": "0.9.8-2",
   "site": "https://github.com/ksky521/nodePPT",
   "author": {
     "name": "Theo Wang",
