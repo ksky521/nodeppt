@@ -621,49 +621,49 @@ button:not(:disabled):active {
 .blue {
     color: $brand-blue;
 }
-.blue2 {
+.blue2,.blue-2 {
     color: $brand-blue-secondary;
 }
-.blue3 {
+.blue3,.blue-3 {
     color: $brand-blue-secondary2;
 }
 .yellow {
     color: $brand-yellow;
 }
-.yellow2 {
+.yellow2,.yellow-2 {
     color: $brand-yellow-secondary;
 }
-.yellow3 {
+.yellow3,.yellow-3 {
     color: $brand-yellow-secondary2;
 }
 .green {
     color: $brand-green;
 }
-.green2 {
+.green2,.green-2 {
     color: $brand-green-secondary;
 }
-.green3 {
+.green3,.green-3 {
     color: $brand-green-secondary2;
 }
 .red {
     color: $brand-red;
 }
-.red2 {
+.red2,.red-2 {
     color: $brand-red-secondary;
 }
-.red3 {
+.red3,.red-3 {
     color: $brand-red-secondary2;
 }
 .gray {
     color: $gray-1;
 }
-.gray2 {
+.gray2,.gray-2 {
     color: $gray-2;
 }
-.gray3 {
+.gray3,.gray-3 {
     color: $gray-3;
 }
-.gray4 {
+.gray4,.gray-4 {
     color: $gray-4;
 }
 
@@ -674,10 +674,12 @@ button:not(:disabled):active {
     color: black !important;
 }
 
-.columns-2 {
+.columns-2,.columns2 {
     @include column-count(2);
 }
-
+.columns-3,.columns3 {
+    @include column-count(3);
+}
 table {
     width: 100%;
     color: black;
@@ -1177,17 +1179,6 @@ aside.gdbar {
     }
 }
 
-[data-config-contact] {
-    a {
-        color: rgb(255, 255, 255);
-        border-bottom: none;
-    }
-    span {
-        width: 115px;
-        display: inline-block;
-    }
-}
-
 .overview {
     &.popup {
         .note {
@@ -1230,77 +1221,7 @@ aside.gdbar {
 .with-notes.popup.overview slide.next{
     opacity: 0.5 !important;
 }
-@media print {
-    slides {
-        slide {
-            display: block !important;
-            position: relative;
-            @include transform(none !important);
-            width: 100%;
-            height: 100%;
-            page-break-after:always;
-            top: auto !important;
-            left: auto !important;
-            margin-top: 0 !important;
-            margin-left: 0 !important;
-            opacity: 1 !important;
-            color: #555;
 
-            &.far-past,
-            &.past,
-            &.next,
-            &.far-next,
-            &.far-past,
-            &.current {
-                opacity: 1 !important;
-                display: block !important;
-            }
-
-            .build {
-                > * {
-                    @include transition(none);
-                }
-
-                .to-build,
-                .build-fade {
-                    opacity: 1;
-                }
-            }
-
-            .auto-fadein {
-                opacity: 1 !important;
-            }
-
-            &.backdrop {
-                display: none !important;
-            }
-
-            table.rows {
-                border-right: 0;
-            }
-        }
-
-        slide[hidden] {
-            display: none !important;
-        }
-    }
-
-    .slide-area {
-        display: none;
-    }
-
-    .reflect {
-        -webkit-box-reflect: none;
-        -moz-box-reflect: none;
-        -o-box-reflect: none;
-        -ms-box-reflect: none;
-        box-reflect: none;
-    }
-
-    pre, code {
-        font-family: 'Source Code Pro',monospace !important;
-    }
-}
 .qrcode{
     display: none;
     position: fixed;
@@ -1904,7 +1825,7 @@ slide[data-transition="cover-diamond"].current{
 slide[data-transition="cover-diamond"].next {
 }
 slide[data-transition="cover-diamond"].past {
-    @include transition(all 0s cubic-bezier(.11,.75,.58,.97));
+    @include transition(opacity, 0s cubic-bezier(.11,.75,.58,.97));
 }
 
 
@@ -1915,12 +1836,12 @@ slide[data-transition="cover-circle"]{
     -webkit-clip-path: circle(5%, 50%, 50%);
     -webkit-clip-path: circle(5% at 50% 50%);
 }
-slide[data-transition="cover-magic"].current{
+slide[data-transition="cover-circle"].current{
     opacity: 1;
     -webkit-clip-path: circle(80%, 50%, 50%);
     -webkit-clip-path: circle(80% at 50% 50%);
 }
-slide[data-transition="cover-magic"].past {
+slide[data-transition="cover-circle"].past {
     @include transition(all 0s cubic-bezier(.11,.75,.58,.97));
 }
 
