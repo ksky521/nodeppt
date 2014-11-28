@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title><%= title %> - By <%= speaker %></title>
-    <link rel="stylesheet" media="all" href="/css/nodeppt2.0.css">
+    <link rel="stylesheet" media="all" href="/css/nodeppt.css">
     <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/css/phone.css">
     <link rel="stylesheet" media="print" href="/css/pdf.css">
     <link rel="stylesheet" href="/js/highlight/styles/<%if (hasOwnProperty('highlightStyle') && highlightStyle!=='') { %><%- highlightStyle %><% }else{%>monokai_sublime<%}%>.css">
@@ -18,12 +18,12 @@
 <div class="slides">
     <slides id="container">
         <%- content %>
-        <slide class="slide thank-you-slide segue nobackground">
+        <!--slide class="slide thank-you-slide segue nobackground">
             <article class="flexbox vleft auto-fadein">
                 <h2>Q &amp; A</h2>
                 <h3>&lt;Thank You!&gt;</h3>
             </article>
-        </slide>
+        </slide-->
         <slide class="slide logoslide dark nobackground">
             <article class="flexbox vcenter">
               <h2 style="color: white;">Powered By nodePPT v<%= nodeppt_version %></h2>
