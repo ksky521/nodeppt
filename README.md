@@ -128,8 +128,10 @@ npm install -g phantomjs
 # 启动nodeppt server
 nodeppt start
 # 导出文件
-nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
+nodeppt pdf http://127.0.0.1:8080/md/demo.md a.pdf
 ```
+
+phantomjs版本可能较老，推荐在chrome浏览器中使用`ctrl+P`选择另存为pdf
 
 <a name="export-html"></a>
 #### html版

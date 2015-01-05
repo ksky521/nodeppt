@@ -115,7 +115,7 @@ npm install -g phantomjs
 # start nodeppt server
 nodeppt start
 # export file
-nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
+nodeppt pdf http://127.0.0.1:8080/md/demo.md a.pdf
 ```
 
 <a name="export-html"></a>
