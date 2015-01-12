@@ -3,24 +3,7 @@
 @import "compass/css3/columns";
 @import "compass/css3/user-interface";
 
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(http://fontscontent.useso.com/static/fonts/sourcecodepro/v4/leqv3v-yTsJNC7nFznSMqYPZSf8Ud0kNoe3bGnF7K24.woff) format('woff');
-}
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(http://fontscontent.useso.com/static/fonts/sourcecodepro/v4/mrl8jkM18OlOQN8JLgasDxBHWFfxJXS04xYOz0jw624.woff) format('woff');
-}
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(http://fontscontent.useso.com/static/fonts/sourcecodepro/v4/leqv3v-yTsJNC7nFznSMqQAD_zxmsR6vL1X3tnvCZYo.woff) format('woff');
-}
+@import url(http://fonts.useso.com/css?family=Source%20Code%20Pro:light,regular,semibold);
 $social-tags: '#Name';
 $brand-small-icon-size: 30px;
 
