@@ -67,7 +67,7 @@ nodePPT - This is probably the best web presentation tool so far!
 ```bash
 nodeppt start -p 8090 -d path/for/ppts
 # bind host, default value: (0.0.0.0)
-nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
+nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
 # socket (type 'Q' to show/hide QR Code, use your phone scan it, and you can control the slider)
 # if your want to use socket, notice the follow:
 		* 1, make sure that your phone and your pc/mac is allowed to access to each other
