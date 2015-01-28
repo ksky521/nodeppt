@@ -62,7 +62,7 @@ nodeppt start -p <port>
 ```bash
 nodeppt start -p 8090 -d path/for/ppts
 # 绑定host，默认绑定0.0.0.0
-nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
+nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
 # 使用socket通信（按Q键显示/关闭二维码，手机扫描，即可控制）
 # socket须知：1、注意手机和pc要可以相互访问，2、防火墙，3、ip
 ```
@@ -420,7 +420,7 @@ nodePPT - just enjoy presentation
 ```bash
 nodeppt start -p 8090 -d path/for/ppts
 # bind host, default value: (0.0.0.0)
-nodeppt start -p 8080 -d path/for/ppts -h 127.0.0.1
+nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
 # socket (type 'Q' to show/hide QR Code, use your phone scan it, and you can control the slider)
 # if your want to use socket, notice the follow:
 		* 1, make sure that your phone and your pc/mac is allowed to access to each other
