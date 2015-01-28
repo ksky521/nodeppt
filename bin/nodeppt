@@ -18,7 +18,7 @@ program
     .action(function (filename, options) {
         if(typeof filename === 'object'){
             console.log('ERROR: please input filename！'.bold.red);
-            this.commands[0].outputHelp()
+            this.outputHelp();
             return;
         }
 
@@ -72,7 +72,7 @@ program
     .option('-H, --host [host]', 'set host address', ipv4 || '0.0.0.0')
     .action(function (cmd){
         if(typeof  cmd !== 'object'){
-            this.commands[2].outputHelp()
+            this.outputHelp();
             return;
         }
 
@@ -96,7 +96,7 @@ program
     .action(function (http_url, save_path) {
         if(typeof  http_url !== 'string' || typeof  save_path !== 'string'){
             console.log('ERROR: pdf need a URL'.bold.red);
-            this.commands[3].outputHelp()
+            this.outputHelp();
             return;
         }
 
