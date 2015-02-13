@@ -2,6 +2,9 @@ nodePPT - 让你爱上做分享！
 =============
 [This is a readme file in English](./README_EN.md)
 
+[![NPM](https://nodei.co/npm-dl/nodeppt.png)](https://nodei.co/npm/nodeppt/)
+[![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
+
 ## 为什么选择nodePPT
 
 **这可能是迄今为止最好的网页版PPT**
@@ -18,7 +21,10 @@ nodePPT - 让你爱上做分享！
  * [支持进入/退出回调](#callback)，做在线demo很方便
  * 支持事件update函数，查看[demo](http://qdemo.sinaapp.com/#12)
 
-## 0.9.0新功能
+## 1.0.0新功能
+ * 实现watch功能`nodeppt start -w`
+
+## 0.9.0 新功能
  * 添加画板多端同步
  * 添加按钮控制进度
  * 新增两种转场动效，增加事件绑定方法：`Slide.on`

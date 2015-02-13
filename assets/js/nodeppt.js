@@ -185,7 +185,7 @@
             build: item.dataset.index
         })
         list = item.classList;
-        $B.fire('slide.update',curIndex|0, item.dataset.index|0+1);
+        $B.fire('slide.update', curIndex | 0, item.dataset.index | 0 + 1);
         list.remove('to-build');
         list.add('building');
 
@@ -240,7 +240,7 @@
         if ($doc.body.classList.contains('overview')) {
             focusOverview_();
             return;
-        }else if(!$doc.body.classList.contains('popup')){
+        } else if (!$doc.body.classList.contains('popup')) {
             $doc.body.classList.remove('with-notes');
         }
 
@@ -283,7 +283,7 @@
                     break;
             }
         }
-        $B.fire('slide.update', curIndex,0, pageClass);
+        $B.fire('slide.update', curIndex, 0, pageClass);
 
     }
 
@@ -345,102 +345,101 @@
     /*************************events***************/
 
     //pc键盘翻页事件逻辑
-
     function evtDocUp(e) {
-            var key = e.keyCode;
-            var target = e.target;
-            //防止input和textarea，和可以编辑tag
-            if (/^(input|textarea)$/i.test(target.nodeName) || target.isContentEditable) {
-                return;
-            }
-            if (!e.isFromControl) {
-                switch (key) {
-                    case 13:
-                    case 72:
-                    case 87:
-                    case 79:
-                    case 78:
-                    case 80:
-                    case 67:
-                        $B.fire('slide event keyup', e);
-                        break;
-                }
-            }
+        var key = e.keyCode;
+        var target = e.target;
+        //防止input和textarea，和可以编辑tag
+        if (/^(input|textarea)$/i.test(target.nodeName) || target.isContentEditable) {
+            return;
+        }
+        if (!e.isFromControl) {
             switch (key) {
                 case 13:
-                    // Enter
-                    if ($doc.body.classList.contains('overview')) {
-                        overview(e.isFromControl);
-                    }
-
-                    break;
                 case 72:
-                    // H: Toggle code highlighting
-                    $doc.body.classList.toggle('highlight-code');
-                    setTimeout(function() {
-                        $doc.body.classList.toggle('highlight-code');
-                    }, 2000);
-                    break;
-                    // 下掉宽屏模式，默认width：100%
                 case 87:
-                    // W: Toggle widescreen
-                    // Only respect 'w' on body. Don't want to capture keys from an <input>.
-                    if (!(e.shiftKey && e.metaKey)) {
-                        if (!$body.classList.contains('popup'))
-                            $container.classList.toggle('layout-widescreen');
-                    }
-                    break;
                 case 79:
-                    // O: Toggle overview
-                    overview(e.isFromControl);
-
-                    break;
                 case 78:
-                    // N
-                    if (!$body.classList.contains('popup'))
-                        $doc.body.classList.toggle('with-notes');
-                    break;
                 case 80:
-                    //P
-                    if (!$body.classList.contains('popup')) {
-                        showPaint(e.isFromControl);
-                    }
-                    break;
                 case 67:
-                    //c
-                    if (!$body.classList.contains('popup')) {
-                        removePaint(e.isFromControl);
-                    }
-                    break;
-                    //上一页
-                case 33:
-                    // pg up
-                case 37:
-                    // left
-                case 38:
-                    // up
-                    prevSlide();
-                    break;
-                    //下一页
-                    // case 9:
-                    // tab
-                case 32:
-                    // space
-                case 34:
-                    // pg down
-                case 39:
-                    // right
-                case 40:
-                    // down
-                    nextSlide()
+                    $B.fire('slide event keyup', e);
                     break;
             }
-
-            //        $container.style.marginLeft = -(curIndex * slideWidth) + 'px';
-            //        setProgress();
-            //        setHistory();
         }
-        /******************************** Touch events *********************/
+        switch (key) {
+            case 13:
+                // Enter
+                if ($doc.body.classList.contains('overview')) {
+                    overview(e.isFromControl);
+                }
+
+                break;
+            case 72:
+                // H: Toggle code highlighting
+                $doc.body.classList.toggle('highlight-code');
+                setTimeout(function() {
+                    $doc.body.classList.toggle('highlight-code');
+                }, 2000);
+                break;
+                // 下掉宽屏模式，默认width：100%
+            case 87:
+                // W: Toggle widescreen
+                // Only respect 'w' on body. Don't want to capture keys from an <input>.
+                if (!(e.shiftKey && e.metaKey)) {
+                    if (!$body.classList.contains('popup'))
+                        $container.classList.toggle('layout-widescreen');
+                }
+                break;
+            case 79:
+                // O: Toggle overview
+                overview(e.isFromControl);
+
+                break;
+            case 78:
+                // N
+                if (!$body.classList.contains('popup'))
+                    $doc.body.classList.toggle('with-notes');
+                break;
+            case 80:
+                //P
+                if (!$body.classList.contains('popup')) {
+                    showPaint(e.isFromControl);
+                }
+                break;
+            case 67:
+                //c
+                if (!$body.classList.contains('popup')) {
+                    removePaint(e.isFromControl);
+                }
+                break;
+                //上一页
+            case 33:
+                // pg up
+            case 37:
+                // left
+            case 38:
+                // up
+                prevSlide();
+                break;
+                //下一页
+                // case 9:
+                // tab
+            case 32:
+                // space
+            case 34:
+                // pg down
+            case 39:
+                // right
+            case 40:
+                // down
+                nextSlide()
+                break;
+        }
+
+        //        $container.style.marginLeft = -(curIndex * slideWidth) + 'px';
+        //        setProgress();
+        //        setHistory();
+    };
+    /******************************** Touch events *********************/
     var isStopTouchEvent = false;
 
     function evtTouchStart(event) {

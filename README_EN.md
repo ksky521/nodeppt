@@ -2,49 +2,38 @@ nodePPT - This is probably the best web presentation tool so far!
 ==================================
 中文说明：[README](./README.md)
 
+[![NPM](https://nodei.co/npm-dl/nodeppt.png)](https://nodei.co/npm/nodeppt/)
+[![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
+
 ## why nodePPT?
 
  * markdown based on GFM;
-
  * mix-code with html and markdown
-
  * export your work with html and pdf format;
-
  * 18 different transition animations, and you can choose single page animation well;
-
  * Setting one page background image different than others;
-
  * overview mode, multiscreen mode, remote control with socket, shake to page-flipping with ipad/iphone;
-
  * canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
-
  * syntax highlighting of course, and you may want to customize your [syntax highlighting style](https://highlightjs.org/), it's supported well;
-
  * Animation in single page, one-step animation;
-
  * [forward and backward callback function](#callback)
 
-## 0.9.0 new features
-
+## 1.0.0 new features
  * real time sync canvas drawing across multiple devices
-
+ * watch
  * add buttons to control page-flipping
-
  * bugs fixed
 
 ## demo
 
  * http://qdemo.sinaapp.com/
-
  * sync multiscreen in real time: http://qdemo.sinaapp.com/?_multiscreen=1 (make sure alert is allowed in your browser)
-
  * front-end experience of mobile baidu: http://qdemo.sinaapp.com/box-fe-road.htm
 
 
 ## customize your theme
 
  * default theme is not cool?  just customize your theme! take a look with [theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
-
  * write your customize theme's template path in setting md:
 
  ```markdown

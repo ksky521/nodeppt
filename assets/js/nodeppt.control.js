@@ -46,8 +46,6 @@
                 t.sendUpdateItem(slideID, buildItem);
             }).on('slide event keyup', function(e) {
                 t.sendKeyEvent(e.keyCode);
-            }).on('overview', function(e) {
-                t.sendKeyEvent(79);
             }).on('show paint', function(e){
                 t.sendKeyEvent(80);
             }).on('remove paint', function(){

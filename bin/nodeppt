@@ -70,6 +70,7 @@ program
     .option('-p, --port [port]', 'set server port ', 8080)
     .option('-c, --controller [socket]', 'support websocket mutil screen controller')
     .option('-H, --host [host]', 'set host address', ipv4 || '0.0.0.0')
+    .option('-w, --watch', 'livereload')
     .action(function (cmd){
         if(typeof  cmd !== 'object'){
             this.outputHelp();

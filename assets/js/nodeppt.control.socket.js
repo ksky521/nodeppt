@@ -90,20 +90,12 @@ Slide.Control.add('socket', function(S, broadcast) {
                 action = action.replace('client', 'control');
 
                 broadcast.fire(action, data);
-
-                // switch (action) {
-                //     case 'from client update':
-                //         broadcast.fire('from control update', data);
-                //         break;
-                //     case 'from client updateItem':
-                //         broadcast.fire('from control updateItem', data);
-                //         break;
-                // }
             });
 
         },
         connect: function() {
-            webSocket = io.connect(this.host);
+            webSocket = io.connect(location.host+'/ppt');
+            // console.log(io);
             webSocket.on('UUID', function(uid) {
                 webSocket.uid = uid;
                 if (Socket.role === 'client') {
@@ -111,7 +103,7 @@ Slide.Control.add('socket', function(S, broadcast) {
                         qrcodeLink();
                         var url = location.href.split('#')[0];
                         url += (!~url.indexOf('?')) ? '?' : '&';
-                        url += 'iscontroller=1&clientid=' + uid;
+                        url += 'iscontroller=1&clientid=' + encodeURIComponent(uid);
                         var qrcode = new QRCode('qrcode', {
                             text: url,
                             width: 256,
@@ -162,7 +154,6 @@ Slide.Control.add('socket', function(S, broadcast) {
             // console.log(this.clientUID);
             //角色，是否为控制端
             if (args.isControl) {
-                console.log(this.clientUID);
                 this.role = 'control';
                 var $body = document.body;
                 $body.classList.add('popup');
@@ -202,9 +193,15 @@ Slide.Control.add('socket', function(S, broadcast) {
                 });
             }
 
-            MixJS.loadJS(socketIOURL, function() {
+            if (io && io.connect) {
+                //已经存在
                 Socket.connect();
-            });
+            } else {
+                MixJS.loadJS(socketIOURL, function() {
+                    Socket.connect();
+                });
+            }
+
         }
     };
     return Socket;
