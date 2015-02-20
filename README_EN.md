@@ -4,6 +4,7 @@ nodePPT - This is probably the best web presentation tool so far!
 
 [![NPM](https://nodei.co/npm-dl/nodeppt.png)](https://nodei.co/npm/nodeppt/)
 [![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
+[![Inline docs](http://inch-ci.org/github/ksky521/nodePPT.svg?branch=master)](http://inch-ci.org/github/ksky521/nodePPT)
 
 ## why nodePPT?
 
