@@ -193,7 +193,7 @@ Slide.Control.add('socket', function(S, broadcast) {
                 });
             }
 
-            if (io && io.connect) {
+            if (window.io && io.connect) {
                 //已经存在
                 Socket.connect();
             } else {
