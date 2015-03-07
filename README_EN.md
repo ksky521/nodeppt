@@ -67,18 +67,18 @@ nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
 
 #### how to start socket?
 
-##### use 'start' command:
+##### with url params
 
 ```bash
-nodeppt start -c socket
+http://127.0.0.1:8080/md/demo.md?controller=socket
 ```
 
 type 'Q' in page to show the QR Code, scan it, and you can control the slider on your phone: swipe or touch or shake to page-flipping
 
-##### or with url params
+##### or use 'start' command:
 
 ```bash
-http://127.0.0.1:8080/md/demo.md?controller=socket
+nodeppt start -c socket
 ```
 
 type 'Q' in page to show the QR Code, scan it, and you can control the slider on your phone: swipe or touch or shake to page-flipping

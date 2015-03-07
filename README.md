@@ -75,19 +75,19 @@ nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
 
 #### 启用socket控制
 
-##### 方法一：使用`start`命令行
-
-```bash
-nodeppt start -c socket
-```
-在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页
-
-##### 方法二：使用url参数
+##### 方法一：使用url参数
 
 ```bash
 http://127.0.0.1:8080/md/demo.md?controller=socket
 ```
 
+在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页
+
+##### 方法二：使用`start`命令行
+
+```bash
+nodeppt start -c socket
+```
 在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页
 
 #### 启用postMessage控制
@@ -122,10 +122,10 @@ demo中[第13张](http://qdemo.sinaapp.com/#13)使用回调做了魔幻翻页效
 ### 导出ppt
 这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
 
-导出ppt有三种，一种最简单直接**ctrl+P**，一种是**pdf版**，一种是**html版**
+导出ppt有三种，一种最简单直接**ctrl+P（推荐此方法另存为pdf）**，一种是**pdf版**，一种是**html版**
 
 <a name="export-pdf"></a>
-#### pdf版
+#### pdf版（不推荐，原因phantomjs的webkit版本低）
 需要安装[phantomJS](http://phantomjs.org/)。
 
 ```bash
