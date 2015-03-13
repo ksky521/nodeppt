@@ -1,0 +1,66 @@
+:disabled {
+    color: $gray-2;
+}
+
+.blue {
+    color: $brand-blue;
+}
+.blue2,.blue-2 {
+    color: $brand-blue-secondary;
+}
+.blue3,.blue-3 {
+    color: $brand-blue-secondary2;
+}
+.yellow {
+    color: $brand-yellow;
+}
+.yellow2,.yellow-2 {
+    color: $brand-yellow-secondary;
+}
+.yellow3,.yellow-3 {
+    color: $brand-yellow-secondary2;
+}
+.green {
+    color: $brand-green;
+}
+.green2,.green-2 {
+    color: $brand-green-secondary;
+}
+.green3,.green-3 {
+    color: $brand-green-secondary2;
+}
+.red {
+    color: $brand-red;
+}
+.red2,.red-2 {
+    color: $brand-red-secondary;
+}
+.red3,.red-3 {
+    color: $brand-red-secondary2;
+}
+.gray {
+    color: $gray-1;
+}
+.gray2,.gray-2 {
+    color: $gray-2;
+}
+.gray3,.gray-3 {
+    color: $gray-3;
+}
+.gray4,.gray-4 {
+    color: $gray-4;
+}
+
+.white {
+    color: white !important;
+}
+.black {
+    color: black !important;
+}
+
+.columns-2,.columns2 {
+    @include column-count(2);
+}
+.columns-3,.columns3 {
+    @include column-count(3);
+}

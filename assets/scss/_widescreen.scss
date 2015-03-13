@@ -1,0 +1,53 @@
+slides.layout-faux-widescreen > slide {
+    padding: $slide-top-bottom-padding 160px;
+}
+
+slides.layout-widescreen,
+slides.layout-faux-widescreen {
+    $translateX: 1130px;
+
+    > slide .slide-wrapper {
+        width: 100%;
+        max-width: 100%;
+        img{
+            max-width: $slide-width-widescreen - $slide-left-right-padding*2;
+        }
+    }
+
+    > slide.far-past {
+        display: block;
+        display: none;
+        @include transform(translate(-$translateX * 2));
+        @include transform(translate3d(-$translateX * 2, 0, 0));
+    }
+
+    > slide.past {
+        display: block;
+        opacity: 0;
+    }
+
+    > slide.current {
+        display: block;
+        opacity: 1;
+    }
+
+    > slide.next {
+        display: block;
+        opacity: 0;
+    }
+
+    > slide.far-next {
+        display: block;
+        display: none;
+        @include transform(translate($translateX * 2));
+        @include transform(translate3d($translateX * 2, 0, 0));
+    }
+
+    #prev-slide-area {
+        margin-left: -$slide-width-widescreen / 2 - $slide-tap-area-width;
+    }
+
+    #next-slide-area {
+        margin-left: $slide-width-widescreen / 2;
+    }
+}

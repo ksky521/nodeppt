@@ -1,0 +1,86 @@
+/* Builds */
+.fade {
+    @include display-flex;
+    @include justify-content(center);
+    @include align-content(center);
+    > *{
+        opacity: 0;
+        @include transition(opacity 0.5s ease-in-out 0.2s);
+    }
+    > .to-build:first-child{
+        @include display-flex;
+        // opacity: 1;
+        visibility: hidden;
+    }
+    > .build-fade{
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+    > .build-fade:last-child{
+        opacity: 1;
+        @include display-flex;
+        visibility: visible;
+    }
+    > .building{
+        @include display-flex;
+        opacity: 1;
+    }
+    .to-build{
+        opacity: 0;
+        display: none;
+    }
+}
+.fadeIn {
+    > * {
+        @include transition(opacity 0.5s ease-in-out 0.2s);
+    }
+    .to-build {
+        opacity: 0;
+    }
+}
+.bounceIn,.zoomIn {
+    > * {
+        opacity: 1;
+    }
+    .to-build {
+        opacity: 0;
+    }
+    .building{
+        opacity: 1;
+        -webkit-animation-duration: .75s;
+        animation-duration: .75s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+}
+.bounceIn{
+    .building{
+        -webkit-animation-name: bounceIn;
+        animation-name: bounceIn;
+    }
+}
+.zoomIn{
+    .building{
+        -webkit-animation-name: zoomIn;
+        animation-name: zoomIn;
+    }
+}
+.moveIn{
+    > * {
+        @include transition(all 0.5s ease-in-out 0.2s);
+    }
+    .to-build{
+        opacity: 0;
+        @include transform(translate3d(60px, 0, 0));
+    }
+}
+.popup .next .build {
+    .to-build {
+        opacity: 1 !important;
+    }
+
+    .build-fade {
+        opacity: 1 !important;
+    }
+}

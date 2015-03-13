@@ -1,0 +1,29 @@
+@mixin highlight-color($color: $brand-yellow) {
+    -webkit-tap-highlight-color: $color;
+    -moz-tap-highlight-color: $color;
+    -ms-tap-highlight-color: $color;
+    -o-tap-highlight-color: $color;
+    tap-highlight-color: $color;
+}
+
+@mixin backdrop {
+    @include background(linear-gradient(white, white 85%, $gray-1));
+    background-color: white;
+}
+@mixin animated{
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+@mixin shake {
+    @include animated();
+    -webkit-animation-name: shake;
+    animation-name: shake
+}
+@mixin flash {
+    @include animated();
+    -webkit-animation-name: flash;
+    animation-name: flash
+}

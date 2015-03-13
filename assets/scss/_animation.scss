@@ -1,0 +1,513 @@
+/**翻页效果**/
+
+@mixin ani-delay100 {
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s;
+}
+@mixin ani-delay180 {
+    -webkit-animation-delay: .180s;
+    animation-delay: .180s;
+}
+@mixin ani-delay200 {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+}
+@mixin ani-delay300 {
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+@mixin ani-delay400 {
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+}
+@mixin ani-delay500 {
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+@mixin ani-delay700 {
+    -webkit-animation-delay: .7s;
+    animation-delay: .7s;
+}
+@mixin ani-delay1000 {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+/**zoomout***/
+slide[data-transition="zoomout"].past,
+slide[data-transition="zoomin"].next{
+    @include transform(scale(1.2));
+}
+slide[data-transition="zoomin"].past,
+slide[data-transition="zoomout"].next {
+    @include transform(scale(0.8));
+}
+
+/**horizontal*/
+slide[data-transition="horizontal"].current {
+    @include transform-origin(20% 80%);
+}
+slide[data-transition="horizontal"].next,
+slide[data-transition="horizontal"].past {
+    @include transform(rotate(-30deg));
+}
+slide[data-transition="horizontal"].next {
+        left: $slide-width/2;
+}
+slide[data-transition="horizontal"].past {
+            left: -$slide-width/2;
+}
+slides.layout-widescreen{
+    > slide[data-transition="horizontal"].next {
+            left: $slide-width-widescreen/2;
+    }
+    > slide[data-transition="horizontal"].past {
+                left: -$slide-width-widescreen/2;
+    }
+}
+
+/**horizontal 3D*/
+slide[data-transition="horizontal3d"]{
+    @include transition(all 0.8s ease);
+    @include transform-style(preserve-3d);
+    @include transform-origin(50% 50% $slide-width/-2)
+}
+.layout-widescreen slide[data-transition="horizontal3d"]{
+    @include transition(all 0.8s ease);
+    @include transform-origin(50% 50% $slide-width-widescreen/-2)
+}
+
+slide[data-transition="horizontal3d"].next {
+  @include transform(rotateY(90deg));
+}
+slide[data-transition="horizontal3d"].past {
+  @include transform(rotateY(-90deg))
+}
+
+// vertical 3d
+slide[data-transition="vertical3d"].next {
+    top: $slide-height/2;
+    @include transform(translate3d(0, 75%, 0) rotateX(60deg) translate3d(0, 75%, 0))
+}
+slide[data-transition="vertical3d"].past {
+    @include transform(translate3d(0, -75%, 0) rotateX(-60deg) translate3d(0, -75%, 0));
+    top: -$slide-height/2;
+}
+
+// cards
+slide[data-transition="cards"]{
+    @include transition(all 0.8s ease);
+    @include transform-style(preserve-3d);
+    @include transform-origin(0 100% 0);
+}
+
+slide[data-transition="cards"].next {
+  @include transform(translate3d(50px, 0, -100px));
+  opacity: 0;
+}
+slide[data-transition="cards"].past {
+  @include transform(translateZ(40px) rotateY(-60deg) translateX(-400px) rotateZ(120deg));
+  opacity: 0;
+}
+
+
+// glue
+slide.pagedown[data-transition="glue"].current{
+    -webkit-animation: moveFromRight .6s ease both;
+    animation: moveFromRight .6s ease both;
+    @include ani-delay300();
+    z-index: 999;
+}
+
+slide.pagedown[data-transition="glue"].next {
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-animation: rotateRightSideFirst .8s both ease-in;
+    animation: rotateRightSideFirst .8s both ease-in;
+    opacity: 1;
+}
+slide.pagedown[data-transition="glue"].past {
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+}
+//glue
+slide.pageup[data-transition="glue"].current{
+    -webkit-animation: moveFromLeft .6s ease both;
+    animation: moveFromLeft .6s ease both;
+    @include ani-delay300();
+    z-index: 999;
+}
+slide.pageup[data-transition="glue"].next {
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+
+}
+slide.pageup[data-transition="glue"].past {
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-animation: rotateLeftSideFirst .8s both ease-in;
+    animation: rotateLeftSideFirst .8s both ease-in;
+    opacity: 1;
+}
+
+//kontext
+slide.pagedown[data-transition="kontext"]{
+     @include transform(translateZ( -100px ));
+}
+slide.pagedown[data-transition="kontext"].current{
+    @include transform(translateZ( 0 ));
+    -webkit-animation: show-right 1s forwards ease;
+        animation: show-right 1s forwards ease;
+    z-index: 999;
+}
+slide.pagedown[data-transition="kontext"].past {
+    -webkit-animation: hide-right 1s forwards ease;
+        animation: hide-right 1s forwards ease;
+    opacity: 1;
+    z-index: 99;
+}
+slide.pageup[data-transition="kontext"].current{
+    -webkit-animation: show-left 1s forwards ease;
+        animation: show-left 1s forwards ease;
+    @include transform(translateZ( 0 ));
+}
+slide.pageup[data-transition="kontext"].next {
+    -webkit-animation: hide-left 1s forwards ease;
+        animation: hide-left 1s forwards ease;
+    opacity: 1;
+    z-index: 99;
+}
+
+
+//newspaper
+slide[data-transition="newspaper"]{
+}
+slide[data-transition="newspaper"].current{
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-animation: rotateInNewspaper .5s both ease-out;
+    animation: rotateInNewspaper .5s both ease-out;
+    @include ani-delay500();
+    z-index: 999;
+}
+slide[data-transition="newspaper"].past {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-animation: rotateOutNewspaper .5s both ease-in;
+    animation: rotateOutNewspaper .5s both ease-in;
+    opacity: 1;
+    z-index: 99;
+}
+slide[data-transition="newspaper"].next {
+    z-index: 99;
+}
+
+
+//move
+slide.pagedown[data-transition="move"]{
+     z-index: 99;
+}
+slide.pagedown[data-transition="move"].current{
+    -webkit-animation: moveFromRight .6s ease both;
+    animation: moveFromRight .6s ease both;
+    z-index: 999;
+}
+slide.pagedown[data-transition="move"].past {
+    -webkit-animation: moveToLeft .7s ease-in-out both;
+    animation: moveToLeft .7s ease-in-out both;
+    opacity: 1;
+    z-index: 999;
+}
+slide.pageup[data-transition="move"].current{
+    -webkit-animation: moveFromLeft .6s ease both;
+    animation: moveFromLeft .6s ease both;
+    z-index: 999;
+}
+slide.pageup[data-transition="move"].next {
+    -webkit-animation: moveToRight .7s ease-in-out both;
+    animation: moveToRight .7s ease-in-out both;
+    opacity: 1;
+    z-index: 99;
+}
+
+//stick
+slide.pagedown[data-transition="stick"],
+slide.pageup[data-transition="stick"]{
+    -webkit-perspective: 1600px;
+    perspective: 1600px;
+    opacity: 0;
+    z-index: 999;
+}
+slide.pagedown[data-transition="stick"].current{
+    z-index: 1001;
+    opacity: 1;
+    -webkit-animation: slideInFromBottomDelayed 0.8s forwards;
+    animation: slideInFromBottomDelayed 0.8s forwards;
+}
+slide.pagedown[data-transition="stick"].past {
+    opacity: 0;
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-animation: rotateBottomSideOut 0.8s forwards ease-in;
+    animation: rotateBottomSideOut 0.8s forwards ease-in;
+}
+slide.pageup[data-transition="stick"].current{
+    opacity: 1;
+     -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-animation: rotateBottomSideIn 0.8s 0.1s forwards ease-in;
+    animation: rotateBottomSideIn 0.8s 0.1s forwards ease-in;
+}
+slide.pageup[data-transition="stick"].next {
+    opacity: 1;
+    -webkit-animation: slideOutToBottom 0.8s forwards;
+    animation: slideOutToBottom 0.8s forwards;
+}
+
+//vkontext
+
+slide[data-transition="vkontext"]{
+     -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+slide.pagedown[data-transition="vkontext"].current{
+    -webkit-animation: showRight 1s forwards;
+    animation: showRight 1s forwards;
+}
+slide.pagedown[data-transition="vkontext"].past {
+    -webkit-animation: hideLeft 1s forwards;
+    animation: hideLeft 1s forwards;
+}
+slide.pageup[data-transition="vkontext"].current{
+     -webkit-animation: showLeft 1s forwards;
+    animation: showLeft 1s forwards;
+}
+slide.pageup[data-transition="vkontext"].next {
+    -webkit-animation: hideRight 1s forwards;
+    animation: hideRight 1s forwards;
+}
+
+//earthquake
+
+slide.pagedown[data-transition="earthquake"].current{
+    -webkit-animation: pushFromTop 1s 0.1s forwards;
+    animation: pushFromTop 1s 0.1s forwards;
+    opacity: 1;
+}
+slide.pagedown[data-transition="earthquake"].past {
+    opacity: 1;
+    -webkit-animation: shakeSlideBottom 1s 0.1s forwards;
+    animation: shakeSlideBottom 1s 0.1s forwards;
+}
+slide.pageup[data-transition="earthquake"].current{
+    opacity: 1;
+    -webkit-animation: pushFromBottom 1s 0.1s forwards;
+    animation: pushFromBottom 1s 0.1s forwards;
+}
+slide.pageup[data-transition="earthquake"].next {
+    opacity: 1;
+    -webkit-animation: shakeSlideTop 1s 0.1s forwards;
+    animation: shakeSlideTop 1s 0.1s forwards;
+}
+slide[data-transition="earthquake"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background-color: rgba(0,0,0,0.3);
+    transition: opacity 0.5s;
+}
+
+slide[data-transition="earthquake"].next::after,
+slide[data-transition="earthquake"].past::after {
+    opacity: 1;
+}
+
+//circle
+slide.pagedown[data-transition="circle"],
+slide.pageup[data-transition="circle"]{
+    -webkit-transform-origin: 50% 400%;
+    transform-origin: 50% 400%;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        background-color: rgba(0,0,0,1);
+        transition: opacity 0.9s cubic-bezier(0.7, 0, 0.3, 1);
+    }
+}
+
+slide.pagedown[data-transition="circle"].current{
+    opacity: 1;
+    -webkit-animation: rotateInCircRight 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: rotateInCircRight 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+slide.pagedown[data-transition="circle"].past {
+    opacity: 1;
+    -webkit-animation: rotateOutCircLeft 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: rotateOutCircLeft 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+slide.pageup[data-transition="circle"].current{
+    opacity: 1;
+    -webkit-animation: rotateInCircLeft 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: rotateInCircLeft 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+slide.pageup[data-transition="circle"].next {
+    opacity: 1;
+    -webkit-animation: rotateOutCircRight 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: rotateOutCircRight 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+slide[data-transition="circle"].next::after,
+slide[data-transition="circle"].past::after {
+    opacity: 1;
+}
+
+//pulse
+slide.pagedown[data-transition="pulse"],
+slide.pageup[data-transition="pulse"]{
+    opacity: 0;
+}
+slide.pagedown[data-transition="pulse"].past,
+slide.pageup[data-transition="pulse"].next {
+    -webkit-animation: scaleUpFadeOut 0.8s forwards ease-in;
+    animation: scaleUpFadeOut 0.8s forwards ease-in;
+}
+
+slide.pageup[data-transition="pulse"].current,
+slide.pagedown[data-transition="pulse"].current {
+    -webkit-animation: scaleDownFadeIn 0.8s forwards ease-out;
+    animation: scaleDownFadeIn 0.8s forwards ease-out;
+}
+
+//slide
+slide.pagedown[data-transition="slide"].past {
+    -webkit-animation: rotateSlideOutToLeft 1s both ease;
+    animation: rotateSlideOutToLeft 1s both ease;
+}
+
+slide.pagedown[data-transition="slide"].current {
+    -webkit-animation: rotateSlideInFromRight 1s both ease;
+    animation: rotateSlideInFromRight 1s both ease;
+}
+
+
+slide.pageup[data-transition="slide"].current{
+    -webkit-animation: rotateSlideInFromLeft 1s both ease;
+    animation: rotateSlideInFromLeft 1s both ease;
+}
+
+slide.pageup[data-transition="slide"].next {
+    -webkit-animation: rotateSlideOutToRight 1s both ease;
+    animation: rotateSlideOutToRight 1s both ease;
+}
+
+//slide2
+slide.pagedown[data-transition="slide2"].past {
+    -webkit-animation: slideOutScaleLeft 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: slideOutScaleLeft 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+slide.pagedown[data-transition="slide2"].current {
+    opacity: 1;
+    -webkit-animation: slideInFromRight 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: slideInFromRight 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+slide.pageup[data-transition="slide2"].next  {
+    -webkit-animation: slideOutScaleRight 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: slideOutScaleRight 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+slide.pageup[data-transition="slide2"].current{
+    opacity: 1;
+    -webkit-animation: slideInFromLeft 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+    animation: slideInFromLeft 1.2s forwards cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+
+
+//slide3
+slide.pagedown[data-transition="slide3"].past {
+    -webkit-animation: slideOutScaleLeft 1.2s forwards;
+    animation: slideOutScaleLeft 1.2s forwards;
+    -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
+ /* older webkit */
+    -webkit-animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+    animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+}
+
+slide.pagedown[data-transition="slide3"].current {
+    opacity: 1;
+    -webkit-animation: slideInFromRight 1.2s forwards;
+    animation: slideInFromRight 1.2s forwards;
+    -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
+ /* older webkit */
+    -webkit-animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+    animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+}
+
+
+slide.pageup[data-transition="slide3"].current{
+    opacity: 1;
+    -webkit-animation: slideInFromLeft 1.2s forwards;
+    animation: slideInFromLeft 1.2s forwards;
+    -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
+ /* older webkit */
+    -webkit-animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+    animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+}
+
+slide.pageup[data-transition="slide3"].next {
+    opacity: 1;
+    -webkit-animation: slideOutScaleRight 1.2s forwards;
+    animation: slideOutScaleRight 1.2s forwards;
+    -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
+ /* older webkit */
+    -webkit-animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+    animation-timing-function: cubic-bezier(1, -0.2, 0, 1);
+}
+
+slide[data-transition="cover-diamond"]{
+    @include transition(opacity 0s, -webkit-clip-path 1s);
+    opacity: 0;
+    -webkit-clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+}
+slide[data-transition="cover-diamond"].current{
+    opacity: 1;
+    -webkit-clip-path: polygon(50% -100%, 137.5% 50%, 50% 200%, -37.5% 50%);
+}
+slide[data-transition="cover-diamond"].next {
+}
+slide[data-transition="cover-diamond"].past {
+    @include transition(opacity, 0s cubic-bezier(.11,.75,.58,.97));
+}
+
+
+
+slide[data-transition="cover-circle"]{
+    @include transition(opacity 0s, -webkit-clip-path 1s);
+    opacity: 0;
+    -webkit-clip-path: circle(5%, 50%, 50%);
+    -webkit-clip-path: circle(5% at 50% 50%);
+}
+slide[data-transition="cover-circle"].current{
+    opacity: 1;
+    -webkit-clip-path: circle(80%, 50%, 50%);
+    -webkit-clip-path: circle(80% at 50% 50%);
+}
+slide[data-transition="cover-circle"].past {
+    @include transition(all 0s cubic-bezier(.11,.75,.58,.97));
+}
+
+/********************************* keyframes **************************************/
+@import "keyframes";
