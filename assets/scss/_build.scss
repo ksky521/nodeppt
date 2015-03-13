@@ -60,6 +60,7 @@
         animation-name: bounceIn;
     }
 }
+
 .zoomIn{
     .building{
         -webkit-animation-name: zoomIn;
@@ -75,6 +76,22 @@
         @include transform(translate3d(60px, 0, 0));
     }
 }
+
+.rollIn{
+
+    .building{
+        opacity: 1;
+        visibility: visible;
+        @include transition(all 0.4s ease);
+        @include transform(rotateX(0));
+    }
+    .to-build{
+        opacity:0;
+        visibility: hidden;
+        @include transform(rotateX(90deg));
+    }
+}
+
 .popup .next .build {
     .to-build {
         opacity: 1 !important;

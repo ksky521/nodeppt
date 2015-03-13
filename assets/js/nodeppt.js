@@ -198,7 +198,7 @@
         var i = slideCount;
         var slide;
         var transition = defaultOptions.transition;
-        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *,.fade > *';
+        var buildClass = '.build > *,.fadeIn > *,.rollIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *,.fade > *';
         while (slide = $slides[i--]) {
             var items = $(buildClass, slide);
             var dataset = slide.dataset;
