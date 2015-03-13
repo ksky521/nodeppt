@@ -353,7 +353,7 @@
                 '%, 0%)' : '';
             slide.style.animation = slide.style.webkitAnimation = slide.style.msAnimation = slide.style.mozAnimation = isOV ?
                 'none' : '';
-            Slide.fire(isOV ? 'overviewshow' : 'overviewhidden');
+            Slide.fire(isOV ? 'overviewshown' : 'overviewhidden');
         }
     }
 
