@@ -1,4 +1,36 @@
 /* Builds */
+.slide .subSlide{
+    &.to-build{
+        visibility: hidden;
+        display: block;
+    }
+    &.build-fade.builded{
+        display: none;
+    }
+}
+.subSlide{
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+
+    &.building{
+        opacity: 1;
+        display: block;
+        visibility: visible;
+        @include transition(opacity 0.3s ease);
+    }
+    &.build-fade{
+        opacity: 1;
+        display: block;
+        visibility: visible;
+    }
+    &.builded{
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(opacity 0.3s ease, display 0 ease 0.4s);
+    }
+}
 .fade {
     @include display-flex;
     @include justify-content(center);
@@ -78,11 +110,13 @@
 }
 
 .rollIn{
-
+    > *{
+        @include transition(all 0.4s ease);
+    }
     .building{
         opacity: 1;
         visibility: visible;
-        @include transition(all 0.4s ease);
+
         @include transform(rotateX(0));
     }
     .to-build{

@@ -23,21 +23,23 @@ Slide.Control.add('postMessage', function(S, broadcast) {
                 }, '*');
             }
         },
-        update: function(id) {
+        update: function(id, direction) {
             if (postWin) {
                 window.opener.postMessage({
                     action: 'update',
-                    id: id
+                    id: id,
+                    direction: direction
                 }, '*');
             }
 
         },
-        updateItem: function(id, item) {
+        updateItem: function(id, item, direction) {
             if (postWin) {
                 window.opener.postMessage({
                     action: 'updateItem',
                     id: id,
-                    item: item
+                    item: item,
+                    direction: direction
                 }, '*');
             }
 
@@ -74,7 +76,7 @@ Slide.Control.add('postMessage', function(S, broadcast) {
                     Slide.proxyFn(fnName, args);
                     break;
                 default:
-                    broadcast.fire('from control '+data.action, data.data);
+                    broadcast.fire('from control ' + data.action, data.data);
             }
 
         },

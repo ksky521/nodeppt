@@ -40,47 +40,51 @@
     }
 
     //泛数组转换为数组
-
     function toArray(arrayLike) {
-            return emptyArr.slice.call(arrayLike);
-        }
-        //封装选择器
+        return emptyArr.slice.call(arrayLike);
+    }
 
+    //封装选择器
     function $(selector, context) {
-            context = (context && context.nodeType === 1) ? context : $doc;
-            return context.querySelectorAll(selector);
-        }
-        //getID方法
+        context = (context && context.nodeType === 1) ? context : $doc;
+        return context.querySelectorAll(selector);
+    }
 
+    //getID方法
     function $$(id) {
         return $doc.getElementById(id);
     }
 
 
     //上一页
-    function prevSlide() {
+    function prevSlide(isControl) {
+        if (buildPrevItem()) {
+            return;
+        }
+        slideOutCallBack($slides[curIndex]);
+        pastIndex = curIndex;
+        --curIndex < 0 && (curIndex = 0);
+        doSlide('prev', isControl ? false : true);
+    }
 
-            slideOutCallBack($slides[curIndex]);
-            pastIndex = curIndex;
-            --curIndex < 0 && (curIndex = 0);
-            doSlide();
+    //下一页
+    function nextSlide(isControl) {
+        if (buildNextItem()) {
+            // $B.fire('slide change ID',{
+            //    slideID:curIndex
+            // })
+            return;
         }
-        //下一页
-    function nextSlide() {
-            if (buildNextItem()) {
-                // $B.fire('slide change ID',{
-                //    slideID:curIndex
-                // })
-                return;
-            }
-            slideOutCallBack($slides[curIndex]);
-            pastIndex = curIndex;
-            ++curIndex > slideCount && (curIndex = slideCount);
-            doSlide();
-            preload($slides[curIndex])($slides[curIndex + 1]);
-        }
-        //slide切入回调incallback
-        //<slide data-incallback=""
+        slideOutCallBack($slides[curIndex]);
+        pastIndex = curIndex;
+        ++curIndex > slideCount && (curIndex = slideCount);
+        doSlide('next', isControl ? false : true);
+        preload($slides[curIndex])($slides[curIndex + 1]);
+    }
+
+
+    //slide切入回调incallback
+    //<slide data-incallback=""
     var slideInTimer;
 
     function slideInCallBack() {
@@ -92,25 +96,26 @@
     }
 
     function slideInCallBack_() {
-            var $cur = $slides[curIndex];
-            if (!$cur || ($cur && $cur.nodeType !== 1)) {
-                return;
-            }
-            var cb = $cur.dataset.incallback;
-            //如果有data-incallback那么就执行callback
-            cb && typeof $win[cb] === 'function' && proxyFn(cb);
-            //检测iframe
-            var $iframe = toArray($('iframe[data-src]', $cur));
-            if ($iframe.length) {
-                $iframe.forEach(function(v) {
-                    var src = v.dataset.src;
-                    v.src = src;
-                });
-
-            }
+        var $cur = $slides[curIndex];
+        if (!$cur || ($cur && $cur.nodeType !== 1)) {
+            return;
         }
-        //slide切出回调outcallback
-        //<slide data-outcallback=""
+        var cb = $cur.dataset.incallback;
+        //如果有data-incallback那么就执行callback
+        cb && typeof $win[cb] === 'function' && proxyFn(cb);
+        //检测iframe
+        var $iframe = toArray($('iframe[data-src]', $cur));
+        if ($iframe.length) {
+            $iframe.forEach(function(v) {
+                var src = v.dataset.src;
+                v.src = src;
+            });
+
+        }
+    }
+
+    //slide切出回调outcallback
+    //<slide data-outcallback=""
     var slideOutTimer;
 
     function slideOutCallBack(prev) {
@@ -133,32 +138,32 @@
 
     //预加载资源
     //<preload data-type="js||css" data-url="">
-
     function preload(node) {
-            var self = arguments.callee;
-            if (node && node.nodeType === 1) {
-                var $preload = $('preload', node),
-                    len = $preload.length;
-                while (len--) {
-                    var tmpNode = $preload[len],
-                        dataset = tmpNode.dataset,
-                        type = dataset.type,
-                        url = dataset.url;
-                    var fn = preloadFn['load' + type.toUpperCase()];
-                    typeof fn === 'function' && fn(url, function(tmpNode) {
-                        return function() {
-                            //将该标签删除，释放内存
-                            tmpNode.parentNode && tmpNode.parentNode.removeChild(tmpNode);
-                            tmpNode = null;
-                        };
-                    }(tmpNode));
-                }
+        var self = arguments.callee;
+        if (node && node.nodeType === 1) {
+            var $preload = $('preload', node),
+                len = $preload.length;
+            while (len--) {
+                var tmpNode = $preload[len],
+                    dataset = tmpNode.dataset,
+                    type = dataset.type,
+                    url = dataset.url;
+                var fn = preloadFn['load' + type.toUpperCase()];
+                typeof fn === 'function' && fn(url, function(tmpNode) {
+                    return function() {
+                        //将该标签删除，释放内存
+                        tmpNode.parentNode && tmpNode.parentNode.removeChild(tmpNode);
+                        tmpNode = null;
+                    };
+                }(tmpNode));
             }
-            return self;
         }
-        //单行前进
+        return self;
+    }
 
-    function buildNextItem() {
+
+    //单行前进
+    function buildNextItem(iscontrol) {
         if ($body.classList.contains('overview')) {
             return false;
         }
@@ -180,35 +185,82 @@
         }
 
         var item = toBuild.item(0);
-        $B.fire('slide do build', {
+        !iscontrol && $B.fire('slide do build', {
             slideID: curIndex,
+            direction: 'next',
             build: item.dataset.index
         })
         list = item.classList;
+
         $B.fire('slide.update', curIndex | 0, item.dataset.index | 0 + 1);
         list.remove('to-build');
-        list.add('building');
 
+        if (list.contains('subSlide')) {
+            toArray($('.subSlide.build-fade', $curSlide)).forEach(function($item) {
+                $item.classList.add('builded');
+            });
+        }
+
+        list.add('building');
+        return true;
+    }
+
+    //单条往后走
+    function buildPrevItem() {
+        if ($body.classList.contains('overview')) {
+            return false;
+        }
+        $curSlide = $slides[curIndex];
+        var builded = toArray($('.building'), $curSlide);
+
+        var list;
+        if (builded.length) {
+            while (list = builded.shift()) {
+                var clist = list.classList
+                clist.remove('building');
+                clist.add('to-build');
+                if (clist.contains('subSlide')) {
+                    var $item = toArray($('.subSlide.build-fade.builded', $curSlide)).pop();
+                    $item && $item.classList.remove('builded');
+                }
+            }
+        }
+        var toBuild = toArray($('.build-fade', $curSlide));
+
+        if (!toBuild.length) {
+            return false;
+        }
+
+        var item = toBuild.pop();
+        $B.fire('slide do build', {
+            slideID: curIndex,
+            direction: 'prev',
+            build: item.dataset.index
+        });
+        list = item.classList;
+        $B.fire('slide.update', curIndex | 0, item.dataset.index | 0 + 1);
+        list.remove('build-fade');
+
+        list.add('building');
         return true;
     }
 
     //设置单行页面添加
-
     function makeBuildLists() {
         var i = slideCount;
         var slide;
         var transition = defaultOptions.transition;
-        var buildClass = '.build > *,.fadeIn > *,.rollIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *,.fade > *';
+        var buildClass = '.build > *,.fadeIn > *,.rollIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *,.fade > *,.subSlide';
         while (slide = $slides[i--]) {
-            var items = $(buildClass, slide);
+
+            var $items = toArray($(buildClass, slide));
             var dataset = slide.dataset;
-            for (var j = 0, item; item = items[j]; j++) {
-                var t = item.classList
-                if (t) {
-                    t.add('to-build');
-                    item.dataset.index = j;
-                }
-            }
+            $items.forEach(function($v, i) {
+                $v.classList.add('to-build');
+                $v.dataset.index = i;
+            });
+
+
             if (!dataset.transition) {
                 dataset.transition = transition;
             }
@@ -217,22 +269,20 @@
     }
 
     //切换动画
-
-    function doSlide(slideID, isSync) {
+    function doSlide(direction, isSync) {
         ISSYNC = typeof isSync === 'boolean' ? isSync : true;
-        slideID = slideID === undefined ? curIndex : (slideID | 0);
-        curIndex = slideID;
 
         // $container.style.marginLeft = -(slideID * slideWidth) + 'px';
         updateSlideClass();
         setProgress();
         //发布slide切换状态广播
         ISSYNC && $B.fire('slide change ID', {
-            slideID: slideID
+            slideID: curIndex,
+            direction: direction
         });
         if (doHash) {
             lockSlide = true;
-            $win.location.hash = "#" + slideID;
+            $win.location.hash = "#" + curIndex;
         }
         slideInCallBack();
         removePaint();
@@ -303,6 +353,7 @@
                 '%, 0%)' : '';
             slide.style.animation = slide.style.webkitAnimation = slide.style.msAnimation = slide.style.mozAnimation = isOV ?
                 'none' : '';
+            Slide.fire(isOV ? 'overviewshow' : 'overviewhidden');
         }
     }
 
@@ -329,7 +380,6 @@
     }
 
     //显示tips
-
     function showTips(msg) {
         if (!$slideTip) {
             return;
@@ -438,59 +488,60 @@
         //        $container.style.marginLeft = -(curIndex * slideWidth) + 'px';
         //        setProgress();
         //        setHistory();
-    };
+    }
+
     /******************************** Touch events *********************/
     var isStopTouchEvent = false;
 
     function evtTouchStart(event) {
-            if (!isStopTouchEvent && event.touches.length === 1) {
-                touchDX = 0;
-                touchDY = 0;
-                var touch = event.touches[0];
-                touchStartX = touch.pageX;
-                touchStartY = touch.pageY;
-                //捕获，尽早发现事件
-                $body.addEventListener('touchmove', evtTouchMove, true);
-                $body.addEventListener('touchend', evtTouchEnd, true);
-            }
+        if (!isStopTouchEvent && event.touches.length === 1) {
+            touchDX = 0;
+            touchDY = 0;
+            var touch = event.touches[0];
+            touchStartX = touch.pageX;
+            touchStartY = touch.pageY;
+            //捕获，尽早发现事件
+            $body.addEventListener('touchmove', evtTouchMove, true);
+            $body.addEventListener('touchend', evtTouchEnd, true);
         }
-        //touch事件
+    }
 
+    //touch事件
     function evtTouchMove(event) {
-            if (event.touches.length > 1) {
-                cancelTouch();
-            } else {
-                var touch = event.touches[0];
-
-                touchDX = touch.pageX - touchStartX;
-                touchDY = touch.pageY - touchStartY;
-            }
-            event.preventDefault();
-
-        }
-        //touchend事件
-
-    function evtTouchEnd(event) {
-            var dx = Math.abs(touchDX);
-            var dy = Math.abs(touchDY);
-
-            if ((dx > 15) && (dy < (dx * 2 / 3))) {
-                if (touchDX > 0) {
-                    prevSlide();
-                } else {
-                    nextSlide();
-                }
-            }
+        if (event.touches.length > 1) {
             cancelTouch();
-        }
-        //取消绑定
+        } else {
+            var touch = event.touches[0];
 
+            touchDX = touch.pageX - touchStartX;
+            touchDY = touch.pageY - touchStartY;
+        }
+        event.preventDefault();
+
+    }
+
+    //touchend事件
+    function evtTouchEnd(event) {
+        var dx = Math.abs(touchDX);
+        var dy = Math.abs(touchDY);
+
+        if ((dx > 15) && (dy < (dx * 2 / 3))) {
+            if (touchDX > 0) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        }
+        cancelTouch();
+    }
+
+    //取消绑定
     function cancelTouch() {
-            $body.removeEventListener('touchmove', evtTouchMove, true);
-            $body.removeEventListener('touchend', evtTouchEnd, true);
-        }
-        //绑定事件
+        $body.removeEventListener('touchmove', evtTouchMove, true);
+        $body.removeEventListener('touchend', evtTouchEnd, true);
+    }
 
+    //绑定事件
     function bindEvent() {
         $doc.addEventListener('keyup', evtDocUp, false);
         $body.addEventListener('touchstart', evtTouchStart, false);
@@ -808,7 +859,9 @@
         doSlide: doSlide,
         proxyFn: proxyFn,
         showPaint: showPaint,
-        removePaint: removePaint
+        removePaint: removePaint,
+        buildNextItem: buildNextItem,
+        buildPrevItem: buildPrevItem
     };
     ['on', 'un', 'fire'].forEach(function(v) {
         Slide[v] = function() {

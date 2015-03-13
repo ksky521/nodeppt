@@ -94,7 +94,7 @@ Slide.Control.add('socket', function(S, broadcast) {
 
         },
         connect: function() {
-            webSocket = io.connect(location.host+'/ppt');
+            webSocket = io.connect(location.host + '/ppt');
             // console.log(io);
             webSocket.on('UUID', function(uid) {
                 webSocket.uid = uid;
@@ -128,17 +128,19 @@ Slide.Control.add('socket', function(S, broadcast) {
                 data: data
             });
         },
-        update: function(id) {
+        update: function(id, direction) {
             webSocket.emit('repost data', {
                 action: 'from ' + Socket.role + ' update',
-                id: id
+                id: id,
+                direction: direction
             });
         },
-        updateItem: function(id, item) {
+        updateItem: function(id, item, direction) {
             webSocket.emit('repost data', {
                 action: 'from ' + Socket.role + ' updateItem',
                 id: id,
-                item: item
+                item: item,
+                direction: direction
             });
         },
         keyEvent: function(keyCode) {

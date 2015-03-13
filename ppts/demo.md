@@ -18,7 +18,7 @@ files: /js/demo.js,/css/demo.css
 [slide]
 ## 为什么选择nodePPT
 ----
-* 基于GFM的markdown语法编写 {:&.moveIn}
+* 基于GFM的markdown语法编写 {:&.rollIn}
 * 支持html混排，再复杂的demo也可以做！
 * 导出网页或者pdf更容易分享
 * 支持18种转场动画，可以设置单页动画
@@ -81,23 +81,31 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 [slide]
 
+[subslide]
 ## 这是一个列表
 ---
-
 * 上下左右方向键翻页
     * 列表支持渐显动画 {:&.moveIn}
     * 支持多级列表
     * 这个动画是moveIn
 * 完全基于markdown语法哦
-
+============
+## 这是一个数字类型列表
+---
+1. 数字列表 {:&.rollIn}
+2. 数字列表
+3. 数字列表
+[/subslide]
 
 [slide]
 ## 列表渐显动画：fadeIn
 ----
 * 列表支持渐显动画哦 {:&.fadeIn}
-    * 使用方法，markdown列表第一条加上：{:&.动画类型}
+    * 使用方法
+    * markdown列表第一条加上：{:&.动画类型}
 * 动画类型
     * fadeIn
+    * rollIn
     * bounceIn
     * moveIn
     * zoomIn
@@ -108,6 +116,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 * 列表支持渐显动画哦 {:&.zoomIn}
 * 动画类型
     * fadeIn
+    * rollIn
     * bounceIn
     * moveIn
     * zoomIn
@@ -116,8 +125,9 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 列表渐显动画：bounceIn
 ----
 * 列表支持渐显动画哦 {:&.bounceIn}
-* 动画类型
-    * fadeIn
+* 动画类型 
+    * fadeIn 
+    * rollIn
     * bounceIn
     * moveIn
     * zoomIn
