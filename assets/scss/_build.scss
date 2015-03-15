@@ -1,30 +1,29 @@
 /* Builds */
-.slide .subSlide{
-    &.to-build{
+.slide .subSlide {
+    &.tobuild {
         visibility: hidden;
-        display: block;
     }
-    &.build-fade.builded{
+    &.builded.subBuilded {
         display: none;
     }
 }
-.subSlide{
+.subSlide {
     display: none;
     opacity: 0;
     visibility: hidden;
 
-    &.building{
+    &.building {
         opacity: 1;
         display: block;
         visibility: visible;
         @include transition(opacity 0.3s ease);
     }
-    &.build-fade{
+    &.builded {
         opacity: 1;
         display: block;
         visibility: visible;
     }
-    &.builded{
+    &.subBuilded {
         display: none;
         opacity: 0;
         visibility: hidden;
@@ -35,30 +34,31 @@
     @include display-flex;
     @include justify-content(center);
     @include align-content(center);
-    > *{
+
+    > * {
         opacity: 0;
         @include transition(opacity 0.5s ease-in-out 0.2s);
     }
-    > .to-build:first-child{
+    > .tobuild:first-child {
         @include display-flex;
         // opacity: 1;
         visibility: hidden;
     }
-    > .build-fade{
+    > .builded {
         opacity: 0;
         display: none;
         visibility: hidden;
     }
-    > .build-fade:last-child{
+    > .builded:last-child {
         opacity: 1;
         @include display-flex;
         visibility: visible;
     }
-    > .building{
+    > .building {
         @include display-flex;
         opacity: 1;
     }
-    .to-build{
+    .tobuild {
         opacity: 0;
         display: none;
     }
@@ -67,18 +67,18 @@
     > * {
         @include transition(opacity 0.5s ease-in-out 0.2s);
     }
-    .to-build {
+    .tobuild {
         opacity: 0;
     }
 }
-.bounceIn,.zoomIn {
+.bounceIn, .zoomIn {
     > * {
         opacity: 1;
     }
-    .to-build {
+    .tobuild {
         opacity: 0;
     }
-    .building{
+    .building {
         opacity: 1;
         -webkit-animation-duration: .75s;
         animation-duration: .75s;
@@ -86,52 +86,47 @@
         animation-fill-mode: both;
     }
 }
-.bounceIn{
-    .building{
+.bounceIn {
+    .building {
         -webkit-animation-name: bounceIn;
         animation-name: bounceIn;
     }
 }
-
-.zoomIn{
-    .building{
+.zoomIn {
+    .building {
         -webkit-animation-name: zoomIn;
         animation-name: zoomIn;
     }
 }
-.moveIn{
+.moveIn {
     > * {
         @include transition(all 0.5s ease-in-out 0.2s);
     }
-    .to-build{
+    .tobuild {
         opacity: 0;
         @include transform(translate3d(60px, 0, 0));
     }
 }
-
-.rollIn{
-    > *{
+.rollIn {
+    > * {
         @include transition(all 0.4s ease);
     }
-    .building{
+    .building {
         opacity: 1;
         visibility: visible;
-
         @include transform(rotateX(0));
     }
-    .to-build{
-        opacity:0;
+    .tobuild {
+        opacity: 0;
         visibility: hidden;
         @include transform(rotateX(90deg));
     }
 }
-
 .popup .next .build {
-    .to-build {
+    .tobuild {
         opacity: 1 !important;
     }
-
-    .build-fade {
+    .builded {
         opacity: 1 !important;
     }
 }

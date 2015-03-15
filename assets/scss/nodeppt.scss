@@ -4,33 +4,35 @@
 @import "compass/css3/columns";
 @import "compass/css3/user-interface";
 @import "vars";
-@import "mixin";
+@import "mixins";
 @import "tags";
+@import "buttons";
+@import "utils";
+
 .draw-board {
     position: fixed;
-    cursor: url(pen.cur),default;
+    cursor: url(pen.cur), default;
     z-index: 9999;
-    top:0;
-    left:0;
-    right:0;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
 }
 .slideTip {
     display: none;
-    padding:10px 0;
-    width:300px;
-    background: rgba(0,0,0,.3);
+    padding: 10px 0;
+    width: 300px;
+    background: rgba(0, 0, 0, .3);
     border-radius: 5px;
     padding: 10px;
     margin: 0 auto;
     color: #FFF;
     position: fixed;
     top: 40%;
-    left:50%;
-    margin-left:-150px;
+    left: 50%;
+    margin-left: -150px;
     text-align: center;
 }
-
 .progress {
     position: fixed;
     height: 3px;
@@ -39,8 +41,7 @@
     left: 0;
     background: #000;
 }
-
-.progress span{
+.progress span {
     display: block;
     background: #2187E7;
     height: 100%;
@@ -49,20 +50,17 @@
     @include border-radius(0 2px 2px 0);
     @include transition(width 0.8s cubic-bezier(0.260, 0.860, 0.440, 0.985));
 }
-
-.slides{
+.slides {
     width: 100%;
     height: 100%;
     text-align: center;
 }
-
-slides > slide .slide-wrapper{
+slides > slide .slide-wrapper {
     max-width: $slide-width;
     // height: $slide-height;
     text-align: center;
     margin: 0 auto;
     position: relative;
-
     @include display-flex;
     @include flex-direction(column);
     @include justify-content(center);
@@ -77,121 +75,120 @@ slides > slide .slide-wrapper{
                 height: 80%;
             }
         }
-
-        p>img:only-child{
+        p>img:only-child {
             margin-bottom: 1em;
         }
     }
-
     > article:only-child {
-        h2{
+        h2 {
             font-weight: normal;
         }
-        > pre{
+        > pre {
             overflow-y: auto;
             max-height: 98%;
         }
-
         > iframe {
             height: 98%;
         }
     }
-    img{
-        @include justify-content( space-around);
+    img {
+        @include justify-content(space-around);
         max-width: 100%;
         max-height: $slide-height - $slide-top-bottom-padding*2;
     }
-
     blockquote {
         font-size: 28px;
         line-height: 1.5em;
         padding: 5px 5px 5px 20px;
-        background-color: #F9FF95;
-        border-left: 5px solid #3E87CF;
-        color: black;
+        background-color: $quote-bg-color;
+        border-left: 5px solid $quote-border-color;
+        color: $quote-color;
         text-align: left;
         min-width: 500px;
         display: inline-block;
 
-        small{
+        small {
             display: block;
             line-height: 20px;
-            color: #999999;
-            &::before{
+            color: $quote-small-color;
+
+            &::before {
                 content: '\2014 \00A0';
             }
         }
-        p{
+        p {
             margin-bottom: 0 !important;
             font-size: 17.5px;
             font-weight: 300;
             line-height: 1.25;
         }
     }
-    blockquote.pull-right{
+    blockquote.pull-right {
         padding-left: 15px;
         border-right: 5px solid #3E87CF;
         text-align: right;
         padding-right: 20px;
         border-left: none;
-        small{
-            &::before{
+
+        small {
+            &::before {
                 content: '';
             }
-            &::after{
+            &::after {
                 content: '\00A0 \2014';
             }
         }
     }
-    b,strong{
+
+    b, strong {
         font-weight: bold;
         margin: 0 5px;
-        @include text-shadow(2px 3px 1px rgba(0,0,0,.8));
+        @include text-shadow(2px 3px 1px rgba(0, 0, 0, .8));
     }
-    em{
+    em {
         margin: 0 5px;
         font-weight: bold;
-        @include text-shadow(-1px -2px 1px rgba(0,0,0,.8));
+        @include text-shadow(-1px -2px 1px rgba(0, 0, 0, .8));
     }
-    pre{
-        b , strong{
+    pre {
+        b, strong {
             margin: 0;
             @include text-shadow(none);
         }
     }
 }
+
+
+
 slides > slide {
     display: none;
     font-size: 26px;
-    color: white;
-    background-color: #03C8CB;
+    color: $font-color;
+    background-color: $slide-bg-color;
     width: 100%;
     height: 100%;
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     z-index: 9;
-
     padding: $slide-top-bottom-padding $slide-left-right-padding;
     // @include border-radius($slide-border-radius);
     @include transition(all 0.6s ease-in-out);
-
-    transform-style: preserve-3d;
+    @include prefixed(transform-style, preserve-3d);
     @include transform(translateZ(0));
 
     &.far-past {
         display: none;
     }
-
     &.past {
         display: block;
         opacity: 0;
     }
-
     &.current {
         display: block;
         opacity: 1;
         z-index: 99;
+
         .auto-fadein {
             opacity: 1;
         }
@@ -199,24 +196,18 @@ slides > slide {
             @include background-size(100% 100%);
         }
     }
-
     &.next {
         display: block;
         opacity: 0;
     }
-
     &.far-next {
         display: none;
     }
-
     &.dark {
         background: $gray-4 !important;
     }
-
     &:not(.nobackground) {
-
     }
-
     &.title-slide {
         &:after {
             content: '';
@@ -227,73 +218,63 @@ slides > slide {
             height: 60px;
         }
     }
-
     &.backdrop {
         z-index: -10;
         display: block !important;
         @include backdrop;
 
         &:after, &:before {
-            display: none; // Prevent double set of slide nums and footer icons.
+            display: none;
+            // Prevent double set of slide nums and footer icons.
         }
     }
-    &:nth-child(6n+1){
-        background-color: #dc6c5f
+    &:nth-child(6n+1) {
+        background-color: $slide-bg-color1;
     }
-    &:nth-child(6n+2){
-        background-color: #04AA55
+    &:nth-child(6n+2) {
+        background-color: $slide-bg-color2;
     }
-    &:nth-child(6n+3){
-        background-color: #487BD3
+    &:nth-child(6n+3) {
+        background-color: $slide-bg-color3;
     }
-    &:nth-child(6n+4){
-        background-color: #049DBF
+    &:nth-child(6n+4) {
+        background-color: $slide-bg-color4;
     }
-    &:nth-child(6n+5){
-        background-color: #DA4A89
+    &:nth-child(6n+5) {
+        background-color: $slide-bg-color5;
     }
+    .note {
+        color: $note-color;
 
-    .note{
-        color: black;
-        h1,h2,h3,h4{
-            color: black;
+        h1, h2, h3, h4 {
+            color: $note-color;
             @include text-shadow(none);
         }
     }
 }
 // Code highlighting only effects the current slide.
-.highlight-code slide.current,
-slide.current .hljs{
-    b,strong{
+.highlight-code slide.current, slide.current .hljs {
+    b, strong {
         @include shake();
-        -webkit-animation-duration: 1.5s;
-        animation-duration: 1.5s;
+        @include prefixed(animation-duration, 1.5s);
     }
-    em{
+    em {
         @include flash();
-        -webkit-animation-duration: 1.5s;
-        animation-duration: 1.5s;
+        @include prefixed(animation-duration, 1.5s);
     }
 }
-.highlight-code slide.current .hljs{
-    b,strong{
+.highlight-code slide.current .hljs {
+    b, strong {
         @include flash();
-        -webkit-animation-duration: 1.5s;
-        animation-duration: 1.5s;
+        @include prefixed(animation-duration, 1.5s);
     }
-    em{
+    em {
         @include shake();
-        -webkit-animation-duration: 1.5s;
-        animation-duration: 1.5s;
+        @include prefixed(animation-duration, 1.5s);
     }
-
 }
-
 @import "widescreen";
 @import "common";
-
-
-
 
 slide.fill {
     background-repeat: no-repeat;
@@ -302,7 +283,6 @@ slide.fill {
 }
 
 /* Size variants */
-
 article.smaller {
     p, ul {
         font-size: 20px;
@@ -328,10 +308,10 @@ article.smaller {
         }
     }
 }
-
 @import "build";
 @import "note";
 @import "controller";
+
 .source {
     font-size: 14px;
     color: $gray-2;
@@ -340,44 +320,36 @@ article.smaller {
     bottom: $slide-top-bottom-padding + 30px;
     left: $slide-left-right-padding;
 }
-
 .centered {
     text-align: center;
 }
-
 .reflect {
-    -webkit-box-reflect: below 3px -webkit-linear-gradient(rgba(255,255,255,0) 85%, white 150%);
-    -moz-box-reflect: below 3px -moz-linear-gradient(rgba(255,255,255,0) 85%, white 150%);
-    -o-box-reflect: below 3px -o-linear-gradient(rgba(255,255,255,0) 85%, white 150%);
-    -ms-box-reflect: below 3px -ms-linear-gradient(rgba(255,255,255,0) 85%, white 150%);
-    box-reflect: below 3px linear-gradient(rgba(255,255,255,0) 85%, white 150%);
+    -webkit-box-reflect: below 3px -webkit-linear-gradient(rgba(255, 255, 255, 0) 85%, white 150%);
+    -moz-box-reflect: below 3px -moz-linear-gradient(rgba(255, 255, 255, 0) 85%, white 150%);
+    -o-box-reflect: below 3px -o-linear-gradient(rgba(255, 255, 255, 0) 85%, white 150%);
+    -ms-box-reflect: below 3px -ms-linear-gradient(rgba(255, 255, 255, 0) 85%, white 150%);
+    box-reflect: below 3px linear-gradient(rgba(255, 255, 255, 0) 85%, white 150%);
 }
-
 .flexbox {
     @include display-flex;
     @include flex-flow(row);
 }
-
 .flexbox.vcenter {
     @include flex-center-center;
     height: 100%;
     width: 100%;
 }
-
 .flexbox.vleft {
     @include flex-left-center;
     height: 100%;
     width: 100%;
     text-align: left;
 }
-
 .flexbox.vright {
     @include flex-right-center;
     height: 100%;
     width: 100%;
-
 }
-
 .auto-fadein {
     @include transition(opacity 0.6s ease-in 1s);
     opacity: 0;
@@ -386,19 +358,15 @@ article.smaller {
 /* Clickable/tappable areas */
 .slide-area {
     z-index: 1000;
-
     position: absolute;
     left: 0;
     top: 0;
     width: $slide-tap-area-width;
     height: $slide-height;
-
     left: 50%;
     top: 50%;
-
     cursor: pointer;
     margin-top: -$slide-height / 2;
-
 }
 #prev-slide-area {
     margin-left: -$slide-width-widescreen / 2;
@@ -406,14 +374,12 @@ article.smaller {
 #next-slide-area {
     margin-left: $slide-width / 2;
 }
-
 .logoslide {
     img {
         width: 383px;
         height: 92px;
     }
 }
-
 .segue {
     padding: $slide-left-right-padding $slide-left-right-padding * 2;
 
@@ -430,26 +396,23 @@ article.smaller {
         bottom: 225px;
     }
 }
-
 .thank-you-slide {
     background: $brand-blue !important;
-    color: white;
+    color: $font-color;
 
     h2 {
         font-size: 60px;
         color: inherit;
     }
-    h3{
+    h3 {
         font-size: 52px;
         color: inherit;
         text-align: right;
     }
-
     article > p {
         margin-top: 2em;
         font-size: 20pt;
     }
-
     > p {
         position: absolute;
         bottom: $slide-top-bottom-padding * 2;
@@ -457,7 +420,6 @@ article.smaller {
         line-height: 1.3em;
     }
 }
-
 aside.gdbar {
     height: 97px;
     width: 215px;
@@ -473,20 +435,20 @@ aside.gdbar {
         right: 0;
         left: -moz-initial;
         left: initial;
-        top: ($slide-height / 2) - 96; /* 96 is height of gray icon bar */
+        top: ($slide-height / 2) - 96;
+
+        /* 96 is height of gray icon bar */
         @include transform(rotateZ(180deg));
 
         img {
             @include transform(rotateZ(180deg));
         }
     }
-
     &.bottom {
         top: -moz-initial;
         top: initial;
         bottom: $slide-left-right-padding;
     }
-
     img {
         width: 85px;
         height: 85px;
@@ -495,9 +457,7 @@ aside.gdbar {
         margin: 8px 15px;
     }
 }
-
 .title-slide {
-
     hgroup {
         bottom: 100px;
 
@@ -507,13 +467,11 @@ aside.gdbar {
             letter-spacing: -3px;
             color: $gray-4;
         }
-
         h2 {
             font-size: 34px;
             color: $gray-2;
             font-weight: inherit;
         }
-
         p {
             font-size: 20px;
             color: $gray-3;
@@ -522,7 +480,6 @@ aside.gdbar {
         }
     }
 }
-
 .quote {
     color: $gray-1;
 
@@ -533,7 +490,6 @@ aside.gdbar {
         line-height: 1.4;
     }
 }
-
 .overview {
     &.popup {
         .note {
@@ -545,7 +501,6 @@ aside.gdbar {
             &.backdrop {
                 display: none !important;
             }
-
             display: block;
             cursor: pointer;
             opacity: 0.5;
@@ -553,26 +508,17 @@ aside.gdbar {
             width: 1100px;
             // @include backdrop();
 
-            &.far-past,
-            &.past,
-            &.next,
-            &.far-next,
-            &.far-past {
+            &.far-past, &.past, &.next, &.far-next, &.far-past {
                 opacity: 0.5 !important;
                 display: block !important;
             }
-
             &.current {
                 opacity: 1 !important;
             }
-
         }
     }
-
     .slide-area {
         display: none;
     }
 }
-
 @import "animation";
-

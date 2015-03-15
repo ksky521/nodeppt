@@ -125,8 +125,8 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 列表渐显动画：bounceIn
 ----
 * 列表支持渐显动画哦 {:&.bounceIn}
-* 动画类型 
-    * fadeIn 
+* 动画类型
+    * fadeIn
     * rollIn
     * bounceIn
     * moveIn
@@ -147,18 +147,66 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 
 [slide]
-## 多种样式展示
+## text
+-----
+
+<span class="text-danger">.text-danger</span> <span class="text-success">.text-sucess</span><span class="text-primary">.text-primary</span>
+
+<span class="text-warning">.text-warning</span><span class="text-info">.text-info</span><span class="text-white">.text-white</span><span class="text-dark">.text-dark</span>
+
+
+<span class="blue">.blue</span><span class="blue2">.blue2</span><span class="blue3">.blue3</span><span class="gray">.gray</span><span class="gray2">.gray2</span><span class="gray3">.gray3</span>
+
+<span class="red">.red</span><span class="red2">.red2</span><span class="red3">.red3</span>
+
+<span class="yellow">.yellow</span><span class="yellow2">.yellow2</span><span class="yellow3">.yellow3</span><span class="green">.green</span><span class="green2">.green2</span><span class="green3">.green3</span>
+
+[slide]
+## label and link
+<span class="label label-primary">.label.label-primary</span><span class="label label-warning">.label.label-warning</span><span class="label label-danger">.label.label-danger</span><span class="label label-default">.label.label-default</span><span class="label label-success">.label.label-success</span><span class="label label-info">.label.label-info</span>
+
+<a href="#">link style</a> <mark>mark</mark>
+
+[slide]
+## blockquote
 ----
-
-<button>按钮</button>
-
-<a href="#">链接</a>
 
 > nodeppt可能是迄今为止最好用的web presentation <small>三水清</small>
 
-**注意**下一页效果高能！提前预警！！
+
+下面是另外一种样式
 
 > 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
+
+[slide]
+## buttons
+----
+
+<button class="btn btn-default">.btn .btn-default</button>  <button class="btn btn-primary">.btn.btn-lg.btn-primary</button> <button class="btn btn-warning">.btn.btn-waring</button> <button class="btn btn-success">.btn.btn-success</button> <button class="btn btn-danger">.btn.btn-danger</button>
+
+
+
+<button class="btn btn-lg btn-default">.btn.btn-lg.btn-default</button> <button class="btn btn-xs btn-success">.btn.btn-xs.btn-success</button> <button class="btn btn-sm btn-primary">.btn.btn-sm.btn-primary</button> <button class="btn btn-rounded btn-warning">.btn.btn-rounded.btn-waring</button>  <button class="btn btn-danger" disabled="disabled">disabled.btn.btn-danger</button>
+
+
+<button class="btn btn-success"><i class="fa fa-share mr5"></i></button>
+
+[slide]
+## icons: Font Awesome
+------
+
+<i class="fa fa-apple"></i>
+<i class="fa fa-android"></i>
+<i class="fa fa-github"></i>
+<i class="fa fa-google"></i>
+<i class="fa fa-linux"></i>
+<i class="fa fa-css3"></i>
+<i class="fa fa-html5"></i>
+<i class="fa fa-usd"></i>
+<i class="fa fa-pie-chart"></i>
+<i class="fa fa-file-video-o"></i>
+<i class="fa fa-cog"></i>
+
 
 [slide]
 
@@ -389,10 +437,10 @@ markdown语法如下：
 function globalFunc(){
 }
 </script>
-<button onclick="Slide.proxyFn('globalFunc')">远程执行函数</button>
+<button onclick="Slide.proxyFn('globalFunc')" class="btn btn-default">远程执行函数</button>
 ```
 
-<button onclick="Slide.proxyFn('globalFunc','args')">测试远程执行函数</button>
+<button onclick="Slide.proxyFn('globalFunc','args')" class="btn btn-default">测试远程执行函数</button>
 <a href="?_multiscreen=1#33">在多屏中测试远程执行</a>
 <script>
     function globalFunc(a){

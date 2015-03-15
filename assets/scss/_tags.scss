@@ -1,7 +1,7 @@
 //selection color, scrollbar
 ::selection {
-    color: white;
-    background-color: $brand-yellow;
+    color: $selection-color;
+    background-color: $selection-bg-color;
     @include text-shadow(none);
 }
 
@@ -37,24 +37,29 @@
 
 body {
     background: black;
-    font-family: 'YaHei Consolas Hybrid',STHeiti,'Microsoft Yahei',Arial,Helvetica,sans-serif;
+    font-family: $font-face;
 }
 a {
-    color: #FF8C78;
-    background-color: #FFF2B5;
+    color: $link-color;
     padding:0 3px;
     text-decoration: none;
-    border-bottom: 1px dashed #FF8C78;
+    border-bottom: 1px dashed $link-color;
     cursor: help;
     margin:0 5px;
+    background-color: $link-bg-color;
     &:hover {
-        background-color: #F9FF95;
+        color: $link-hover-color;
+        border-bottom: none;
+        background-color: $link-hover-bg-color;
     }
+    @include underline-from-center($link-hover-color);
 }
+
 
 h1, h2, h3 {
     font-weight: 600;
-    @include text-shadow(2px 2px 2px black);
+    color: $title-color;
+    @include text-shadow(2px 2px 2px $title-shadow-color);
 }
 
 h1 {
@@ -62,7 +67,7 @@ h1 {
     line-height: 1.5;
     color: white;
     margin-bottom: 0.5em;
-    @include text-shadow(2px 3px 4px black);
+    @include text-shadow(2px 3px 4px $title-shadow-color);
 }
 
 h2 {
@@ -119,24 +124,24 @@ ol {
     }
 
 }
+mark{
+    color: $highlight-color;
+    background-color: $highlight-bg-color;
+}
 pre {
-    // display: inline-block;
-    // overflow: auto;
-    font-family: 'Source Code Pro', 'Courier New', monospace;
+    font-family: $code-font-face;
     font-size: 20px;
     line-height: 1.2em;
     letter-spacing: -1px;
     margin-bottom: 20px;
-    // width: 100%;
     text-align: left;
-    // background-color: $gray-1;
-    // left: -$slide-left-right-padding;
     position: relative;
     @include box-sizing(border-box);
 
+
     code {
         font-size: 95%;
-        font-family: 'Source Code Pro', 'Courier New', monospace;
+        font-family: $code-font-face;
         color: black;
         border:none 0;
         padding: 0;
@@ -147,7 +152,7 @@ pre {
 
 code{
     margin: 0;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: $code-font-face;
     border: 1px solid #ddd;
     background-color: #f8f8f8;
     padding: 0 3px;
@@ -157,7 +162,6 @@ code{
     @include text-shadow(none);
     @include border-radius(5px);
 }
-
 
 iframe {
     width: 100%;
@@ -170,27 +174,27 @@ dt {
     font-weight: bold;
 }
 
-button {
-    display: inline-block;
-    @include background(linear-gradient(#F9F9F9 40%, #E3E3E3 70%));
-    border: 1px solid $gray-2;
-    @include border-radius(3px);
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    @include user-select(none);
-    cursor: pointer;
-    @include text-shadow(1px 1px #fff);
-    font-size: 10pt;
-}
+// button {
+//     display: inline-block;
+//     @include background(linear-gradient(#F9F9F9 40%, #E3E3E3 70%));
+//     border: 1px solid $gray-2;
+//     @include border-radius(3px);
+//     padding: 5px 8px;
+//     outline: none;
+//     white-space: nowrap;
+//     @include user-select(none);
+//     cursor: pointer;
+//     @include text-shadow(1px 1px #fff);
+//     font-size: 10pt;
+// }
 
-button:not(:disabled):hover {
-    border-color: $gray-4;
-}
+// button:not(:disabled):hover {
+//     border-color: $gray-4;
+// }
 
-button:not(:disabled):active {
-    @include background(linear-gradient(#E3E3E3 40%, #F9F9F9 70%));
-}
+// button:not(:disabled):active {
+//     @include background(linear-gradient(#E3E3E3 40%, #F9F9F9 70%));
+// }
 table {
     width: 100%;
     color: black;
@@ -221,8 +225,8 @@ table {
 
     td.highlight {
         font-weight: bold;
-        color: #468847;
-        background-color: #dff0d8 !important;
+        color: $highlight-color;
+        background-color: $highlight-bg-color !important;
     }
 
     &.rows {

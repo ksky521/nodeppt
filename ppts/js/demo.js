@@ -18,11 +18,11 @@ window.onload = function() {
 }
 var timer = null;
 var colors = ['#487BD3', '#FAF0E5', '#DA4A89', '#03C8CB', '#dc6c5f', '#04AA55'];
-Slide.on('update', function(i, cls) {
+Slide.on('update', function(i, si) {
     Puff.add('#FFC524' /*colors[i % 6]*/ , ctx, 20, 700, width / 2, height / 2, width / 1.8, 400);
     clearInterval(timer);
-    //第十三个有动效
-    if (i === 13 || i === 14) {
+    //有动效
+    if (i === 7 && si === 5) {
         timer = setInterval(function() {
             Puff.draw(1);
         }, 1E3 / FPS);

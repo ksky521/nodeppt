@@ -168,17 +168,17 @@
             return false;
         }
         $curSlide = $slides[curIndex];
-        var builded = toArray($('.building'), $curSlide);
+        var subBuilded = toArray($('.building'), $curSlide);
         var list;
-        if (builded.length) {
+        if (subBuilded.length) {
 
-            while (list = builded.shift()) {
+            while (list = subBuilded.shift()) {
                 list = list.classList
                 list.remove('building');
-                list.add('build-fade');
+                list.add('builded');
             }
         }
-        var toBuild = $('.to-build', $curSlide);
+        var toBuild = $('.tobuild', $curSlide);
 
         if (!toBuild.length) {
             return false;
@@ -192,12 +192,12 @@
         })
         list = item.classList;
 
-        $B.fire('slide.update', curIndex | 0, item.dataset.index | 0 + 1);
-        list.remove('to-build');
+        $B.fire('slide.update', curIndex | 0, (item.dataset.index | 0) + 1, 'next');
+        list.remove('tobuild');
 
         if (list.contains('subSlide')) {
-            toArray($('.subSlide.build-fade', $curSlide)).forEach(function($item) {
-                $item.classList.add('builded');
+            toArray($('.subSlide.builded', $curSlide)).forEach(function($item) {
+                $item.classList.add('subBuilded');
             });
         }
 
@@ -211,36 +211,38 @@
             return false;
         }
         $curSlide = $slides[curIndex];
-        var builded = toArray($('.building'), $curSlide);
+        var subBuilded = toArray($('.building'), $curSlide);
 
         var list;
-        if (builded.length) {
-            while (list = builded.shift()) {
+        if (subBuilded.length) {
+            while (list = subBuilded.shift()) {
                 var clist = list.classList
                 clist.remove('building');
-                clist.add('to-build');
+                clist.add('tobuild');
                 if (clist.contains('subSlide')) {
-                    var $item = toArray($('.subSlide.build-fade.builded', $curSlide)).pop();
-                    $item && $item.classList.remove('builded');
+                    var $item = toArray($('.subSlide.builded.subBuilded', $curSlide)).pop();
+                    $item && $item.classList.remove('subBuilded');
                 }
             }
         }
-        var toBuild = toArray($('.build-fade', $curSlide));
+        var builded = toArray($('.builded', $curSlide));
 
-        if (!toBuild.length) {
+        if (!builded.length) {
             return false;
         }
 
-        var item = toBuild.pop();
+        var building = toArray($('.building', $curSlide));
+
+
+        var item = builded.pop();
         $B.fire('slide do build', {
             slideID: curIndex,
             direction: 'prev',
             build: item.dataset.index
         });
         list = item.classList;
-        $B.fire('slide.update', curIndex | 0, item.dataset.index | 0 + 1);
-        list.remove('build-fade');
-
+        $B.fire('slide.update', curIndex | 0, (item.dataset.index | 0) + 2, 'prev');
+        list.remove('builded');
         list.add('building');
         return true;
     }
@@ -256,7 +258,7 @@
             var $items = toArray($(buildClass, slide));
             var dataset = slide.dataset;
             $items.forEach(function($v, i) {
-                $v.classList.add('to-build');
+                $v.classList.add('tobuild');
                 $v.dataset.index = i;
             });
 
