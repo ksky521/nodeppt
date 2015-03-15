@@ -16,9 +16,10 @@ nodePPT - This is probably the best web presentation tool so far!
  * canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
  * syntax highlighting of course, and you may want to customize your [syntax highlighting style](https://highlightjs.org/), it's supported well;
  * Animation in single page, one-step animation;
+ * themes：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
  * [forward and backward callback function](#callback)
 
-## 1.0.0 new features
+## 1.2.0 new features
  * real time sync canvas drawing across multiple devices
  * watch
  * add buttons to control page-flipping
