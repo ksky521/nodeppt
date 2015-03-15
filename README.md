@@ -13,6 +13,7 @@ nodePPT - 让你爱上做分享！
  * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
  * [导出网页](#export-html)或者[pdf](#export-pdf)更容易分享
  * 支持[20种转场动画](#transition)，可以设置单页动画
+ * 支持多个皮肤
  * 支持单页背景图片
  * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad/iphone控制翻页更酷哦~
  * 可以使用画板，**双屏同步画板**内容！可以使用note做备注
@@ -21,8 +22,10 @@ nodePPT - 让你爱上做分享！
  * [支持进入/退出回调](#callback)，做在线demo很方便
  * 支持事件update函数，查看[demo](http://qdemo.sinaapp.com/#12)
 
-## 1.0.0新功能
+## 1.2.0新功能
  * 实现watch功能`nodeppt start -w`
+ * 增加多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
+
 
 ## 0.9.0 新功能
  * 添加画板多端同步
@@ -47,6 +50,13 @@ url: 可以设置链接
 transition: 转场效果，例如：zoomin/cards/slide
 files: /css/theme.moon.css
 ```
+
+另外有：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light) 共六套自带皮肤可供选择
+
+```markdown
+theme: moon
+```
+or url?theme=moon
 
 ## 安装
 

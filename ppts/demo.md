@@ -3,6 +3,7 @@ speaker: Theo Wang
 url: https://github.com/ksky521/nodePPT
 transition: move
 files: /js/demo.js,/css/demo.css,/js/zoom.js
+theme: moon
 
 [slide]
 
@@ -240,6 +241,15 @@ nodeppt：https://github.com/ksky521/nodePPT
     </code></pre>
 </div>
 
+
+
+[slide]
+## 支持多种皮肤
+----
+
+[colors](/)-[moon](?theme=moon)-[blue](?theme=blue)-[dark](?theme=dark)-[green](?theme=green)-[light](?theme=light)
+
+
 [slide data-incallback="testScriptTag"]
 ## 支持 HTML 和 markdown 语法混编
 ----
@@ -347,34 +357,16 @@ markdown语法如下：
 [slide]
 ## 20种转场动画随心换
 ----
- * slide/slide2/slide3
- * newspaper
- * glue
- * kontext/vkontext
- * move/circle
- * cover-circle/cover-diamond
- * horizontal/horizontal3d
- * vertical3d
- * zoomin/zoomout
- * cards
- * earthquake/pulse/stick...
-
-[slide data-transition="newspaper"]
-
-## 这是一个newspaper的动画
-----
-使用方法（全局） 1：
-
-> transition: newspaper
-
-
-[slide data-transition="newspaper"]
-
-## 这是一个newspaper的动画
-----
-使用方法 2：
-
-&#91;slide data-transition="newspaper"&#93;
+ * <a href="?transition=slide">slide</a>/<a href="?transition=slide2">slide2</a>/<a href="?transition=slide3">slide3</a>
+ * [newspaper](?transition=newspaper)
+ * [glue](?transition=glue)
+ * [kontext](?transition=kontext)/[vkontext](?transition=vkontext)
+ * [move](?transition=move)/[circle](?transition=circle)
+ * [horizontal](?transition=horizontal)/[horizontal3d](?transition=horizontal3d)
+ * [vertical3d](?transition=vertical3d)
+ * [zoomin](?transition=zoomin)/[zoomout](?transition=zoomout)
+ * [cards](?transition=cards)
+ * [earthquake](?transition=earthquake)/[pulse](?transition=pulse)/[stick](?transition=stick)...
 
 
 [slide data-transition="glue"]
