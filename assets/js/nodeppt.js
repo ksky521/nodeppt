@@ -212,13 +212,16 @@
         }
         $curSlide = $slides[curIndex];
         var subBuilded = toArray($('.building'), $curSlide);
-
         var list;
-        if (subBuilded.length) {
+        var buildingLen = subBuilded.length;
+        var curList;
+
+        if (buildingLen) {
             while (list = subBuilded.shift()) {
                 var clist = list.classList
                 clist.remove('building');
                 clist.add('tobuild');
+                curList = list;
                 if (clist.contains('subSlide')) {
                     var $item = toArray($('.subSlide.builded.subBuilded', $curSlide)).pop();
                     $item && $item.classList.remove('subBuilded');
@@ -226,24 +229,34 @@
             }
         }
         var builded = toArray($('.builded', $curSlide));
-
-        if (!builded.length) {
+        if (!builded.length && !buildingLen) {
             return false;
         }
 
-        var building = toArray($('.building', $curSlide));
-
-
         var item = builded.pop();
+        if (item) {
+            if (!curList) {
+                curList = item;
+            }
+            list = item.classList;
+            list.remove('builded');
+            if (buildingLen === 0) {
+                list.add('tobuild');
+                item = builded.pop();
+                item.classList.remove('builded');
+                item.classList.add('building');
+            } else {
+                list.add('building');
+            }
+
+        }
+
         $B.fire('slide do build', {
             slideID: curIndex,
             direction: 'prev',
-            build: item.dataset.index
+            build: curList.dataset.index
         });
-        list = item.classList;
-        $B.fire('slide.update', curIndex | 0, (item.dataset.index | 0) + 2, 'prev');
-        list.remove('builded');
-        list.add('building');
+        $B.fire('slide.update', curIndex | 0, (curList.dataset.index | 0) + 1, 'prev');
         return true;
     }
 

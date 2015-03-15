@@ -26,6 +26,8 @@ Slide.on('update', function(i, si) {
         timer = setInterval(function() {
             Puff.draw(1);
         }, 1E3 / FPS);
+    }else{
+        canvas.style.display = 'none';
     }
 
 })
