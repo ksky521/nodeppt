@@ -28,9 +28,27 @@
     var $drawBoard; //画板
     var $slideTip;
     var slideCount; //幻灯片总页数-1
+    var QUERY = queryToJson(location.search);
+
+    function queryToJson(url) {
+        url = !!url ? decodeURIComponent(url) : '';
+
+        var locse = url.split('?'),
+            search = locse[1] ? locse[1] : locse[0],
+            pairs = search.split('&'),
+            result = {};
+
+        pairs.forEach(function(pair) {
+            pair = pair.split('=');
+            if (pair[0].length > 0) {
+                result[pair[0]] = pair[1] || '';
+            }
+        });
+
+        return result;
+    }
 
     //设置底部进度条
-
     function setProgress() {
         //添加dataset
         Slide.current = curIndex + 1;
@@ -92,7 +110,6 @@
             clearTimeout(slideInTimer);
         }
         slideInTimer = setTimeout(slideInCallBack_, 1500);
-
     }
 
     function slideInCallBack_() {
@@ -802,7 +819,6 @@
     };
 
     //初始化变量
-
     function initVar() {
 
         $slideTip = $$(defaultOptions.tipID);
@@ -811,8 +827,6 @@
         slideHeight = defaultOptions.height;
         $progress = $$(defaultOptions.progressID);
         Slide.$slides = $slides = toArray($(defaultOptions.slideClass, $container));
-
-
 
         slideCount = $slides.length; //幻灯片总页数-1
         Slide.count = slideCount;
@@ -827,14 +841,20 @@
 
     function fullImg() {
 
-            loadJS(defaultOptions.dir + 'img.screenfull.js', function() {
-                //图片处理
-                var $imgs = toArray($(defaultOptions.slideClass + ' img', $container));
-                screenfull($imgs);
-            });
-        }
-        //初始化
+        loadJS(defaultOptions.dir + 'img.screenfull.js', function() {
+            //图片处理
+            var $imgs = toArray($(defaultOptions.slideClass + ' img', $container));
+            screenfull($imgs);
+        });
+    }
 
+    function loadTheme() {
+        if (defaultOptions.theme) {
+            loadCSS('/css/theme.' + defaultOptions.theme + '.css')
+        }
+    }
+
+    //初始化
     function init(options) {
         options = options || {};
 
@@ -843,6 +863,12 @@
                 defaultOptions[key] = options[key];
             }
         }
+        ['theme', 'transition'].forEach(function(v) {
+            if (QUERY && QUERY[v]) {
+                defaultOptions[v] = QUERY[v];
+            }
+        });
+
         Slide.dir = defaultOptions.dir;
         if (defaultOptions.control) {
             var control = defaultOptions.control;
@@ -853,6 +879,7 @@
 
 
         initVar(); //初始化变量
+        loadTheme();
         makeBuildLists();
         fullImg(); //图片全屏
         bindEvent();
