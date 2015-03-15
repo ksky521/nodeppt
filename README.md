@@ -22,6 +22,7 @@ nodePPT - 让你爱上做分享！
  * [支持进入/退出回调](#callback)，做在线demo很方便
  * 支持事件update函数，查看[demo](http://qdemo.sinaapp.com/#12)
  * zoom.js：alt+click
+
 ## 1.2.0新功能
  * 实现watch功能`nodeppt start -w`
  * 增加多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
