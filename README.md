@@ -25,19 +25,40 @@ nodePPT - 让你爱上做分享！
 
 ## 1.2.0新功能
  * 实现watch功能`nodeppt start -w`
+ * 增加subslide工具
  * 增加多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
 
 
-## 0.9.0 新功能
- * 添加画板多端同步
- * 添加按钮控制进度
- * 新增两种转场动效，增加事件绑定方法：`Slide.on`
- * 修复一些bug
 
 ## demo
  * http://qdemo.sinaapp.com/
+ * 多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
  * 手机百度前端之路：http://qdemo.sinaapp.com/box-fe-road.htm
+
+## subslide
+
+subslide是在一页幻灯片中播放多个子页面，使用`subslide`标签包裹，子页面之间使用`======`间隔
+
+```markdown
+[slide]
+
+[subslide]
+## 这是一个列表
+---
+* 上下左右方向键翻页
+    * 列表支持渐显动画 {:&.moveIn}
+    * 支持多级列表
+    * 这个动画是moveIn
+* 完全基于markdown语法哦
+============
+## 这是一个数字类型列表
+---
+1. 数字列表 {:&.rollIn}
+2. 数字列表
+3. 数字列表
+[/subslide]
+```
 
 ## theme 自定义
 感觉默认的模板不符合新意？可以支持自定义模板，查看[theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
@@ -171,8 +192,6 @@ nodeppt path -o output/path -a
 ```
 
 
-```
-
 #### markdown语法
 nodeppt是支持**marked**语法的，但是为了制作出来更加完美的ppt，扩展了下面的语法
 
@@ -193,8 +212,6 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
  * kontext
  * vkontext
  * circle
- * cover-circle
- * cover-diamond
  * earthquake
  * cards
  * glue
@@ -237,6 +254,24 @@ nodeppt：https://github.com/ksky521/nodePPT
 #### 代码格式化
 语法跟**Github Flavored Markdown** 一样~
 
+
+#### 单条动画
+使用方法：列表第一条加上 ` {:&.动画类型}``（注意空格）
+
+```markdown
+* 上下左右方向键翻页
+    * 列表支持渐显动画 {:&.moveIn}
+    * 支持多级列表
+    * 这个动画是moveIn
+```
+
+目前支持的单条动画效果包括：
+
+* moveIn
+* fadeIn
+* bounceIn
+* rollIn
+* zoomIn
 
 <a name="transition-page"></a>
 #### 单页动画设置
@@ -375,31 +410,20 @@ nodePPT - just enjoy presentation
 **Maybe the best PPT webapp ever**
 
  * markdown based on GFM;
-
  * mix-code with html and markdown
-
  * export your work with html and pdf format;
-
  * 18 different transition animations, and you can choose single page animation well;
-
  * Setting one page background image different than others;
-
  * overview mode, multiscreen mode, remote control with socket, shark to page-flipping with ipad/iphone;
-
  * canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
-
  * syntax highlighting of course, and you may want to customize your [syntax highlighting style](https://highlightjs.org/), it's supported well;
-
  * Animation in single page, one-step animation;
-
  * [forward and backward callback function](#callback)
 
 ## 0.9.0 new features
 
  * real time sync canvas drawing across multiple device
-
  * add buttons to control page-flipping
-
  * bugs fixed
 
 ## demo

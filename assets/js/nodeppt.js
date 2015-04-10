@@ -289,7 +289,9 @@
             var dataset = slide.dataset;
             $items.forEach(function($v, i) {
                 $v.classList.add('tobuild');
-                $v.dataset.index = i;
+                if(!('index' in $v.dataset)){
+                    $v.dataset.index = i;
+                }
             });
 
 

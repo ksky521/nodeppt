@@ -422,16 +422,17 @@ slide[data-transition="cover-diamond"].past {
 
 
 slide[data-transition="cover-circle"]{
-    @include transition(opacity 0s, -webkit-clip-path 1s);
     opacity: 0;
-    @include prefixed(clip-path,circle(5%, 50%, 50%));
+    @include transition(opacity 0, -webkit-clip-path 1s);
+    @include prefixed(clip-path,circle(5% at 50% 50%));
 }
 slide[data-transition="cover-circle"].current{
     opacity: 1;
-    @include prefixed(clip-path,circle(80%, 50%, 50%));
+    @include prefixed(clip-path,circle(80% at 50% 50%));
 }
 slide[data-transition="cover-circle"].past {
-    @include transition(all 0s cubic-bezier(.11,.75,.58,.97));
+    opacity: 0;
+    @include transition(opacity, 0 ease-in);
 }
 
 /********************************* keyframes **************************************/

@@ -91,11 +91,11 @@ nodeppt：https://github.com/ksky521/nodePPT
     * 这个动画是moveIn
 * 完全基于markdown语法哦
 ============
-## 这是一个数字类型列表
+## 这是一个数字类型列表，这是一个subslide页面
 ---
 1. 数字列表 {:&.rollIn}
 2. 数字列表
-3. 数字列表
+3. 数字列表，这是一个subslide页面
 [/subslide]
 
 [slide]
