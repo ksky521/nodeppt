@@ -293,7 +293,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 支持zoom.js
 ----
 
-增加了zoom.js的支持，在演示过程中使用`alt`+鼠标点击，则点击的地方就开始放大，再次`alt+click`则回复原装
+增加了zoom.js的支持，在演示过程中使用`alt`+鼠标点击，则点击的地方就开始放大，再次`alt+click`则回复原状
 
 [slide]
 
