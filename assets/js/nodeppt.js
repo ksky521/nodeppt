@@ -496,42 +496,6 @@
                 }
                 break;
                 //上一页
-            case 66:
-                //b
-                $drawBoard.context.strokeStyle = 'rgba(0,0,255,0.5)'; //pen_blue
-                break;
-            case 89:
-                //y
-                $drawBoard.context.strokeStyle = 'rgba(255,255,0,0.5)';  //pen_yellow
-                break;
-            case 82:
-                //r
-                $drawBoard.context.strokeStyle = 'rgba(255,0,0,0.5)'; //pen_red
-                break;
-            case 71:
-                //g
-                $drawBoard.context.strokeStyle = 'rgba(0,255,0,0.5)'; //pen_green
-                break;
-            case 77:
-                //m
-                $drawBoard.context.strokeStyle = 'rgba(255,0,255,0.5)'; //pen_magenta
-                break;
-            case 49:
-                //1
-                $drawBoard.context.lineWidth = 3;  //画笔粗细
-                break;
-            case 50:
-                //2
-                $drawBoard.context.lineWidth = 7;  //画笔粗细
-                break;
-            case 51:
-                //3
-                $drawBoard.context.lineWidth = 11;  //画笔粗细
-                break;
-            case 52:
-                //4
-                $drawBoard.context.lineWidth = 15;  //画笔粗细
-                break;
             case 33:
                 // pg up
             case 37:
@@ -687,9 +651,8 @@
         $drawBoard.context = $drawBoard.getContext('2d');
         var context = $drawBoard.context;
         context.lineWidth = 3;
-        //context.lineCap = 'round';
-        context.lineJoin = 'round';
-        context.strokeStyle = 'rgba(255,0,0,0.5)'; //"red";
+        context.lineCap = 'round';
+        context.strokeStyle = "red";
     }
 
     //显示画板
@@ -767,12 +730,6 @@
     };
     var pMouseDown = function (e) {
         $drawBoard.isMouseDown = true;
-        try{   //多点触屏
-            var touch = e.targetTouches[0];
-            e = touch;
-            }
-        catch(err){
-            }
         //        $drawBoard.iLastX = e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft);
         //        $drawBoard.iLastY = e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop);
         var x = $drawBoard.iLastX = e.layerX || e.offsetX || (e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft));
@@ -781,7 +738,6 @@
             x: x,
             y: y
         });
-        return false;  //兼容手机触屏
     };
     var pPoints = [];
     var pMouseUp = function (e) {
@@ -811,8 +767,6 @@
 
         var context = $drawBoard.context;
         context.beginPath();
-        context.strokeStyle = data.pencolor;  //画笔颜色
-        context.lineWidth = data.penlineWidth;  //画笔粗细
         var startX = cOX - (tOX - points[0].x) * iw;
         var startY = cOY - (tOY - points[0].y) * ih;
         // console.log(startX, points[0].x, startY, iw, wh);
@@ -824,12 +778,6 @@
     });
     var pMouseMove = function (e) {
         if ($drawBoard.isMouseDown) {
-            try{   //多点触屏
-                var touch = e.targetTouches[0];
-                e = touch;
-                }
-            catch(err){
-                }
             //            var iX = e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft);
             //            var iY = e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop);
             var iX = e.layerX || e.offsetX || (e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft));
@@ -845,8 +793,7 @@
                 x: iX,
                 y: iY
             });
-            //e.preventDefault();
-            return false;  //兼容触屏
+            e.preventDefault();
         }
     }
 
