@@ -40,6 +40,8 @@
                     t.sendKeyEvent(67);
                 }).on('paint points', function(points) {
                     var data = {
+                        pencolor: $doc.getElementById("drawBoard").context.strokeStyle, //画笔颜色
+                        penlineWidth: $doc.getElementById("drawBoard").context.lineWidth,  //画笔宽度
                         points: points,
                         screen: {
                             width: $doc.body.offsetWidth,
