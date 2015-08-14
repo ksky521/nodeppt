@@ -4,6 +4,7 @@ url: https://github.com/ksky521/nodePPT
 transition: move
 files: /js/demo.js,/css/demo.css,/js/zoom.js
 theme: moon
+usemathjax: yes
 
 [slide]
 
@@ -41,6 +42,7 @@ url: https://github.com/ksky521/nodePPT
 transition: 全局转场动画
 files: 引入的js和css文件，多个以半角逗号隔开
 hightStyle: 代码高亮样式，默认monokai_sublime
+usemathjax: yes 启用MathJax渲染公式
 
 /* 以&#91;slide&#93; 隔开每个ppt页面 */
 &#91;slide&#93;
@@ -58,6 +60,10 @@ hightStyle: 代码高亮样式，默认monokai_sublime
 
 # 支持单页添加背景图片 {:&.flexbox.vleft}
 ## 使用方法：&#91;slide style="background-image:url('/img/bg1.png')"&#93;
+----
+## 使用LaTex公式：
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.    s = ut + \frac{1}{2}at^2 $$
+矩阵：$ x = {\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{bmatrix}}  $
 
 [slide]
 ## 支持.class/#id/自定义属性样式
