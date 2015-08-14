@@ -108,6 +108,31 @@ MixJS.loadJS('highlight/hljs-0.8.js',function(){
 });
 </script>
 <%- files %>
+<% if (usemathjax !== ''){ %>
+<!-- MathJax -->
+<script type="text/x-mathjax-config"> 
+// based on http://jsfiddle.net/keithphw/Dwpbb/13/
+MathJax.Hub.Config({
+    config: ["TeX-MML-AM_HTMLorMML-full.js"],
+   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    skipStartupTypeset: true,
+    lazytex2jax: {
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        inlineMath: [['$','$'], ['\\(','\\)']],
+},
+}); 
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+    //本地 src="/js/MathJax/MathJax.js"
+</script>
+<script src="https://raw.githubusercontent.com/Dashed/mathjax-lazyload/master/dist/mathjax-lazyload.min.js">
+    //本地 src="/js/MathJax/mathjax-lazyload.js"
+    // https://github.com/Dashed/mathjax-lazyload
+</script>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+    //本地 src="/js/MathJax/jquery.min.js"
+</script>
+<% } %>
 <!--placeholder-->
 </body>
 </html>
