@@ -63,7 +63,7 @@ usemathjax: yes 启用MathJax渲染公式
 ----
 ## 使用LaTex公式：
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.    s = ut + \frac{1}{2}at^2 $$
-矩阵：$ x = {\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{bmatrix}}  $
+矩阵：\\( x = {\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{bmatrix}}  \\)
 
 [slide]
 ## 支持.class/#id/自定义属性样式
