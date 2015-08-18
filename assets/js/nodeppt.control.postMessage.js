@@ -123,13 +123,14 @@ Slide.Control.add('postMessage', function(S, broadcast) {
                 var hour = 0,
                     sec = 0,
                     min = 0;
-                timer = setInterval(function() {
+                timer2 = setInterval(function() {
                     sec++;
                     if (sec === 60) {
                         sec = 0;
                         min++;
                     }
                     if (min === 60) {
+                        min = 0;
                         hour++;
                     }
                     $timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
