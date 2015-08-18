@@ -28,6 +28,7 @@
     var $drawBoard; //画板
     var $slideTip;
     var slideCount; //幻灯片总页数-1
+    var slideJump = "";  //幻灯片跳转
     var QUERY = queryToJson(location.search);
 
     function queryToJson(url) {
@@ -73,7 +74,12 @@
         return $doc.getElementById(id);
     }
 
-
+    function cprevSlide(){
+        prevSlide();
+    }
+    function cnextSlide() {
+        nextSlide();
+    }
     //上一页
     function prevSlide(isControl) {
         if (buildPrevItem()) {
@@ -294,7 +300,6 @@
                 }
             });
 
-
             if (!dataset.transition) {
                 dataset.transition = transition;
             }
@@ -429,6 +434,13 @@
     /*************************events***************/
 
     //pc键盘翻页事件逻辑
+    function evtkeydown(e){
+        try{
+            e.preventDefault(); //j防止按键盘后，页面走位
+        }catch(err){console.log(err);}
+        return false;
+    }
+    
     function evtDocUp(e) {
         var key = e.keyCode;
         var target = e.target;
@@ -438,13 +450,28 @@
         }
         if (!e.isFromControl) {
             switch (key) {
-                case 13:
-                case 72:
-                case 87:
-                case 79:
-                case 78:
-                case 80:
-                case 67:
+                case 13:  //Enter
+                case 72:  //h
+                case 87:  //w
+                case 79:  //O
+                case 78:  //N
+                case 80:  //P
+                case 67:  //C
+                case 66:  //b lue
+                case 89:  //y ellow
+                case 82:  //r ed
+                case 71:  //g reen
+                case 77:  //m agenta
+                case 48:  //0
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                case 54:
+                case 55:
+                case 56:
+                case 57:  //9
                     $B.fire('slide event keyup', e);
                     break;
             }
@@ -454,8 +481,14 @@
                 // Enter
                 if ($doc.body.classList.contains('overview')) {
                     overview(e.isFromControl);
+                }else{
+                    //j  幻灯片跳转
+                    var slideJumpIndex = parseInt(slideJump) - 1;
+                    if (slideJumpIndex >=0 && slideJumpIndex <= slideCount){
+                        jumpSlide(slideJumpIndex);
+                    }
                 }
-
+                slideJump="";
                 break;
             case 72:
                 // H: Toggle code highlighting
@@ -489,16 +522,9 @@
                     showPaint(e.isFromControl);
                 }
                 break;
-            case 67:
-                //c
-                if (!$body.classList.contains('popup')) {
-                    removePaint(e.isFromControl);
-                }
-                break;
-                //上一页
             case 66:
                 //b
-                $drawBoard.context.strokeStyle = 'rgba(0,0,255,0.5)'; //pen_blue
+                $drawBoard.context.strokeStyle = 'rgba(0,0,255,0.5)'; //j pen_blue
                 break;
             case 89:
                 //y
@@ -518,20 +544,49 @@
                 break;
             case 49:
                 //1
-                $drawBoard.context.lineWidth = 3;  //画笔粗细
+                    slideJump = slideJump + "1";
+                    $drawBoard.context.lineWidth = 3;
                 break;
             case 50:
                 //2
-                $drawBoard.context.lineWidth = 7;  //画笔粗细
+                    slideJump = slideJump + "2";
+                    $drawBoard.context.lineWidth = 7;
                 break;
             case 51:
                 //3
-                $drawBoard.context.lineWidth = 11;  //画笔粗细
+                    slideJump = slideJump + "3";
+                    $drawBoard.context.lineWidth = 11;
                 break;
             case 52:
                 //4
-                $drawBoard.context.lineWidth = 15;  //画笔粗细
+                    slideJump = slideJump + "4";
+                    $drawBoard.context.lineWidth = 15;  //j 笔粗细
                 break;
+            case 48:
+                slideJump = slideJump + "0";
+                break;
+            case 53:
+                slideJump = slideJump + "5";
+                break;
+            case 54:
+                slideJump = slideJump + "6";
+                break;
+            case 55:
+                slideJump = slideJump + "7";
+                break;
+            case 56:
+                slideJump = slideJump + "8";
+                break;
+            case 57:
+                slideJump = slideJump + "9";  //j 幻灯片跳转
+                break;
+            case 67:
+                //c
+                if (!$body.classList.contains('popup')) {
+                    removePaint(e.isFromControl);
+                }
+                break;
+                //上一页
             case 33:
                 // pg up
             case 37:
@@ -586,8 +641,11 @@
             touchDX = touch.pageX - touchStartX;
             touchDY = touch.pageY - touchStartY;
         }
-        event.preventDefault();
-
+        try{
+            event.preventDefault();
+        }catch(err){
+            console.log(err);
+        }
     }
 
     //touchend事件
@@ -614,6 +672,8 @@
     //绑定事件
     function bindEvent() {
         $doc.addEventListener('keyup', evtDocUp, false);
+        $doc.addEventListener('keydown', evtkeydown, false); //j 防止页面走位
+        $doc.addEventListener('keypress', evtkeydown, false); //j 防止页面走位
         $body.addEventListener('touchstart', evtTouchStart, false);
         $$('_btn-bar').addEventListener('click', function () {
             var isOpen = false;
@@ -631,8 +691,8 @@
                 isOpen = !isOpen;
             };
         }(), false);
-        $$('_btn-prev').addEventListener('click', prevSlide, false);
-        $$('_btn-next').addEventListener('click', nextSlide, false);
+        $$('_btn-prev').addEventListener('click', cprevSlide, false);
+        $$('_btn-next').addEventListener('click', cnextSlide, false);
         $$('_btn-overview').addEventListener('click', function () {
             var isOpen = false;
             return function () {
@@ -687,8 +747,8 @@
         $drawBoard.context = $drawBoard.getContext('2d');
         var context = $drawBoard.context;
         context.lineWidth = 3;
-        //context.lineCap = 'round';
-        context.lineJoin = 'round';
+        //context.lineCap = 'square'; //'round';
+        context.lineJoin = 'round';//'bevel';
         context.strokeStyle = 'rgba(255,0,0,0.5)'; //"red";
     }
 
@@ -745,6 +805,7 @@
     //删除画板
     var removePaint = function (isFromControl) {
         clearPaint();
+        slideJump = ""; //j 幻灯片跳转
         if (isControl) {
             $body.classList.add('with-notes');
             $body.classList.add('popup');
@@ -767,7 +828,7 @@
     };
     var pMouseDown = function (e) {
         $drawBoard.isMouseDown = true;
-        try{   //多点触屏
+        try{   //j 触屏画笔
             var touch = e.targetTouches[0];
             e = touch;
             }
@@ -781,7 +842,7 @@
             x: x,
             y: y
         });
-        return false;  //兼容手机触屏
+            return false;  //j 触屏画笔
     };
     var pPoints = [];
     var pMouseUp = function (e) {
@@ -811,8 +872,6 @@
 
         var context = $drawBoard.context;
         context.beginPath();
-        context.strokeStyle = data.pencolor;  //画笔颜色
-        context.lineWidth = data.penlineWidth;  //画笔粗细
         var startX = cOX - (tOX - points[0].x) * iw;
         var startY = cOY - (tOY - points[0].y) * ih;
         // console.log(startX, points[0].x, startY, iw, wh);
@@ -823,13 +882,15 @@
         context.stroke();
     });
     var pMouseMove = function (e) {
+        var ee = e;
         if ($drawBoard.isMouseDown) {
-            try{   //多点触屏
+            try{   //j 触屏画笔
                 var touch = e.targetTouches[0];
                 e = touch;
-                }
+            }
             catch(err){
-                }
+                console.log(err);
+            }
             //            var iX = e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft);
             //            var iY = e.clientY - $drawBoard.offsetTop + ($win.pageYOffset || $doc.body.scrollTop || $doc.documentElement.scrollTop);
             var iX = e.layerX || e.offsetX || (e.clientX - $drawBoard.offsetLeft + ($win.pageXOffset || $doc.body.scrollLeft || $doc.documentElement.scrollLeft));
@@ -845,8 +906,10 @@
                 x: iX,
                 y: iY
             });
-            //e.preventDefault();
-            return false;  //兼容触屏
+            try{
+                ee.preventDefault();
+            }catch(err){console.log(err);}
+            return false;  //j 触屏画笔
         }
     }
 
@@ -985,7 +1048,16 @@
             $B[v].apply(null, args);
         }
     });
-
+    function getcurIndex(){  //j外部控制跳转
+        return curIndex;
+    }
+    function jumpSlide(gotoIndex){ //j外部控制跳转
+        pastIndex = curIndex;
+        curIndex = gotoIndex;
+        doSlide();
+    }
     $win.Slide = Slide;
+    $win.jumpSlide = jumpSlide;       //j外部控制跳转
+    $win.getcurIndex = getcurIndex;   //j外部控制跳转
 
 }(window, document, MixJS.event.broadcast, MixJS.loadJS, MixJS.loadCSS));
