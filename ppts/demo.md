@@ -60,7 +60,9 @@ usemathjax: yes 启用MathJax渲染公式
 
 # 支持单页添加背景图片 {:&.flexbox.vleft}
 ## 使用方法：&#91;slide style="background-image:url('/img/bg1.png')"&#93;
-----
+
+
+[slide]
 ## 使用LaTex公式：
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.    s = ut + \frac{1}{2}at^2 $$
 矩阵：\\( x = {\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{bmatrix}}  \\)
@@ -97,7 +99,7 @@ nodeppt：https://github.com/ksky521/nodePPT
     * 这个动画是moveIn
 * 完全基于markdown语法哦
 ============
-## 这是一个数字类型列表，这是一个subslide页面
+## 这是一个subslide页面
 ---
 1. 数字列表 {:&.rollIn}
 2. 数字列表
@@ -331,9 +333,12 @@ markdown语法如下：
 ## 使用画笔
 ### 使用画笔做标记哦~你也可以随便作画啊！
 ---
-按下键盘【P】键。按下鼠标左键，在此处乱花下看看效果。
+按下键盘【P】键：按下鼠标左键，在此处乱花下看看效果。
 
-按下键盘【C】键。清空画板
+按下键盘【B/Y/R/G/M】：更换颜色，按下【1~4】：更换粗细
+
+按下键盘【C】键：清空画板
+
 
 [slide]
 

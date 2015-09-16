@@ -148,6 +148,7 @@ slides > slide .slide-wrapper {
     em {
         margin: 0 5px;
         font-weight: bold;
+        font-style: italic;
         @include text-shadow(-1px -2px 1px rgba(0, 0, 0, .8));
     }
     pre {
