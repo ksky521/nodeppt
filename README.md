@@ -151,25 +151,11 @@ Slide.on('update', function(i, itemIndex, cls) {
 ```
 demo中[第13张](http://qdemo.sinaapp.com/#13)使用回调做了魔幻翻页效果
 
-### 导出ppt
+### 打印/导出ppt
 这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
 
-导出ppt有三种，一种最简单直接**ctrl+P（推荐此方法另存为pdf）**，一种是**pdf版**，一种是**html版**
+使用``url?print=1``访问页面，然后选择chrome的系统打印即可
 
-<a name="export-pdf"></a>
-#### pdf版（不推荐，原因phantomjs的webkit版本低）
-需要安装[phantomJS](http://phantomjs.org/)。
-
-```bash
-# 安装phantomjs，如果安装了，请忽略
-npm install -g phantomjs
-# 启动nodeppt server
-nodeppt start
-# 导出文件
-nodeppt pdf http://127.0.0.1:8080/md/demo.md a.pdf
-```
-
-phantomjs版本可能较老，推荐在chrome浏览器中使用`ctrl+P`选择另存为pdf
 
 <a name="export-html"></a>
 #### html版
@@ -388,13 +374,11 @@ nodeppt start -h
  * 在线demo： http://qdemo.sinaapp.com/
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ksky521/nodeppt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ## Thanks
 * http://tympanus.net/Development/ItemTransitions/index2.html
 * http://tympanus.net/Development/PageTransitions/
 * https://github.com/daneden/animate.css
-
 
 
 
@@ -496,21 +480,8 @@ type 'Q' in page to show the QR Code, scan it, and you can control the slider on
 http://127.0.0.1:8080/md/demo.md?_multiscreen=1
 ```
 
-#### export your ppt
 
-share your awesome slider with others, why not?
 
-#### export to pdf format:
-<a name="export-pdf"></a>
-need to install phantomjs
-
-```bash
-npm install -g phantomjs
-# start nodeppt server
-nodeppt start
-# export file
-nodeppt pdf http://127.0.0.1:8080/md/demo.md -o a.pdf
-```
 
 <a name="export-html"></a>
 #### export to html
@@ -584,7 +555,7 @@ if you want set single page animation, go to **[single page animation setting](#
 ----
 nodeppt is a ppt webapp coded by nodejs
 nodeppt: https://github.com/ksky521/nodePPT
-
+```
 #### code formatting
 the same as **Github Flavored Markdown**
 
@@ -601,12 +572,13 @@ on the top of the md file, you can set global transition animation in ```setting
 #### insert html code
 If want to diy your ppt total, you can **directly** use html tag. As you see, mixed-code with html and markdown is supported well.
 For example:
+
 ```markdown
 <div class="file-setting">
     <p>this is html</p>
 </div>
 <p id="css-demo">css style</p>
-<p>for more details, visit ppts/demo.md</p>
+
 <script>
     function testScriptTag(){
 
@@ -622,7 +594,7 @@ For example:
 
 <a name="callback"></a>
 #### transition callback
-you can use ```incallback```和```outcallback``` to define your callback function while the page forward and backward.
+you can use ```incallback``` and ```outcallback``` to define your callback function while the page forward and backward.
 suck like this:
 ```markdown
 [slide data-outcallback="outcallback" data-incallback="incallback"]
@@ -638,7 +610,7 @@ suck like this:
 :-------|:------:|-------:|--------
 environment |js/nodejs | Ruby | nodejs
 .ext | .less | .sass/.scss | .styl
-
+```
 
 #### insert iframe
 use ```data-src``` as the url of the iframe, the iframe will not load the content untill the page be displayed.
@@ -646,45 +618,6 @@ use ```data-src``` as the url of the iframe, the iframe will not load the conten
 <iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
 ```
 
-#### example
-for more go to ppts/demo.md
-```markdown
-title: nodeppt markdown presentation
-speaker: Theo Wang
-url: https://github.com/ksky521/nodePPT
-transition: zoomin
-
-[slide]
-
-# cover style
-## h1 for cover, h2 for others
-
-[slide style="background-image:url('/img/bg1.png')"]
-
-# background iamge {:&.flexbox.vleft}
-## &#91;slide style="background-image:url('/img/bg1.png')"&#93;
-
-[slide]
-
-## home page style
-### ---- boundary
-----
-
-nodeppt is a ppt webapp coded by nodejs
-
-nodeppt: https://github.com/ksky521/nodePPT
-
-
-[slide]
-
-what? want more features?
-
-geek mode: check the source code, find nodeppt.js, and you'll find the awesome "shake to page-flipping".
-
-check the project directory for more infomation
-```
-
-To see more demo, check the ```ppts``` folder
 
 ### help
 
@@ -701,7 +634,6 @@ nodeppt start -h
  * online demo： http://qdemo.sinaapp.com/
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ksky521/nodeppt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ## Thanks
 * http://tympanus.net/Development/ItemTransitions/index2.html

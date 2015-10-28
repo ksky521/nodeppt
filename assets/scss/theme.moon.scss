@@ -94,7 +94,7 @@ slides > slide{
             &.pull-right{
                 border-right:0 none;
                 padding: 5px 28px 5px 5px;
-                ::before{
+                &::before{
                     font:normal normal normal 14px/1 FontAwesome;
                     content:"\f10e";
                     right: 6px;
@@ -106,7 +106,7 @@ slides > slide{
                     content: '';
                 }
             }
-            ::before{
+            &::before{
                 font:normal normal normal 14px/1 FontAwesome;
                 content:"\f10d";
                 left: 6px;

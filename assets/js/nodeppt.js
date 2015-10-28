@@ -527,43 +527,61 @@
                 break;
             case 66:
                 //b
-                $drawBoard.context.strokeStyle = 'rgba(0,0,255,0.5)'; //j pen_blue
-                break;
+                if ($drawBoard.context) {
+                    $drawBoard.context.strokeStyle = 'rgba(0,0,255,0.5)'; //j pen_blue
+                    break;
+                }
             case 89:
                 //y
-                $drawBoard.context.strokeStyle = 'rgba(255,255,0,0.5)'; //pen_yellow
-                break;
+                if ($drawBoard.context) {
+                    $drawBoard.context.strokeStyle = 'rgba(255,255,0,0.5)'; //pen_yellow
+                    break;
+                }
             case 82:
                 //r
-                $drawBoard.context.strokeStyle = 'rgba(255,0,0,0.5)'; //pen_red
-                break;
+                if ($drawBoard.context) {
+                    $drawBoard.context.strokeStyle = 'rgba(255,0,0,0.5)'; //pen_red
+                    break;
+                }
             case 71:
                 //g
-                $drawBoard.context.strokeStyle = 'rgba(0,255,0,0.5)'; //pen_green
-                break;
+                if ($drawBoard.context) {
+                    $drawBoard.context.strokeStyle = 'rgba(0,255,0,0.5)'; //pen_green
+                    break;
+                }
             case 77:
                 //m
-                $drawBoard.context.strokeStyle = 'rgba(255,0,255,0.5)'; //pen_magenta
-                break;
+                if ($drawBoard.context) {
+                    $drawBoard.context.strokeStyle = 'rgba(255,0,255,0.5)'; //pen_magenta
+                    break;
+                }
             case 49:
                 //1
                 slideJump = slideJump + '1';
-                $drawBoard.context.lineWidth = 3;
+                if ($drawBoard.context) {
+                    $drawBoard.context.lineWidth = 3;
+                }
                 break;
             case 50:
                 //2
                 slideJump = slideJump + '2';
-                $drawBoard.context.lineWidth = 7;
+                if ($drawBoard.context) {
+                    $drawBoard.context.lineWidth = 7;
+                }
                 break;
             case 51:
                 //3
                 slideJump = slideJump + '3';
-                $drawBoard.context.lineWidth = 11;
+                if ($drawBoard.context) {
+                    $drawBoard.context.lineWidth = 11;
+                }
                 break;
             case 52:
                 //4
                 slideJump = slideJump + '4';
-                $drawBoard.context.lineWidth = 15; //j 笔粗细
+                if ($drawBoard.context) {
+                    $drawBoard.context.lineWidth = 15; //j 笔粗细
+                }
                 break;
             case 48:
                 slideJump = slideJump + '0';
@@ -613,9 +631,7 @@
                 break;
         }
 
-        //        $container.style.marginLeft = -(curIndex * slideWidth) + 'px';
-        //        setProgress();
-        //        setHistory();
+
     }
 
     /******************************** Touch events *********************/
@@ -675,8 +691,8 @@
     //绑定事件
     function bindEvent() {
         $doc.addEventListener('keyup', evtDocUp, false);
-        $doc.addEventListener('keydown', evtkeydown, false); //j 防止页面走位
-        $doc.addEventListener('keypress', evtkeydown, false); //j 防止页面走位
+        // $doc.addEventListener('keydown', evtkeydown, false); //j 防止页面走位
+        // $doc.addEventListener('keypress', evtkeydown, false); //j 防止页面走位
         $body.addEventListener('touchstart', evtTouchStart, false);
         $$('_btn-bar').addEventListener('click', function() {
             var isOpen = false;
@@ -750,7 +766,7 @@
         $drawBoard.context = $drawBoard.getContext('2d');
         var context = $drawBoard.context;
         context.lineWidth = 3;
-        //context.lineCap = 'square'; //'round';
+        // context.lineCap = 'square'; //'round';
         context.lineJoin = 'round'; //'bevel';
         context.strokeStyle = 'rgba(255,0,0,0.5)'; //"red";
     }
