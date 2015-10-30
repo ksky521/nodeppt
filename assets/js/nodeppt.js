@@ -1079,5 +1079,10 @@
     $win.Slide = Slide;
     $win.jumpSlide = jumpSlide; //j外部控制跳转
     $win.getcurIndex = getcurIndex; //j外部控制跳转
-
+    try {
+        if (window.console && window.console.log) {
+            console.log('Powered By nodePPT, %c https://github.com/ksky521/nodePPT', 'color:red');
+            console.log('Install nodePPT: %c npm install -g nodeppt', 'color:red');
+        }
+    } catch (e) {}
 }(window, document, MixJS.event.broadcast, MixJS.loadJS, MixJS.loadCSS));
