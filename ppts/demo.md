@@ -41,7 +41,7 @@ speaker: 演讲者名称
 url: https://github.com/ksky521/nodePPT
 transition: 全局转场动画
 files: 引入的js和css文件，多个以半角逗号隔开
-hightStyle: 代码高亮样式，默认monokai_sublime
+highlightStyle: 代码高亮样式，默认monokai_sublime
 usemathjax: yes 启用MathJax渲染公式
 
 /* 以&#91;slide&#93; 隔开每个ppt页面 */
