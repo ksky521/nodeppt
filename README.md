@@ -36,6 +36,17 @@ nodePPT - 让你爱上做分享！
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
  * 手机百度前端之路：http://qdemo.sinaapp.com/box-fe-road.htm
 
+## 文件定位
+对于nodeppt内部的文件，定位需要用根目录的方式来写，例如项目路径是 `slide`，`demo.md`中的图片使用：
+```markdown
+![测试文件路径](/img/demo.png)
+```
+
+对应的图片路径是 `slide/img/demo.png`
+
+使用 `nodeppt generate demo.md output -a` 则生成后，图片路径是：`output/img/demo.png`
+
+
 ## subslide
 
 subslide是在一页幻灯片中播放多个子页面，使用`subslide`标签包裹，子页面之间使用`======`间隔
@@ -169,12 +180,12 @@ nodeppt generate filepath
 # 默认导出在publish文件夹
 nodeppt generate ./ppts/demo.md -a
 # 指定导出文件夹
-nodeppt generate ./ppts/demo.md -a -o output/path
+nodeppt generate ./ppts/demo.md output/path -a
 ```
 导出目录下所有ppt，并且生成ppt list首页：
 
 ```bash
-nodeppt path -o output/path -a
+nodeppt path output/path -a
 ```
 
 

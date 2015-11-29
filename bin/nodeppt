@@ -17,7 +17,7 @@ program
     .usage('[filename] [option]')
     .description('create a slide')
     .option('-d, --dir [path]', 'set slide file destination path')
-    .action(function(filename, options) {
+    .action(function (filename, options) {
         if (typeof filename === 'object') {
             console.log('ERROR: please input filename！'.bold.red);
             this.outputHelp();
@@ -25,7 +25,7 @@ program
         }
 
         nodePPT.create(filename, options)
-    }).on('--help', function() {
+    }).on('--help', function () {
         console.log('  Examples:');
         console.log();
         console.log('  nodeppt create myslide');
@@ -37,26 +37,24 @@ program
     .command('generate')
     .usage('[file_path] [save_path]')
     .description('export html file')
-    .option('-o, --output [path]', 'output path')
     .option('-a, --all [false]', 'output all style(include js,css) file', false)
-    .action(function(cmd, options) {
+    .action(function (cmd, output, options) {
         var filename = '';
         var shouldAll = false;
-        var output = '';
-
+        if (typeof output !== 'string') {
+            options = output;
+            output = undefined;
+        }
         if (typeof cmd === 'string') {
             filename = cmd;
             shouldAll = options.all;
-            output = options.output;
         } else if (typeof cmd === 'object') {
             shouldAll = cmd.all;
             output = cmd.output;
         }
-
-        nodePPT.generate(filename, output, shouldAll);
-
+        nodePPT.generate(filename, output, shouldAll, '');
     })
-    .on('--help', function() {
+    .on('--help', function () {
         console.log('  Examples:');
         console.log();
         console.log('  nodeppt generate D:/webppt/demo.md -o D:/output');
@@ -73,7 +71,7 @@ program
     .option('-c, --controller [socket]', 'support websocket mutil screen controller')
     .option('-H, --host [host]', 'set host address', ipv4 || '0.0.0.0')
     .option('-w, --watch', 'livereload')
-    .action(function(cmd) {
+    .action(function (cmd) {
         if (typeof cmd !== 'object') {
             this.outputHelp();
             return;
@@ -81,7 +79,7 @@ program
 
         nodePPT.start(cmd)
     })
-    .on('--help', function() {
+    .on('--help', function () {
         console.log('  Examples:');
         console.log();
         console.log('  nodeppt start -d D:/webppt -p 8080');
@@ -95,7 +93,7 @@ program
     .command('pdf')
     .usage('[http_url] [save_path.pdf]')
     .description('export pdf file. ' + 'Deprecated'.bold.red)
-    .action(function(http_url, save_path) {
+    .action(function (http_url, save_path) {
         if (typeof http_url !== 'string' || typeof save_path !== 'string') {
             console.log('ERROR: pdf need a URL'.bold.red);
             this.outputHelp();
@@ -104,7 +102,7 @@ program
         console.log('  Warning: '.bold.red + 'This command is ' + 'Deprecated'.bold.red);
         nodePPT.pdf([http_url, save_path])
     })
-    .on('--help', function() {
+    .on('--help', function () {
         console.log('  Examples:');
         console.log();
         console.log('  nodeppt pdf http://127.0.0.1:8080/md/demo.md demo.pdf\n');
