@@ -1,3 +1,0 @@
-[submodule "assets/js/highlight"]
-	path = assets/js/highlight
-	url = git@github.com:components/highlightjs.git
