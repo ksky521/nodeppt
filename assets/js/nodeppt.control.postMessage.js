@@ -11,6 +11,12 @@ Slide.Control.add('postMessage', function (S, broadcast) {
         });
         return back;
     }
+    broadcast.on('controlEvent:joinClient', function () {
+        postMSG.send_default('syncStatus', {
+            id: S.current,
+            item: S.curItem
+        });
+    });
 
     var postWin, popup, timer;
     var postMSG = {
@@ -31,6 +37,7 @@ Slide.Control.add('postMessage', function (S, broadcast) {
         //     console.log('client 发来贺电', arguments);
         // },
         evtHandler: function (e) {
+            var data = e.data;
             broadcast.fire(data.action, data.data);
         },
         closeClient: function () {
@@ -66,36 +73,14 @@ Slide.Control.add('postMessage', function (S, broadcast) {
                         args: args
                     });
                 };
-                var $body = document.body;
-                $body.classList.add('popup');
-                $body.classList.add('with-notes');
-                var $timer = document.createElement('time');
-                $timer.id = '_timer_';
-                $body.appendChild($timer);
-                var hour = 0,
-                    sec = 0,
-                    min = 0;
-                timer2 = setInterval(function () {
-                    sec++;
-                    if (sec === 60) {
-                        sec = 0;
-                        min++;
-                    }
-                    if (min === 60) {
-                        min = 0;
-                        hour++;
-                    }
-                    $timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
-                }, 1000);
+                Slide.timerCtrl();
                 postWin = window.opener;
+                postMSG.send_default('joinClient');
                 window.addEventListener('message', this.evtHandler, true);
             }
         }
     };
 
-    function time2str(time) {
-        time = '00' + time;
-        return time.substr(-2);
-    }
+
     return postMSG;
 });

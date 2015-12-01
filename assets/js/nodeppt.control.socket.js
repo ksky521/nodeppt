@@ -53,7 +53,8 @@ Slide.Control.add('socket', function (S, broadcast) {
                 keyCode: keyCode
             })
         },
-        clientConnect: function () {},
+        clientConnect: function () {
+        },
         evtHandler: function () {
             //角色是client，即被控制端，则连控制端服务器
             webSocket.on('transfer.data', function (data) {
@@ -101,10 +102,9 @@ Slide.Control.add('socket', function (S, broadcast) {
                         if (showQrcode && showQrcode.isShow) {
                             showQrcode();
                         }
-                        webSocket.emit('transfer.data', {
-                            action: 'syncStatus',
+                        Socket.send_default('syncStatus', {
                             id: S.current,
-                            item: S.buildItem
+                            item: S.curItem
                         });
                         break;
                     case 'leave':
@@ -127,27 +127,7 @@ Slide.Control.add('socket', function (S, broadcast) {
             //角色，是否为控制端
             if (args.isControl) {
                 this.role = 'control';
-                var $body = document.body;
-                $body.classList.add('popup');
-                $body.classList.add('with-notes');
-                var $timer = document.createElement('time');
-                $timer.id = '_timer_';
-                $body.appendChild($timer);
-                var hour = 0,
-                    sec = 0,
-                    min = 0;
-                timer2 = setInterval(function () {
-                    sec++;
-                    if (sec === 60) {
-                        sec = 0;
-                        min++;
-                    }
-                    if (min === 60) {
-                        min = 0;
-                        hour++;
-                    }
-                    $timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
-                }, 1000);
+                Slide.timerCtrl();
             } else {
                 this.role = 'client';
             }
@@ -159,7 +139,7 @@ Slide.Control.add('socket', function (S, broadcast) {
                         var now = Date.now();
                         if (now - lastTime > 3000) {
                             lastTime = now;
-                            Slide.next();
+                            Socket.send_keyEvent(39);
                         }
                     }, true);
 
