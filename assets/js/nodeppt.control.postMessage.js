@@ -16,13 +16,15 @@ Slide.Control.add('postMessage', function (S, broadcast) {
     var postMSG = {
         role: '', //角色
         broadcast: function (evtName, data) {
-            (postWin ? postWin : popup).postMessage({
+            var win = (postWin ? postWin : popup);
+            win && win.postMessage({
                 action: evtName,
                 data: data
             }, '*');
         },
         update: function (id, direction) {
-            (postWin ? postWin : popup).postMessage({
+            var win = (postWin ? postWin : popup);
+            win && win.postMessage({
                 action: 'update',
                 id: id,
                 direction: direction
@@ -30,7 +32,8 @@ Slide.Control.add('postMessage', function (S, broadcast) {
 
         },
         updateItem: function (id, item, direction) {
-            (postWin ? postWin : popup).postMessage({
+            var win = (postWin ? postWin : popup);
+            win && win.postMessage({
                 action: 'updateItem',
                 id: id,
                 item: item,
@@ -39,7 +42,8 @@ Slide.Control.add('postMessage', function (S, broadcast) {
 
         },
         keyEvent: function (keyCode) {
-            (postWin ? postWin : popup).postMessage({
+            var win = (postWin ? postWin : popup);
+            win && win.postMessage({
                 action: 'keyEvent',
                 keyCode: keyCode
             }, '*');
