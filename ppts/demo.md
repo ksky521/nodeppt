@@ -453,7 +453,7 @@ function globalFunc(){
 <a href="?_multiscreen=1#33">在多屏中测试远程执行</a>
 <script>
     function globalFunc(a){
-        alert('proxyFn success: '+a);
+        alert('proxyFn success: '+a+location.href);
     }
 </script>
 

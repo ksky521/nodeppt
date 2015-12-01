@@ -53,11 +53,11 @@
                     var fnName = json.fnName;
                     var args = json.args;
                     Slide.proxyFn(fnName, args);
-                }).on('from control update', function(json) {
-                    Slide[json.direction](true);
-                    // doSlide(json.direction, json.id, false);
-                }).on('from control updateItem', function(json) {
-                    Slide[json.direction](true);
+                // }).on('from control update', function(json) {
+                //     Slide[json.direction](true);
+                //     // doSlide(json.direction, json.id, false);
+                // }).on('from control updateItem', function(json) {
+                //     Slide[json.direction](true);
                     //doItem(json.direction) && doSlide(json.id, false);
                 }).on('from control key event', function(json) {
                     t.createKeyEvent_(json.keyCode);

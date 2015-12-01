@@ -2,10 +2,10 @@
  * postMessage 只能单方面控制
  *
  */
-Slide.Control.add('postMessage', function(S, broadcast) {
+Slide.Control.add('postMessage', function (S, broadcast) {
     function parseQuery(url) {
         var back = {};
-        (url || location.search.substring(1)).split('&').forEach(function(v) {
+        (url || location.search.substring(1)).split('&').forEach(function (v) {
             v = v.split('=');
             back[v[0].toLowerCase()] = v[1];
         });
@@ -15,48 +15,41 @@ Slide.Control.add('postMessage', function(S, broadcast) {
     var postWin, popup, timer;
     var postMSG = {
         role: '', //角色
-        broadcast: function(evtName, data) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: evtName,
-                    data: data
-                }, '*');
-            }
+        broadcast: function (evtName, data) {
+            (postWin ? postWin : popup).postMessage({
+                action: evtName,
+                data: data
+            }, '*');
         },
-        update: function(id, direction) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: 'update',
-                    id: id,
-                    direction: direction
-                }, '*');
-            }
+        update: function (id, direction) {
+            (postWin ? postWin : popup).postMessage({
+                action: 'update',
+                id: id,
+                direction: direction
+            }, '*');
 
         },
-        updateItem: function(id, item, direction) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: 'updateItem',
-                    id: id,
-                    item: item,
-                    direction: direction
-                }, '*');
-            }
+        updateItem: function (id, item, direction) {
+            (postWin ? postWin : popup).postMessage({
+                action: 'updateItem',
+                id: id,
+                item: item,
+                direction: direction
+            }, '*');
 
         },
-        keyEvent: function(keyCode) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: 'keyEvent',
-                    keyCode: keyCode
-                }, '*');
-            }
+        keyEvent: function (keyCode) {
+            (postWin ? postWin : popup).postMessage({
+                action: 'keyEvent',
+                keyCode: keyCode
+            }, '*');
         },
-        // evtControl: function(e) {
+        // evtControl: function (e) {
         //     console.log('client 发来贺电', arguments);
         // },
-        evtClient: function(e) {
+        evtHandler: function (e) {
             var data = e.data;
+            // console.log(data);
             switch (data.action) {
                 case 'update':
                     broadcast.fire('from control update', data);
@@ -80,13 +73,13 @@ Slide.Control.add('postMessage', function(S, broadcast) {
             }
 
         },
-        closeClient: function() {
+        closeClient: function () {
             if (popup) {
                 popup.close();
             }
             timer && clearInterval(timer);
         },
-        init: function(args) {
+        init: function (args) {
             var t = this;
             var params = parseQuery();
 
@@ -101,12 +94,12 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 
                 var temp = 'height=' + tHeight + ',width=' + tWidth + ',top=' + 10 + ',left=' + (sWidth - tWidth) / 2 + ',toolbar=no,menubar=no,location=yes,resizable=yes,scrollbars=no,status=no';
                 popup = window.open(url, 'ppt', temp);
-                window.addEventListener('message', this.evtClient, false);
+                window.addEventListener('message', this.evtHandler, false);
                 window.addEventListener('beforeunload', this.closeClient, false);
             } else if (params._multiscreen === 'control') {
                 this.role = 'control';
                 //如果是控制端，则重写proxyFn函数
-                Slide.proxyFn = function(fnName, args) {
+                Slide.proxyFn = function (fnName, args) {
                     args = JSON.stringify(args);
                     window.opener.postMessage({
                         action: 'userOrder',
@@ -123,7 +116,7 @@ Slide.Control.add('postMessage', function(S, broadcast) {
                 var hour = 0,
                     sec = 0,
                     min = 0;
-                timer2 = setInterval(function() {
+                timer2 = setInterval(function () {
                     sec++;
                     if (sec === 60) {
                         sec = 0;
@@ -136,6 +129,7 @@ Slide.Control.add('postMessage', function(S, broadcast) {
                     $timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
                 }, 1000);
                 postWin = window.opener;
+                window.addEventListener('message', this.evtHandler, true);
             }
         }
     };
