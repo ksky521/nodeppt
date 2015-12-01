@@ -95,9 +95,6 @@
     //下一页
     function nextSlide(isControl) {
         if (buildNextItem()) {
-            // $B.fire('slide change ID',{
-            //    slideID:curIndex
-            // })
             return;
         }
         slideOutCallBack($slides[curIndex]);
@@ -209,14 +206,7 @@
         }
 
         var item = toBuild.item(0);
-        // !iscontrol && $B.fire('slide do build', {
-        //     slideID: curIndex,
-        //     direction: 'next',
-        //     build: item.dataset.index
-        // })
         list = item.classList;
-
-        // $B.fire('slide.update', curIndex | 0, (item.dataset.index | 0) + 1, 'next');
         list.remove('tobuild');
 
         if (list.contains('subSlide')) {
@@ -274,13 +264,6 @@
             }
 
         }
-
-        // !iscontrol && $B.fire('slide do build', {
-        //     slideID: curIndex,
-        //     direction: 'prev',
-        //     build: curList.dataset.index
-        // });
-        // $B.fire('slide.update', curIndex | 0, (curList.dataset.index | 0) + 1, 'prev');
         return true;
     }
 
@@ -315,11 +298,6 @@
         // $container.style.marginLeft = -(slideID * slideWidth) + 'px';
         updateSlideClass();
         setProgress();
-        //发布slide切换状态广播
-        ISSYNC && $B.fire('slide change ID', {
-            slideID: curIndex,
-            direction: direction
-        });
         if (doHash) {
             lockSlide = true;
             $win.location.hash = "#" + curIndex;
@@ -452,7 +430,7 @@
             return;
         }
         if (!e.isFromControl) {
-            $B.fire('slide event keyup', e);
+            $B.fire('nodepptEvent:eventKeyup', e);
         }
         $B.fire('slide.keyup', e);
         switch (key) {
@@ -781,7 +759,7 @@
 
         $doc.addEventListener('selectstart', stopSelect, true);
         if (!isFromControl) {
-            $B.fire('show paint');
+            $B.fire('nodepptEvent:show paint');
         }
     }
 
@@ -818,7 +796,7 @@
 
         $doc.removeEventListener('selectstart', stopSelect, true);
         if (!isFromControl) {
-            $B.fire('remove paint');
+            $B.fire('nodepptEvent:remove paint');
         }
     };
     var pMouseDown = function(e) {
@@ -843,12 +821,11 @@
         $drawBoard.iLastX = -1;
         $drawBoard.iLastY = -1;
         if (!e.isFromControl) {
-            $B.fire('paint points', pPoints);
+            $B.fire('nodepptEvent:paint points', pPoints);
         }
         pPoints.length = 0;
     };
-    $B.on('from control paint points', function(data) {
-        // console.log(data);
+    $B.on('controlEvent:paint points', function(data) {
         var points = data.points;
         //远程来的屏幕
         var wh = data.screen;

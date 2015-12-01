@@ -2,10 +2,10 @@
  * postMessage 只能单方面控制
  *
  */
-Slide.Control.add('postMessage', function (S, broadcast) {
+Slide.Control.add('postMessage', function(S, broadcast) {
     function parseQuery(url) {
         var back = {};
-        (url || location.search.substring(1)).split('&').forEach(function (v) {
+        (url || location.search.substring(1)).split('&').forEach(function(v) {
             v = v.split('=');
             back[v[0].toLowerCase()] = v[1];
         });
@@ -15,75 +15,32 @@ Slide.Control.add('postMessage', function (S, broadcast) {
     var postWin, popup, timer;
     var postMSG = {
         role: '', //角色
-        broadcast: function (evtName, data) {
+        send_default: function(evtName, data) {
             var win = (postWin ? postWin : popup);
             win && win.postMessage({
-                action: evtName,
+                action: 'controlEvent:' + evtName,
                 data: data
             }, '*');
         },
-        update: function (id, direction) {
-            var win = (postWin ? postWin : popup);
-            win && win.postMessage({
-                action: 'update',
-                id: id,
-                direction: direction
-            }, '*');
-
-        },
-        updateItem: function (id, item, direction) {
-            var win = (postWin ? postWin : popup);
-            win && win.postMessage({
-                action: 'updateItem',
-                id: id,
-                item: item,
-                direction: direction
-            }, '*');
-
-        },
-        keyEvent: function (keyCode) {
-            var win = (postWin ? postWin : popup);
-            win && win.postMessage({
-                action: 'keyEvent',
+        send_keyEvent: function(keyCode) {
+            postMSG.send_default('keyEvent', {
                 keyCode: keyCode
-            }, '*');
+            })
         },
         // evtControl: function (e) {
         //     console.log('client 发来贺电', arguments);
         // },
-        evtHandler: function (e) {
+        evtHandler: function(e) {
             var data = e.data;
-            // console.log(data);
-            switch (data.action) {
-                case 'update':
-                    broadcast.fire('from control update', data);
-                    break;
-                case 'updateItem':
-                    broadcast.fire('from control updateItem', data);
-                    break;
-                case 'keyEvent':
-                    broadcast.fire('from control key event', data);
-                    break;
-                case 'userOrder':
-                    var fnName = data.fn;
-                    var args = data.args;
-                    try {
-                        args = JSON.parse(args);
-                    } catch (e) {}
-                    Slide.proxyFn(fnName, args);
-                    break;
-                default:
-                    broadcast.fire('from control ' + data.action, data.data);
-            }
-
+            broadcast.fire(data.action, data.data);
         },
-        closeClient: function () {
+        closeClient: function() {
             if (popup) {
                 popup.close();
             }
             timer && clearInterval(timer);
         },
-        init: function (args) {
+        init: function(args) {
             var t = this;
             var params = parseQuery();
 
@@ -103,14 +60,13 @@ Slide.Control.add('postMessage', function (S, broadcast) {
             } else if (params._multiscreen === 'control') {
                 this.role = 'control';
                 //如果是控制端，则重写proxyFn函数
-                Slide.proxyFn = function (fnName, args) {
+                Slide.proxyFn = function(fnName, args) {
                     args = JSON.stringify(args);
-                    window.opener.postMessage({
-                        action: 'userOrder',
-                        fn: fnName,
+                    postMSG.send_default('proxyFn', {
+                        fnName: fnName,
                         args: args
-                    }, '*');
-                }
+                    });
+                };
                 var $body = document.body;
                 $body.classList.add('popup');
                 $body.classList.add('with-notes');
@@ -120,7 +76,7 @@ Slide.Control.add('postMessage', function (S, broadcast) {
                 var hour = 0,
                     sec = 0,
                     min = 0;
-                timer2 = setInterval(function () {
+                timer2 = setInterval(function() {
                     sec++;
                     if (sec === 60) {
                         sec = 0;

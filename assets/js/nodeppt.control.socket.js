@@ -42,12 +42,13 @@ Slide.Control.add('socket', function(S, broadcast) {
     var Socket = {
         host: '',
         role: '', //角色
-        clientConnect: function() {
+        clientConnect: function() {},
+        evtHandler: function() {
             //角色是client，即被控制端，则连控制端服务器
-            webSocket.on('data from another client', function(data) {
+            webSocket.on('transfer.data', function(data) {
                 var action = data.action;
                 switch (action) {
-                    case 'from control order':
+                    case 'controll.proxyFnOrder':
                         var fnName = data.fn;
                         var args = data.args;
                         try {
@@ -55,22 +56,21 @@ Slide.Control.add('socket', function(S, broadcast) {
                         } catch (e) {}
                         Slide.proxyFn(fnName, args);
                         break;
-                    case 'from control updateItem':
-                    case 'from control update':
-                    case 'from control key event':
+                    case 'updateItem':
+                    case 'update':
+                    case 'keyEvent':
                         broadcast.fire(action, data);
                         break;
-                    case 'sync status':
+                    case 'syncStatus':
                         console.log('sync status', data);
                         break;
                     default:
                         broadcast.fire(action, data.data);
                 }
             });
-
         },
         controlConnect: function() {
-            webSocket.emit('add client', {
+            webSocket.emit('control.addClient', {
                 targetUid: this.clientUID
             });
 
@@ -79,23 +79,11 @@ Slide.Control.add('socket', function(S, broadcast) {
             Slide.proxyFn = function(fnName, args) {
                 args = JSON.stringify(args);
                 webSocket.emit('transfer.data', {
-                    action: 'from control order',
+                    action: 'controll.proxyFnOrder',
                     fn: fnName,
                     args: args
                 });
             };
-            //角色是控制端，则连被控制端（client）服务器
-
-            webSocket.on('data from another client', function(data) {
-                var action = data.action;
-                if (action.indexOf('client') !== -1) {
-                    return;
-                }
-                action = action.replace('client', 'control');
-
-                broadcast.fire(action, data);
-            });
-
         },
         connect: function() {
             webSocket = io.connect(location.host + '/ppt');
@@ -118,15 +106,13 @@ Slide.Control.add('socket', function(S, broadcast) {
                 }
             });
             webSocket.on('system', function(data) {
-                // console.log(data);
-
                 switch (data.action) {
                     case 'join':
                         if (showQrcode && showQrcode.isShow) {
                             showQrcode();
                         }
                         webSocket.emit('transfer.data', {
-                            action: 'sync status',
+                            action: 'syncStatus',
                             id: S.current,
                             item: S.buildItem
                         });
@@ -142,23 +128,24 @@ Slide.Control.add('socket', function(S, broadcast) {
             });
 
             this[this.role + 'Connect']();
+            this.evtHandler();
         },
         broadcast: function(evtName, data) {
             webSocket.emit('transfer.data', {
-                action: 'from control ' + evtName,
+                action: evtName,
                 data: data
             });
         },
         update: function(id, direction) {
             webSocket.emit('transfer.data', {
-                action: 'from ' + Socket.role + ' update',
+                action: 'update',
                 id: id,
                 direction: direction
             });
         },
         updateItem: function(id, item, direction) {
             webSocket.emit('transfer.data', {
-                action: 'from ' + Socket.role + ' updateItem',
+                action: 'updateItem',
                 id: id,
                 item: item,
                 direction: direction
@@ -166,7 +153,7 @@ Slide.Control.add('socket', function(S, broadcast) {
         },
         keyEvent: function(keyCode) {
             webSocket.emit('transfer.data', {
-                action: 'from ' + Socket.role + ' key event',
+                action: 'keyEvent',
                 keyCode: keyCode
             });
         },

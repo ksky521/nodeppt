@@ -21,24 +21,13 @@
         bindListener: function() {
             var t = this;
             //监听用户端发出的广播
-            $B.on('slide change ID', function(json) {
-                    var slideID = json.slideID;
-                    //发送请求
-                    t.sendUpdate(slideID, json.direction);
-
-                }).on('slide do build', function(json) {
-                    var slideID = json.slideID;
-                    var buildItem = json.build;
-                    var direction = json.direction;
-                    //发送请求
-                    t.sendUpdateItem(slideID, buildItem, direction);
-                }).on('slide event keyup', function(e) {
+            $B.on('nodepptEvent:eventKeyup', function(e) {
                     t.sendKeyEvent(e.keyCode);
-                }).on('show paint', function(e) {
+                }).on('nodepptEvent:show paint', function(e) {
                     t.sendKeyEvent(80);
-                }).on('remove paint', function() {
+                }).on('nodepptEvent:remove paint', function() {
                     t.sendKeyEvent(67);
-                }).on('paint points', function(points) {
+                }).on('nodepptEvent:paint points', function(points) {
                     var data = {
                         points: points,
                         screen: {
@@ -46,22 +35,21 @@
                             height: $doc.body.offsetHeight
                         }
                     };
-                    t.send_('broadcast', ['paint points', data]);
+                    t.send_('default', ['paint points', data]);
                 })
                 //监听控制来的广播
-                .on('from control order', function(json) {
+                .on('controlEvent:proxyFn', function(json) {
                     var fnName = json.fnName;
                     var args = json.args;
+                    try{
+                        args = JSON.parser(args);
+                    }catch(e){
+                        args = '';
+                    }
                     Slide.proxyFn(fnName, args);
-                // }).on('from control update', function(json) {
-                //     Slide[json.direction](true);
-                //     // doSlide(json.direction, json.id, false);
-                // }).on('from control updateItem', function(json) {
-                //     Slide[json.direction](true);
-                    //doItem(json.direction) && doSlide(json.id, false);
-                }).on('from control key event', function(json) {
+                }).on('controlEvent:keyEvent', function(json) {
                     t.createKeyEvent_(json.keyCode);
-                })
+                });
         },
         createKeyEvent_: function(keyCode) {
             var evt = document.createEvent('Event');
@@ -77,15 +65,9 @@
             args = getType(args) === 'Array' ? args : [args];
             for (var i in methods) {
                 method = methods[i];
-                method = method[fnName];
+                method = method['send_' + fnName];
                 typeof method === 'function' && method.apply(Slide, args);
             }
-        },
-        sendUpdate: function(slideID, direction) {
-            this.send_('update', [slideID, direction]);
-        },
-        sendUpdateItem: function(id, buildItem, direction) {
-            this.send_('updateItem', [id, buildItem, direction]);
         },
         sendKeyEvent: function(keycode) {
             this.send_('keyEvent', [keycode]);
