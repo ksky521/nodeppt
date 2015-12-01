@@ -1,6 +1,6 @@
 var socketIOURL = '//' + location.host + '/socket.io/socket.io.js';
 
-Slide.Control.add('socket', function(S, broadcast) {
+Slide.Control.add('socket', function (S, broadcast) {
     S.clientUID = 0;
 
     function time2str(time) {
@@ -8,9 +8,9 @@ Slide.Control.add('socket', function(S, broadcast) {
         return time.substr(-2);
     }
     var showQrcode;
-    var qrcodeLink = function() {
+    var qrcodeLink = function () {
         //按 q显示控制区域二维码
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.keyCode === 81) {
                 showQrcode(e);
             }
@@ -23,7 +23,7 @@ Slide.Control.add('socket', function(S, broadcast) {
         $body.appendChild($layer);
         var $container = document.getElementById('container');
 
-        showQrcode = function(e) {
+        showQrcode = function (e) {
             if (showQrcode.isShow) {
                 // $container.style.display = 'block';
                 $layer.style.display = 'none';
@@ -42,56 +42,46 @@ Slide.Control.add('socket', function(S, broadcast) {
     var Socket = {
         host: '',
         role: '', //角色
-        clientConnect: function() {},
-        evtHandler: function() {
-            //角色是client，即被控制端，则连控制端服务器
-            webSocket.on('transfer.data', function(data) {
-                var action = data.action;
-                switch (action) {
-                    case 'controll.proxyFnOrder':
-                        var fnName = data.fn;
-                        var args = data.args;
-                        try {
-                            args = JSON.parse(args);
-                        } catch (e) {}
-                        Slide.proxyFn(fnName, args);
-                        break;
-                    case 'updateItem':
-                    case 'update':
-                    case 'keyEvent':
-                        broadcast.fire(action, data);
-                        break;
-                    case 'syncStatus':
-                        console.log('sync status', data);
-                        break;
-                    default:
-                        broadcast.fire(action, data.data);
-                }
+        send_default: function (evtName, data) {
+            webSocket.emit('transfer.data', {
+                action: 'controlEvent:' + evtName,
+                data: data
             });
         },
-        controlConnect: function() {
+        send_keyEvent: function (keyCode) {
+            Socket.send_default('keyEvent', {
+                keyCode: keyCode
+            })
+        },
+        clientConnect: function () {},
+        evtHandler: function () {
+            //角色是client，即被控制端，则连控制端服务器
+            webSocket.on('transfer.data', function (data) {
+                broadcast.fire(data.action, data.data);
+            });
+        },
+        controlConnect: function () {
             webSocket.emit('control.addClient', {
                 targetUid: this.clientUID
             });
 
             //控制端不在直接运行函数，而是变成发送socket给client
             //注意参数，进行了json处理哦~
-            Slide.proxyFn = function(fnName, args) {
+            Slide.proxyFn = function (fnName, args) {
                 args = JSON.stringify(args);
-                webSocket.emit('transfer.data', {
-                    action: 'controll.proxyFnOrder',
-                    fn: fnName,
+                Socket.send_default('proxyFn', {
+                    fnName: fnName,
                     args: args
                 });
             };
         },
-        connect: function() {
+        connect: function () {
             webSocket = io.connect(location.host + '/ppt');
             // console.log(io);
-            webSocket.on('UUID', function(uid) {
+            webSocket.on('UUID', function (uid) {
                 webSocket.uid = uid;
                 if (Socket.role === 'client') {
-                    MixJS.loadJS('/js/qrcode.js', function() {
+                    MixJS.loadJS('/js/qrcode.js', function () {
                         qrcodeLink();
                         var url = location.href.split('#')[0];
                         url += (!~url.indexOf('?')) ? '?' : '&';
@@ -105,7 +95,7 @@ Slide.Control.add('socket', function(S, broadcast) {
                     });
                 }
             });
-            webSocket.on('system', function(data) {
+            webSocket.on('system', function (data) {
                 switch (data.action) {
                     case 'join':
                         if (showQrcode && showQrcode.isShow) {
@@ -130,35 +120,7 @@ Slide.Control.add('socket', function(S, broadcast) {
             this[this.role + 'Connect']();
             this.evtHandler();
         },
-        broadcast: function(evtName, data) {
-            webSocket.emit('transfer.data', {
-                action: evtName,
-                data: data
-            });
-        },
-        update: function(id, direction) {
-            webSocket.emit('transfer.data', {
-                action: 'update',
-                id: id,
-                direction: direction
-            });
-        },
-        updateItem: function(id, item, direction) {
-            webSocket.emit('transfer.data', {
-                action: 'updateItem',
-                id: id,
-                item: item,
-                direction: direction
-            });
-        },
-        keyEvent: function(keyCode) {
-            webSocket.emit('transfer.data', {
-                action: 'keyEvent',
-                keyCode: keyCode
-            });
-        },
-
-        init: function(args) {
+        init: function (args) {
             this.host = args.host || location.href;
             this.clientUID = args.clientId;
             // console.log(this.clientUID);
@@ -174,7 +136,7 @@ Slide.Control.add('socket', function(S, broadcast) {
                 var hour = 0,
                     sec = 0,
                     min = 0;
-                timer2 = setInterval(function() {
+                timer2 = setInterval(function () {
                     sec++;
                     if (sec === 60) {
                         sec = 0;
@@ -191,9 +153,9 @@ Slide.Control.add('socket', function(S, broadcast) {
             }
             if (args.shake) {
                 //添加shake
-                MixJS.loadJS(Slide.dir + 'shake.js', function() {
+                MixJS.loadJS(Slide.dir + 'shake.js', function () {
                     var lastTime = Date.now();
-                    window.addEventListener('shake', function() {
+                    window.addEventListener('shake', function () {
                         var now = Date.now();
                         if (now - lastTime > 3000) {
                             lastTime = now;
@@ -208,7 +170,7 @@ Slide.Control.add('socket', function(S, broadcast) {
                 //已经存在
                 Socket.connect();
             } else {
-                MixJS.loadJS(socketIOURL, function() {
+                MixJS.loadJS(socketIOURL, function () {
                     Socket.connect();
                 });
             }

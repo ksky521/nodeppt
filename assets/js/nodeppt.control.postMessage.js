@@ -2,10 +2,10 @@
  * postMessage 只能单方面控制
  *
  */
-Slide.Control.add('postMessage', function(S, broadcast) {
+Slide.Control.add('postMessage', function (S, broadcast) {
     function parseQuery(url) {
         var back = {};
-        (url || location.search.substring(1)).split('&').forEach(function(v) {
+        (url || location.search.substring(1)).split('&').forEach(function (v) {
             v = v.split('=');
             back[v[0].toLowerCase()] = v[1];
         });
@@ -15,14 +15,14 @@ Slide.Control.add('postMessage', function(S, broadcast) {
     var postWin, popup, timer;
     var postMSG = {
         role: '', //角色
-        send_default: function(evtName, data) {
+        send_default: function (evtName, data) {
             var win = (postWin ? postWin : popup);
             win && win.postMessage({
                 action: 'controlEvent:' + evtName,
                 data: data
             }, '*');
         },
-        send_keyEvent: function(keyCode) {
+        send_keyEvent: function (keyCode) {
             postMSG.send_default('keyEvent', {
                 keyCode: keyCode
             })
@@ -30,17 +30,16 @@ Slide.Control.add('postMessage', function(S, broadcast) {
         // evtControl: function (e) {
         //     console.log('client 发来贺电', arguments);
         // },
-        evtHandler: function(e) {
-            var data = e.data;
+        evtHandler: function (e) {
             broadcast.fire(data.action, data.data);
         },
-        closeClient: function() {
+        closeClient: function () {
             if (popup) {
                 popup.close();
             }
             timer && clearInterval(timer);
         },
-        init: function(args) {
+        init: function (args) {
             var t = this;
             var params = parseQuery();
 
@@ -60,7 +59,7 @@ Slide.Control.add('postMessage', function(S, broadcast) {
             } else if (params._multiscreen === 'control') {
                 this.role = 'control';
                 //如果是控制端，则重写proxyFn函数
-                Slide.proxyFn = function(fnName, args) {
+                Slide.proxyFn = function (fnName, args) {
                     args = JSON.stringify(args);
                     postMSG.send_default('proxyFn', {
                         fnName: fnName,
@@ -76,7 +75,7 @@ Slide.Control.add('postMessage', function(S, broadcast) {
                 var hour = 0,
                     sec = 0,
                     min = 0;
-                timer2 = setInterval(function() {
+                timer2 = setInterval(function () {
                     sec++;
                     if (sec === 60) {
                         sec = 0;
