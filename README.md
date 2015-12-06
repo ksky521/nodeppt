@@ -36,7 +36,8 @@ nodePPT - 让你爱上做分享！
  * http://qdemo.sinaapp.com/
  * 多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
- * 手机百度前端之路：http://qdemo.sinaapp.com/box-fe-road.htm
+ * 更多slide：http://js8.in/slide
+ * 打印页面：http://qdemo.sinaapp.com/?print=1
 
 ## 文件定位
 对于nodeppt内部的文件，定位需要用根目录的方式来写，例如项目路径是 `slide`，`demo.md`中的图片使用：
