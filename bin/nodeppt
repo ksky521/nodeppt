@@ -14,6 +14,7 @@ program
 
 program
     .command('create')
+    .alias('new')
     .usage('[filename] [option]')
     .description('create a slide')
     .option('-d, --dir [path]', 'set slide file destination path')
@@ -35,6 +36,7 @@ program
 
 program
     .command('generate')
+    .alias('release')
     .usage('[file_path] [save_path]')
     .description('export html file')
     .option('-a, --all [false]', 'output all style(include js,css) file', false)
