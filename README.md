@@ -11,9 +11,9 @@ nodePPT - 让你爱上做分享！
 
  * 基于GFM的markdown语法编写
  * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
- * [导出网页](#export-html)或者[pdf](#export-pdf)更容易分享
- * 支持[20种转场动画](#transition)，可以设置单页动画
  * 支持多个皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
+ * 实现watch功能`nodeppt start -w`
+ * 支持[20种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
  * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad/iphone控制翻页更酷哦~
  * 可以使用画板，**双屏同步画板**内容！可以使用note做备注
@@ -23,18 +23,55 @@ nodePPT - 让你爱上做分享！
  * 支持事件update函数，查看[demo](http://qdemo.sinaapp.com/#12)
  * zoom.js：alt+click
 
-## 1.2.0新功能
- * 实现watch功能`nodeppt start -w`
- * 增加subslide工具
- * 增加多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
-
-
-
 ## demo
  * http://qdemo.sinaapp.com/
  * 多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
- * 手机百度前端之路：http://qdemo.sinaapp.com/box-fe-road.htm
+ * 三水清的分享：http://js8.in/slide
+
+## 1.3 新功能
+支持单个slide事件：build/enter/leave/keypress，事件统一在`[slide]`中使用`data-on-X`来指定一个*全局函数名*
+
+### 事件说明如下
+* build：当触发下一步操作的时候，会触发这个事件，具有stop方法
+* keypress：在当前页面按键触发，具有stop方法
+* enter/leave：进入/离开 此页面触发的事件，无stop方法
+
+**build/keypress会在当前slide完全渲染后触发，回调函数会接受一个event对象，如果想阻止默认事件（即翻页，或者对应的快捷键），可以使用event对象的`stop()`方法；slide退场后事件解绑**
+
+### 使用举例
+
+#### 示例1：进入页面如果触发翻页事件，就会当前执行做转场，做一些类似magicmove效果
+```markdown
+[slide data-on-build="globalCallbackName"]
+```
+
+```javascript
+var count = 0;
+function globalCallbackName(e){
+    count++;
+    if(count<2){
+        //做一些页面动效，或者转场
+        e.stop();//阻止默认事件，就不会跳转
+    }
+}
+```
+
+#### 示例2：代理空格按键事件
+```markdown
+[slide data-on-keypress="globalCallbackName"]
+```
+
+```javascript
+function globalCallbackName(e){
+    if(e.keyCode==32){
+        //play();//触发自定义的页面效果
+        e.stop();//阻止默认事件，则不会触发nodeppt默认绑定的事件
+    }
+}
+```
+
+
 
 ## 文件定位
 对于nodeppt内部的文件，定位需要用根目录的方式来写，例如项目路径是 `slide`，`demo.md`中的图片使用：
@@ -304,10 +341,10 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 <a name="callback"></a>
 #### 转场回调
-前端的ppt，难免会在页面中演示一些demo，除了上面的插入html语法外，还提供了```incallback```和```outcallback```，分别用于：切入（切走）到当前ppt，执行的js函数名。例如：
+前端的ppt，难免会在页面中演示一些demo，除了上面的插入html语法外，还提供了```enter```和```outcallback```，分别用于：切入（切走）到当前ppt，执行的js函数名。例如：
 
 ```markdown
-[slide data-outcallback="outcallback" data-incallback="incallback"]
+[slide data-on-leave="outcallback" data-on-enter="incallback"]
 ## 当进入此页，就执行incallback函数
 ## 当离开此页面，就执行outcallback函数
 ```
@@ -392,263 +429,5 @@ nodeppt start -h
 * https://github.com/daneden/animate.css
 
 
-
-
-
-English version:
-
-
-nodePPT - just enjoy presentation
-==================================
-## why nodePPT?
-
-**Maybe the best PPT webapp ever**
-
- * markdown based on GFM;
- * mix-code with html and markdown
- * export your work with html and pdf format;
- * 18 different transition animations, and you can choose single page animation well;
- * Setting one page background image different than others;
- * overview mode, multiscreen mode, remote control with socket, shark to page-flipping with ipad/iphone;
- * canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
- * syntax highlighting of course, and you may want to customize your [syntax highlighting style](https://highlightjs.org/), it's supported well;
- * Animation in single page, one-step animation;
- * [forward and backward callback function](#callback)
-
-## 0.9.0 new features
-
- * real time sync canvas drawing across multiple device
- * add buttons to control page-flipping
- * bugs fixed
-
-## demo
-
- * http://qdemo.sinaapp.com/
-
- * sync multiscreen in real time: http://qdemo.sinaapp.com/?_multiscreen=1 (make sure alert is allowed in your browser)
-
- * front-end experience of mobile baidu: http://qdemo.sinaapp.com/box-fe-road.htm
-
-
-## customize your theme
-
- * default theme is not cool?  just customize your theme! take a look with [theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
-
- * write your customize theme's template path in setting md:
-
- ```markdown
- title: presentation title
- speaker: author name
- url: http://your.site
- transition: zoomin/cards/slide/...
- files: /path/to/your/theme.css
- ```
-
-## install
-
- ```bash
- # get help
- nodeppt start -h
- # bind given port
- nodeppt start -p <port>
-```
-
-```bash
-nodeppt start -p 8090 -d path/for/ppts
-# bind host, default value: (0.0.0.0)
-nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
-# socket (type 'Q' to show/hide QR Code, use your phone scan it, and you can control the slider)
-# if your want to use socket, notice the follow:
-		* 1, make sure that your phone and your pc/mac is allowed to access to each other
-		* 2, the firewall
-		* 3, ip
-```
-
-
-#### how to start socket?
-
-##### use 'start' command:
-
-```bash
-nodeppt start -c socket
-```
-
-type 'Q' in page to show the QR Code, scan it, and you can control the slider on your phone: swipe or touch or shake to page-flipping
-
-##### or with url params
-
-```bash
-http://127.0.0.1:8080/md/demo.md?controller=socket
-```
-
-type 'Q' in page to show the QR Code, scan it, and you can control the slider on your phone: swipe or touch or shake to page-flipping
-
-
-
-#### how to start postMessage:
-
-```bash
-http://127.0.0.1:8080/md/demo.md?_multiscreen=1
-```
-
-
-
-
-<a name="export-html"></a>
-#### export to html
-
-```bash
-# get generate help
-nodeppt generate -h
-# generate command
-nodeppt generate filepath
-# export all project file, include js, img, css folder
-# export to publish folder default
-nodeppt generate ./ppts/demo.md -a
-# export to given folder
-nodeppt generate ./ppts/demo.md -a -o output/path
-
-export all ppt file and generate ppt list index:
-```bash
-nodeppt path -o output/path -a
-```
-
-#### markdown syntax
-nodeppt supports **marked** syntax, but for greater ppt, we extend the next syntax:
-
-#### settings
-```markdown
-title: presentation title
-speaker: author name
-url: http://your.site
-transition: zoomin/cards/slide/...
-files: path/to/js/or/css/files
-```
-
-**directory relationship**:
-
-<a name="transition"></a>
-support the followed animations:
-
- * kontext
- * vkontext
- * circle
- * earthquake
- * cards
- * glue
- * stick
- * move
- * newspaper
- * slide
- * slide2
- * slide3
- * horizontal3d
- * horizontal
- * vertical3d
- * zoomin
- * zoomout
- * pulse
-
-if you want set single page animation, go to **[single page animation setting](#transition-page)**
-
-
-```markdown
-[slide style="background-image:url('/img/bg1.png')"]
-# slide with background image
-## I'm subtitle
-```
-
-#### single page ppt top-down layout
-```markdown
-[slide]
-## home page stylesheet
-### ---- boundary
-----
-nodeppt is a ppt webapp coded by nodejs
-nodeppt: https://github.com/ksky521/nodePPT
-```
-#### code formatting
-the same as **Github Flavored Markdown**
-
-<a name="transition-page"></a>
-#### single page animation
-on the top of the md file, you can set global transition animation in ```setting```, if want to set single page transition animation, use the followed syntax:
-
-```markdown
-[slide data-transition="vertical3d"]
-## this is a vertical3d transition animation
-```
-
-<a name="mixed-code"></a>
-#### insert html code
-If want to diy your ppt total, you can **directly** use html tag. As you see, mixed-code with html and markdown is supported well.
-For example:
-
-```markdown
-<div class="file-setting">
-    <p>this is html</p>
-</div>
-<p id="css-demo">css style</p>
-
-<script>
-    function testScriptTag(){
-
-    }
-    console.log(typeof testScriptTag);
-</script>
-<style>
-#css-demo{
-    color: red;
-}
-</style>
-```
-
-<a name="callback"></a>
-#### transition callback
-you can use ```incallback``` and ```outcallback``` to define your callback function while the page forward and backward.
-suck like this:
-```markdown
-[slide data-outcallback="outcallback" data-incallback="incallback"]
-## when get into this page, call incallback function
-## when left this page, call outcallback function
-```
-
-#### table example
-```markodwn
-### css preprocessor：less\sass\stylus
----
-|less| sass | stylus
-:-------|:------:|-------:|--------
-environment |js/nodejs | Ruby | nodejs
-.ext | .less | .sass/.scss | .styl
-```
-
-#### insert iframe
-use ```data-src``` as the url of the iframe, the iframe will not load the content untill the page be displayed.
-```markdown
-<iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
-```
-
-
-### help
-
-```bash
-nodeppt -h
-# type -h after any command to see the help.
-nodeppt start -h
-```
-
-## how to run the demo?
-
- * run ```nodeppt start```
- * visit [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
- * online demo： http://qdemo.sinaapp.com/
-
-
-
-## Thanks
-* http://tympanus.net/Development/ItemTransitions/index2.html
-* http://tympanus.net/Development/PageTransitions/
-* https://github.com/daneden/animate.css
 
 
