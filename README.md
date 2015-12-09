@@ -5,6 +5,8 @@ nodePPT - 让你爱上做分享！
 [![NPM](https://nodei.co/npm-dl/nodeppt.png)](https://nodei.co/npm/nodeppt/)
 [![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
 
+**导出pdf不再支持，请使用chrome打印服务另存为pdf，url中添加print=1，然后使用chrome打印 `ctrl+P` **
+
 ## 为什么选择nodePPT
 
 **这可能是迄今为止最好的网页版PPT**
@@ -28,6 +30,7 @@ nodePPT - 让你爱上做分享！
  * 多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
  * 三水清的分享：http://js8.in/slide
+ * 打印页面：http://qdemo.sinaapp.com/?print=1
 
 ## 1.3 新功能
 支持单个slide事件：build/enter/leave/keypress，事件统一在`[slide]`中使用`data-on-X`来指定一个*全局函数名*
