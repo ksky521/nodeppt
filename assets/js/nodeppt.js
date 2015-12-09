@@ -1,4 +1,4 @@
-(function ($win, $doc, $B, loadJS, loadCSS, undefined) {
+(function($win, $doc, $B, loadJS, loadCSS, undefined) {
     //用于单页ppt预加载资源
     var preloadFn = {
         loadJS: loadJS,
@@ -6,7 +6,7 @@
     };
 
     var $body = $doc.body;
-    var emptyFn = function () {};
+    var emptyFn = function() {};
     var emptyArr = [];
 
     var touchDX = 0; //touch事件x数据
@@ -39,7 +39,7 @@
             pairs = search.split('&'),
             result = {};
 
-        pairs.forEach(function (pair) {
+        pairs.forEach(function(pair) {
             pair = pair.split('=');
             if (pair[0].length > 0) {
                 result[pair[0]] = pair[1] || '';
@@ -49,6 +49,25 @@
         return result;
     }
 
+    function dispatchEvent($dom, name, data) {
+        var event = document.createEvent('Event');
+        event.initEvent('ppt' + name, true, true);
+        event.stopped = false;
+        event.stop = function() {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopped = true;
+        };
+        if (data) {
+            for (var i in data) {
+                if (data.hasOwnProperty(i)) {
+                    event[i] = data[i];
+                }
+            }
+        }
+        $dom.dispatchEvent(event);
+        return event;
+    }
     //设置底部进度条
     function setProgress() {
         //添加dataset
@@ -76,6 +95,7 @@
 
     //上一页
     function prevSlide(isControl) {
+
         if (buildPrevItem()) {
             Slide.curItem--;
             return;
@@ -98,6 +118,7 @@
         pastIndex = curIndex;
         ++curIndex > slideCount && (curIndex = slideCount);
         doSlide('next', isControl ? false : true);
+        //预加载
         preload($slides[curIndex])($slides[curIndex + 1]);
     }
 
@@ -118,13 +139,24 @@
         if (!$cur || ($cur && $cur.nodeType !== 1)) {
             return;
         }
-        var cb = $cur.dataset.incallback;
+        var dataset = $cur.dataset;
+        var cb = dataset.incallback || dataset.onEnter;
         //如果有data-incallback那么就执行callback
         cb && typeof $win[cb] === 'function' && proxyFn(cb);
+
+
+        //事件：keypress接管，build接管
+        ['Keypress', 'Build'].forEach(function(v) {
+            var callback = dataset['on' + v];
+            if (callback && typeof $win[callback] === 'function') {
+                $cur.addEventListener('ppt' + v, $win[callback], true);
+            }
+        });
+
         //检测iframe
         var $iframe = toArray($('iframe[data-src]', $cur));
         if ($iframe.length) {
-            $iframe.forEach(function (v) {
+            $iframe.forEach(function(v) {
                 var src = v.dataset.src;
                 v.src = src;
             });
@@ -143,15 +175,24 @@
         if (slideOutTimer) {
             clearTimeout(slideOutTimer);
         }
-        slideOutTimer = setTimeout(function () {
+        slideOutTimer = setTimeout(function() {
             slideOutCallBack_(prev);
         }, 1500);
     }
 
     function slideOutCallBack_(prev) {
-        var cb = prev.dataset.outcallback;
+        var dataset = prev.dataset;
+        var cb = dataset.outcallback || dataset.onLeave;
         //如果有data-outcallback那么就执行callback
         cb && typeof $win[cb] === 'function' && proxyFn(cb);
+
+        //解绑事件：keypress，build
+        ['Keypress', 'Build'].forEach(function(v) {
+            var callback = dataset['on' + v];
+            if (callback && typeof $win[callback] === 'function') {
+                prev.removeEventListener('ppt' + v, $win[callback], true);
+            }
+        });
     }
 
     //预加载资源
@@ -167,8 +208,8 @@
                     type = dataset.type,
                     url = dataset.url;
                 var fn = preloadFn['load' + type.toUpperCase()];
-                typeof fn === 'function' && fn(url, function (tmpNode) {
-                    return function () {
+                typeof fn === 'function' && fn(url, function(tmpNode) {
+                    return function() {
                         //将该标签删除，释放内存
                         tmpNode.parentNode && tmpNode.parentNode.removeChild(tmpNode);
                         tmpNode = null;
@@ -186,6 +227,15 @@
             return false;
         }
         $curSlide = $slides[curIndex];
+        //自定义事件，直接返回
+        var event = dispatchEvent($curSlide, 'Build', {
+            direction: 'next'
+        });
+        if (event.stopped) {
+            return event.stopped;
+        }
+
+
         var subBuilded = toArray($('.building'), $curSlide);
         var list;
         if (subBuilded.length) {
@@ -207,7 +257,7 @@
         list.remove('tobuild');
 
         if (list.contains('subSlide')) {
-            toArray($('.subSlide.builded', $curSlide)).forEach(function ($item) {
+            toArray($('.subSlide.builded', $curSlide)).forEach(function($item) {
                 $item.classList.add('subBuilded');
             });
         }
@@ -222,6 +272,14 @@
             return false;
         }
         $curSlide = $slides[curIndex];
+
+        //自定义事件，直接返回
+        var event = dispatchEvent($curSlide, 'Build', {
+            direction: 'prev'
+        });
+        if (event.stopped) {
+            return event.stopped;
+        }
         var subBuilded = toArray($('.building'), $curSlide);
         var list;
         var buildingLen = subBuilded.length;
@@ -274,7 +332,7 @@
 
             var $items = toArray($(buildClass, slide));
             var dataset = slide.dataset;
-            $items.forEach(function ($v, i) {
+            $items.forEach(function($v, i) {
                 $v.classList.add('tobuild');
                 if (!('index' in $v.dataset)) {
                     $v.dataset.index = i;
@@ -384,7 +442,7 @@
         }
 
         var arr = ['next', 'past', 'far-next', 'far-past', 'current', 'pagedown', 'pageup'];
-        arr.forEach(function (v) {
+        arr.forEach(function(v) {
             if (className !== v && pageClass !== v) {
                 el.classList.remove(v);
             }
@@ -399,7 +457,7 @@
         }
         $slideTip.innerHTML = msg;
         $slideTip.style.display = 'block';
-        setTimeout(function () {
+        setTimeout(function() {
             $slideTip.style.display = 'none';
         }, 3E3);
     }
@@ -428,6 +486,16 @@
             $B.fire('nodepptEvent:eventKeyup', e);
         }
         $B.fire('slide.keyup', e);
+
+        var $curSlide = $slides[curIndex];
+        var event = dispatchEvent($curSlide, 'Keypress', {
+            keyCode: key,
+            orgiTarget: target,
+        });
+        if (event.stopped) {
+            return event.stopped;
+        }
+
         switch (key) {
             case 13:
                 // Enter
@@ -445,7 +513,7 @@
             case 72:
                 // H: Toggle code highlighting
                 $doc.body.classList.toggle('highlight-code');
-                setTimeout(function () {
+                setTimeout(function() {
                     $doc.body.classList.toggle('highlight-code');
                 }, 2000);
                 break;
@@ -566,8 +634,6 @@
                 prevSlide();
                 break;
                 //下一页
-                // case 9:
-                // tab
             case 32:
                 // space
             case 34:
@@ -654,9 +720,9 @@
         // $doc.addEventListener('keydown', evtkeydown, false); //j 防止页面走位
         // $doc.addEventListener('keypress', evtkeydown, false); //j 防止页面走位
         $body.addEventListener('touchstart', evtTouchStart, false);
-        $$('_btn-bar').addEventListener('click', function () {
+        $$('_btn-bar').addEventListener('click', function() {
             var isOpen = false;
-            return function () {
+            return function() {
                 if (!isOpen) {
                     this.classList.remove('fa-bars');
                     this.classList.add('fa-close');
@@ -670,15 +736,15 @@
                 isOpen = !isOpen;
             };
         }(), false);
-        $$('_btn-prev').addEventListener('click', function () {
+        $$('_btn-prev').addEventListener('click', function() {
             createKeyEvent(38);
         }, false);
-        $$('_btn-next').addEventListener('click', function () {
+        $$('_btn-next').addEventListener('click', function() {
             createKeyEvent(39);
         }, false);
-        $$('_btn-overview').addEventListener('click', function () {
+        $$('_btn-overview').addEventListener('click', function() {
             var isOpen = false;
-            return function () {
+            return function() {
 
                 if (isOpen) {
                     this.classList.add('fa-compress');
@@ -692,9 +758,9 @@
                 isOpen = !isOpen;
             };
         }(), false);
-        $$('_btn-brush').addEventListener('click', function () {
+        $$('_btn-brush').addEventListener('click', function() {
             var isOpen = false;
-            return function () {
+            return function() {
                 if (isOpen) {
                     this.classList.add('fa-paint-brush');
                     this.classList.remove('fa-eraser');
@@ -708,7 +774,7 @@
             }
         }(), false);
 
-        $win.addEventListener('hashchange', function () {
+        $win.addEventListener('hashchange', function() {
             if (location.hash && !lockSlide) {
                 doHash = false;
                 slideOutCallBack($slides[curIndex]);
@@ -786,7 +852,7 @@
     }
 
     //删除画板
-    var removePaint = function (isFromControl) {
+    var removePaint = function(isFromControl) {
         clearPaint();
         slideJump = ''; //j 幻灯片跳转
         if (isControl) {
@@ -809,7 +875,7 @@
             $B.fire('nodepptEvent:remove paint');
         }
     };
-    var pMouseDown = function (e) {
+    var pMouseDown = function(e) {
         $drawBoard.isMouseDown = true;
         try { //j 触屏画笔
             var touch = e.targetTouches[0];
@@ -826,7 +892,7 @@
         return false; //j 触屏画笔
     };
     var pPoints = [];
-    var pMouseUp = function (e) {
+    var pMouseUp = function(e) {
         $drawBoard.isMouseDown = false;
         $drawBoard.iLastX = -1;
         $drawBoard.iLastY = -1;
@@ -835,7 +901,7 @@
         }
         pPoints.length = 0;
     };
-    $B.on('controlEvent:paint points', function (data) {
+    $B.on('controlEvent:paint points', function(data) {
         var points = data.points;
         //远程来的屏幕
         var wh = data.screen;
@@ -864,7 +930,7 @@
         }
         context.stroke();
     });
-    var pMouseMove = function (e) {
+    var pMouseMove = function(e) {
         var ee = e;
         if ($drawBoard.isMouseDown) {
             try { //j 触屏画笔
@@ -943,7 +1009,7 @@
     }
 
     function fullImg() {
-        loadJS(defaultOptions.dir + 'img.screenfull.js', function () {
+        loadJS(defaultOptions.dir + 'img.screenfull.js', function() {
             //图片处理
             var $imgs = toArray($(defaultOptions.slideClass + ' img', $container));
             screenfull($imgs);
@@ -959,7 +1025,7 @@
     //如果是print则需要修改
     function iPrint() {
         if (QUERY && QUERY.print) {
-            toArray($('iframe[data-src]')).forEach(function (v) {
+            toArray($('iframe[data-src]')).forEach(function(v) {
                 if (v.src.indexOf('about:blank') === 0 && v.dataset.src) {
                     v.src = v.dataset.src;
                 }
@@ -977,7 +1043,7 @@
                 defaultOptions[key] = options[key];
             }
         }
-        ['theme', 'transition'].forEach(function (v) {
+        ['theme', 'transition'].forEach(function(v) {
             if (QUERY && QUERY[v]) {
                 defaultOptions[v] = QUERY[v];
             }
@@ -986,7 +1052,7 @@
         Slide.dir = defaultOptions.dir;
         if (defaultOptions.control) {
             var control = defaultOptions.control;
-            loadJS(defaultOptions.dir + 'nodeppt.control.js', function () {
+            loadJS(defaultOptions.dir + 'nodeppt.control.js', function() {
                 Slide.Control.load(control.type, control.args);
             });
         }
@@ -1018,7 +1084,7 @@
         current: 0,
         curItem: 0,
         init: init,
-        setIndex: function (i, item) {
+        setIndex: function(i, item) {
             i--;
             if (i < 0) {
                 i = 0;
@@ -1031,7 +1097,7 @@
             function buildItem() {
                 if (item-- <= 0) {
                     return;
-                }else{
+                } else {
                     buildNextItem();
                 }
                 setTimeout(buildItem, 300);
@@ -1047,8 +1113,8 @@
         buildNextItem: buildNextItem,
         buildPrevItem: buildPrevItem
     };
-    ['on', 'un', 'fire'].forEach(function (v) {
-        Slide[v] = function () {
+    ['on', 'un', 'fire'].forEach(function(v) {
+        Slide[v] = function() {
             var args = toArray(arguments);
             args[0] = 'slide.' + args[0];
             $B[v].apply(null, args);

@@ -101,7 +101,9 @@
 
     function timerCtrl() {
         var $body = document.body;
-        if ($body.offsetWidth / window.devicePixelRatio < 640) {
+        var ua = navigator.userAgent;
+        //.test(ua)
+        if (/(android|iphone|ipod)/i.test(ua) && $body.offsetWidth / window.devicePixelRatio < 400) {
             //太小的屏幕不要显示下一页了
             return;
         }
