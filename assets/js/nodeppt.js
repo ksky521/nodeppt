@@ -50,6 +50,11 @@
     }
 
     function dispatchEvent($dom, name, data) {
+        if (!$dom || typeof $dom.dispatchEvent !== 'function') {
+            data = name;
+            name = $dom;
+            $dom = null;
+        }
         var event = document.createEvent('Event');
         event.initEvent('ppt' + name, true, true);
         event.stopped = false;
@@ -65,7 +70,7 @@
                 }
             }
         }
-        $dom.dispatchEvent(event);
+        $dom && $dom.dispatchEvent && $dom.dispatchEvent(event);
         return event;
     }
     //设置底部进度条
@@ -131,7 +136,28 @@
         if (slideInTimer) {
             clearTimeout(slideInTimer);
         }
-        slideInTimer = setTimeout(slideInCallBack_, 1500);
+        //休息休息一下~
+        slideInTimer = setTimeout(slideInCallBack_, 800);
+    }
+
+    function getCallbackFuncFromName(cbNames) {
+        if (!cbNames) {
+            return cbNames;
+        }
+        cbNames = cbNames.split('.');
+        var cb = window;
+        for (var i = 0, len = cbNames.length; i < len; i++) {
+            var type = typeof cb[cbNames[i]];
+            if (type === 'object' || type === 'function') {
+                cb = cb[cbNames[i]];
+            } else {
+                break;
+            }
+        }
+        if (typeof cb === 'function') {
+            return cb;
+        }
+        return null;
     }
 
     function slideInCallBack_() {
@@ -140,16 +166,21 @@
             return;
         }
         var dataset = $cur.dataset;
-        var cb = dataset.incallback || dataset.onEnter;
+        var cbNames = dataset.incallback || dataset.onEnter;
+        var cb = getCallbackFuncFromName(cbNames);
+        var event = dispatchEvent('Enter', {
+            container: $cur
+        });
         //如果有data-incallback那么就执行callback
-        cb && typeof $win[cb] === 'function' && proxyFn(cb);
+        cb && typeof cb === 'function' && proxyFn(cbNames, event);
 
 
         //事件：keypress接管，build接管
         ['Keypress', 'Build'].forEach(function(v) {
             var callback = dataset['on' + v];
-            if (callback && typeof $win[callback] === 'function') {
-                $cur.addEventListener('ppt' + v, $win[callback], true);
+            callback = getCallbackFuncFromName(callback);
+            if (callback && typeof callback === 'function') {
+                $cur.addEventListener('ppt' + v, callback, true);
             }
         });
 
@@ -182,15 +213,20 @@
 
     function slideOutCallBack_(prev) {
         var dataset = prev.dataset;
-        var cb = dataset.outcallback || dataset.onLeave;
+        var cbNames = dataset.outcallback || dataset.onLeave;
+        var cb = getCallbackFuncFromName(cbNames);
+        var event = dispatchEvent('Leave', {
+            container: prev
+        });
         //如果有data-outcallback那么就执行callback
-        cb && typeof $win[cb] === 'function' && proxyFn(cb);
+        cb && typeof cb === 'function' && proxyFn(cbNames, event);
 
         //解绑事件：keypress，build
         ['Keypress', 'Build'].forEach(function(v) {
             var callback = dataset['on' + v];
-            if (callback && typeof $win[callback] === 'function') {
-                prev.removeEventListener('ppt' + v, $win[callback], true);
+            callback = getCallbackFuncFromName(callback);
+            if (callback && typeof callback === 'function') {
+                prev.removeEventListener('ppt' + v, callback, true);
             }
         });
     }
@@ -229,7 +265,8 @@
         $curSlide = $slides[curIndex];
         //自定义事件，直接返回
         var event = dispatchEvent($curSlide, 'Build', {
-            direction: 'next'
+            direction: 'next',
+            container: $curSlide
         });
         if (event.stopped) {
             return event.stopped;
@@ -275,7 +312,8 @@
 
         //自定义事件，直接返回
         var event = dispatchEvent($curSlide, 'Build', {
-            direction: 'prev'
+            direction: 'prev',
+            container: $curSlide
         });
         if (event.stopped) {
             return event.stopped;
@@ -347,7 +385,7 @@
     }
 
     //切换动画
-    function doSlide() {
+    function doSlide(direction) {
         // $container.style.marginLeft = -(slideID * slideWidth) + 'px';
         updateSlideClass();
         setProgress();
@@ -355,7 +393,7 @@
             lockSlide = true;
             $win.location.hash = "#" + curIndex;
         }
-        slideInCallBack();
+        slideInCallBack(direction);
         removePaint();
 
         if ($doc.body.classList.contains('overview')) {
@@ -385,22 +423,22 @@
         for (var i = 0, len = $slides.length; i < len; ++i) {
             switch (i) {
                 case curSlide - 2:
-                    updateSlideClass_(i, 'far-past', pageClass);
+                    updateSlideClass_($slides[i], 'far-past', pageClass);
                     break;
                 case curSlide - 1:
-                    updateSlideClass_(i, 'past', pageClass);
+                    updateSlideClass_($slides[i], 'past', pageClass);
                     break;
                 case curSlide:
-                    updateSlideClass_(i, 'current', pageClass);
+                    updateSlideClass_($slides[i], 'current', pageClass);
                     break;
                 case curSlide + 1:
-                    updateSlideClass_(i, 'next', pageClass);
+                    updateSlideClass_($slides[i], 'next', pageClass);
                     break;
                 case curSlide + 2:
-                    updateSlideClass_(i, 'far-next', pageClass);
+                    updateSlideClass_($slides[i], 'far-next', pageClass);
                     break;
                 default:
-                    updateSlideClass_(i);
+                    updateSlideClass_($slides[i]);
                     break;
             }
         }
@@ -428,8 +466,8 @@
         }
     }
 
-    function updateSlideClass_(slideNo, className, pageClass) {
-        var el = $slides[slideNo];
+    function updateSlideClass_(el, className, pageClass) {
+        // var el = $slides[slideNo];
 
         if (!el) {
             return;
@@ -491,6 +529,7 @@
         var event = dispatchEvent($curSlide, 'Keypress', {
             keyCode: key,
             orgiTarget: target,
+            container: $curSlide
         });
         if (event.stopped) {
             return event.stopped;
@@ -642,7 +681,7 @@
                 // right
             case 40:
                 // down
-                nextSlide()
+                nextSlide();
                 break;
         }
 
@@ -771,7 +810,7 @@
                     this.classList.remove('fa-paint-brush');
                 }
                 isOpen = !isOpen;
-            }
+            };
         }(), false);
 
         $win.addEventListener('hashchange', function() {
@@ -961,11 +1000,12 @@
             }
             return false; //j 触屏画笔
         }
-    }
+    };
 
     //代理函数，用于函数控制
     function proxyFn(fnName, args) {
-        $win[fnName](args);
+        var cb = getCallbackFuncFromName(fnName);
+        cb(args);
     }
 
     /**
@@ -1018,7 +1058,7 @@
 
     function loadTheme() {
         if (defaultOptions.theme) {
-            loadCSS('/css/theme.' + defaultOptions.theme + '.css')
+            loadCSS('/css/theme.' + defaultOptions.theme + '.css');
         }
     }
 
@@ -1057,7 +1097,6 @@
             });
         }
 
-
         initVar(); //初始化变量
         loadTheme();
         makeBuildLists();
@@ -1080,6 +1119,102 @@
         $body.style.opacity = 1;
     }
 
+    function magic(e) {
+        var $cur = $('magic', e.container);
+        if ($cur.length) {
+            $cur = $cur[0];
+        } else {
+            return;
+        }
+        var index = ($cur.dataset.index || 0) | 0;
+
+        var pageClass = 'pagedown';
+
+        if (e.direction === 'prev') {
+            //往前翻页
+            pageClass = 'pageup';
+        }
+        var $slides = toArray($('.magicItem', $cur));
+        var len = $slides.length;
+
+        if (!e.firstKiss) {
+            if (e.direction === 'prev') {
+                index--;
+                if (index < 0) {
+                    index = 0;
+                    $cur.dataset.index = index;
+                    //标示状态
+                    $cur.dataset.status = 'wait';
+                    return;
+                } else {
+                    e.stop();
+                }
+            } else {
+                index++;
+                if (index === len) {
+                    index = len - 1;
+                    $cur.dataset.index = index;
+                    //标示状态
+                    $cur.dataset.status = 'done';
+                    return;
+                } else {
+                    e.stop();
+                }
+            }
+            $cur.dataset.index = index;
+        }
+
+        // debugger
+        for (var i = 0; i < len; ++i) {
+            switch (i) {
+                case index - 2:
+                    updateSlideClass_($slides[i], 'far-past', pageClass);
+                    break;
+                case index - 1:
+                    updateSlideClass_($slides[i], 'past', pageClass);
+                    break;
+                case index:
+                    updateSlideClass_($slides[i], 'current', pageClass);
+                    break;
+                case index + 1:
+                    updateSlideClass_($slides[i], 'next', pageClass);
+                    break;
+                case index + 2:
+                    updateSlideClass_($slides[i], 'far-next', pageClass);
+                    break;
+                default:
+                    updateSlideClass_($slides[i]);
+                    break;
+            }
+        }
+
+    }
+    magic.init = function(e) {
+        var $cur = $('magic', e.container);
+        if ($cur.length) {
+            $cur = $cur[0];
+        } else {
+            return;
+        }
+
+        var index = $cur.dataset.index || 0;
+        switch ($cur.dataset.status) {
+            case 'done':
+                //说明从完成的地方往前翻页
+                $cur.dataset.index = index;
+
+                index--;
+            case 'wait':
+                //说明已经到了第一页了
+                break;
+            default:
+                //第一次进入
+                e.firstKiss = true;
+                magic(e);
+        }
+        console.log('init:', index);
+
+    };
     var Slide = {
         current: 0,
         curItem: 0,
@@ -1111,7 +1246,8 @@
         showPaint: showPaint,
         removePaint: removePaint,
         buildNextItem: buildNextItem,
-        buildPrevItem: buildPrevItem
+        buildPrevItem: buildPrevItem,
+        magic: magic
     };
     ['on', 'un', 'fire'].forEach(function(v) {
         Slide[v] = function() {

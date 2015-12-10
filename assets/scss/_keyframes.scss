@@ -202,7 +202,7 @@
         @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
     }
     100% {
-        @include prefixed(transform, translateY(100%));
+        @include prefixed(transform, translateY(150%));
     }
 }
 @include keyframes(pushFromTop) {
@@ -617,7 +617,7 @@
     }
 }
 
-/********************************* keyframes **************************************/
+/********************** keyframes ************************/
 
 /* rotate sides first and scale */
 @include keyframes(rotateRightSideFirst) {

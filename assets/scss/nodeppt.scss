@@ -160,8 +160,7 @@ slides > slide .slide-wrapper {
 }
 
 
-
-slides > slide {
+slides > slide, magic > .magicItem {
     display: none;
     font-size: 26px;
     color: $font-color;
@@ -251,6 +250,17 @@ slides > slide {
             color: $note-color;
             @include text-shadow(none);
         }
+    }
+}
+magic>.magicItem{
+    padding: 0;
+    background-color: transparent;
+    &:nth-child(6n+1),
+    &:nth-child(6n+2),
+    &:nth-child(6n+3),
+    &:nth-child(6n+4),
+    &:nth-child(6n+5) {
+        background-color: transparent;
     }
 }
 // Code highlighting only effects the current slide.
