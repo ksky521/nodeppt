@@ -159,8 +159,14 @@ slides > slide .slide-wrapper {
     }
 }
 
-
-slides > slide, magic > .magicItem {
+slides > slide .magic{
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+slides > slide, .magic > .magicItem {
     display: none;
     font-size: 26px;
     color: $font-color;
@@ -252,8 +258,13 @@ slides > slide, magic > .magicItem {
         }
     }
 }
-magic>.magicItem{
+.magic > .magicItem > * {
+    display: table-cell;
+    vertical-align: middle;
+}
+.magic>.magicItem{
     padding: 0;
+    display: table;
     background-color: transparent;
     &:nth-child(6n+1),
     &:nth-child(6n+2),
@@ -261,6 +272,23 @@ magic>.magicItem{
     &:nth-child(6n+4),
     &:nth-child(6n+5) {
         background-color: transparent;
+    }
+    &.far-past {
+        display: none;
+    }
+    &.past {
+        display: table;
+        opacity: 0;
+    }
+    &.current {
+        display: table;
+    }
+    &.next {
+        display: table;
+        opacity: 0;
+    }
+    &.far-next {
+        display: none;
     }
 }
 // Code highlighting only effects the current slide.

@@ -5,6 +5,23 @@
         loadCSS: loadCSS
     };
 
+    var transitionEndEvent = function whichTransitionEvent() {
+        var t;
+        var el = document.createElement('fakeelement');
+        var transitions = {
+            'transition': 'transitionend',
+            'OTransition': 'oTransitionEnd',
+            'MozTransition': 'transitionend',
+            'WebkitTransition': 'webkitTransitionEnd'
+        };
+
+        for (t in transitions) {
+            if (el.style[t] !== undefined) {
+                return transitions[t];
+            }
+        }
+    }();
+
     var $body = $doc.body;
     var emptyFn = function() {};
     var emptyArr = [];
@@ -48,6 +65,54 @@
 
         return result;
     }
+    var fullScreenApi = {
+            supportsFullScreen: false,
+            isFullScreen: function() {
+                return false;
+            },
+            requestFullScreen: function() {},
+            cancelFullScreen: function() {},
+            fullScreenEventName: '',
+            prefix: ''
+        },
+        browserPrefixes = 'webkit moz o ms'.split(' ');
+
+    if (typeof document.cancelFullScreen != 'undefined') {
+        fullScreenApi.supportsFullScreen = true;
+    } else {
+        for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+            fullScreenApi.prefix = browserPrefixes[i];
+
+            if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+
+                break;
+            }
+        }
+    }
+
+    if (fullScreenApi.supportsFullScreen) {
+        fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+        fullScreenApi.isFullScreen = function() {
+            switch (this.prefix) {
+                case '':
+                    return document.fullScreen;
+                case 'webkit':
+                    return document.webkitIsFullScreen;
+                default:
+                    return document[this.prefix + 'FullScreen'];
+            }
+        };
+        fullScreenApi.requestFullScreen = function(el) {
+            return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+        };
+        fullScreenApi.cancelFullScreen = function(el) {
+            return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+        };
+    }
+
+
 
     function dispatchEvent($dom, name, data) {
         if (!$dom || typeof $dom.dispatchEvent !== 'function') {
@@ -515,6 +580,7 @@
 
     function evtDocUp(e) {
         var key = e.keyCode;
+        // console.log(key);
         var target = e.target;
         //防止input和textarea，和可以编辑tag
         if (/^(input|textarea)$/i.test(target.nodeName) || target.isContentEditable) {
@@ -536,6 +602,12 @@
         }
 
         switch (key) {
+            case 122:
+                //全屏
+                if (fullScreenApi.supportsFullScreen) {
+                    fullScreenApi.requestFullScreen(document.body);
+                }
+                break;
             case 13:
                 // Enter
                 if ($doc.body.classList.contains('overview')) {
@@ -1120,7 +1192,7 @@
     }
 
     function magic(e) {
-        var $cur = $('magic', e.container);
+        var $cur = $('.magic', e.container);
         if ($cur.length) {
             $cur = $cur[0];
         } else {
@@ -1163,8 +1235,12 @@
             }
             $cur.dataset.index = index;
         }
-
-        // debugger
+        if (e.firstKiss) {
+            var $curSlide = $slides[index];
+            $curSlide.addEventListener(transitionEndEvent, function() {
+                $cur.style.visibility = 'visible';
+            });
+        }
         for (var i = 0; i < len; ++i) {
             switch (i) {
                 case index - 2:
@@ -1188,9 +1264,10 @@
             }
         }
 
+
     }
     magic.init = function(e) {
-        var $cur = $('magic', e.container);
+        var $cur = $('.magic', e.container);
         if ($cur.length) {
             $cur = $cur[0];
         } else {
@@ -1202,8 +1279,8 @@
             case 'done':
                 //说明从完成的地方往前翻页
                 $cur.dataset.index = index;
-
                 index--;
+                break;
             case 'wait':
                 //说明已经到了第一页了
                 break;
@@ -1212,7 +1289,6 @@
                 e.firstKiss = true;
                 magic(e);
         }
-        console.log('init:', index);
 
     };
     var Slide = {

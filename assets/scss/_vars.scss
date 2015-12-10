@@ -4,6 +4,21 @@ $ms: true;
 $o: true;
 $font-face: "YaHei Consolas Hybrid", STHeiti, "Microsoft Yahei", Arial, Helvetica, sans-serif;
 $code-font-face: "Source Code Pro", Consolas, "Courier New", Courier, monospace;
+
+//layout
+$slide-width: 900px;
+$slide-height: 600px;
+$slide-width-widescreen: 1100px;
+$slide-top-bottom-padding: 40px;
+$slide-left-right-padding: 60px;
+$slide-border-radius: 5px;
+$slide-tap-area-width: 100px;
+$article-content-top-padding: 20px;
+$slide-content-width: $slide-width - $slide-left-right-padding*2;
+$slide-content-height: $slide-height - $slide-top-bottom-padding*2;
+$slide-content-width-widescreen: $slide-width-widescreen - $slide-left-right-padding*2;
+
+
 //global colors
 $font-color: white;
 $border-color: darken($font-color, 2%);
@@ -61,14 +76,7 @@ $brand-yellow-secondary2:#f6c000;
 $brand-green: rgb(13, 168, 97);
 $brand-green-secondary: #00a86d;
 $brand-green-secondary2:#009f5d;
-$slide-width: 900px;
-$slide-height: 600px;
-$slide-width-widescreen: 1100px;
-$slide-top-bottom-padding: 40px;
-$slide-left-right-padding: 60px;
-$slide-border-radius: 5px;
-$slide-tap-area-width: 100px;
-$article-content-top-padding: 20px;
+
 //buttons
 $btn-default-color: black;
 $btn-default-bg: $brand-default;

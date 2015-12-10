@@ -1,5 +1,7 @@
 @import "vars";
 @import "mixins";
+@import "compass/css3/flexbox";
+
 :disabled {
     color: $gray-2;
 }
@@ -57,12 +59,31 @@
 .black {
     color: black !important;
 }
-.columns-2, .columns2 {
-    @include column-count(2);
+@mixin column($count){
+    .columns-#{$count}, .columns#{$count} {
+        @include display-flex;
+        @include flex-wrap(wrap);
+        > * {
+            @include flex(1 0);
+            max-width: $slide-content-width/$count - 10 !important;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+    .layout-widescreen .columns-#{$count},
+    .layout-widescreen .columns#{$count},
+    .layout-faux-widescreen .columns-#{$count},
+    .layout-faux-widescreen .columns#{$count}{
+        > * {
+            max-width: $slide-content-width-widescreen/$count - 10 !important;
+        }
+    }
 }
-.columns-3, .columns3 {
-    @include column-count(3);
-}
+@include column(2);
+@include column(3);
+@include column(4);
+@include column(5);
+@include column(6);
 
 //lable
 .label {

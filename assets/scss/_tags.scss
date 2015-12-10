@@ -147,6 +147,7 @@ pre {
         padding: 0;
         background-color: transparent;
         @include border-radius(0);
+        text-align: left;
     }
 }
 
