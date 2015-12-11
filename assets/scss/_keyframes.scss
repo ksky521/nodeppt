@@ -62,6 +62,7 @@
         @include prefixed(transform, scale(1));
     }
 }
+//circ
 @include keyframes(rotateOutCircLeft) {
     from {
     }
@@ -92,6 +93,40 @@
         @include prefixed(transform, rotate(0deg) translateX(0));
     }
 }
+
+//magic
+@include keyframes(rotateOutCircLeft_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, rotate(-20deg) translateX(-150%));
+    }
+}
+@include keyframes(rotateInCircRight_Magic) {
+    from {
+        @include prefixed(transform, rotate(20deg) translateX(150%));
+    }
+    to {
+        @include prefixed(transform, rotate(0deg) translateX(0));
+    }
+}
+@include keyframes(rotateOutCircRight_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, rotate(20deg) translateX(150%));
+    }
+}
+@include keyframes(rotateInCircLeft_Magic) {
+    from {
+        @include prefixed(transform, rotate(-20deg) translateX(-150%));
+    }
+    to {
+        @include prefixed(transform, rotate(0deg) translateX(0));
+    }
+}
+
+
 @include keyframes(shakeSlideBottom) {
     0% {
         @include prefixed(transform, translate(0px, 0px) rotate(0deg));
@@ -503,6 +538,56 @@
     }
 }
 
+///move magic
+@include keyframes(moveToLeft_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateX(-150%));
+    }
+}
+@include keyframes(moveFromLeft_Magic) {
+    from {
+        @include prefixed(transform, translateX(-150%));
+    }
+}
+@include keyframes(moveToRight_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateX(150%));
+    }
+}
+@include keyframes(moveFromRight_Magic) {
+    from {
+        @include prefixed(transform, translateX(150%));
+    }
+}
+@include keyframes(moveToTop_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateY(-150%));
+    }
+}
+@include keyframes(moveFromTop_Magic) {
+    from {
+        @include prefixed(transform, translateY(-150%));
+    }
+}
+@include keyframes(moveToBottom_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateY(150%));
+    }
+}
+@include keyframes(moveFromBottom_Magic) {
+    from {
+        @include prefixed(transform, translateY(150%));
+    }
+}
+
 /* fade */
 @include keyframes(fade) {
     from {
@@ -754,6 +839,8 @@
 /* newspaper */
 @include keyframes(rotateOutNewspaper) {
     from {
+        @include prefixed(transform, translateZ(0) rotateZ(0deg));
+        opacity: 1;
     }
     to {
         @include prefixed(transform, translateZ(-3000px) rotateZ(360deg));
@@ -761,9 +848,13 @@
     }
 }
 @include keyframes(rotateInNewspaper) {
-    from {
+    0% {
         @include prefixed(transform, translateZ(-3000px) rotateZ(-360deg));
         opacity: 0;
+    }
+    100% {
+        @include prefixed(transform, translateZ(0) rotateZ(0deg));
+        opacity: 1;
     }
 }
 

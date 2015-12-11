@@ -50,32 +50,32 @@ slide[data-transition="horizontal"].next,
 slide[data-transition="horizontal"].past,
 .magic>.magicItem[data-transition="horizontal"].next,
 .magic>.magicItem[data-transition="horizontal"].past {
-    @include transform(rotate(-30deg));
+    @include transform(rotate(-60deg));
 }
 slide[data-transition="horizontal"].next {
     left: $slide-width/2;
 }
 .magic>.magicItem[data-transition="horizontal"].next{
-    left: ($slide-width - $slide-left-right-padding*2)/2 ;
+    left: $slide-content-width/2 ;
 }
 slide[data-transition="horizontal"].past{
     left: -$slide-width/2;
 }
 .magic>.magicItem[data-transition="horizontal"].past {
-    left: -($slide-width - $slide-left-right-padding*2)/2;
+    left: -$slide-content-width/2;
 }
 slides.layout-widescreen{
     > slide[data-transition="horizontal"].next {
         left: $slide-width-widescreen/2;
     }
     .magic>.magicItem[data-transition="horizontal"].next{
-        left: ($slide-width-widescreen - $slide-left-right-padding*2)/2 ;
+        left: $slide-content-width-widescreen/2 ;
     }
     > slide[data-transition="horizontal"].past {
         left: -$slide-width-widescreen/2;
     }
     .magic>.magicItem[data-transition="horizontal"].past {
-        left: -($slide-width-widescreen - $slide-left-right-padding*2)/2;
+        left: -$slide-content-width-widescreen/2;
     }
 }
 
@@ -87,12 +87,12 @@ slide[data-transition="horizontal3d"],
     @include transform-origin(50% 50% $slide-width/-2)
 }
 .magic>.magicItem[data-transition="horizontal3d"]{
-    @include transform-origin(50% 50% ($slide-width - $slide-left-right-padding*2)/-2)
+    @include transform-origin(50% 50% $slide-content-width/-2)
 }
 slides.layout-widescreen slide[data-transition="horizontal3d"],
 slides.layout-widescreen .magic>.magicItem[data-transition="horizontal3d"]{
     @include transition(all 0.8s ease);
-    @include transform-origin(50% 50% ($slide-width-widescreen - $slide-left-right-padding*2)/-2)
+    @include transform-origin(50% 50% $slide-content-width-widescreen/-2)
 }
 
 slide[data-transition="horizontal3d"].next,
@@ -107,7 +107,7 @@ slide[data-transition="horizontal3d"].past,
 // vertical 3d
 slide[data-transition="vertical3d"].next,
 .magic>.magicItem[data-transition="vertical3d"].next {
-    top: ($slide-height - $slide-top-bottom-padding)/2;
+    top: $slide-content-height/2;
     @include transform(translate3d(0, 75%, 0) rotateX(60deg) translate3d(0, 75%, 0))
 }
 .magic>.magicItem[data-transition="vertical3d"].next{
@@ -119,7 +119,7 @@ slide[data-transition="vertical3d"].past,
     top: -$slide-height/2;
 }
 .magic>.magicItem[data-transition="vertical3d"].past{
-    top: -($slide-height - $slide-top-bottom-padding)/2;
+    top: $slide-content-height/-2;
 }
 // cards
 slide[data-transition="cards"],
@@ -211,24 +211,22 @@ slide.pageup[data-transition="kontext"].next,
 
 //newspaper
 slide[data-transition="newspaper"]{
+    @include prefixed(transform-origin, 50% 50%);
+    z-index: 99;
 }
 slide[data-transition="newspaper"].current,
 .magic>.magicItem[data-transition="newspaper"].current{
-    @include prefixed(transform-origin, 50% 50%);
     @include prefixed(animation, rotateInNewspaper 0.5s both ease-out);
-    @include ani-delay500();
+    @include ani-delay300();
     z-index: 999;
 }
 slide[data-transition="newspaper"].past,
 .magic>.magicItem[data-transition="newspaper"].past {
-    @include prefixed(transform-origin, 50% 50%);
     @include prefixed(animation, rotateOutNewspaper 0.5s both ease-out);
-    opacity: 1;
-    z-index: 99;
 }
 slide[data-transition="newspaper"].next,
 .magic>.magicItem[data-transition="newspaper"].next {
-    z-index: 99;
+    @include prefixed(animation, rotateOutNewspaper 0.5s both ease-out);
 }
 
 
@@ -242,22 +240,32 @@ slide.pagedown[data-transition="move"].current,
     @include prefixed(animation, moveFromRight .6s ease both);
     z-index: 999;
 }
+.magic>.magicItem.pagedown[data-transition="move"].current{
+    @include prefixed(animation, moveFromRight_Magic .6s ease both);
+}
 slide.pagedown[data-transition="move"].past,
 .magic>.magicItem.pagedown[data-transition="move"].past {
     @include prefixed(animation, moveToLeft .7s ease-in-out both);
-    opacity: 1;
-    z-index: 999;
 }
+
+.magic>.magicItem.pagedown[data-transition="move"].past {
+    @include prefixed(animation, moveToLeft_Magic .6s ease both);
+}
+
 slide.pageup[data-transition="move"].current,
 .magic>.magicItem.pageup[data-transition="move"].current{
     @include prefixed(animation, moveFromLeft .6s ease both);
     z-index: 999;
 }
+.magic>.magicItem.pageup[data-transition="move"].current{
+    @include prefixed(animation, moveFromLeft_Magic .6s ease both);
+}
 slide.pageup[data-transition="move"].next,
 .magic>.magicItem.pageup[data-transition="move"].next {
     @include prefixed(animation, moveToRight .7s ease-in-out both);
-    opacity: 1;
-    z-index: 99;
+}
+.magic>.magicItem.pageup[data-transition="move"].next {
+    @include prefixed(animation, moveToRight_Magic .6s ease both);
 }
 
 //stick
@@ -272,7 +280,6 @@ slide.pagedown[data-transition="stick"],
 slide.pagedown[data-transition="stick"].current,
 .magic>.magicItem.pagedown[data-transition="stick"].current{
     z-index: 1001;
-    opacity: 1;
     @include prefixed(animation, slideInFromBottomDelayed 0.8s forwards);
 }
 slide.pagedown[data-transition="stick"].past,
@@ -283,7 +290,6 @@ slide.pagedown[data-transition="stick"].past,
 }
 slide.pageup[data-transition="stick"].current,
 .magic>.magicItem.pageup[data-transition="stick"].current{
-    opacity: 1;
     @include prefixed(transform-origin, 50% 0);
     @include prefixed(animation, rotateBottomSideIn 0.8s 0.1s forwards ease-in);
 }
@@ -294,7 +300,6 @@ slide.pageup[data-transition="stick"].next,
 }
 
 //vkontext
-
 slide[data-transition="vkontext"],
 .magic>.magicItem[data-transition="vkontext"]{
     @include prefixed(perspective, 1000px);
@@ -317,29 +322,30 @@ slide.pageup[data-transition="vkontext"].next,
 }
 
 //earthquake
-
 slide.pagedown[data-transition="earthquake"].current,
 .magic>.magicItem.pagedown[data-transition="earthquake"].current{
-    @include prefixed(animation, pushFromTop 1s 0.1s forwards);
-    opacity: 1;
+    opacity: 0;
+    @include prefixed(animation, pushFromTop 1s 0.3s forwards);
 }
 slide.pagedown[data-transition="earthquake"].past,
 .magic>.magicItem.pagedown[data-transition="earthquake"].past {
     opacity: 1;
     @include prefixed(animation, shakeSlideBottom 1s 0.1s forwards);
 }
+
 slide.pageup[data-transition="earthquake"].current,
 .magic>.magicItem.pageup[data-transition="earthquake"].current{
-    opacity: 1;
-    @include prefixed(animation, pushFromBottom 1s 0.1s forwards);
+    opacity: 0;
+    @include prefixed(animation, pushFromBottom 1s 0.3s forwards);
 }
 slide.pageup[data-transition="earthquake"].next,
 .magic>.magicItem.pageup[data-transition="earthquake"].next {
     opacity: 1;
     @include prefixed(animation, shakeSlideTop 1s 0.1s forwards);
 }
-slide[data-transition="earthquake"]::after,
-.magic>.magicItem[data-transition="earthquake"]::after {
+
+
+slide[data-transition="earthquake"]::after {
     content: '';
     position: absolute;
     top: 0;
@@ -353,9 +359,7 @@ slide[data-transition="earthquake"]::after,
 }
 
 slide[data-transition="earthquake"].next::after,
-slide[data-transition="earthquake"].past::after,
-.magic>.magicItem[data-transition="earthquake"].next::after,
-.magic>.magicItem[data-transition="earthquake"].past::after {
+slide[data-transition="earthquake"].past::after{
     opacity: 1;
 }
 
@@ -385,21 +389,33 @@ slide.pagedown[data-transition="circle"].current,
     opacity: 1;
     @include prefixed(animation, rotateInCircRight 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
 }
+.magic>.magicItem.pagedown[data-transition="circle"].current{
+    @include prefixed(animation, rotateInCircRight_Magic 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
+}
 slide.pagedown[data-transition="circle"].past,
 .magic>.magicItem.pagedown[data-transition="circle"].past {
-    opacity: 1;
     @include prefixed(animation, rotateOutCircLeft 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
+}
+.magic>.magicItem.pagedown[data-transition="circle"].past {
+    @include prefixed(animation, rotateOutCircLeft_Magic 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
 }
 slide.pageup[data-transition="circle"].current,
 .magic>.magicItem.pageup[data-transition="circle"].current{
     opacity: 1;
     @include prefixed(animation, rotateInCircLeft 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
 }
+
+.magic>.magicItem.pageup[data-transition="circle"].current{
+    @include prefixed(animation, rotateInCircLeft_Magic 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
+}
 slide.pageup[data-transition="circle"].next,
 .magic>.magicItem.pageup[data-transition="circle"].next {
-    opacity: 1;
     @include prefixed(animation, rotateOutCircRight 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
 }
+.magic>.magicItem.pageup[data-transition="circle"].next {
+    @include prefixed(animation, rotateOutCircRight_Magic 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
+}
+
 
 slide[data-transition="circle"].next::after,
 .magic>.magicItem[data-transition="circle"].past::after,
@@ -508,7 +524,7 @@ slide.pageup[data-transition="slide3"].next,
 
 slide[data-transition="cover-diamond"],
 .magic>.magicItem[data-transition="cover-diamond"]{
-    @include transition(opacity 0s, -webkit-clip-path 1s);
+    @include transition(opacity 0, -webkit-clip-path 1s);
     opacity: 0;
     @include prefixed(clip-path, polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%));
 }
@@ -517,12 +533,10 @@ slide[data-transition="cover-diamond"].current,
     opacity: 1;
     @include prefixed(clip-path, polygon(50% -100%, 137.5% 50%, 50% 200%, -37.5% 50%));
 }
-slide[data-transition="cover-diamond"].next,
-.magic>.magicItem[data-transition="cover-diamond"].next {
-}
+
 slide[data-transition="cover-diamond"].past,
 .magic>.magicItem[data-transition="cover-diamond"].past {
-    @include transition(opacity, 0s cubic-bezier(.11,.75,.58,.97));
+    @include transition(opacity, 0 cubic-bezier(.11,.75,.58,.97));
 }
 
 
@@ -531,7 +545,7 @@ slide[data-transition="cover-circle"],
 .magic>.magicItem[data-transition="cover-circle"]{
     opacity: 0;
     @include transition(opacity 0, -webkit-clip-path 1s);
-    @include prefixed(clip-path,circle(5% at 50% 50%));
+    @include prefixed(clip-path,circle(0% at 50% 50%));
 }
 slide[data-transition="cover-circle"].current,
 .magic>.magicItem[data-transition="cover-circle"].current{
@@ -540,9 +554,7 @@ slide[data-transition="cover-circle"].current,
 }
 slide[data-transition="cover-circle"].past,
 .magic>.magicItem[data-transition="cover-circle"].past {
-    opacity: 0;
-    @include transition(opacity, 0 ease-in);
+    @include transition(opacity, 0 cubic-bezier(.11,.75,.58,.97));
 }
 
-/********************************* keyframes **************************************/
 @import "keyframes";
