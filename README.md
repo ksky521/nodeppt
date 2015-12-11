@@ -87,28 +87,51 @@ function globalCallbackName(e){
 使用 `nodeppt generate demo.md output -a` 则生成后，图片路径是：`output/img/demo.png`
 
 
-## subslide
+## magic
 
-subslide是在一页幻灯片中播放多个子页面，使用`subslide`标签包裹，子页面之间使用`======`间隔
+magic是在一页幻灯片中播放多个子页面，页面之间进行动效切换，但是slide不翻页（类似keynote的magicmove），使用`[magic]`标签包裹，子页面之间使用`====`间隔
+
+`[magic]`标签支持全部转场动效，效果比较好的有：
+
+* zoomin/zoomout
+* move
+* circle
+* earthquake
+* newspaper
+* cover-diamond
+* horizontal3d/horizontal
+* vertical3d
+* cover-circle
 
 ```markdown
 [slide]
+[magic data-transition="earthquake"]
+## 标题1
+-----
+<div class="columns3">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_11.png" height="450">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_10.png" height="450">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_12.png" height="450">
+</div>
+====
+## 标题2
+-----
+<div class="columns3">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_11.png" height="450">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_10.png" height="450">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_12.png" height="450">
+</div>
 
-[subslide]
-## 这是一个列表
----
-* 上下左右方向键翻页
-    * 列表支持渐显动画 {:&.moveIn}
-    * 支持多级列表
-    * 这个动画是moveIn
-* 完全基于markdown语法哦
-============
-## 这是一个数字类型列表
----
-1. 数字列表 {:&.rollIn}
-2. 数字列表
-3. 数字列表
-[/subslide]
+====
+## 标题3
+-----
+<div class="columns3">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_11.png" height="450">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_10.png" height="450">
+    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_12.png" height="450">
+</div>
+
+[/magic]
 ```
 
 ## theme 自定义
@@ -121,7 +144,12 @@ title: 这是演讲的题目
 speaker: 演讲者名字
 url: 可以设置链接
 transition: 转场效果，例如：zoomin/cards/slide
-files: /css/theme.moon.css
+files: /css/theme.moon.css，尾部的文件
+theme: moon //皮肤
+highlightStyle: monokai_sublime //hljs的样式
+headFiles: //头部的文件
+usemathjax: //如果为yes，则引入mathjax，默认不建议开启，导出文件太多
+date: 2015年12月20日
 ```
 
 另外有：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light) 共六套自带皮肤可供选择
