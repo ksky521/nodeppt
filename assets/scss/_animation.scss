@@ -365,9 +365,11 @@ slide[data-transition="earthquake"].past::after{
 
 //circle
 slide.pagedown[data-transition="circle"],
-.magic>.magicItem.pageup[data-transition="circle"],
+.magic>.magicItem[data-transition="circle"]{
+    opacity: 0;
+}
 slide.pagedown[data-transition="circle"],
-.magic>.magicItem.pageup[data-transition="circle"]{
+slide.pageup[data-transition="circle"]{
     -webkit-transform-origin: 50% 400%;
     transform-origin: 50% 400%;
     &::after{
@@ -394,6 +396,7 @@ slide.pagedown[data-transition="circle"].current,
 }
 slide.pagedown[data-transition="circle"].past,
 .magic>.magicItem.pagedown[data-transition="circle"].past {
+    opacity: 1;
     @include prefixed(animation, rotateOutCircLeft 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
 }
 .magic>.magicItem.pagedown[data-transition="circle"].past {
@@ -410,6 +413,7 @@ slide.pageup[data-transition="circle"].current,
 }
 slide.pageup[data-transition="circle"].next,
 .magic>.magicItem.pageup[data-transition="circle"].next {
+    opacity: 1;
     @include prefixed(animation, rotateOutCircRight 0.9s forwards cubic-bezier(0.7, 0, 0.3, 1));
 }
 .magic>.magicItem.pageup[data-transition="circle"].next {
@@ -418,9 +422,7 @@ slide.pageup[data-transition="circle"].next,
 
 
 slide[data-transition="circle"].next::after,
-.magic>.magicItem[data-transition="circle"].past::after,
-slide[data-transition="circle"].next::after,
-.magic>.magicItem[data-transition="circle"].past::after {
+slide[data-transition="circle"].next::after{
     opacity: 1;
 }
 
