@@ -32,7 +32,7 @@ nodePPT - 让你爱上做分享！
  * 三水清的分享：http://js8.in/slide
  * 打印页面：http://qdemo.sinaapp.com/?print=1
 
-## 1.3 新功能
+## 1.4 新功能
 支持单个slide事件：build/enter/leave/keypress，事件统一在`[slide]`中使用`data-on-X`来指定一个*全局函数名*
 
 ### 事件说明如下
