@@ -85,30 +85,48 @@
 @include column(5);
 @include column(6);
 
+.padding10,.pd10{
+    padding: 10px;
+}
+.margin10,.mg10{
+    margin: 10px;
+}
+.padding20,.pd20{
+    padding: 20px;
+}
+.margin20,.mg20{
+    margin: 20px;
+}
+.pd5-10,.padding5-10{
+    padding: 5px 10px;
+}
+.pd10-20,.padding10-20{
+    padding: 10px 20px;
+}
 //lable
-.label {
+.label,.tag {
     line-height: inherit;
     font-weight: 400
 }
-.label-default {
+.label-default,.tag-default {
     @include label-variant($label-default-bg);
     color: black;
     border: 1px solid $border-color;
 }
-.label-primary {
+.label-primary,.tag-primary {
     @include label-variant($label-primary-bg);
     color: #fff;
 }
-.label-success {
+.label-success,.tag-success {
     @include label-variant($label-success-bg);
 }
-.label-info {
+.label-info,.tag-info {
     @include label-variant($label-info-bg);
 }
-.label-warning {
+.label-warning,.tag-warning {
     @include label-variant($label-warning-bg);
 }
-.label-danger {
+.label-danger,.tag-danger {
     @include label-variant($label-danger-bg);
 }
 //text

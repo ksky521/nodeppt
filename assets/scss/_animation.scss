@@ -26,19 +26,32 @@
 }
 
 /**zoomout***/
+slide[data-transition="zoomin"],
+slide[data-transition="zoomout"],
+.magic>.magicItem[data-transition="zoomin"],
+.magic>.magicItem[data-transition="zoomout"] {
+    visibility: hidden;
+}
+slide[data-transition="zoomout"].current,
+slide[data-transition="zoomin"].current,
+.magic>.magicItem[data-transition="zoomout"].current,
+.magic>.magicItem[data-transition="zoomin"].current{
+    visibility: visible;
+
+}
 slide[data-transition="zoomout"].past,
 slide[data-transition="zoomin"].next,
-
 .magic>.magicItem[data-transition="zoomout"].past,
 .magic>.magicItem[data-transition="zoomin"].next{
     @include transform(scale(1.2));
+    visibility: visible;
 }
 slide[data-transition="zoomin"].past,
 slide[data-transition="zoomout"].next,
-
 .magic>.magicItem[data-transition="zoomin"].past,
 .magic>.magicItem[data-transition="zoomout"].next {
     @include transform(scale(0.8));
+    visibility: visible;
 }
 
 /**horizontal*/
@@ -97,11 +110,12 @@ slides.layout-widescreen .magic>.magicItem[data-transition="horizontal3d"]{
 
 slide[data-transition="horizontal3d"].next,
 .magic>.magicItem[data-transition="horizontal3d"].next {
-  @include transform(rotateY(90deg));
+    @include transform(rotateY(90deg));
 }
 slide[data-transition="horizontal3d"].past,
 .magic>.magicItem[data-transition="horizontal3d"].past {
-  @include transform(rotateY(-90deg))
+    opacity: 1;
+    @include transform(rotateY(-90deg))
 }
 
 // vertical 3d
@@ -524,29 +538,34 @@ slide.pageup[data-transition="slide3"].next,
     @include prefixed(animation-timing-function, cubic-bezier(1, 0, 0, 1));
 }
 
+
+//cover-diamond
 slide[data-transition="cover-diamond"],
 .magic>.magicItem[data-transition="cover-diamond"]{
-    @include transition(opacity 0, -webkit-clip-path 1s);
+    @include transition(opacity 0.9s, -webkit-clip-path 0.9s);
     opacity: 0;
     @include prefixed(clip-path, polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%));
 }
 slide[data-transition="cover-diamond"].current,
 .magic>.magicItem[data-transition="cover-diamond"].current{
     opacity: 1;
+    @include ani-delay700();
     @include prefixed(clip-path, polygon(50% -100%, 137.5% 50%, 50% 200%, -37.5% 50%));
 }
 
 slide[data-transition="cover-diamond"].past,
-.magic>.magicItem[data-transition="cover-diamond"].past {
-    @include transition(opacity, 0 cubic-bezier(.11,.75,.58,.97));
+.magic>.magicItem[data-transition="cover-diamond"].past,
+slide[data-transition="cover-diamond"].next,
+.magic>.magicItem[data-transition="cover-diamond"].next  {
+    opacity: 1;
+    @include transition(clip-path, 0 cubic-bezier(.11,.75,.58,.97));
 }
-
 
 
 slide[data-transition="cover-circle"],
 .magic>.magicItem[data-transition="cover-circle"]{
     opacity: 0;
-    @include transition(opacity 0, -webkit-clip-path 1s);
+    @include transition(opacity 0.9s, -webkit-clip-path 0.9s);
     @include prefixed(clip-path,circle(0% at 50% 50%));
 }
 slide[data-transition="cover-circle"].current,
@@ -555,8 +574,11 @@ slide[data-transition="cover-circle"].current,
     @include prefixed(clip-path,circle(80% at 50% 50%));
 }
 slide[data-transition="cover-circle"].past,
-.magic>.magicItem[data-transition="cover-circle"].past {
-    @include transition(opacity, 0 cubic-bezier(.11,.75,.58,.97));
+.magic>.magicItem[data-transition="cover-circle"].past,
+slide[data-transition="cover-circle"].next,
+.magic>.magicItem[data-transition="cover-circle"].next  {
+    opacity: 1;
+    @include transition(clip-path, 0 cubic-bezier(.11,.75,.58,.97));
 }
 
 @import "keyframes";

@@ -131,6 +131,7 @@
 
 @mixin label-variant($color) {
     background-color: $color;
+    padding:5px 0;
     &[href] {
         &:hover,
         &:focus {
