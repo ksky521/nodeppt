@@ -9,7 +9,7 @@ nodePPT - 让你爱上做分享！
 
 ## 为什么选择nodePPT
 
-**这可能是迄今为止最好的网页版PPT**
+**这可能是迄今为止最好的网页版演示库**
 
  * 基于GFM的markdown语法编写
  * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
