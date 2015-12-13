@@ -7,9 +7,26 @@
         opacity: 0;
     }
 }
+@include keyframes(slideOutScaleRight_Magic) {
+    from {
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateX(150%) scale(0.9));
+        opacity: 0;
+    }
+}
 @include keyframes(slideInFromLeft) {
     from {
         @include prefixed(transform, translateX(-100%));
+    }
+    to {
+        @include prefixed(transform, translateX(0));
+    }
+}
+@include keyframes(slideInFromLeft_Magic) {
+    from {
+        @include prefixed(transform, translateX(-150%));
     }
     to {
         @include prefixed(transform, translateX(0));
@@ -24,9 +41,26 @@
         opacity: 0;
     }
 }
+@include keyframes(slideOutScaleLeft_Magic) {
+    from {
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateX(-150%) scale(0.9));
+        opacity: 0;
+    }
+}
 @include keyframes(slideInFromRight) {
     from {
         @include prefixed(transform, translateX(100%));
+    }
+    to {
+        @include prefixed(transform, translateX(0));
+    }
+}
+@include keyframes(slideInFromRight_Magic) {
+    from {
+        @include prefixed(transform, translateX(150%));
     }
     to {
         @include prefixed(transform, translateX(0));
@@ -1203,14 +1237,15 @@
 /* slide */
 @include keyframes(rotateSlideOutToLeft) {
     0% {
+        opacity: 1;
     }
     25% {
         opacity: .5;
-        @include prefixed(transition-timing-function, translateZ(-500px));
+        @include prefixed(transform, translateZ(-500px));
     }
     75% {
         opacity: .5;
-        @include prefixed(transition-timing-function, translateZ(-500px) translateX(-200%));
+        @include prefixed(transform, translateZ(-500px) translateX(-200%));
     }
     100% {
         opacity: .5;
