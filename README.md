@@ -13,7 +13,7 @@ nodePPT - 让你爱上做分享！
 
  * 基于GFM的markdown语法编写
  * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
- * 支持多个皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
+ * 支持多个皮肤：[colors](http://qdemo.sinaapp.com/?theme=colors)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
  * 实现watch功能`nodeppt start -w`
  * 支持[20种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
@@ -27,7 +27,7 @@ nodePPT - 让你爱上做分享！
 
 ## demo
  * http://qdemo.sinaapp.com/
- * 多套皮肤：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
+ * 多套皮肤：[colors](http://qdemo.sinaapp.com/?theme=color)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
  * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
  * 三水清的分享：http://js8.in/slide
  * 打印页面：http://qdemo.sinaapp.com/?print=1
@@ -152,7 +152,7 @@ usemathjax: //如果为yes，则引入mathjax，默认不建议开启，导出�
 date: 2015年12月20日
 ```
 
-另外有：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light) 共六套自带皮肤可供选择
+另外有：[colors](http://qdemo.sinaapp.com/?theme=color)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light) 共六套自带皮肤可供选择
 
 ```markdown
 theme: moon
