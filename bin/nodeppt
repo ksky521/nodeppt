@@ -59,8 +59,8 @@ program
     .on('--help', function () {
         console.log('  Examples:');
         console.log();
-        console.log('  nodeppt generate D:/webppt/demo.md -o D:/output');
-        console.log('  nodeppt generate D:/webppt/ -o D:/output -a');
+        console.log('  nodeppt generate /markdown/path.md /output/path');
+        console.log('  nodeppt generate /markdown/path.md /output/path -a');
         console.log();
     });
 
@@ -90,26 +90,14 @@ program
     });
 
 
-
 program
     .command('pdf')
-    .usage('[http_url] [save_path.pdf]')
     .description('export pdf file. ' + 'Deprecated'.bold.red)
     .action(function (http_url, save_path) {
-        if (typeof http_url !== 'string' || typeof save_path !== 'string') {
-            console.log('ERROR: pdf need a URL'.bold.red);
-            this.outputHelp();
-            return;
-        }
-        console.log('  Warning: '.bold.red + 'This command is ' + 'Deprecated'.bold.red);
-        nodePPT.pdf([http_url, save_path])
+        console.log('  Warning: '.bold.red + 'This command has been ' + 'Removed'.bold.red);
     })
     .on('--help', function () {
-        console.log('  Examples:');
-        console.log();
-        console.log('  nodeppt pdf http://127.0.0.1:8080/md/demo.md demo.pdf\n');
-        console.log('  Warning: '.bold.red + 'This command is ' + 'Deprecated'.bold.red);
-        console.log();
+        console.log(' Warning: '.bold.red + 'This command has been ' + 'Removed'.bold.red);
     });
 
 

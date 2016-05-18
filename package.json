@@ -2,7 +2,7 @@
   "name": "nodeppt",
   "jsname": "nodeppt",
   "description": "A simple, in-browser, markdown-driven presentation framework",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "site": "https://github.com/ksky521/nodePPT",
   "author": {
     "name": "Theo Wang",
@@ -16,16 +16,17 @@
     "url": "git://github.com/ksky521/nodePPT"
   },
   "dependencies": {
-    "colors": ">=0.6.0-1",
-    "commander": "2.9.0",
+    "chokidar": "^1.0.0-rc3",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
     "connect": "2.11.0",
-    "cookie": ">=0.1.0",
+    "cookie": "^0.2.3",
+    "debug": "^2.2.0",
     "ejs": "0.8.4",
     "ipv4": "0.0.4",
-    "read": ">=1.0.4",
-    "socket.io": "1.3.3",
-    "chokidar": "1.0.0-rc3",
-    "mathjax": "2.6.1"
+    "mathjax": "2.6.1",
+    "read": "^1.0.7",
+    "socket.io": "1.3.3"
   },
   "keywords": [
     "presentation",
