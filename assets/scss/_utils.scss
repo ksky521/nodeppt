@@ -1,0 +1,249 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+$xs: 5px;
+$sm: 10px;
+$md: 15px;
+$df: 20px;
+$lg: 25px;
+
+/* p,m,b = padding,margin,border
+ * Directions
+ * t,b,r,l,n = top,bottom,right,left, negative
+ * Sizing
+ * xs,sm,md,df,lg = extra small($xs),small($sm),medium($md),default($df),large($lg)
+ */
+
+.ptl {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ptr {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.pbl {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.pbr {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+/* Set background color to transparent */
+.bg-none {
+    background-color: transparent;
+    @include box-shadow(none);
+}
+
+.shadow {
+    @include box-shadow(0 0 5px rgba(0, 0, 0, .2));
+}
+
+.no-shadow {
+    @include box-shadow(none);
+}
+
+/* Margins */
+.no-m {
+    margin: 0!important;}
+.mn {
+    margin-right: -$md;
+    margin-left: -$md;
+}
+.mrn {
+    margin-right: -$md;
+}
+.mln {
+    margin-left: -$md;
+}
+.mbn {
+    margin-bottom: -$md;
+}
+.ml0 {
+    margin-left: 0;
+}
+.mr0 {
+    margin-right: 0;
+}
+.mt0 {
+    margin-top: 0;
+}
+.mb0 {
+    margin-bottom: 0;
+}
+.m25 {
+    margin: $lg;
+}
+.mr25 {
+    margin-right: $lg;
+}
+.ml25 {
+    margin-left: $lg;
+}
+.mt25 {
+    margin-top: $lg;
+}
+.mb25 {
+    margin-bottom: $lg;
+}
+.m20 {
+    margin: $df;
+}
+.mr20 {
+    margin-right: $df;
+}
+.ml20 {
+    margin-left: $df;
+}
+.mt20 {
+    margin-top: $df;
+}
+.mb20 {
+    margin-bottom: $df;
+}
+.m15 {
+    margin: $md;
+}
+.mr15 {
+    margin-right: $md;
+}
+.ml15 {
+    margin-left: $md;
+}
+.mt15 {
+    margin-top: $md;
+}
+.mb15 {
+    margin-bottom: $md;
+}
+.m10 {
+    margin: $sm;
+}
+.mr10 {
+    margin-right: $sm;
+}
+.ml10 {
+    margin-left: $sm;
+}
+.mt10 {
+    margin-top: $sm;
+}
+.mb10 {
+    margin-bottom: $sm;
+}
+.m5 {
+    margin: $xs;
+}
+.mr5 {
+    margin-right: $xs;
+}
+.ml5 {
+    margin-left: $xs;
+}
+.mt5 {
+    margin-top: $xs;
+}
+.mb5 {
+    margin-bottom: $xs;
+}
+
+/* Padding space */
+.no-p {
+    padding: 0!important;
+}
+.pl0 {
+    padding-left: 0;
+}
+.pr0 {
+    padding-right: 0;
+}
+.pt0 {
+    padding-top: 0;
+}
+.pb0 {
+    padding-bottom: 0;
+}
+.p25 {
+    padding: $lg;
+}
+.pr25 {
+    padding-right: $lg;
+}
+.pl25 {
+    padding-left: $lg;
+}
+.pt25 {
+    padding-top: $lg;
+}
+.pb25 {
+    padding-bottom: $lg;
+}
+.p20 {
+    padding: $df;
+}
+.pr20 {
+    padding-right: $df;
+}
+.pl20 {
+    padding-left: $df;
+}
+.pt20 {
+    padding-top: $df;
+}
+.pb20 {
+    padding-bottom: $df;
+}
+.p15 {
+    padding: $md;
+}
+.pr15 {
+    padding-right: $md;
+}
+.pl15 {
+    padding-left: $md;
+}
+.pt15 {
+    padding-top: $md;
+}
+.pb15 {
+    padding-bottom: $md;
+}
+.p10 {
+    padding: $sm;
+}
+.pr10 {
+    padding-right: $sm;
+}
+.pl10 {
+    padding-left: $sm;
+}
+.pt10 {
+    padding-top: $sm;
+}
+.pb10 {
+    padding-bottom: $sm;
+}
+.p5 {
+    padding: $xs;
+}
+.pr5 {
+    padding-right: $xs;
+}
+.pl5 {
+    padding-left: $xs;
+}
+.pt5 {
+    padding-top: $xs;
+}
+.pb5 {
+    padding-bottom: $xs;
+}
+
+

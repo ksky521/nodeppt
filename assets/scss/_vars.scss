@@ -1,0 +1,115 @@
+$webkit: true;
+$moz: true;
+$ms: true;
+$o: true;
+$font-face: "YaHei Consolas Hybrid", STHeiti, "Microsoft Yahei", Arial, Helvetica, sans-serif;
+$code-font-face: "Source Code Pro", Consolas, "Courier New", Courier, monospace;
+
+//layout
+$slide-width: 900px;
+$slide-height: 600px;
+$slide-width-widescreen: 1100px;
+$slide-top-bottom-padding: 40px;
+$slide-left-right-padding: 60px;
+$slide-border-radius: 5px;
+$slide-tap-area-width: 100px;
+$article-content-top-padding: 20px;
+$slide-content-width: $slide-width - $slide-left-right-padding*2;
+$slide-content-height: $slide-height - $slide-top-bottom-padding*2;
+$slide-content-width-widescreen: $slide-width-widescreen - $slide-left-right-padding*2;
+
+
+//global colors
+$font-color: white;
+$border-color: darken($font-color, 2%);
+$note-color: black;
+$selection-color: white;
+$selection-bg-color: rgb(255, 209, 77);
+$quote-bg-color: #F9FF95;
+$quote-border-color: #3E87CF;
+$quote-small-color: #999;
+$quote-color: black;
+$title-color: white;
+$title-shadow-color: black;
+$highlight-color: #468847;
+$highlight-bg-color: #dff0d8;
+
+//colors
+$brand-default: #eaecf6;
+$brand-primary: #1582dc;
+$brand-success: #15db81;
+$brand-warning: #daac16;
+$brand-danger: #da3e16;
+$brand-info: #15acdc;
+$brand-white: #ffffff;
+$brand-dark: #4F5061;
+$border-radius-base: 2px;
+$border-radius-large: 4px;
+$border-radius-small: 1px;
+//link colors
+$link-color: #FF8C78;
+$link-hover-color: #FF4D2E;
+$link-bg-color: transparent;
+$link-hover-bg-color: transparent;
+//slide background colors
+
+$slide-bg-color: #03C8CB;
+$slide-bg-color1:#dc6c5f;
+$slide-bg-color2:#04AA55;
+$slide-bg-color3:#487BD3;
+$slide-bg-color4:#049DBF;
+$slide-bg-color5:#DA4A89;
+$gray-1:#e6e6e6;
+$gray-2:#a9a9a9;
+$gray-3:#797979;
+$gray-4:#515151;
+
+$brand-blue: rgb(67, 135, 253);
+$brand-blue-secondary: #3c8ef3;
+$brand-blue-secondary2:#2a7cdf;
+$brand-red: rgb(244, 74, 63);
+$brand-red-secondary: #e0543e;
+$brand-red-secondary2:#d94d3a;
+$brand-yellow: rgb(255, 209, 77);
+$brand-yellow-secondary: #f9cc46;
+$brand-yellow-secondary2:#f6c000;
+$brand-green: rgb(13, 168, 97);
+$brand-green-secondary: #00a86d;
+$brand-green-secondary2:#009f5d;
+
+//buttons
+$btn-default-color: black;
+$btn-default-bg: $brand-default;
+$btn-default-border: darken($brand-default, 6%);
+$btn-primary-color: #fff;
+$btn-primary-bg: $brand-primary;
+$btn-primary-border: $btn-primary-bg;
+$btn-success-color: #fff;
+$btn-success-bg: $brand-success;
+$btn-success-border: $btn-success-bg;
+$btn-warning-color: #fff;
+$btn-warning-bg: $brand-warning;
+$btn-warning-border: $btn-warning-bg;
+$btn-danger-color: #fff;
+$btn-danger-bg: $brand-danger;
+$btn-danger-border: $btn-danger-bg;
+$btn-info-color: #fff;
+$btn-info-bg: $brand-info;
+$btn-info-border: $btn-info-bg;
+$btn-dark-color: #fff;
+$btn-dark-bg: $brand-dark;
+$btn-dark-border: $btn-dark-bg;
+$btn-white-color: $font-color;
+$btn-white-bg: $brand-white;
+$btn-white-border: white;
+$btn-link-disabled-color: darken(#fff, 50%);
+// Labels
+$label-default-bg: $brand-default;
+$label-primary-bg: $brand-primary;
+$label-success-bg: $brand-success;
+$label-info-bg: $brand-info;
+$label-warning-bg: $brand-warning;
+$label-danger-bg: $brand-danger;
+$label-white-bg: $brand-white;
+$label-color: #fff;
+$label-link-hover-color: #fff;

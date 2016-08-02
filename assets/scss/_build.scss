@@ -1,0 +1,132 @@
+/* Builds */
+.slide .subSlide {
+    &.tobuild {
+        visibility: hidden;
+    }
+    &.builded.subBuilded {
+        display: none;
+    }
+}
+.subSlide {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+
+    &.building {
+        opacity: 1;
+        display: block;
+        visibility: visible;
+        @include transition(opacity 0.3s ease);
+    }
+    &.builded {
+        opacity: 1;
+        display: block;
+        visibility: visible;
+    }
+    &.subBuilded {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(opacity 0.3s ease, display 0 ease 0.4s);
+    }
+}
+.fade {
+    @include display-flex;
+    @include justify-content(center);
+    @include align-content(center);
+
+    > * {
+        opacity: 0;
+        @include transition(opacity 0.5s ease-in-out 0.2s);
+    }
+    > .tobuild:first-child {
+        @include display-flex;
+        // opacity: 1;
+        visibility: hidden;
+    }
+    > .builded {
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+    > .builded:last-child {
+        opacity: 1;
+        @include display-flex;
+        visibility: visible;
+    }
+    > .building {
+        @include display-flex;
+        opacity: 1;
+    }
+    .tobuild {
+        opacity: 0;
+        display: none;
+    }
+}
+.fadeIn {
+    > * {
+        @include transition(opacity 0.5s ease-in-out 0.2s);
+    }
+    .tobuild {
+        opacity: 0;
+    }
+}
+.bounceIn, .zoomIn {
+    > * {
+        opacity: 1;
+    }
+    .tobuild {
+        opacity: 0;
+    }
+    .building {
+        opacity: 1;
+        -webkit-animation-duration: .75s;
+        animation-duration: .75s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+}
+.bounceIn {
+    .building {
+        -webkit-animation-name: bounceIn;
+        animation-name: bounceIn;
+    }
+}
+.zoomIn {
+    .building {
+        -webkit-animation-name: zoomIn;
+        animation-name: zoomIn;
+    }
+}
+.moveIn {
+    > * {
+        @include transition(all 0.5s ease-in-out 0.2s);
+    }
+    .tobuild {
+        opacity: 0;
+        @include transform(translate3d(60px, 0, 0));
+    }
+}
+.rollIn {
+    > * {
+        @include transition(all 0.4s ease);
+    }
+    .building {
+        opacity: 1;
+        visibility: visible;
+        @include transform(rotateX(0));
+    }
+    .tobuild {
+        opacity: 0;
+        visibility: hidden;
+        @include transform(rotateX(90deg));
+    }
+}
+.popup .next .build {
+    .tobuild {
+        opacity: 1 !important;
+    }
+    .builded {
+        opacity: 1 !important;
+    }
+}

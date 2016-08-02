@@ -1,0 +1,156 @@
+@import "compass/css3";
+
+$gray-1: #e6e6e6;
+$gray-2: #a9a9a9;
+$gray-3: #797979;
+$gray-4: #515151;
+//colors
+$bg-color: #232323;
+$font-color: #f8f7f7;
+$strong-color: #00CED1;
+$quote-bg-color: #ACE2D2;
+$quote-color: #000;
+$title-color: #fff;
+
+$link-color: #FA5B04;
+$link-hover-color: #FE7429;
+$link-bg-color: transparent;
+$link-hover-bg-color: transparent;
+
+$progress-color: #2187E7;
+$selection-color: white;
+$selection-bg-color: #d33682;
+
+::selection {
+    color: $selection-color;
+    background-color: $selection-bg-color;
+    @include text-shadow(none);
+}
+a {
+    color: $link-color;
+    background-color: $link-bg-color;
+    border-bottom: 0;
+    &:hover {
+        color: $link-hover-color;
+        background-color: $link-hover-bg-color;
+    }
+}
+h1, h2, h3 {
+    color: $title-color;
+    @include text-shadow(1px 2px 0px $bg-color,3px 5px 0px rgba(0, 0, 0, 0.2));
+    letter-spacing: 4px;
+    font-weight: bolder;
+}
+
+h1 {
+    @include text-shadow(1px 2px 0px $bg-color,3px 5px 0px rgba(0, 0, 0, 0.2));
+}
+
+
+table {
+    width: 100%;
+    color: black;
+    border-bottom: 0 none;
+    border-collapse: collapse;
+    background-color: white;
+    @include box-shadow(0 none);
+
+    thead th{
+        font-weight: bolder;
+        background-color: transparent;
+        border-bottom: 1px solid #111;
+        vertical-align:bottom;
+    }
+    tbody tr td{
+        vertical-align: top;
+        border-bottom: 1px #bfbfbf solid;
+    }
+    tr{
+        background-color: transparent;
+    }
+    tr:nth-child(even) {
+        background-color: transparent;
+    }
+    tbody tr:nth-child(odd){
+        background-color:#eee;
+    }
+
+
+    td.highlight {
+        color: #0377C0;
+        @include text-shadow(1px 1px 1px #aaa);
+        font-weight: normal;
+        background-color: transparent !important;
+    }
+
+    &.rows {
+        border-right: 1px solid $gray-3;
+    }
+}
+slides > slide{
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: $font-color;
+    letter-spacing: 2px;
+    background-color: $bg-color;
+    &:nth-child(6n+1),
+    &:nth-child(6n+2),
+    &:nth-child(6n+3),
+    &:nth-child(6n+4),
+    &:nth-child(6n+5){
+        background-color: $bg-color;
+    }
+    .slide-wrapper{
+        strong{
+            @include text-shadow(none);
+            font-weight: bolder;
+            color: $strong-color;
+        }
+        blockquote {
+            &.pull-right{
+                border-right:0 none;
+                padding: 5px 28px 5px 5px;
+                &::before{
+                    font:normal normal normal 14px/1 FontAwesome;
+                    content:"\f10e";
+                    right: 6px;
+                    position: absolute;
+                    top: 6px;
+                }
+                small::after{
+                    position: absolute;
+                    content: '';
+                }
+            }
+            &::before{
+                font:normal normal normal 14px/1 FontAwesome;
+                content:"\f10d";
+                left: 6px;
+                position: absolute;
+                top: 6px;
+            }
+            position: relative;
+            border-left: 0 none;
+            color: $quote-color;
+            padding: 5px 5px 5px 28px;
+            @include text-shadow(none);
+            p {
+                font-size: 22px;
+                line-height: 1.7em;
+            }
+            small{
+                color: $quote-color;
+                position: relative;
+                padding-left: 24px;
+                &::before{
+                    position: absolute;
+                    top: 3px;
+                    content: '\2015 \00A0';
+                }
+            }
+        }
+    }
+}
+
+.progress span{
+    background: $progress-color;
+}

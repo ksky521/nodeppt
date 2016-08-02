@@ -2,37 +2,110 @@
 
 var fs = require('fs');
 var path = require('path');
-var join = path.join;
-
-
-var root = join(__dirname, '../');
-var nodePPT = require(join(root, './lib/nodePPT'));
-
-
-var opts = {
-    '-v': '--version',
-    '-p': '--port',
-    '-d': '--dir',
-    '-f': '--file',
-    '-o': '--output',
-    '-a': '--all'
+var nodePPT = require('../lib/nodePPT');
+var versions = require('../package').version;
+var program = require('commander');
+var ipv4 = require('ipv4');
+if (process.argv[2] && process.argv[2] === '-v') {
+    process.argv[2] = '-V';
 }
+program
+    .version(versions);
 
-var argv = parseArgs(process.argv);
-var action = argv.slice(2, 3).toString();
-
-if (typeof nodePPT[action] === 'function') {
-    nodePPT.cwd = process.cwd();
-    nodePPT[action](argv.slice(3));
-} else {
-    nodePPT.help();
-}
-
-function parseArgs(args) {
-    return args.map(function(v) {
-        if (v in opts) {
-            return opts[v];
+program
+    .command('create')
+    .alias('new')
+    .usage('[filename] [option]')
+    .description('create a slide')
+    .option('-d, --dir [path]', 'set slide file destination path')
+    .action(function (filename, options) {
+        if (typeof filename === 'object') {
+            console.log('ERROR: please input filename！'.bold.red);
+            this.outputHelp();
+            return;
         }
-        return v;
+
+        nodePPT.create(filename, options)
+    }).on('--help', function () {
+        console.log('  Examples:');
+        console.log();
+        console.log('  nodeppt create myslide');
+        console.log('  nodeppt create myslide -d D:/webppt');
+        console.log();
     });
+
+program
+    .command('generate')
+    .alias('release')
+    .usage('[file_path] [save_path]')
+    .description('export html file')
+    .option('-a, --all [false]', 'output all style(include js,css) file', false)
+    .action(function (cmd, output, options) {
+        var filename = '';
+        var shouldAll = false;
+        if (typeof output !== 'string') {
+            options = output;
+            output = undefined;
+        }
+        if (typeof cmd === 'string') {
+            filename = cmd;
+            shouldAll = options.all;
+        } else if (typeof cmd === 'object') {
+            shouldAll = cmd.all;
+            output = cmd.output;
+        }
+        nodePPT.generate(filename, output, shouldAll, '');
+    })
+    .on('--help', function () {
+        console.log('  Examples:');
+        console.log();
+        console.log('  nodeppt generate /markdown/path.md /output/path');
+        console.log('  nodeppt generate /markdown/path.md /output/path -a');
+        console.log();
+    });
+
+
+program
+    .command('start')
+    .description('start local sever show slide')
+    .option('-d, --dir [dir]', 'set slide path', '')
+    .option('-p, --port [port]', 'set server port ', 8080)
+    .option('-c, --controller [socket]', 'support websocket mutil screen controller')
+    .option('-H, --host [host]', 'set host address', ipv4 || '0.0.0.0')
+    .option('-w, --watch', 'livereload')
+    .action(function (cmd) {
+        if (typeof cmd !== 'object') {
+            this.outputHelp();
+            return;
+        }
+
+        nodePPT.start(cmd)
+    })
+    .on('--help', function () {
+        console.log('  Examples:');
+        console.log();
+        console.log('  nodeppt start -d D:/webppt -p 8080');
+        console.log('  nodeppt start -d D:/webppt -c socket');
+        console.log();
+    });
+
+
+program
+    .command('pdf')
+    .description('export pdf file. ' + 'Deprecated'.bold.red)
+    .action(function (http_url, save_path) {
+        console.log('  Warning: '.bold.red + 'This command has been ' + 'Removed'.bold.red);
+    })
+    .on('--help', function () {
+        console.log(' Warning: '.bold.red + 'This command has been ' + 'Removed'.bold.red);
+    });
+
+
+
+program.parse(process.argv);
+
+
+if (!program.args[0]) {
+    process.stdout.write(program.helpInformation());
+    program.emit('--help');
 }

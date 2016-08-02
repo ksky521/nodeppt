@@ -1,4 +1,4 @@
-@import "compass/css3/transition";
+@import "compass/css3";
 
 
 /*Smartphones (portrait and landscape) ----------- */
@@ -23,6 +23,15 @@ slides > slide {
   // Don't do full slide transitions on mobile.
   -webkit-transition: none !important; // Bug in compass? Not sure why the below is not working
   @include transition(none !important);
+
+    @include transform-origin(0, 0 !important);
+
+    &[data-transition].current,&[data-transition].next,&[data-transition].past{
+        @include transition(none);
+        @include transform-origin(0, 0);
+        -webkit-animation-name: none;
+        animation-name: none;
+    }
 }
 
 //}
