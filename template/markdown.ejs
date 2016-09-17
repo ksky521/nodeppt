@@ -52,6 +52,9 @@
 </div>
 <script src="/js/mixjs/lib/mix.0.3.0.min.js"></script>
 <script>
+    var ASSET_RELATIVE_DIR = "<%= hasOwnProperty('assetPath') && assetPath || '' %>";
+</script>
+<script>
 var base = location.protocol + '//' + location.host;
 <%if (hasOwnProperty('generate') && generate) { %>
 var path = (location.pathname + '#').split('/').filter(function(v){
@@ -59,6 +62,9 @@ var path = (location.pathname + '#').split('/').filter(function(v){
 });
 path.pop();
 path = path.join('/');
+if (typeof ASSET_RELATIVE_DIR === 'string') {
+    path = path + '/' + ASSET_RELATIVE_DIR;
+}
 MixJS.config({
     baseURL: [ base, path, 'js'].join('/')+'/'
 });
