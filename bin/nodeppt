@@ -34,7 +34,7 @@ program
         console.log();
     });
 
-function assertPathWarn(){
+function assetPathWarn(){
     console.warn('The asset-path params will be ignored when output all files.');
 }
 
@@ -58,7 +58,7 @@ program
             filename = cmd;
             shouldAll = options.all;
             if (options.assetPath && shouldAll ) {
-                assertPathWarn();
+                assetPathWarn();
             } else {
                 path = options.assetPath;
             }
@@ -66,7 +66,7 @@ program
             shouldAll = cmd.all;
             output = cmd.output;
             if (cmd.assetPath && shouldAll ) {
-                assertPathWarn();
+                assetPathWarn();
             } else {
                 path = cmd.assetPath;
             }
