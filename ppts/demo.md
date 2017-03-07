@@ -418,6 +418,13 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 
 [slide]
+
+## 图片，禁止全屏
+----
+
+<img src="/girl.jpg" class="not">
+
+[slide]
 [note]
 ##这里是note
 
