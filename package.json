@@ -2,8 +2,9 @@
   "name": "nodeppt",
   "jsname": "nodeppt",
   "description": "A simple, in-browser, markdown-driven presentation framework",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "site": "https://github.com/ksky521/nodePPT",
+  "main": "lib/nodePPT.js",
   "author": {
     "name": "Theo Wang",
     "email": "ksky521@gmail.com"
