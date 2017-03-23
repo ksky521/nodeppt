@@ -5,7 +5,7 @@ nodePPT - 让你爱上做分享！
 [![NPM](https://nodei.co/npm-dl/nodeppt.png)](https://nodei.co/npm/nodeppt/)
 [![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
 
-**导出pdf不再支持，请使用chrome打印服务另存为pdf，url中添加print=1，然后使用chrome打印 `ctrl+P` **
+**导出pdf不再支持，请使用chrome打印服务另存为pdf，url中添加`?print=1`，然后使用chrome打印 `ctrl+P` **
 
 ## 为什么选择nodePPT
 
