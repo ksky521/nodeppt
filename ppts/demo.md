@@ -422,7 +422,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 ## 图片，禁止全屏
 ----
 
-<img src="/girl.jpg" class="not">
+<img src="/girl.jpg" class="no-screenfull">
 
 [slide]
 [note]
