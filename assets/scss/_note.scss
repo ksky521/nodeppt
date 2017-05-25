@@ -1,0 +1,35 @@
+.note {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    // pointer-events: none;
+    @include display-flex;
+    @include flex-flow(row);
+    @include justify-content(center);
+
+    // @include border-radius($slide-border-radius);
+
+    @include box-sizing(border-box);
+    // @include transform(translateY($slide-height / 2));
+    @include transition(all 0.4s ease-in-out);
+
+    > section {
+        text-align: left;
+        // @include display-flex;
+        // @include flex-flow(column);
+        // @include justify-content(center);
+        // @include align-content(center);
+        background: #fff;
+        @include border-radius($slide-border-radius);
+        @include box-shadow(inset 0 0 10px #6F6F6F);
+
+        width: 70%;
+        padding: 2em;
+    }
+}
+

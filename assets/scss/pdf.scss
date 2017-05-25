@@ -86,47 +86,9 @@ slides{
         visibility: visible !important;
         padding: 0;
     }
-    // > slide.hasnote{
-    //     @include flex-flow(row !important);
-    //     display: -webkit-flex !important;
-    //     display: flex !important;
-    //     @include justify-content(space-around);
-
-    //     .note{
-    //         opacity: 1 !important;
-    //         display: block !important;
-    //         background: transparent;
-    //         //
-    //         font-size: 12px !important;
-    //         color: black;
-    //         padding:0;
-    //         position: static !important;
-    //         @include flex(2);
-    //         @include order(2 !important);
-    //         &::before{
-    //             content:'备注';
-    //             position: absolute;
-    //             top: 0.5em;
-    //             font-size: 20px;
-    //         }
-    //         section{
-
-    //             display: block;
-    //             width: 100%;
-    //             height: 100%;
-    //             padding: 3em 0 1em;
-    //             @include border-radius(0);
-    //             h1,h2,h3,h4{
-    //                 font-size: 12px;
-    //             }
-    //         }
-    //     }
-    //     .slide-wrapper{
-    //         @include flex(8);
-    //         @include order(1 !important);
-    //     }
-
-    // }
+    > slide .subSlide{
+        display: block;
+    }
     > slide .slide-wrapper,
     > slide.past .slide-wrapper,
     > slide.far-past .slide-wrapper,

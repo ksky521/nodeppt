@@ -46,18 +46,7 @@ h1 {
     @include text-shadow(1px 2px 0px $bg-color,3px 5px 0px rgba(0, 0, 0, 0.2));
 }
 
-button {
-    @include background(linear-gradient(#F9F9F9 40%, #E3E3E3 70%));
-    border: 1px solid $gray-2;
-    @include text-shadow(1px 1px #fff);
-}
-button:not(:disabled):hover {
-    border-color: $gray-4;
-}
 
-button:not(:disabled):active {
-    @include background(linear-gradient(#E3E3E3 40%, #F9F9F9 70%));
-}
 table {
     width: 100%;
     color: black;
@@ -120,7 +109,7 @@ slides > slide{
             &.pull-right{
                 border-right:0 none;
                 padding: 5px 28px 5px 5px;
-                ::before{
+                &::before{
                     font:normal normal normal 14px/1 FontAwesome;
                     content:"\f10e";
                     right: 6px;
@@ -132,7 +121,7 @@ slides > slide{
                     content: '';
                 }
             }
-            ::before{
+            &::before{
                 font:normal normal normal 14px/1 FontAwesome;
                 content:"\f10d";
                 left: 6px;

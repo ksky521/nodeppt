@@ -2,89 +2,51 @@
  * postMessage 只能单方面控制
  *
  */
-Slide.Control.add('postMessage', function(S, broadcast) {
+Slide.Control.add('postMessage', function (S, broadcast) {
     function parseQuery(url) {
         var back = {};
-        (url || location.search.substring(1)).split('&').forEach(function(v) {
+        (url || location.search.substring(1)).split('&').forEach(function (v) {
             v = v.split('=');
             back[v[0].toLowerCase()] = v[1];
         });
         return back;
     }
+    broadcast.on('controlEvent:joinClient', function () {
+        postMSG.send_default('syncStatus', {
+            id: S.current,
+            item: S.curItem
+        });
+    });
 
     var postWin, popup, timer;
     var postMSG = {
         role: '', //角色
-        broadcast: function(evtName, data) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: evtName,
-                    data: data
-                }, '*');
-            }
+        send_default: function (evtName, data) {
+            var win = (postWin ? postWin : popup);
+            win && win.postMessage({
+                action: 'controlEvent:' + evtName,
+                data: data
+            }, '*');
         },
-        update: function(id) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: 'update',
-                    id: id
-                }, '*');
-            }
-
+        send_keyEvent: function (keyCode) {
+            postMSG.send_default('keyEvent', {
+                keyCode: keyCode
+            })
         },
-        updateItem: function(id, item) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: 'updateItem',
-                    id: id,
-                    item: item
-                }, '*');
-            }
-
-        },
-        keyEvent: function(keyCode) {
-            if (postWin) {
-                window.opener.postMessage({
-                    action: 'keyEvent',
-                    keyCode: keyCode
-                }, '*');
-            }
-        },
-        // evtControl: function(e) {
+        // evtControl: function (e) {
         //     console.log('client 发来贺电', arguments);
         // },
-        evtClient: function(e) {
+        evtHandler: function (e) {
             var data = e.data;
-            switch (data.action) {
-                case 'update':
-                    broadcast.fire('from control update', data);
-                    break;
-                case 'updateItem':
-                    broadcast.fire('from control updateItem', data);
-                    break;
-                case 'keyEvent':
-                    broadcast.fire('from control key event', data);
-                    break;
-                case 'userOrder':
-                    var fnName = data.fn;
-                    var args = data.args;
-                    try {
-                        args = JSON.parse(args);
-                    } catch (e) {}
-                    Slide.proxyFn(fnName, args);
-                    break;
-                default:
-                    broadcast.fire('from control '+data.action, data.data);
-            }
-
+            broadcast.fire(data.action, data.data);
         },
-        closeClient: function() {
+        closeClient: function () {
             if (popup) {
                 popup.close();
             }
             timer && clearInterval(timer);
         },
-        init: function(args) {
+        init: function (args) {
             var t = this;
             var params = parseQuery();
 
@@ -99,47 +61,26 @@ Slide.Control.add('postMessage', function(S, broadcast) {
 
                 var temp = 'height=' + tHeight + ',width=' + tWidth + ',top=' + 10 + ',left=' + (sWidth - tWidth) / 2 + ',toolbar=no,menubar=no,location=yes,resizable=yes,scrollbars=no,status=no';
                 popup = window.open(url, 'ppt', temp);
-                window.addEventListener('message', this.evtClient, false);
+                window.addEventListener('message', this.evtHandler, false);
                 window.addEventListener('beforeunload', this.closeClient, false);
             } else if (params._multiscreen === 'control') {
                 this.role = 'control';
                 //如果是控制端，则重写proxyFn函数
-                Slide.proxyFn = function(fnName, args) {
+                Slide.proxyFn = function (fnName, args) {
                     args = JSON.stringify(args);
-                    window.opener.postMessage({
-                        action: 'userOrder',
-                        fn: fnName,
+                    postMSG.send_default('proxyFn', {
+                        fnName: fnName,
                         args: args
-                    }, '*');
-                }
-                var $body = document.body;
-                $body.classList.add('popup');
-                $body.classList.add('with-notes');
-                var $timer = document.createElement('time');
-                $timer.id = '_timer_';
-                $body.appendChild($timer);
-                var hour = 0,
-                    sec = 0,
-                    min = 0;
-                timer = setInterval(function() {
-                    sec++;
-                    if (sec === 60) {
-                        sec = 0;
-                        min++;
-                    }
-                    if (min === 60) {
-                        hour++;
-                    }
-                    $timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
-                }, 1000);
+                    });
+                };
+                Slide.timerCtrl();
                 postWin = window.opener;
+                postMSG.send_default('joinClient');
+                window.addEventListener('message', this.evtHandler, true);
             }
         }
     };
 
-    function time2str(time) {
-        time = '00' + time;
-        return time.substr(-2);
-    }
+
     return postMSG;
 });

@@ -1,25 +1,12 @@
 /**
  * 控制端函数
  */
-(function($win, $doc, $B, Slide, loadJS, undefined) {
+(function ($win, $doc, $B, Slide, loadJS, undefined) {
     var $slides = Slide.$slides;
-    var doSlide = Slide.doSlide;
 
-    function doItem(id, itemID) {
-        itemID = itemID | 0;
-        var $curSlide = $slides[id];
-        var buildClass = '.build > *,.fadeIn > *,.moveIn > *,.bounceIn > *,.zoomIn > *,.fade > *';
-        var toBuild = $curSlide.querySelectorAll(buildClass);
-        var list;
-        var index = itemID;
-
-        while (itemID >= 0) {
-            list = toBuild.item(itemID).classList;
-            list.remove('to-build');
-            list.add(itemID === index ? 'building' : 'build-fade');
-            itemID--;
-        }
-    }
+    // function doItem(direction) {
+    //     return Slide[direction === 'prev' ? 'buildPrevItem' : 'buildNextItem'](true);
+    // }
 
     function getType(obj) {
         return ({}).toString.call(obj).slice(8, -1)
@@ -28,53 +15,45 @@
     var Control = {
         state: 'unbind',
         methods: {},
-        init: function() {
+        init: function () {
             this.bindListener();
         },
-        bindListener: function() {
+        bindListener: function () {
             var t = this;
             //监听用户端发出的广播
-            $B.on('slide change ID', function(json) {
-                var slideID = json.slideID;
-                //发送请求
-                t.sendUpdate(slideID);
-
-            }).on('slide do build', function(json) {
-                var slideID = json.slideID;
-                var buildItem = json.build;
-                //发送请求
-                t.sendUpdateItem(slideID, buildItem);
-            }).on('slide event keyup', function(e) {
-                t.sendKeyEvent(e.keyCode);
-            }).on('show paint', function(e){
-                t.sendKeyEvent(80);
-            }).on('remove paint', function(){
-                t.sendKeyEvent(67);
-            }).on('paint points', function(points) {
-                var data = {
-                    points: points,
-                    screen: {
-                        width: $doc.body.offsetWidth,
-                        height: $doc.body.offsetHeight
+            $B.on('nodepptEvent:eventKeyup', function (e) {
+                    t.sendKeyEvent(e.keyCode);
+                }).on('nodepptEvent:show paint', function (e) {
+                    t.sendKeyEvent(80);
+                }).on('nodepptEvent:remove paint', function () {
+                    t.sendKeyEvent(67);
+                }).on('nodepptEvent:paint points', function (points) {
+                    var data = {
+                        points: points,
+                        screen: {
+                            width: $doc.body.offsetWidth,
+                            height: $doc.body.offsetHeight
+                        }
+                    };
+                    t.send_('default', ['paint points', data]);
+                })
+                //监听控制来的广播
+                .on('controlEvent:proxyFn', function (json) {
+                    var fnName = json.fnName;
+                    var args = json.args;
+                    try {
+                        args = JSON.parser(args);
+                    } catch (e) {
+                        args = '';
                     }
-                };
-                t.send_('broadcast', ['paint points', data]);
-            })
-            //监听控制来的广播
-            .on('from control order', function(json) {
-                var fnName = json.fnName;
-                var args = json.args;
-                Slide.proxyFn(fnName, args);
-            }).on('from control update', function(json) {
-                doSlide(json.id, false);
-            }).on('from control updateItem', function(json) {
-                doSlide(json.id, false);
-                doItem(json.id, json.item);
-            }).on('from control key event', function(json) {
-                t.createKeyEvent_(json.keyCode);
-            })
+                    Slide.proxyFn(fnName, args);
+                }).on('controlEvent:keyEvent', function (json) {
+                    t.createKeyEvent_(json.keyCode);
+                }).on('controlEvent:syncStatus', function (json) {
+                    Slide.setIndex(json.id, json.item);
+                });
         },
-        createKeyEvent_: function(keyCode) {
+        createKeyEvent_: function (keyCode) {
             var evt = document.createEvent('Event');
             evt.initEvent('keyup', true, true);
             evt.keyCode = keyCode;
@@ -82,28 +61,22 @@
 
             document.dispatchEvent(evt);
         },
-        send_: function(fnName, args) {
+        send_: function (fnName, args) {
             var methods = this.methods;
             var method;
             args = getType(args) === 'Array' ? args : [args];
             for (var i in methods) {
                 method = methods[i];
-                method = method[fnName];
+                method = method['send_' + fnName];
                 typeof method === 'function' && method.apply(Slide, args);
             }
         },
-        sendUpdate: function(slideID) {
-            this.send_('update', [slideID]);
-        },
-        sendUpdateItem: function(id, buildItem) {
-            this.send_('updateItem', [id, buildItem]);
-        },
-        sendKeyEvent: function(keycode) {
+        sendKeyEvent: function (keycode) {
             this.send_('keyEvent', [keycode]);
         },
 
         //添加一个新的监控
-        add: function(name, factory, override) {
+        add: function (name, factory, override) {
             var methods = this.methods;
 
             if (override || !methods[name]) {
@@ -114,13 +87,50 @@
                 //keyEvent;
             }
         },
-        load: function(type, args) {
+        load: function (type, args) {
             var url = Slide.dir + 'nodeppt.control.' + type + '.js';
-            loadJS(url, function() {
+            loadJS(url, function () {
                 Slide.Control.methods[type].init(args);
             });
         }
     };
     Control.init();
     Slide.Control = Control;
+
+    Slide.timerCtrl = timerCtrl;
+
+    function timerCtrl() {
+        var $body = document.body;
+        var ua = navigator.userAgent;
+        //.test(ua)
+        if (/(android|iphone|ipod)/i.test(ua) && $body.offsetWidth / window.devicePixelRatio < 400) {
+            //太小的屏幕不要显示下一页了
+            return;
+        }
+        $body.classList.add('popup');
+        $body.classList.add('with-notes');
+        var $timer = document.createElement('time');
+        $timer.id = '_timer_';
+        $body.appendChild($timer);
+        var hour = 0,
+            sec = 0,
+            min = 0;
+        timer2 = setInterval(function () {
+            sec++;
+            if (sec === 60) {
+                sec = 0;
+                min++;
+            }
+            if (min === 60) {
+                min = 0;
+                hour++;
+            }
+            $timer.innerHTML = ['时间：' + time2str(hour), time2str(min), time2str(sec) + ' 幻灯片：' + Slide.current + '/' + Slide.count].join(':');
+        }, 1000);
+    }
+
+    function time2str(time) {
+        time = '00' + time;
+        return time.substr(-2);
+    }
 }(window, document, MixJS.event.broadcast, Slide, MixJS.loadJS));

@@ -26,7 +26,7 @@ function loadJS(src, callback, attrs, timeout, fail, complete) {
         }
     }
     var urls = getPath(src);
-    src = script.src = urls[0];
+    src = script.src = urls[0].replace('//', '/');
     script.async = true;
     script.type = 'text/javascript';
     script.charset = defaultConfig.charset;

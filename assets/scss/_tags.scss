@@ -1,0 +1,237 @@
+//selection color, scrollbar
+::selection {
+    color: $selection-color;
+    background-color: $selection-bg-color;
+    @include text-shadow(none);
+}
+
+::-webkit-scrollbar {
+    height: 10px;
+    overflow: visible;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .1);
+    background-clip: padding-box;
+    border: solid transparent;
+    min-height: 28px;
+    padding: 100px 0 0;
+    @include box-shadow(inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07));
+    border-width: 1px 1px 1px 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 0 0 0 4px;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+body {
+    background: black;
+    font-family: $font-face;
+}
+a {
+    color: $link-color;
+    padding:0 3px;
+    text-decoration: none;
+    border-bottom: 1px dashed $link-color;
+    cursor: help;
+    margin:0 5px;
+    background-color: $link-bg-color;
+    &:hover {
+        color: $link-hover-color;
+        border-bottom: none;
+        background-color: $link-hover-bg-color;
+    }
+    @include underline-from-center($link-hover-color);
+}
+
+
+h1, h2, h3 {
+    font-weight: 600;
+    color: $title-color;
+    @include text-shadow(2px 2px 2px $title-shadow-color);
+}
+
+h1 {
+    font-size: 45px;
+    line-height: 1.5;
+    color: white;
+    margin-bottom: 0.5em;
+    @include text-shadow(2px 3px 4px $title-shadow-color);
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 2;
+    color: white;
+}
+h3 {
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: inherit;
+    color: white;
+}
+p {
+    line-height: 1.75em;
+}
+ul {
+    margin-left: 1.2em;
+    // margin-bottom: 0.75em;
+    position: relative;
+    list-style: disc inside;
+    text-align: left;
+    display: inline-block;
+
+    li {
+        line-height: 1.75em;
+        list-style-position: outside;
+        ul {
+            margin-left: 2em;
+            margin-bottom: 0;
+            list-style-type: none;
+            display: block;
+            li:before {
+                content: '-';
+                position: absolute;
+                margin-left: -1em;
+                font-weight: 600;
+            }
+        }
+    }
+
+    ul {
+        margin-top: .5em;
+    }
+}
+ol {
+    list-style-type: decimal;
+    display: inline-block;
+    text-align: left;
+    margin: 0 0 0 1em;
+    li{
+        line-height: 1.5em;
+    }
+
+}
+mark{
+    color: $highlight-color;
+    background-color: $highlight-bg-color;
+}
+pre {
+    font-family: $code-font-face;
+    font-size: 20px;
+    line-height: 1.2em;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+    @include box-sizing(border-box);
+
+
+    code {
+        font-size: 95%;
+        font-family: $code-font-face;
+        color: black;
+        border:none 0;
+        padding: 0;
+        background-color: transparent;
+        @include border-radius(0);
+        text-align: left;
+    }
+}
+
+code{
+    margin: 0;
+    font-family: $code-font-face;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    padding: 0 3px;
+    margin: 0 5px;
+    vertical-align: middle;
+    color: #dd1144;
+    @include text-shadow(none);
+    @include border-radius(5px);
+}
+
+iframe {
+    width: 100%;
+    height: $slide-height - ($slide-top-bottom-padding * 2) - ($article-content-top-padding * 2);
+    background: white;
+    @include box-sizing(border-box);
+}
+
+dt {
+    font-weight: bold;
+}
+
+// button {
+//     display: inline-block;
+//     @include background(linear-gradient(#F9F9F9 40%, #E3E3E3 70%));
+//     border: 1px solid $gray-2;
+//     @include border-radius(3px);
+//     padding: 5px 8px;
+//     outline: none;
+//     white-space: nowrap;
+//     @include user-select(none);
+//     cursor: pointer;
+//     @include text-shadow(1px 1px #fff);
+//     font-size: 10pt;
+// }
+
+// button:not(:disabled):hover {
+//     border-color: $gray-4;
+// }
+
+// button:not(:disabled):active {
+//     @include background(linear-gradient(#E3E3E3 40%, #F9F9F9 70%));
+// }
+table {
+    width: 100%;
+    color: black;
+    border-collapse: -moz-initial;
+    border-collapse: initial;
+    border-spacing: 1px;
+    border-bottom: 1px solid $gray-3;
+
+    thead th{
+        background-color: $gray-1;
+        font-weight: bold;
+    }
+    tr > td:first-child, th {
+        font-weight: bolder;
+    }
+    tr{
+        background-color: white;
+    }
+    tr:nth-child(even) {
+        background-color: $gray-1;
+    }
+
+    td, th {
+        font-size: 18px;
+        padding: 1em 0.5em;
+        line-height: 1.5;
+    }
+
+    td.highlight {
+        font-weight: bold;
+        color: $highlight-color;
+        background-color: $highlight-bg-color !important;
+    }
+
+    &.rows {
+        border-bottom: none;
+        border-right: 1px solid $gray-3;
+    }
+}

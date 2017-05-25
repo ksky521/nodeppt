@@ -5,11 +5,12 @@ function outcallback() {
 function incallback() {
     document.getElementById('incallback').innerHTML = 'incallback fire';
 }
-var ctx, width, height;
+var ctx, width, height, canvas;
 window.onload = function() {
-    var canvas = document.createElement('canvas');
+    canvas = document.createElement('canvas');
     canvas.style.position = 'absolute';
     canvas.style.top = '0';
+    canvas.style.display = 'none';
     height = canvas.height = document.documentElement.offsetHeight;
     width = canvas.width = document.documentElement.offsetWidth;
     ctx = canvas.getContext('2d');
@@ -17,14 +18,16 @@ window.onload = function() {
 }
 var timer = null;
 var colors = ['#487BD3', '#FAF0E5', '#DA4A89', '#03C8CB', '#dc6c5f', '#04AA55'];
-Slide.on('update', function(i, cls) {
+Slide.on('update', function(i, si) {
     Puff.add('#FFC524' /*colors[i % 6]*/ , ctx, 20, 700, width / 2, height / 2, width / 1.8, 400);
     clearInterval(timer);
-    //第十三个有动效
-    if (i === 13 || i === 14) {
+    //有动效
+    if (i === 7 && si === 5) {
         timer = setInterval(function() {
             Puff.draw(1);
         }, 1E3 / FPS);
+    }else{
+        canvas.style.display = 'none';
     }
 
 })
@@ -186,8 +189,10 @@ var Puff = {
         d = Puff.puffs;
         if (d.length === 0) {
             // fn(true);
+            canvas.style.display = 'none';
             return;
         } else {
+            canvas.style.display = '';
             // fn(false);
         }
         d[0].removed >= d[0].maxP && Puff.recycling.push(d.shift());

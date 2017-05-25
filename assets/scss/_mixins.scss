@@ -1,0 +1,142 @@
+@mixin prefixed($property, $value) {
+  @if $webkit == true {
+    -webkit-#{$property}: #{$value};
+  }
+
+  @if $moz == true {
+    -moz-#{$property}: #{$value};
+  }
+
+  @if $ms == true {
+    -ms-#{$property}: #{$value};
+  }
+
+  @if $o == true {
+    -o-#{$property}: #{$value};
+  }
+
+  #{$property}: #{$value};
+}
+
+// prefix keyframes
+@mixin keyframes($name) {
+  @if $webkit == true {
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $moz == true {
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $ms == true {
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $o == true {
+    @-o-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+@mixin highlight-color($color: $brand-yellow) {
+    @include prefixed(tap-highlight-color, $color);
+}
+
+@mixin backdrop {
+    @include background(linear-gradient(white, white 85%, $gray-1));
+    background-color: white;
+}
+@mixin animated{
+    @include prefixed(animation-duration, 1s);
+    @include prefixed(animation-fill-mode, both);
+}
+
+@mixin shake {
+    @include animated();
+    @include prefixed(animation-name, shake);
+}
+@mixin flash {
+    @include animated();
+    @include prefixed(animation-name, flash);
+}
+
+@mixin hardwareAccel() {
+  // Improve performance on mobile/tablet devices
+  @include prefixed(transform, translateZ(0));
+}
+
+@mixin improveAntiAlias() {
+  // Improve aliasing on mobile/tablet devices
+  @include prefixed(box-shadow,0 0 1px rgba(0, 0, 0, 0));
+}
+
+@mixin fontSmooth() {
+  @include prefixed(backface-visibility,hidden);
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin forceBlockLevel() {
+  // Transforms need to be block-level to work
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin hacks() {
+  @include forceBlockLevel();
+  @include hardwareAccel();
+  @include improveAntiAlias();
+  @include fontSmooth();
+}
+
+@mixin underline-from-center ($color){
+  @include hacks();
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: $color;
+    height: 4px;
+    @include prefixed(transition-property, "left, right");
+    @include prefixed(transition-duration, 0.3s);
+    @include prefixed(transition-timing-function, ease-out);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+
+    &:before {
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+
+@mixin label-variant($color) {
+    background-color: $color;
+    padding:5px 0;
+    &[href] {
+        &:hover,
+        &:focus {
+            background-color: darken($color, 10%);
+        }
+    }
+}
+

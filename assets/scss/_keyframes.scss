@@ -1,0 +1,1400 @@
+@include keyframes(slideOutScaleRight) {
+    from {
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateX(100%) scale(0.9));
+        opacity: 0;
+    }
+}
+@include keyframes(slideOutScaleRight_Magic) {
+    from {
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateX(150%) scale(0.9));
+        opacity: 0;
+    }
+}
+@include keyframes(slideInFromLeft) {
+    from {
+        @include prefixed(transform, translateX(-100%));
+    }
+    to {
+        @include prefixed(transform, translateX(0));
+    }
+}
+@include keyframes(slideInFromLeft_Magic) {
+    from {
+        @include prefixed(transform, translateX(-150%));
+    }
+    to {
+        @include prefixed(transform, translateX(0));
+    }
+}
+@include keyframes(slideOutScaleLeft) {
+    from {
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateX(-100%) scale(0.9));
+        opacity: 0;
+    }
+}
+@include keyframes(slideOutScaleLeft_Magic) {
+    from {
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateX(-150%) scale(0.9));
+        opacity: 0;
+    }
+}
+@include keyframes(slideInFromRight) {
+    from {
+        @include prefixed(transform, translateX(100%));
+    }
+    to {
+        @include prefixed(transform, translateX(0));
+    }
+}
+@include keyframes(slideInFromRight_Magic) {
+    from {
+        @include prefixed(transform, translateX(150%));
+    }
+    to {
+        @include prefixed(transform, translateX(0));
+    }
+}
+@include keyframes(scaleUpFadeOut) {
+    from {
+        opacity: 1;
+    }
+    50% {
+        @include prefixed(transform, scale(1.2));
+        opacity: .5;
+    }
+    75% {
+        @include prefixed(transform, scale(1.1));
+        opacity: 0;
+    }
+    100% {
+        @include prefixed(transform, scale(1));
+        opacity: 0;
+    }
+}
+@include keyframes(scaleDownFadeIn) {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+        @include prefixed(transform, scale(1.2));
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transform, scale(1));
+    }
+}
+//circ
+@include keyframes(rotateOutCircLeft) {
+    from {
+    }
+    to {
+        @include prefixed(transform, rotate(-20deg) translateX(-100%));
+    }
+}
+@include keyframes(rotateInCircRight) {
+    from {
+        @include prefixed(transform, rotate(20deg) translateX(100%));
+    }
+    to {
+        @include prefixed(transform, rotate(0deg) translateX(0));
+    }
+}
+@include keyframes(rotateOutCircRight) {
+    from {
+    }
+    to {
+        @include prefixed(transform, rotate(20deg) translateX(100%));
+    }
+}
+@include keyframes(rotateInCircLeft) {
+    from {
+        @include prefixed(transform, rotate(-20deg) translateX(-100%));
+    }
+    to {
+        @include prefixed(transform, rotate(0deg) translateX(0));
+    }
+}
+
+//magic
+@include keyframes(rotateOutCircLeft_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, rotate(-20deg) translateX(-150%));
+    }
+}
+@include keyframes(rotateInCircRight_Magic) {
+    from {
+        @include prefixed(transform, rotate(20deg) translateX(150%));
+    }
+    to {
+        @include prefixed(transform, rotate(0deg) translateX(0));
+    }
+}
+@include keyframes(rotateOutCircRight_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, rotate(20deg) translateX(150%));
+    }
+}
+@include keyframes(rotateInCircLeft_Magic) {
+    from {
+        @include prefixed(transform, rotate(-20deg) translateX(-150%));
+    }
+    to {
+        @include prefixed(transform, rotate(0deg) translateX(0));
+    }
+}
+
+
+@include keyframes(shakeSlideBottom) {
+    0% {
+        @include prefixed(transform, translate(0px, 0px) rotate(0deg));
+    }
+    2% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    4% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    6% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    8% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    10% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    12% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    14% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    16% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    18% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    20% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    22% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    24% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    26% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    28% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    30% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    32% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    34% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    36% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    38% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    40% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    42% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    44% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    46% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    48% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    50% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    52% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    54% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    56% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    58% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    60% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    62% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    64% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    66% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    68% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    70% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    100% {
+        @include prefixed(transform, translateY(150%));
+    }
+}
+@include keyframes(pushFromTop) {
+    0%, 70% {
+        opacity: 0;
+        @include prefixed(transform, translateY(-100%));
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transform, translateY(0));
+    }
+}
+@include keyframes(shakeSlideTop) {
+    0% {
+        @include prefixed(transform, translate(0px, 0px) rotate(0deg));
+    }
+    2% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    4% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    6% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    8% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    10% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    12% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    14% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    16% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    18% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    20% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    22% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    24% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    26% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    28% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    30% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    32% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    34% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    36% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    38% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    40% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    42% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    44% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    46% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    48% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    50% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    52% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    54% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    56% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    58% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    60% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    62% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    64% {
+        @include prefixed(transform, translate(0px, -1px) rotate(-0.5deg));
+    }
+    66% {
+        @include prefixed(transform, translate(-1px, -1px) rotate(-0.5deg));
+    }
+    68% {
+        @include prefixed(transform, translate(-1px, 0px) rotate(-0.5deg));
+    }
+    70% {
+        @include prefixed(transform, translate(0px, 0px) rotate(-0.5deg));
+    }
+    100% {
+        @include prefixed(transform, translateY(-100%));
+    }
+}
+@include keyframes(pushFromBottom) {
+    0%, 70% {
+        opacity: 0;
+        @include prefixed(transition-timing-function, translateY(100%));
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transition-timing-function, translateY(0));
+    }
+}
+@include keyframes(hideLeft) {
+    0% {
+        @include prefixed(transition-timing-function, translateZ(0px));
+    }
+    40% {
+        @include prefixed(transition-timing-function, translate(0, -40%) scale(0.8));
+        z-index: 9999;
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transition-timing-function, translateZ(-400px));
+    }
+}
+@include keyframes(showRight) {
+    0% {
+        @include prefixed(transition-timing-function, translateZ(-400px));
+        opacity: 1;
+    }
+    40% {
+        @include prefixed(transition-timing-function, translate(0, 40%) scale(0.8));
+        opacity: 1;
+    }
+    41% {
+        @include prefixed(transition-timing-function, translate(0, 40%) scale(0.8));
+        opacity: 1;
+        z-index: 9999;
+    }
+    100% {
+        @include prefixed(transition-timing-function, translateZ(0px));
+        opacity: 1;
+        z-index: 9999;
+    }
+}
+@include keyframes(hideRight) {
+    0% {
+        @include prefixed(transition-timing-function, translateZ(0px));
+    }
+    40% {
+        @include prefixed(transition-timing-function, translate(0, 40%) scale(0.8));
+        z-index: 9999;
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transition-timing-function, translateZ(-400px));
+    }
+}
+@include keyframes(showLeft) {
+    0% {
+        @include prefixed(transition-timing-function, translateZ(-400px));
+        opacity: 1;
+    }
+    40% {
+        @include prefixed(transition-timing-function, translate(0, -40%) scale(0.8));
+        opacity: 1;
+    }
+    41% {
+        @include prefixed(transform, translate(0, -40%) scale(0.8) rotateX(-20deg));
+        opacity: 1;
+        z-index: 9999;
+    }
+    100% {
+        @include prefixed(transform, translateZ(0px));
+        opacity: 1;
+        z-index: 9999;
+    }
+}
+@include keyframes(show-right) {
+    0% {
+        @include prefixed(transform, translateZ(-200px))
+    }
+    40% {
+        @include prefixed(transform, translate(40%, 0) scale(0.8) rotateY(-20deg))
+    }
+    100% {
+        @include prefixed(transform, translateZ(0px))
+    }
+}
+@include keyframes(hide-right) {
+    0% {
+        @include prefixed(transform, translateZ(0px));
+        visibility: visible;
+    }
+    40% {
+        @include prefixed(transform, translate(-40%, 0) scale(0.8) rotateY(20deg));
+    }
+    100% {
+        @include prefixed(transform, translateZ(-200px));
+        visibility: hidden;
+    }
+}
+@include keyframes(show-left) {
+    0% {
+        @include prefixed(transform, translateZ(-200px));
+    }
+    40% {
+        @include prefixed(transform, translate(-40%, 0) scale(0.8) rotateY(20deg));
+    }
+    100% {
+        @include prefixed(transform, translateZ(0px));
+    }
+}
+@include keyframes(hide-left) {
+    0% {
+        @include prefixed(transform, translateZ(0px));
+        visibility: visible;
+    }
+    40% {
+        @include prefixed(transform, translate(40%, 0) scale(0.8) rotateY(-20deg));
+    }
+    100% {
+        @include prefixed(transform, translateZ(-200px));
+        visibility: hidden;
+    }
+}
+
+/* move from / to  */
+@include keyframes(moveToLeft) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateX(-100%));
+    }
+}
+@include keyframes(moveFromLeft) {
+    from {
+        @include prefixed(transform, translateX(-100%));
+    }
+}
+@include keyframes(moveToRight) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateX(100%));
+    }
+}
+@include keyframes(moveFromRight) {
+    from {
+        @include prefixed(transform, translateX(100%));
+    }
+}
+@include keyframes(moveToTop) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateY(-100%));
+    }
+}
+@include keyframes(moveFromTop) {
+    from {
+        @include prefixed(transform, translateY(-100%));
+    }
+}
+@include keyframes(moveToBottom) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateY(100%));
+    }
+}
+@include keyframes(moveFromBottom) {
+    from {
+        @include prefixed(transform, translateY(100%));
+    }
+}
+
+///move magic
+@include keyframes(moveToLeft_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateX(-150%));
+    }
+}
+@include keyframes(moveFromLeft_Magic) {
+    from {
+        @include prefixed(transform, translateX(-150%));
+    }
+}
+@include keyframes(moveToRight_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateX(150%));
+    }
+}
+@include keyframes(moveFromRight_Magic) {
+    from {
+        @include prefixed(transform, translateX(150%));
+    }
+}
+@include keyframes(moveToTop_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateY(-150%));
+    }
+}
+@include keyframes(moveFromTop_Magic) {
+    from {
+        @include prefixed(transform, translateY(-150%));
+    }
+}
+@include keyframes(moveToBottom_Magic) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateY(150%));
+    }
+}
+@include keyframes(moveFromBottom_Magic) {
+    from {
+        @include prefixed(transform, translateY(150%));
+    }
+}
+
+/* fade */
+@include keyframes(fade) {
+    from {
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+/* move from / to and fade */
+@include keyframes(moveToLeftFade) {
+    from {
+    }
+    to {
+        opacity: 0.3;
+        @include prefixed(transform, translateX(-100%));
+    }
+}
+@include keyframes(moveFromLeftFade) {
+    from {
+        opacity: 0.3;
+        @include prefixed(transform, translateX(-100%));
+    }
+}
+@include keyframes(moveToRightFade) {
+    from {
+    }
+    to {
+        opacity: 0.3;
+        @include prefixed(transform, translateX(100%));
+    }
+}
+@include keyframes(moveFromRightFade) {
+    from {
+        opacity: 0.3;
+        @include prefixed(transform, translateX(100%));
+    }
+}
+@include keyframes(moveToTopFade) {
+    from {
+    }
+    to {
+        opacity: 0.3;
+        @include prefixed(transform, translateY(-100%));
+    }
+}
+@include keyframes(moveFromTopFade) {
+    from {
+        opacity: 0.3;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+}
+@include keyframes(moveToBottomFade) {
+    from {
+    }
+    to {
+        opacity: 0.3;
+        @include prefixed(transform, translateY(100%));
+    }
+}
+@include keyframes(moveFromBottomFade) {
+    from {
+        opacity: 0.3;
+        @include prefixed(transform, translateY(100%));
+    }
+}
+
+/********************************* keyframes **************************************/
+
+/* scale and fade */
+@include keyframes(scaleDown) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, scale(.8));
+    }
+}
+@include keyframes(scaleUp) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, scale(.8));
+    }
+}
+@include keyframes(scaleUpDown) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, scale(1.2));
+    }
+}
+@include keyframes(scaleDownUp) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, scale(1.2));
+    }
+}
+@include keyframes(scaleDownCenter) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, scale(.7));
+    }
+}
+@include keyframes(scaleUpCenter) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, scale(.7));
+    }
+}
+
+/********************** keyframes ************************/
+
+/* rotate sides first and scale */
+@include keyframes(rotateRightSideFirst) {
+    0% {
+    }
+    40% {
+        @include prefixed(transform, rotateY(15deg));
+        opacity: .8;
+        @include prefixed(animation-timing-function, ease-out);
+    }
+    100% {
+        @include prefixed(transform, scale(0.8) translateZ(-200px));
+        opacity: 0;
+    }
+}
+@include keyframes(rotateLeftSideFirst) {
+    0% {
+    }
+    40% {
+        @include prefixed(transform, rotateY(-15deg));
+        opacity: .8;
+        @include prefixed(animation-timing-function,ease-out);
+    }
+    100% {
+        @include prefixed(transform, scale(0.8) translateZ(-200px));
+        opacity: 0;
+    }
+}
+@include keyframes(rotateTopSideFirst) {
+    0% {
+    }
+    40% {
+        @include prefixed(transform, rotateX(15deg));
+        opacity: .8;
+        @include prefixed(animation-timing-function,ease-out);
+    }
+    100% {
+        @include prefixed(transform, scale(0.8) translateZ(-200px));
+        opacity: 0;
+    }
+}
+@include keyframes(rotateBottomSideFirst) {
+    0% {
+    }
+    40% {
+        @include prefixed(transform, rotateX(-15deg));
+        opacity: .8;
+        @include prefixed(animation-timing-function, ease-out);
+    }
+    100% {
+        @include prefixed(transform, scale(0.8) translateZ(-200px));
+        opacity: 0;
+    }
+}
+
+/* flip */
+@include keyframes(flipOutRight) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateZ(-1000px) rotateY(90deg));
+        opacity: 0.2;
+    }
+}
+@include keyframes(flipInLeft) {
+    from {
+        @include prefixed(transform, translateZ(-1000px) rotateY(-90deg));
+        opacity: 0.2;
+    }
+}
+@include keyframes(flipOutLeft) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateZ(-1000px) rotateY(-90deg));
+        opacity: 0.2;
+    }
+}
+@include keyframes(flipInRight) {
+    from {
+        @include prefixed(transform, translateZ(-1000px) rotateY(90deg));
+        opacity: 0.2;
+    }
+}
+@include keyframes(flipOutTop) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateZ(-1000px) rotateX(90deg));
+        opacity: 0.2;
+    }
+}
+@include keyframes(flipInBottom) {
+    from {
+        @include prefixed(transform, translateZ(-1000px) rotateX(-90deg));
+        opacity: 0.2;
+    }
+}
+@include keyframes(flipOutBottom) {
+    from {
+    }
+    to {
+        @include prefixed(transform, translateZ(-1000px) rotateX(-90deg));
+        opacity: 0.2;
+    }
+}
+@include keyframes(flipInTop) {
+    from {
+        @include prefixed(transform, translateZ(-1000px) rotateX(90deg));
+        opacity: 0.2;
+    }
+}
+
+/* fall */
+@include keyframes(rotateFall) {
+    0% {
+        @include prefixed(transform, rotateZ(0deg));
+    }
+    20% {
+        @include prefixed(transform, rotateZ(10deg));
+        @include prefixed(animation-timing-function, ease-out);
+    }
+    40% {
+        @include prefixed(transform, rotateZ(17deg));
+    }
+    60% {
+        @include prefixed(transform, rotateZ(16deg));
+    }
+    100% {
+        @include prefixed(transform, translateY(100%) rotateZ(17deg));
+    }
+}
+
+/* newspaper */
+@include keyframes(rotateOutNewspaper) {
+    from {
+        @include prefixed(transform, translateZ(0) rotateZ(0deg));
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateZ(-3000px) rotateZ(360deg));
+        opacity: 0;
+    }
+}
+@include keyframes(rotateInNewspaper) {
+    0% {
+        @include prefixed(transform, translateZ(-3000px) rotateZ(-360deg));
+        opacity: 0;
+    }
+    100% {
+        @include prefixed(transform, translateZ(0) rotateZ(0deg));
+        opacity: 1;
+    }
+}
+
+/* push */
+@include keyframes(rotatePushLeft) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, rotateY(90deg));
+    }
+}
+@include keyframes(rotatePushRight) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, rotateY(-90deg));
+    }
+}
+@include keyframes(rotatePushTop) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, rotateX(-90deg));
+    }
+}
+@include keyframes(rotatePushBottom) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, rotateX(90deg));
+    }
+}
+
+/* pull */
+@include keyframes(rotatePullRight) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, rotateY(-90deg));
+    }
+}
+@include keyframes(rotatePullLeft) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, rotateY(90deg));
+    }
+}
+@include keyframes(rotatePullTop) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, rotateX(-90deg));
+    }
+}
+@include keyframes(rotatePullBottom) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, rotateX(90deg));
+    }
+}
+
+/* fold */
+@include keyframes(rotateFoldRight) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, translateX(100%) rotateY(90deg));
+    }
+}
+@include keyframes(rotateFoldLeft) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, translateX(-100%) rotateY(-90deg));
+    }
+}
+@include keyframes(rotateFoldTop) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, translateY(-100%) rotateX(90deg));
+    }
+}
+@include keyframes(rotateFoldBottom) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transform, translateY(100%) rotateX(-90deg));
+    }
+}
+
+/* unfold */
+@include keyframes(rotateUnfoldLeft) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, translateX(-100%) rotateY(-90deg));
+    }
+}
+@include keyframes(rotateUnfoldRight) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, translateX(100%) rotateY(90deg));
+    }
+}
+@include keyframes(rotateUnfoldTop) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, translateY(-100%) rotateX(90deg));
+    }
+}
+@include keyframes(rotateUnfoldBottom) {
+    from {
+        opacity: 0;
+        @include prefixed(transform, translateY(100%) rotateX(-90deg));
+    }
+}
+
+/* room walls */
+@include keyframes(rotateRoomLeftOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transform, translateX(-100%) rotateY(90deg));
+    }
+}
+@include keyframes(rotateRoomLeftIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transform, translateX(100%) rotateY(-90deg));
+    }
+}
+@include keyframes(rotateRoomRightOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transform, translateX(100%) rotateY(-90deg));
+    }
+}
+@include keyframes(rotateRoomRightIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transform, translateX(-100%) rotateY(90deg));
+    }
+}
+@include keyframes(rotateRoomTopOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transform, translateY(-100%) rotateX(-90deg));
+    }
+}
+@include keyframes(rotateRoomTopIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transform, translateY(100%) rotateX(90deg));
+    }
+}
+@include keyframes(rotateRoomBottomOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transform, translateY(100%) rotateX(90deg));
+    }
+}
+@include keyframes(rotateRoomBottomIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transform, translateY(-100%) rotateX(-90deg));
+    }
+}
+
+/* cube */
+@include keyframes(rotateCubeLeftOut) {
+    0% {
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transform, translateX(-50%) translateZ(-200px) rotateY(-45deg));
+    }
+    100% {
+        opacity: .3;
+        @include prefixed(transform, translateX(-100%) rotateY(-90deg));
+    }
+}
+@include keyframes(rotateCubeLeftIn) {
+    0% {
+        opacity: .3;
+        @include prefixed(transform, translateX(100%) rotateY(90deg));
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transform, translateX(50%) translateZ(-200px) rotateY(45deg));
+    }
+}
+@include keyframes(rotateCubeRightOut) {
+    0% {
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transform, translateX(50%) translateZ(-200px) rotateY(45deg));
+    }
+    100% {
+        opacity: .3;
+        @include prefixed(transform, translateX(100%) rotateY(90deg));
+    }
+}
+@include keyframes(rotateCubeRightIn) {
+    0% {
+        opacity: .3;
+        @include prefixed(transform, translateX(-100%) rotateY(-90deg));
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transform, translateX(-50%) translateZ(-200px) rotateY(-45deg));
+    }
+}
+@include keyframes(rotateCubeTopOut) {
+    0% {
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transform, translateY(-50%) translateZ(-200px) rotateX(45deg));
+    }
+    100% {
+        opacity: .3;
+        @include prefixed(transform, translateY(-100%) rotateX(90deg));
+    }
+}
+@include keyframes(rotateCubeTopIn) {
+    0% {
+        opacity: .3;
+        @include prefixed(transform, translateY(100%) rotateX(-90deg));
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transform, translateY(50%) translateZ(-200px) rotateX(-45deg));
+    }
+}
+@include keyframes(rotateCubeBottomOut) {
+    0% {
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transition-timing-function, translateY(50%) translateZ(-200px) rotateX(-45deg));
+    }
+    100% {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateY(100%) rotateX(-90deg));
+    }
+}
+@include keyframes(rotateCubeBottomIn) {
+    0% {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateY(-100%) rotateX(90deg));
+    }
+    50% {
+        @include prefixed(animation-timing-function,ease-out);
+        @include prefixed(transition-timing-function, translateY(-50%) translateZ(-200px) rotateX(45deg));
+    }
+}
+
+/* carousel */
+@include keyframes(rotateCarouselLeftOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateX(-150%) scale(.4) rotateY(-65deg));
+    }
+}
+@include keyframes(rotateCarouselLeftIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateX(200%) scale(.4) rotateY(65deg));
+    }
+}
+@include keyframes(rotateCarouselRightOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateX(200%) scale(.4) rotateY(65deg));
+    }
+}
+@include keyframes(rotateCarouselRightIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateX(-200%) scale(.4) rotateY(-65deg));
+    }
+}
+@include keyframes(rotateCarouselTopOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateY(-200%) scale(.4) rotateX(65deg));
+    }
+}
+@include keyframes(rotateCarouselTopIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateY(200%) scale(.4) rotateX(-65deg));
+    }
+}
+@include keyframes(rotateCarouselBottomOut) {
+    from {
+    }
+    to {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateY(200%) scale(.4) rotateX(-65deg));
+    }
+}
+@include keyframes(rotateCarouselBottomIn) {
+    from {
+        opacity: .3;
+        @include prefixed(transition-timing-function, translateY(-200%) scale(.4) rotateX(65deg));
+    }
+}
+
+/* sides */
+@include keyframes(rotateSidesOut) {
+    from {
+    }
+    to {
+        opacity: 0;
+        @include prefixed(transition-timing-function, translateZ(-500px) rotateY(90deg));
+    }
+}
+@include keyframes(rotateSidesIn) {
+    from {
+        opacity: 0;
+        @include prefixed(transition-timing-function, translateZ(-500px) rotateY(-90deg));
+    }
+}
+
+/* slide */
+@include keyframes(rotateSlideOutToLeft) {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px));
+    }
+    75% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px) translateX(-200%));
+    }
+    100% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px) translateX(-200%));
+    }
+}
+@include keyframes(rotateSlideOutToRight) {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px));
+    }
+    75% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px) translateX(200%));
+    }
+    100% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px) translateX(200%));
+    }
+}
+@include keyframes(rotateSlideInFromRight) {
+    0%, 25% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px) translateX(200%));
+    }
+    75% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px));
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transform, translateZ(0) translateX(0));
+    }
+}
+@include keyframes(rotateSlideInFromLeft) {
+    0%, 25% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px) translateX(-200%));
+    }
+    75% {
+        opacity: .5;
+        @include prefixed(transform, translateZ(-500px));
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transform, translateZ(0) translateX(0));
+    }
+}
+@include keyframes(bounceIn) {
+    0%, 100%, 20%, 40%, 60%, 80% {
+        @include prefixed(transition-timing-function, cubic-bezier(0.215, .61, .355, 1));
+    }
+    0% {
+        opacity: 0;
+        @include prefixed(transform, scale3d(.3, .3, .3));
+    }
+    20% {
+        @include prefixed(transform, scale3d(1.1, 1.1, 1.1));
+    }
+    40% {
+        @include prefixed(transform, scale3d(.9, .9, .9));
+    }
+    60% {
+        opacity: 1;
+        @include prefixed(transform, scale3d(1.03, 1.03, 1.03));
+    }
+    80% {
+        @include prefixed(transform, scale3d(.97, .97, .97));
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transform, scale3d(1, 1, 1));
+    }
+}
+@include keyframes(shake) {
+    0%, 100% {
+        @include prefixed(transform, translate3d(0, 0, 0));
+    }
+    10%, 30%, 50%, 70%, 90% {
+        @include prefixed(transform, translate3d(-10px, 0, 0));
+    }
+    20%, 40%, 60%, 80% {
+        @include prefixed(transform, translate3d(10px, 0, 0));
+    }
+}
+@include keyframes(zoomIn) {
+    0% {
+        opacity: 0;
+        @include prefixed(transform, scale3d(.3, .3, .3));
+    }
+    50% {
+        opacity: 1
+    }
+}
+@include keyframes(flash) {
+    0%, 100%, 50% {
+        opacity: 1
+    }
+    25%, 75% {
+        opacity: 0
+    }
+}
+//stick
+
+
+
+@include keyframes(rotateBottomSideOut) {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        @include prefixed(transform, rotateX(-15deg));
+        @include prefixed(animation-timing-function, ease-out);
+    }
+    100% {
+        opacity: 0;
+        @include prefixed(transform, scale(0.8) translateZ(-200px));
+    }
+}
+@include keyframes(slideInFromBottomDelayed) {
+    0%, 30% {
+        @include prefixed(transform, translateY(100%));
+    }
+    100% {
+        @include prefixed(transform, translateY(0));
+    }
+}
+@include keyframes(rotateBottomSideIn) {
+    0% {
+        opacity: 0;
+        @include prefixed(transform, scale(0.8) translateZ(-200px));
+    }
+    60% {
+        @include prefixed(animation-timing-function, ease-out);
+        @include prefixed(transform, scale(1) translateZ(0) rotateX(-15deg));
+    }
+    100% {
+        opacity: 1;
+        @include prefixed(transform, scale(1) translateZ(0) rotateX(0deg));
+    }
+}
+@include keyframes(slideOutToBottom) {
+    from {
+        opacity: 1;
+    }
+    to {
+        @include prefixed(transform, translateY(100%));
+    }
+}

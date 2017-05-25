@@ -1,8 +1,31 @@
 title: nodeppt markdown 演示
-speaker: Theo Wang
+speaker: 三水清
 url: https://github.com/ksky521/nodePPT
-transition: move
-files: /js/demo.js,/css/demo.css
+transition: slide3
+files: /js/demo.js,/css/demo.css,/js/zoom.js
+theme: moon
+usemathjax: yes
+
+[slide]
+# nodePPT
+## 这可能是迄今为止最好的网页版演示库
+<small style="vertical-align:middle;display:inline-block"><iframe src="http://ghbtns.com/github-btn.html?user=ksky521&repo=nodeppt&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" style="width:110px;height:20px;  background-color: transparent;"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=ksky521&repo=nodeppt&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" style="width:110px;height:20px;  background-color: transparent;"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=ksky521&repo=nodeppt&type=follow&count=false" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20" style="width:170px;height:20px;  background-color: transparent;"></iframe></small>
+[slide]
+## 为什么选择nodePPT
+----
+* 基于GFM的markdown语法编写 {:&.rollIn}
+* 支持html混排，再复杂的demo也可以做！
+* 导出网页或者pdf更容易分享
+* 支持单页背景图片
+* 多种模式：纵览模式，双屏模式，远程控制
+* 可以使用画板，可以使用note做备注
+* 支持语法高亮，自由选择highlight样式
+* 可以单页ppt内部动效，单步动效
+* 支持进入/退出回调，做在线demo很方便
+
+
+[slide]
+# 基本语法和样式演示
 
 [slide]
 
@@ -15,19 +38,7 @@ files: /js/demo.js,/css/demo.css
 # 样式展示 {:&.flexbox.vleft}
 > nodePPT 让每个人都爱上做分享！
 
-[slide]
-## 为什么选择nodePPT
-----
-* 基于GFM的markdown语法编写 {:&.moveIn}
-* 支持html混排，再复杂的demo也可以做！
-* 导出网页或者pdf更容易分享
-* 支持18种转场动画，可以设置单页动画
-* 支持单页背景图片
-* 多种模式：overview模式，双屏模式，socket远程控制，摇一摇换页
-* 可以使用画板，可以使用note做备注
-* 支持语法高亮，自由选择highlight样式
-* 可以单页ppt内部动画，单步动画
-* 支持进入/退出回调，做在线demo很方便
+
 
 [slide]
 ## 基本语法指南
@@ -37,9 +48,11 @@ files: /js/demo.js,/css/demo.css
 title: 这是title，网页名称
 speaker: 演讲者名称
 url: https://github.com/ksky521/nodePPT
-transition: 全局转场动画
+transition: 全局转场动效
 files: 引入的js和css文件，多个以半角逗号隔开
-hightStyle: 代码高亮样式，默认monokai_sublime
+theme: 皮肤样式
+highlightStyle: 代码高亮样式，默认monokai_sublime
+usemathjax: yes 启用MathJax渲染公式
 
 /* 以&#91;slide&#93; 隔开每个ppt页面 */
 &#91;slide&#93;
@@ -55,8 +68,16 @@ hightStyle: 代码高亮样式，默认monokai_sublime
 
 [slide style="background-image:url('/img/bg1.png')"]
 
-# 支持单页添加背景图片 {:&.flexbox.vleft}
-## 使用方法：&#91;slide style="background-image:url('/img/bg1.png')"&#93;
+# 支持添加背景图片 {:&.flexbox.vleft}
+
+使用方法：&#91;slide style="background-image:url('/img/bg1.png')"&#93;
+
+完全style写法，更加灵活，视频背景、repeat背景更不在话下
+
+[slide]
+## 使用LaTex公式：
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.    s = ut + \frac{1}{2}at^2 $$
+矩阵：\\( x = {\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{bmatrix}}  \\)
 
 [slide]
 ## 支持.class/#id/自定义属性样式
@@ -79,49 +100,6 @@ nodeppt是基于nodejs写的支持 **Markdown!** 语法的网页PPT
 
 nodeppt：https://github.com/ksky521/nodePPT
 
-[slide]
-
-## 这是一个列表
----
-
-* 上下左右方向键翻页
-    * 列表支持渐显动画 {:&.moveIn}
-    * 支持多级列表
-    * 这个动画是moveIn
-* 完全基于markdown语法哦
-
-
-[slide]
-## 列表渐显动画：fadeIn
-----
-* 列表支持渐显动画哦 {:&.fadeIn}
-    * 使用方法，markdown列表第一条加上：{:&.动画类型}
-* 动画类型
-    * fadeIn
-    * bounceIn
-    * moveIn
-    * zoomIn
-
-[slide]
-## 列表渐显动画：zoomIn
-----
-* 列表支持渐显动画哦 {:&.zoomIn}
-* 动画类型
-    * fadeIn
-    * bounceIn
-    * moveIn
-    * zoomIn
-
-[slide]
-## 列表渐显动画：bounceIn
-----
-* 列表支持渐显动画哦 {:&.bounceIn}
-* 动画类型
-    * fadeIn
-    * bounceIn
-    * moveIn
-    * zoomIn
-
 
 
 [slide]
@@ -137,18 +115,64 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 
 [slide]
-## 多种样式展示
+## text
+-----
+
+<span class="text-danger">.text-danger</span> <span class="text-success">.text-sucess</span><span class="text-primary">.text-primary</span>
+
+<span class="text-warning">.text-warning</span><span class="text-info">.text-info</span><span class="text-white">.text-white</span><span class="text-dark">.text-dark</span>
+
+
+<span class="blue">.blue</span><span class="blue2">.blue2</span><span class="blue3">.blue3</span><span class="gray">.gray</span><span class="gray2">.gray2</span><span class="gray3">.gray3</span>
+
+<span class="red">.red</span><span class="red2">.red2</span><span class="red3">.red3</span>
+
+<span class="yellow">.yellow</span><span class="yellow2">.yellow2</span><span class="yellow3">.yellow3</span><span class="green">.green</span><span class="green2">.green2</span><span class="green3">.green3</span>
+
+[slide]
+## label and link
+<span class="label label-primary">.label.label-primary</span><span class="label label-warning">.label.label-warning</span><span class="label label-danger">.label.label-danger</span><span class="label label-default">.label.label-default</span><span class="label label-success">.label.label-success</span><span class="label label-info">.label.label-info</span>
+
+<a href="#">link style</a> <mark>mark</mark>
+
+[slide]
+## blockquote
 ----
-
-<button>按钮</button>
-
-<a href="#">链接</a>
 
 > nodeppt可能是迄今为止最好用的web presentation <small>三水清</small>
 
-**注意**下一页效果高能！提前预警！！
+
+下面是另外一种样式
 
 > 这是一个class是：pull-right的blockquote <small>small一下</small> {:&.pull-right}
+
+[slide]
+## buttons
+----
+
+<button class="btn btn-default">.btn .btn-default</button>  <button class="btn btn-primary">.btn.btn-lg.btn-primary</button> <button class="btn btn-warning">.btn.btn-waring</button> <button class="btn btn-success">.btn.btn-success</button> <button class="btn btn-danger">.btn.btn-danger</button>
+
+<button class="btn btn-lg btn-default">.btn.btn-lg.btn-default</button> <button class="btn btn-xs btn-success">.btn.btn-xs.btn-success</button> <button class="btn btn-sm btn-primary">.btn.btn-sm.btn-primary</button> <button class="btn btn-rounded btn-warning">.btn.btn-rounded.btn-waring</button>  <button class="btn btn-danger" disabled="disabled">disabled.btn.btn-danger</button>
+
+
+<button class="btn btn-success"><i class="fa fa-share mr5"></i></button>
+
+[slide]
+## icons: Font Awesome
+------
+
+<i class="fa fa-apple"></i>
+<i class="fa fa-android"></i>
+<i class="fa fa-github"></i>
+<i class="fa fa-google"></i>
+<i class="fa fa-linux"></i>
+<i class="fa fa-css3"></i>
+<i class="fa fa-html5"></i>
+<i class="fa fa-usd"></i>
+<i class="fa fa-pie-chart"></i>
+<i class="fa fa-file-video-o"></i>
+<i class="fa fa-cog"></i>
+
 
 [slide]
 
@@ -182,7 +206,7 @@ nodeppt：https://github.com/ksky521/nodePPT
     </code></pre>
 </div>
 
-[slide data-incallback="testScriptTag"]
+[slide data-on-enter="testScriptTag"]
 ## 支持 HTML 和 markdown 语法混编
 ----
 
@@ -213,13 +237,177 @@ nodeppt：https://github.com/ksky521/nodePPT
 <iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
 
 [slide]
-## 动画样式强调
+# 内置多套皮肤
+
+[slide]
+## 支持多种皮肤
 ----
 
-这段话里面的**加粗**和*em*字体会动画哦~
+<div class="columns6">
+    <a href="?theme=color" class="label-danger">color</a>
+    <a href="?theme=blue" class="label-primary">blue</a>
+    <a href="?theme=dark" class="label-info">dark</a>
+    <a href="?theme=green" class="label-success">green</a>
+    <a href="?theme=light" class="label-warning">light</a>
+</div>
+
+[slide]
+# 多窗口和远程控制演示
+
+[slide]
+## 多窗口演示
+## 双屏演示不out！
+---
+本页面网址改成 [url?_multiscreen=1](?_multiscreen=1)，支持多屏演示哦！
+
+跟powderpoint/keynote一样的双屏功能，带有备注信息。
+
+[slide]
+# nodePPT动效和转场演示
+
+[slide]
+# 第一部分：介绍单页slide内动效
+
+[slide]
+
+[magic data-transition="earthquake"]
+## 演示magic标签效果
+-----
+<div class="columns3">
+    <img src="/girl.jpg" height="450">
+    <img src="/girl.jpg" height="450">
+    <img src="/girl.jpg" height="450">
+</div>
+========
+## 演示earthquake转场效果
+-----
+<div class="columns4">
+    <img src="/girl.jpg" height="320">
+    <img src="/girl.jpg" height="320">
+    <img src="/girl.jpg" height="320">
+    <img src="/girl.jpg" height="320">
+</div>
+[/magic]
+
+
+[slide]
+[magic data-transition="cover-circle"]
+## 换个magic动效效果
+----
+![](/girl.jpg)
+====
+![](/girl.jpg)
+[/magic]
+
+
+[slide]
+## 动效：fadeIn
+----
+* 列表支持渐显动效哦 {:&.fadeIn}
+    * 使用方法
+    * markdown列表第一条加上：{:&.动效类型}
+* 动效类型
+    * fadeIn
+    * rollIn
+    * bounceIn
+    * moveIn
+    * zoomIn
+
+[slide]
+## 动效：zoomIn
+----
+* 列表支持渐显动效哦 {:&.zoomIn}
+* 动效类型
+    * fadeIn
+    * rollIn
+    * bounceIn
+    * moveIn
+    * zoomIn
+
+[slide]
+## 动效：bounceIn
+----
+* 列表支持渐显动效哦 {:&.bounceIn}
+* 动效类型
+    * fadeIn
+    * rollIn
+    * bounceIn
+    * moveIn
+    * zoomIn
+
+[slide]
+# nodePPT支持多达20多个转场动效
+
+[slide]
+## 20种转场动效随心换
+----
+ * <a href="?transition=slide">slide</a>/<a href="?transition=slide2">slide2</a>/<a href="?transition=slide3">slide3</a>
+ * [newspaper](?transition=newspaper)
+ * [glue](?transition=glue)
+ * [kontext](?transition=kontext)/[vkontext](?transition=vkontext)
+ * [move](?transition=move)/[circle](?transition=circle)
+ * [horizontal](?transition=horizontal)/[horizontal3d](?transition=horizontal3d)
+ * [vertical3d](?transition=vertical3d)
+ * [zoomin](?transition=zoomin)/[zoomout](?transition=zoomout)
+ * [cards](?transition=cards)
+ * [earthquake](?transition=earthquake)/[pulse](?transition=pulse)/[stick](?transition=stick)...
+
+
+[slide data-transition="glue"]
+
+## 这是一个glue的动效
+----
+使用方法（全局设置） 1：
+
+> transition: glue
+
+
+[slide data-transition="glue"]
+
+## 这是一个glue的动效
+----
+使用方法 2：
+
+&#91;slide data-transition="glue"&#93;
+
+[slide data-transition="zoomin"]
+
+## 这是一个zoomin的动效
+----
+使用方法：
+
+&#91;slide data-transition="zoomin"&#93;
+
+[slide data-transition="vertical3d"]
+
+## 这是一个vertical3d的动效
+----
+使用方法：
+
+&#91;slide data-transition="vertical3d"&#93;
+
+[slide]
+# nodePPT快捷键介绍
+[slide]
+## 快速翻页
+----
+1. 输入页码，然后enter
+2. 使用O键，开启纵览模式，然后翻页
+
+[slide]
+## 动效样式强调
+----
+
+这段话里面的**加粗**和*em*字体会动效哦~
 
 按下【H】键查看效果
 
+
+[slide]
+## 支持zoom.js
+----
+
+增加了zoom.js的支持，在演示过程中使用`alt`+鼠标点击，则点击的地方就开始放大，再次`alt+click`则回复原状
 
 [slide]
 
@@ -228,6 +416,13 @@ nodeppt：https://github.com/ksky521/nodePPT
 
 ![小萝莉](/girl.jpg "小萝莉")
 
+
+[slide]
+
+## 图片，禁止全屏
+----
+
+<img src="/girl.jpg" class="no-screenfull">
 
 [slide]
 [note]
@@ -251,9 +446,12 @@ markdown语法如下：
 ## 使用画笔
 ### 使用画笔做标记哦~你也可以随便作画啊！
 ---
-按下键盘【P】键。按下鼠标左键，在此处乱花下看看效果。
+按下键盘【P】键：按下鼠标左键，在此处乱花下看看效果。
 
-按下键盘【C】键。清空画板
+按下键盘【B/Y/R/G/M】：更换颜色，按下【1~4】：更换粗细
+
+按下键盘【C】键：清空画板
+
 
 [slide]
 
@@ -277,93 +475,33 @@ markdown语法如下：
 
 或者按下键盘【O】键，退出overview模式
 
+
+
 [slide]
 
-## 多窗口演示
-## 双屏演示不out！
----
-本页面网址改成 [url?_multiscreen=1](?_multiscreen=1)，支持多屏演示哦！
-
-跟powderpoint一样的双屏功能，带有备注信息。
+# 介绍下nodePPT的函数和事件
 
 [slide]
-## 20种转场动画随心换
-----
- * slide/slide2/slide3
- * newspaper
- * glue
- * kontext/vkontext
- * move/circle
- * cover-circle/cover-diamond
- * horizontal/horizontal3d
- * vertical3d
- * zoomin/zoomout
- * cards
- * earthquake/pulse/stick...
+支持单个slide事件：build/enter/leave/keypress，事件统一在&#91;slide&#93;
+中使用`data-on-X`来指定一个全局函数名
 
-[slide data-transition="newspaper"]
-
-## 这是一个newspaper的动画
-----
-使用方法（全局） 1：
-
-> transition: newspaper
+* build：当触发下一步操作的时会触发，event具有stop方法
+* keypress：在当前页面按键触发，event具有stop方法
+* enter/leave：进入/离开 此页面触发的事件，event无stop方法
 
 
-[slide data-transition="newspaper"]
-
-## 这是一个newspaper的动画
-----
-使用方法 2：
-
-&#91;slide data-transition="newspaper"&#93;
-
-
-[slide data-transition="glue"]
-
-## 这是一个glue的动画
-----
-使用方法（全局设置） 1：
-
-> transition: glue
-
-
-[slide data-transition="glue"]
-
-## 这是一个glue的动画
-----
-使用方法 2：
-
-&#91;slide data-transition="glue"&#93;
-
-[slide data-transition="zoomin"]
-
-## 这是一个zoomin的动画
-----
-使用方法：
-
-&#91;slide data-transition="zoomin"&#93;
-
-[slide data-transition="vertical3d"]
-
-## 这是一个vertical3d的动画
-----
-使用方法：
-
-&#91;slide data-transition="vertical3d"&#93;
-
-[slide data-outcallback="outcallback" data-incallback="incallback" ]
+[slide data-on-leave="outcallback" data-on-enter="incallback" ]
 ## 使用回调
 ----
 
-* &#91;slide data-outcallback="fnName"&#93;
+* &#91;slide data-on-leave="fnName"&#93;
     * 进入执行回调incallback函数
-* &#91;slide data-incallback="fnName"&#93;
+* &#91;slide data-on-enter="fnName"&#93;
     * 退出执行outcallback函数
 
 亦可以组合写：
 
-> &#91;slide data-outcallback="foo" data-incallback="bar"&#93;
+> &#91;slide data-on-leave="foo" data-on-enter="bar"&#93;
 
 
 <p id="incallback"></p>
@@ -379,17 +517,16 @@ markdown语法如下：
 function globalFunc(){
 }
 </script>
-<button onclick="Slide.proxyFn('globalFunc')">远程执行函数</button>
+<button onclick="Slide.proxyFn('globalFunc')" class="btn btn-default">远程执行函数</button>
 ```
 
-<button onclick="Slide.proxyFn('globalFunc','args')">测试远程执行函数</button>
+<button onclick="Slide.proxyFn('globalFunc','args')" class="btn btn-default">测试远程执行函数</button>
 <a href="?_multiscreen=1#33">在多屏中测试远程执行</a>
 <script>
     function globalFunc(a){
-        alert('proxyFn success: '+a);
+        alert('proxyFn success: '+a+location.href);
     }
 </script>
-
 
 [slide]
 

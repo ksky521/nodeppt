@@ -54,7 +54,20 @@
     .copyright a{
         color: #ea7373;
     }
-
+    ol a.mult-link, ol a.socket-link{
+        margin: 0 15px;
+    }
+    ol a.mult-link:before, ol a.socket-link:before{
+        content: '[ ';
+        color: black;
+    }
+    ol a.mult-link:after, ol a.socket-link:after{
+        content: ' ]';
+        color: black;
+    }
+    ol a.socket-link{
+        margin: 0 ;
+    }
     </style>
 </head>
 <body>

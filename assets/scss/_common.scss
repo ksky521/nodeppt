@@ -1,0 +1,156 @@
+@import "vars";
+@import "mixins";
+@import "compass/css3/flexbox";
+
+:disabled {
+    color: $gray-2;
+}
+.blue {
+    color: $brand-blue !important;
+}
+.blue2, .blue-2 {
+    color: $brand-blue-secondary !important;
+}
+.blue3, .blue-3 {
+    color: $brand-blue-secondary2 !important;
+}
+.yellow {
+    color: $brand-yellow;
+}
+.yellow2, .yellow-2 {
+    color: $brand-yellow-secondary !important;
+}
+.yellow3, .yellow-3 {
+    color: $brand-yellow-secondary2 !important;
+}
+.green {
+    color: $brand-green !important;
+}
+.green2, .green-2 {
+    color: $brand-green-secondary !important;
+}
+.green3, .green-3 {
+    color: $brand-green-secondary2 !important;
+}
+.red {
+    color: $brand-red;
+}
+.red2, .red-2 {
+    color: $brand-red-secondary !important;
+}
+.red3, .red-3 {
+    color: $brand-red-secondary2 !important;
+}
+.gray {
+    color: $gray-1 !important;
+}
+.gray2, .gray-2 {
+    color: $gray-2 !important;
+}
+.gray3, .gray-3 {
+    color: $gray-3 !important;
+}
+.gray4, .gray-4 {
+    color: $gray-4 !important;
+}
+.white {
+    color: white !important;
+}
+.black {
+    color: black !important;
+}
+@mixin column($count){
+    .columns-#{$count}, .columns#{$count} {
+        @include display-flex;
+        @include flex-wrap(wrap);
+        > * {
+            @include flex(1 0);
+            max-width: $slide-content-width/$count - 10 !important;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+    .layout-widescreen .columns-#{$count},
+    .layout-widescreen .columns#{$count},
+    .layout-faux-widescreen .columns-#{$count},
+    .layout-faux-widescreen .columns#{$count}{
+        > * {
+            max-width: $slide-content-width-widescreen/$count - 10 !important;
+        }
+    }
+}
+@include column(2);
+@include column(3);
+@include column(4);
+@include column(5);
+@include column(6);
+
+.padding10,.pd10{
+    padding: 10px;
+}
+.margin10,.mg10{
+    margin: 10px;
+}
+.padding20,.pd20{
+    padding: 20px;
+}
+.margin20,.mg20{
+    margin: 20px;
+}
+.pd5-10,.padding5-10{
+    padding: 5px 10px;
+}
+.pd10-20,.padding10-20{
+    padding: 10px 20px;
+}
+//lable
+.label,.tag {
+    line-height: inherit;
+    font-weight: 400
+}
+.label-default,.tag-default {
+    @include label-variant($label-default-bg);
+    color: black;
+    border: 1px solid $border-color;
+}
+.label-primary,.tag-primary {
+    @include label-variant($label-primary-bg);
+    color: #fff;
+}
+.label-success,.tag-success {
+    @include label-variant($label-success-bg);
+}
+.label-info,.tag-info {
+    @include label-variant($label-info-bg);
+}
+.label-warning,.tag-warning {
+    @include label-variant($label-warning-bg);
+}
+.label-danger,.tag-danger {
+    @include label-variant($label-danger-bg);
+}
+//text
+.text-default{
+    color: $brand-default !important;
+}
+.text-primary{
+    color: $brand-primary !important;
+}
+.text-success{
+    color: $brand-success !important;
+}
+.text-warning{
+    color: $brand-warning !important;
+}
+.text-danger{
+    color: $brand-danger !important;
+}
+.text-info{
+    color: $brand-info !important;
+}
+.text-white{
+    color: $brand-white !important;
+}
+.text-dark{
+    color: $brand-dark !important;
+}
