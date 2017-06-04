@@ -6,37 +6,37 @@ nodePPT - This is probably the best web presentation tool so far!
 [![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
 [![Inline docs](http://inch-ci.org/github/ksky521/nodePPT.svg?branch=master)](http://inch-ci.org/github/ksky521/nodePPT)
 
-## why nodePPT?
+## Why nodePPT?
 
- * markdown based on GFM;
- * mix-code with html and markdown
- * export your work with html and pdf format;
+ * Markdown based on GFM;
+ * Mix code with html and markdown
+ * Export your work with the html and pdf formats;
  * 18 different transition animations, and you can choose single page animation well;
  * Setting one page background image different than others;
- * overview mode, multiscreen mode, remote control with socket, shake to page-flipping with ipad/iphone;
- * canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
- * syntax highlighting of course, and you may want to customize your [syntax highlighting style](https://highlightjs.org/), it's supported well;
- * Animation in single page, one-step animation;
- * themes：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
- * [forward and backward callback function](#callback)
+ * Overview mode, multiscreen mode, remote control with socket, shake to page-flipping with ipad/iphone;
+ * Canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
+ * Syntax highlighting is supported of course, and you may want to customize your [syntax highlighting style](https://highlightjs.org/), it's supported well;
+ * Animation on a single page, one-step animation;
+ * Themes：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
+ * [Forward and backward callback function](#callback)
 
-## 1.2.0 new features
- * real time sync canvas drawing across multiple devices
- * watch
- * add buttons to control page-flipping
- * bugs fixed
+## 1.2.0 New Features
+ * Real time sync canvas drawing across multiple devices
+ * Watch
+ * Add buttons to control page-flipping
+ * Bugs fixed
 
-## demo
+## Demo
 
  * http://qdemo.sinaapp.com/
  * sync multiscreen in real time: http://qdemo.sinaapp.com/?_multiscreen=1 (make sure alert is allowed in your browser)
  * front-end experience of mobile baidu: http://qdemo.sinaapp.com/box-fe-road.htm
 
 
-## customize your theme
+## Customize your Theme
 
- * default theme is not cool?  just customize your theme! take a look with [theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
- * write your customize theme's template path in setting md:
+ * Is the default theme not cool?  Just customize your theme! Take a look with [theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
+ * Write your customize theme's template path in setting md:
 
  ```markdown
  title: presentation title
@@ -46,7 +46,7 @@ nodePPT - This is probably the best web presentation tool so far!
  files: /path/to/your/theme.css
  ```
 
-## install
+## Installation
 
  ```bash
  # get help
@@ -67,39 +67,37 @@ nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
 ```
 
 
-#### how to start socket?
+#### How do I start a socket?
 
-##### with url params
+##### Method 1: With Url Params
 
 ```bash
 http://127.0.0.1:8080/md/demo.md?controller=socket
 ```
 
-type 'Q' in page to show the QR Code, scan it, and you can control the slider on your phone: swipe or touch or shake to page-flipping
+Type 'Q' in page to show the QR Code, scan it, and then you can control the slider on your phone. Swipe, touch, or shake to flip page.
 
-##### or use 'start' command:
+##### Method 2: Use The 'start' Command:
 
 ```bash
 nodeppt start -c socket
 ```
 
-type 'Q' in page to show the QR Code, scan it, and you can control the slider on your phone: swipe or touch or shake to page-flipping
+Type 'Q' in page to show the QR Code, scan it, and then you can control the slider on your phone. Swipe, touch, or shake to flip page.
 
-
-
-#### how to start postMessage:
+#### How to Start postMessage:
 
 ```bash
 http://127.0.0.1:8080/md/demo.md?_multiscreen=1
 ```
 
-#### export your ppt
+#### Export your .ppt
 
-share your awesome slider with others, why not?
+Share your awesome slider with others, why not?
 
-#### export to pdf format:
+#### Export to PDF format:
 <a name="export-pdf"></a>
-need to install phantomjs
+Install phantomjs
 
 ```bash
 npm install -g phantomjs
@@ -110,7 +108,7 @@ nodeppt pdf http://127.0.0.1:8080/md/demo.md a.pdf
 ```
 
 <a name="export-html"></a>
-#### export to html
+#### Export to HTML
 
 ```bash
 # get generate help
@@ -195,7 +193,7 @@ on the top of the md file, you can set global transition animation in ```setting
 ```
 
 <a name="mixed-code"></a>
-#### insert html code
+#### Insert HTML Code
 If want to diy your ppt total, you can **directly** use html tag. As you see, mixed-code with html and markdown is supported well.
 For example:
 ```markdown
@@ -217,7 +215,7 @@ For example:
 ```
 
 <a name="callback"></a>
-#### transition callback
+#### Transition Callback
 you can use ```incallback```or```outcallback``` to define your callback function while the page forward and backward.
 suck like this:
 ```markdown
@@ -226,7 +224,7 @@ suck like this:
 ## when left this page, call outcallback function
 ```
 
-#### table example
+#### Table Example
 ```markodwn
 ### css preprocessor：less\sass\stylus
 ---
@@ -236,18 +234,18 @@ environment |js/nodejs | Ruby | nodejs
 .ext | .less | .sass/.scss | .styl
 ```
 
-#### insert iframe
+#### Insert IFrame
 use ```data-src``` as the url of the iframe, the iframe will not load the content untill the page be displayed.
 ```markdown
 <iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
 ```
 
-#### example
+#### Examples
 for more go to ppts/demo.md
 
 To see more demo, check the ```ppts``` folder
 
-### help
+### Help
 
 ```bash
 nodeppt -h
@@ -255,7 +253,7 @@ nodeppt -h
 nodeppt start -h
 ```
 
-## how to run the demo?
+## How do I run the demo?
 
  * run ```nodeppt start```
  * visit [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
