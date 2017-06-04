@@ -1,4 +1,4 @@
-nodePPT - This is probably the best web presentation tool so far!
+nodePPT - Probably the best web presentation tool so far!
 ==================================
 中文说明：[README](./README.md)
 
