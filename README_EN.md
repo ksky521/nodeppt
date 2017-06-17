@@ -1,12 +1,12 @@
-nodePPT - Probably the best web presentation tool so far!
+nodeppt - Probably the best web presentation tool so far!
 ==================================
 中文说明：[README](./README.md)
 
 [![NPM](https://nodei.co/npm-dl/nodeppt.png)](https://nodei.co/npm/nodeppt/)
 [![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
-[![Inline docs](http://inch-ci.org/github/ksky521/nodePPT.svg?branch=master)](http://inch-ci.org/github/ksky521/nodePPT)
+[![Inline docs](http://inch-ci.org/github/ksky521/nodeppt.svg?branch=master)](http://inch-ci.org/github/ksky521/nodeppt)
 
-## Why nodePPT?
+## Why nodeppt?
 
  * Markdown based on GFM;
  * Mix code with html and markdown
@@ -17,7 +17,7 @@ nodePPT - Probably the best web presentation tool so far!
  * Canvas is also supported, with socket, we **sync your multiscreen in real time**, and you can type some notes;
  * Syntax highlighting is supported of course, and you may want to customize your [syntax highlighting style](https://highlightjs.org/), it's supported well;
  * Animation on a single page, one-step animation;
- * Themes：[colors](http://qdemo.sinaapp.com/)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
+ * Themes：[colors](http://js8.in/nodeppt/)-[moon](http://js8.in/nodeppt/?theme=moon)-[blue](http://js8.in/nodeppt/?theme=blue)-[dark](http://js8.in/nodeppt/?theme=dark)-[green](http://js8.in/nodeppt/?theme=green)-[light](http://js8.in/nodeppt/?theme=light)
  * [Forward and backward callback function](#callback)
 
 ## 1.2.0 New Features
@@ -28,14 +28,14 @@ nodePPT - Probably the best web presentation tool so far!
 
 ## Demo
 
- * http://qdemo.sinaapp.com/
- * sync multiscreen in real time: http://qdemo.sinaapp.com/?_multiscreen=1 (make sure alert is allowed in your browser)
- * front-end experience of mobile baidu: http://qdemo.sinaapp.com/box-fe-road.htm
+ * http://js8.in/nodeppt/
+ * sync multiscreen in real time: http://js8.in/nodeppt/?_multiscreen=1 (make sure alert is allowed in your browser)
+ * front-end experience of mobile baidu: http://js8.in/nodeppt/box-fe-road.htm
 
 
 ## Customize your Theme
 
- * Is the default theme not cool?  Just customize your theme! Take a look with [theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
+ * Is the default theme not cool?  Just customize your theme! Take a look with [theme.moon](https://github.com/ksky521/nodeppt/blob/master/assets/scss/theme.moon.scss)
  * Write your customize theme's template path in setting md:
 
  ```markdown
@@ -178,7 +178,7 @@ if you want set single page animation, go to **[single page animation setting](#
 ### ---- boundary
 ----
 nodeppt is a ppt webapp coded by nodejs
-nodeppt: https://github.com/ksky521/nodePPT
+nodeppt: https://github.com/ksky521/nodeppt
 ```
 #### code formatting
 the same as **Github Flavored Markdown**
@@ -257,7 +257,7 @@ nodeppt start -h
 
  * run ```nodeppt start```
  * visit [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
- * online demo： http://qdemo.sinaapp.com/
+ * online demo： http://js8.in/nodeppt/
 
 
 ## Thanks

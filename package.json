@@ -3,8 +3,8 @@
   "jsname": "nodeppt",
   "description": "A simple, in-browser, markdown-driven presentation framework",
   "version": "1.4.3",
-  "site": "https://github.com/ksky521/nodePPT",
-  "main": "lib/nodePPT.js",
+  "site": "https://github.com/ksky521/nodeppt",
+  "main": "lib/nodeppt.js",
   "author": {
     "name": "Theo Wang",
     "email": "ksky521@gmail.com"
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ksky521/nodePPT"
+    "url": "git://github.com/ksky521/nodeppt"
   },
   "dependencies": {
     "chokidar": "^1.0.0-rc3",

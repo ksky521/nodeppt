@@ -1,4 +1,4 @@
-nodePPT - 让你爱上做分享！
+nodeppt - 让你爱上做分享！
 =============
 [This is a readme file in English](./README_EN.md)
 
@@ -7,13 +7,13 @@ nodePPT - 让你爱上做分享！
 
 **导出pdf不再支持，请使用chrome打印服务另存为pdf，url中添加`?print=1`，然后使用chrome打印 `ctrl+P` **
 
-## 为什么选择nodePPT
+## 为什么选择nodeppt
 
 **这可能是迄今为止最好的网页版演示库**
 
  * 基于GFM的markdown语法编写
  * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
- * 支持多个皮肤：[colors](http://qdemo.sinaapp.com/?theme=colors)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
+ * 支持多个皮肤：[colors](http://js8.in/nodeppt/?theme=colors)-[moon](http://js8.in/nodeppt/?theme=moon)-[blue](http://js8.in/nodeppt/?theme=blue)-[dark](http://js8.in/nodeppt/?theme=dark)-[green](http://js8.in/nodeppt/?theme=green)-[light](http://js8.in/nodeppt/?theme=light)
  * 实现watch功能`nodeppt start -w`
  * 支持[20种转场动画](#transition)，可以设置单页动画
  * 支持单页背景图片
@@ -22,15 +22,15 @@ nodePPT - 让你爱上做分享！
  * 支持语法高亮，自由选择[highlight样式](https://highlightjs.org/)
  * 可以单页ppt内部动画，单步动画
  * [支持进入/退出回调](#callback)，做在线demo很方便
- * 支持事件update函数，查看[demo](http://qdemo.sinaapp.com/#12)
+ * 支持事件update函数，查看[demo](http://js8.in/nodeppt/#12)
  * zoom.js：alt+click
 
 ## demo
- * http://qdemo.sinaapp.com/
- * 多套皮肤：[colors](http://qdemo.sinaapp.com/?theme=color)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light)
- * 双屏控制：http://qdemo.sinaapp.com/?_multiscreen=1 记得允许弹窗哦~
+ * http://js8.in/nodeppt/
+ * 多套皮肤：[colors](http://js8.in/nodeppt/?theme=color)-[moon](http://js8.in/nodeppt/?theme=moon)-[blue](http://js8.in/nodeppt/?theme=blue)-[dark](http://js8.in/nodeppt/?theme=dark)-[green](http://js8.in/nodeppt/?theme=green)-[light](http://js8.in/nodeppt/?theme=light)
+ * 双屏控制：http://js8.in/nodeppt/?_multiscreen=1 记得允许弹窗哦~
  * 三水清的分享：http://js8.in/slide
- * 打印页面：http://qdemo.sinaapp.com/?print=1
+ * 打印页面：http://js8.in/nodeppt/?print=1
 
 ## 1.4 新功能
 支持单个slide事件：build/enter/leave/keypress，事件统一在`[slide]`中使用`data-on-X`来指定一个*全局函数名*
@@ -135,7 +135,7 @@ magic是在一页幻灯片中播放多个子页面，页面之间进行动效切
 ```
 
 ## theme 自定义
-感觉默认的模板不符合新意？可以支持自定义模板，查看[theme.moon](https://github.com/ksky521/nodePPT/blob/master/assets/scss/theme.moon.scss)
+感觉默认的模板不符合新意？可以支持自定义模板，查看[theme.moon](https://github.com/ksky521/nodeppt/blob/master/assets/scss/theme.moon.scss)
 
 自定义后的模板路径在markdown的设置里填写：
 
@@ -152,7 +152,7 @@ usemathjax: //如果为yes，则引入mathjax，默认不建议开启，导出�
 date: 2015年12月20日
 ```
 
-另外有：[colors](http://qdemo.sinaapp.com/?theme=color)-[moon](http://qdemo.sinaapp.com/?theme=moon)-[blue](http://qdemo.sinaapp.com/?theme=blue)-[dark](http://qdemo.sinaapp.com/?theme=dark)-[green](http://qdemo.sinaapp.com/?theme=green)-[light](http://qdemo.sinaapp.com/?theme=light) 共六套自带皮肤可供选择
+另外有：[colors](http://js8.in/nodeppt/?theme=color)-[moon](http://js8.in/nodeppt/?theme=moon)-[blue](http://js8.in/nodeppt/?theme=blue)-[dark](http://js8.in/nodeppt/?theme=dark)-[green](http://js8.in/nodeppt/?theme=green)-[light](http://js8.in/nodeppt/?theme=light) 共六套自带皮肤可供选择
 
 ```markdown
 theme: moon
@@ -228,7 +228,7 @@ Slide.on('update', function(i, itemIndex, cls) {
 
 })
 ```
-demo中[第13张](http://qdemo.sinaapp.com/#13)使用回调做了魔幻翻页效果
+demo中[第13张](http://js8.in/nodeppt/#13)使用回调做了魔幻翻页效果
 
 ### 打印/导出ppt
 这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
@@ -313,7 +313,7 @@ files: 引入js和css的地址，如果有的话~自动放在页面底部
 ----
 nodeppt是基于nodejs写的支持 **Markdown!** 语法的网页PPT
 
-nodeppt：https://github.com/ksky521/nodePPT
+nodeppt：https://github.com/ksky521/nodeppt
 ```
 
 #### 代码格式化
@@ -404,7 +404,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 ```markdown
 title: nodeppt markdown 演示
 speaker: Theo Wang
-url: https://github.com/ksky521/nodePPT
+url: https://github.com/ksky521/nodeppt
 transition: zoomin
 
 [slide]
@@ -425,7 +425,7 @@ transition: zoomin
 
 nodeppt是基于nodejs写的支持 **Markdown!** 语法的网页PPT
 
-nodeppt：https://github.com/ksky521/nodePPT
+nodeppt：https://github.com/ksky521/nodeppt
 
 [slide]
 
@@ -450,7 +450,7 @@ nodeppt start -h
 
  * 执行 ```nodeppt start```
  * 访问 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
- * 在线demo： http://qdemo.sinaapp.com/
+ * 在线demo： http://js8.in/nodeppt/
 
 
 

@@ -1,17 +1,17 @@
 title: nodeppt markdown 演示
 speaker: 三水清
-url: https://github.com/ksky521/nodePPT
+url: https://github.com/ksky521/nodeppt
 transition: slide3
 files: /js/demo.js,/css/demo.css,/js/zoom.js
 theme: moon
 usemathjax: yes
 
 [slide]
-# nodePPT
+# nodeppt
 ## 这可能是迄今为止最好的网页版演示库
 <small style="vertical-align:middle;display:inline-block"><iframe src="http://ghbtns.com/github-btn.html?user=ksky521&repo=nodeppt&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" style="width:110px;height:20px;  background-color: transparent;"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=ksky521&repo=nodeppt&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" style="width:110px;height:20px;  background-color: transparent;"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=ksky521&repo=nodeppt&type=follow&count=false" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20" style="width:170px;height:20px;  background-color: transparent;"></iframe></small>
 [slide]
-## 为什么选择nodePPT
+## 为什么选择nodeppt
 ----
 * 基于GFM的markdown语法编写 {:&.rollIn}
 * 支持html混排，再复杂的demo也可以做！
@@ -36,7 +36,7 @@ usemathjax: yes
 [slide]
 
 # 样式展示 {:&.flexbox.vleft}
-> nodePPT 让每个人都爱上做分享！
+> nodeppt 让每个人都爱上做分享！
 
 
 
@@ -47,7 +47,7 @@ usemathjax: yes
 <pre><code class="markdown">/* 先写总的配置 */
 title: 这是title，网页名称
 speaker: 演讲者名称
-url: https://github.com/ksky521/nodePPT
+url: https://github.com/ksky521/nodeppt
 transition: 全局转场动效
 files: 引入的js和css文件，多个以半角逗号隔开
 theme: 皮肤样式
@@ -98,7 +98,7 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}.    s = ut + \frac{1}{2}at^2 $$
 
 nodeppt是基于nodejs写的支持 **Markdown!** 语法的网页PPT
 
-nodeppt：https://github.com/ksky521/nodePPT
+nodeppt：https://github.com/ksky521/nodeppt
 
 
 
@@ -263,7 +263,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 跟powderpoint/keynote一样的双屏功能，带有备注信息。
 
 [slide]
-# nodePPT动效和转场演示
+# nodeppt动效和转场演示
 
 [slide]
 # 第一部分：介绍单页slide内动效
@@ -336,7 +336,7 @@ nodeppt：https://github.com/ksky521/nodePPT
     * zoomIn
 
 [slide]
-# nodePPT支持多达20多个转场动效
+# nodeppt支持多达20多个转场动效
 
 [slide]
 ## 20种转场动效随心换
@@ -387,7 +387,7 @@ nodeppt：https://github.com/ksky521/nodePPT
 &#91;slide data-transition="vertical3d"&#93;
 
 [slide]
-# nodePPT快捷键介绍
+# nodeppt快捷键介绍
 [slide]
 ## 快速翻页
 ----
@@ -479,7 +479,7 @@ markdown语法如下：
 
 [slide]
 
-# 介绍下nodePPT的函数和事件
+# 介绍下nodeppt的函数和事件
 
 [slide]
 支持单个slide事件：build/enter/leave/keypress，事件统一在&#91;slide&#93;
@@ -532,7 +532,7 @@ function globalFunc(){
 
 ## 更多玩法
 ---
-https://github.com/ksky521/nodePPT
+https://github.com/ksky521/nodeppt
 
 什么？这些功能还不够用？
 

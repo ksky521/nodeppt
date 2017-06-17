@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var nodePPT = require('../lib/nodePPT');
+var nodeppt = require('../lib/nodeppt');
 var versions = require('../package').version;
 var program = require('commander');
 var ipv4 = require('ipv4');
@@ -25,7 +25,7 @@ program
             return;
         }
 
-        nodePPT.create(filename, options)
+        nodeppt.create(filename, options)
     }).on('--help', function () {
         console.log('  Examples:');
         console.log();
@@ -72,7 +72,7 @@ program
             }
         }
 
-        nodePPT.generate(filename, output, shouldAll, path || '');
+        nodeppt.generate(filename, output, shouldAll, path || '');
     })
     .on('--help', function () {
         console.log('  Examples:');
@@ -98,7 +98,7 @@ program
             return;
         }
 
-        nodePPT.start(cmd)
+        nodeppt.start(cmd)
     })
     .on('--help', function () {
         console.log('  Examples:');
