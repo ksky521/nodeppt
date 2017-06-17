@@ -1,7 +1,7 @@
 (function(window, document) {
     var sf = function($imgs) {
         $imgs.forEach(function($img) {
-            if ($img.classname.indexOf('no-screenfull') === -1) {
+            if ($img.className.indexOf('no-screenfull') === -1) {
                 $img.addEventListener('click', function () {
                     show(this);
                 }, false);
@@ -37,6 +37,9 @@
         $layer.style.display = 'none';
         $layer.classList.add('transparent');
     }, false);
+    sf.hide = function(){
+        $layer.style.display = 'none';
+    }
     var $body = document.body || document.getElementsByTagName('body')[0];
     $body.appendChild($layer);
     window.screenfull = sf;

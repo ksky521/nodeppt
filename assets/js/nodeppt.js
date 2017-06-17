@@ -464,7 +464,9 @@
         }
         slideInCallBack(direction);
         removePaint();
-
+        if(window.screenfull && screenfull.hide){
+            screenfull.hide();
+        }
         if ($doc.body.classList.contains('overview')) {
             focusOverview_();
             return;
