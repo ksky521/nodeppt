@@ -118,7 +118,7 @@ nodeppt：https://github.com/ksky521/nodeppt
 ## text
 -----
 
-<span class="text-danger">.text-danger</span> <span class="text-success">.text-sucess</span><span class="text-primary">.text-primary</span>
+<span class="text-danger">.text-danger</span> <span class="text-success">.text-success</span><span class="text-primary">.text-primary</span>
 
 <span class="text-warning">.text-warning</span><span class="text-info">.text-info</span><span class="text-white">.text-white</span><span class="text-dark">.text-dark</span>
 
