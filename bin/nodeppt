@@ -3,7 +3,7 @@
 const nodeppt = require('../lib/nodeppt')
 const versions = require('../package').version
 const program = require('commander')
-const ipv4 = require('ipv4')
+
 if (process.argv[2] && process.argv[2] === '-v') {
   process.argv[2] = '-V'
 }
@@ -86,7 +86,7 @@ program
   .option('-d, --dir [dir]', 'set slide path', '')
   .option('-p, --port [port]', 'set server port ', 8080)
   .option('-c, --controller [socket]', 'support websocket mutil screen controller')
-  .option('-H, --host [host]', 'set host address', ipv4 || '0.0.0.0')
+  .option('-H, --host [host]', 'set host address', '0.0.0.0')
   .option('-w, --watch', 'livereload')
   .action(function (cmd) {
     if (typeof cmd !== 'object') {
