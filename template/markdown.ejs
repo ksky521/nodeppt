@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/js/highlight/styles/<%if (hasOwnProperty('highlightStyle') && highlightStyle!=='') { %><%- highlightStyle %><% }else{%>monokai_sublime<%}%>.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
     <%- headFiles %>
+    <base href="<%= basePath %>/">
 </head>
 <body>
 <div class="slides">
