@@ -10,6 +10,8 @@
 /output
 /publish
 
+yarn-lock.json
+package-lock.json
 
 
 ### Node ###

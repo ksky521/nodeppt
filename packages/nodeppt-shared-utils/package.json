@@ -1,0 +1,28 @@
+{
+  "name": "nodeppt-shared-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Theo Wang",
+    "email": "ksky521@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ksky521/nodeppt"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "address": "^1.0.3",
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
+    "ora": "^3.0.0",
+    "readline": "^1.3.0",
+    "request": "^2.88.0",
+    "string.prototype.padstart": "^3.0.0"
+  }
+}

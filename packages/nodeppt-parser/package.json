@@ -1,0 +1,23 @@
+{
+  "name": "nodeppt-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Theo Wang",
+    "email": "ksky521@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ksky521/nodeppt"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "markdown-it": "^8.4.2",
+    "markdown-it-jsx": "^1.1.0"
+  }
+}
