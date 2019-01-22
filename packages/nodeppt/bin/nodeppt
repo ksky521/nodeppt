@@ -34,7 +34,7 @@ program
   .option('--https', 'use https ', 8080)
   .option('-H, --host [host]', 'set host address', '0.0.0.0')
   .action((entry, cmd) => {
-    loadCommand('serve', entry, cleanArgs(cmd))
+    require('nodeppt-serve').serve(entry, cleanArgs(cmd))
   })
   .on('--help', function() {
     console.log('  Examples:')

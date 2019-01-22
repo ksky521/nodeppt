@@ -28,7 +28,7 @@ module.exports = (api, options) => {
       .mode('development')
       .context(api.context)
       .entry('app')
-      .add('./src/main.js')
+      .add('./main.js')
       .end()
       .output.path(api.resolve(options.outputDir))
       .filename('[name].js')
@@ -36,7 +36,7 @@ module.exports = (api, options) => {
 
     webpackConfig.resolve
       .set('symlinks', false)
-      .extensions.merge(['.js', '.less', '.json'])
+      .extensions.merge(['.js', '.less'])
       .end()
       .modules.add('node_modules')
       .add(api.resolve('node_modules'))
@@ -54,8 +54,9 @@ module.exports = (api, options) => {
       .use('html-loader')
       .loader(require.resolve('html-loader'))
       .end()
-      .use('nodeppt-loader')
+      .use('nodeppt-parser')
       .loader(require.resolve('nodeppt-parser'))
+      .options({plugins: options.plugins})
       .end()
 
     webpackConfig.module
