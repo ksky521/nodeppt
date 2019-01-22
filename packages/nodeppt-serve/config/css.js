@@ -11,6 +11,7 @@ module.exports = (api, options) => {
     const {modules = false, extract = isProd, sourceMap = false, loaderOptions = {}} = options.css || {}
 
     const shouldExtract = extract !== false
+
     const filename = getAssetPath(options, `css/[name]${options.filenameHashing ? '.[hash:8]' : ''}.css`)
     const extractOptions = Object.assign(
       {
