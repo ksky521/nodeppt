@@ -8,7 +8,7 @@ module.exports = tree => {
       node.content &&
       node.content.find &&
       node.content.find(child => {
-        if (child.tag && child.attrs && child.attrs['css-module']) {
+        if (child && child.tag && child.attrs && child.attrs['css-module']) {
           return true
         }
         return false

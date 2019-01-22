@@ -236,9 +236,10 @@ We're all tired of heavy CSS frameworks. WebSlides is a starting point that prov
 </column>
 
 <slide>
-  ### Team
+### Team
 
 <gallery>
+
 ![](https://source.unsplash.com/E6MWxCjNhYs/800x600)
 
 ## Alicia Jiménez
@@ -252,6 +253,35 @@ Founder & CEO
 ## Sam Trololovitz
 
 Master of nothing
+
+---
+
+![](https://source.unsplash.com/IFxjDdqK_0U/800x600)
+
+## Erin Gustafson
+
+VP of Design
+
+</gallery>
+
+<slide>
+### Team
+
+<gallery type="overlay">
+
+![](https://source.unsplash.com/uPGOEbjbVGA/800x600)
+
+## Alicia Jiménez
+
+Founder & CEO
+
+---
+
+![](https://source.unsplash.com/zhkTCCmD4xI/800x600)
+
+## Sam Trololovitz
+
+CTO
 
 ---
 

@@ -23,7 +23,7 @@ module.exports = tree => {
     for (let i = 0; i < content.length; i++) {
       const tag = content[i]
       if (tag && tag.tag === 'hr') {
-        const {img, content} = getImageContent(content.slice(tmpIndex, i - 1))
+        const {img, ctx} = getImageContent(content.slice(tmpIndex, i - 1))
         rs.push({
           tag: 'li',
           content: [
@@ -39,11 +39,11 @@ module.exports = tree => {
                       ? {
                           tag: 'div',
                           attrs: {class: 'overlay'},
-                          content
+                          content: ctx
                         }
                       : {
                           tag: 'figcaption',
-                          content
+                          content: ctx
                         }
                   ]
                 }
@@ -54,7 +54,7 @@ module.exports = tree => {
         tmpIndex = i + 1
       }
     }
-    const {img, content: ctx} = getImageContent(content.slice(tmpIndex))
+    const {img, ctx} = getImageContent(content.slice(tmpIndex))
 
     rs.push({
       tag: 'li',
@@ -71,11 +71,11 @@ module.exports = tree => {
                   ? {
                       tag: 'div',
                       attrs: {class: 'overlay'},
-                      ctx
+                      content: ctx
                     }
                   : {
                       tag: 'figcaption',
-                      ctx
+                      content: ctx
                     }
               ]
             }
@@ -92,14 +92,19 @@ function getImageContent(content) {
   let img,
     ctx = []
   content.forEach(i => {
-    if (i.tag === 'img') {
-      img = i
+    if (i.tag === 'p' && i.content) {
+      const tmp = i.content.find(n => n.tag === 'img')
+      if (tmp) {
+        img = tmp
+      }else{
+        ctx.push(i)
+      }
     } else {
       ctx.push(i)
     }
   })
   return {
     img,
-    content: ctx
+    ctx
   }
 }
