@@ -20,7 +20,6 @@ module.exports = function(content) {
   const settings = content.split(/<slide.*>/i)[0]
   // 首部 yaml 设置部分
   const globalSettings = defaultDeep(yamlParser(settings), defaults)
-
   content = parser(content)
 
   return ejs.render(template, {...globalSettings, content})

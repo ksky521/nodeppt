@@ -1,6 +1,9 @@
 const mdIt = require('markdown-it')()
-const mdJsx = require('markdown-it-jsx')
-mdIt.use(mdJsx)
+mdIt.use(require('./md-plugins/jsx'))
+mdIt.use(require('./md-plugins/echarts'))
+mdIt.use(require('markdown-it-sup'))
+mdIt.use(require('markdown-it-attrs'))
+mdIt.use(require('markdown-it-br'))
 
 function getMdParser(plugins) {
   plugins.forEach(plugin => {

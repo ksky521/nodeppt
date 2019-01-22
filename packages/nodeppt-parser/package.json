@@ -23,7 +23,10 @@
     "loader-utils": "^1.2.3",
     "lodash.defaultsdeep": "^4.6.0",
     "markdown-it": "^8.4.2",
-    "markdown-it-jsx": "^1.1.0",
+    "markdown-it-attrs": "^2.3.2",
+    "markdown-it-br": "^1.0.0",
+    "markdown-it-jsx": "1.1.0",
+    "markdown-it-sup": "^1.0.0",
     "posthtml": "^0.11.3",
     "posthtml-parser": "^0.4.1",
     "posthtml-render": "^1.1.4"

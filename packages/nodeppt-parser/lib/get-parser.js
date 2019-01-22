@@ -5,8 +5,14 @@ const buildInPlugins = [
   './tags/slide.js',
   './tags/icon.js',
   './tags/note.js',
+  './tags/h1.js',
+  './tags/footer.js',
+  './tags/column.js',
+  './tags/shadowbox.js',
   './tags/flexblock.js',
-  './plugins/attrs.js'
+  './tags/gallery.js',
+  // attrs放到最后
+  './tags/attrs.js'
 ]
 const buildInPosthtmlPlugins = buildInPlugins.map(file => {
   return require(file)
@@ -31,13 +37,14 @@ module.exports = plugins => {
     const slideTag = str.match(/<slide\s*(.*)>/gi) || []
     const contents = str.split(/<slide.*>/i)
     contents.shift()
-
     return contents
       .map((c, i) => {
         // 生成 attr
         const html = `
 ${slideTag[i]}
+<div class="wrap" wrap="true">
 ${mdRender(c)}
+</div>
 </slide>
       `
         // 生成 content ast

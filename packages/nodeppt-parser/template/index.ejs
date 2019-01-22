@@ -7,6 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <title><%= title %> - By <%= speaker %></title>
+    <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
+      <script src="https://cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js"></script>
+    <% } %>
 </head>
 <body>
 <div id="slides">
