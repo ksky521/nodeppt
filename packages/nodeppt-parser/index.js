@@ -1,8 +1,10 @@
-const md = require('markdown-it')()
-const mdjsx = require('markdown-it-jsx')
-md.use(mdjsx)
+
+const ejs = require('ejs')
+
 module.exports = content => {
   const html = md.render(content)
+
+  ejs.renderFile('<%= people.join(", "); %>', {people: people});
   return `
   <!DOCTYPE html>
 <html>
