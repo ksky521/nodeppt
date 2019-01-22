@@ -8,6 +8,7 @@ const buildInPlugins = [
   './tags/h1.js',
   './tags/footer.js',
   './tags/column.js',
+  './tags/card.js',
   './tags/shadowbox.js',
   './tags/flexblock.js',
   './tags/gallery.js',

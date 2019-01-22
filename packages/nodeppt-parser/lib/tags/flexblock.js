@@ -14,6 +14,9 @@ module.exports = tree => {
         case 'features':
           cls.push('features')
           break
+        case 'specs':
+          cls.push('specs')
+          break
         case 'border':
           cls.push('border blink')
           break
@@ -76,6 +79,7 @@ module.exports = tree => {
 function getChild(content, type) {
   switch (type) {
     case 'features':
+    case 'specs':
       return {
         tag: 'div',
         content

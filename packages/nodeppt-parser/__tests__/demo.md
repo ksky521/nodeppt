@@ -397,6 +397,47 @@ VP of Design
 
 ```
 
+
+<slide>
+
+<card>
+
+![](https://source.unsplash.com/ALtNa-uKy3M/)
+
+---
+
+## Bonsai
+
+Bonsai is a Japanese art form using trees grown in containers — .fullscreen > .card-50. {.text-intro}
+
+Similar practices exist in other cultures, including the Chinese tradition of penjing from which the art originated, and the miniature living landscapes of Vietnamese hòn non bộ.
+
+
+\* \* \* {.text-symbols}
+
+</card>
+
+
+
+<slide class="fullscreen">
+
+<card>
+
+![](https://source.unsplash.com/ALtNa-uKy3M/)
+
+---
+
+## Bonsai
+
+Bonsai is a Japanese art form using trees grown in containers — .fullscreen > .card-50. {.text-intro}
+
+Similar practices exist in other cultures, including the Chinese tradition of penjing from which the art originated, and the miniature living landscapes of Vietnamese hòn non bộ.
+
+
+\* \* \* {.text-symbols}
+
+</card>
+
 <slide>
 
 ## flexblock
