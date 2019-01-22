@@ -6,7 +6,7 @@ function getMdParser(plugins) {
   plugins.forEach(plugin => {
     mdIt.use(plugin)
   })
-  return mdIt.render
+  return mdIt.render.bind(mdIt)
 }
 
 module.exports = getMdParser
