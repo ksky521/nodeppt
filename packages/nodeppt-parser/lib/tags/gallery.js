@@ -2,7 +2,6 @@ const {mergeAttrs} = require('../utils')
 
 module.exports = tree => {
   tree.match({tag: 'gallery'}, node => {
-    console.log(node.content)
     node.tag = 'ul'
     // 是否是 overlay
     let isOverlay = false

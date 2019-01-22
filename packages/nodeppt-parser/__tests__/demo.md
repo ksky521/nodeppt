@@ -170,6 +170,73 @@ Location Intelligence {.text-subtitle}
 </flexblock>
 
 <slide>
+## About/Services/Clients
+
+`ul.flexblock.blink.border`
+
+<flexblock type="border">
+
+## Interfaces
+
+When you're really passionate about your job, you can change the world.
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+---
+
+## Interfaces
+
+When you're really passionate about your job, you can change the world.
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+</flexblock>
+
+<slide>
 ## ul.flexblock.steps
 <flexblock type="steps">
 
@@ -240,7 +307,7 @@ We're all tired of heavy CSS frameworks. WebSlides is a starting point that prov
 
 <gallery>
 
-![](https://source.unsplash.com/E6MWxCjNhYs/800x600)
+![](https://source.unsplash.com/uPGOEbjbVGA/800x600)
 
 ## Alicia Jiménez
 

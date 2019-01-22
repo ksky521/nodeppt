@@ -2,7 +2,10 @@
  * 页面的 main.js
  */
 import Slide from 'nodeppt-js'
-new Slide()
+const ws = new Slide()
+
+window.ws = ws
+window.WebSlide = Slide
 
 if (module.hot) {
   var hotEmitter = require('webpack/hot/emitter')

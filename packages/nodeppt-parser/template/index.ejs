@@ -9,6 +9,37 @@
     <title><%= title %> - By <%= speaker %></title>
     <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
       <script src="https://cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js"></script>
+      <script>
+        document.addEventListener(
+          'DOMContentLoaded',
+          () => {
+            ws.el.addEventListener('ws:slide-change', ({detail})=>{
+
+              const slide = document.querySelector('.slide')
+              if(slide){
+                const echartsNode = slide.querySelectorAll('.echarts')
+                const echartsData = slide.querySelectorAll('.echarts-data')
+                //- echarts
+                const len = echartsNode.length
+                const echartsChart = []
+                const echartsOption = []
+                for (let j = 0; j < len; j++) {
+                  const et = (echartsChart[j] = echarts.init(echartsNode[j]))
+                  try {
+                    echartsOption[j] = JSON.parse(echartsData[j].innerHTML.trim())
+                    et.setOption(echartsOption[j])
+                  } catch (e) {
+                    console.log(e)
+                  }
+                }
+              }
+
+            })
+
+          },
+          false
+        )
+      </script>
     <% } %>
 </head>
 <body>
