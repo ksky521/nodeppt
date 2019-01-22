@@ -1,23 +1,21 @@
-
+const path = require('path')
+const fs = require('fs-extra')
+const defaultDeep = require('lodash.defaultsdeep')
 const ejs = require('ejs')
 
+const parser = require('./lib/parser')
+// parsers
+const yamlParser = require('./lib/yaml-parser')
+
+const defaults = require('./defaults')
+
+// 模板
+const template = fs.readFileSync(path.join(__dirname, './template/index.ejs')).toString()
 module.exports = content => {
-  const html = md.render(content)
+  const settings = content.split(/<slide.*>/i)[0]
+  // 首部 yaml 设置部分
+  const globalSettings = defaultDeep(yamlParser(settings), defaults)
+  content = parser(content.replace(settings, ''))
 
-  ejs.renderFile('<%= people.join(", "); %>', {people: people});
-  return `
-  <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>NodePPT</title>
-    </head>
-    <body>
-        ${html}
-    </body>
-</html>
-
-  `
+  return ejs.render(template, {...globalSettings, content})
 }

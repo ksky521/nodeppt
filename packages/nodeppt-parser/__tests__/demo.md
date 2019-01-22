@@ -6,7 +6,7 @@ files: /js/demo.js,/css/demo.css,/js/zoom.js
 theme: moon
 usemathjax: yes
 
-[slide]
+<slide>
 
 # nodeppt
 
@@ -17,7 +17,7 @@ usemathjax: yes
   * 2
 </note>
 
-[slide]
+<slide>
 
 ## 为什么选择 nodeppt
 
@@ -33,20 +33,24 @@ usemathjax: yes
 - 可以单页 ppt 内部动效，单步动效
 - 支持进入/退出回调，做在线 demo 很方便
 
-
-[slide]
+<slide>
 
 ## flexblock
 
 <flexblock>
-  * # dfdafafa
+# dfdafafa
 
-    dfadsfasfasf
+dfadsfasfasf
 
+---
+# dfdafafa
 
-  * # dfdafafa
-    dfadsfasfasf
-  * # dfdafafa
-    dfadsfasfasf
-    dfdasf
+dfadsfasfasf
+
+---
+# dfdafafa
+
+dfadsfasfasf
+dfdasf
+
 </flexblock>
