@@ -1,0 +1,49 @@
+/*=====================================================
+6.5 Specs/Items: <ul class="flexblock specs">
+======================================================= */
+
+.specs li {
+  text-align: left;
+  width: 100%;
+
+  &:after {
+    bottom: -2.4rem;
+    content: '';
+    display: block;
+    height: 1px;
+    position: relative;
+  }
+
+  &:hover {
+    transform: translateX(.2rem);
+  }
+
+  span,
+  svg {
+    display: block;
+    font-size: 6.4rem;
+    line-height: 1;
+    margin: 0;
+  }
+
+  img {
+    width: 6.4rem;
+  }
+
+  span {
+    font-weight: 300;
+
+    sup {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    span,
+    svg,
+    img {
+      float: left;
+      margin-right: 2.4rem;
+    }
+  }
+}

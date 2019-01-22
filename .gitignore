@@ -13,7 +13,7 @@
 yarn-lock.json
 package-lock.json
 
-
+.DS_Store
 ### Node ###
 # Logs
 logs

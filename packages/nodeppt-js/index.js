@@ -1,7 +1,4 @@
-import './assets/index.less'
-export default class Slide {
-  constructor(options) {
-    this.options = options
-  }
-}
-console.log(1111)
+import WebSlides from 'webslides/src/js/modules/webslides'
+import './assets/scss/full.scss'
+
+export default WebSlides

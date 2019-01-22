@@ -84,7 +84,7 @@ module.exports = (api, options) => {
       }
     }
     createCSSRule('css', /\.css$/)
-    createCSSRule('less', /\.less$/, 'less-loader', loaderOptions.less)
+    createCSSRule('sass', /\.scss$/, 'sass-loader', loaderOptions.sass)
 
     // inject CSS extraction plugin
     if (shouldExtract) {

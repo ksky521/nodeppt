@@ -15,5 +15,8 @@
     "type": "git",
     "url": "git://github.com/ksky521/nodeppt"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "webslides": "^1.4.2"
+  }
 }

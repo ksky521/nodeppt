@@ -1,0 +1,817 @@
+// sass-lint:disable no-color-literals
+// sass-lint:disable no-vendor-prefixes
+
+/*=========================================
+19. Colors
+=========================================== */
+
+/* -- Disable elastic scrolling/bounce:
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
+
+body {
+  background-color: $body-bg;
+  color: $body-color;
+}
+
+:focus {
+  box-shadow: $focus-box-shadow;
+}
+
+svg {
+  fill: currentColor;
+}
+
+[class*='bg-'] a,
+[class*='bg-gradient-'] a {
+  color: $spindle;
+}
+
+.bg-brown a {
+  color: $link-color-secondary;
+}
+
+a,
+.bg-white a,
+.bg-light a,
+.bg-gradient-white a {
+  color: $link-color;
+}
+
+a:hover {
+  color: $link-hover;
+}
+
+.flexblock li>a,
+[class*='bg-'] li>a,
+[class*='bg-gradient-'] li>a,
+article header a {
+  color: inherit;
+}
+
+hr {
+  background: $hr-bg;
+}
+
+hr:after {
+  background-color: rgba($white, .8);
+  color: $body-color;
+}
+
+abbr,
+acronym {
+  border-bottom: 1px dotted $body-bg;
+}
+
+mark,
+ins {
+  background-color: rgba($pattens-blue, .8);
+  color: inherit;
+}
+
+::-moz-selection {
+  background-color: rgba($pattens-blue, .8);
+}
+
+::-webkit-selection {
+  background-color: rgba($pattens-blue, .8);
+}
+
+::selection {
+  background-color: rgba($pattens-blue, .8);
+}
+
+pre {
+  background: $white;
+  border: 1px solid rgba($stratos, .1);
+  box-shadow: 0 8px 16px rgba($stratos, .04), 0 4px 16px rgba($black, .08);
+}
+
+pre:hover {
+  box-shadow: 0 8px 16px rgba(0, 40, 160, .08), 0 8px 24px rgba($black, .08);
+}
+
+code,
+[class*='bg-'] pre {
+  background-color: rgba($white, .09);
+}
+
+.bg-white code {
+  background: rgba($stratos, .03);
+}
+
+/*================================================
+Slides - Backgrounds <section class="bg-primary">
+================================================== */
+
+/*3 Corp Colors*/
+@each $name, $color in $bg-colors {
+  .bg-#{$name} {
+    background-color: $color;
+  }
+}
+
+[class*='bg-'] .bg-white {
+  color: $body-color;
+  text-shadow: none;
+}
+
+/* BG Apple Keynote*/
+.bg-apple {
+  background: linear-gradient(to bottom, $black 0%, #1a2028 50%, #293845 100%);
+}
+
+/*Font Color*/
+.bg-trans-dark,
+.bg-trans-gradient,
+.bg-primary,
+.bg-secondary,
+.bg-blue,
+.bg-green,
+.bg-purple,
+.bg-red,
+.bg-facebook,
+.bg-apple,
+[class*='bg-black'],
+[class*='bg-gradient-'] {
+  color: $white;
+  text-shadow: 0 1px 0 #013;
+}
+
+.bg-light p {
+  color: #456;
+}
+
+.bg-brown p {
+  color: #666;
+}
+
+/*Transparent/Opacity*/
+.bg-trans-dark {
+  background: rgba($black, .8);
+}
+
+.bg-trans-light {
+  background: rgba($black, .2);
+}
+
+/*Covers/Longforms...*/
+.bg-trans-gradient {
+  background: linear-gradient(to top, rgba($black, .8) 0%, rgba($black, 0) 100%);
+}
+
+/*Horizontal Gradient*/
+.bg-gradient-h {
+  background: linear-gradient(134deg, #32b 0, #62b 100%);
+}
+
+/*Vertical Gradient*/
+.bg-gradient-v {
+  background: linear-gradient(to top, #62b 0%, #32b 100%);
+}
+
+/*Radial Gradient*/
+.bg-gradient-r {
+  background: radial-gradient(ellipse at center, #62b 0%, #32b 100%);
+}
+
+/*White Gradient (vertical)*/
+.bg-gradient-white {
+  background: linear-gradient(180deg, #f2f4f6 0, $white 100%);
+  color: $body-color;
+  text-shadow: none;
+}
+
+/*Gray Gradient (horizontal)*/
+.bg-gradient-gray {
+  background: linear-gradient(90deg, #f7f9fb 0, #dee2e6 100%);
+  color: $body-color;
+  text-shadow: none;
+}
+
+/*Border/Frame*/
+.frame {
+  border: .8rem solid $white;
+}
+
+[class*='background'].frame {
+  border-width: .2rem;
+}
+
+/*Layer/Box Shadow*/
+.shadow,
+.pre {
+  position: relative;
+}
+
+.shadow:before,
+.shadow:after {
+  box-shadow: 0 16px 24px rgba($stratos, .3);
+}
+
+/*============================
+TYPOGRAPHY
+============================== */
+
+/* -- Horizontal separator  -- */
+.text-separator:before {
+  background-color: rgba(170, 0, 0, .8);
+}
+
+/* -- Pull Quote (Right/Left)  -- */
+[class*='text-pull-'] {
+  border-top: 4px solid rgba($black, .5);
+}
+
+img[class*='text-pull-'],
+figure[class*='text-pull-'] {
+  border-top: 0;
+}
+
+/* -- Context  -- */
+[class*='bg-'] .text-context:before {
+  background-color: $white;
+}
+
+.text-context:before,
+.bg-white .text-context:before {
+  background-color: rgba($stratos, .2);
+}
+
+/* -- Text shadow  -- */
+.text-shadow {
+  text-shadow: 0 0 40px rgba($black, .5);
+}
+
+/* -- time, ampersands, prepositions (for, of...), symbols...
+[class*='card-'] time,
+h1 span {
+  color: #abd;
+}
+
+/* -- <pre> comment  -- */
+.code-comment {
+  color: rgba(70, 170, 130, .9);
+  text-shadow: none;
+}
+
+/*=========================================
+Header/Nav
+=========================================== */
+header[role='banner'] {
+  background-color: $white;
+}
+
+.logo a {
+  color: inherit;
+}
+
+nav[role='navigation'] li {
+  &.active a {
+    background-color: #555;
+    color: $white;
+  }
+
+  a {
+    background-color: rgba(50, 50, 50, .9);
+    color: $white;
+
+    &:hover {
+      background-color: rgba(50, 50, 50, .7);
+    }
+  }
+}
+
+@each $name, $color in $social-nav {
+  nav li.#{$name} a:hover {
+    background-color: $color;
+  }
+}
+
+/*===================================================
+.flexblock li hover/active
+===================================================== */
+.flexblock li.active a,
+.metrics li:hover,
+.specs li:hover,
+.reasons li:hover {
+  background-color: rgba($stratos, .03);
+}
+
+/*=========================================
+Features & Clients List
+=========================================== */
+.features li,
+.clients li  {
+  background-color: rgba($white, .9);
+}
+
+[class*='bg-'] .features li,
+[class*='bg-'] .clients li {
+  background-color: rgba($white, .1);
+}
+
+.features li:hover,
+.clients li:hover  {
+  box-shadow: 0 8px 16px rgba($stratos, .02), 0 4px 16px rgba($black, .08);
+}
+
+/*============================
+.flexblock with border
+============================== */
+.border {
+  border-bottom: 1px solid rgba($stratos, .1);
+  border-right: 1px solid rgba($stratos, .1);
+}
+
+.border li {
+  border-left: 1px solid rgba($stratos, .1);
+  border-top: 1px solid rgba($stratos, .1);
+}
+
+.flexblock.border li li {
+  border: 0;
+}
+
+/*===========================================
+flexblock.steps
+============================================= */
+.steps li:nth-child(1) {
+  background-color: #e8eef7;
+}
+
+.steps li:nth-child(2) {
+  background-color: #dde5f3;
+}
+
+.steps li:nth-child(3) {
+  background-color: #cdd8ec;
+}
+
+.steps li:nth-child(4) {
+  background-color: #bbcdec;
+}
+
+.process {
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
+}
+
+.steps li:hover,
+.steps.blink li:hover>a {
+  background-color: #b8cef7;
+}
+
+@media (min-width: 1024px) {
+  .process.step-2 {
+    border-left-color: #e8eef7;
+  }
+
+  .process.step-3 {
+    border-left-color: #dde5f3;
+  }
+
+  .process.step-4 {
+    border-left-color: #cdd8ec;
+  }
+
+  .steps li:hover + li [class*='step-'] {
+    border-left-color: #b8cef7;
+  }
+}
+
+/*=========================================================
+Items: You can use for settings, drag&drop, close/delete...
+=========================================================== */
+.specs li:after {
+  background: linear-gradient(to right, rgba($stratos, 0) 0%, rgba($stratos, .2) 50%, rgba($stratos, 0) 100%);
+}
+
+.specs li:last-child:after {
+  background: none;
+}
+
+/*=========================================================
+Why/Steps/Motivation/Reasons -  Decimal/Numbers
+=========================================================== */
+.reasons li:after {
+  background: linear-gradient(to right, rgba($stratos, 0) 0%, rgba($stratos, .2) 50%, rgba($stratos, 0) 100%);
+}
+
+.reasons li:last-child:after {
+  background: none;
+}
+
+/*=========================================
+Overlays
+=========================================== */
+.overlay {
+  background-color: rgba($black, .2);
+}
+
+li:hover .overlay {
+  background-color: rgba($black, .1);
+}
+
+.overlay,
+.overlay a {
+  color: $white;
+  text-shadow: 0 1px 0 #111;
+}
+
+/*=========================================
+Gallery li+.overlay+image
+=========================================== */
+.gallery li {
+  background-color: rgba($stratos, .06);
+  box-shadow: 0 1px 1px rgba($black, .2), 0 4px 8px rgba($black, .03);
+}
+
+.gallery li figcaption {
+  background-color: $white;
+}
+
+.flexblock.gallery li:hover {
+  box-shadow: 0 1px 1px rgba($black, .2), 0 4px 8px rgba($black, .08);
+}
+
+.gallery li footer {
+  border-top: 1px solid rgba($stratos, .1);
+}
+
+.gallery li a {
+  color: $body-color;
+  text-shadow: none;
+}
+
+.flesblock.gallery li a footer {
+  color: #aaa;
+}
+
+/*Arrow */
+.gallery li figcaption:before {
+  border: .8rem solid $black;
+  border-color: transparent transparent $white $white;
+}
+
+/*=========================================
+Plans / Pricing
+=========================================== */
+.plans>li div,
+.flexblock.plans li:hover div {
+  background-color: $white;
+}
+
+.plans>li:hover,
+.plans>li:nth-child(2) {
+  box-shadow: 0 1px 1px rgba($black, .1), 0 8px 16px rgba($black, .1);
+}
+
+.plans:hover li:nth-child(2):not(:hover) {
+  box-shadow: none;
+}
+
+.plans li h2 {
+  background-color: rgba($stratos, .5);
+  color: $white;
+}
+
+.plans ul li {
+  border-bottom: 1px solid rgba($stratos, .1);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.plans > li > a {
+  color: $body-color;
+  text-shadow: none;
+}
+
+/*============================
+Activity/CV/Timeline/News
+============================== */
+.activity li {
+  border-top: .1rem solid rgba($stratos, .1);
+}
+
+.activity li:hover {
+  background-color: rgba($stratos, .02);
+}
+
+/*=========================================
+Resume/Work/CV/Portfolio
+=========================================== */
+.work-label,
+.work li a {
+  border-bottom: 1px solid rgba($stratos, .1);
+}
+
+.work li:nth-child(odd)>a {
+  background-color: rgba($stratos, .03);
+}
+
+.work li a:hover {
+  background-color: rgba($stratos, .04);
+}
+
+/*===========================================
+Clients / Services / Logos...
+============================================= */
+.clients.border figcaption {
+  border-top: 1px solid rgba($stratos, .1);
+}
+
+/*====================
+LOGOS
+====================== */
+
+/* --- Images (black logo/image) --- */
+img.blacklogo {
+  background: none;
+  filter: grayscale(100%) brightness(10%) contrast(100%);
+}
+
+/* --- Images (gray logo/image) --- */
+img.graylogo {
+  filter: grayscale(100%) brightness(10%) contrast(10%);
+}
+
+/* --- Images (white Logo/Image) --- */
+img.whitelogo {
+  filter: brightness(0) invert(1);
+}
+
+/* --- Logo/Images Hover --- */
+li:hover img.blacklogo,
+li:hover img.graylogo,
+img.blacklogo:hover,
+img.graylogo:hover {
+  background: none;
+  filter: grayscale(0%);
+  transition: all .6s ease;
+}
+
+/*=========================================================
+Cards
+=========================================================== */
+[class*='card-'] > a {
+  color: inherit;
+}
+
+/* ---  card ul specs --- */
+.description>li {
+  border-bottom: 1px solid rgba($stratos, .1);
+}
+
+.description>li:last-child {
+  border-bottom: 0;
+}
+
+/*== Figure Background === */
+[class*='card-'][class*='bg-'] figure {
+  background-color: rgba($stratos, .06);
+}
+
+/*== Ficaption Cards === */
+[class*='card'] figcaption,
+[class*='card'] figcaption a {
+  background: linear-gradient(to bottom, rgba($black, 0) 0%, rgba($black, .2) 100%);
+  color: $white;
+}
+
+/*===CTA (Call to Action - Numbers, Price, Promo...)  ===== */
+@media (min-width: 768px) {
+  .cta .benefit {
+    border-image: linear-gradient(90deg, transparent, rgba($black, .4) 50%, transparent) 1 100%;
+    border-left-width: 1px;
+    border-style: solid;
+  }
+}
+
+/*=========================================
+Tables
+=========================================== */
+table td,
+th,
+thead {
+  border: 1px solid rgba($black, .5);
+}
+
+thead {
+  background-color: rgba($black, .3);
+}
+
+tr:nth-child(even)>td {
+  background: rgba($black, .1);
+}
+
+tr>td {
+  border-top: 1px solid rgba($black, .5);
+}
+
+td:hover,
+tr:nth-child(even)>td:hover {
+  background-color: rgba($white, .5);
+}
+
+/*============================
+Browser (Screenshots)
+============================== */
+.browser {
+  border: 1px solid rgba($stratos, .1);
+}
+
+.browser:hover {
+  box-shadow: 0 1px 1px rgba($black, .1), 0 8px 16px rgba($black, .1);
+}
+
+/*=== Topbar === */
+.browser:before {
+  background-color: rgba($stratos, .1);
+  border-bottom: 1px solid rgba($stratos, .2);
+  color: rgba($white, .9);
+}
+
+.browser:hover:before {
+  background-color: rgba($stratos, .12);
+  color: $white;
+}
+
+/*=========================================
+Forms
+=========================================== */
+input,
+textarea {
+  background-color: #fafbfc;
+}
+
+input:focus,
+textarea:focus {
+  background-color: $white;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+input:focus::-moz-placeholder {
+  color: #ddd;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: #ddd;
+}
+
+a.button,
+[class*='badge-'],
+button[type='submit'],
+input {
+  box-shadow: 0 10px 16px -8px rgba($stratos, .3);
+}
+
+button,
+input,
+select,
+textarea,
+button[type='submit'],
+input[type='submit'],
+.button,
+.button:hover,
+button[type='submit']:hover,
+input[type='submit']:hover {
+  border: 1px solid $royal-blue;
+}
+
+button[type='submit'],
+input[type='submit'],
+.button,
+.button:hover,
+button[type='submit']:hover,
+input[type='submit']:hover {
+  background-color: $royal-blue;
+  color: $white;
+  text-shadow: 0 1px 0 #123;
+}
+
+.button:active,
+button[type='submit']:active,
+input[type='submit']:active {
+  background-color: #17d;
+}
+
+.ghost,
+.ghost:hover {
+  background: none;
+  color: inherit;
+  text-shadow: none;
+}
+
+.bg-primary select,
+.bg-primary textarea,
+.bg-primary .button,
+.bg-primary button,
+.bg-primary button:hover,
+.bg-primary input,
+[class*='bg-gradient-'] .button,
+[class*='bg-'] a.button.ghost {
+  border-color: $white;
+}
+
+[class*='bg-'] a.button {
+  color: $white;
+}
+
+.bg-white a.button.ghost,
+.bg-gradient-white a.button.ghost {
+  border: 1px solid $royal-blue;
+  color: $body-color;
+}
+
+:disabled,
+button:disabled:hover {
+  background-color: #eee;
+  border-color: #eee;
+  color: #ccc;
+}
+
+fieldset {
+  background-color: rgba($stratos, .2);
+  border: 1px solid $royal-blue;
+}
+
+legend {
+  background-color: rgba($black, .6);
+  color: $white;
+}
+
+/* Inputs/Buttons - hover */
+input:hover,
+select:hover {
+  box-shadow: 0 0 8px rgba($black, .3);
+}
+
+/* App Store Badges */
+[class*='badge-'] {
+  background-color: $black;
+  border: 1px solid #345;
+}
+
+form .flexblock li:hover {
+  background-color: rgba($black, .05);
+}
+
+/*============================
+Table of Contents
+============================== */
+.toc,
+.toc ol>li:before,
+.chapter {
+  background-color: #f7f9fb;
+}
+
+.toc li .toc-page:before {
+  border-bottom: 1px dotted rgba($black, .9);
+}
+
+/*============================
+Slides (Counter/Arrows)
+============================== */
+#counter,
+#navigation a {
+  color: #abc;
+}
+
+#webslides:hover #navigation a:hover {
+  background-color: $index-overlay;
+  color: $white;
+}
+
+/*============================
+Footer
+============================== */
+footer[role='contentinfo'] {
+  background-color: $white;
+}
+
+/*============================
+Slides Index
+============================== */
+#webslides-zoomed {
+  background: $index-overlay;
+}
+
+#webslides-zoomed .column > .wrap-zoom {
+  background-color: $catskill-white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 4px 8px rgba(0, 0, 0, .04);
+  color: $mine-shaft;
+
+  &:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 4px 8px rgba(0, 0, 0, .08);
+  }
+
+  &.current {
+    border: .6rem solid rgba(0, 20, 280, .2);
+  }
+}
+
+.text-slide-number {
+  color: #abc;
+ }
