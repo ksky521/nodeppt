@@ -65,11 +65,13 @@ module.exports = md => {
                 // OK, this is the paragraph_close matching the open we started on.
                 // What came right before here?
                 var prevBlkToken = state.tokens[i - 1];
+
                 if (prevBlkToken.type !== 'inline') {
                     break;
                 }
                 var prevInlineToken = prevBlkToken.children[prevBlkToken.children.length - 1];
-                if (prevInlineToken.type !== 'fa_block' || prevInlineToken.type !== 'fa_span') {
+
+                if (prevInlineToken.type !== 'fa_block' && prevInlineToken.type !== 'fa_span') {
                     break;
                 }
 

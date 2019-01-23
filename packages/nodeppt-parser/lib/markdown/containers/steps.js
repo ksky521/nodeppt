@@ -2,18 +2,17 @@ const name = 'steps';
 
 module.exports = {
     validate(params) {
-        console.log(params, name);
         return params.trim().match(new RegExp('^' + name + '\\s*(.*)$'));
     },
     handler(state, opts) {
         function getOpenToken(tag, level) {
-            const token = new state.Token('container_' + name + '_item_open', tag, 1);
+            const token = new state.Token('container_' + name + '_' + tag + '_open', tag, 1);
             token.block = true;
             token.level = 1 + level;
             return token;
         }
         function getCloseToken(tag, level) {
-            const token = new state.Token('container_' + name + '_item_close', tag, -1);
+            const token = new state.Token('container_' + name + '_' + tag + '_close', tag, -1);
             token.block = true;
             token.level = 1 + level;
             return token;
@@ -45,7 +44,7 @@ module.exports = {
                 if (step >= 2) {
                     let t1 = getOpenToken('div', token.level);
                     t1.attrPush(['class', `process step-${step}`]);
-                    tokens.splice(i, 0, t1, getCloseToken('div', token.level));
+                    tokens.splice(i + 1, 0, t1, getCloseToken('div', token.level));
                     i = i + 2;
                 }
             } else if (open) {

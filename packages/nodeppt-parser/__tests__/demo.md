@@ -275,6 +275,7 @@ Acme hired us to help make the reading experience totally engaging.
 
 :::steps
 
+:~fa-file~:
 ## Interfaces
 
 When you're really passionate about your job, you can change the world.
