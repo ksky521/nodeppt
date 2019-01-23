@@ -28,12 +28,12 @@ plugins:
 - 可以单页 ppt 内部动效，单步动效
 - 支持进入/退出回调，做在线 demo 很方便
 
-
 <slide>
 
 ## 为什么选择 nodeppt
 
 :::column {..vertical-align}
+
 - 基于 GFM 的 markdown 语法编写
 - 支持 html 混排，再复杂的 demo 也可以做！
 - 导出网页或者 pdf 更容易分享
@@ -59,19 +59,17 @@ plugins:
 
 :::
 
-
-
-
 <slide class="bg-brown">
 
 :::column
 
 ::fa-heart large::
+
 ### **Feature 1**
 
 Test your web and mobile designs, and quickly incorporate user feedback.
 
-----
+---
 
 ::fa-heart large::
 
@@ -79,7 +77,7 @@ Test your web and mobile designs, and quickly incorporate user feedback.
 
 Test your web and mobile designs, and quickly incorporate user feedback.
 
-----
+---
 
 ::fa-heart large::
 
@@ -88,7 +86,6 @@ Test your web and mobile designs, and quickly incorporate user feedback.
 Test your web and mobile designs, and quickly incorporate user feedback.
 
 :::
-
 
 <slide>
 ## button
@@ -151,6 +148,7 @@ Stories have the power to change the world. WebSlides helps you write better con
 :::shadowbox
 
 ## We're web people.
+
 There're excellent presentation tools out there. WebSlides is about telling the story, and sharing it in a beautiful way. Hypertext and clean code as narrative elements.
 
 ---
@@ -161,12 +159,8 @@ Designers, marketers, and journalists can now focus on the content. Simply [choo
 
 :::
 
-
-
 <slide image="https://source.unsplash.com/Vti8XHv2XjU/" class="bg-black aligncenter">
 # **California** {.text-shadow}
-
-
 
 <slide class="bg-gradient-v" :class="size-60" image="https://source.unsplash.com/nxfuA21kNHY/1440x1440 .dark">
 
@@ -257,15 +251,14 @@ When you're really passionate about your job, you can change the world.
 
 !![div](https://webslides.tv/static/images/logos/google.svg .aligncenter.graylogo)
 
- Acme hired us to help make the reading experience totally engaging.
+Acme hired us to help make the reading experience totally engaging.
 
 ---
 
-## Interfaces
 
-1. Architecture
-2. Design
-3. Development
+!![div](https://webslides.tv/static/images/logos/google.svg .aligncenter.blacklogo)
+
+Acme hired us to help make the reading experience totally engaging.
 
 ---
 
@@ -279,7 +272,8 @@ When you're really passionate about your job, you can change the world.
 
 <slide>
 ## ul.flexblock.steps
-<flexblock type="steps">
+
+:::steps
 
 ## Interfaces
 
@@ -309,12 +303,14 @@ When you're really passionate about your job, you can change the world.
 2. Design
 3. Development
 
-</flexblock>
+:::
 
 <slide>
 
-<column>
+:::column
+
 ### FAQs {.text-context}
+
 WebSlides is an open source solution by
 
 ---
@@ -341,7 +337,7 @@ There are excellent presentation tools out there. WebSlides is about good karma 
 
 We're all tired of heavy CSS frameworks. WebSlides is a starting point that provides basic
 
-</column>
+:::
 
 <slide>
 ### Team

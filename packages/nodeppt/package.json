@@ -1,45 +1,45 @@
 {
-  "name": "nodeppt",
-  "jsname": "nodeppt",
-  "description": "A simple, in-browser, markdown-driven presentation framework",
-  "version": "2.0.0",
-  "site": "https://github.com/ksky521/nodeppt",
-  "main": "index.js",
-  "author": {
-    "name": "Theo Wang",
-    "email": "ksky521@gmail.com"
-  },
-  "bin": {
-    "nodeppt": "bin/nodeppt"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ksky521/nodeppt"
-  },
-  "engines": {
-    "node": ">=8.9"
-  },
-  "dependencies": {
-		"commander": "^2.19.0",
-    "nodeppt-parser": "^1.0.0",
-    "nodeppt-js": "^1.0.0",
-    "nodeppt-serve": "^1.0.0",
-    "nodeppt-shared-utils": "^1.0.0"
-  },
-  "keywords": [
-    "presentation",
-    "powerpoint",
-    "slideshow",
-    "keynote",
-    "ppt",
-    "slide",
-    "revealjs",
-    "impressjs",
-    "markdown"
-  ],
-  "readmeFilename": "README_EN.md",
-  "license": "SEE LICENSE IN MIT-LICENSE.txt",
-  "devDependencies": {
-    "lerna": "^3.4.3"
-  }
+    "name": "nodeppt",
+    "jsname": "nodeppt",
+    "description": "A simple, in-browser, markdown-driven presentation framework",
+    "version": "2.0.0",
+    "site": "https://github.com/ksky521/nodeppt",
+    "main": "index.js",
+    "author": {
+        "name": "Theo Wang",
+        "email": "ksky521@gmail.com"
+    },
+    "bin": {
+        "nodeppt": "bin/nodeppt"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ksky521/nodeppt"
+    },
+    "engines": {
+        "node": ">=8.9"
+    },
+    "dependencies": {
+        "commander": "^2.19.0",
+        "nodeppt-parser": "^1.0.0",
+        "nodeppt-js": "^1.0.0",
+        "nodeppt-serve": "^1.0.0",
+        "nodeppt-shared-utils": "^1.0.0"
+    },
+    "keywords": [
+        "presentation",
+        "powerpoint",
+        "slideshow",
+        "keynote",
+        "ppt",
+        "slide",
+        "revealjs",
+        "impressjs",
+        "markdown"
+    ],
+    "readmeFilename": "README_EN.md",
+    "license": "SEE LICENSE IN MIT-LICENSE.txt",
+    "devDependencies": {
+        "lerna": "^3.4.3"
+    }
 }

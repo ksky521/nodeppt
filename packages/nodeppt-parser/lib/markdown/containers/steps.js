@@ -1,7 +1,8 @@
-const name = 'blink';
+const name = 'steps';
 
 module.exports = {
     validate(params) {
+        console.log(params, name);
         return params.trim().match(new RegExp('^' + name + '\\s*(.*)$'));
     },
     handler(state, opts) {
@@ -22,29 +23,31 @@ module.exports = {
 
         let open = false;
         let done = 0;
+        let step = 1;
         for (let i = 0; i < tokens.length; i++) {
             const token = tokens[i];
             if (token.type === 'container_' + name + '_open') {
                 // 在 open 后面插入
-                tokens.splice(i + 1, 0, getOpenToken('li', token.level), getOpenToken('a', token.level + 1));
+                tokens.splice(i + 1, 0, getOpenToken('li', token.level));
                 open = true;
-                i = i + 2;
+                i++;
             } else if (token.type === 'container_' + name + '_close') {
                 // 在 close 之前插入
-                tokens.splice(i, 0, getCloseToken('a', token.level + 1), getCloseToken('li', token.level));
+                tokens.splice(i, 0, getCloseToken('li', token.level));
                 open = false;
-                i = i + 2;
+                i++;
             } else if (open && 'hr' === token.type && done === 0) {
                 // 第一层的 Hr 需要替换
-                tokens.splice(
-                    i,
-                    1,
-                    getCloseToken('a', token.level),
-                    getCloseToken('li', token.level - 1),
-                    getOpenToken('li', token.level - 1),
-                    getOpenToken('a', token.level)
-                );
-                i = i + 3;
+                tokens.splice(i, 1, getCloseToken('li', token.level - 1), getOpenToken('li', token.level - 1));
+                i++;
+
+                step++;
+                if (step >= 2) {
+                    let t1 = getOpenToken('div', token.level);
+                    t1.attrPush(['class', `process step-${step}`]);
+                    tokens.splice(i, 0, t1, getCloseToken('div', token.level));
+                    i = i + 2;
+                }
             } else if (open) {
                 // 加深一层，因为外面多套了一层div
                 token.level = token.level + 2;
@@ -67,13 +70,9 @@ module.exports = {
             let attrs = token.attrs || [];
 
             if (clsIndex >= 0) {
-                attrs[clsIndex][1] +=
-                    cmIndex >= 0 ? ` flexblock blink border ${attrs[cmIndex][1]}` : ` flexblock blink border`;
+                attrs[clsIndex][1] += cmIndex >= 0 ? ` flexblock steps ${attrs[cmIndex][1]}` : ` flexblock steps`;
             } else {
-                attrs.push([
-                    'class',
-                    cmIndex >= 0 ? `flexblock blink border ${attrs[cmIndex][1]}` : `flexblock blink border`
-                ]);
+                attrs.push(['class', cmIndex >= 0 ? `flexblock steps ${attrs[cmIndex][1]}` : `flexblock steps`]);
             }
 
             attrs = attrs.map(([key, value]) => {

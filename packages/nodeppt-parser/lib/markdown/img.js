@@ -28,7 +28,6 @@ module.exports = md => {
             })
           )
         }
-        console.log(attrs, imgAttrs)
         return `<${match[1]} ${attrs}><img src="${src}" ${imgAttrs}/></${match[1]}>`
       },
       'img_block'
