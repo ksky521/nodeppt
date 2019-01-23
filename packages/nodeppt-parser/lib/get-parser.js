@@ -6,8 +6,6 @@ const buildInPlugins = [
   './tags/note.js',
   './tags/h1.js',
   './tags/card.js',
-  './tags/flexblock.js',
-  './tags/gallery.js',
   // attrs放到最后
   './tags/attrs.js'
 ]

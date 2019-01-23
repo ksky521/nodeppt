@@ -343,7 +343,7 @@ We're all tired of heavy CSS frameworks. WebSlides is a starting point that prov
 <slide>
 ### Team
 
-<gallery>
+:::gallery
 
 ![](https://source.unsplash.com/uPGOEbjbVGA/800x600)
 
@@ -367,12 +367,12 @@ Master of nothing
 
 VP of Design
 
-</gallery>
+:::
 
 <slide>
 ### Team
 
-<gallery type="overlay">
+:::gallery overlay
 
 ![](https://source.unsplash.com/uPGOEbjbVGA/800x600)
 
@@ -396,7 +396,7 @@ CTO
 
 VP of Design
 
-</gallery>
+:::
 
 <slide>
 ## echarts {.aligncenter}
@@ -438,9 +438,9 @@ VP of Design
 
 <slide>
 
-<card>
+:::card
 
-![](https://source.unsplash.com/ALtNa-uKy3M/)
+![](https://source.unsplash.com/HoevDVvxInw/960x720)
 
 ---
 
@@ -453,13 +453,12 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 
 \* \* \* {.text-symbols}
 
-</card>
-
+:::
 
 
 <slide class="fullscreen">
 
-<card>
+:::card
 
 ![](https://source.unsplash.com/ALtNa-uKy3M/)
 
@@ -474,7 +473,7 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 
 \* \* \* {.text-symbols}
 
-</card>
+:::
 
 <slide>
 
