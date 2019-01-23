@@ -5,48 +5,48 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title><%= title %> - By <%= speaker %></title>
-    <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
-      <script src="https://cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js"></script>
-      <script>
-        document.addEventListener(
-          'DOMContentLoaded',
-          () => {
-            ws.el.addEventListener('ws:slide-change', ({detail})=>{
-
-              const slide = document.querySelector('.slide')
-              if(slide){
-                const echartsNode = slide.querySelectorAll('.echarts')
-                const echartsData = slide.querySelectorAll('.echarts-data')
-                //- echarts
-                const len = echartsNode.length
-                const echartsChart = []
-                const echartsOption = []
-                for (let j = 0; j < len; j++) {
-                  const et = (echartsChart[j] = echarts.init(echartsNode[j]))
-                  try {
-                    echartsOption[j] = JSON.parse(echartsData[j].innerHTML.trim())
-                    et.setOption(echartsOption[j])
-                  } catch (e) {
-                    console.log(e)
-                  }
-                }
-              }
-
-            })
-
-          },
-          false
-        )
-      </script>
-    <% } %>
+  <meta charset="UTF-8">
+  <title><%= title %> - By <%= speaker %></title>
+  <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div id="slides">
-    <article id="webslides">
-        <%- content %>
-    </article>
+  <article id="webslides">
+      <%- content %>
+  </article>
 </div>
+<% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
+  <script src="//cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js"></script>
+<% } %>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const ws = new WebSlide()
+  <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
+    const initEchart = ()=>{
+
+      const slide = document.querySelector('.slide')
+      if(slide){
+        const echartsNode = slide.querySelectorAll('.echarts')
+        const echartsData = slide.querySelectorAll('.echarts-data')
+        const len = echartsNode.length
+        const echartsChart = []
+        const echartsOption = []
+        for (let j = 0; j < len; j++) {
+          const et = (echartsChart[j] = echarts.init(echartsNode[j]))
+          try {
+            echartsOption[j] = JSON.parse(echartsData[j].innerHTML.trim())
+            et.setOption(echartsOption[j])
+          } catch (e) {
+            console.log(e)
+          }
+        }
+      }
+  }
+
+  ws.el.addEventListener('ws:slide-change', initEchart, false)
+  ws.el.addEventListener('ws:init', initEchart, false)
+  <% } %>
+}, false)
+</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 const {mergeAttrs} = require('../utils')
 /**
- * <slide image="url@.abc" video="url@.abc@poster_url">
+ * <slide image="url .abc" video="url .abc poster_url">
  */
 module.exports = tree => {
   tree.match({tag: 'slide'}, node => {
@@ -28,7 +28,7 @@ module.exports = tree => {
     }
 
     if (attrs.image) {
-      let [image, cls = ''] = attrs.image.split('@')
+      let [image, cls = ''] = attrs.image.split(/\s+/)
       cls = cls
         .split('.')
         .filter(c => c)
@@ -46,7 +46,7 @@ module.exports = tree => {
         }
       })
     } else if (attrs.video) {
-      let [src, cls = '', poster = ''] = attrs.video.split('@')
+      let [src, cls = '', poster = ''] = attrs.video.split(/\s+/)
       if (/\//.test(cls)) {
         poster = cls
         cls = ''

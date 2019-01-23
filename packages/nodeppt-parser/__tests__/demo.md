@@ -8,13 +8,13 @@ plugins:
 
 - echarts
 
-<slide class="bg-purple aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/@.dark">
+<slide class="bg-purple aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 
 # nodeppt
 
 ## 这可能是迄今为止最好的网页版演示库
 
-<slide video="https://webslides.tv/static/videos/peggy.mp4@.dark@https://webslides.tv/static/images/peggy.jpg">
+<slide video="https://webslides.tv/static/videos/peggy.mp4 .dark https://webslides.tv/static/images/peggy.jpg">
 
 ## 为什么选择 nodeppt
 
@@ -28,11 +28,12 @@ plugins:
 - 可以单页 ppt 内部动效，单步动效
 - 支持进入/退出回调，做在线 demo 很方便
 
+
 <slide>
 
 ## 为什么选择 nodeppt
 
-<column class="vertical-align">
+:::column {..vertical-align}
 - 基于 GFM 的 markdown 语法编写
 - 支持 html 混排，再复杂的 demo 也可以做！
 - 导出网页或者 pdf 更容易分享
@@ -56,7 +57,49 @@ plugins:
 </article>
 ```
 
-</column>
+:::
+
+
+
+
+<slide class="bg-brown">
+
+:::column
+
+::fa-heart large::
+### **Feature 1**
+
+Test your web and mobile designs, and quickly incorporate user feedback.
+
+----
+
+::fa-heart large::
+
+### **Feature 1**
+
+Test your web and mobile designs, and quickly incorporate user feedback.
+
+----
+
+::fa-heart large::
+
+### **Feature 1**
+
+Test your web and mobile designs, and quickly incorporate user feedback.
+
+:::
+
+
+<slide>
+## button
+
+[! .button]()
+
+[!.raduis .button.raduis]()
+
+[!.ghost .button.ghost]()
+
+[! :fa-github: svg-icon]()
 
 <slide :class="size-50">
 ### Let's check out some examples.
@@ -81,9 +124,9 @@ All content is for demo purposes only.
 
 <slide class="aligncenter">
 
-## Welcomes ::.text-landing
+## Welcomes {.text-landing}
 
-**WebSlides** is an open source tool for telling stories. ::.text-intro
+**WebSlides** is an open source tool for telling stories. {.text-intro}
 
 <nav>
 * [Twitter](https://twitter.com/webslides)
@@ -93,9 +136,9 @@ All content is for demo purposes only.
 
 <slide class="bg-secondary" :class="size-50 frame">
 
-## How to Tell Your Story? ::.text-serif.aligncenter
+## How to Tell Your Story? {.text-serif.aligncenter}
 
-\* \* \* ::.text-symbols
+\* \* \* {.text-symbols}
 
 Stories have the power to change the world. WebSlides helps you write better content, faster. Your slides are there to support your story. Choose words wisely, create meaning with them, keep it simple.
 
@@ -105,7 +148,8 @@ Stories have the power to change the world. WebSlides helps you write better con
 
 ---
 
-<shadowbox>
+:::shadowbox
+
 ## We're web people.
 There're excellent presentation tools out there. WebSlides is about telling the story, and sharing it in a beautiful way. Hypertext and clean code as narrative elements.
 
@@ -114,19 +158,17 @@ There're excellent presentation tools out there. WebSlides is about telling the 
 ## Work better, faster.
 
 Designers, marketers, and journalists can now focus on the content. Simply [choose a demo](https://webslides.tv/demos) and customize it in minutes.
-</shadowbox>
+
+:::
+
+
 
 <slide image="https://source.unsplash.com/Vti8XHv2XjU/" class="bg-black aligncenter">
 # **California** {.text-shadow}
 
-<footer>
-  [iOS app](#)
-  [iOS app](#)
-  [iOS app](#)
 
-</footer>
 
-<slide class="bg-gradient-v" :class="size-60" image="https://source.unsplash.com/nxfuA21kNHY/1440x1440@.dark">
+<slide class="bg-gradient-v" :class="size-60" image="https://source.unsplash.com/nxfuA21kNHY/1440x1440 .dark">
 
 GOOD KARMA {.text-context}
 
@@ -156,25 +198,26 @@ Location Intelligence {.text-subtitle}
 
 <slide class="bg-primary">
 
-<flexblock>
+:::flexbox
 
-![](https://webslides.tv/static/images/logos/google.svg)
-
----
-
-![](https://webslides.tv/static/images/logos/netflix.svg)
+!![div](https://webslides.tv/static/images/logos/google.svg)
 
 ---
 
-![](https://webslides.tv/static/images/logos/microsoft.svg)
-</flexblock>
+!![div](https://webslides.tv/static/images/logos/netflix.svg)
+
+---
+
+!![div](https://webslides.tv/static/images/logos/microsoft.svg)
+
+:::
 
 <slide>
 ## About/Services/Clients
 
 `ul.flexblock.blink.border`
 
-<flexblock type="border">
+:::blink
 
 ## Interfaces
 
@@ -212,11 +255,9 @@ When you're really passionate about your job, you can change the world.
 
 ---
 
-## Interfaces
+!![div](https://webslides.tv/static/images/logos/google.svg .aligncenter.graylogo)
 
-1. Architecture
-2. Design
-3. Development
+ Acme hired us to help make the reading experience totally engaging.
 
 ---
 
@@ -234,7 +275,7 @@ When you're really passionate about your job, you can change the world.
 2. Design
 3. Development
 
-</flexblock>
+:::
 
 <slide>
 ## ul.flexblock.steps
@@ -437,6 +478,31 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 \* \* \* {.text-symbols}
 
 </card>
+
+<slide>
+
+## **Why WebSlides?**
+
+> "I feel guilty as a web designer when I have to use PowerPoint and Keynote. So I made #WebSlides."
+
+
+<slide>
+> I have always appreciated designers who dare to reinterpret fabrics and proportions, so I follow the Japanese and Belgian designers. {.text-quote}
+<cite>Zaha Hadid</cite>
+
+<slide :class="aligncenter fadeInUp">
+## The little things mean the most
+
+.fadeInUp
+
+
+<slide :class="aligncenter zoomIn size-40">
+
+![](https://webslides.tv/static/images/android.png)
+
+<slide :class="aligncenter">
+
+## h2.fadeIn.slow {.fadeIn.slow}
 
 <slide>
 

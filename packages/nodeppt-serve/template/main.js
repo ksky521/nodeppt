@@ -2,9 +2,7 @@
  * 页面的 main.js
  */
 import Slide from 'nodeppt-js'
-const ws = new Slide()
 
-window.ws = ws
 window.WebSlide = Slide
 
 if (module.hot) {

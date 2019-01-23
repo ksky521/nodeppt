@@ -3,7 +3,6 @@ const getMdParser = require('./get-markdown-parser')
 // 内置 posthtml 插件
 const buildInPlugins = [
   './tags/slide.js',
-  './tags/icon.js',
   './tags/note.js',
   './tags/h1.js',
   './tags/footer.js',
