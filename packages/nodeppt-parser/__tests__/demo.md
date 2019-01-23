@@ -438,7 +438,7 @@ VP of Design
 
 <slide>
 
-:::card
+:::card-50
 
 ![](https://source.unsplash.com/HoevDVvxInw/960x720)
 

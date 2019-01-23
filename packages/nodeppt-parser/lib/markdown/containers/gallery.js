@@ -5,7 +5,6 @@ module.exports = {
         return params.trim().match(new RegExp('^' + name + '\\s*(.*)$'));
     },
     handler(state, opts) {
-        console.log(opts);
         const m = opts.match(new RegExp('^' + name + '\\s*(.*)$'));
         if (m && m[1]) {
             opts = m[1].trim();

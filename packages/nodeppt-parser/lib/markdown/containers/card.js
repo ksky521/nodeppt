@@ -1,8 +1,7 @@
 const name = 'card';
-
 module.exports = {
     validate(params) {
-        return params.trim().match(new RegExp('^' + name + '\\s*(.*)$'));
+        return params.trim().match(new RegExp('^' + name + '-\\d+\\s*(.*)$'));
     },
     handler(state, opts) {
         function getOpenToken(tag, level) {
@@ -22,29 +21,26 @@ module.exports = {
 
         let open = false;
         let done = 0;
+        let count = 1;
+        let level = 1;
+        let imgStart = 0,
+            imgEnd = 0;
+        let ctxStart = 0,
+            ctxEnd = 0;
+
+        let img = [],
+            context = [];
         for (let i = 0; i < tokens.length; i++) {
             const token = tokens[i];
             if (token.type === 'container_' + name + '_open') {
                 // 在 open 后面插入
-                tokens.splice(i + 1, 0, getOpenToken('li', token.level), getOpenToken('a', token.level + 1));
                 open = true;
-                i = i + 2;
+                level = token.level + 1;
             } else if (token.type === 'container_' + name + '_close') {
                 // 在 close 之前插入
-                tokens.splice(i, 0, getCloseToken('a', token.level + 1), getCloseToken('li', token.level));
                 open = false;
-                i = i + 2;
             } else if (open && 'hr' === token.type && done === 0) {
-                // 第一层的 Hr 需要替换
-                tokens.splice(
-                    i,
-                    1,
-                    getCloseToken('a', token.level),
-                    getCloseToken('li', token.level - 1),
-                    getOpenToken('li', token.level - 1),
-                    getOpenToken('a', token.level)
-                );
-                i = i + 3;
+                count++;
             } else if (open) {
                 // 加深一层，因为外面多套了一层div
                 token.level = token.level + 2;
@@ -54,26 +50,50 @@ module.exports = {
                 } else if (/_close$/.test(token.type)) {
                     done--;
                 }
+                if (count === 1) {
+                    if (!imgStart) {
+                        imgStart = i;
+                    } else {
+                        imgEnd = i;
+                    }
+                    img.push(token);
+                } else {
+                    if (!ctxStart) {
+                        ctxStart = i;
+                    } else {
+                        ctxEnd = i;
+                    }
+                    context.push(token);
+                }
             }
         }
+        // 分组完成
+        tokens.splice(
+            imgStart,
+            imgEnd - imgStart,
+            getOpenToken('figure', level),
+            ...img,
+            getCloseToken('figure', level)
+        );
+        const divToken = getOpenToken('div', level);
+        divToken.attrPush(['class', 'flex-content']);
+        tokens.splice(ctxStart, ctxEnd - ctxStart + 1, divToken, ...context, getCloseToken('div', level));
         return state;
     },
     render(tokens, idx) {
         const token = tokens[idx];
-
         if (token.nesting === 1) {
+            const info = token.info.split(' ').shift()
+
             const cmIndex = token.attrIndex('css-module');
             let clsIndex = token.attrIndex('class');
             let attrs = token.attrs || [];
 
+
             if (clsIndex >= 0) {
-                attrs[clsIndex][1] +=
-                    cmIndex >= 0 ? ` card-60 ${attrs[cmIndex][1]}` : ` flexblock blink border`;
+                attrs[clsIndex][1] += cmIndex >= 0 ? ` ${info} bg-white ${attrs[cmIndex][1]}` : ` ${info} bg-white`;
             } else {
-                attrs.push([
-                    'class',
-                    cmIndex >= 0 ? `flexblock blink border ${attrs[cmIndex][1]}` : `flexblock blink border`
-                ]);
+                attrs.push(['class', cmIndex >= 0 ? ` ${info} bg-white ${attrs[cmIndex][1]}` : ` ${info} bg-white`]);
             }
 
             attrs = attrs.map(([key, value]) => {
