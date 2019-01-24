@@ -41,6 +41,131 @@ module.exports = options => {
         },
         {
             /**
+             * bla [:fa-file: abc](http://){.d}
+             *
+             * differs from 'inline attributes' as it does
+             * not have a closing tag (nesting: -1)
+             */
+            name: 'fa_inline nesting',
+            tests: [
+                {
+                    shift: 0,
+                    type: 'inline',
+                    children: [
+                        {
+                            shift: -1,
+                            type: 'link_open'
+                        },
+                        {
+                            shift: 0,
+                            type: 'fa_inline'
+                        },
+                        {
+                            shift: 1,
+                            type: 'text'
+                        },
+                        {
+                            shift: 2,
+                            type: 'link_close'
+                        },
+                        {
+                            shift: 3,
+                            type: 'jsx_inline',
+                            content: utils.hasDelimiters('start', options)
+                        }
+                    ]
+                }
+            ],
+            transform: (tokens, i, j) => {
+                const children = tokens[i].children;
+                console.log(children)
+                for (let m = 1; m < children.length; m++) {
+                    let child = children[m];
+                    if (
+                        child &&
+                        children[m - 1] &&
+                        children[m - 1].type === 'link_open' &&
+                        child.type === 'fa_inline' &&
+                        children[m + 1] &&
+                        children[m + 1].type === 'text' &&
+                        children[m + 2] &&
+                        children[m + 2].type === 'link_close' &&
+                        children[m + 3]
+                    ) {
+                        let jsx = children[m + 3];
+                        if (utils.hasDelimiters('start', options)(jsx.content)) {
+                            // 说明是有效的 jsx
+                            let token = children.splice(m + 3, 1)[0];
+                            let attrToken = tokens[i].children[m - 1];
+                            let attrs = utils.getAttrs(token.content, 0, options);
+                            utils.addAttrs(attrs, attrToken);
+                            m--;
+                        }
+                    }
+                }
+            }
+        },
+        {
+            /**
+             * bla [xxxx](http://){.d}
+             *
+             * differs from 'inline attributes' as it does
+             * not have a closing tag (nesting: -1)
+             */
+            name: 'inline nesting link',
+            tests: [
+                {
+                    shift: 0,
+                    type: 'inline',
+                    children: [
+                        {
+                            shift: -1,
+                            type: 'link_open'
+                        },
+                        {
+                            shift: 0,
+                            type: 'text'
+                        },
+                        {
+                            shift: 1,
+                            type: 'link_close'
+                        },
+                        {
+                            shift: 2,
+                            type: 'jsx_inline',
+                            content: utils.hasDelimiters('start', options)
+                        }
+                    ]
+                }
+            ],
+            transform: (tokens, i, j) => {
+                const children = tokens[i].children;
+                for (let m = 1; m < children.length; m++) {
+                    let child = children[m];
+                    if (
+                        child &&
+                        children[m - 1] &&
+                        children[m - 1].type === 'link_open' &&
+                        child.type === 'text' &&
+                        children[m + 1] &&
+                        children[m + 1].type === 'link_close' &&
+                        children[m + 2]
+                    ) {
+                        let jsx = children[m + 2];
+                        if (utils.hasDelimiters('start', options)(jsx.content)) {
+                            // 说明是有效的 jsx
+                            let token = children.splice(m + 2, 1)[0];
+                            let attrToken = tokens[i].children[m - 1];
+                            let attrs = utils.getAttrs(token.content, 0, options);
+                            utils.addAttrs(attrs, attrToken);
+                            m--;
+                        }
+                    }
+                }
+            }
+        },
+        {
+            /**
              * bla `click()`{.c} ![](img.png){.d}
              *
              * differs from 'inline attributes' as it does

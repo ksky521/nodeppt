@@ -96,15 +96,16 @@ Test your web and mobile designs, and quickly incorporate user feedback.
 :::
 
 <slide>
+
+::: {.content-left}
 ## button
 
-[.button]() {.button}
+[.button](){.button} [.button.radius](){.button.radius}
 
-[.button.raduis]() {.button.raduis}
+[.button.ghost](){.button.ghost} [:fa-github: svg-icon](){.button}
+:::
 
-[.button.ghost]() {.button.ghost}
 
-[:fa-github: svg-icon]() {.button}
 
 <slide :class="size-50">
 ### Let's check out some examples.
