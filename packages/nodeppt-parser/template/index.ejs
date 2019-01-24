@@ -8,6 +8,13 @@
     <meta charset="UTF-8">
     <title><%= title %> - By <%= speaker %></title>
   <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <% if (hasOwnProperty('css') && css.length) { %>
+    <% for (var i = 0;i<css.length;i++) { %>
+    <script src="<%= css[i] %>"></script>
+    <% } %>
+<% } %>
+
 </head>
 <body>
 <div id="slides">
@@ -18,6 +25,12 @@
 <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
     <script src="//cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js"></script>
 <% } %>
+<% if (hasOwnProperty('js') && js.length) { %>
+    <% for (var i = 0;i<js.length;i++) { %>
+    <script src="<%= js[i] %>"></script>
+    <% } %>
+<% } %>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const ws = new WebSlide()
