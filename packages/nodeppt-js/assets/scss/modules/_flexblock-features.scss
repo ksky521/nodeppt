@@ -26,7 +26,8 @@
   }
 
   li span,
-  li svg {
+  li svg,
+  li i.fa{
     display: block;
     font-size: 6.4rem;
     line-height: 1;
@@ -44,6 +45,7 @@
   @media (min-width: 1200px) {
     li span,
     li svg,
+    li i.fa,
     li img {
       float: left;
       margin-right: .8rem;

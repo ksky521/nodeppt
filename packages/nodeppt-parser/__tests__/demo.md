@@ -230,6 +230,30 @@ The Daenerys has facilities such as a 24-hour front desk, an elevator with acces
 
 :::
 
+
+<slide>
+
+## Features
+
+:::features
+
+## :fa-link: Permalinks
+
+Go to a specific slide.
+
+---
+
+## :fa-clock-o: Permalinks
+
+Go to a specific slide.
+
+----
+
+## ::500+:: SVG ICONS
+Font Awesome Kit.
+
+:::
+
 <slide>
 ## About/Services/Clients
 
