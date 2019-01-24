@@ -558,9 +558,12 @@ $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\p
 > "I feel guilty as a web designer when I have to use PowerPoint and Keynote. So I made #WebSlides."
 
 
-<slide>
-> I have always appreciated designers who dare to reinterpret fabrics and proportions, so I follow the Japanese and Belgian designers. {.text-quote}
-<cite>Zaha Hadid</cite>
+<slide class="bg-black-blue">
+> I have always appreciated designers who dare to reinterpret fabrics and proportions, so I follow the Japanese and Belgian designers.
+> ==Zaha Hadid==
+> {.text-quote}
+
+
 
 <slide :class="aligncenter fadeInUp">
 ## The little things mean the most

@@ -14,6 +14,7 @@ mdIt.use(require('./markdown/fa'));
 mdIt.use(require('./markdown/link'));
 mdIt.use(require('./markdown/attrs'));
 mdIt.use(require('./markdown/img'));
+mdIt.use(require('./markdown/cite'));
 
 mdIt.use(require('./markdown/container'), 'column', require('./markdown/containers/column'));
 mdIt.use(require('./markdown/container'), 'shadowbox', require('./markdown/containers/shadow'));
