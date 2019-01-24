@@ -230,12 +230,167 @@ The Daenerys has facilities such as a 24-hour front desk, an elevator with acces
 
 :::
 
+<slide>
+
+::: {.content-center}
+### ul.flexblock.specs
+
+:::specs
+
+## :fa-long-arrow-right: SIMPLE NAVIGATION
+with arrow keys and swipe.
+
+----
+
+## :fa-link: Permalinks
+Go to a specific slide. URL: #slide=number
+
+---
+
+## :fa-text-height: SVG ICONS
+Font Awesome Kit.
+
+:::
+:::
+
+<slide class="bg-red" image="https://source.unsplash.com/R1J6Z1cnJZc/ .dark">
+
+:::cta
+
+!![](https://webslides.tv/static/images/logos/netflix.svg .whitelogo)
+
+---
+
+## Watch TV shows anytime, anywhere
+
+.frame.bg-red
+
+:::
+
+<slide class="bg-red frame">
+
+:::cta
+
+::^$^40::
+
+---
+
+## Watch TV shows anytime, anywhere
+
+.frame.bg-red
+
+:::
+
+<slide class="bg-dark">
+
+## Flexbox
+
+:::flexbox
+
+Founded
+
+----
+
+
+24M Subscribers
+
+
+---
+
+Founded
+
+----
+
+
+Revenue: $16M
+
+---
+
+
+Covers, cards, quotes...
+
+----
+
+
+Use multiples of 8.
+
+---
+
+
+Font Awesome Kit.
+
+---
+
+
+Bank: $32M
+
+:::
+
+<slide>
+
+<slide class="bg-green">
+
+## Metrics
+
+:::flexbox {.border.metrics}
+
+Founded
+::1972::
+
+----
+
+::fa-users::
+
+24M Subscribers
+
+
+---
+
+Founded
+::64%::
+
+----
+
+:~fa-line-chart~:
+
+Revenue: $16M
+
+---
+
+:~fa-building-o~:
+
+Covers, cards, quotes...
+
+----
+
+:~fa-smile-o~:
+
+Use multiples of 8.
+
+---
+
+:~fa-usd~:
+
+Font Awesome Kit.
+
+---
+
+:~fa-university~:
+
+Bank: $32M
+
+:::
 
 <slide>
 
 ## Features
 
 :::features
+
+## ::→:: SIMPLE NAVIGATION
+with arrow keys and swipe.
+
+----
 
 ## :fa-link: Permalinks
 
@@ -248,6 +403,16 @@ Go to a specific slide.
 Go to a specific slide.
 
 ----
+
+## ::40+:: BEAUTIFUL COMPONENTS
+Covers, cards, quotes...
+
+----
+
+## :fa-text-height: VERTICAL RHYTHM
+Use multiples of 8.
+
+---
 
 ## ::500+:: SVG ICONS
 Font Awesome Kit.
@@ -635,27 +800,4 @@ dfdasfs
 
 ## h2.fadeIn.slow {.fadeIn.slow}
 
-<slide>
 
-## flexblock
-
-<flexblock>
-# dfdafafa
-
-dfadsfasfasf
-
----
-
-# dfdafafa
-
-dfadsfasfasf
-
----
-
-# dfdafafa
-
-dfadsfasfasf
-dfdasf
-
-</flexblock>
-```

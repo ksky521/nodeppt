@@ -25,6 +25,8 @@ mdIt.use(require('./markdown/container'), 'card', require('./markdown/containers
 mdIt.use(require('./markdown/container'), 'flexbox', require('./markdown/containers/flexbox')('flexbox'));
 mdIt.use(require('./markdown/container'), 'blink', require('./markdown/containers/blink'));
 mdIt.use(require('./markdown/container'), 'features', require('./markdown/containers/features'));
+mdIt.use(require('./markdown/container'), 'specs', require('./markdown/containers/specs'));
+mdIt.use(require('./markdown/container'), 'cta', require('./markdown/containers/cta'));
 
 mdIt.use(require('./markdown/container'), 'gallery', require('./markdown/containers/gallery'));
 mdIt.use(require('./markdown/container'), 'div', require('./markdown/containers/div'));
