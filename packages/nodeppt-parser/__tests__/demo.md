@@ -178,6 +178,20 @@ Location Intelligence {.text-subtitle}
 
 ## **The application of geographic mapping to data**
 
+
+<slide image="https://source.unsplash.com/YMOHw3F1Hdk/">
+
+::: .alignright.size-50.bg-trans-dark
+New in London {.text-subtitle.text-serif}
+### **Hotel Daenerys**
+
+The Daenerys has facilities such as a 24-hour front desk, an elevator with access to all rooms, and a terrace with a garden where guests can enjoy breakfast during the summer.
+
+[More info]() {.button}
+
+:::
+
+
 <slide :class="aligncenter">
 
 ## **Abouts & Teams**

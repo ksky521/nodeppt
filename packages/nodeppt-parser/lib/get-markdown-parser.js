@@ -7,6 +7,7 @@ mdIt.use(prism, {
 mdIt.use(require('markdown-it-sup'));
 mdIt.use(require('markdown-it-br'));
 mdIt.use(require('markdown-it-katex'));
+// mdIt.use(require('markdown-it-div'));
 
 mdIt.use(require('./markdown/jsx'));
 mdIt.use(require('./markdown/echarts'));
@@ -24,6 +25,8 @@ mdIt.use(require('./markdown/container'), 'flexbox', require('./markdown/contain
 mdIt.use(require('./markdown/container'), 'blink', require('./markdown/containers/blink'));
 
 mdIt.use(require('./markdown/container'), 'gallery', require('./markdown/containers/gallery'));
+mdIt.use(require('./markdown/container'), 'div', require('./markdown/containers/div'));
+
 
 function getMdParser(plugins) {
     plugins.forEach(plugin => {
