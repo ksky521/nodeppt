@@ -20,11 +20,27 @@ plugins:
 
 `section.bg-blue > .background-video.dark` or `.light`
 
+
 <slide>
 
 ## 为什么选择 nodeppt
 
-:::column {..vertical-align}
+- 基于 GFM 的 markdown 语法编写
+- 支持 html 混排，再复杂的 demo 也可以做！
+- 导出网页或者 pdf 更容易分享
+- 支持单页背景图片
+- 多种模式：纵览模式，双屏模式，远程控制
+- 可以使用画板，可以使用 note 做备注
+- 支持语法高亮，自由选择 highlight 样式
+- 可以单页 ppt 内部动效，单步动效
+- 支持进入/退出回调，做在线 demo 很方便
+{.rollIn}
+
+<slide>
+
+## 为什么选择 nodeppt
+
+:::column {.vertical-align}
 
 - 基于 GFM 的 markdown 语法编写
 - 支持 html 混排，再复杂的 demo 也可以做！
@@ -96,7 +112,7 @@ All content is for demo purposes only.
 
 ---
 
-1. Welcomes {..text-cols}
+1. Welcomes
 2. Covers
 3. Abouts & Teams
 4. Features & Benefits
@@ -110,6 +126,7 @@ All content is for demo purposes only.
 12. Logos
 13. CSS Animations
 14. Embedding videos, maps, charts...
+{.text-cols}
 
 <slide class="aligncenter">
 
@@ -181,13 +198,13 @@ Location Intelligence {.text-subtitle}
 
 <slide image="https://source.unsplash.com/YMOHw3F1Hdk/">
 
-::: .alignright.size-50.bg-trans-dark
+::: {.alignright.size-50.bg-trans-dark}
 New in London {.text-subtitle.text-serif}
 ### **Hotel Daenerys**
 
 The Daenerys has facilities such as a 24-hour front desk, an elevator with access to all rooms, and a terrace with a garden where guests can enjoy breakfast during the summer.
 
-[More info]() {.button}
+[More info]()
 
 :::
 
@@ -559,11 +576,11 @@ dfdasfs
 
 ## KaTex {.aligncenter}
 
-equation | description
-----------|------------
-$\nabla \cdot \vec{\mathbf{B}}  = 0$ | divergence of $\vec{\mathbf{B}}$ is zero
-$\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$ |  curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$
-$\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_
+| equation                                                                                                                                                                  | description                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                      | divergence of $\vec{\mathbf{B}}$ is zero                                               |
+| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                          | curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$ |
+| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                                 |
 
 <slide>
 

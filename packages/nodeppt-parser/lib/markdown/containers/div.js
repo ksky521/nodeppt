@@ -11,15 +11,12 @@ module.exports = {
         const token = tokens[idx];
 
         if (token.nesting === 1) {
-            let params = token.info.trim();
-            params = getAttrsString(
-                getAttrs(`{${params}}`, 0, {
-                    leftDelimiter: '{',
-                    rightDelimiter: '}'
-                })
-            );
+            let attrs = token.attrs || [];
+            attrs = attrs.map(([key, value]) => {
+                return `${key}="${value}"`;
+            });
             // opening tag
-            return `<div ${params}>\n`;
+            return `<div ${attrs.join(' ')}>\n`;
         } else {
             // closing tag
             return '</div>\n';
