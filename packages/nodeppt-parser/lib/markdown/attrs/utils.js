@@ -115,17 +115,27 @@ exports.addAttrs = function(attrs, token) {
     return token;
 };
 // 增加获取 attr string 方法
-exports.getAttrsString = function(attrs) {
+exports.getAttrsString = function(attrs, fn) {
+    const defFN = (key, value) => `${key}="${value}"`;
+    const cb =
+        typeof fn === 'function'
+            ? (key, value) => {
+                  const r = fn(key, value);
+                  if (r) {
+                      return r;
+                  } else {
+                      return defFN(key, value);
+                  }
+              }
+            : (key, value) => `${key}="${value}"`;
     const str = [];
     for (let j = 0, l = attrs.length; j < l; ++j) {
         let key = attrs[j][0];
         // 多个. 支持
-        if (key === 'class') {
-            str.push(`class="${attrs[j][1].split('.').join(' ')}"`);
-        } else if (key === 'css-module') {
-            str.push(`css-module="${attrs[j][1].split('.').join(' ')}"`);
+        if (key === 'class' || key === 'css-module') {
+            str.push(cb(key, attrs[j][1].split('.').join(' ')));
         } else {
-            str.push(`${attrs[j][0]}="${attrs[j][1]}"`);
+            str.push(cb(key, attrs[j][1]));
         }
     }
     return str.join(' ');

@@ -1,4 +1,7 @@
 const {mergeAttrs} = require('../utils');
+
+const {getAttrs, getAttrsString} = require('../markdown/attrs/utils');
+
 /**
  * <slide image="url .abc" video="url .abc poster_url">
  */
@@ -16,6 +19,7 @@ module.exports = tree => {
         const wrapAttrs = {};
         for (let i in attrs) {
             if (i.startsWith(':')) {
+                // 这是 wrap 的样式
                 wrapAttrs[i.slice(1)] = attrs[i];
             }
         }
@@ -28,46 +32,64 @@ module.exports = tree => {
         }
 
         if (attrs.image) {
-            let [image, cls = ''] = attrs.image.split(/\s+/);
-            cls = cls
-                .split('.')
-                .filter(c => c)
-                .map(c => {
-                    if (!['dark', 'light'].includes(c)) {
-                        return `background-${c}`;
+            let [image, ...imgAttrs] = attrs.image.split(/\s+/);
+            imgAttrs = getAttrs(`{${imgAttrs.join(' ')}}`, 0, {
+                leftDelimiter: '{',
+                rightDelimiter: '}'
+            });
+            const rs = {};
+            let cls = [];
+            if (imgAttrs.length) {
+                imgAttrs.forEach(([key, value]) => {
+                    if (key === 'class') {
+                        cls = value.split('.').map(c => {
+                            if (!['dark', 'light'].includes(c)) {
+                                return `background-${c}`;
+                            }
+                            return c;
+                        });
+                    } else {
+                        rs[key] = value;
                     }
-                    return c;
                 });
+            }
+
             node.content.unshift({
                 tag: 'span',
                 attrs: {
+                    ...rs,
                     class: ['background', ...cls].join(' '),
                     style: `background-image:url('${image}')`
                 }
             });
         } else if (attrs.video) {
-            let [src, cls = '', poster = ''] = attrs.video.split(/\s+/);
-            if (/\//.test(cls)) {
-                poster = cls;
-                cls = '';
-            }
-            cls = cls
-                .split('.')
-                .filter(c => c)
-                .map(c => {
-                    if (!['dark', 'light'].includes(c)) {
-                        return `background-video-${c}`;
+            let [src, ...videoAttrs] = attrs.video.split(/\s+/);
+            videoAttrs = getAttrs(`{${videoAttrs.join(' ')}}`, 0, {
+                leftDelimiter: '{',
+                rightDelimiter: '}'
+            });
+            let rs = {};
+            let cls = [];
+            if (videoAttrs.length) {
+                videoAttrs.forEach(([key, value]) => {
+                    if (key === 'class') {
+                        cls = value.split('.').map(c => {
+                            if (!['dark', 'light'].includes(c)) {
+                                return `background-video-${c}`;
+                            }
+                            return c;
+                        });
+                    } else {
+                        rs[key] = value;
                     }
-                    return c;
                 });
-            const videoAttr = {
-                class: ['background-video', ...cls].join(' '),
-                loop: true,
-                muted: true
-            };
-            if (poster) {
-                videoAttr.poster = poster;
             }
+            rs = Object.assign(rs, {loop: true, muted: true});
+            const videoAttr = {
+                ...rs,
+                class: ['background-video', ...cls].join(' ')
+            };
+
             node.content.unshift({
                 tag: 'video',
                 attrs: videoAttr,

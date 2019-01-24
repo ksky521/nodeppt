@@ -27,6 +27,7 @@ module.exports = md => {
         // pass token to default renderer.
         return defLinkOpen(tokens, idx, options, env, self);
     };
+
 };
 
 // module.exports = md => {

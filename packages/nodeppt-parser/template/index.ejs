@@ -7,14 +7,22 @@
 <head>
     <meta charset="UTF-8">
     <title><%= title %> - By <%= speaker %></title>
-  <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <% if (hasOwnProperty('css') && css.length) { %>
-    <% for (var i = 0;i<css.length;i++) { %>
-    <script src="<%= css[i] %>"></script>
+    <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/prism/9000.0.1/themes/prism.min.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css">
+    <% if (hasOwnProperty('prismTheme') && ['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight'].includes(prismTheme)) { %>
+        <link rel="stylesheet" href="https://prismjs.com/themes/prism-<%= prismTheme %>.css">
     <% } %>
-<% } %>
 
+    <% if (hasOwnProperty('css') && css.length) { %>
+        <% for (var i = 0;i<css.length;i++) { %>
+        <script src="<%= css[i] %>"></script>
+        <% } %>
+    <% } %>
+
+    <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('katex')) { %>
+        <link rel="stylesheet" href="//cdn.staticfile.org/KaTeX/0.5.1/katex.min.css">
+    <% } %>
 </head>
 <body>
 <div id="slides">

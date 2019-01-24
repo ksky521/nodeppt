@@ -25,6 +25,8 @@
         "markdown-it": "^8.4.2",
         "markdown-it-br": "^1.0.0",
         "markdown-it-jsx": "1.1.0",
+        "markdown-it-katex": "^2.0.3",
+        "markdown-it-prism": "^2.0.1",
         "markdown-it-sup": "^1.0.0",
         "posthtml": "^0.11.3",
         "posthtml-parser": "^0.4.1",

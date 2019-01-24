@@ -3,9 +3,10 @@ speaker: 三水清
 url: https://github.com/ksky521/nodeppt
 js:
     - https://www.echartsjs.com/asset/theme/shine.js
-theme: moon
+prismTheme: solarizedlight
 plugins:
     - echarts
+    - katex
 
 <slide class="bg-purple aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 
@@ -13,19 +14,11 @@ plugins:
 
 ## 这可能是迄今为止最好的网页版演示库
 
-<slide video="https://webslides.tv/static/videos/peggy.mp4 .dark https://webslides.tv/static/images/peggy.jpg">
+<slide class="bg-blue aligncenter" video='https://webslides.tv/static/videos/peggy.mp4 .dark poster="https://webslides.tv/static/images/peggy.jpg"'>
 
-## 为什么选择 nodeppt
+# 为什么选择 nodeppt
 
-- 基于 GFM 的 markdown 语法编写 {..rollIn}
-- 支持 html 混排，再复杂的 demo 也可以做！
-- 导出网页或者 pdf 更容易分享
-- 支持单页背景图片
-- 多种模式：纵览模式，双屏模式，远程控制
-- 可以使用画板，可以使用 note 做备注
-- 支持语法高亮，自由选择 highlight 样式
-- 可以单页 ppt 内部动效，单步动效
-- 支持进入/退出回调，做在线 demo 很方便
+`section.bg-blue > .background-video.dark` or `.light`
 
 <slide>
 
@@ -89,13 +82,13 @@ Test your web and mobile designs, and quickly incorporate user feedback.
 <slide>
 ## button
 
-[! .button]()
+[.button]() {.button}
 
-[!.raduis .button.raduis]()
+[.button.raduis]() {.button.raduis}
 
-[!.ghost .button.ghost]()
+[.button.ghost]() {.button.ghost}
 
-[! :fa-github: svg-icon]()
+[:fa-github: svg-icon]() {.button}
 
 <slide :class="size-50">
 ### Let's check out some examples.
@@ -248,7 +241,7 @@ When you're really passionate about your job, you can change the world.
 
 ---
 
-!![div](https://webslides.tv/static/images/logos/google.svg .aligncenter.graylogo)
+!![div .abc](https://webslides.tv/static/images/logos/google.svg .aligncenter.graylogo)
 
 Acme hired us to help make the reading experience totally engaging.
 
@@ -546,6 +539,17 @@ dfdasfs
 | git status   |   git status   |    git status |
 | git diff     |    git diff    |      git diff |
 
+
+
+<slide class="bg-gradient-v">
+
+## KaTex {.aligncenter}
+
+equation | description
+----------|------------
+$\nabla \cdot \vec{\mathbf{B}}  = 0$ | divergence of $\vec{\mathbf{B}}$ is zero
+$\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$ |  curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$
+$\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_
 
 <slide>
 

@@ -1,6 +1,12 @@
 const mdIt = require('markdown-it')();
+const prism = require('markdown-it-prism');
+mdIt.use(prism, {
+    plugins: ['keep-markup', 'show-language'],
+    defaultLanguageForUnknown: 'textile'
+});
 mdIt.use(require('markdown-it-sup'));
 mdIt.use(require('markdown-it-br'));
+mdIt.use(require('markdown-it-katex'));
 
 mdIt.use(require('./markdown/jsx'));
 mdIt.use(require('./markdown/echarts'));
