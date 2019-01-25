@@ -109,20 +109,35 @@ function highlight(markdownit, options, text, lang, attrs = []) {
     const code = prismLang ? Prism.highlight(text, prismLang) : markdownit.utils.escapeHtml(text);
 
     let hasClass = false;
+    let preAttrs = [];
     attrs = attrs
         .map(([key, value]) => {
             if (key === 'class') {
                 hasClass = true;
                 value += langToUse ? ` ${markdownit.options.langPrefix}${langToUse}` : '';
+            } else if (key === 'css-module') {
+                // 单独提取
+                preAttrs.push(['class', value]);
+                return '';
             }
+            preAttrs.push([key, value]);
             return `${key}="${value}"`;
         })
         .join(' ');
-    if (!hasClass) {
-        attrs += langToUse ? ` ${markdownit.options.langPrefix}${langToUse}` : '';
+    if (!hasClass && langToUse) {
+        attrs += `class="${markdownit.options.langPrefix}${langToUse}"`;
     }
-
-    return `<pre ${attrs}><code ${attrs}>${code}</code></pre>`;
+    langToUse && preAttrs.push(['class', `${markdownit.options.langPrefix}${langToUse}`]);
+    let rs = {};
+    preAttrs.forEach(([key, value]) => {
+        rs[key] = rs[key] ? [rs[key], value].join(' ') : value;
+    });
+    preAttrs = Object.keys(rs)
+        .map(key => {
+            return `${key}="${rs[key]}"`;
+        })
+        .join(' ');
+    return `<pre ${preAttrs}><code ${attrs}>${code}</code></pre>`;
 }
 
 /**

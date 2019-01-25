@@ -215,7 +215,7 @@ Vertical
 - 支持进入/退出回调，做在线 demo 很方便
 
 ---
-```html
+```html {..fadeInUp..slow}
 <article id="webslides">
   <!-- Slide 1 -->
   <section>

@@ -1,6 +1,6 @@
 const mdIt = require('markdown-it')();
-const prism = require('markdown-it-prism');
-// const prism = require('./markdown/prism');
+// const prism = require('markdown-it-prism');
+const prism = require('./markdown/prism');
 
 mdIt.use(prism, {
     defaultLanguageForUnknown: 'textile'
