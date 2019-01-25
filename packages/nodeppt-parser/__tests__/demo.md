@@ -214,7 +214,7 @@ Vertical
 - 可以单页 ppt 内部动效，单步动效
 - 支持进入/退出回调，做在线 demo 很方便
 
-<slide class="frame" :class="size-60 bg-white">
+<slide class="frame moveIn" :class="size-60 bg-white tobuild">
 
 ### :fa-info-circle large: **Autoplay Feature**
 

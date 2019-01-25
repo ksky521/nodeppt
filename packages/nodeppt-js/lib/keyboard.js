@@ -180,7 +180,7 @@ export default class Keyboard {
             const idx = e.detail.currentSlide0;
             const slide = this.ws_.slides[idx];
             this.curSlide_ = slide;
-            const buildNode = toArray(slide.el.querySelectorAll('.build'));
+            const buildNode = toArray(slide.el.querySelectorAll('.tobuild,.builded'));
             if (buildNode.length) {
                 this.enable_ = true;
                 return;
