@@ -1,7 +1,8 @@
 const mdIt = require('markdown-it')();
 const prism = require('markdown-it-prism');
+// const prism = require('./markdown/prism');
+
 mdIt.use(prism, {
-    plugins: ['keep-markup', 'show-language'],
     defaultLanguageForUnknown: 'textile'
 });
 mdIt.use(require('markdown-it-sup'));

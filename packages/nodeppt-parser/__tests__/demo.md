@@ -214,6 +214,23 @@ Vertical
 - 可以单页 ppt 内部动效，单步动效
 - 支持进入/退出回调，做在线 demo 很方便
 
+---
+```html {.abc data-line="5-6"}
+<article id="webslides">
+  <!-- Slide 1 -->
+  <section>
+    <h1>Design for trust</h1>
+  </section>
+  <!-- Slide 2 -->
+  <section class="bg-primary">
+    <div class="wrap">
+      <h2>.wrap = container (width: 90%)</h2>
+    </div>
+  </section>
+</article>
+```
+:::
+
 <slide class="frame moveIn" :class="size-60 bg-white tobuild">
 
 ### :fa-info-circle large: **Autoplay Feature**
