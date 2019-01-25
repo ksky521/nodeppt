@@ -114,7 +114,7 @@ module.exports = class Service {
 
         const builtInPlugins = [
             './commands/serve',
-            // './commands/build',
+            './commands/build',
             // config plugins are order sensitive
             './config/base',
             './config/css',

@@ -7,7 +7,7 @@
 /.vscode
 
 /npm-debug.log
-/output
+/dist
 /publish
 
 yarn-lock.json

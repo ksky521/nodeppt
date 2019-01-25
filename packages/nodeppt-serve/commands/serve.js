@@ -73,6 +73,7 @@ module.exports = (api, options) => {
 
             const devClients = [
                 // dev server client
+                require.resolve('../template/reload.js'),
                 require.resolve('webpack-dev-server/client') + sockjsUrl
                 // hmr client
             ];
