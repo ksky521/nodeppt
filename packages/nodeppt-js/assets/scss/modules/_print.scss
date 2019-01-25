@@ -49,4 +49,8 @@
   #navigation {
     display: none;
   }
+  .build .tobuild {
+      opacity: 1 !important;
+      visibility: visible !important;
+  }
 }

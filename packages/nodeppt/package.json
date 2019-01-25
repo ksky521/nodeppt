@@ -35,9 +35,13 @@
         "slide",
         "revealjs",
         "impressjs",
+        "markdown-it",
+        "posthtml",
+        "webpack",
+        "nodeppt",
         "markdown"
     ],
-    "readmeFilename": "README_EN.md",
+    "readmeFilename": "README.md",
     "license": "SEE LICENSE IN MIT-LICENSE.txt",
     "devDependencies": {
         "lerna": "^3.4.3"

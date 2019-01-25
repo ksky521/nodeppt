@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title><%= title %> - By <%= speaker %></title>
     <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//cdn.staticfile.org/prism/9000.0.1/themes/prism.min.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/prism/1.15.0/themes/prism.min.css">
     <link rel="stylesheet" href="//cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css">
     <% if (hasOwnProperty('prismTheme') && ['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight'].includes(prismTheme)) { %>
         <link rel="stylesheet" href="//cdn.staticfile.org/prism/1.15.0/themes/prism-<%= prismTheme %>.min.css">
@@ -25,7 +25,7 @@
     <% } %>
 </head>
 <body>
-<div id="slides">
+<div>
     <article id="webslides">
         <%- content %>
     </article>
@@ -42,10 +42,11 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const ws = new WebSlide()
-    <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
-        const initEchart = ()=>{
 
-        const slide = document.querySelector('.slide')
+    <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
+        const initEchart = (e)=>{
+
+        const slide = ws.slides[e.detail.currentSlide0].el
         if(slide){
             const echartsNode = slide.querySelectorAll('.echarts')
             const echartsData = slide.querySelectorAll('.echarts-data')
@@ -63,9 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
     ws.el.addEventListener('ws:slide-change', initEchart, false)
-    ws.el.addEventListener('ws:init', initEchart, false)
   <% } %>
 }, false)
 </script>

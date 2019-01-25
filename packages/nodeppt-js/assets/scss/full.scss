@@ -82,4 +82,12 @@
 @import 'utils/bugs';
 @import 'modules/zoom';
 @import 'modules/print';
+// speaker mode
+@import 'modules/with-note';
 @import 'color';
+
+@import "modules/keyframe";
+@import "modules/animation";
+
+// build item
+@import 'modules/build';

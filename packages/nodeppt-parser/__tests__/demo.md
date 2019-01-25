@@ -21,9 +21,9 @@ plugins:
 `section.bg-blue > .background-video.dark` or `.light`
 
 
-<slide>
+<slide class="" :class="size-40">
 
-## 为什么选择 nodeppt
+### 为什么选择 nodeppt
 
 - 基于 GFM 的 markdown 语法编写
 - 支持 html 混排，再复杂的 demo 也可以做！
@@ -34,7 +34,7 @@ plugins:
 - 支持语法高亮，自由选择 highlight 样式
 - 可以单页 ppt 内部动效，单步动效
 - 支持进入/退出回调，做在线 demo 很方便
-{.rollIn}
+{.build.fadeIn}
 
 <slide>
 
@@ -52,20 +52,13 @@ plugins:
 - 可以单页 ppt 内部动效，单步动效
 - 支持进入/退出回调，做在线 demo 很方便
 
----
+<slide class="frame" :class="size-60 bg-white">
 
-```html
-<article id="webslides">
-  <!-- Slide 1 -->
-  <section><h1>Design for trust</h1></section>
-  <!-- Slide 2 -->
-  <section class="bg-primary">
-    <div class="wrap"><h2>.wrap = container (width: 90%)</h2></div>
-  </section>
-</article>
-```
+### :fa-info-circle large: **Autoplay Feature**
 
-:::
+Autoplay is generally disabled on all mobile devices to prevent bandwidth consumption. User must execute the play manually. {.text-intro}
+
+
 
 <slide class="bg-brown">
 
@@ -613,7 +606,7 @@ VP of Design
 
 <slide>
 ## echarts {.aligncenter}
-```echarts
+```echarts {style="height:400px;"}
 {
     tooltip: {
         trigger: 'item',

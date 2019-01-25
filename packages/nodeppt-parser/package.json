@@ -6,7 +6,21 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [],
+    "keywords": [
+        "presentation",
+        "powerpoint",
+        "slideshow",
+        "keynote",
+        "ppt",
+        "slide",
+        "revealjs",
+        "impressjs",
+        "markdown-it",
+        "posthtml",
+        "webpack",
+        "nodeppt",
+        "markdown"
+    ],
     "author": {
         "name": "Theo Wang",
         "email": "ksky521@gmail.com"

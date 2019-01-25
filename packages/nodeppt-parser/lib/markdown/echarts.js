@@ -7,7 +7,11 @@ module.exports = md => {
             try {
                 // 这里特殊处理下！
                 const json = (1, eval)(`(function(){return ${code};})()`);
-                return `<div class="embed"><div class="echarts" style="min-height:50vw"></div></div><div class="echarts-data" style='display:none'>${JSON.stringify(
+                let attrs = token.attrs || [];
+                attrs = attrs.map(([key, value]) => {
+                    return `${key}="${value}"`;
+                }).join(' ')
+                return `<div class="embed"><div class="echarts" ${attrs}></div></div><div class="echarts-data" style='display:none'>${JSON.stringify(
                     json
                 )}</div>`;
             } catch (err) {

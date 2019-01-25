@@ -1,3 +1,11 @@
+#webslides {
+  opacity: 0;
+}
+
+.ws-ready #webslides {
+  opacity: 1;
+}
+
 i.fa {
   display: inline-block;
   vertical-align: middle;
@@ -7,4 +15,11 @@ i.fa {
 
 [class*="fa-"].large {
   font-size: 8rem;
+}
+
+.embed .echarts {
+  min-height: 20vw;
+  >div {
+    margin: 0 auto;
+  }
 }
