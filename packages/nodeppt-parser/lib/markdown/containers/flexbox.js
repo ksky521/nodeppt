@@ -22,25 +22,64 @@ module.exports = (name, clss) => {
             }
             // tokens
             const tokens = state.tokens;
-
             let open = false;
             let done = 0;
+            let firstChildIsP = false;
             for (let i = 0; i < tokens.length; i++) {
                 const token = tokens[i];
                 if (token.type === 'container_' + name + '_open') {
-                    // 在 open 后面插入
-                    tokens.splice(i + 1, 0, getOpenToken(token.level));
+                    if (tokens[i + 1].type === 'paragraph_open') {
+                        // 替换
+                        tokens.splice(i + 1, 1, getOpenToken(token.level));
+                        firstChildIsP = true;
+                    } else {
+                        // 在 open 后面插入
+                        tokens.splice(i + 1, 0, getOpenToken(token.level));
+                        i++;
+                    }
+
                     open = true;
-                    i++;
                 } else if (token.type === 'container_' + name + '_close') {
-                    // 在 close 之前插入
-                    tokens.splice(i, 0, getCloseToken(token.level));
+                    if (firstChildIsP && tokens[i - 1].type === 'paragraph_close') {
+                        // 替换
+                        tokens.splice(i - 1, 1, getCloseToken(token.level));
+                    } else {
+                        // 在 close 之前插入
+                        tokens.splice(i, 0, getCloseToken(token.level));
+                        i++;
+                    }
                     open = false;
-                    i++;
+                    firstChildIsP = false;
                 } else if (open && 'hr' === token.type && done === 0) {
-                    // 第一层的 Hr 需要替换
-                    tokens.splice(i, 1, getCloseToken(token.level - 1), getOpenToken(token.level - 1));
-                    i++;
+                    if (firstChildIsP && tokens[i - 1].type === 'paragraph_close') {
+                        // 替换
+                        tokens.splice(i - 1, 1);
+                        // 修正 i
+                        i--;
+                        // 已经移出一个了
+                        if (tokens[i + 1].type === 'paragraph_open') {
+                            firstChildIsP = true;
+                            // 替换
+                            tokens.splice(i, 2, getCloseToken(token.level - 1), getOpenToken(token.level - 1));
+                        } else {
+                            firstChildIsP = false;
+
+                            // 第一层的 Hr 需要替换
+                            tokens.splice(i, 1, getCloseToken(token.level - 1), getOpenToken(token.level - 1));
+                            i++;
+                        }
+                    } else {
+                        if (tokens[i + 1].type === 'paragraph_open') {
+                            firstChildIsP = true;
+                            // 替换
+                            tokens.splice(i, 2, getCloseToken(token.level - 1), getOpenToken(token.level - 1));
+                        } else {
+                            // 第一层的 Hr 需要替换
+                            tokens.splice(i, 1, getCloseToken(token.level - 1), getOpenToken(token.level - 1));
+                            i++;
+                            firstChildIsP = false;
+                        }
+                    }
                 } else if (open) {
                     // 加深一层，因为外面多套了一层div
                     token.level = token.level + 1;
