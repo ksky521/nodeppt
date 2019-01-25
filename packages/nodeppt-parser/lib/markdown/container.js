@@ -146,12 +146,11 @@ module.exports = function container_plugin(md, name, options) {
         token.block = true;
         token.info = params;
 
-
         state.parentType = old_parent;
         state.lineMax = old_line_max;
         state.line = nextLine + (auto_closed ? 1 : 0);
 
-        handler(state, params);
+        handler(state, params, startLine, nextLine);
         return true;
     }
 

@@ -4,7 +4,7 @@ module.exports = {
     validate(params) {
         return params.trim().match(new RegExp('^' + name + '\\s*(.*)$'));
     },
-    handler(state, opts) {
+    handler(state, opts, start) {
         function getOpenToken(tag, level) {
             const token = new state.Token('container_' + name + '_' + tag + '_open', tag, 1);
             token.block = true;
@@ -23,7 +23,7 @@ module.exports = {
         let open = false;
         let done = 0;
         let step = 1;
-        for (let i = 0; i < tokens.length; i++) {
+        for (let i = start; i < tokens.length; i++) {
             const token = tokens[i];
             if (token.type === 'container_' + name + '_open') {
                 // 在 open 后面插入

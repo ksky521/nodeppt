@@ -11,6 +11,35 @@ plugins:
 
 <slide>
 ## Corporate Backgrounds
+:::blink
+
+## .bg-primary {..bg-primary ..href="abc"}
+
+\#44d
+
+----
+
+## .bg-secondary {..bg-secondary}
+
+\#67d
+
+----
+
+## .bg-light {..bg-light}
+
+\#edf2f7
+
+----
+
+## body
+
+\#f7f9fb
+
+:::
+
+
+<slide>
+## Corporate Backgrounds
 :::flexbox
 
 ## .bg-primary {..bg-primary}
@@ -37,6 +66,8 @@ plugins:
 
 :::
 
+----
+
 ## General Colors
 :::flexbox
 
@@ -59,6 +90,7 @@ plugins:
 
 <slide>
 
+## Colorful
 :::flexbox
 
 ## .bg-red {..bg-red}
@@ -85,8 +117,7 @@ plugins:
 
 :::
 
-<slide>
-
+----
 
 ### Transparent Backgrounds
 

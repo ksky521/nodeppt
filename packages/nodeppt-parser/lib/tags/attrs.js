@@ -20,7 +20,19 @@ module.exports = tree => {
 
             node.content.forEach(node => {
                 if (node.tag && node.attrs && node.attrs['css-module']) {
-                    parentNode.attrs = mergeAttrs({class: node.attrs['css-module']}, parentNode.attrs);
+                    let ca = node.attrs['css-module'].split(/\s+/);
+                    let rs = {};
+                    let ex = /^([\w\-]+)=('|"){1}(.+)\2/;
+                    parentNode.attrs = parentNode.attrs || {};
+                    ca = ca.filter(attr => {
+                        let m = ex.exec(attr);
+                        if (m && m[1]) {
+                            parentNode.attrs[m[1]] = m[3];
+                            return false;
+                        }
+                        return true;
+                    });
+                    parentNode.attrs = mergeAttrs({class: ca.join(' ')}, parentNode.attrs);
                     delete node.attrs['css-module'];
                 }
             });

@@ -39,6 +39,7 @@ exports.getAttrs = function(str, start, options) {
 
         // {.class} {..css-module}
         if (char_ === classChar && key === '') {
+            // console.log(str)
             if (str.charAt(i + 1) === classChar) {
                 key = 'css-module';
                 i += 1;

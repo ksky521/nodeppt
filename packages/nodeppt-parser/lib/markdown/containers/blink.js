@@ -4,7 +4,7 @@ module.exports = {
     validate(params) {
         return params.trim().match(new RegExp('^' + name + '\\s*(.*)$'));
     },
-    handler(state, opts) {
+    handler(state, opts, start) {
         function getOpenToken(tag, level) {
             const token = new state.Token('container_' + name + '_' + tag + '_open', tag, 1);
             token.block = true;
@@ -22,7 +22,7 @@ module.exports = {
 
         let open = false;
         let done = 0;
-        for (let i = 0; i < tokens.length; i++) {
+        for (let i = start; i < tokens.length; i++) {
             const token = tokens[i];
             if (token.type === 'container_' + name + '_open') {
                 // 在 open 后面插入
@@ -46,6 +46,11 @@ module.exports = {
                 );
                 i = i + 3;
             } else if (open) {
+                if (token.type === 'paragraph_close' || token.type === 'paragraph_open') {
+                    tokens.splice(i, 1);
+                    i--;
+                    continue;
+                }
                 // 加深一层，因为外面多套了一层div
                 token.level = token.level + 2;
                 // 保证hr 是最贴近 container 的一层
