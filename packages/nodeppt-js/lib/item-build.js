@@ -81,7 +81,7 @@ export default class ItemBuild {
 
         if (buildingLen) {
             while ((list = subBuilded.shift())) {
-                var clist = list.classList;
+                let clist = list.classList;
                 clist.remove('building');
                 clist.add('tobuild');
                 curList = list;

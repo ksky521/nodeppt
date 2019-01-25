@@ -1,8 +1,12 @@
 .with-note {
-  background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
   .slide.current,
   .slide {
-    background: #f7f9fb;
+
+    &:not([class*='bg-']){
+        background: #f7f9fb;
+    }
+
     width: 100vw !important;
     overflow: visible;
     transition: none !important;

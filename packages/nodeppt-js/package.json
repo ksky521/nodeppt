@@ -31,6 +31,6 @@
         "markdown"
     ],
     "dependencies": {
-        "webslides": "^1.4.2"
+        "webslides": "1.4.2"
     }
 }
