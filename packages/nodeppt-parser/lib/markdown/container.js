@@ -144,6 +144,8 @@ module.exports = function container_plugin(md, name, options) {
         token = state.push('container_' + name + '_close', 'div', -1);
         token.markup = state.src.slice(start, pos);
         token.block = true;
+        token.info = params;
+
 
         state.parentType = old_parent;
         state.lineMax = old_line_max;

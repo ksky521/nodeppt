@@ -59,6 +59,24 @@ plugins:
 Autoplay is generally disabled on all mobile devices to prevent bandwidth consumption. User must execute the play manually. {.text-intro}
 
 
+<slide>
+
+## Header & Footer
+
+:::header {.abeee}
+### Header
+:::
+
+
+:::footer
+### Footer
+
+:::
+
+:::note
+### Note
+
+:::
 
 <slide class="bg-brown">
 

@@ -7,18 +7,7 @@ module.exports = tree => {
         // console.log(wrapNode.content)
 
         wrapNode.content = wrapNode.content.map(n => {
-            if (n.tag === 'note') {
-                n.tag = 'div';
-                let cls = '';
-                if (n.attrs) {
-                    cls = n.attrs.class || '';
-                }
-                n.attrs = n.attrs || {};
-                cls = cls.split(/\s+/);
-                cls.push('note');
-
-                n.attrs.class = cls.join(' ');
-
+            if (n.tag === 'footer' || n.tag === 'header') {
                 n.content = [
                     {
                         tag: 'div',
@@ -28,7 +17,11 @@ module.exports = tree => {
                         content: n.content
                     }
                 ];
-                slideNode.content.push(n);
+                if (n.tag === 'header') {
+                    slideNode.content.unshift(n);
+                } else {
+                    slideNode.content.push(n);
+                }
                 return false;
             }
             return n;

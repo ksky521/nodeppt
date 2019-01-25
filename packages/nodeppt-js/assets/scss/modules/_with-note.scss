@@ -1,6 +1,8 @@
 .with-note {
+  background: rgba(0, 0, 0, 0.3);
   .slide.current,
   .slide {
+    background: #f7f9fb;
     width: 100vw !important;
     overflow: visible;
     transition: none !important;
@@ -8,10 +10,15 @@
     transform: scale(0.6) translate3d(0.5vw, 0.5vw, 0);
     .note {
       width: 100%;
-      height: 500px;
+      height: 18vw;
       padding: 0;
-      transform: translate3d(350px, 750px, 0) scale(1.5);
+      background: transparent;
+      transform: translate3d(35vw, 68vw, 0) scale(1.5);
       transition: opacity 400ms ease-in-out;
+      overflow-y: auto;
+      >.wrap {
+        padding: 1em;
+      }
     }
   }
   .slide.current+.slide {
