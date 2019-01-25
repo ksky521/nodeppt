@@ -21,10 +21,21 @@
     },
     "dependencies": {
         "commander": "^2.19.0",
-        "nodeppt-parser": "^1.0.0",
+        "concat-stream": "^2.0.0",
+        "consolidate": "^0.15.1",
+        "fs-extra": "^7.0.1",
+        "gulp-filter": "^5.1.0",
+        "gulp-rename": "^1.4.0",
+        "handlebars": "^4.0.12",
+        "inquirer": "^6.2.1",
         "nodeppt-js": "^1.0.0",
+        "nodeppt-parser": "^1.0.0",
         "nodeppt-serve": "^1.0.0",
-        "nodeppt-shared-utils": "^1.0.0"
+        "nodeppt-shared-utils": "^1.0.0",
+        "semver": "^5.6.0",
+        "through2": "^3.0.0",
+        "user-home": "^2.0.0",
+        "vinyl-fs": "^3.0.3"
     },
     "keywords": [
         "presentation",

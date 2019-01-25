@@ -8,12 +8,7 @@ const packageJson = require('../package.json');
 const requiredVersion = packageJson.engines.node;
 function checkNodeVersion(wanted, id) {
     if (!semver.satisfies(process.version, wanted)) {
-        console.log(
-            chalk.red(
-                `当前你的 Node 版本为 ${process.version}，运行${id} 需要 Node ${wanted} 以上版本。
-请升级你的 Node`
-            )
-        );
+        console.log(chalk.red('  You must upgrade node to >=' + wanted + ' to use nodeppt'));
         process.exit(1);
     }
 }
@@ -36,8 +31,8 @@ program
     .on('--help', function() {
         console.log('  Examples:');
         console.log();
-        console.log('  nodeppt serve demo.md');
-        console.log('  nodeppt serve demo.md -p 8080');
+        console.log('    nodeppt serve demo.md');
+        console.log('    nodeppt serve demo.md -p 8080');
         console.log();
     });
 
@@ -50,13 +45,49 @@ program
     .on('--help', function() {
         console.log('  Examples:');
         console.log();
-        console.log('  nodeppt build demo.md');
+        console.log('    nodeppt build demo.md');
         console.log();
     });
 
-program.parse(process.argv);
+program
+    .command('new [template] [dest]')
+    .description('Create a new markdown slide')
+    .option('-o, --offline', 'Use local template')
+    .option('-h, --https', 'Git use https')
+    .option('-f, --force', 'force', 'Force to delete directory exist, default：true')
+    .option('-c, --cache', 'Use local cache')
+    .action((template, dest, cmd) => {
+        return require('../commands/new')(template, dest, cleanArgs(cmd));
+    })
+    .on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log(chalk.gray('    # create a new slide with an official template'));
+        console.log('    $ nodeppt new my-folder');
+        console.log();
+        console.log(chalk.gray('    # create a new slide straight from a github template'));
+        console.log('    $ nodeppt new username/repo my-folder');
+    });
 
-if (!program.args[0]) {
+program.on('--help', () => {
+    console.log('  Examples:');
+    console.log();
+    console.log(chalk.gray('    # create a new slide with an official template'));
+    console.log('    $ nodeppt new my-folder');
+    console.log();
+    console.log(chalk.gray('    # create a new slide straight from a github template'));
+    console.log('    $ nodeppt new username/repo my-folder');
+    console.log();
+    console.log(chalk.gray('    # start local sever show slide'));
+    console.log('    $ nodeppt serve markdown-file');
+    console.log();
+    console.log(chalk.gray('    # to build a slide'));
+    console.log('    $ nodeppt build markdown-file');
+    console.log();
+});
+
+program.parse(process.argv);
+if (!program.args[0] && process.argv[2] !== 'new') {
     process.stdout.write(program.helpInformation());
     program.emit('--help');
 }
