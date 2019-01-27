@@ -39,13 +39,32 @@ module.exports = tree => {
             });
             const rs = {};
             let cls = [];
+            let noBackgroundClass = false;
             if (imgAttrs.length) {
                 imgAttrs.forEach(([key, value]) => {
                     if (key === 'class') {
                         cls = value.split('.').map(c => {
-                            if (!['dark', 'light'].includes(c)) {
+                            if (!['dark', 'light', 'anim'].includes(c)) {
+                                if (
+                                    [
+                                        'top',
+                                        'bottom',
+                                        'right',
+                                        'right-top',
+                                        'right-bottom',
+                                        'center',
+                                        'center-top',
+                                        'center-bottom',
+                                        'left',
+                                        'left-top',
+                                        'left-bottom'
+                                    ].includes(c)
+                                ) {
+                                    noBackgroundClass = true;
+                                }
                                 return `background-${c}`;
                             }
+
                             return c;
                         });
                     } else {
@@ -58,7 +77,7 @@ module.exports = tree => {
                 tag: 'span',
                 attrs: {
                     ...rs,
-                    class: ['background', ...cls].join(' '),
+                    class: [noBackgroundClass ? '' : 'background', ...cls].join(' '),
                     style: `background-image:url('${image}')`
                 }
             });
@@ -80,20 +99,26 @@ module.exports = tree => {
                             return c;
                         });
                     } else {
-                        rs[key] = value;
+                        // console.log(value);
+                        rs[key] = value.replace(/^\'|\'$/g, '');
                     }
                 });
             }
             rs = Object.assign(rs, {loop: true, muted: true});
             const videoAttr = {
                 ...rs,
+                autoplay: 'autoplay',
+                preload: 'true',
                 class: ['background-video', ...cls].join(' ')
             };
-
+            // 支持多个
+            src = src.split(',').map(s => {
+                return {tag: 'source', attrs: {src: s}};
+            });
             node.content.unshift({
                 tag: 'video',
                 attrs: videoAttr,
-                content: [{tag: 'source', attrs: {src}}]
+                content: src
             });
             /**
    * <video class="background-video dark" loop="" muted="" poster="https://webslides.tv/static/images/peggy.jpg">

@@ -340,7 +340,7 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 
 <slide>
 ## Corporate Backgrounds
-:::flexbox
+:::flexblock {.blink.border}
 
 ## .bg-primary {..bg-primary}
 
@@ -369,7 +369,7 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 ----
 
 ## General Colors
-:::flexbox
+:::flexblock {.blink.border}
 
 ## .bg-black {..bg-black}
 
@@ -391,7 +391,7 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 <slide>
 
 ## Colorful
-:::flexbox
+:::flexblock {.border.blink}
 
 ## .bg-red {..bg-red}
 
@@ -421,7 +421,7 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 
 ### Transparent Backgrounds
 
-:::flexbox
+:::flexblock {.border.blink}
 
 ## .bg-trans-dark {..bg-trans-dark}
 
@@ -438,7 +438,7 @@ rgba(255, 255, 255, 0.2)
 <slide class="bg-gradient-h">
 # Gradients
 
-:::flexbox {.border}
+:::flexblock {.border}
 
 Horizontal
 `.bg-gradient-h`
@@ -462,3 +462,470 @@ Vertical
 ## Radial Gradient
 
 `.bg-gradient-r`
+
+<slide class="bg-black" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg'" >
+
+
+`.background-video`
+
+## **WebSlides is the easiest way to make HTML presentations. Inspire and engage.**
+
+<slide class="bg-blue aligncenter" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg' .dark">
+
+
+## BG Video with Overlay {.text-landing}
+
+`<slide class="bg-blue aligncenter" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg' .dark">` or `.light`
+
+<slide image="https://webslides.tv/static/images/iphone-hand.png .right-bottom">
+
+:::{.content-left}
+### .background-(position)
+
+:::flexblock {.specs}
+::fa-wifi::
+
+## Ultra-Fast WiFi
+Simple and secure file sharing.
+
+---
+::fa-battery-full::
+
+## All day battery life
+Your battery worries may be over.
+
+---
+::fa-life-ring::
+## All day battery life
+We'll fix it or if we can't, we'll replace it.
+
+:::
+
+<slide class="bg-black aligncenter" image="https://source.unsplash.com/UJbHNoVPZW0/ .dark">
+
+# Iceland{.text-landing.text-shadow}
+
+`slide[class*="bg-"] > .background.dark`
+
+<slide class="bg-black aligncenter" image="https://source.unsplash.com/UJbHNoVPZW0/ .light">
+
+# Iceland{.text-landing.text-shadow}
+
+`slide[class*="bg-"] > .background.light`
+
+<slide class="bg-black aligncenter" image="https://source.unsplash.com/n9WPPWiPPJw/ .anim">
+
+## .background.anim
+
+
+
+<slide class="aligncenter">
+
+## **Flexible blocks**
+
+`:::flexblock` = Flexible blocks with auto-fill and equal height.
+
+---
+
+:::flexblock
+## :fa-bar-chart: Purpose
+Businesses that people love1
+
+---
+
+## :fa-bar-chart: Purpose
+Businesses that people love2
+
+---
+
+## :fa-balance-scale: Purpose
+Businesses that people love3
+
+---
+
+
+## :fa-cog: Purpose
+Businesses that people love4
+:::
+
+<slide>
+
+## flexblock
+:::flexblock
+## :fa-bar-chart: Purpose
+Businesses that people love1
+
+---
+
+## :fa-bar-chart: Purpose
+Businesses that people love2
+
+---
+
+## :fa-balance-scale: Purpose
+Businesses that people love3
+
+---
+
+
+## :fa-cog: Purpose
+Businesses that people love4
+:::
+
+
+## flexblock
+
+`{.blink.border}`
+
+:::flexblock {.blink.border}
+## :fa-bar-chart: Purpose
+Businesses that people love5
+
+---
+
+## :fa-bar-chart: Purpose
+Businesses that people love6
+
+---
+
+## :fa-balance-scale: Purpose
+Businesses that people love7
+
+---
+
+
+## :fa-cog: Purpose
+Businesses that people love8
+
+:::
+
+<slide>
+
+## flexblock
+
+`{.blink.border}`
+
+:::flexblock {.blink.border}
+## :fa-bar-chart: Purpose
+Businesses that people love1
+
+---
+
+## :fa-bar-chart: Purpose
+Businesses that people love2
+
+---
+
+## :fa-balance-scale: Purpose
+Businesses that people love3
+
+---
+
+
+## :fa-cog: Purpose
+Businesses that people love4
+
+---
+
+## :fa-bar-chart: Purpose
+Businesses that people love5
+
+---
+
+## :fa-bar-chart: Purpose
+Businesses that people love6
+
+---
+
+## :fa-balance-scale: Purpose
+Businesses that people love7
+
+---
+
+
+## :fa-cog: Purpose
+Businesses that people love8
+
+:::
+
+
+<slide>
+
+## flexblock clients
+
+`{.clients}`
+
+:::flexblock {.clients}
+
+![](https://webslides.tv/static/images/logos/google.svg){.blacklogo}
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+---
+![](https://webslides.tv/static/images/logos/microsoft.svg) {.blacklogo}
+
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+---
+![](https://webslides.tv/static/images/logos/instagram.svg){.blacklogo}
+
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+---
+![](https://webslides.tv/static/images/logos/netflix.svg){.blacklogo}
+
+
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+:::
+
+<slide>
+## flexblock clients
+
+`{.clients.border}`
+
+:::flexblock {.clients.border}
+
+![](https://webslides.tv/static/images/logos/google.svg){.blacklogo}
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+---
+![](https://webslides.tv/static/images/logos/microsoft.svg) {.blacklogo}
+
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+---
+![](https://webslides.tv/static/images/logos/instagram.svg){.blacklogo}
+
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+---
+![](https://webslides.tv/static/images/logos/netflix.svg){.blacklogo}
+
+
+### Interfaces
+Collaboration with the Acme team to design their mobile apps.
+
+:::
+
+<slide>
+### ul.flexblock.features
+
+:::flexblock {.features}
+
+## :100 ^%^:  customizable
+
+ Well documented
+
+
+ ----
+
+:^$^48:
+## EXTRA VIRGIN OLIVE OIL
+
+The Spanish caviar.
+
+----
+## :fa-wifi: Ultra-fast Wifi
+
+Simple file sharing.
+:::
+
+---
+
+## ul.flexblock.features.blink
+
+:::flexblock {.features.blink}
+
+## :100 ^%^:  customizable
+
+ Well documented
+
+
+ ----
+
+:^$^48:
+## EXTRA VIRGIN OLIVE OIL
+
+The Spanish caviar.
+
+----
+## :fa-wifi: Ultra-fast Wifi
+
+Simple file sharing.
+:::
+
+---
+
+<slide class="bg-green">
+
+## flexblock .Metrics
+
+:::flexblock {.border.metrics}
+
+Founded
+::1972::
+
+----
+
+::fa-users::
+
+24M Subscribers
+
+
+---
+
+Founded
+::64%::
+
+----
+
+:~fa-line-chart~:
+
+Revenue: $16M
+
+---
+
+:~fa-building-o~:
+
+Covers, cards, quotes...
+
+----
+
+:~fa-smile-o~:
+
+Use multiples of 8.
+
+---
+
+:~fa-usd~:
+
+Font Awesome Kit.
+
+---
+
+:~fa-university~:
+
+Bank: $32M
+
+:::
+
+<slide :class="size-60">
+
+### shadowbox
+
+---
+
+:::shadowbox
+
+## We're web people.
+
+There're excellent presentation tools out there. WebSlides is about telling the story, and sharing it in a beautiful way. Hypertext and clean code as narrative elements.
+
+---
+
+## Work better, faster.
+
+Designers, marketers, and journalists can now focus on the content. Simply [choose a demo](https://webslides.tv/demos) and customize it in minutes.
+
+:::
+
+<slide>
+## steps
+
+:::steps
+
+:~fa-file~:
+## Interfaces
+
+When you're really passionate about your job, you can change the world.
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+---
+
+## Interfaces
+
+1. Architecture
+2. Design
+3. Development
+
+:::
+
+<slide>
+### gallery
+
+:::gallery
+
+![](https://source.unsplash.com/uPGOEbjbVGA/800x600)
+
+## Alicia Jiménez
+
+Founder & CEO
+
+---
+
+![](https://source.unsplash.com/6anudmpILw4/800x600)
+
+## Sam Trololovitz
+
+Master of nothing
+
+---
+
+![](https://source.unsplash.com/IFxjDdqK_0U/800x600)
+
+## Erin Gustafson
+
+VP of Design
+
+:::
+
+<slide>
+### gallery overlay
+
+:::gallery-overlay
+
+![](https://source.unsplash.com/uPGOEbjbVGA/800x600)
+
+## Alicia Jiménez
+
+Founder & CEO
+
+---
+
+![](https://source.unsplash.com/zhkTCCmD4xI/800x600)
+
+## Sam Trololovitz
+
+CTO
+
+---
+
+![](https://source.unsplash.com/IFxjDdqK_0U/800x600)
+
+## Erin Gustafson
+
+VP of Design
+
+:::

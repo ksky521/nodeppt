@@ -103,7 +103,7 @@ module.exports = function ins_plugin(md) {
             token.markup = ':';
             token.content = '';
             let jsx = state.tokens[endDelim.token + 1];
-            if (jsx.type === 'jsx_inline' && hasDelimiters(jsx.content)) {
+            if (jsx && jsx.type === 'jsx_inline' && hasDelimiters(jsx.content)) {
                 // 说明是{.xxx}样式
                 let attrs = Utils.getAttrs(jsx.content, 0, Utils.getOptions());
                 Utils.addAttrs(attrs, token);

@@ -34,7 +34,7 @@ module.exports = {
         // tokens
         const tokens = state.tokens;
         let hrIdx = 0;
-        for (let i = start - 1; i < tokens.length - 1; i++) {
+        for (let i = start + 1; i < tokens.length - 1; i++) {
             // 第一步，查找hr
             let token = tokens[i];
             if (token.type === 'hr') {
@@ -42,19 +42,22 @@ module.exports = {
                 break;
             }
         }
+
         // 第二步：拆分
-        let part1 = tokens.slice(start - 1, hrIdx);
+        let part1 = tokens.slice(start + 1, hrIdx);
         let part2 = tokens.slice(hrIdx + 1, tokens.length - 1);
+        // console.log(part1, part2);
         // 第三步：查找哪part有img
         let imgs = hasImg(part1);
         if (imgs) {
             // 第一部分有图片
-            tokens.splice(start - 1, 3, ...imgs);
+            tokens.splice(start + 1, 3, ...imgs);
             let level = tokens[start].level;
             const divToken = getOpenToken('div', level - 1);
             divToken.attrPush(['class', 'flex-content']);
             tokens.splice(hrIdx, 1, divToken);
-            tokens.splice(tokens.length - 2, 0, getCloseToken('div', level - 1));
+            tokens.splice(tokens.length - 1, 0, getCloseToken('div', level - 1));
+            // console.log(tokens);
         } else {
             imgs = hasImg(part2);
             if (imgs) {
@@ -62,13 +65,12 @@ module.exports = {
                 let level = tokens[start].level;
                 const divToken = getOpenToken('div', level - 1);
                 divToken.attrPush(['class', 'flex-content']);
-                tokens.splice(start - 1, 0, divToken);
+                tokens.splice(start + 1, 0, divToken);
 
                 tokens.splice(hrIdx + 1, 4, getCloseToken('div', level - 1), ...imgs);
             }
         }
-        console.log(tokens.slice(start - 1));
-        return state;
+        // console.log(tokens.slice(start - 1));
     },
     render(tokens, idx) {
         const token = tokens[idx];

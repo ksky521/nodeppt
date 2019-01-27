@@ -139,6 +139,9 @@ module.exports = function container_plugin(md, name, options) {
         token.info = params;
         token.map = [startLine, nextLine];
 
+        // 修正
+        let len = state.tokens.length - startLine;
+
         state.md.block.tokenize(state, startLine + 1, nextLine);
 
         token = state.push('container_' + name + '_close', 'div', -1);
@@ -146,11 +149,12 @@ module.exports = function container_plugin(md, name, options) {
         token.block = true;
         token.info = params;
 
+        // 这里测试下
+        handler(state, params, startLine + len - 1, len);
+
         state.parentType = old_parent;
         state.lineMax = old_line_max;
         state.line = nextLine + (auto_closed ? 1 : 0);
-
-        handler(state, params, startLine, nextLine);
         return true;
     }
 

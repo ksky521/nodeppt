@@ -28,8 +28,8 @@ module.exports = plugins => {
   const mdRender = getMdParser(markdownPlugins)
 
   return str => {
-    const slideTag = str.match(/<slide\s*(.*)>/gi) || []
-    const contents = str.split(/<slide.*>/i)
+    const slideTag = str.match(/\n<slide\s*(.*)>/mgi) || []
+    const contents = str.split(/\n<slide.*>/mi)
     contents.shift()
     return contents
       .map((c, i) => {

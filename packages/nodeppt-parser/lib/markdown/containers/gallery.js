@@ -2,10 +2,10 @@ const name = 'gallery';
 
 module.exports = {
     validate(params) {
-        return params.trim().match(new RegExp('^' + name + '\\s*(.*)$'));
+        return params.trim().match(/^gallery(|-overlay)\s*(.*)$/);
     },
     handler(state, opts) {
-        const m = opts.match(new RegExp('^' + name + '\\s*(.*)$'));
+        const m = opts.match(/^gallery(|-overlay)\s*(.*)$/);
         if (m && m[1]) {
             opts = m[1].trim();
         }
@@ -23,7 +23,7 @@ module.exports = {
         }
         // tokens
         const tokens = state.tokens;
-
+        // console.log(opts);
         let open = false;
         let done = 0;
         for (let i = 0; i < tokens.length; i++) {
@@ -78,7 +78,7 @@ module.exports = {
                         if (temp.type === 'hr' || temp.type === 'container_gallery_close') {
                             tokens.splice(i + 3, tt.length);
                             let openTag, closeTag;
-                            if (opts === 'overlay') {
+                            if (opts === 'gallery-overlay') {
                                 openTag = getOpenToken('div', token.level - 2);
                                 closeTag = getCloseToken('div', token.level - 2);
                                 openTag.attrPush(['class', 'overlay']);

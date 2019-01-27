@@ -1,4 +1,16 @@
 'use strict';
+exports.findAttrs = (attrArray, name, getValueOnly = true) => {
+    let rs = (attrArray || []).find(([key, value]) => {
+        if (key === name) {
+            return true;
+        }
+        return false;
+    });
+    if (getValueOnly) {
+        return rs[1];
+    }
+    return rs;
+};
 /**
  * parse {.class #id key=val} strings
  * @param {string} str: string to parse

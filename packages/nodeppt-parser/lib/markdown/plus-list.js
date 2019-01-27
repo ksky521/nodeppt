@@ -1,14 +1,9 @@
-/**
- * Loops through block tokens to find bullet list opens using
- * the plus sign.
- *
- * @param {any} state
- * @param {string} className
- */
-function findChecklists(state, className) {
-    state.tokens.forEach(function(token) {
+function findChecklists(state) {
+    console.log(state.tokens);
+    state.tokens.forEach((token, i) => {
         if (token.type === 'bullet_list_open' && token.markup === '+') {
-            applyClass(token, className);
+            // console.log(state.tokens[i + 1]);
+            // applyClass(token);
         }
     });
 }
@@ -19,7 +14,7 @@ function findChecklists(state, className) {
  * @param {any} token
  * @param {string} className
  */
-function applyClass(token, className) {
+function applyClass(token) {
     // init attributes
     token.attrs = token.attrs || [];
 
@@ -43,10 +38,9 @@ function applyClass(token, className) {
     }
 }
 
-module.exports = function plugin(md, className) {
+module.exports = function plugin(md) {
     // Default class name
-    className = className || 'checklist';
-    md.block.ruler.after('list', 'list-checkmarks', function(state) {
-        findChecklists(state, className);
+    md.block.ruler.after('list', 'list-checkmarks', state => {
+        findChecklists(state);
     });
 };

@@ -22,7 +22,7 @@ module.exports = {
 
         let open = false;
         let done = 0;
-        for (let i = start; i < tokens.length; i++) {
+        for (let i = 0; i < tokens.length; i++) {
             const token = tokens[i];
             if (token.type === 'container_' + name + '_open') {
                 // 在 open 后面插入
