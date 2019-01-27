@@ -16,7 +16,7 @@
 
     <% if (hasOwnProperty('css') && css.length) { %>
         <% for (var i = 0;i<css.length;i++) { %>
-        <script src="<%= css[i] %>"></script>
+        <link rel="stylesheet" href="<%= css[i] %>">
         <% } %>
     <% } %>
 

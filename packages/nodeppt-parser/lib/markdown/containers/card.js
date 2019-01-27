@@ -3,7 +3,7 @@ module.exports = {
     validate(params) {
         return params.trim().match(new RegExp('^' + name + '(-\\d+)?\\s*(.*)$'));
     },
-    handler(state, opts) {
+    handler(state, opts, start) {
         function getOpenToken(tag, level) {
             const token = new state.Token('container_' + name + '_' + tag + '_open', tag, 1);
             token.block = true;
@@ -16,71 +16,58 @@ module.exports = {
             token.level = 1 + level;
             return token;
         }
+        function hasImg(tokens) {
+            if (
+                tokens.length === 3 &&
+                tokens[0].type === 'paragraph_open' &&
+                tokens[2].type === 'paragraph_close' &&
+                /^\!\[/.test(tokens[1].content)
+            ) {
+                return [
+                    getOpenToken('figure', tokens[0].level - 1),
+                    tokens[1],
+                    getCloseToken('figure', tokens[2].level - 1)
+                ];
+            }
+            return false;
+        }
         // tokens
         const tokens = state.tokens;
-
-        let open = false;
-        let done = 0;
-        let count = 1;
-        let level = 1;
-        let imgStart = 0,
-            imgEnd = 0;
-        let ctxStart = 0,
-            ctxEnd = 0;
-
-        let img = [],
-            context = [];
-        for (let i = 0; i < tokens.length; i++) {
+        let hrIdx = 0;
+        for (let i = start - 1; i < tokens.length - 1; i++) {
+            // 第一步，查找hr
             let token = tokens[i];
-            if (token.type === 'container_' + name + '_open') {
-                // 在 open 后面插入
-                open = true;
-                level = token.level + 1;
-            } else if (token.type === 'container_' + name + '_close') {
-                // 在 close 之前插入
-                open = false;
-            } else if (open && 'hr' === token.type && done === 0) {
-                tokens.splice(i, 1);
-                i--;
-                count++;
-            } else if (open) {
-                // 加深一层，因为外面多套了一层div
-                // token.level = token.level + 2;
-                // 保证hr 是最贴近 container 的一层
-                if (/_open$/.test(token.type)) {
-                    done++;
-                } else if (/_close$/.test(token.type)) {
-                    done--;
-                }
-                if (count === 1) {
-                    if (!imgStart) {
-                        imgStart = i;
-                    } else {
-                        imgEnd = i;
-                    }
-                    if (token.type === 'paragraph_open') {
-                        img.push(getOpenToken('figure', token.level - 1));
-                    } else if (token.type === 'paragraph_close') {
-                        img.push(getCloseToken('figure', token.level - 1));
-                    } else {
-                        img.push(token);
-                    }
-                } else {
-                    if (!ctxStart) {
-                        ctxStart = i;
-                    } else {
-                        ctxEnd = i;
-                    }
-                    token.level = token.level + 1;
-                    context.push(token);
-                }
+            if (token.type === 'hr') {
+                hrIdx = i;
+                break;
             }
         }
-        // 分组完成
-        tokens.splice(imgStart, imgEnd - imgStart + 1, ...img);
-        const divToken = getOpenToken('div', level - 1);
-        divToken.attrPush(['class', 'flex-content']);
-        tokens.splice(ctxStart, ctxEnd - ctxStart + 1, divToken, ...context, getCloseToken('div', level - 1));
+        // 第二步：拆分
+        let part1 = tokens.slice(start - 1, hrIdx);
+        let part2 = tokens.slice(hrIdx + 1, tokens.length - 1);
+        // 第三步：查找哪part有img
+        let imgs = hasImg(part1);
+        if (imgs) {
+            // 第一部分有图片
+            tokens.splice(start - 1, 3, ...imgs);
+            let level = tokens[start].level;
+            const divToken = getOpenToken('div', level - 1);
+            divToken.attrPush(['class', 'flex-content']);
+            tokens.splice(hrIdx, 1, divToken);
+            tokens.splice(tokens.length - 2, 0, getCloseToken('div', level - 1));
+        } else {
+            imgs = hasImg(part2);
+            if (imgs) {
+                // 第二部分有图片
+                let level = tokens[start].level;
+                const divToken = getOpenToken('div', level - 1);
+                divToken.attrPush(['class', 'flex-content']);
+                tokens.splice(start - 1, 0, divToken);
+
+                tokens.splice(hrIdx + 1, 4, getCloseToken('div', level - 1), ...imgs);
+            }
+        }
+        console.log(tokens.slice(start - 1));
         return state;
     },
     render(tokens, idx) {

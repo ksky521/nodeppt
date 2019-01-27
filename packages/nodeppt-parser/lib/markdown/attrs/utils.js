@@ -211,7 +211,13 @@ exports.hasDelimiters = function(where, options) {
         );
     };
 };
-
+let latestOptions = {};
+exports.setOptions = opts => {
+    latestOptions = opts;
+};
+exports.getOptions = () => {
+    return latestOptions;
+};
 /**
  * Removes last curly from string.
  */

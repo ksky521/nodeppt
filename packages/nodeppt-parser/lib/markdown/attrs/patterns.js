@@ -70,8 +70,8 @@ module.exports = options => {
                         },
                         {
                             shift: 3,
-                            type: 'jsx_inline',
-                            content: utils.hasDelimiters('start', options)
+                            type: str => str === 'text' || str === 'jsx_inline',
+                            content: utils.hasDelimiters('only', options)
                         }
                     ]
                 }
@@ -118,27 +118,28 @@ module.exports = options => {
                     type: 'inline',
                     children: [
                         {
-                            shift: -1,
+                            shift: 0,
                             type: 'link_open'
                         },
                         {
-                            shift: 0,
+                            shift: 1,
                             type: 'text'
                         },
                         {
-                            shift: 1,
+                            shift: 2,
                             type: 'link_close'
                         },
                         {
-                            shift: 2,
-                            type: 'jsx_inline',
-                            content: utils.hasDelimiters('start', options)
+                            shift: 3,
+                            type: str => str === 'text' || str === 'jsx_inline',
+                            content: utils.hasDelimiters('only', options)
                         }
                     ]
                 }
             ],
             transform: (tokens, i, j) => {
                 const children = tokens[i].children;
+                console.log(children[j]);
                 for (let m = 1; m < children.length; m++) {
                     let child = children[m];
                     if (
@@ -151,7 +152,7 @@ module.exports = options => {
                         children[m + 2]
                     ) {
                         let jsx = children[m + 2];
-                        if (utils.hasDelimiters('start', options)(jsx.content)) {
+                        if (utils.hasDelimiters('only', options)(jsx.content)) {
                             // 说明是有效的 jsx
                             let token = children.splice(m + 2, 1)[0];
                             let attrToken = tokens[i].children[m - 1];
@@ -182,7 +183,7 @@ module.exports = options => {
                         },
                         {
                             shift: 0,
-                            type: 'text',
+                            type: str => str === 'text' || str === 'jsx_inline',
                             content: utils.hasDelimiters('start', options)
                         }
                     ]
@@ -396,7 +397,7 @@ module.exports = options => {
                         },
                         {
                             position: -1,
-                            type: 'text',
+                            type: str => str === 'text' || str === 'jsx_inline',
                             content: utils.hasDelimiters('only', options)
                         }
                     ]

@@ -134,7 +134,7 @@ module.exports = (api, options) => {
                     console.log('  NodePPT running at:');
                     const networkUrl = publicUrl ? publicUrl.replace(/([^/])$/, '$1/') : urls.lanUrlForTerminal;
                     console.log(`  - Url: ${chalk.cyan(networkUrl)}`);
-                    console.log(`  - Speaker Mode Url: ${chalk.cyan(networkUrl + '?mode=speaker')}`);
+                    console.log(`  - Speaker Mode: ${chalk.cyan(networkUrl + '?mode=speaker')}`);
                     console.log();
 
                     if (isFirstCompile) {

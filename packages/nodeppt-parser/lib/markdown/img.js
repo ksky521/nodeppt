@@ -5,9 +5,9 @@ const {getAttrs, getAttrsString} = require('./attrs/utils');
 module.exports = md => {
     md.use(
         mditr(
-            /!!\[(\w+|)(.*?)]\((.+?)\)/,
+            /!!\[(\w+|)(.*?)?]\((.+?)\)/,
             (match, utils) => {
-                let attrs = match[2];
+                let attrs = match[2] || '';
                 if (attrs) {
                     attrs = getAttrsString(
                         getAttrs(`{${attrs}}`, 0, {

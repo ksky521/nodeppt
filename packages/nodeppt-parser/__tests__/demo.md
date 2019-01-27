@@ -9,6 +9,7 @@ plugins:
     - katex
 
 
+
 <slide>
 ## Corporate Backgrounds
 :::blink

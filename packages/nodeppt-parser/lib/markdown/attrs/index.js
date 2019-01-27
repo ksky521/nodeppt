@@ -2,7 +2,7 @@
 // from https://github.com/arve0/markdown-it-attrs
 // 增加多个 class 支持
 const patternsConfig = require('./patterns.js');
-
+const utils = require('./utils');
 const defaultOptions = {
     leftDelimiter: '{',
     rightDelimiter: '}'
@@ -12,6 +12,7 @@ module.exports = function attributes(md, options) {
     if (!options) {
         options = defaultOptions;
     }
+    utils.setOptions(options);
 
     const patterns = patternsConfig(options);
 

@@ -1,3 +1,7 @@
+const Utils = require('./attrs/utils');
+
+const hasDelimiters = Utils.hasDelimiters('only', Utils.getOptions());
+
 // 修改 https://github.com/pnewell/markdown-it-span/blob/master/index.js
 module.exports = function ins_plugin(md) {
     // Insert each marker as a separate text token, and add it to delimiter list
@@ -92,13 +96,21 @@ module.exports = function ins_plugin(md) {
             }
 
             endDelim = delimiters[startDelim.end];
-
             token = state.tokens[startDelim.token];
             token.type = 'span_open';
             token.tag = 'span';
             token.nesting = 1;
             token.markup = ':';
             token.content = '';
+            let jsx = state.tokens[endDelim.token + 1];
+            if (jsx.type === 'jsx_inline' && hasDelimiters(jsx.content)) {
+                // 说明是{.xxx}样式
+                let attrs = Utils.getAttrs(jsx.content, 0, Utils.getOptions());
+                Utils.addAttrs(attrs, token);
+                // 清理干净
+                jsx.type = 'text';
+                jsx.content = '';
+            }
 
             token = state.tokens[endDelim.token];
             token.type = 'span_close';
