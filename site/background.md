@@ -202,7 +202,7 @@ We'll fix it or if we can't, we'll replace it.
 
 <slide class="aligncenter">
 
-## U work so hark, **but** 干不过 write PPTs
+## U work so hard, **but** 干不过 write PPTs
 
 快使用 [nodeppt](https://github.com/ksky521/nodeppt) 轻松搞定高大上PPT<br/> nodeppt 助力你的人生逆袭之路！ {.text-into}
 

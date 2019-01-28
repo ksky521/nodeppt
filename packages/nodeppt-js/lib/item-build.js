@@ -37,12 +37,12 @@ export default class ItemBuild {
         }
         const $curSlide = this.curSlide.el;
 
-        const subBuilded = toArray($curSlide.querySelectorAll('.building'));
+        const subBuilded = toArray($curSlide.querySelectorAll('.animated'));
         let list;
         if (subBuilded.length) {
             while ((list = subBuilded.shift())) {
                 list = list.classList;
-                list.remove('building');
+                list.remove('animated');
                 list.add('builded');
             }
         }
@@ -61,7 +61,7 @@ export default class ItemBuild {
         list = item.classList;
         list.remove('tobuild');
 
-        list.add('building');
+        list.add('animated');
         return true;
     }
 
@@ -73,23 +73,23 @@ export default class ItemBuild {
         }
         const $curSlide = this.curSlide.el;
 
-        const subBuilded = toArray($curSlide.querySelectorAll('.building'));
+        const subBuilded = toArray($curSlide.querySelectorAll('.animated'));
 
         let list;
-        let buildingLen = subBuilded.length;
+        let animatedLen = subBuilded.length;
         let curList;
 
-        if (buildingLen) {
+        if (animatedLen) {
             while ((list = subBuilded.shift())) {
                 let clist = list.classList;
-                clist.remove('building');
+                clist.remove('animated');
                 clist.add('tobuild');
                 curList = list;
             }
         }
         const builded = toArray($curSlide.querySelectorAll('.builded'));
 
-        if (!builded.length && !buildingLen) {
+        if (!builded.length && !animatedLen) {
             // 继续下一页
             this.enable_ = false;
             this.ws.enable();
@@ -104,13 +104,13 @@ export default class ItemBuild {
             }
             list = item.classList;
             list.remove('builded');
-            if (buildingLen === 0) {
+            if (animatedLen === 0) {
                 list.add('tobuild');
                 item = builded.pop();
                 item.classList.remove('builded');
-                item.classList.add('building');
+                item.classList.add('animated');
             } else {
-                list.add('building');
+                list.add('animated');
             }
         }
         return true;

@@ -289,6 +289,8 @@ nodeppt一如既往的支持动效，2.0版本支持动效主要是页面内的�
 
 在需要支持的动效父节点添加`.build`或者在具体的某个元素上添加`.tobuild+动效 class`即可。
 
+按照惯例，nodeppt 还支持`animate.css`的动效哦~
+
 详细查看文件：[site/animation.md](./site/animation.md)和[在线演示](https://js8.in/nodeppt/animation.html)
 
 ### 使用强大的`:::`完成复杂布局

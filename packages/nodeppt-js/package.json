@@ -31,6 +31,7 @@
         "markdown"
     ],
     "dependencies": {
+        "animate.css": "^3.7.0",
         "webslides": "1.4.2"
     }
 }
