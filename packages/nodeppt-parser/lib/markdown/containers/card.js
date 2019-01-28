@@ -1,4 +1,7 @@
+const utils = require('../attrs/utils');
+const attrOptions = utils.getOptions();
 const name = 'card';
+
 module.exports = {
     validate(params) {
         return params.trim().match(new RegExp('^' + name + '(-\\d+)?\\s*(.*)$'));
@@ -31,6 +34,14 @@ module.exports = {
             }
             return false;
         }
+
+        opts = opts.split(/card(?:-\d+)?\s+/).splice(1)[0];
+        let attrs = [];
+        let cardClass = '';
+        if (utils.hasDelimiters('only', attrOptions)(opts, attrOptions)) {
+            attrs = utils.getAttrs(opts, 0, attrOptions);
+            cardClass = utils.findAttrs(attrs, 'class');
+        }
         // tokens
         const tokens = state.tokens;
         let hrIdx = 0;
@@ -52,22 +63,30 @@ module.exports = {
         if (imgs) {
             // 第一部分有图片
             tokens.splice(start + 1, 3, ...imgs);
-            let level = tokens[start].level;
-            const divToken = getOpenToken('div', level - 1);
-            divToken.attrPush(['class', 'flex-content']);
-            tokens.splice(hrIdx, 1, divToken);
-            tokens.splice(tokens.length - 1, 0, getCloseToken('div', level - 1));
+            if (cardClass.indexOf('quote') === -1) {
+                let level = tokens[start].level;
+                const divToken = getOpenToken('div', level - 1);
+                divToken.attrPush(['class', 'flex-content']);
+                tokens.splice(hrIdx, 1, divToken);
+                tokens.splice(tokens.length - 1, 0, getCloseToken('div', level - 1));
+            } else {
+                tokens.splice(hrIdx, 1);
+            }
+
             // console.log(tokens);
         } else {
             imgs = hasImg(part2);
             if (imgs) {
                 // 第二部分有图片
-                let level = tokens[start].level;
-                const divToken = getOpenToken('div', level - 1);
-                divToken.attrPush(['class', 'flex-content']);
-                tokens.splice(start + 1, 0, divToken);
-
-                tokens.splice(hrIdx + 1, 4, getCloseToken('div', level - 1), ...imgs);
+                if (cardClass.indexOf('quote') === -1) {
+                    let level = tokens[start].level;
+                    const divToken = getOpenToken('div', level - 1);
+                    divToken.attrPush(['class', 'flex-content']);
+                    tokens.splice(start + 1, 0, divToken);
+                    tokens.splice(hrIdx + 1, 4, getCloseToken('div', level - 1), ...imgs);
+                } else {
+                    tokens.splice(hrIdx, 3, ...imgs);
+                }
             }
         }
         // console.log(tokens.slice(start - 1));
@@ -83,14 +102,20 @@ module.exports = {
             if (info === 'card') {
                 info = 'card-50';
             }
-
             if (clsIndex >= 0) {
-                attrs[clsIndex][1] += cmIndex >= 0 ? ` ${info} bg-white ${attrs[cmIndex][1]}` : ` ${info} bg-white`;
+                attrs[clsIndex][1] += cmIndex >= 0 ? ` ${info} ${attrs[cmIndex][1]}` : ` ${info}`;
             } else {
-                attrs.push(['class', cmIndex >= 0 ? ` ${info} bg-white ${attrs[cmIndex][1]}` : ` ${info} bg-white`]);
+                attrs.push(['class', cmIndex >= 0 ? ` ${info} ${attrs[cmIndex][1]}` : ` ${info}`]);
             }
 
             attrs = attrs.map(([key, value]) => {
+                if (key === 'class') {
+                    // 处理掉 quote 存在 bg-wihte情况，和多个 bg-*情况
+
+                    if (!~value.indexOf('bg') && value.indexOf('quote') === -1) {
+                        value += ' bg-white';
+                    }
+                }
                 return `${key}="${value}"`;
             });
             // opening tag

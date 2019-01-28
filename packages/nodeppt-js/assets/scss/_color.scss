@@ -1,6 +1,5 @@
 // sass-lint:disable no-color-literals
 // sass-lint:disable no-vendor-prefixes
-
 /*=========================================
 19. Colors
 =========================================== */
@@ -104,7 +103,9 @@ Slides - Backgrounds <section class="bg-primary">
 ================================================== */
 
 /*3 Corp Colors*/
-@each $name, $color in $bg-colors {
+
+@each $name,
+$color in $bg-colors {
   .bg-#{$name} {
     background-color: $color;
   }
@@ -116,11 +117,13 @@ Slides - Backgrounds <section class="bg-primary">
 }
 
 /* BG Apple Keynote*/
+
 .bg-apple {
   background: linear-gradient(to bottom, $black 0%, #1a2028 50%, #293845 100%);
 }
 
 /*Font Color*/
+
 .bg-trans-dark,
 .bg-trans-gradient,
 .bg-primary,
@@ -146,6 +149,7 @@ Slides - Backgrounds <section class="bg-primary">
 }
 
 /*Transparent/Opacity*/
+
 .bg-trans-dark {
   background: rgba($black, .8);
 }
@@ -155,26 +159,31 @@ Slides - Backgrounds <section class="bg-primary">
 }
 
 /*Covers/Longforms...*/
+
 .bg-trans-gradient {
   background: linear-gradient(to top, rgba($black, .8) 0%, rgba($black, 0) 100%);
 }
 
 /*Horizontal Gradient*/
+
 .bg-gradient-h {
   background: linear-gradient(134deg, #32b 0, #62b 100%);
 }
 
 /*Vertical Gradient*/
+
 .bg-gradient-v {
   background: linear-gradient(to top, #62b 0%, #32b 100%);
 }
 
 /*Radial Gradient*/
+
 .bg-gradient-r {
   background: radial-gradient(ellipse at center, #62b 0%, #32b 100%);
 }
 
 /*White Gradient (vertical)*/
+
 .bg-gradient-white {
   background: linear-gradient(180deg, #f2f4f6 0, $white 100%);
   color: $body-color;
@@ -182,6 +191,7 @@ Slides - Backgrounds <section class="bg-primary">
 }
 
 /*Gray Gradient (horizontal)*/
+
 .bg-gradient-gray {
   background: linear-gradient(90deg, #f7f9fb 0, #dee2e6 100%);
   color: $body-color;
@@ -189,6 +199,7 @@ Slides - Backgrounds <section class="bg-primary">
 }
 
 /*Border/Frame*/
+
 .frame {
   border: .8rem solid $white;
 }
@@ -198,6 +209,7 @@ Slides - Backgrounds <section class="bg-primary">
 }
 
 /*Layer/Box Shadow*/
+
 .shadow,
 .pre {
   position: relative;
@@ -213,11 +225,13 @@ TYPOGRAPHY
 ============================== */
 
 /* -- Horizontal separator  -- */
+
 .text-separator:before {
   background-color: rgba(170, 0, 0, .8);
 }
 
 /* -- Pull Quote (Right/Left)  -- */
+
 [class*='text-pull-'] {
   border-top: 4px solid rgba($black, .5);
 }
@@ -228,6 +242,7 @@ figure[class*='text-pull-'] {
 }
 
 /* -- Context  -- */
+
 [class*='bg-'] .text-context:before {
   background-color: $white;
 }
@@ -238,6 +253,7 @@ figure[class*='text-pull-'] {
 }
 
 /* -- Text shadow  -- */
+
 .text-shadow {
   text-shadow: 0 0 40px rgba($black, .5);
 }
@@ -249,6 +265,7 @@ h1 span {
 }
 
 /* -- <pre> comment  -- */
+
 .code-comment {
   color: rgba(70, 170, 130, .9);
   text-shadow: none;
@@ -257,6 +274,7 @@ h1 span {
 /*=========================================
 Header/Nav
 =========================================== */
+
 header[role='banner'] {
   background-color: $white;
 }
@@ -270,18 +288,17 @@ nav[role='navigation'] li {
     background-color: #555;
     color: $white;
   }
-
   a {
     background-color: rgba(50, 50, 50, .9);
     color: $white;
-
     &:hover {
       background-color: rgba(50, 50, 50, .7);
     }
   }
 }
 
-@each $name, $color in $social-nav {
+@each $name,
+$color in $social-nav {
   nav li.#{$name} a:hover {
     background-color: $color;
   }
@@ -290,6 +307,7 @@ nav[role='navigation'] li {
 /*===================================================
 .flexblock li hover/active
 ===================================================== */
+
 .flexblock li.active a,
 .metrics li:hover,
 .specs li:hover,
@@ -300,8 +318,9 @@ nav[role='navigation'] li {
 /*=========================================
 Features & Clients List
 =========================================== */
+
 .features li,
-.clients li  {
+.clients li {
   background-color: rgba($white, .9);
 }
 
@@ -311,13 +330,14 @@ Features & Clients List
 }
 
 .features li:hover,
-.clients li:hover  {
+.clients li:hover {
   box-shadow: 0 8px 16px rgba($stratos, .02), 0 4px 16px rgba($black, .08);
 }
 
 /*============================
 .flexblock with border
 ============================== */
+
 .border {
   border-bottom: 1px solid rgba($stratos, .1);
   border-right: 1px solid rgba($stratos, .1);
@@ -335,6 +355,7 @@ Features & Clients List
 /*===========================================
 flexblock.steps
 ============================================= */
+
 .steps li:nth-child(1) {
   background-color: #e8eef7;
 }
@@ -365,16 +386,13 @@ flexblock.steps
   .process.step-2 {
     border-left-color: #e8eef7;
   }
-
   .process.step-3 {
     border-left-color: #dde5f3;
   }
-
   .process.step-4 {
     border-left-color: #cdd8ec;
   }
-
-  .steps li:hover + li [class*='step-'] {
+  .steps li:hover+li [class*='step-'] {
     border-left-color: #b8cef7;
   }
 }
@@ -382,6 +400,7 @@ flexblock.steps
 /*=========================================================
 Items: You can use for settings, drag&drop, close/delete...
 =========================================================== */
+
 .specs li:after {
   background: linear-gradient(to right, rgba($stratos, 0) 0%, rgba($stratos, .2) 50%, rgba($stratos, 0) 100%);
 }
@@ -393,6 +412,7 @@ Items: You can use for settings, drag&drop, close/delete...
 /*=========================================================
 Why/Steps/Motivation/Reasons -  Decimal/Numbers
 =========================================================== */
+
 .reasons li:after {
   background: linear-gradient(to right, rgba($stratos, 0) 0%, rgba($stratos, .2) 50%, rgba($stratos, 0) 100%);
 }
@@ -404,6 +424,7 @@ Why/Steps/Motivation/Reasons -  Decimal/Numbers
 /*=========================================
 Overlays
 =========================================== */
+
 .overlay {
   background-color: rgba($black, .2);
 }
@@ -421,6 +442,7 @@ li:hover .overlay {
 /*=========================================
 Gallery li+.overlay+image
 =========================================== */
+
 .gallery li {
   background-color: rgba($stratos, .06);
   box-shadow: 0 1px 1px rgba($black, .2), 0 4px 8px rgba($black, .03);
@@ -448,6 +470,7 @@ Gallery li+.overlay+image
 }
 
 /*Arrow */
+
 .gallery li figcaption:before {
   border: .8rem solid $black;
   border-color: transparent transparent $white $white;
@@ -456,6 +479,7 @@ Gallery li+.overlay+image
 /*=========================================
 Plans / Pricing
 =========================================== */
+
 .plans>li div,
 .flexblock.plans li:hover div {
   background-color: $white;
@@ -477,13 +501,12 @@ Plans / Pricing
 
 .plans ul li {
   border-bottom: 1px solid rgba($stratos, .1);
-
   &:last-child {
     border-bottom: 0;
   }
 }
 
-.plans > li > a {
+.plans>li>a {
   color: $body-color;
   text-shadow: none;
 }
@@ -491,6 +514,7 @@ Plans / Pricing
 /*============================
 Activity/CV/Timeline/News
 ============================== */
+
 .activity li {
   border-top: .1rem solid rgba($stratos, .1);
 }
@@ -502,6 +526,7 @@ Activity/CV/Timeline/News
 /*=========================================
 Resume/Work/CV/Portfolio
 =========================================== */
+
 .work-label,
 .work li a {
   border-bottom: 1px solid rgba($stratos, .1);
@@ -518,6 +543,7 @@ Resume/Work/CV/Portfolio
 /*===========================================
 Clients / Services / Logos...
 ============================================= */
+
 .clients.border figcaption {
   border-top: 1px solid rgba($stratos, .1);
 }
@@ -527,22 +553,26 @@ LOGOS
 ====================== */
 
 /* --- Images (black logo/image) --- */
+
 img.blacklogo {
   background: none;
   filter: grayscale(100%) brightness(10%) contrast(100%);
 }
 
 /* --- Images (gray logo/image) --- */
+
 img.graylogo {
   filter: grayscale(100%) brightness(10%) contrast(10%);
 }
 
 /* --- Images (white Logo/Image) --- */
+
 img.whitelogo {
   filter: brightness(0) invert(1);
 }
 
 /* --- Logo/Images Hover --- */
+
 li:hover img.blacklogo,
 li:hover img.graylogo,
 img.blacklogo:hover,
@@ -555,11 +585,13 @@ img.graylogo:hover {
 /*=========================================================
 Cards
 =========================================================== */
-[class*='card-'] > a {
+
+[class*='card-']>a {
   color: inherit;
 }
 
 /* ---  card ul specs --- */
+
 .description>li {
   border-bottom: 1px solid rgba($stratos, .1);
 }
@@ -569,11 +601,13 @@ Cards
 }
 
 /*== Figure Background === */
+
 [class*='card-'][class*='bg-'] figure {
   background-color: rgba($stratos, .06);
 }
 
 /*== Ficaption Cards === */
+
 [class*='card'] figcaption,
 [class*='card'] figcaption a {
   background: linear-gradient(to bottom, rgba($black, 0) 0%, rgba($black, .2) 100%);
@@ -581,6 +615,7 @@ Cards
 }
 
 /*===CTA (Call to Action - Numbers, Price, Promo...)  ===== */
+
 @media (min-width: 768px) {
   .cta .benefit {
     border-image: linear-gradient(90deg, transparent, rgba($black, .4) 50%, transparent) 1 100%;
@@ -592,32 +627,51 @@ Cards
 /*=========================================
 Tables
 =========================================== */
+
+table.table-dark {
+  td,
+  th,
+  thead {
+    border: 1px solid rgba($black, .5);
+  }
+  thead {
+    background-color: rgba($black, .3);
+  }
+  tr:nth-child(even)>td {
+    background: rgba($black, .1);
+  }
+  tr>td {
+    border-top: 1px solid rgba($black, .5);
+  }
+  td:hover,
+  tr:nth-child(even)>td:hover {
+    background-color: rgba($white, .5);
+  }
+}
+
 table td,
 th,
 thead {
-  border: 1px solid rgba($black, .5);
-}
-
-thead {
-  background-color: rgba($black, .3);
+  border: 1px solid rgba($stratos, .1);
 }
 
 tr:nth-child(even)>td {
-  background: rgba($black, .1);
+  background-color: rgba($stratos, .03);
 }
 
 tr>td {
-  border-top: 1px solid rgba($black, .5);
+  border-bottom: 1px solid rgba($stratos, .1);
 }
 
 td:hover,
 tr:nth-child(even)>td:hover {
-  background-color: rgba($white, .5);
+  background-color: rgba($stratos, .04);
 }
 
 /*============================
 Browser (Screenshots)
 ============================== */
+
 .browser {
   border: 1px solid rgba($stratos, .1);
 }
@@ -627,6 +681,7 @@ Browser (Screenshots)
 }
 
 /*=== Topbar === */
+
 .browser:before {
   background-color: rgba($stratos, .1);
   border-bottom: 1px solid rgba($stratos, .2);
@@ -641,6 +696,7 @@ Browser (Screenshots)
 /*=========================================
 Forms
 =========================================== */
+
 input,
 textarea {
   background-color: #fafbfc;
@@ -743,12 +799,14 @@ legend {
 }
 
 /* Inputs/Buttons - hover */
+
 input:hover,
 select:hover {
   box-shadow: 0 0 8px rgba($black, .3);
 }
 
 /* App Store Badges */
+
 [class*='badge-'] {
   background-color: $black;
   border: 1px solid #345;
@@ -761,6 +819,7 @@ form .flexblock li:hover {
 /*============================
 Table of Contents
 ============================== */
+
 .toc,
 .toc ol>li:before,
 .chapter {
@@ -774,6 +833,7 @@ Table of Contents
 /*============================
 Slides (Counter/Arrows)
 ============================== */
+
 #counter,
 #navigation a {
   color: #abc;
@@ -787,6 +847,7 @@ Slides (Counter/Arrows)
 /*============================
 Footer
 ============================== */
+
 footer[role='contentinfo'] {
   background-color: $white;
 }
@@ -794,19 +855,18 @@ footer[role='contentinfo'] {
 /*============================
 Slides Index
 ============================== */
+
 #webslides-zoomed {
   background: $index-overlay;
 }
 
-#webslides-zoomed .column > .wrap-zoom {
+#webslides-zoomed .column>.wrap-zoom {
   background-color: $catskill-white;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 4px 8px rgba(0, 0, 0, .04);
   color: $mine-shaft;
-
   &:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 4px 8px rgba(0, 0, 0, .08);
   }
-
   &.current {
     border: .6rem solid rgba(0, 20, 280, .2);
   }
@@ -814,4 +874,4 @@ Slides Index
 
 .text-slide-number {
   color: #abc;
- }
+}
