@@ -6,7 +6,6 @@ const fs = require('fs');
 const exists = fs.existsSync;
 
 const semver = require('semver');
-const inquirer = require('inquirer');
 const through = require('through2');
 const Handlebars = require('handlebars');
 const vfs = require('vinyl-fs');
