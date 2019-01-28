@@ -45,9 +45,6 @@ exports.build = (e, args) => {
 function createService(context, entry, asLib, plugins = []) {
     // console.log(plugins);
     return new Service(context, entry, {
-        projectOptions: {
-            compiler: true
-        },
         plugins: [...plugins, globalConfigPlugin(context, entry, asLib)]
     });
 }

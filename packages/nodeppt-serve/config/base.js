@@ -1,6 +1,7 @@
 /**
  * @file base
  */
+const path = require('path');
 const {transformer, formatter} = require('nodeppt-shared-utils');
 module.exports = (api, options) => {
     api.chainWebpack(webpackConfig => {
@@ -23,11 +24,14 @@ module.exports = (api, options) => {
                 }
             };
         };
-
+        let entryName = 'app';
+        if (api.service.entry) {
+            entryName = api.getEntryName();
+        }
         webpackConfig
             .mode('development')
             .context(api.context)
-            .entry('app')
+            .entry(entryName)
             .add('./main.js')
             .end()
             .output.path(api.resolve(options.outputDir))

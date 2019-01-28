@@ -30,14 +30,6 @@ module.exports = (api, options) => {
         // plugin.
         const needInlineMinification = isProd && !shouldExtract;
 
-        const cssnanoOptions = {
-            safe: true,
-            autoprefixer: {disable: true},
-            mergeLonghand: false
-        };
-        if (options.productionSourceMap && sourceMap) {
-            cssnanoOptions.map = {inline: false};
-        }
 
         function createCSSRule(lang, test, loader, options) {
             const baseRule = webpackConfig.module.rule(lang).test(test);

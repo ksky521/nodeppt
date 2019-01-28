@@ -12,9 +12,14 @@ module.exports = function createConfigPlugin(context, entry, asLib) {
                 // entry arg
                 const entry = require.resolve('../template/main.js');
                 config.resolve.alias.set('~entry', path.resolve(context, entry));
+
+                let entryName = 'app';
+                if (api.service.entry) {
+                    entryName = api.getEntryName();
+                }
                 // set entry
                 config
-                    .entry('app')
+                    .entry(entryName)
                     .clear()
                     .add(entry);
 

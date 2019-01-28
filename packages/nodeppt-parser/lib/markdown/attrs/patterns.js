@@ -139,7 +139,7 @@ module.exports = options => {
             ],
             transform: (tokens, i, j) => {
                 const children = tokens[i].children;
-                console.log(children[j]);
+                // console.log(children[j]);
                 for (let m = 1; m < children.length; m++) {
                     let child = children[m];
                     if (

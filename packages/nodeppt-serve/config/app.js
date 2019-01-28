@@ -18,7 +18,6 @@ module.exports = (api, options) => {
     api.chainWebpack(webpackConfig => {
         const isProd = process.env.NODE_ENV === 'production';
         const outputDir = api.resolve(options.outputDir);
-
         // code splitting
         if (isProd) {
             webpackConfig.optimization.splitChunks({
@@ -123,7 +122,9 @@ module.exports = (api, options) => {
         if (!multiPageConfig) {
             // default, single page setup.
             htmlOptions.template = htmlPath;
-
+            if (isProd) {
+                htmlOptions.filename = api.getEntryName() + '.html';
+            }
             webpackConfig.plugin('html').use(HTMLPlugin, [htmlOptions]);
         } else {
             // multi-page setup

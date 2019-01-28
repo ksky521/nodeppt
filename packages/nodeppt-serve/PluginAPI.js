@@ -11,6 +11,9 @@ class PluginAPI {
     getEntry() {
         return this.service.entry;
     }
+    getEntryName() {
+        return path.parse(this.service.entry).name;
+    }
     /**
      * 获取当前工作目录
      * @return {string} 返回工作目录
