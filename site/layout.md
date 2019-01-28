@@ -1,5 +1,4 @@
-
-title: nodeppt - 这可能是迄今为止最好的网页版演示库
+title: nodeppt 动效演示
 speaker: 三水清
 url: https://github.com/ksky521/nodeppt
 css:
@@ -7,15 +6,13 @@ css:
 
 <slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 
+Layout 演示{.text-subtitle}
 # nodeppt {.text-landing.text-shadow}
 
 这可能是迄今为止最好的网页版演示库 {.text-intro}
 
 [:fa-github: Github](https://github.com/ksky521/nodeppt){.button.ghost}
 
-<slide class="bg-black aligncenter" image="https://source.unsplash.com/n9WPPWiPPJw/ .anim">
-
-## .background.anim
 
 
 <slide class="aligncenter">
@@ -25,5 +22,3 @@ css:
 快使用 [nodeppt](https://github.com/ksky521/nodeppt) 轻松搞定高大上PPT<br/> nodeppt 助力你的人生逆袭之路！ {.text-into}
 
 [:fa-cloud-download: Github](https://github.com/ksky521/nodeppt){.button}
-
-

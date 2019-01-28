@@ -175,6 +175,10 @@ output 为：
 
 样式太多，具体详见[site/classes.md](./site/classes.md)和[在线演示](https://js8.in/nodeppt/classes.html)
 
+### 布局
+nodeppt 这次使用`webslides`的布局，支持丰富的布局，实在太多了，直接看文档[site/layout.md](./site/layout.md)和[在线演示](https://js8.in/nodeppt/layout.html)
+
+
 ### attribute
 参考[markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)，支持了`attribute`，修改增加多 class 支持等功能。
 
@@ -279,6 +283,9 @@ nodeppt一如既往的支持动效，2.0版本支持动效主要是页面内的�
 * fadeIn
 * zoomIn
 * rollIn
+* moveIn
+* fadeInUp
+* slow
 
 在需要支持的动效父节点添加`.build`或者在具体的某个元素上添加`.tobuild+动效 class`即可。
 
