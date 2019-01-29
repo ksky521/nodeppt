@@ -185,7 +185,7 @@ Vertical
 
 <slide class="fullscreen bg-blue" youtube=".dark id='_m67JbGjWnc' autoplay loop" :class="aligncenter">
 
-## **Youtube embed Background**
+## **Youtube Background**
 
 `<slide youtube=".dark id='_m67JbGjWnc' autoplay loop">`
 
