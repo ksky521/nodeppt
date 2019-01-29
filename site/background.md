@@ -182,6 +182,13 @@ Vertical
 
 `<slide class="bg-blue aligncenter" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg' .dark">` or `.light`
 
+
+<slide class="fullscreen bg-blue" youtube=".dark id='_m67JbGjWnc' autoplay loop" :class="aligncenter">
+
+## **Youtube embed Background**
+
+`<slide youtube=".dark id='_m67JbGjWnc' autoplay loop">`
+
 <slide image="https://webslides.tv/static/images/iphone-hand.png .right-bottom">
 
 :::{.content-left}

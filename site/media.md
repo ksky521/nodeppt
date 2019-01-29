@@ -9,7 +9,7 @@ plugins:
     - echarts: {theme: infographic}
     - katex
 
-<slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
+<slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/Zq_K89I9E-8/ .dark">
 
 Media & Plugin {.text-subtitle.animated.fadeInDown.delay-800}
 # nodeppt {.text-landing.text-shadow}
@@ -17,6 +17,32 @@ Media & Plugin {.text-subtitle.animated.fadeInDown.delay-800}
 这可能是迄今为止最好的网页版演示库 {.text-intro}
 
 [:fa-github: Github](https://github.com/ksky521/nodeppt){.button.ghost}
+
+
+<slide class="aligncenter">
+
+## Media
+
+<slide class="bg-black" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg'" >
+
+
+`.background-video`
+
+## **WebSlides is the easiest way to make HTML presentations. Inspire and engage.**
+
+<slide class="bg-blue aligncenter" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg' .dark">
+
+
+## BG Video with Overlay {.text-landing}
+
+`<slide class="bg-blue aligncenter" video="https://webslides.tv/static/videos/working.mp4 poster='https://webslides.tv/static/images/working.jpg' .dark">` or `.light`
+
+
+<slide class="fullscreen bg-blue" youtube=".dark id='_m67JbGjWnc' autoplay loop" :class="aligncenter">
+
+## **Youtube embed Background**
+
+`<slide youtube=".dark id='_m67JbGjWnc' autoplay loop">`
 
 <slide class="aligncenter">
 
@@ -31,7 +57,7 @@ Media & Plugin {.text-subtitle.animated.fadeInDown.delay-800}
 ## echarts {.aligncenter}
 
 
-```echarts {style="height:400px;"}
+```echarts {style="height:100%;width:100%;"}
 {
     tooltip: {
         trigger: 'item',
@@ -128,6 +154,20 @@ Media & Plugin {.text-subtitle.animated.fadeInDown.delay-800}
 }
 
 ```
+
+
+<slide class="bg-gradient-v" :class="size-60">
+
+## KaTex {.aligncenter}
+
+| equation                                                                                                                                                                  | description                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                      | divergence of $\vec{\mathbf{B}}$ is zero                                               |
+| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                          | curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$ |
+| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                                 |
+
+
+
 
 <slide class="aligncenter">
 

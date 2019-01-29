@@ -81,6 +81,41 @@ module.exports = tree => {
                     style: `background-image:url('${image}')`
                 }
             });
+        } else if (attrs.youtube) {
+            const ybAttrs = getAttrs(`{${attrs.youtube}}`, 0, {
+                leftDelimiter: '{',
+                rightDelimiter: '}'
+            });
+            const rs = {
+                'data-youtube': '',
+            };
+            let cls = [];
+            if (ybAttrs.length) {
+                ybAttrs.forEach(([key, value]) => {
+                    if (key === 'class') {
+                        cls = value.split('.').map(c => {
+                            return c;
+                        });
+                    }else if(key==='id'){
+                        key = 'youtube-id'
+                    }
+                    rs[`data-${key}`] = value.replace(/^[\'\"]|[\'\"]$/g, '');
+                });
+            }
+            if (cls.length === 0) {
+                cls.push('dark');
+            }
+            cls.push('embed');
+            node.content.unshift({
+                tag: 'div',
+                attrs: {class: cls.join(' ')},
+                content: [
+                    {
+                        tag: 'div',
+                        attrs: rs
+                    }
+                ]
+            });
         } else if (attrs.video) {
             let [src, ...videoAttrs] = attrs.video.split(/\s+/);
             videoAttrs = getAttrs(`{${videoAttrs.join(' ')}}`, 0, {

@@ -40,38 +40,14 @@
 <% } %>
 
 <script>
+<% if(hasOwnProperty('pluginsOptions') && pluginsOptions && pluginsOptions.echarts && pluginsOptions.echarts.theme) { %>
+window.echartsTheme_ = '<%= pluginsOptions.echarts.theme %>';
+<% } %>
 document.addEventListener('DOMContentLoaded', () => {
     const ws = new WebSlides({
         loop: false
     })
     window.wsInstance = ws;
-    <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
-        const initEchart = (e)=>{
-
-        const slide = ws.slides[e.detail.currentSlide0].el
-        if(slide){
-            const echartsNode = slide.querySelectorAll('.echarts')
-            const echartsData = slide.querySelectorAll('.echarts-data')
-            const len = echartsNode.length
-            const echartsChart = []
-            const echartsOption = []
-            for (let j = 0; j < len; j++) {
-                <% if(hasOwnProperty('pluginsOptions') && pluginsOptions && pluginsOptions.echarts && pluginsOptions.echarts.theme) { %>
-                    const et = (echartsChart[j] = echarts.init(echartsNode[j], '<%= pluginsOptions.echarts.theme %>'))
-                <% } else { %>
-                    const et = (echartsChart[j] = echarts.init(echartsNode[j]))
-                <% } %>
-                try {
-                    echartsOption[j] = JSON.parse(echartsData[j].innerHTML.trim())
-                    et.setOption(echartsOption[j])
-                } catch (e) {
-                    console.log(e)
-                }
-            }
-        }
-    }
-    ws.el.addEventListener('ws:slide-change', initEchart, false)
-  <% } %>
 }, false)
 </script>
 </body>
