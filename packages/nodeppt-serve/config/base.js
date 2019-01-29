@@ -35,7 +35,7 @@ module.exports = (api, options) => {
             .add('./main.js')
             .end()
             .output.path(api.resolve(options.outputDir))
-            .filename('[name].js')
+            .filename(`[name]${options.filenameHashing ? '.[hash:8]' : ''}.js`)
             .publicPath(options.baseUrl);
 
         webpackConfig.resolve

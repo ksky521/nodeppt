@@ -41,8 +41,10 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const ws = new WebSlide()
-
+    const ws = new WebSlides({
+        loop: false
+    })
+    window.wsInstance = ws;
     <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
         const initEchart = (e)=>{
 
@@ -54,13 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const echartsChart = []
             const echartsOption = []
             for (let j = 0; j < len; j++) {
-            const et = (echartsChart[j] = echarts.init(echartsNode[j]))
-            try {
-                echartsOption[j] = JSON.parse(echartsData[j].innerHTML.trim())
-                et.setOption(echartsOption[j])
-            } catch (e) {
-                console.log(e)
-            }
+                <% if(hasOwnProperty('pluginsOptions') && pluginsOptions && pluginsOptions.echarts && pluginsOptions.echarts.theme) { %>
+                    const et = (echartsChart[j] = echarts.init(echartsNode[j], '<%= pluginsOptions.echarts.theme %>'))
+                <% } else { %>
+                    const et = (echartsChart[j] = echarts.init(echartsNode[j]))
+                <% } %>
+                try {
+                    echartsOption[j] = JSON.parse(echartsData[j].innerHTML.trim())
+                    et.setOption(echartsOption[j])
+                } catch (e) {
+                    console.log(e)
+                }
             }
         }
     }

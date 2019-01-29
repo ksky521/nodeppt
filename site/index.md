@@ -9,7 +9,7 @@ css:
 
 # nodeppt {.text-landing.text-shadow}
 
-这可能是迄今为止最好的网页版演示库 {.text-intro}
+这可能是迄今为止最好的网页版演示库 {.text-intro.animated.fadeInUp.delay-500}
 
 [:fa-github: Github](https://github.com/ksky521/nodeppt){.button.ghost}
 

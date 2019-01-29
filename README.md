@@ -443,6 +443,27 @@ module.exports = {
 * [markdown-it docs](https://github.com/markdown-it/markdown-it/tree/master/docs)
 * [posthtml docs](https://github.com/posthtml/posthtml/tree/master/docs)
 
+### webslides plugin
+WebSlides 插件需要写到一个 js 文件中，然后作为数组放到`window.WSPlugins_`中，然后通过在md 页面的配置（yaml）添加 js 的方法引入。
+
+
+```md
+js:
+    - webslide_plugins.js
+```
+
+```js
+// webslide_plugins.js内容
+window.WSPlugins_ = [{
+    id: 'webslide_plugin_name',
+    // 下面是对应的插件类
+    apply: class Plugin{}
+}]
+```
+
+
+参考[WebSlides文档](https://github.com/webslides/WebSlides/wiki/Plugin-development)
+
 ### Template：自制模板
 
 参考[nodeppt-template-default](https://github.com/ksky521/nodeppt-template-default)。

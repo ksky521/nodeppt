@@ -7,34 +7,40 @@ css:
 
 <slide class="bg-gradient-v" image="https://source.unsplash.com/nxfuA21kNHY/1440x1440 .dark" :class="size-60">
 
-Animation{.text-subtitle}
-# nodeppt {.text-landing}
+Animation{.text-subtitle.animated.fadeInDown.delay-800}
+# nodeppt {.text-landing.animated.fadeInRight}
 
-This is probably the best **web presentation tool** so far! {.text-intro}
+This is probably the best **web presentation tool** so far! {.text-intro.animated.fadeInUp.delay-800}
 
-[:fa-github: Github](https://github.com/ksky521/nodeppt){.button.ghost}
+[:fa-github: Github](https://github.com/ksky521/nodeppt){.button.ghost.animated.flipInX.delay-1500}
 
+<slide :class="aligncenter fadeInUp animated">
 
-<slide :class="aligncenter fadeInUp">
-## The little things mean the most
+## 使用 `.animated` 给元素添加动效
 
-.fadeInUp
+`.animated.fadeInUp` <br/>`.animated` 添加的动效是自动播放的
 
-
-<slide :class="aligncenter zoomIn size-40">
+<slide :class="aligncenter animated zoomIn size-40">
 
 ![](https://webslides.tv/static/images/android.png)
 
 <slide :class="aligncenter">
 
-## h2.fadeIn.slow {.fadeIn.slow}
+## `h2.animated.fadeIn.slow` {.fadeIn.animated.slow}
+
+<slide :class="aligncenter">
+
+## `.animated.fadeIn.delay-800` {.fadeIn.animated.delay-800}
 
 <slide class="aligncenter">
 
 animate with {.text-subtitle}
-## `.tobuild`
+## `.tobuild` {.tada.animated.delay-500}
+
 
 需要添加动效的元素添加 `.tobuild` + 动效class {.tobuild.fadeInRight}
+
+`.tobuild` 动效是手动触发的 {.tobuild.fadeInLeft}
 
 <slide :class="size-50">
 

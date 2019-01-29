@@ -1,12 +1,14 @@
 title: nodeppt 背景效果演示
 speaker: 三水清
 url: https://github.com/ksky521/nodeppt
+js:
+    - background.js
 css:
  - https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&subset=latin-ext
 
 <slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/6njoEbtarec/ .dark">
 
-Background 演示{.text-subtitle}
+Background{.text-subtitle.animated.fadeInDown.delay-800}
 # nodeppt {.text-landing.text-shadow}
 
 这可能是迄今为止最好的网页版演示库 {.text-intro}
@@ -20,6 +22,26 @@ Background 演示{.text-subtitle}
 
 &lt;slide class="bg-apple"&gt;
 
+<slide :class="size-40">
+
+## 点击切换背景class
+
+* [`.bg-primary`](){onclick="changeBackgroundColor('bg-primary')"}
+* [`.bg-secondary`](){onclick="changeBackgroundColor('bg-secondary')"}
+* [`.bg-light`](){onclick="changeBackgroundColor('bg-light')"}
+* [`.bg-black`](){onclick="changeBackgroundColor('bg-black')"}
+* [`.bg-black-blue`](){onclick="changeBackgroundColor('bg-black-blue')"}
+* [`.bg-red`](){onclick="changeBackgroundColor('bg-red')"}
+* [`.bg-blue`](){onclick="changeBackgroundColor('bg-blue')"}
+* [`.bg-green`](){onclick="changeBackgroundColor('bg-green')"}
+* [`.bg-purple`](){onclick="changeBackgroundColor('bg-purple')"}
+* [`.bg-trans-light`](){onclick="changeBackgroundColor('bg-trans-light')"}
+* [`.bg-trans-dark`](){onclick="changeBackgroundColor('bg-trans-dark')"}
+* [`.bg-apple`](){onclick="changeBackgroundColor('bg-apple')"}
+* [`.bg-gradient-h`](){onclick="changeBackgroundColor('bg-gradient-h')"}
+* [`.bg-gradient-r`](){onclick="changeBackgroundColor('bg-gradient-r')"}
+* [`.bg-gradient-v`](){onclick="changeBackgroundColor('bg-gradient-v')"}
+{.text-cols}
 
 <slide>
 ## Corporate Backgrounds
@@ -200,10 +222,11 @@ We'll fix it or if we can't, we'll replace it.
 
 ## .background.anim
 
+
 <slide class="aligncenter">
 
-## U work so hard, **but** 干不过 write PPTs
+## U work so hard, **but** 干不过 write PPTs {.animated.tada}
 
-快使用 [nodeppt](https://github.com/ksky521/nodeppt) 轻松搞定高大上PPT<br/> nodeppt 助力你的人生逆袭之路！ {.text-into}
+快使用 [nodeppt](https://github.com/ksky521/nodeppt) 轻松搞定高大上PPT<br/> nodeppt 助力你的人生逆袭之路！ {.text-into.animated.delay-800.fadeIn}
 
-[:fa-cloud-download: Github](https://github.com/ksky521/nodeppt){.button}
+[:fa-cloud-download: Github](https://github.com/ksky521/nodeppt){.button.animated.delay-1s.fadeInUp}
