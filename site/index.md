@@ -36,14 +36,25 @@ css:
 
 
 
+<slide class="bg-primary" :class="size-50 frame">
 
+## View More Demos? {.text-serif.aligncenter}
+
+\* \* \* {.text-symbols}
+
+<nav class="aligncenter">
+* [:fa-th-large: Layout](./layout.html)
+* [:fa-tv: Background](./background.html)
+* [:fa-magic: Animation](./animation.html)
+* [:fa-cube: Component](./component.html)
+* [:fa-youtube: Media](./media.html)
+* [:fa-css3: Classes](./classes.html)
+</nav>
 
 <slide class="aligncenter">
 
-## U work so hard, **but** 干不过 write PPTs
+## U work so hard, **but** 干不过 write PPTs {.animated.tada}
 
-快使用 [nodeppt](https://github.com/ksky521/nodeppt) 轻松搞定高大上PPT<br/> nodeppt 助力你的人生逆袭之路！ {.text-into}
+快使用 [nodeppt](https://github.com/ksky521/nodeppt) 轻松搞定高大上PPT<br/> nodeppt 助力你的人生逆袭之路！ {.text-into.animated.delay-800.fadeIn}
 
-[:fa-cloud-download: Github](https://github.com/ksky521/nodeppt){.button}
-
-
+[:fa-cloud-download: Github](https://github.com/ksky521/nodeppt){.button.animated.delay-1s.fadeInUp}

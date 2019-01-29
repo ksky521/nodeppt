@@ -650,6 +650,21 @@ VP of Design
 :::
 
 
+<slide class="bg-primary" :class="size-50 frame">
+
+## View More Demos? {.text-serif.aligncenter}
+
+\* \* \* {.text-symbols}
+
+<nav class="aligncenter">
+* [:fa-th-large: Layout](./layout.html)
+* [:fa-tv: Background](./background.html)
+* [:fa-magic: Animation](./animation.html)
+* [:fa-cube: Component](./component.html)
+* [:fa-youtube: Media](./media.html)
+* [:fa-css3: Classes](./classes.html)
+</nav>
+
 <slide class="aligncenter">
 
 ## U work so hard, **but** 干不过 write PPTs

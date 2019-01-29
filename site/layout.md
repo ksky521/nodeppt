@@ -117,6 +117,37 @@ We'll fix it or if we can't, we'll replace it.
 
 :::
 
+<slide :class="size-50">
+
+### **What is Stendhal Syndrome?**
+
+Beauty overdose. `.text-pull-right` {.text-intro}
+
+Imagine that you are in Florence. If you suddenly start to feel that you literally cannot breathe, you may be experiencing Stendhal Syndrome.
+
+Psychiatrists have long debated whether it really exists. {.text-pull-right}
+
+The syndrome is not only associated with viewing a beautiful place, but also good art.
+
+The beauty of Italian art has a concentrated perfection and transcendent sensuality that is incredibly addictive.
+
+
+
+<slide class="bg-primary" :class="size-50 frame">
+
+## View More Demos? {.text-serif.aligncenter}
+
+\* \* \* {.text-symbols}
+
+<nav class="aligncenter">
+* [:fa-th-large: Layout](./layout.html)
+* [:fa-tv: Background](./background.html)
+* [:fa-magic: Animation](./animation.html)
+* [:fa-cube: Component](./component.html)
+* [:fa-youtube: Media](./media.html)
+* [:fa-css3: Classes](./classes.html)
+</nav>
+
 <slide class="aligncenter">
 
 ## U work so hard, **but** 干不过 write PPTs
