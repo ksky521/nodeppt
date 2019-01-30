@@ -166,8 +166,10 @@ export default class Keyboard {
             if (buildingLen === 0) {
                 list.add('tobuild');
                 item = builded.pop();
-                item.classList.remove('builded');
-                item.classList.add('building');
+                if (item) {
+                    item.classList.remove('builded');
+                    item.classList.add('building');
+                }
             } else {
                 list.add('building');
             }
