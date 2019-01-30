@@ -2,8 +2,6 @@
 title: nodeppt 动效演示
 speaker: 三水清
 url: https://github.com/ksky521/nodeppt
-css:
- - https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&subset=latin-ext
 
 <slide class="bg-gradient-v" image="https://source.unsplash.com/nxfuA21kNHY/1440x1440 .dark" :class="size-60">
 
@@ -142,7 +140,7 @@ Useful → Easy → Fast → Beautiful
 :::
 
 
-<slide class="bg-primary" :class="size-50 frame">
+<slide class="bg-primary" :class="size-60 frame">
 
 ## View More Demos? {.text-serif.aligncenter}
 
@@ -150,11 +148,10 @@ Useful → Easy → Fast → Beautiful
 
 <nav class="aligncenter">
 * [:fa-th-large: Layout](./layout.html)
-* [:fa-tv: Background](./background.html)
 * [:fa-magic: Animation](./animation.html)
 * [:fa-cube: Component](./component.html)
 * [:fa-youtube: Media](./media.html)
-* [:fa-css3: Classes](./classes.html)
+* [:fa-css3: Classes](./index.html)
 </nav>
 
 <slide class="aligncenter">

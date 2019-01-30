@@ -2,8 +2,6 @@
 title: nodeppt 样式演示
 speaker: 三水清
 url: https://github.com/ksky521/nodeppt
-css:
- - https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&subset=latin-ext
 
 <slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 

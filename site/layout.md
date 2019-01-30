@@ -1,8 +1,6 @@
 title: nodeppt Layout 布局演示
 speaker: 三水清
 url: https://github.com/ksky521/nodeppt
-css:
- - https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&subset=latin-ext
 
 <slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 
@@ -133,19 +131,18 @@ The beauty of Italian art has a concentrated perfection and transcendent sensual
 
 
 
-<slide class="bg-primary" :class="size-50 frame">
+<slide class="bg-primary" :class="size-60 frame">
 
 ## View More Demos? {.text-serif.aligncenter}
 
 \* \* \* {.text-symbols}
 
 <nav class="aligncenter">
-* [:fa-th-large: Layout](./layout.html)
 * [:fa-tv: Background](./background.html)
 * [:fa-magic: Animation](./animation.html)
 * [:fa-cube: Component](./component.html)
 * [:fa-youtube: Media](./media.html)
-* [:fa-css3: Classes](./classes.html)
+* [:fa-css3: Classes](./index.html)
 </nav>
 
 <slide class="aligncenter">

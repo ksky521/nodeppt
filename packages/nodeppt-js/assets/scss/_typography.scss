@@ -3,7 +3,6 @@
 ============================== */
 html,
 body {
-  font-weight: 300;
   line-height: 1;
   text-rendering: optimizeLegibility;
 }
@@ -13,7 +12,7 @@ body,
 input,
 select,
 textarea {
-  font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
+  font-family: -apple-system, "Noto Sans", SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace,"Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   font-size: 62.5%;
 }
 

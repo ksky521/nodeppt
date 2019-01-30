@@ -3,8 +3,6 @@ speaker: 三水清
 url: https://github.com/ksky521/nodeppt
 js:
     - background.js
-css:
- - https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&subset=latin-ext
 
 <slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/6njoEbtarec/ .dark">
 
@@ -229,7 +227,7 @@ We'll fix it or if we can't, we'll replace it.
 
 ## .background.anim
 
-<slide class="bg-primary" :class="size-50 frame">
+<slide class="bg-primary" :class="size-60 frame">
 
 ## View More Demos? {.text-serif.aligncenter}
 
@@ -237,11 +235,10 @@ We'll fix it or if we can't, we'll replace it.
 
 <nav class="aligncenter">
 * [:fa-th-large: Layout](./layout.html)
-* [:fa-tv: Background](./background.html)
 * [:fa-magic: Animation](./animation.html)
 * [:fa-cube: Component](./component.html)
 * [:fa-youtube: Media](./media.html)
-* [:fa-css3: Classes](./classes.html)
+* [:fa-css3: Classes](./index.html)
 </nav>
 
 <slide class="aligncenter">
