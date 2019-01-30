@@ -10,7 +10,7 @@ export default class SpeakerMode {
         document.addEventListener('keydown', this.onKeyPress_.bind(this), false);
     }
     onKeyPress_(e) {
-        if (e.detail && e.detail.salt) {
+        if ((e.detail && e.detail.salt) || !this.listener_) {
             // 处理过了，防止事件重复处理
             return;
         }
@@ -32,7 +32,7 @@ export default class SpeakerMode {
     init_() {
         const params = parseQuery();
         if (params.mode === 'speaker') {
-            this.ws_.el.classList.add('with-note')
+            this.ws_.el.classList.add('with-note');
             const url = location.href.replace('mode=speaker', 'mode=audience');
 
             const sWidth = screen.width;

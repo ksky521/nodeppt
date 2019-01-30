@@ -12,11 +12,11 @@
         transform: scale(0.6) translate3d(0.5vw, 0.5vw, 0);
         .note {
             display: flex;
-            width: 100%;
-            height: 18vw;
+            width: 100vw;
+            height: 38vh;
             padding: 0;
             background: transparent;
-            transform: translate3d(35vw, 68vw, 0) scale(1.5);
+            transform: translate3d(35vw, 115vh, 0) scale(1.5);
             transition: none;
             >.wrap {
                 padding: 1em;
@@ -32,7 +32,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate3d(64vw, 3.6vw, 0) scale(0.35);
+        transform: translate3d(64vw, 13vh, 0) scale(0.35);
         opacity: 1 !important;
         display: flex !important;
         .note {
