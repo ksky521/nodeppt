@@ -24,7 +24,6 @@ export default class Echarts {
     static onSectionEnter(event) {
         const slide = event.detail.slide || {};
         const {echartsNode, echartsInit, echartsData} = slide;
-        console.log(slide)
         if (!echartsInit) {
             setTimeout(() => {
                 const et = echarts.init(echartsNode, window.echartsTheme_);
