@@ -50,14 +50,12 @@ program
     });
 
 program
-    .command('new [template] [dest]')
+    .command('new [dest]')
     .description('Create a new markdown slide')
-    .option('-o, --offline', 'Use local template')
-    .option('-h, --https', 'Git use https')
-    .option('-f, --force', 'force', 'Force to delete directory exist, default：true')
-    .option('-c, --cache', 'Use local cache')
-    .action((template, dest, cmd) => {
-        return require('../commands/new')(template, dest, cleanArgs(cmd));
+    .option('-t, --template [template]', 'template repo or path')
+    .option('-f, --force', 'force', 'Force to delete file exist, default：true')
+    .action((dest, cmd) => {
+        return require('../commands/new')(dest, cleanArgs(cmd));
     })
     .on('--help', function() {
         console.log('  Examples:');
@@ -90,7 +88,7 @@ program.parse(process.argv);
 if (!program.args[0] && process.argv[2] !== 'new') {
     process.stdout.write(program.helpInformation());
     program.emit('--help');
-} else if (!['serve', 'build', 'newx'].includes(process.argv[2])) {
+} else if (!['serve', 'build', 'new'].includes(process.argv[2])) {
     program.emit('--help');
 }
 
