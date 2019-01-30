@@ -1,4 +1,5 @@
-.note {
+section .note {
+    animation: none;
     display: none;
     position: absolute;
     width: 100%;
@@ -19,17 +20,9 @@
         background: #fff;
     }
     &.show {
+        display: flex;
         animation-duration: .8s;
         animation-fill-mode: both;
-        animation-name: fadeInUp;
+        animation-name: slideInUp;
     }
-    &.hide {
-        animation-duration: .8s;
-        animation-fill-mode: both;
-        animation-name: fadeOutDown;
-    }
-}
-
-section .note {
-    animation: none;
 }

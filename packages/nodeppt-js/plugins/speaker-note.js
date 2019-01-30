@@ -18,19 +18,18 @@ export default class SpeakerNote {
         }
     }
     static toggleNote(e) {
-        if (e.which === 110 && !event.metaKey && !event.ctrlKey && !event.shiftKey) {
+        console.log(e);
+        if (e.which === 110 && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
             // toggleNote
-            // console.log(this); // node
             this.classList.toggle('show');
         }
     }
     static onSectionDisabled(event) {
-        const $node = event.detail.slide.noteNode;
-        $node.removeEventListener('keypress', SpeakerNote.toggleNote.bind($node));
+        const $slide = event.detail.slide;
+        document.removeEventListener('keypress', SpeakerNote.toggleNote.bind($slide.noteNode));
     }
     static onSectionEnter(event) {
-        const $node = event.detail.slide.noteNode;
-
-        $node.addEventListener('keypress', SpeakerNote.toggleNote.bind($node));
+        const $slide = event.detail.slide;
+        document.addEventListener('keypress', SpeakerNote.toggleNote.bind($slide.noteNode));
     }
 }

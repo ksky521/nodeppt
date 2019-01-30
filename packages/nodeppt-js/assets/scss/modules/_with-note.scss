@@ -17,10 +17,14 @@
             padding: 0;
             background: transparent;
             transform: translate3d(35vw, 68vw, 0) scale(1.5);
-            transition: opacity 400ms ease-in-out;
-            overflow-y: auto;
+            transition: none;
             >.wrap {
                 padding: 1em;
+                overflow-y: auto;
+            }
+            &.hide,
+            &.show {
+                animation: none;
             }
         }
     }
