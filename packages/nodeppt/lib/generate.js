@@ -76,7 +76,6 @@ module.exports = async (src, dest, cmdOpts) => {
     logWithSpinner('🐝', '开始初始化模板...');
 
     const tpl = getTemplateContent(src);
-
     const content = await template(tpl, data);
 
     fs.writeFileSync(path.resolve(dest), content);

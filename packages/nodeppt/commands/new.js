@@ -25,7 +25,7 @@ const {
     clearConsole
 } = require('nodeppt-shared-utils');
 const ALIAS_MAP = process.env.alias || {
-    buildin: require.resolve('nodeppt-template-default'),
+    buildin: path.parse(require.resolve('nodeppt-template-default')).dir,
     default: 'ksky521/nodeppt-template-default'
 };
 const alias = name => {
