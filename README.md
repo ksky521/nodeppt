@@ -20,16 +20,16 @@ npm install -g nodeppt
 
 ```bash
 # create a new slide with an official template
-$ nodeppt new my-folder
+$ nodeppt new slide.md
 
 # create a new slide straight from a github template
-$ nodeppt new username/repo my-folder
+$ nodeppt new slide.md -t username/repo
 
 # start local sever show slide
-$ nodeppt serve markdown-file
+$ nodeppt serve slide.md
 
 # to build a slide
-$ nodeppt build markdown-file
+$ nodeppt build slide.md
 ```
 
 ### 帮助
