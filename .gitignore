@@ -5,7 +5,7 @@
 /3th
 /.idea
 /.vscode
-
+.DS_Store
 /npm-debug.log
 dist
 publish
