@@ -1,6 +1,6 @@
 {
     "name": "nodeppt-js",
-    "version": "2.0.0-alpha",
+    "version": "2.0.0-beta",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -31,9 +31,9 @@
         "markdown"
     ],
     "dependencies": {
+        "animate.css": "^3.7.0",
         "nodeppt-template-default": "^1.0.1",
         "username": "^4.1.0",
-        "animate.css": "^3.7.0",
         "webslides": "1.4.2"
     }
 }

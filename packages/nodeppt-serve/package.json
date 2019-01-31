@@ -1,6 +1,6 @@
 {
     "name": "nodeppt-serve",
-    "version": "2.0.0-alpha",
+    "version": "2.0.0-beta",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -46,9 +46,9 @@
         "lodash.defaultsdeep": "^4.6.0",
         "mini-css-extract-plugin": "0.5.0",
         "node-sass": "4.11.0",
-        "nodeppt-js": "^2.0.0-alpha",
-        "nodeppt-parser": "^2.0.0-alpha",
-        "nodeppt-shared-utils": "^2.0.0-alpha",
+        "nodeppt-js": "^2.0.0-beta",
+        "nodeppt-parser": "^2.0.0-beta",
+        "nodeppt-shared-utils": "^2.0.0-beta",
         "portfinder": "^1.0.20",
         "sass-loader": "7.1.0",
         "semver": "^5.6.0",
