@@ -3,7 +3,7 @@
  */
 module.exports = () => ({
     // project deployment base
-    baseUrl: '/',
+    baseUrl: './',
 
     // where to output built files
     outputDir: 'dist',
