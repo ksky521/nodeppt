@@ -2,8 +2,8 @@
 
 rm -rf publish
 cd site
-node ../packages/nodeppt/bin/nodeppt build index.md
 
+node ../packages/nodeppt/bin/nodeppt build index.md
 node ../packages/nodeppt/bin/nodeppt build animation.md
 node ../packages/nodeppt/bin/nodeppt build component.md
 node ../packages/nodeppt/bin/nodeppt build layout.md

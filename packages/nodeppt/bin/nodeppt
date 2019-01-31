@@ -38,6 +38,7 @@ program
 
 program
     .command('build [entry]')
+    .option('-m, --map', 'Release sourcemap')
     .description('build html file')
     .action((entry, cmd) => {
         require('nodeppt-serve').build(entry, cleanArgs(cmd));

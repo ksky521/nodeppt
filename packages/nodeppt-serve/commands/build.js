@@ -11,7 +11,9 @@ module.exports = (api, options) => {
         // resolve webpack config
         const webpackConfig = api.resolveWebpackConfig();
         webpackConfig.mode = 'production';
-
+        if (!args.map) {
+            delete webpackConfig.devtool; // = null;
+        }
         return new Promise((resolve, reject) => {
             webpack(webpackConfig, err => {
                 if (err) {
