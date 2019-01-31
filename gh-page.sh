@@ -7,7 +7,7 @@ node ../packages/nodeppt/bin/nodeppt build index.md
 node ../packages/nodeppt/bin/nodeppt build animation.md
 node ../packages/nodeppt/bin/nodeppt build component.md
 node ../packages/nodeppt/bin/nodeppt build layout.md
-node ../packages/nodeppt/bin/nodeppt build classes.md
+node ../packages/nodeppt/bin/nodeppt build media.md
 node ../packages/nodeppt/bin/nodeppt build background.md
 
 cd dist

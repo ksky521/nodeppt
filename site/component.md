@@ -133,7 +133,7 @@ The difficulty in establishing a common definition for "information architecture
 
 `:::card` `:::card-50` `:::card-60`...
 
-<slide :class="size-60">
+<slide :class="size-80">
 
 :::card
 
@@ -154,7 +154,7 @@ The difficulty in establishing a common definition for "information architecture
 :::
 
 
-<slide :class="size-70">
+<slide :class="size-80">
 
 :::card-50
 
@@ -173,7 +173,7 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 Similar practices exist in other cultures, including the Chinese tradition of penjing from which the art originated, and the miniature living landscapes of Vietnamese hòn non
 :::
 
-<slide :class="size-70">
+<slide :class="size-80">
 
 :::card-60
 
@@ -192,7 +192,7 @@ Similar practices exist in other cultures, including the Chinese tradition of pe
 Similar practices exist in other cultures, including the Chinese tradition of penjing from which the art originated, and the miniature living landscapes of Vietnamese hòn non
 :::
 
-<slide :class="size-70">
+<slide :class="size-80">
 
 :::card-30
 
@@ -300,27 +300,6 @@ Businesses that people love3
 
 ## :fa-cog: Purpose
 Businesses that people love4
-
----
-
-## :fa-bar-chart: Purpose
-Businesses that people love5
-
----
-
-## :fa-bar-chart: Purpose
-Businesses that people love6
-
----
-
-## :fa-balance-scale: Purpose
-Businesses that people love7
-
----
-
-
-## :fa-cog: Purpose
-Businesses that people love8
 
 :::
 

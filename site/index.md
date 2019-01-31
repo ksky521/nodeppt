@@ -23,7 +23,7 @@ plugins:
 
 `npm install -g nodeppt` {.animated.fadeInUp}
 
-<slide :class="size-30 aligncenter">
+<slide :class="size-40 aligncenter">
 
 ### Commands
 
@@ -364,7 +364,7 @@ Designers, marketers, and journalists can now focus on the content. Simply [choo
 
 :::
 
-<slide :class="size-60">
+<slide :class="size-80">
 
 :::card
 
@@ -464,30 +464,6 @@ Businesses that people love3
 ## :fa-cog: Purpose
 
 Businesses that people love4
-
----
-
-## :fa-bar-chart: Purpose
-
-Businesses that people love5
-
----
-
-## :fa-bar-chart: Purpose
-
-Businesses that people love6
-
----
-
-## :fa-balance-scale: Purpose
-
-Businesses that people love7
-
----
-
-## :fa-cog: Purpose
-
-Businesses that people love8
 
 :::
 
@@ -610,7 +586,7 @@ VP of Design
 <slide class="bg-black-blue">
 ## Grid Columns
 :::column
-### **:fa-line-chart: Interface**
+### **:fa-line-chart: Design**
 
 Design for growth. We've built a team of world-class designers, developers, and managers.
 
@@ -620,12 +596,12 @@ Design for growth. We've built a team of world-class designers, developers, and 
 We connect your audience needs, business goals, and brand values into a strategy.
 
 ---
-### **:fa-users: Recruiting**
+### **:fa-users: Users**
 
 We offer personalized services with deep expertise in design and technology.
 
 ---
-### **:fa-graduation-cap: Formation**
+### **:fa-graduation-cap: Teams**
 
 We train teams to help organizations succeed in the digital age.
 :::
@@ -787,11 +763,11 @@ Header (logo) :.alignright:{.alignright}
 :::
 
 
-<slide :class="size-50 aligncenter">
+<slide :class="size-80 aligncenter">
 
 ## Prismjs for Code Highlight
 
-<slide :class="size-70">
+<slide :class="size-80">
 
 :::column {.vertical-align}
 ### **WebSlides is really easy**
@@ -820,7 +796,7 @@ Code is neat, scalable, and well documented. It uses **intuitive markup with pop
 Vertical sliding? `<article id="webslides" class="vertical">` {.aligncenter}
 
 
-<slide :class="size-50">
+<slide :class="size-80">
 
 Optional · 500+ icons {.text-subtitle}
 ## [:fa-flag: Font Awesome](http://fontawesome.io/icons/) as **SVG icons** {.animated.bounceIn}
