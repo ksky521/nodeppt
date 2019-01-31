@@ -46,10 +46,6 @@ Media & Plugin {.text-subtitle.animated.fadeInDown.delay-800}
 
 ## Plugins
 
-<slide class="bg-black-blue" :class="size-50">
-> I have always appreciated designers who dare to reinterpret fabrics and proportions, so I follow the Japanese and Belgian designers.
-> ==Zaha Hadid==
->  {.text-quote}
 
 <slide :class="size-60">
 ## echarts {.aligncenter}

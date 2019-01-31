@@ -91,12 +91,23 @@ i.fa {
 .animated.delay-2500 {
     animation-delay: 2.5s;
 }
-
+.animated.delay-2800 {
+    animation-delay: 2.8s;
+}
+.animated.delay-3200 {
+    animation-delay: 3.2s;
+}
+.animated.delay-3600 {
+    animation-delay: 3.6s;
+}
+.animated.delay-4s {
+    animation-delay: 4s;
+}
 section ul {
     display: inline-block;
     text-align: left;
     list-style: disc;
-    &.no-list-style{
+    &.no-list-style {
         list-style: none;
     }
     & > li {
@@ -108,5 +119,20 @@ section ul {
         ul > li {
             list-style-type: circle;
         }
+    }
+}
+
+.flexblock li {
+    a.bg-trans-light,
+    a.bg-red,
+    a.bg-green,
+    a.bg-blue,
+    a.bg-purple,
+    a.bg-trans-dark,
+    a.bg-primary,
+    a.bg-secondary,
+    a.bg-black,
+    a.bg-black-blue {
+        color: white;
     }
 }

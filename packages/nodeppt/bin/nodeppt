@@ -31,8 +31,8 @@ program
     .on('--help', function() {
         console.log('  Examples:');
         console.log();
-        console.log('    nodeppt serve demo.md');
-        console.log('    nodeppt serve demo.md -p 8080');
+        console.log('    nodeppt serve slide.md');
+        console.log('    nodeppt serve slide.md -p 8080');
         console.log();
     });
 
@@ -45,7 +45,7 @@ program
     .on('--help', function() {
         console.log('  Examples:');
         console.log();
-        console.log('    nodeppt build demo.md');
+        console.log('    nodeppt build slide.md');
         console.log();
     });
 
@@ -61,26 +61,26 @@ program
         console.log('  Examples:');
         console.log();
         console.log(chalk.gray('    # create a new slide with an official template'));
-        console.log('    $ nodeppt new my-folder');
+        console.log('    $ nodeppt new slide.md');
         console.log();
         console.log(chalk.gray('    # create a new slide straight from a github template'));
-        console.log('    $ nodeppt new username/repo my-folder');
+        console.log('    $ nodeppt new slide.md -t username/repo');
     });
 
 program.on('--help', () => {
     console.log('  Examples:');
     console.log();
     console.log(chalk.gray('    # create a new slide with an official template'));
-    console.log('    $ nodeppt new my-folder');
+    console.log('    $ nodeppt new slide.md');
     console.log();
     console.log(chalk.gray('    # create a new slide straight from a github template'));
-    console.log('    $ nodeppt new username/repo my-folder');
+    console.log('    $ nodeppt new slide.md -t username/repo');
     console.log();
     console.log(chalk.gray('    # start local sever show slide'));
-    console.log('    $ nodeppt serve markdown-file');
+    console.log('    $ nodeppt serve slide.md');
     console.log();
     console.log(chalk.gray('    # to build a slide'));
-    console.log('    $ nodeppt build markdown-file');
+    console.log('    $ nodeppt build slide.md');
     console.log();
 });
 
