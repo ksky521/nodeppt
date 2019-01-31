@@ -1,6 +1,6 @@
 nodeppt 2.0 - 累死累活干不过做PPT的！
 =============
-查看效果：http://js8.in/nodeppt/
+查看效果：[http://js8.in/nodeppt/](http://js8.in/nodeppt/)
 
 **两年没更新了。。。出来混总是要还的，所以有了2.0版本！**
 
