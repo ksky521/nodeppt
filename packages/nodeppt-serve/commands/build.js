@@ -14,6 +14,7 @@ module.exports = (api, options) => {
         if (!args.map) {
             delete webpackConfig.devtool; // = null;
         }
+        webpackConfig.output.publicPath = './';
         return new Promise((resolve, reject) => {
             webpack(webpackConfig, err => {
                 if (err) {

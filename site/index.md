@@ -56,6 +56,7 @@ $ nodeppt build slide.md
 * Quotes {.animated.fadeInUp.delay-2s}
 * Plugins\: echarts/ketax {.animated.fadeInUp.delay-2400}
 * Others\: Button/Table.. {.animated.fadeInUp.delay-2800}
+* Speaker mode.. {.animated.fadeInUp.delay-3200}
 
 <slide :class="size-60 aligncenter">
 
@@ -1003,6 +1004,12 @@ Optional · 500+ icons {.text-subtitle}
 | git diff     |    git diff    |      git diff |
 | git status   |   git status   |    git status |
 
+
+<slide class="bg-purple" :class="size-50 aligncenter" image="http://h1.ioliu.cn/bing/SandiaSunrise_ZH-CN11155504388_1920x1080.jpg .dark">
+
+## Speaker Mode
+
+Click **Url + [?mode=speaker](./?mode=speaker){.bg-primary style="font-size:120%"}** to show Speaker Mode.
 
 <slide class="bg-primary" :class="size-60 frame">
 
