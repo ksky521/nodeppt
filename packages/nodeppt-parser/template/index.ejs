@@ -1,0 +1,54 @@
+<!--
+    Powered By nodeppt - This is probably the best web presentation tool so far!
+    date: <%= date %>
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %> - By <%= speaker %></title>
+    <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/prism/1.15.0/themes/prism.min.css">
+    <link rel="stylesheet" href="//cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css">
+    <% if (hasOwnProperty('prismTheme') && ['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight'].includes(prismTheme)) { %>
+        <link rel="stylesheet" href="//cdn.staticfile.org/prism/1.15.0/themes/prism-<%= prismTheme %>.min.css">
+    <% } %>
+
+    <% if (hasOwnProperty('css') && css.length) { %>
+        <% for (var i = 0;i<css.length;i++) { %>
+        <link rel="stylesheet" href="<%= css[i] %>">
+        <% } %>
+    <% } %>
+
+    <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('katex')) { %>
+        <link rel="stylesheet" href="//cdn.staticfile.org/KaTeX/0.5.1/katex.min.css">
+    <% } %>
+</head>
+<body>
+<div>
+    <article id="webslides">
+        <%- content %>
+    </article>
+</div>
+<% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
+    <script src="//cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js"></script>
+<% } %>
+<% if (hasOwnProperty('js') && js.length) { %>
+    <% for (var i = 0;i<js.length;i++) { %>
+    <script src="<%= js[i] %>"></script>
+    <% } %>
+<% } %>
+
+<script>
+<% if(hasOwnProperty('pluginsOptions') && pluginsOptions && pluginsOptions.echarts && pluginsOptions.echarts.theme) { %>
+window.echartsTheme_ = '<%= pluginsOptions.echarts.theme %>';
+<% } %>
+document.addEventListener('DOMContentLoaded', () => {
+    const ws = new WebSlides({
+        loop: false
+    })
+    window.wsInstance = ws;
+}, false)
+</script>
+</body>
+</html>

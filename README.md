@@ -1,163 +1,9 @@
-nodeppt - 让你爱上做分享！
+nodeppt 2.0 - 累死累活干不过做PPT的！
 =============
-[This is a readme file in English](./README_EN.md)
 
-[![NPM](https://nodei.co/npm-dl/nodeppt.png)](https://nodei.co/npm/nodeppt/)
-[![NPM](https://nodei.co/npm/nodeppt.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nodeppt/)
+**两年没更新了。。。出来混总是要还的，所以有了2.0版本！**
 
-**导出pdf不再支持，请使用chrome打印服务另存为pdf，url中添加`?print=1`，然后使用chrome打印 `ctrl+P` **
-
-## 为什么选择nodeppt
-
-**这可能是迄今为止最好的网页版演示库**
-
- * 基于GFM的markdown语法编写
- * 支持[html混排](#mixed-code)，再复杂的demo也可以做！
- * 支持多个皮肤：[colors](http://js8.in/nodeppt/?theme=colors)-[moon](http://js8.in/nodeppt/?theme=moon)-[blue](http://js8.in/nodeppt/?theme=blue)-[dark](http://js8.in/nodeppt/?theme=dark)-[green](http://js8.in/nodeppt/?theme=green)-[light](http://js8.in/nodeppt/?theme=light)
- * 实现watch功能`nodeppt start -w`
- * 支持[20种转场动画](#transition)，可以设置单页动画
- * 支持单页背景图片
- * 多种模式：overview模式，[双屏模式](#postmessage)，[socket远程控制](#socket)，摇一摇换页，使用ipad/iphone控制翻页更酷哦~
- * 可以使用画板，**双屏同步画板**内容！可以使用note做备注
- * 支持语法高亮，自由选择[highlight样式](https://highlightjs.org/)
- * 可以单页ppt内部动画，单步动画
- * [支持进入/退出回调](#callback)，做在线demo很方便
- * 支持事件update函数，查看[demo](http://js8.in/nodeppt/#12)
- * zoom.js：alt+click
-
-## demo
- * http://js8.in/nodeppt/
- * 多套皮肤：[colors](http://js8.in/nodeppt/?theme=color)-[moon](http://js8.in/nodeppt/?theme=moon)-[blue](http://js8.in/nodeppt/?theme=blue)-[dark](http://js8.in/nodeppt/?theme=dark)-[green](http://js8.in/nodeppt/?theme=green)-[light](http://js8.in/nodeppt/?theme=light)
- * 双屏控制：http://js8.in/nodeppt/?_multiscreen=1 记得允许弹窗哦~
- * 三水清的分享：http://js8.in/slide
- * 打印页面：http://js8.in/nodeppt/?print=1
-
-## 1.4 新功能
-支持单个slide事件：build/enter/leave/keypress，事件统一在`[slide]`中使用`data-on-X`来指定一个*全局函数名*
-
-### 事件说明如下
-* build：当触发下一步操作的时候，会触发这个事件，具有stop方法
-* keypress：在当前页面按键触发，具有stop方法
-* enter/leave：进入/离开 此页面触发的事件，无stop方法
-
-**build/keypress会在当前slide完全渲染后触发，回调函数会接受一个event对象，如果想阻止默认事件（即翻页，或者对应的快捷键），可以使用event对象的`stop()`方法；slide退场后事件解绑**
-
-### 使用举例
-
-#### 示例1：进入页面如果触发翻页事件，就会当前执行做转场，做一些类似magicmove效果
-```markdown
-[slide data-on-build="globalCallbackName"]
-```
-
-```javascript
-var count = 0;
-function globalCallbackName(e){
-    count++;
-    if(count<2){
-        //做一些页面动效，或者转场
-        e.stop();//阻止默认事件，就不会跳转
-    }
-}
-```
-
-#### 示例2：代理空格按键事件
-```markdown
-[slide data-on-keypress="globalCallbackName"]
-```
-
-```javascript
-function globalCallbackName(e){
-    if(e.keyCode==32){
-        //play();//触发自定义的页面效果
-        e.stop();//阻止默认事件，则不会触发nodeppt默认绑定的事件
-    }
-}
-```
-
-
-
-## 文件定位
-对于nodeppt内部的文件，定位需要用根目录的方式来写，例如项目路径是 `slide`，`demo.md`中的图片使用：
-```markdown
-![测试文件路径](/img/demo.png)
-```
-
-对应的图片路径是 `slide/img/demo.png`
-
-使用 `nodeppt generate demo.md output -a` 则生成后，图片路径是：`output/img/demo.png`
-
-
-## magic
-
-magic是在一页幻灯片中播放多个子页面，页面之间进行动效切换，但是slide不翻页（类似keynote的magicmove），使用`[magic]`标签包裹，子页面之间使用`====`间隔
-
-`[magic]`标签支持全部转场动效，效果比较好的有：
-
-* zoomin/zoomout
-* move
-* circle
-* earthquake
-* newspaper
-* cover-diamond
-* horizontal3d/horizontal
-* vertical3d
-* cover-circle
-
-```markdown
-[slide]
-[magic data-transition="earthquake"]
-## 标题1
------
-<div class="columns3">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_11.png" height="450">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_10.png" height="450">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_12.png" height="450">
-</div>
-====
-## 标题2
------
-<div class="columns3">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_11.png" height="450">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_10.png" height="450">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_12.png" height="450">
-</div>
-
-====
-## 标题3
------
-<div class="columns3">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_11.png" height="450">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_10.png" height="450">
-    <img src="/assets/searchbox-fe-framework-and-product/Snip20151209_12.png" height="450">
-</div>
-
-[/magic]
-```
-
-## theme 自定义
-感觉默认的模板不符合新意？可以支持自定义模板，查看[theme.moon](https://github.com/ksky521/nodeppt/blob/master/assets/scss/theme.moon.scss)
-
-自定义后的模板路径在markdown的设置里填写：
-
-```markdown
-title: 这是演讲的题目
-speaker: 演讲者名字
-url: 可以设置链接
-transition: 转场效果，例如：zoomin/cards/slide
-files: /css/theme.moon.css，尾部的文件
-theme: moon //皮肤
-highlightStyle: monokai_sublime //hljs的样式
-headFiles: //头部的文件
-usemathjax: //如果为yes，则引入mathjax，默认不建议开启，导出文件太多
-date: 2015年12月20日
-```
-
-另外有：[colors](http://js8.in/nodeppt/?theme=color)-[moon](http://js8.in/nodeppt/?theme=moon)-[blue](http://js8.in/nodeppt/?theme=blue)-[dark](http://js8.in/nodeppt/?theme=dark)-[green](http://js8.in/nodeppt/?theme=green)-[light](http://js8.in/nodeppt/?theme=light) 共六套自带皮肤可供选择
-
-```markdown
-theme: moon
-```
-or url?theme=moon
+**nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml重构，新效果
 
 ## 安装
 
@@ -166,298 +12,470 @@ npm install -g nodeppt
 ```
 
 ## shell使用
+简化了，就三个命令：
 
-### 启动
-
-```bash
-# 获取帮助
-nodeppt start -h
-# 绑定端口
-nodeppt start -p <port>
-```
+* new：使用线上模板创建一个新的 md 文件
+* serve：启动一个 md 文件的webpack dev server
+* build：编译产出一个 md 文件
 
 ```bash
-nodeppt start -p 8090 -d path/for/ppts
-# 绑定host，默认绑定0.0.0.0
-nodeppt start -p 8080 -d path/for/ppts -H 127.0.0.1
-# 使用socket通信（按Q键显示/关闭二维码，手机扫描，即可控制）
-# socket须知：1、注意手机和pc要可以相互访问，2、防火墙，3、ip
+# create a new slide with an official template
+$ nodeppt new my-folder
+
+# create a new slide straight from a github template
+$ nodeppt new username/repo my-folder
+
+# start local sever show slide
+$ nodeppt serve markdown-file
+
+# to build a slide
+$ nodeppt build markdown-file
 ```
 
-#### 启用socket控制
-
-##### 方法一：使用url参数
+### 帮助
 
 ```bash
-http://127.0.0.1:8080/md/demo.md?controller=socket
-```
-
-在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页
-
-##### 方法二：使用`start`命令行
-
-```bash
-nodeppt start -c socket
-```
-在页面按键【Q】显示控制url的二维码和控制链接（需要隐身窗口打开），手机上可以使用左右touch滑动和摇一摇切换下一页
-
-#### 启用postMessage控制
-默认使用postMessage多窗口控制，打开方法：
-
-```bash
-http://127.0.0.1:8080/md/demo.md?_multiscreen=1
-```
-
-### 事件绑定
-使用函数`Slide.on`，目前支持update函数，即转场后的回调。示例代码：
-
-```javascript
-Slide.on('update', function(i, itemIndex, cls) {
-//接受三个参数：
-//* 当前slide的index
-//* itemIndex当前slide进入的第几个build动画，从1开始
-//* 方向pageup/pagedown
-    Puff.add('#FFC524' /*colors[i % 6]*/ , ctx, 20, 700, width / 2, height / 2, width / 1.8, 400);
-    clearInterval(timer);
-    //第十三个有动效
-    if (i === 13 || i === 14) {
-        timer = setInterval(function() {
-            Puff.draw(1);
-        }, 1E3 / FPS);
-    }
-
-})
-```
-demo中[第13张](http://js8.in/nodeppt/#13)使用回调做了魔幻翻页效果
-
-### 打印/导出ppt
-这么高端大气上档次的ppt，怎么能不导出分享给大家呢？？
-
-使用``url?print=1``访问页面，然后选择chrome的系统打印即可
-
-
-<a name="export-html"></a>
-#### html版
-
-```bash
-# 获取generate帮助
-nodeppt generate -h
-# 使用generate命令
-nodeppt generate filepath
-# 导出全部，包括nodeppt的js、img和css文件夹
-# 默认导出在publish文件夹
-nodeppt generate ./ppts/demo.md -a
-# 指定导出文件夹
-nodeppt generate ./ppts/demo.md output/path -a
-```
-导出目录下所有ppt，并且生成ppt list首页：
-
-```bash
-nodeppt path output/path -a
-```
-
-
-#### markdown语法
-nodeppt是支持**marked**语法的，但是为了制作出来更加完美的ppt，扩展了下面的语法
-
-#### 配置
-基本配置如下：
-```markdown
-title: 这是演讲的题目
-speaker: 演讲者名字
-url: 可以设置链接
-transition: 转场效果，例如：zoomin/cards/slide
-files: 引入js和css的地址，如果有的话~自动放在页面底部
-```
-**目录关系**：可以在md同级目录下创建img、js、css等文件夹，然后在markdown里面引用，nodeppt默认会先查找md文件同级目录下面的静态资源，没有再找默认的```assets```文件夹下静态内容
-
-<a name="transition"></a>
-支持的转场动画包括：
-
- * kontext
- * vkontext
- * circle
- * earthquake
- * cards
- * glue
- * stick
- * move
- * newspaper
- * slide
- * slide2
- * slide3
- * horizontal3d
- * horizontal
- * vertical3d
- * zoomin
- * zoomout
- * pulse
-
-
-如果设置单页动画，请参考下面的**[单页动画设置](#transition-page)**部分~
-
-#### 分页
-通过```[slide]```作为每页ppt的间隔，如果需要添加单页背景，使用下面的语法：
-
-```markdown
-[slide style="background-image:url('/img/bg1.png')"]
-# 这是个有背景的家伙
-## 我是副标题
-```
-
-#### 单页ppt上下布局
-```markdown
-[slide]
-## 主页面样式
-### ----是上下分界线
-----
-nodeppt是基于nodejs写的支持 **Markdown!** 语法的网页PPT
-
-nodeppt：https://github.com/ksky521/nodeppt
-```
-
-#### 代码格式化
-语法跟**Github Flavored Markdown** 一样~
-
-
-#### 单条动画
-使用方法：列表第一条加上 ` {:&.动画类型}``（注意空格）
-
-```markdown
-* 上下左右方向键翻页
-    * 列表支持渐显动画 {:&.moveIn}
-    * 支持多级列表
-    * 这个动画是moveIn
-```
-
-目前支持的单条动画效果包括：
-
-* moveIn
-* fadeIn
-* bounceIn
-* rollIn
-* zoomIn
-
-<a name="transition-page"></a>
-#### 单页动画设置
-在md文件，顶部 ```配置``` 可以设置全局转场动画，如果要设置单页的转场动画，可以通过下面的语法
-
-```markdown
-[slide data-transition="vertical3d"]
-## 这是一个vertical3d的动画
-```
-
-<a name="mixed-code"></a>
-#### 插入html代码
-如果需要完全diy自己的ppt内容，可以**直接使用** html标签，支持markdown和html混编。例如：
-
-```markdown
-<div class="file-setting">
-    <p>这是html</p>
-</div>
-<p id="css-demo">这是css样式</p>
-<p>具体看下项目中 ppts/demo.md 代码</p>
-<script>
-    function testScriptTag(){
-
-    }
-    console.log(typeof testScriptTag);
-</script>
-<style>
-#css-demo{
-    color: red;
-}
-</style>
-```
-
-<a name="callback"></a>
-#### 转场回调
-前端的ppt，难免会在页面中演示一些demo，除了上面的插入html语法外，还提供了```enter```和```outcallback```，分别用于：切入（切走）到当前ppt，执行的js函数名。例如：
-
-```markdown
-[slide data-on-leave="outcallback" data-on-enter="incallback"]
-## 当进入此页，就执行incallback函数
-## 当离开此页面，就执行outcallback函数
-```
-
-#### 表格实例
-```markodwn
-### 市面上主要的css预处理器：less\sass\stylus
----
- |less| sass | stylus
-:-------|:------:|-------:|--------
-环境 |js/nodejs | Ruby | nodejs
-扩展名 | .less | .sass/.scss | .styl
-特点 | 老牌，用户多，支持js解析 | 功能全，有成型框架，发展快 | 语法多样，小众
-案例/框架 | [Bootstrap](http://getbootstrap.com/) | [compass](http://compass-style.org) [bourbon](http://bourbon.io) |
-```
-
-#### 插入iframe
-使用```data-src```作为iframe的url，这样只有切换到当前页才会加载url内容~
-```markdown
-<iframe data-src="http://www.baidu.com" src="about:blank;"></iframe>
-```
-
-
-#### 示例
-类似下面的语法：(更多用法查看ppts/demo.md文件)
-```markdown
-title: nodeppt markdown 演示
-speaker: Theo Wang
-url: https://github.com/ksky521/nodeppt
-transition: zoomin
-
-[slide]
-
-# 封面样式
-## h1是作为封面用的，内部的都用h2
-
-[slide style="background-image:url('/img/bg1.png')"]
-
-# 背景图片 {:&.flexbox.vleft}
-## 使用方法：&#91;slide style="background-image:url('/img/bg1.png')"&#93;
-
-[slide]
-
-## 主页面样式
-### ----是上下分界线
-----
-
-nodeppt是基于nodejs写的支持 **Markdown!** 语法的网页PPT
-
-nodeppt：https://github.com/ksky521/nodeppt
-
-[slide]
-
-什么？这些功能还不够用？
-
-极客模式：查看源码的nodeppt.js，相信你会找到牛逼的手机互动（摇一摇换页）功能
-
-查看项目目录ppts获取更多帮助信息
-```
-
-更多demo，查看 ```ppts``` 目录的demo
-
-### 查看帮助
-
-```bash
+# help
 nodeppt -h
-# 任何命令都可以输入-h查看帮助
-nodeppt start -h
+# 获取帮助
+nodeppt serve -h
 ```
 
-## demo演示 & 使用方法
+## 演讲者模式
+nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以打开演讲者模式，双屏同步
 
- * 执行 ```nodeppt start```
- * 访问 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
- * 在线demo： http://js8.in/nodeppt/
+## 快捷键
+
+* F：全屏
+* -：总览模式
+* 方向键/空格：翻页
+* HOME/END：第一页和最后一页
+
+## 公共资源：public 文件夹
+
+如果项目文件夹下，存在`public`文件夹，可以直接通过 url 访问，参考`webpack dev server`的 `contentBase` 选项。
+
+在`build`的时候，public 文件夹中的文件会完全 copy 到`dist`文件夹中
+
+## 编写
+最佳体验是 chrome 浏览器，本来就是给做演示用的，所以就别考虑非 Chrome 浏览器兼容问题了！
+
+这里说下怎么编写。
+### 基本语法
+整个 markdown 文件分为两部分，第一部分是写在最前面的**配置**，然后是使用`<slide>`隔开的每页幻灯片内容。
+
+### 配置
+nodeppt 的配置是直接写在 md 文件顶部的，采用 yaml 语法，例如下面配置：
+
+```yaml
+title: nodeppt markdown 演示
+speaker: 三水清
+url: https://github.com/ksky521/nodeppt
+js:
+    - https://www.echartsjs.com/asset/theme/shine.js
+prismTheme: solarizedlight
+plugins:
+    - echarts
+    - katex
+```
+
+* title: 演讲主题
+* speaker：演讲者
+* url：地址
+* js：js 文件数组，放到 body 之前
+* css：css 文件数组，放到头部
+* prismTheme：prism 配色，取值范围 `['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight']`
+* plugins：目前支持 [echarts](https://echarts.baidu.com/) 和 [katex](https://katex.org) 两个插件
+
+#### 插件
+目前 nodeppt 支持 [echarts](https://echarts.baidu.com/) 和 [katex](https://katex.org) 两个插件。
+#### echarts
+echarts 主题配色可以直接在`yaml`配置的 js 中引入。echarts 采用`fence`语法，如下：
+
+```echarts
+{
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line'
+    }]
+}
+```
+
+#### ketex
+
+参考：[markdown-it-katex](https://www.npmjs.com/package/markdown-it-katex)
 
 
+### `<slide>` 语法
+nodeppt 会根据`<slide>`对整个 markdown 文件进行拆分，拆成单页的幻灯片内容。`<slide>` 标签支持下面标签：
+
+* class/style等：正常的 class 类，可以通过这个控制居中（aligncenter），内容位置，背景色等
+* image：背景图片，基本语法 `image="img_url"`
+* video：背景视频，基本语法 `video="video_src1,video_src2"`
+* :class：wrap 的 class，下面详解
+
+每个 slide 会解析成下面的 html 结构：
+
+```html
+<section class="slide" attrs...>
+    <div class="wrap" wrap="true">
+        // 具体 markdown 渲染的内容
+    </div>
+</section>
+```
+其中`<slide>` 的`class`等会被解析到 `<section>`标签上面，而`:class`则被解析到`div.wrap`上面，例如：
+
+```html
+<slide :class="size-50" class="bg-primary">
+```
+
+output 为：
+```html
+<section class="slide bg-primary" >
+    <div class="wrap size-50" wrap="true">
+        // 具体 markdown 渲染的内容
+    </div>
+</section>
+```
+
+#### 背景：图片
+`<slide>`的`image` 会被解析成背景大图，常见的支持方式有：
+
+```md
+<slide image="https://source.unsplash.com/UJbHNoVPZW0/">
+
+# 这是一个普通的背景图
+
+<slide image="https://source.unsplash.com/UJbHNoVPZW0/ .dark">
+
+# 这张背景图会在图片上面蒙一层偏黑色的透明层
+
+
+<slide image="https://source.unsplash.com/UJbHNoVPZW0/ .light">
+
+# 这张背景图会在图片上面蒙一层偏白色的透明层
+
+
+<slide class="bg-black aligncenter" image="https://source.unsplash.com/n9WPPWiPPJw/ .anim">
+
+# 这张背景图会缓慢动
+
+```
+
+详见[site/background.md](./site/background.md)和[在线演示](https://js8.in/nodeppt/background.html)
+
+### 样式
+
+样式太多，具体详见[site/classes.md](./site/classes.md)和[在线演示](https://js8.in/nodeppt/classes.html)
+
+### 布局
+nodeppt 这次使用`webslides`的布局，支持丰富的布局，实在太多了，直接看文档[site/layout.md](./site/layout.md)和[在线演示](https://js8.in/nodeppt/layout.html)
+
+
+### attribute
+参考[markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs)，支持了`attribute`，修改增加多 class 支持等功能。
+
+其中：`..class`会往上一级节点添加 class，支持`{.class1.class2}`这种多 class 的语法。用法举例：
+
+```markdown
+# header {.style-me.class2}
+paragraph {data-toggle=modal}
+```
+Output:
+```html
+<h1 class="style-me class2">header</h1>
+<p data-toggle="modal">paragraph</p>
+```
+
+```markdown
+Use the css-module green on this paragraph. {.text-intro}
+```
+Output:
+
+```html
+<p class="text-intro">Use the css-module green on this paragraph.</p>
+```
+
+```markdown
+- list item **bold** {.red}
+```
+Output:
+```html
+<ul>
+<li class="red">list item <strong>bold</strong></li>
+</ul>
+```
+
+```markdown
+- list item **bold**
+{.red}
+```
+Output:
+
+```html
+<ul class="red">
+<li>list item <strong>bold</strong></li>
+</ul>
+```
+
+### image 增强
+对于 image ，支持外面包裹一层的写法，具体语法 `!![](图片地址 属性)`，例如：
+
+```markdown
+!![](https://webslides.tv/static/images/iphone.png .size-50.alignleft)
+```
+Output：
+
+```html
+<img src="https://webslides.tv/static/images/iphone.png" class="size-50 alignleft">
+```
+
+```markdown
+!![figure](https://webslides.tv/static/images/setup.png .aligncenter)
+
+```
+
+Output:
+
+```html
+<figure>
+    <img src="https://webslides.tv/static/images/setup.png" class="aligncenter">
+</figure>
+```
+
+### button
+ nodeppt 的 button 是类似`link`语法的，支持蓝色、圆角、空心和 icon 版本的 button：
+```markdown
+[普通按钮](){.button} [圆角普通按钮](){.button.radius}
+
+[空心](){.button.ghost} [:fa-github: 前面带icon](){.button}
+```
+
+### Icon：FontAwesome
+nodeppt的 icon 支持 [FontAwesome](https://fontawesome.com/)
+语法：
+
+* `:fa-xxx:` → `<i class="fa fa-xxx"></i>`
+* `:~fa-xxx:~` → `<span><i class="fa fa-xxx"></i></span>`
+* `::fa-xxx::` → 块级`<i class="fa fa-xxx"></i>`，即不会被`p`包裹
+
+### span
+
+代码修改自[markdown-it-span](https://github.com/pnewell/markdown-it-span/)，支持 `attr`语法，基本用法：
+
+```md
+:span:
+:span: {.text-span}
+```
+
+### 动效
+nodeppt一如既往的支持动效，2.0版本支持动效主要是页面内的动效。
+
+支持动效包括：
+
+* fadeIn
+* zoomIn
+* rollIn
+* moveIn
+* fadeInUp
+* slow
+
+在需要支持的动效父节点添加`.build`或者在具体的某个元素上添加`.tobuild+动效 class`即可。
+
+按照惯例，nodeppt 还支持`animate.css`的动效哦~
+
+详细查看文件：[site/animation.md](./site/animation.md)和[在线演示](https://js8.in/nodeppt/animation.html)
+
+### 使用强大的`:::`完成复杂布局
+`:::`语法是扩展了 [markdown-it-container](https://www.npmjs.com/package/markdown-it-container) 语法，默认是任意 tag，例如
+
+```markdown
+:::div {.content-left}
+## title
+:::
+```
+Output：
+```html
+<div class="content-left">
+    <h2>title</h2>
+</div>
+```
+还支持，`tag` 嵌套，除此之外，支持的组件包括：
+
+* card：卡片，一边是图片，一边是内容
+* column：column 多栏布局
+* shadowbox：带阴影的盒子
+* steps：步骤组件
+* cta：
+* gallery：图片
+* flexblock：flex block 布局，支持多个子类型
+
+基本语法是：
+
+```markdown
+:::TYPE {.attrs}
+
+## 第一部分
+使用 hr 标签隔开
+
+----
+
+## 第二部分
+
+这里的内容也是哦
+
+:::
+```
+
+详细可以看 [component](./site/component.md) 部分的 markdown 文件和[在线演示](https://js8.in/nodeppt/component.html)
+
+## 打印？导出 pdf？
+chrome浏览器，直接在第一页 `command+P/ctrl+P` 即可
+
+## 高级玩法
+如果上面
+### `nodeppt.config.js`
+在nodeppt 执行路径下创建`nodeppt.config.js`文件，可以配置跟`webpack`相关的选项，另外可以支持自研 nodeppt 插件。
+
+默认内置的`config.js`内容如下：
+
+```js
+/**
+ * @file 默认配置
+ */
+module.exports = () => ({
+    // project deployment base
+    baseUrl: '/',
+
+    // where to output built files
+    outputDir: 'dist',
+
+    // where to put static assets (js/css/img/font/...)
+    assetsDir: '',
+
+    // filename for index.html (relative to outputDir)
+    indexPath: 'index.html',
+    // 插件，包括 markdown 和 posthtml
+    plugins: [],
+    // chainWebpack: [],
+
+    // whether filename will contain hash part
+    filenameHashing: true,
+
+    // boolean, use full build?
+    runtimeCompiler: false,
+
+    // deps to transpile
+    transpileDependencies: [
+        /* string or regex */
+    ],
+
+    // sourceMap for production build?
+    productionSourceMap: true,
+
+    // use thread-loader for babel & TS in production build
+    // enabled by default if the machine has more than 1 cores
+    parallel: () => {
+        try {
+            return require('os').cpus().length > 1;
+        } catch (e) {
+            return false;
+        }
+    },
+
+    // multi-page config
+    pages: undefined,
+
+    // <script type="module" crossorigin="use-credentials">
+    // #1656, #1867, #2025
+    crossorigin: undefined,
+
+    // subresource integrity
+    integrity: false,
+
+    css: {
+        extract: true
+        // modules: false,
+        // localIdentName: '[name]_[local]_[hash:base64:5]',
+        // sourceMap: false,
+        // loaderOptions: {}
+    },
+
+    devServer: {
+        /*
+      host: '0.0.0.0',
+      port: 8080,
+      https: false,
+      proxy: null, // string | Object
+      before: app => {}
+    */
+    }
+});
+
+```
+
+### parser plugin
+
+解析插件分两类： `markdown-it` 和 `posthtml`，
+
+* markdown-it：是解析 markdown 文件的，如果是增强markdown语法，可以用这类插件
+* posthtml：是处理 html 标签的，如果是修改输出的 html 内容，可以用这类插件
+
+定义一个 plugin ：
+
+```js
+module.exports = {
+    // 这里的 id 必须以 markdown/posthtml开头
+    // 分别对应 markdown-it和 posthtml 插件语法
+    id: 'markdown-xxx',
+    // 这里的 apply 是插件实际的内容，详细查看 markdown-it和 posthtml 插件开发
+    apply: ()=>{}
+}
+```
+
+* [markdown-it docs](https://github.com/markdown-it/markdown-it/tree/master/docs)
+* [posthtml docs](https://github.com/posthtml/posthtml/tree/master/docs)
+
+### webslides plugin
+WebSlides 插件需要写到一个 js 文件中，然后作为数组放到`window.WSPlugins_`中，然后通过在md 页面的配置（yaml）添加 js 的方法引入。
+
+
+```md
+js:
+    - webslide_plugins.js
+```
+
+```js
+// webslide_plugins.js内容
+window.WSPlugins_ = [{
+    id: 'webslide_plugin_name',
+    // 下面是对应的插件类
+    apply: class Plugin{}
+}]
+```
+
+
+参考[WebSlides文档](https://github.com/webslides/WebSlides/wiki/Plugin-development)
+
+### Template：自制模板
+
+参考[nodeppt-template-default](https://github.com/ksky521/nodeppt-template-default)。
+
+然后使用`nodeppt new username/repo xxx.md`使用
 
 ## Thanks
-* http://tympanus.net/Development/ItemTransitions/index2.html
-* http://tympanus.net/Development/PageTransitions/
-* https://github.com/daneden/animate.css
+* [WebSlides](https://github.com/webslides/WebSlides)
+* [markdown-it](https://github.com/markdown-it/markdown-it)
+* [posthtml](https://github.com/posthtml/posthtml)
+* [webpack](https://github.com/webpack/webpack)
+* [vue-cli](https://github.com/vuejs/vue-cli)
 
 
 

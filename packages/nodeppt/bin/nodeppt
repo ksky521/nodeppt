@@ -1,0 +1,106 @@
+#!/usr/bin/env node
+const program = require('commander');
+const chalk = require('chalk');
+const semver = require('semver');
+
+const packageJson = require('../package.json');
+
+const requiredVersion = packageJson.engines.node;
+function checkNodeVersion(wanted, id) {
+    if (!semver.satisfies(process.version, wanted)) {
+        console.log(chalk.red('  You must upgrade node to >=' + wanted + ' to use nodeppt'));
+        process.exit(1);
+    }
+}
+checkNodeVersion(requiredVersion, packageJson.name);
+
+if (process.argv[2] && process.argv[2] === '-v') {
+    process.argv[2] = '-V';
+}
+program.version(packageJson.version);
+
+program
+    .command('serve [entry]')
+    .description('start local sever show slide')
+    .option('-p, --port [port]', 'set server port ', 8080)
+    .option('--https', 'use https ', 8080)
+    .option('-H, --host [host]', 'set host address', '0.0.0.0')
+    .action((entry, cmd) => {
+        require('nodeppt-serve').serve(entry, cleanArgs(cmd));
+    })
+    .on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('    nodeppt serve slide.md');
+        console.log('    nodeppt serve slide.md -p 8080');
+        console.log();
+    });
+
+program
+    .command('build [entry]')
+    .description('build html file')
+    .action((entry, cmd) => {
+        require('nodeppt-serve').build(entry, cleanArgs(cmd));
+    })
+    .on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('    nodeppt build slide.md');
+        console.log();
+    });
+
+program
+    .command('new [dest]')
+    .description('Create a new markdown slide')
+    .option('-t, --template [template]', 'template repo or path')
+    .option('-f, --force', 'force', 'Force to delete file exist, default：true')
+    .action((dest, cmd) => {
+        return require('../commands/new')(dest, cleanArgs(cmd));
+    })
+    .on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log(chalk.gray('    # create a new slide with an official template'));
+        console.log('    $ nodeppt new slide.md');
+        console.log();
+        console.log(chalk.gray('    # create a new slide straight from a github template'));
+        console.log('    $ nodeppt new slide.md -t username/repo');
+    });
+
+program.on('--help', () => {
+    console.log('  Examples:');
+    console.log();
+    console.log(chalk.gray('    # create a new slide with an official template'));
+    console.log('    $ nodeppt new slide.md');
+    console.log();
+    console.log(chalk.gray('    # create a new slide straight from a github template'));
+    console.log('    $ nodeppt new slide.md -t username/repo');
+    console.log();
+    console.log(chalk.gray('    # start local sever show slide'));
+    console.log('    $ nodeppt serve slide.md');
+    console.log();
+    console.log(chalk.gray('    # to build a slide'));
+    console.log('    $ nodeppt build slide.md');
+    console.log();
+});
+
+program.parse(process.argv);
+if (!program.args[0] && process.argv[2] !== 'new') {
+    process.stdout.write(program.helpInformation());
+    program.emit('--help');
+} else if (!['serve', 'build', 'new'].includes(process.argv[2])) {
+    program.emit('--help');
+}
+
+function cleanArgs(cmd) {
+    const args = {};
+    cmd.options.forEach(o => {
+        const key = o.long.replace(/^--/, '');
+        // if an option is not present and Command has a method with the same name
+        // it should not be copied
+        if (typeof cmd[key] !== 'function' && typeof cmd[key] !== 'undefined') {
+            args[key] = cmd[key];
+        }
+    });
+    return args;
+}

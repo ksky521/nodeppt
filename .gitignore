@@ -7,11 +7,14 @@
 /.vscode
 
 /npm-debug.log
-/output
-/publish
+dist
+publish
+output
 
+yarn-lock.json
+package-lock.json
 
-
+.DS_Store
 ### Node ###
 # Logs
 logs
