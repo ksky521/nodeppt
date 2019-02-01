@@ -50,7 +50,7 @@
         "markdown"
     ],
     "readmeFilename": "README.md",
-    "license": "SEE LICENSE IN MIT-LICENSE.txt",
+    "license": "MIT",
     "devDependencies": {
         "lerna": "^3.4.3"
     }
