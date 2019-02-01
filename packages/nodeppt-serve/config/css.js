@@ -30,7 +30,6 @@ module.exports = (api, options) => {
         // plugin.
         const needInlineMinification = isProd && !shouldExtract;
 
-
         function createCSSRule(lang, test, loader, options) {
             const baseRule = webpackConfig.module.rule(lang).test(test);
             // baseRule.exclude.add(/nodeppt/)
