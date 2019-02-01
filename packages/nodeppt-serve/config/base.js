@@ -2,6 +2,7 @@
  * @file base
  */
 const path = require('path');
+const webpack = require('webpack');
 const {transformer, formatter} = require('nodeppt-shared-utils');
 module.exports = (api, options) => {
     api.chainWebpack(webpackConfig => {
@@ -103,6 +104,12 @@ module.exports = (api, options) => {
             .use('url-loader')
             .loader(require.resolve('url-loader'))
             .options(genUrlLoaderOptions('fonts'));
+
+        webpackConfig.plugin('banner').use(
+            new webpack.BannerPlugin({
+                banner: 'created by nodeppt 2.0'
+            })
+        );
 
         webpackConfig.plugin('case-sensitive-paths').use(require('case-sensitive-paths-webpack-plugin'));
 
