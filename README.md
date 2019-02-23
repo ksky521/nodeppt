@@ -1,12 +1,13 @@
-nodeppt 2.0 - 累死累活干不过做 PPT 的！
 
-查看效果：http://js8.in/nodeppt/
+<h1 align="center">nodeppt 2.0</h1>
+
+> 累死累活干不过做 PPT 的！<br/>
+> **查看效果：http://js8.in/nodeppt/**
+
 
 **两年没更新了。。。出来混总是要还的，所以有了 2.0 版本！**
 
-<a href="https://npmcharts.com/compare/nodeppt?minimal=true">
-    <img src="https://img.shields.io/npm/dm/nodeppt.svg">
-</a>
+
 
 **nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，新效果
 
