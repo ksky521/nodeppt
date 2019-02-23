@@ -4,9 +4,8 @@
 
 [![Markpress npm badge](https://nodei.co/npm/nodeppt.png)](https://www.npmjs.com/package/nodeppt)
 
-**两年没更新了。。。出来混总是要还的，所以有了 2.0 版本！**
 
-**nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，新效果
+**nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，[新效果](http://js8.in/nodeppt/)
 
 <h2 align="center">Install</h2>
 
@@ -14,7 +13,7 @@
 npm install -g nodeppt
 ```
 
-## shell 使用
+<h2 align="center">Usage</h2>
 
 简化了，就三个命令：
 
