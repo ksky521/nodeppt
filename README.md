@@ -1,13 +1,8 @@
-
 <h1 align="center">nodeppt 2.0</h1>
 
-> 累死累活干不过做 PPT 的！<br/>
-> **查看效果：http://js8.in/nodeppt/**
-
+> 累死累活干不过做 PPT 的！<br/> > **查看效果：http://js8.in/nodeppt/**
 
 **两年没更新了。。。出来混总是要还的，所以有了 2.0 版本！**
-
-
 
 **nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，新效果
 
@@ -52,12 +47,13 @@ nodeppt serve -h
 
 nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以打开演讲者模式，双屏同步
 
-<h2 align="center">快捷键</h2>
+<h2 align="center">Keyboard Shortcuts</h2>
 
--   F：全屏
--   -：总览模式
--   方向键/空格：翻页
--   HOME/END：第一页和最后一页
+-   Page: ↑/↓/←/→ Space Home End
+-   Fullscreen: F
+-   Overview: -/+
+-   Speaker Note: N
+-   Grid Background: Enter
 
 <h2 align="center">公共资源：public 文件夹</h2>
 
