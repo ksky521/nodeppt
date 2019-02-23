@@ -2,6 +2,8 @@
 
 > 累死累活干不过做 PPT 的！<br/> > **查看效果：http://js8.in/nodeppt/**
 
+[![Markpress npm badge](https://nodei.co/npm/nodeppt.png)](https://www.npmjs.com/package/nodeppt)
+
 **两年没更新了。。。出来混总是要还的，所以有了 2.0 版本！**
 
 **nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，新效果
