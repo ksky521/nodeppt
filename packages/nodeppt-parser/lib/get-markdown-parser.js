@@ -11,6 +11,8 @@ mdIt.use(require('markdown-it-katex'));
 
 mdIt.use(require('./markdown/jsx'));
 mdIt.use(require('./markdown/echarts'));
+// mermaid 流程图
+mdIt.use(require('./markdown/mermaid'));
 mdIt.use(require('./markdown/fa'));
 // mdIt.use(require('./markdown/plus-list'));
 mdIt.use(require('./markdown/link'));

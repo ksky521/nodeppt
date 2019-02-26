@@ -13,7 +13,7 @@ export default class Echarts {
                 const slide = wsInstance.slides[i - 1];
                 slide.mermaidInit = false;
                 slide.mermaidNode = node;
-                // slide.el.addEventListener(SlideEvents.ENTER, Echarts.onSectionEnter);
+
                 slide.el.addEventListener(SlideEvents.ENABLE, Echarts.onSectionEnter);
             });
         }
