@@ -194,6 +194,12 @@ function replaceFence(md, prismHighlight) {
         if (info) {
             langName = info.split(/\s+/g)[0];
         }
+        const text = token.content;
+        // 增加对 mermaidjs 支持，这样就可以画流程图了哦~
+        if (langName === 'mermaid') {
+            return `<div class="embed"><div class="lang-mermaid">${text}</div></div>`;
+        }
+
         highlighted = prismHighlight(token.content, langName, token.attrs);
         if (highlighted.indexOf('<pre') === 0) {
             return highlighted + '\n';

@@ -37,6 +37,8 @@
     /* 1. No object-fit support: */
     & > iframe,
     & > object,
+    & > .echarts,
+    & > .lang-mermaid,
     & > embed,
     & > video {
       @media (min-aspect-ratio: 16 / 9) {

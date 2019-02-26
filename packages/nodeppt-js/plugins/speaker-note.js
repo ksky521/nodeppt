@@ -7,7 +7,7 @@ export default class SpeakerNote {
         this.ws_ = wsInstance;
         this.isSpeakerMode_ = this.ws_.el.classList.contains('with-note');
 
-        const $note = DOM.toArray(this.ws_.el.querySelectorAll('.note'));
+        const $note = DOM.toArray(this.ws_.el.querySelectorAll('.speaker-note'));
 
         if ($note.length) {
             $note.forEach((note, j) => {

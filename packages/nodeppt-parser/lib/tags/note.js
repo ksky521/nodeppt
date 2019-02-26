@@ -15,10 +15,9 @@ module.exports = tree => {
                 }
                 n.attrs = n.attrs || {};
                 cls = cls.split(/\s+/);
-                cls.push('note');
+                cls.push('speaker-note');
 
                 n.attrs.class = cls.join(' ');
-
                 n.content = [
                     {
                         tag: 'div',

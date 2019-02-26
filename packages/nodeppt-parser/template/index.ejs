@@ -33,6 +33,11 @@
 <% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('echarts')) { %>
     <script src="//cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js"></script>
 <% } %>
+<% if (hasOwnProperty('plugins') && plugins && plugins.indexOf && ~plugins.indexOf('mermaid')) { %>
+    <script src="//cdn.staticfile.org/mermaid/8.0.0/mermaid.min.js"></script>
+    <script>mermaid.startOnLoad = false;</script>
+<% } %>
+
 <% if (hasOwnProperty('js') && js.length) { %>
     <% for (var i = 0;i<js.length;i++) { %>
     <script src="<%= js[i] %>"></script>
@@ -40,9 +45,13 @@
 <% } %>
 
 <script>
-<% if(hasOwnProperty('pluginsOptions') && pluginsOptions && pluginsOptions.echarts && pluginsOptions.echarts.theme) { %>
-window.echartsTheme_ = '<%= pluginsOptions.echarts.theme %>';
+<% if(hasOwnProperty('pluginsOptions') && typeof pluginsOptions==='object' ) { %>
+    window.pluginsOptions = <%- JSON.stringify(pluginsOptions) %>
+<% }else { %>
+    window.pluginsOptions = {}
 <% } %>
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const ws = new WebSlides({
         loop: false

@@ -17,13 +17,17 @@ i.fa {
     font-size: 8rem;
 }
 
-.embed .echarts {
+.embed .echarts,
+.embed .lang-mermaid {
     min-height: 20vw;
     > div {
         margin: 0 auto;
     }
 }
-
+.embed .lang-mermaid {
+    visibility: hidden;
+    text-align: center;
+}
 .animated.delay-300 {
     animation-delay: 0.3s;
 }

@@ -3,5 +3,11 @@
     "private": true,
     "devDependencies": {
         "lerna": "^3.4.3"
+    },
+    "npmClient": "npm",
+    "command": {
+        "bootstrap": {
+            "npmClientArgs": ["--no-package-lock"]
+        }
     }
 }

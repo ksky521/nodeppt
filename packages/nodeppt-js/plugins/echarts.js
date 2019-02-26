@@ -26,7 +26,11 @@ export default class Echarts {
         const {echartsNode, echartsInit, echartsData} = slide;
         if (!echartsInit) {
             setTimeout(() => {
-                const et = echarts.init(echartsNode, window.echartsTheme_);
+                const theme =
+                    window.pluginsOptions && window.pluginsOptions.echarts
+                        ? window.pluginsOptions.echarts.theme
+                        : undefined;
+                const et = echarts.init(echartsNode, theme);
                 try {
                     const data = JSON.parse(echartsData.innerHTML.trim());
                     et.setOption(data);

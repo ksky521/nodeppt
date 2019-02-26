@@ -10,7 +10,7 @@
         transition: none !important;
         transform-origin: 0 0 !important;
         transform: scale(0.6) translate3d(0.5vw, 0.5vw, 0);
-        .note {
+        .speaker-note {
             display: flex;
             width: 100vw;
             height: 38vh;
@@ -35,7 +35,7 @@
         transform: translate3d(64vw, 13vh, 0) scale(0.35);
         opacity: 1 !important;
         display: flex !important;
-        .note {
+        .speaker-note {
             display: none !important;
         }
     }

@@ -98,7 +98,7 @@ plugins:
 
 #### 插件
 
-目前 nodeppt 支持 [echarts](https://echarts.baidu.com/) 和 [katex](https://katex.org) 两个插件。
+目前 nodeppt 支持 [图表 echarts](https://echarts.baidu.com/) ，[流程图 mermaid](https://mermaidjs.github.io/)，[数学符号 KaTeX](https://katex.org) 3个插件。
 
 #### echarts
 
@@ -119,10 +119,28 @@ echarts 主题配色可以直接在`yaml`配置的 js 中引入。echarts 采用
     }]
 }
 ```
+详见[site/echarts.md](./site/echarts.md)
 
+#### mermaid
+
+mermaid 主题配色可以直接在`yaml`配置的 js 中引入。mermaid 采用`fence`语法，如下：
+
+```mermaid
+sequenceDiagram
+    Alice ->> Bob: Hello Bob, how are you?
+    Bob-->>John: How about you John?
+    Bob--x Alice: I am good thanks!
+    Bob-x John: I am good thanks!
+    Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
+
+    Bob-->Alice: Checking with John...
+    Alice->John: Yes... John, how are you?
+```
+
+详见[site/mermaid.md](./site/mermaid.md)
 #### ketex
 
-参考：[markdown-it-katex](https://www.npmjs.com/package/markdown-it-katex)
+参考：[markdown-it-katex](https://www.npmjs.com/package/markdown-it-katex)语法
 
 ### `<slide>` 语法
 
