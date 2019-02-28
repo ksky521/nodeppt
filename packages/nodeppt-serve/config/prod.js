@@ -7,7 +7,7 @@ module.exports = (api, options) => {
     api.chainWebpack(webpackConfig => {
         if (process.env.NODE_ENV === 'production') {
             const getAssetPath = require('../lib/utils').getAssetPath;
-            const filename = getAssetPath(options, `js/[name]${options.filenameHashing ? '.[hash:8]' : ''}.js`);
+            const filename = getAssetPath(options, `js/[name]${options.filenameHashing ? '.[contenthash:8]' : ''}.js`);
 
             webpackConfig
                 .mode('production')

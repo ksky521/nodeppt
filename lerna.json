@@ -2,5 +2,11 @@
     "packages": [
         "packages/*"
     ],
-    "version": "independent"
+    "version": "independent",
+    "npmClient": "npm",
+    "command": {
+        "bootstrap": {
+            "npmClientArgs": ["--no-package-lock"]
+        }
+    }
 }
