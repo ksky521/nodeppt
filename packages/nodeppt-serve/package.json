@@ -1,6 +1,6 @@
 {
     "name": "nodeppt-serve",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -46,7 +46,7 @@
         "lodash.defaultsdeep": "^4.6.0",
         "mini-css-extract-plugin": "0.5.0",
         "node-sass": "4.11.0",
-        "nodeppt-js": "^2.1.1",
+        "nodeppt-js": "^2.1.2",
         "nodeppt-parser": "^2.1.1",
         "nodeppt-shared-utils": "^2.0.1",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
