@@ -2,7 +2,7 @@
     "name": "nodeppt",
     "jsname": "nodeppt",
     "description": "A simple, in-browser, markdown-driven presentation framework",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "site": "https://github.com/ksky521/nodeppt",
     "main": "index.js",
     "author": {
