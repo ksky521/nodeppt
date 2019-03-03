@@ -1,4 +1,4 @@
-<h1 align="center">nodeppt 2.0</h1>
+# nodeppt 2.0
 
 > 累死累活干不过做 PPT 的！<br/> > **查看效果：http://js8.in/nodeppt/**
 
@@ -7,13 +7,13 @@
 
 **nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，[新效果](http://js8.in/nodeppt/)
 
-<h2 align="center">Install</h2>
+## Install
 
 ```bash
 npm install -g nodeppt
 ```
 
-<h2 align="center">Usage</h2>
+## Usage
 
 简化了，就三个命令：
 
@@ -44,11 +44,11 @@ nodeppt -h
 nodeppt serve -h
 ```
 
-<h2 align="center">演讲者模式</h2>
+## 演讲者模式
 
 nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以打开演讲者模式，双屏同步
 
-<h2 align="center">Keyboard Shortcuts</h2>
+## Keyboard Shortcuts
 
 -   Page: ↑/↓/←/→ Space Home End
 -   Fullscreen: F
@@ -56,13 +56,13 @@ nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以
 -   Speaker Note: N
 -   Grid Background: Enter
 
-<h2 align="center">公共资源：public 文件夹</h2>
+## 公共资源：public 文件夹
 
 如果项目文件夹下，存在`public`文件夹，可以直接通过 url 访问，参考`webpack dev server`的 `contentBase` 选项。
 
 在`build`的时候，public 文件夹中的文件会完全 copy 到`dist`文件夹中
 
-<h2 align="center">编写</h2>
+## 编写
 
 最佳体验是 chrome 浏览器，本来就是给做演示用的，所以就别考虑非 Chrome 浏览器兼容问题了！
 
@@ -354,7 +354,7 @@ Output：
 -   gallery：图片
 -   flexblock：flex block 布局，支持多个子类型
 
-基本语法是：
+**基本语法**是：
 
 ```markdown
 :::TYPE {.attrs}
@@ -374,11 +374,11 @@ Output：
 
 详细可以看 [component](./site/component.md) 部分的 markdown 文件和[在线演示](https://js8.in/nodeppt/component.html)
 
-<h2 align="center">打印？导出 pdf？</h2>
+## 打印？导出 pdf？
 
 chrome 浏览器，直接在第一页 `command+P/ctrl+P` 即可
 
-<h2 align="center">高级玩法</h2>
+## 高级玩法
 
 如果上面
 
@@ -511,7 +511,7 @@ window.WSPlugins_ = [
 
 然后使用`nodeppt new username/repo xxx.md`使用
 
-<h2 align="center">Thanks</h2>
+## Thanks
 
 -   [WebSlides](https://github.com/webslides/WebSlides)
 -   [markdown-it](https://github.com/markdown-it/markdown-it)
