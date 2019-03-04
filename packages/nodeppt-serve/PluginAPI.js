@@ -14,6 +14,9 @@ class PluginAPI {
     getEntryName() {
         return path.parse(this.service.entry).name;
     }
+    getNodepptOptions() {
+        return this.service.nodepptOptions;
+    }
     /**
      * 获取当前工作目录
      * @return {string} 返回工作目录

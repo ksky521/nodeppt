@@ -31,7 +31,7 @@ function resolveEntry(entry) {
 }
 exports.serve = (e, args) => {
     const {context, entry} = resolveEntry(e);
-    createService(context, entry).run('serve', args);
+    createService(context, entry, {version: args.version || '2.0'}).run('serve', args);
 };
 exports.build = (e, args) => {
     const {context, entry} = resolveEntry(e);
@@ -39,12 +39,13 @@ exports.build = (e, args) => {
     if (asLib) {
         args.entry = entry;
     }
-    createService(context, entry, asLib).run('build', args);
+    createService(context, entry, {version: args.version || '2.0'}, asLib).run('build', args);
 };
 
-function createService(context, entry, asLib, plugins = []) {
+function createService(context, entry, nodepptOptions, asLib, plugins = []) {
     // console.log(plugins);
     return new Service(context, entry, {
+        nodepptOptions,
         plugins: [...plugins, globalConfigPlugin(context, entry, asLib)]
     });
 }

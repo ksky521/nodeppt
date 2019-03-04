@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const {transformer, formatter} = require('nodeppt-shared-utils');
 module.exports = (api, options) => {
+    const {version} = api.getNodepptOptions();
     api.chainWebpack(webpackConfig => {
         const {getAssetPath, resolveLocal} = require('../lib/utils');
         const inlineLimit = 4096;
@@ -107,7 +108,7 @@ module.exports = (api, options) => {
 
         webpackConfig.plugin('banner').use(
             new webpack.BannerPlugin({
-                banner: 'created by nodeppt 2.0'
+                banner: `Created by nodeppt ${version} \n - Install: npm install -g nodeppt\n - Github: https://github.com/ksky521/nodeppt`
             })
         );
 

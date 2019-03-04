@@ -1,5 +1,5 @@
 function findChecklists(state) {
-    console.log(state.tokens);
+    // console.log(state.tokens);
     state.tokens.forEach((token, i) => {
         if (token.type === 'bullet_list_open' && token.markup === '+') {
             // console.log(state.tokens[i + 1]);

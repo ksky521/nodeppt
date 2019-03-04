@@ -13,10 +13,11 @@ const debug = getDebugLogger('Service', require('./package.json').name);
 const configFileName = 'nodeppt.config.js';
 
 module.exports = class Service {
-    constructor(context, entry, {plugins, pkg, useBuiltIn, inlineOptions} = {}) {
+    constructor(context, entry, {plugins, pkg, useBuiltIn, nodepptOptions} = {}) {
         this.initialized = false;
         this.entry = path.resolve(context, entry);
-        this.inlineOptions = inlineOptions;
+        // 这是nodeppt 传过来的配置，主要用version。。。
+        this.nodepptOptions = nodepptOptions;
         this.pkg = pkg || {};
         this.pkgContext = context;
         this.commands = {};
@@ -53,7 +54,7 @@ module.exports = class Service {
     loadUserOptions() {
         // hulk.config.js
         let fileConfig;
-        let resolved;
+        let resolved = {};
         const configPath = path.resolve(this.context, configFileName);
         if (fs.existsSync(configPath)) {
             try {
@@ -70,8 +71,6 @@ module.exports = class Service {
 
         if (fileConfig) {
             resolved = fileConfig;
-        } else {
-            resolved = this.inlineOptions || {};
         }
 
         // normalize some options
