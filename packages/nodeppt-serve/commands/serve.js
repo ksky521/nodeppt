@@ -29,7 +29,7 @@ module.exports = (api, options) => {
         async function serve(args) {
             info('Starting development server...');
 
-            const currentVersion = '2.1.0'; // args.version
+            const currentVersion = args.version;
             // 获取版本更新
             getLatestVersion()
                 .then(latest => {
