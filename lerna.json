@@ -2,7 +2,6 @@
     "packages": [
         "packages/*"
     ],
-    "version": "independent",
     "npmClient": "npm",
     "command": {
         "bootstrap": {
