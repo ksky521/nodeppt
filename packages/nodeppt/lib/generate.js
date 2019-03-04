@@ -3,6 +3,7 @@
  */
 const path = require('path');
 const fs = require('fs');
+
 const exists = fs.existsSync;
 
 const semver = require('semver');
@@ -16,6 +17,7 @@ const {
     success,
     line,
     getGitUser,
+    newVersionLog,
     getLatestVersion,
     logWithSpinner,
     updateSpinner,
@@ -96,14 +98,8 @@ module.exports = async (src, dest, cmdOpts) => {
         });
 
         if (newVersion) {
-            /* eslint-disable*/
-            console.log(
-                chalk.green(`
-                ┌────────────────────────────────────────────${`─`.repeat(newVersion.length)}──┐
-                │  A newer version of nodeppt is available: ${chalk.yellow(localVersion)}  │
-                └────────────────────────────────────────────${`─`.repeat(newVersion.length)}──┘`)
-            );
-            /* eslint-enable*/
+            // 存在新版本
+            newVersionLog(localVersion, newVersion);
         }
     } else {
         logMessage(opts.completeMessage, data);
@@ -125,14 +121,7 @@ function logMessage(message, data) {
     }
 
     if (newVersion) {
-        /* eslint-disable*/
-        console.log(
-            chalk.green(`
-            ┌────────────────────────────────────────────${`─`.repeat(newVersion.length)}──┐
-            │  A newer version of nodeppt is available: ${chalk.yellow(localVersion)}  │
-            └────────────────────────────────────────────${`─`.repeat(newVersion.length)}──┘`)
-        );
-        /* eslint-enable*/
+        newVersionLog(localVersion, newVersion);
     }
 }
 

@@ -2,7 +2,10 @@
  * 部分代码来自 vue cli
  * @file serve 主要内容
  */
-const {info, prepareUrls} = require('nodeppt-shared-utils');
+const {info, prepareUrls, getLatestVersion, newVersionLog} = require('nodeppt-shared-utils');
+const semver = require('semver');
+
+let newVersion = 0;
 
 const defaults = {
     host: '0.0.0.0',
@@ -25,6 +28,16 @@ module.exports = (api, options) => {
         },
         async function serve(args) {
             info('Starting development server...');
+
+            const currentVersion = '2.1.0'; // args.version
+            // 获取版本更新
+            getLatestVersion()
+                .then(latest => {
+                    if (semver.lt(currentVersion, latest)) {
+                        newVersion = latest;
+                    }
+                })
+                .catch(e => {});
 
             const url = require('url');
             const path = require('path');
@@ -117,6 +130,9 @@ module.exports = (api, options) => {
             ['SIGINT', 'SIGTERM'].forEach(signal => {
                 process.on(signal, () => {
                     server.close(() => {
+                        if (newVersion) {
+                            newVersionLog(currentVersion, newVersion);
+                        }
                         process.exit(0);
                     });
                 });

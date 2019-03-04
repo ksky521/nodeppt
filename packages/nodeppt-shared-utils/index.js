@@ -8,6 +8,7 @@
     'get-debug',
     'eval',
     'path',
+    'new-version-log',
     'download-repo',
     'git-user',
     'get-latest-version',

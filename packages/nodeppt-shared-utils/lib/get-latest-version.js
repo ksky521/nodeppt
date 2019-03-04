@@ -6,7 +6,7 @@ const request = require('request');
 const debug = require('./get-debug').getDebugLogger('get-lastest-version');
 
 // 获取最新版本
-function getLatestVersion(name = 'nodeppt', registry = 'http://registry.npm.taobao.org') {
+function getLatestVersion(name = 'nodeppt', registry = 'https://registry.npmjs.org') {
     return new Promise(resolve => {
         request(
             {
