@@ -85,6 +85,7 @@ js:
 prismTheme: solarizedlight
 plugins:
     - echarts
+    - mermaid
     - katex
 ```
 
@@ -94,11 +95,11 @@ plugins:
 -   js：js 文件数组，放到 body 之前
 -   css：css 文件数组，放到头部
 -   prismTheme：prism 配色，取值范围 `['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight']`
--   plugins：目前支持 [echarts](https://echarts.baidu.com/) 和 [katex](https://katex.org) 两个插件
+-   plugins：目前支持 [echarts](https://echarts.baidu.com/)，[mermaid](https://mermaidjs.github.io/)和 [katex](https://katex.org) 三个插件
 
 #### 插件
 
-目前 nodeppt 支持 [图表 echarts](https://echarts.baidu.com/) ，[流程图 mermaid](https://mermaidjs.github.io/)，[数学符号 KaTeX](https://katex.org) 3个插件。
+目前 nodeppt 支持 [图表 echarts](https://echarts.baidu.com/)，[流程图 mermaid](https://mermaidjs.github.io/)，[数学符号 KaTeX](https://katex.org) 三个插件。
 
 #### echarts
 
