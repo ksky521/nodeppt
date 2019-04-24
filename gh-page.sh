@@ -12,7 +12,7 @@ node ../packages/nodeppt/bin/nodeppt build background.md
 
 cd dist
 
-echo 'js8.in\nnodeppt.js.org' > CNAME
+echo 'nodeppt.js.org' > CNAME
 git init
 git add -A
 date_str=`date "+DATE: %m/%d/%Y%nTIME: %H:%M:%S"`
