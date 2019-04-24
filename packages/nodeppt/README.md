@@ -1,11 +1,11 @@
 # nodeppt 2.0
 
-> 累死累活干不过做 PPT 的！<br/> > **查看效果：http://js8.in/nodeppt/**
+> 累死累活干不过做 PPT 的！<br/> > **查看效果：https://nodeppt.js.org**
 
 [![Markpress npm badge](https://nodei.co/npm/nodeppt.png)](https://www.npmjs.com/package/nodeppt)
 
 
-**nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，[新效果](http://js8.in/nodeppt/)
+**nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，[新效果](https://nodeppt.js.org)
 
 ## Install
 
