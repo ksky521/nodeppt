@@ -13,6 +13,10 @@
 npm install -g nodeppt
 ```
 
+## TODO
+* bug fix
+* 增加多页编辑公共资源，说人话就是 splitChunks
+
 <h2 align="center">Usage</h2>
 
 简化了，就三个命令：
