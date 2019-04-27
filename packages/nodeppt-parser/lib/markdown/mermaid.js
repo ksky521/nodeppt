@@ -4,6 +4,7 @@ module.exports = md => {
         const token = tokens[idx];
         const code = token.content;
         if (token.info === 'mermaid') {
+            token.attrJoin('class', 'lang-mermaid no-style');
             let attrs = token.attrs || [];
             attrs = attrs
                 .map(([key, value]) => {
@@ -13,7 +14,7 @@ module.exports = md => {
             // 增加对 mermaidjs 支持，这样就可以画流程图了哦~
             return `
 <div class="embed">
-    <pre class="lang-mermaid no-style" ${attrs}>${code}</pre>
+    <pre ${attrs}>${code}</pre>
 </div>
 `;
         }
