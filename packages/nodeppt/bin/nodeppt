@@ -28,7 +28,7 @@ program
     .action((entry, cmd) => {
         require('nodeppt-serve').serve(entry, cleanArgs(cmd));
     })
-    .on('--help', function() {
+    .on('--help', () => {
         console.log('  Examples:');
         console.log();
         console.log('    nodeppt serve slide.md');
@@ -43,7 +43,7 @@ program
     .action((entry, cmd) => {
         require('nodeppt-serve').build(entry, cleanArgs(cmd));
     })
-    .on('--help', function() {
+    .on('--help', () => {
         console.log('  Examples:');
         console.log();
         console.log('    nodeppt build slide.md');
@@ -58,7 +58,7 @@ program
     .action((dest, cmd) => {
         return require('../commands/new')(dest, cleanArgs(cmd));
     })
-    .on('--help', function() {
+    .on('--help', () => {
         console.log('  Examples:');
         console.log();
         console.log(chalk.gray('    # create a new slide with an official template'));

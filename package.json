@@ -1,5 +1,5 @@
 {
-    "name": "root",
+    "name": "nodeppt",
     "private": true,
     "devDependencies": {
         "lerna": "^3.10.6"

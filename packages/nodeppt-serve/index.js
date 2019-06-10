@@ -12,11 +12,11 @@ const Service = require('./Service');
 function resolveEntry(entry) {
     const context = process.cwd();
 
-    entry = entry || findExisting(context, ['main.js', 'index.js', 'App.san', 'app.san']);
+    entry = entry || findExisting(context, ['main.js', 'index.js']);
 
     if (!entry) {
         console.log(chalk.red(`Failed to locate entry file in ${chalk.yellow(context)}.`));
-        console.log(chalk.red('Valid entry file should be one of: main.js, index.js, App.san or app.san.'));
+        console.log(chalk.red('Valid entry file should be one of: main.js, index.js.'));
         process.exit(1);
     }
     if (!fs.existsSync(path.resolve(context, entry))) {
