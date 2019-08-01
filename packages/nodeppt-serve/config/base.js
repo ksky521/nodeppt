@@ -122,5 +122,7 @@ module.exports = (api, options) => {
                 additionalFormatters: [formatter]
             }
         ]);
+
+        webpackConfig.plugin('progress').use(require('webpack/lib/ProgressPlugin'));
     });
 };

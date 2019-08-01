@@ -34,6 +34,6 @@
         "animate.css": "^3.7.0",
         "nodeppt-template-default": "^1.0.1",
         "username": "^4.1.0",
-        "webslides": "1.4.2"
+        "webslides": "1.5.0"
     }
 }

@@ -61,7 +61,7 @@ export default class SpeakerMode {
 
 function parseQuery(url) {
     let back = {};
-    (url || location.search.substring(1)).split('&').forEach(function(v) {
+    (url || location.search.substring(1)).split('&').forEach(v => {
         v = v.split('=');
         back[v[0].toLowerCase()] = v[1];
     });

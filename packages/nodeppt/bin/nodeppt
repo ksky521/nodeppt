@@ -24,7 +24,9 @@ program
     .description('start local sever show slide')
     .option('-p, --port [port]', 'set server port ', 8080)
     .option('--https', 'use https ', 8080)
+    .option('-d, --dest <dir>', 'output directory')
     .option('-H, --host [host]', 'set host address', '0.0.0.0')
+
     .action((entry, cmd) => {
         require('nodeppt-serve').serve(entry, cleanArgs(cmd));
     })

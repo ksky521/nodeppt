@@ -1,6 +1,6 @@
 import DOM from 'webslides/src/js/utils/dom';
 import {default as Slide, Events as SlideEvents} from 'webslides/src/js/modules/slide';
-
+/* global echarts */
 export default class Echarts {
     constructor(wsInstance) {
         this.ws_ = wsInstance;
