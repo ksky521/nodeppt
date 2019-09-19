@@ -74,11 +74,11 @@ export default class Keyboard {
                 break;
             case Keys.RIGHT:
             case Keys.DOWN:
-                method = this.ws_.isVertical ? (this.enable_ ? this.goNext : this.ws_.goNext) : null;
+                method = !this.ws_.isVertical ? (this.enable_ ? this.goNext : this.ws_.goNext) : null;
                 break;
             case Keys.LEFT:
             case Keys.UP:
-                method = this.ws_.isVertical ? (this.enable_ ? this.goPrev : this.ws_.goPrev) : null;
+                method = !this.ws_.isVertical ? (this.enable_ ? this.goPrev : this.ws_.goPrev) : null;
                 break;
             case Keys.F:
                 if (!event.metaKey && !event.ctrlKey) {
@@ -87,7 +87,6 @@ export default class Keyboard {
 
                 break;
         }
-
         if (method) {
             method.call(this.enable_ ? this : this.ws_, argument);
             // Prevents Firefox key events.
