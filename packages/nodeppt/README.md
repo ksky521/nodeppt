@@ -376,7 +376,7 @@ Output：
 
 ## 打印？导出 pdf？
 
-chrome 浏览器，直接在第一页 `command+P/ctrl+P` 即可
+在 chrome 浏览器，在 URL 添加`URL?print-pdf`，然后直接 `command+P/ctrl+P` 选择打印即可！
 
 ## 高级玩法
 

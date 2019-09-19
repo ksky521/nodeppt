@@ -1,6 +1,6 @@
 if (module.hot) {
     var hotEmitter = require('webpack/hot/emitter');
-    hotEmitter.on('webpackHotUpdate', function(currentHash) {
+    hotEmitter.on('webpackHotUpdate', currentHash => {
         location.reload();
     });
 } else {

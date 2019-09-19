@@ -13,7 +13,9 @@ const defaults = require('./defaults');
 // 模板
 const template = fs.readFileSync(path.join(__dirname, './template/index.ejs')).toString();
 // 这里不要用箭头函数，this 指向问题！
+/* eslint-disable space-before-function-paren */
 module.exports = function(content) {
+/* eslint-enable space-before-function-paren */
     const {plugins = []} = loaderUtils.getOptions(this);
     const parser = getParser(plugins);
 

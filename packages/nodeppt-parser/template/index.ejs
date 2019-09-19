@@ -53,10 +53,19 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    let isPrintMode = false;
+    if(location.search.indexOf('print-pdf')){
+        isPrintMode = true;
+        // WebSlides.registerPlugin('hash', function(){});
+        WebSlides.registerPlugin('scroll', function(){});
+    }
     const ws = new WebSlides({
         loop: false
     })
     window.wsInstance = ws;
+    if(isPrintMode){
+        ws.slides.forEach(s=>s.show())
+    }
 }, false)
 </script>
 </body>
