@@ -358,6 +358,7 @@ Output：
 -   cta：
 -   gallery：图片
 -   flexblock：flex block 布局，支持多个子类型
+-   note: 演讲注释
 
 基本语法是：
 
