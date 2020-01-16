@@ -85,6 +85,8 @@ module.exports = class Service {
     async run(name, args = {}, rawArgv = []) {
         // debugger;
         const mode = args.mode || (name === 'build' && args.watch ? 'development' : this.modes[name]);
+        process.env.NODE_ENV = mode || 'development';
+
         // load env variables, load user config, apply plugins
         this.init(mode);
 

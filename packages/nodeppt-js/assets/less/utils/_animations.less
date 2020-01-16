@@ -1,0 +1,145 @@
+/* === 1.2 Animations ================
+Just 5 basic animations:
+.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, and .slideInRight
+https://github.com/daneden/animate.css */
+
+/*-- fadeIn -- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 1s;
+}
+
+/*-- fadeInUp -- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInUp {
+    animation: fadeInUp 1s;
+}
+
+/*-- zoomIn -- */
+@keyframes zoomIn {
+    from {
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomIn {
+    animation: zoomIn 1s;
+}
+
+/*-- slideInLeft -- */
+@keyframes slideInLeft {
+    from {
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInLeft {
+    animation: slideInLeft 1s;
+    animation-fill-mode: both;
+}
+
+/*-- slideInRight -- */
+@keyframes slideInRight {
+    from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInRight {
+    animation: slideInRight 1s;
+    animation-fill-mode: both;
+}
+
+/* Animated Background (Matrix) */
+@keyframes anim {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-1200px);
+    }
+}
+
+/* Duration */
+.slow {
+    animation-duration: 4s;
+
+    & + & {
+        animation-duration: 5s;
+    }
+}
+
+// slideOutScaleLeft
+@keyframes slideOutScaleLeft {
+    from {
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%) scale(0.9);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutScaleRight {
+    from {
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%) scale(0.9);
+        opacity: 0;
+    }
+}

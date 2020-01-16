@@ -1,0 +1,474 @@
+/*============================
+2. TYPOGRAPHY & LISTS
+============================== */
+html,
+body {
+    line-height: 1;
+    text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+input,
+select,
+textarea {
+    font-family: -apple-system, 'Noto Sans', SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace,
+        'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, 'Liberation Sans', 'PingFang SC', 'Hiragino Sans GB',
+        'Noto Sans CJK SC', 'Source Han Sans SC', 'Source Han Sans CN', 'Microsoft YaHei', 'Wenquanyi Micro Hei',
+        'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
+    font-size: 62.5%;
+}
+
+body,
+textarea {
+    font-size: 1.8rem;
+}
+
+p,
+li,
+dt,
+dd,
+time,
+table,
+big,
+textarea,
+label {
+    line-height: 3.2rem;
+    margin-bottom: 3.2rem;
+}
+
+li,
+p:last-child {
+    margin-bottom: 0;
+}
+
+ul > li,
+ol > li {
+    margin-left: 3.2rem;
+}
+
+li li {
+    font-size: 100%;
+}
+
+/*== List .description (Product/Specs) === */
+ul.description {
+    padding: 0;
+
+    & + p {
+        margin-top: 3.2rem;
+    }
+
+    li {
+        padding-bottom: 0.8rem;
+        padding-top: 0.8rem;
+        position: relative;
+        transition: 0.3s;
+    }
+
+    li:hover {
+        padding-left: 0.4rem;
+    }
+}
+
+ul.description li,
+.column ul li {
+    list-style: none;
+    margin-left: 0;
+}
+
+.column ol > li {
+    margin-left: 1.6rem;
+}
+
+h1 svg,
+h2 svg,
+h3 svg,
+h4 svg {
+    margin-top: -0.8rem;
+}
+
+.text-intro svg,
+.text-quote p svg,
+.wall p svg,
+.try svg {
+    margin-top: -0.4rem;
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 5.6rem;
+
+    @media (min-width: 768px) {
+        font-size: 5.6rem;
+        line-height: 7.2rem;
+    }
+}
+
+h1 span {
+    font-style: italic;
+}
+
+h2 {
+    font-size: 3.2rem;
+    line-height: 4.8rem;
+
+    @media (min-width: 768px) {
+        font-size: 4.8rem;
+        line-height: 6.4rem;
+    }
+}
+
+h3 {
+    font-size: 2.4rem;
+    line-height: 4rem;
+
+    @media (min-width: 768px) {
+        font-size: 4rem;
+        line-height: 5.6rem;
+    }
+}
+
+h4 {
+    font-size: 2.2rem;
+    line-height: 4rem;
+
+    @media (min-width: 768px) {
+        font-size: 3.2rem;
+        line-height: 4.8rem;
+    }
+}
+
+h5 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 3.2rem;
+}
+
+h6 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 3.2rem;
+}
+
+h2.alignleft + p.alignright {
+    margin-bottom: 0;
+    margin-top: 1.2rem;
+}
+
+h3.alignleft + p.alignright {
+    margin-bottom: 0;
+    margin-top: 0.4rem;
+}
+
+
+
+each(range(6), {
+    h@{value} + h1,
+    h@{value} + h2,
+    h@{value} + h3,
+    h@{value} + h4,
+    h@{value} + h5,
+    h@{value} + h6 {
+        margin-top: 0.8rem;
+    }
+});
+
+h1 + img,
+h2 + img,
+h3 + img {
+    margin-bottom: 4.8rem;
+    margin-top: 4.8rem;
+}
+
+[class*='content-'] > [class*='content-'] h2,
+[class*='content-'] > [class*='content-'] h3,
+[class*='content-'] > [class*='content-'] h4 {
+    font-size: 2.4rem;
+    line-height: 4rem;
+}
+
+/*== 2.1. Headings with background ==*/
+
+
+each(range(6), {
+    h@{value}[class*='bg-'] {
+        padding: 2.4rem;
+    }
+});
+
+ul[class*='bg-'],
+ol[class*='bg-'],
+li[class*='bg-'],
+p[class*='bg-'] {
+    padding: 2.4rem;
+}
+
+h1 [class*='bg-'],
+h2 [class*='bg-'],
+h3 [class*='bg-'] {
+    padding: 0.4rem 0.8rem;
+}
+
+/*== 2.2. Typography Classes = .text- == */
+.text-intro,
+[class*='content-'] p {
+    font-size: 2.4rem;
+    line-height: 4rem;
+}
+
+/* -- Serif -- */
+.text-serif,
+h1 span {
+    font-family: 'Maitree', times, serif;
+}
+
+/* -- h1,h2... Promo/Landings -- */
+.text-landing {
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+
+    @media (min-width: 768px) {
+        letter-spacing: 1.6rem;
+    }
+}
+
+/* -- Subtitle (Before h1, h2) p.subtitle + h1/h2 */
+.text-subtitle {
+    letter-spacing: 0.2rem;
+    margin-bottom: 0;
+    text-transform: uppercase;
+
+    p& {
+        font-size: 1.6rem;
+
+        svg {
+            vertical-align: text-top;
+        }
+    }
+
+    + p {
+        margin-top: 3.2rem;
+    }
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+/* -- Emoji (you'll love this) -- */
+.text-emoji {
+    font-size: 6.8rem;
+    line-height: 8.8rem;
+
+    @media (min-width: 768px) {
+        font-size: 12.8rem;
+        line-height: 16rem;
+    }
+}
+
+/* -- Numbers (results, sales... 23,478,289 iphones) -- */
+.text-data {
+    font-size: 6.4rem;
+    line-height: 8rem;
+    margin-bottom: 0.8rem;
+
+    @media (min-width: 768px) {
+        font-size: 15.2rem;
+        line-height: 16.8rem;
+    }
+}
+
+.text-label {
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 12.8rem;
+}
+
+/* -- Magazine Two Columns -- */
+@media (min-width: 768px) {
+    .text-cols {
+        column-count: 2;
+        column-gap: 4.8rem;
+        text-align: left;
+    }
+
+    .text-landing + .text-cols {
+        margin-top: 3.2rem;
+    }
+}
+
+.text-cols p:first-child:first-letter {
+    float: left;
+    font-size: 11rem;
+    font-weight: 600;
+    line-height: 1;
+    margin: -0.4rem 1.6rem 0 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+/* -- Heading with border -- */
+.text-context {
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+        height: 0.2rem;
+        margin-bottom: 0.6rem;
+        width: 12rem;
+
+        .column & {
+            width: 100%;
+        }
+    }
+
+    &.text-uppercase {
+        letter-spacing: 0.1rem;
+    }
+}
+
+/* -- Separator/Symbols (stars ***...) -- */
+.text-symbols {
+    font-weight: 600;
+    letter-spacing: 0.8rem;
+    text-align: center;
+}
+
+.text-separator {
+    margin-top: 2.4rem;
+
+    &:before {
+        content: '';
+        height: 0.4rem;
+        left: 0;
+        margin-top: -1.6rem;
+        position: absolute;
+        width: 16%;
+    }
+
+    @media (min-width: 568px) {
+        margin-left: 20%;
+        margin-top: 0;
+        width: 80%;
+
+        &:before {
+            margin-top: 1.2rem;
+        }
+    }
+}
+
+/* -- Pull Quote (Right/Left)  -- */
+[class*='text-pull'] {
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 4rem;
+    margin-bottom: 3.2rem;
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+    position: relative;
+}
+
+[class*='text-pull-'] {
+    margin-top: 0.8rem;
+    padding-top: 1.4rem;
+
+    @media (min-width: 1024px) {
+        margin-left: -4.8rem;
+        margin-right: -4.8rem;
+    }
+}
+
+@media (min-width: 568px) {
+    [class*='text-pull-'] {
+        max-width: 40%;
+    }
+
+    .text-pull-right {
+        float: right;
+        margin-left: 2.4rem;
+        margin-right: -2.4rem;
+    }
+
+    .text-pull-left {
+        float: left;
+        margin-left: -2.4rem;
+        margin-right: 2.4rem;
+    }
+}
+
+img[class*='text-pull-'],
+figure[class*='text-pull-'] {
+    margin-top: 0.8rem;
+    padding-top: 0;
+}
+
+/* -- Interviews (Questions & Answers)  --- */
+/* -- <dl class="text-interview">
+<dt>name</dt>
+<dd><p>question or answer</p>
+</dd>
+--- */
+.text-interview dt {
+    font-weight: 600;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+@media (min-width: 1024px) {
+    .text-interview dt {
+        margin-left: -34%;
+        position: absolute;
+        text-align: right;
+        white-space: nowrap;
+        width: 30%;
+    }
+}
+
+/* -- Info Messages (error, warning, success... -- */
+.text-info {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+
+/*=========================================
+2.1. San Francisco Font (Apple's new font)
+=========================================== */
+.text-apple,
+.bg-apple {
+    font-family: 'San Francisco', helvetica, arial, sans-serif;
+}
+
+/* Ultra Light */
+@font-face {
+    font-family: 'San Francisco';
+    font-weight: 100;
+    src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2');
+}
+
+/* Thin */
+@font-face {
+    font-family: 'San Francisco';
+    font-weight: 200;
+    src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff2');
+}
+
+/* Regular */
+@font-face {
+    font-family: 'San Francisco';
+    font-weight: 400;
+    src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2');
+}
+
+/* Bold */
+@font-face {
+    font-family: 'San Francisco';
+    font-weight: bold;
+    src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2');
+}

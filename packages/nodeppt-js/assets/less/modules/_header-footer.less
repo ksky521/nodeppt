@@ -1,0 +1,64 @@
+/*=========================================
+3. Header & Footer
+=========================================== */
+
+/* -- If you want an unique, global header/footer,read this:
+https://github.com/webslides/webslides/issues/57 -- */
+
+header,
+footer,
+#navigation {
+    padding: 2.4rem;
+    transition: all 0.4s ease-in-out;
+    width: 100%;
+}
+
+header p,
+footer p {
+    line-height: 4.8rem;
+    margin-bottom: 0;
+}
+
+header[role='banner'] img,
+footer img {
+    height: 4rem;
+    vertical-align: middle;
+}
+
+footer {
+    position: relative;
+}
+
+header,
+footer {
+    z-index: 3;
+}
+
+header,
+.ws-ready footer {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.ws-ready footer {
+    bottom: 0;
+    top: auto;
+}
+
+// Remove "opacity=0" if you want an unique, visible header on each slide
+header[role='banner'] {
+    opacity: 0;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 767px) {
+    footer .alignleft,
+    footer .alignright {
+        display: block;
+        float: none;
+    }
+}

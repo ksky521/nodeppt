@@ -1,0 +1,42 @@
+.with-note {
+    background: rgba(0, 0, 0, 0.3);
+    .slide.current,
+    .slide {
+        &:not([class*='bg-']) {
+            background: #f7f9fb;
+        }
+        width: 100vw !important;
+        overflow: visible;
+        transition: none !important;
+        transform-origin: 0 0 !important;
+        transform: scale(0.6) translate3d(0.5vw, 0.5vw, 0);
+        .speaker-note {
+            display: flex;
+            width: 100vw;
+            height: 38vh;
+            padding: 0;
+            background: transparent;
+            transform: translate3d(35vw, 115vh, 0) scale(1.5);
+            transition: none;
+            > .wrap {
+                padding: 1em;
+                overflow-y: auto;
+            }
+            &.hide,
+            &.show {
+                animation: none;
+            }
+        }
+    }
+    .slide.current + .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate3d(64vw, 13vh, 0) scale(0.35);
+        opacity: 1 !important;
+        display: flex !important;
+        .speaker-note {
+            display: none !important;
+        }
+    }
+}

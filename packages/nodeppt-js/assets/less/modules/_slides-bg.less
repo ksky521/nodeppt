@@ -1,0 +1,125 @@
+/*=== 5.3 Slides - Background Images/Videos === */
+
+.background,
+[class*='background-'] {
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/*=== BG Positions === */
+
+.background {
+    background-position: center;
+    background-size: cover;
+
+    &-top {
+        background-position: top;
+        background-size: cover;
+    }
+
+    &-bottom {
+        background-position: bottom;
+        background-size: cover;
+    }
+
+    &-center {
+        background-position: center;
+    }
+
+    &-center-top {
+        background-position: center top;
+    }
+
+    &-right-top {
+        background-position: right top;
+    }
+
+    &-left-top {
+        background-position: left top;
+    }
+
+    &-center-bottom,
+    &-left-bottom,
+    &-right-bottom,
+    &-left,
+    &-right {
+        background-position: center bottom;
+    }
+
+    @media (min-width: 1024px) {
+        &-left-bottom {
+            background-position: left bottom;
+        }
+
+        &-right-bottom {
+            background-position: right bottom;
+        }
+
+        &-right {
+            background-position: right;
+        }
+
+        &-left {
+            background-position: left;
+        }
+    }
+
+    /*fullscreen video
+    <video class="background-video">
+  */
+
+    &-video {
+        height: 100%;
+        object-fit: fill;
+        width: 100%;
+    }
+}
+/*=== bg image/video overlay === */
+/*-- [class*="bg-"] .background.dark, [class*="bg-"] .embed.dark...  -- */
+
+[class*='bg-'] .light,
+[class*='bg-'] .light {
+    opacity: 0.8;
+}
+
+[class*='bg-'] .dark,
+[class*='bg-'] .dark {
+    opacity: 0.2;
+}
+
+[class*='bg-'] .background-video.dark {
+    opacity: 0.5;
+}
+
+@media (max-width: 1023px) {
+    [class*='background-'] {
+        animation: fadeIn ease-in 0.2;
+        opacity: 0.2;
+    }
+
+    .background-video {
+        opacity: 0.8;
+    }
+}
+
+/*=== Animated Background Image === */
+
+.background.anim {
+    animation: anim 80s linear infinite;
+    background-position: center top;
+    background-repeat: repeat;
+    background-size: 100%;
+    height: 200%;
+}
+
+/*=== Background with a frame === */
+/*<span class="background" style="background-image:url('image.jpg')"></span>
+<span class="background frame"></span>*/
+
+[class*='background'].frame {
+    margin: 2.4rem;
+}

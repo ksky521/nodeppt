@@ -1,0 +1,77 @@
+/*===========================================
+9. Table of contents
+============================================= */
+
+.toc,
+.toc ol > li:before,
+.chapter {
+    position: relative;
+    z-index: 2;
+}
+
+.toc {
+    ol {
+        counter-reset: item;
+        position: relative;
+
+        & > li:before {
+            content: counters(item, '.') '. ';
+            display: table-cell;
+            padding-right: 0.8rem;
+            width: 2.4rem;
+        }
+
+        li li:before {
+            content: counters(item, '.') ' ';
+        }
+    }
+
+    li {
+        counter-increment: item;
+        display: table;
+        font-weight: 400;
+        margin-bottom: 0.8rem;
+        margin-left: 0;
+        transition: 0.3s;
+        width: 100%;
+
+        li {
+            font-weight: 300;
+            margin-bottom: 0;
+            margin-left: 0;
+        }
+
+        .toc-page:before {
+            content: '';
+            display: block;
+            left: 0;
+            margin-top: 1.8rem;
+            position: absolute;
+            right: 4rem;
+        }
+
+        & > a {
+            display: inline-block;
+            width: 100%;
+        }
+
+        a:hover span {
+            font-weight: 600;
+        }
+
+        a:hover .toc-page:before {
+            border-bottom-width: 2px;
+        }
+    }
+}
+
+.chapter {
+    display: inline-block;
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+    padding-right: 0.8rem;
+}
+
+.toc-page {
+    float: right;
+}

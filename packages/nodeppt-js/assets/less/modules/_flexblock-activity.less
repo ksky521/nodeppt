@@ -1,0 +1,57 @@
+/*===========================================
+6.9 Block Activity <ul class="activity">
+CV / News
+============================================= */
+
+.flexblock.activity {
+    flex-direction: column;
+
+    li {
+        flex: 1;
+        position: relative;
+        width: auto;
+    }
+
+    p {
+        margin-bottom: 0;
+        vertical-align: top;
+    }
+
+    img {
+        display: block;
+    }
+
+    .year,
+    .title {
+        display: inline;
+        font-weight: 600;
+    }
+
+    .summary {
+        width: 100%;
+    }
+
+    .title {
+        margin-left: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        p {
+            float: left;
+        }
+
+        .year {
+            width: 15%;
+        }
+
+        .title {
+            margin-left: 4%;
+            margin-right: 4%;
+            width: 27%;
+        }
+
+        .summary {
+            width: 50%;
+        }
+    }
+}

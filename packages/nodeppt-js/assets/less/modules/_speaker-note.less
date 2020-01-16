@@ -1,0 +1,28 @@
+section .speaker-note {
+    animation: none;
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    z-index: 99999;
+    flex-flow: row;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: all 0.4s ease-in-out;
+    > .wrap {
+        padding: 2em;
+        text-align: left; // .display-flex;
+        background: #fff;
+    }
+    &.show {
+        display: flex;
+        animation-duration: 0.8s;
+        animation-fill-mode: both;
+        animation-name: slideInUp;
+    }
+}

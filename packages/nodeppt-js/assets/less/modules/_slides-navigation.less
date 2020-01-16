@@ -1,0 +1,70 @@
+/* === 5.2 Counter / Navigation Slides  === */
+
+#navigation {
+    animation: fadeIn 8s;
+    bottom: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    width: 24.4rem;
+    /* hover/visibility */
+    z-index: 4;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+#counter {
+    display: block;
+    line-height: 4.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+    width: 10rem;
+
+    a:hover {
+        padding: 0.8rem;
+    }
+}
+
+a#next,
+a#previous {
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-size: 2.4rem;
+    height: 4rem;
+    padding: 0.8rem;
+    position: absolute;
+    text-align: center;
+    width: 4rem;
+}
+
+a#next {
+    right: 3.2rem;
+}
+
+a#previous {
+    left: 3.2rem;
+}
+
+@media (max-width: 1024px) {
+    #navigation {
+        animation: fadeIn 6s;
+        background: url('../../images/swipe.svg') no-repeat center top;
+        background-size: 4.8rem;
+    }
+
+    #navigation a,
+    #counter {
+        display: none;
+    }
+}

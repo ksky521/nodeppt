@@ -20,19 +20,19 @@
         "node": ">=8.9"
     },
     "dependencies": {
-        "commander": "^2.19.0",
+        "commander": "^4.1.0",
         "consolidate": "^0.15.1",
-        "fs-extra": "^7.0.1",
+        "fs-extra": "^8.1.0",
         "handlebars": "^4.0.12",
-        "inquirer": "^6.2.1",
+        "inquirer": "^7.0.3",
         "nodeppt-js": "^2.1.2",
         "nodeppt-parser": "^2.1.2",
         "nodeppt-serve": "^2.1.5",
         "nodeppt-shared-utils": "^2.0.2",
         "nodeppt-template-default": "^1.0.2",
-        "semver": "^5.6.0",
+        "semver": "^7.1.1",
         "user-home": "^2.0.0",
-        "username": "^4.1.0"
+        "username": "^5.1.0"
     },
     "keywords": [
         "presentation",
@@ -50,8 +50,5 @@
         "markdown"
     ],
     "readmeFilename": "README.md",
-    "license": "MIT",
-    "devDependencies": {
-        "lerna": "^3.4.3"
-    }
+    "license": "MIT"
 }

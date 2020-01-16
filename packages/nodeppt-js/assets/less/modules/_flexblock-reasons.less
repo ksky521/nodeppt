@@ -1,0 +1,40 @@
+/*=================================================
+6.6 Reasons/Why/Numbers (counter-increment)
+<ul class="flexblock reasons">
+=================================================== */
+.flexblock.reasons {
+    li {
+        counter-increment: list;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+            transform: translateY(-0.2rem);
+        }
+
+        &:after {
+            bottom: -2.4rem;
+            content: '';
+            display: block;
+            height: 1px;
+            position: relative;
+        }
+
+        &:before {
+            content: counter(list) '.';
+            font-size: 6.4rem;
+            line-height: 1;
+        }
+
+        @media (min-width: 768px) {
+            padding-left: 8.8rem;
+            /* You need two digits? (1-10)*/
+            /*padding-left: 12rem; */
+
+            &:before {
+                left: 2.4rem;
+                position: absolute;
+            }
+        }
+    }
+}

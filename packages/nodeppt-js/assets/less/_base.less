@@ -1,0 +1,198 @@
+// sass-lint:disable no-vendor-prefixes
+
+/*=========================================
+1. Base --> Baseline: 8px = .8rem
+=========================================== */
+
+/* -- Disable elastic scrolling/bounce:
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
+
+.ws-ready {
+    &,
+    body {
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    &.ws-ready-zoom {
+        overflow: visible;
+
+        body {
+            overflow: auto;
+        }
+    }
+}
+
+#webslides {
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-misspelled-properties
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+li li {
+    margin-left: 1.6rem;
+}
+
+a,
+a:active,
+a:focus,
+a:visited,
+input:focus,
+textarea:focus,
+button {
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+p a:active {
+    position: relative;
+    top: 2px;
+}
+
+nav a[rel='external'] em,
+.hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+
+.shadow {
+    position: relative;
+
+    &:before,
+    &:after {
+        bottom: 1.6rem;
+        content: '';
+        max-width: 300px;
+        position: absolute;
+        top: 80%;
+        width: 50%;
+        z-index: -1;
+    }
+
+    &:after {
+        right: 2.4rem;
+        transform: rotate(3deg);
+    }
+
+    &:before {
+        left: 2.4rem;
+        transform: rotate(-3deg);
+    }
+}
+
+/*=== 1.1 WRAP/CONTAINER === */
+.wrap,
+header nav,
+footer nav {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    @media (min-width: 1024px) {
+        width: 90%;
+    }
+}
+
+.frame,
+.shadow {
+    padding: 2.4rem;
+}
+
+.radius {
+    border-radius: 0.4rem;
+}
+
+.alignright {
+    float: right;
+}
+
+.alignleft {
+    float: left;
+}
+
+.aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+img.aligncenter,
+figure.aligncenter {
+    display: block;
+    margin-bottom: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+img.alignleft,
+figure.alignleft,
+img.alignright,
+figure.alignright,
+img.aligncenter,
+figure.aligncenter {
+    margin-bottom: 3.2rem;
+    margin-top: 3.2rem;
+}
+
+img.alignright,
+svg.alignright,
+figure.alignright {
+    margin: 0.8rem 0 0.8rem 2.4rem;
+}
+
+img.alignleft,
+svg.alignleft,
+figure.alignleft {
+    margin: 0.8rem 2.4rem 0.8rem 0;
+}
+
+@sizes: 80, 70, 60, 50, 40, 30, 20;
+
+/*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
+@media (min-width: 1024px) {
+    each(@sizes, {
+        .size-@{value} {
+            width: @value * 1%;
+        }
+    });
+}
+
+pre,
+code {
+    font-family: 'Cousine', monospace;
+}
+
+pre {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    overflow: auto;
+    padding: 2.4rem;
+    text-align: left;
+    white-space: pre-wrap;
+    width: 100%;
+    word-wrap: break-word;
+
+    & + p {
+        margin-top: 3.2rem;
+    }
+
+    code {
+        padding: 0;
+    }
+}
+
+code {
+    padding: 0.4rem;
+}

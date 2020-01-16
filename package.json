@@ -1,7 +1,10 @@
 {
     "name": "nodeppt",
     "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
     "devDependencies": {
-        "lerna": "^3.10.6"
+        "lerna": "^3.20.2"
     }
 }

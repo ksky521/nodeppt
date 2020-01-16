@@ -1,0 +1,57 @@
+/*=========================================
+17. PRINT
+=========================================== */
+
+// sass-lint:disable no-important
+@media print {
+    @page {
+        margin: 0.5cm;
+        size: A4 landscape;
+    }
+
+    // Black prints faster
+    * {
+        // background: transparent !important;
+        // color: @black !important;
+        // filter: none !important;
+        // text-shadow: none !important;
+    }
+
+    html,
+    body,
+    #webslides {
+        height: auto !important;
+        overflow: auto !important;
+        width: auto !important;
+    }
+
+    #webslides {
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+    }
+
+    section,
+    .slide {
+        display: flex !important;
+        height: auto !important;
+    }
+
+    section * {
+        animation: none;
+    }
+
+    table,
+    figure {
+        page-break-inside: avoid;
+    }
+
+    #counter,
+    #navigation {
+        display: none;
+    }
+
+    .build .tobuild {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}

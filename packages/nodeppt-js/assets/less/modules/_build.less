@@ -1,0 +1,69 @@
+/* Builds */
+
+.build.fadeIn {
+    > * {
+        transition: opacity 0.5s ease-in-out 0.2s;
+    }
+    .tobuild {
+        opacity: 0;
+    }
+}
+
+.zoomIn > * {
+    animation: none;
+}
+
+.zoomIn {
+    > * {
+        opacity: 1;
+    }
+    .tobuild {
+        opacity: 0;
+    }
+    .animated {
+        opacity: 1;
+        animation-duration: 0.75s;
+        animation-fill-mode: both;
+    }
+}
+
+.zoomIn {
+    .animated {
+        animation-name: zoomIn;
+    }
+}
+
+.moveIn {
+    > * {
+        transition: all 0.5s ease-in-out 0.2s;
+    }
+    .tobuild {
+        opacity: 0;
+        transform: translate3d(60px, 0, 0);
+    }
+}
+
+.rollIn {
+    > * {
+        transition: all 0.4s ease;
+    }
+    .animated {
+        opacity: 1;
+        visibility: visible;
+        transform: rotateX(0);
+    }
+    .tobuild {
+        opacity: 0;
+        visibility: hidden;
+        transform: rotateX(90deg);
+    }
+}
+
+section .build,
+section .tobuild {
+    animation: none;
+}
+
+section .tobuild {
+    opacity: 0;
+}

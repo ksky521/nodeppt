@@ -1,0 +1,139 @@
+/*=================================================
+6.7 Gallery - <ul class="flexblock gallery">
+Block Thumbnails li+.overlay+image
+img size recommended:800x600px
+=================================================== */
+
+.flexblock.gallery {
+    li {
+        margin-bottom: 4.8rem;
+
+        &:nth-child(n + 4) {
+            flex: inherit;
+        }
+
+        figcaption {
+            padding: 1.6rem;
+            position: relative;
+
+            &:before {
+                content: '';
+                height: 0;
+                left: 20%;
+                margin-left: -0.5em;
+                position: absolute;
+                top: 0.4rem;
+                transform: rotate(135deg);
+                transform-origin: 0 0;
+                transition: 0.1s;
+                width: 0;
+            }
+        }
+
+        &:hover figcaption:before {
+            top: 0.3rem;
+        }
+    }
+
+    .aligncenter & li figcaption:before {
+        left: 55%;
+        margin-left: 0;
+    }
+
+    li,
+    &.blink li > a {
+        padding: 0;
+    }
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    h2 + p,
+    h3 + p {
+        margin-top: 0.8rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        margin-bottom: 0;
+    }
+
+    li footer {
+        margin-top: 0.8rem;
+        padding: 1.2rem 0 0;
+        position: relative;
+    }
+
+    li img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (min-width: 600px) {
+        margin-left: -2%;
+        margin-right: -2%;
+
+        li {
+            margin-left: 2%;
+            margin-right: 2%;
+            width: 46%;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .flexblock.gallery li {
+        width: 21%;
+    }
+
+    .grid.sm .flexblock.gallery li,
+    .grid.ms .flexblock.gallery li {
+        width: 29%;
+    }
+
+    .grid.sms .flexblock.gallery li {
+        width: 46%;
+    }
+}
+
+.overlay {
+    bottom: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 0.3s linear;
+    width: 100%;
+    z-index: 2;
+}
+
+li .overlay {
+    align-items: center;
+}
+
+li .overlay h2 {
+    letter-spacing: 0.2rem;
+    margin: 0;
+    padding: 0 2.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.overlay p,
+.overlay time {
+    margin-bottom: 0;
+}
+
+li:hover .overlay {
+    cursor: pointer;
+}

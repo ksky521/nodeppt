@@ -1,0 +1,122 @@
+/*============================================
+5. SLIDES (Full Screen)
+Vertically and horizontally centered
+============================================== */
+
+/* Fade transition to all slides.
+* = All HTML elements will have those styles.*/
+
+section * {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+section .background,
+section .light,
+section .dark {
+    animation-duration: 0s;
+}
+
+/*=== Section = Slide === */
+
+section,
+.slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    /*Fullscreen*/
+    /* Prototyping? min-height: 720px (Baseline: 8px = .8rem)*/
+    padding: 2.4rem;
+    /*Fixed/Visible header? padding-top: 12rem; */
+    page-break-after: always;
+    position: relative;
+    word-wrap: break-word;
+    @media (min-width: 1024px) {
+        padding-bottom: 12rem;
+        padding-top: 12rem;
+    }
+}
+
+/*slide with no padding (full card, .embed youtube video...) */
+
+.fullscreen {
+    padding: 0;
+    /* Fixed/Visible header?
+  padding:8.2rem 0 0 0;
+  */
+    .wrap {
+        @media (min-width: 1024px) {
+            width: 100%;
+        }
+    }
+}
+
+/* slide alignment - top */
+
+.slide-top {
+    justify-content: flex-start;
+}
+
+/* slide alignment - bottom */
+
+.slide-bottom {
+    justify-content: flex-end;
+}
+
+/*== 5.1. Mini container width:50%
+Aligned items [class*="content-"]=== */
+
+[class*='content-'] {
+    position: relative;
+    text-align: left;
+}
+
+.wrap[class*='bg-'],
+.wrap.frame,
+[class*='content-'][class*='bg-'],
+[class*='content-'].frame,
+[class*='align'][class*='bg-'] {
+    padding: 4.8rem;
+}
+
+form[class*='bg-'] {
+    padding: 2.4rem;
+}
+
+[class*='content-'] > [class*='content-'] p {
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+}
+
+.content-center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    [class*='content-'] {
+        width: 50%;
+        &:after,
+        &:before {
+            content: '';
+            display: table;
+        }
+        &:after {
+            clear: both;
+        }
+    }
+    .content-left {
+        float: left;
+    }
+    .content-right {
+        float: right;
+    }
+    [class*='content-'] + [class*='content-'] {
+        margin-bottom: 4.8rem;
+        padding-left: 2.4rem;
+    }
+    [class*='content-'] + [class*='size-'] {
+        clear: both;
+        margin-top: 6.4rem;
+    }
+}

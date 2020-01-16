@@ -1,0 +1,14 @@
+/* Buttons/Badges */
+[class*='button'] {
+    @media (min-width: 500px) {
+        & + & {
+            margin-left: 1.8rem;
+        }
+    }
+
+    @media (max-width: 499px) {
+        & + & {
+            margin-top: 0.8rem;
+        }
+    }
+}

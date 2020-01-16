@@ -1,0 +1,37 @@
+/*=== App Store Badges === */
+/* Change width and height: 216x64px, 162x48px, 135x40... */
+
+[class*='badge-'] {
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0.6rem;
+    display: inline-block;
+    height: 40px;
+    line-height: 4rem;
+    text-indent: -4000px;
+    width: 135px;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    @media (min-width: 1024px) {
+        height: 48px;
+        line-height: 4.8rem;
+        width: 162px;
+    }
+
+    @media (min-width: 500px) {
+        & + & {
+            margin-left: 1.8rem;
+        }
+    }
+
+    @media (max-width: 499px) {
+        & + & {
+            margin-top: 0.8rem;
+        }
+    }
+}
+
+

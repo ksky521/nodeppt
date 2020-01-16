@@ -1,0 +1,84 @@
+/*===============================================
+6.8 Plans / Pricing <ul class="flexblock plans">
+================================================= */
+
+.flexblock.plans {
+    > li {
+        border-radius: 3px;
+        margin-bottom: 4.8rem;
+        text-align: center;
+        z-index: 1;
+    }
+
+    li,
+    &.blink li > a {
+        padding: 0;
+    }
+
+    &.blink li > a div,
+    li div {
+        padding-bottom: 3.2rem;
+    }
+
+    li p,
+    li h2 {
+        padding: 0.8rem 3.2rem;
+    }
+
+    li h2 {
+        float: left;
+        font-weight: 400;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    .price {
+        clear: both;
+        display: block;
+        font-size: 4.8rem;
+        font-weight: 400;
+        line-height: 6.2rem;
+        padding: 2.4rem;
+
+        sup {
+            font-size: 1.8rem;
+            margin-right: 0.4rem;
+        }
+
+        li ul {
+            margin-bottom: 2.4rem;
+        }
+    }
+
+    li ul li {
+        display: block;
+        padding: 0.8rem 3.2rem;
+        text-align: left;
+        width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+        margin-left: -2%;
+        margin-right: -2%;
+
+        > li {
+            margin-left: 2%;
+            margin-right: 2%;
+            width: 29%;
+        }
+
+        > li:hover,
+        > li:nth-child(2) {
+            position: relative;
+            transform: scale(1.08);
+            z-index: 2;
+        }
+
+        &:hover li:nth-child(2):not(:hover) {
+            position: relative;
+            transform: scale(1);
+            z-index: 1;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+/*=== Clearing === */
+
+header,
+main,
+section,
+aside,
+footer,
+.clear,
+.wrap {
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}

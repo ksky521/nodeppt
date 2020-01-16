@@ -1,0 +1,20 @@
+// 翻页效果
+
+.slide.pagedown[data-transition='slide'].past {
+    animation: slideOutScaleLeft 1s forwards cubic-bezier(1, 0, 0, 1);
+}
+
+.slide.pagedown[data-transition='slide'].current {
+    opacity: 1;
+    animation: slideInFromRight 1s forwards cubic-bezier(1, 0, 0, 1);
+}
+
+.slide.pageup[data-transition='slide'].current {
+    opacity: 1;
+    animation: slideInFromLeft 1s forwards cubic-bezier(1, 0, 0, 1);
+}
+
+.slide.pageup[data-transition='slide'].next {
+    opacity: 1;
+    animation: slideOutScaleRight 1s forwards cubic-bezier(1, 0, 0, 1);
+}

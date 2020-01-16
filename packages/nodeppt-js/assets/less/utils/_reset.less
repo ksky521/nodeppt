@@ -1,0 +1,297 @@
+// sass-lint:disable no-vendor-prefixes
+/*
+=========================================
+0. CSS Reset & Normalize
+=========================================
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+blockquote,
+q {
+    quotes: '' '';
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+embed,
+iframe,
+object {
+    max-width: 100%;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+[hidden],
+template {
+    display: none;
+}
+
+ul {
+    list-style: square;
+    text-indent: inherit;
+}
+
+ol {
+    list-style: decimal;
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+a {
+    background-color: transparent;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+sup,
+sub {
+    font-size: 0.75em;
+    height: 0;
+    line-height: 2.2em;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    bottom: 1ex;
+}
+
+sub {
+    top: 0.5ex;
+}
+
+small {
+    font-size: 0.75em;
+    line-height: 1.72;
+}
+
+big {
+    font-size: 1.25em;
+}
+
+hr {
+    border: 0;
+    clear: both;
+    display: block;
+    height: 1px;
+    margin: 3.2rem auto;
+    text-align: center;
+    width: 100%;
+}
+
+h2 + hr,
+h3 + hr {
+    margin-bottom: 4.8rem;
+}
+
+p + hr {
+    margin-bottom: 4rem;
+}
+
+dfn,
+cite,
+em,
+i {
+    font-style: italic;
+}
+
+abbr,
+acronym {
+    cursor: help;
+}
+
+mark,
+ins {
+    padding: 0 4px;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+::-moz-selection {
+    text-shadow: none;
+}
+
+::selection {
+    text-shadow: none;
+}
+
+img {
+    border: 0;
+    height: auto;
+    max-width: 100%;
+}
+
+img:hover {
+    opacity: 0.9;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+figure {
+    line-height: 0;
+    margin: 0;
+    position: relative;
+}
+
+optgroup {
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 0;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin: 0;
+}

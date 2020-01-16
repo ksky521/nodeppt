@@ -1,0 +1,72 @@
+/*=========================================
+4. Navigation
+=========================================== */
+
+/*=== 4.1. Navbars === */
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    /*====align left====*/
+    justify-content: flex-start;
+    /* ==== align center ====*/
+    /*justify-content: center; */
+    /*====align right====*/
+    /* justify-content: flex-end; */
+    /*====separated columns li a====*/
+    /* justify-content: space-between; */
+    /*====separated columns centered li a====*/
+    /*justify-content: space-around;*/
+
+    li {
+        float: left;
+        list-style: none;
+        position: relative;
+    }
+}
+
+nav ul li:first-child,
+nav[role='navigation'] ul li {
+    margin-left: 0;
+}
+
+nav[role='navigation'] li a {
+    display: flex;
+    justify-content: center;
+    line-height: 4.8rem;
+    max-width: 100%;
+    padding: 0 1.6rem;
+    position: relative;
+    text-decoration: none;
+
+    svg {
+        margin: 1.5rem 0.4rem 1.5rem 0;
+    }
+}
+
+header nav ul {
+    justify-content: flex-end;
+    margin: 0;
+}
+
+nav.aligncenter ul,
+.aligncenter nav ul {
+    /* ==== align center ====*/
+    justify-content: center;
+}
+
+nav.navbar ul li {
+    /*====full float li a ====*/
+    flex: 1 1 auto;
+}
+
+@media (max-width: 568px) {
+    nav.navbar ul {
+        flex-flow: column wrap;
+        padding: 0;
+    }
+
+    nav.navbar li a {
+        justify-content: flex-start;
+    }
+}

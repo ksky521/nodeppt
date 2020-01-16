@@ -1,0 +1,23 @@
+/*=========================================
+12. Avatars - uifaces.com
+=========================================== */
+
+cite img,
+img[class*='avatar-'] {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+img[class*='avatar-'] {
+    border-radius: 50%;
+}
+
+@avatar-sizes: 40, 48, 56, 64, 72, 80;
+each(@avatar-sizes, {
+    img.avatar-@{value} {
+        @width: @{value}px;
+        height: @width;
+        width: @width;
+    }
+});

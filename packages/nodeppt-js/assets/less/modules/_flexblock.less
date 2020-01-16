@@ -1,0 +1,103 @@
+/*===============================================================
+6. Magic blocks with flexbox (Auto-fill & Equal Height)
+Blocks Links li>a = .flexblock.blink (.blink required)
+================================================================= */
+
+.flexblock {
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+
+    &:after {
+        clear: both;
+    }
+
+    &:before {
+        content: '';
+        display: table;
+    }
+
+    li,
+    &.blink li > a {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 2.4rem;
+        position: relative;
+    }
+
+    li {
+        flex: auto;
+        text-align: left;
+        transition: 0.3s;
+        width: 100%;
+
+        &:hover {
+            transform: translateY(-0.2rem);
+        }
+
+        @media (min-width: 600px) {
+            width: 50%;
+        }
+
+        @media (min-width: 1024px) {
+            width: 25%;
+        }
+    }
+
+    &.aligncenter li {
+        text-align: center;
+    }
+
+    &.vertical-align li {
+        justify-content: center;
+    }
+
+    &.blink li {
+        padding: 0;
+    }
+
+    li h2 svg,
+    li h2 i,
+    li h3 i,
+    li h3 svg {
+        margin-top: 0;
+    }
+}
+
+h1 + .flexblock,
+h2 + .flexblock,
+h3 + .flexblock,
+div + ul,
+div + ol {
+    margin-top: 3.2rem;
+}
+
+.flexblock li h2,
+.flexblock li h3,
+footer .column h2,
+footer .column h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 3.2rem;
+    margin-bottom: 0;
+}
+
+.flexblock li li,
+.flexblock.blink li li {
+    padding: 0;
+    width: 100%;
+}
+
+[class*='content-'] .flexblock li p {
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+}
+
+.content-right .flexblock.features li,
+.content-left .flexblock.features li {
+    width: 46%;
+}

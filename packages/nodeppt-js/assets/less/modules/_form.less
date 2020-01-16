@@ -1,0 +1,156 @@
+/*=========================================
+14. Forms
+=========================================== */
+
+form {
+    text-align: left;
+
+    & + p,
+    input + p,
+    textarea + p {
+        margin-top: 0.8rem;
+    }
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='url'],
+input[type='search'],
+input[type='password'] {
+    appearance: none;
+    border-radius: 0;
+}
+
+input,
+button,
+select {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 400;
+    height: 4.8rem;
+    margin: 0;
+    padding: 0.7rem;
+    position: relative;
+    width: 100%;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+    height: auto;
+    padding: 4px;
+    width: auto;
+}
+
+button[type='submit'],
+textarea {
+    width: 100%;
+}
+
+textarea {
+    padding: 0.7rem;
+}
+
+button {
+    cursor: pointer;
+    text-align: center;
+    width: auto;
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 4.8rem;
+    min-width: 16rem;
+    padding: 0 1.6rem;
+    text-align: center;
+
+    svg {
+        font-size: 2.4rem;
+    }
+}
+
+.button.radius,
+input.radius {
+    border-radius: 2.4rem;
+}
+
+button,
+input[type='submit'] {
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.plans .button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.try {
+    display: block;
+    font-size: 1.6rem;
+    margin-top: 1.6rem;
+}
+
+fieldset {
+    padding: 2.4rem;
+}
+
+legend {
+    border: 0;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    padding: 1.6rem 2.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-width: 1px;
+}
+
+a.button:hover,
+button[type='submit']:hover,
+input[type='submit']:hover {
+    transform: scale(1.01);
+}
+
+:disabled,
+button:disabled:hover {
+    cursor: not-allowed;
+}
+
+.user {
+    input {
+        margin-bottom: 0;
+
+        &[type='email'],
+        &[type='search'],
+        &[type='text'] {
+            width: 100%;
+
+            @media (min-width: 500px) {
+                float: left;
+                width: 70%;
+            }
+        }
+    }
+
+    button,
+    input[type='submit'] {
+        left: 0;
+        width: 100%;
+
+        @media (min-width: 500px) {
+            cursor: pointer;
+            width: 30%;
+        }
+    }
+}

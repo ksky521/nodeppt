@@ -1,0 +1,155 @@
+/*==============================================
+18. Slides Index: Thumbnails navigation gallery
+================================================ */
+
+#webslides-zoomed {
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+
+    &.disabled {
+        left: -100000px;
+        position: absolute;
+    }
+
+    .slide {
+        height: 400%;
+        width: 400%;
+
+        @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+            height: 200%;
+            width: 200%;
+        }
+
+        @media (max-aspect-ratio: 2 / 3) {
+            height: 200%;
+            width: 200%;
+        }
+    }
+
+    > .wrap {
+        @media (min-width: 1024px) {
+            padding-bottom: 12rem;
+            padding-top: 12rem;
+        }
+    }
+
+    > .wrap > .grid > .column {
+        align-self: auto;
+        flex: 0 1 auto;
+        order: 0;
+        position: relative;
+        width: 25%;
+
+        @media screen and (max-width: 567px) {
+            width: 100%;
+        }
+
+        @media screen and (min-width: 568px) and (max-width: 1024px) {
+            width: 50%;
+        }
+
+        @media screen and (max-width: 567px) and (orientation: portrait) {
+            width: 100%;
+        }
+
+        > .wrap-zoom {
+            border-radius: 0.3rem;
+            display: inline-block;
+            height: 25vh;
+            overflow: hidden;
+            position: relative;
+            transition: 0.3s;
+
+            @media screen and (max-width: 567px) {
+                height: 50vh;
+            }
+
+            @media screen and (min-width: 568px) and (max-width: 1023px) {
+                height: 33vh;
+            }
+
+            @media screen and (orientation: portrait) {
+                height: 50vw;
+            }
+
+            &:hover {
+                transform: scale(1.02);
+                z-index: 2;
+            }
+
+            &.current {
+                transform: scale(1.08);
+            }
+        }
+
+        > .wrap-zoom > .zoom-layer {
+            background: transparent;
+            cursor: pointer;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+        }
+    }
+
+    .column > .wrap-zoom > .slide {
+        clip: rect(0 auto auto 0);
+        display: flex !important; //  sass-lint:disable-line no-important
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: scale(0.25) translate(-150%, -150vh);
+
+        @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+            transform: scale(0.5) translate(-50%, -50%);
+        }
+
+        @media (max-aspect-ratio: 2 / 3) {
+            transform: scale(0.5) translate(-50%, -50%);
+        }
+    }
+
+    & .column {
+        opacity: 0;
+        transform: scale(1.2);
+        transition: opacity 0.4s, transform 0.4s;
+        transition-delay: 0.2s;
+    }
+
+    &.in {
+        .column {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+.text-slide-number {
+    display: inline-block;
+    margin: 0.8rem auto;
+    text-align: center;
+}
+
+#webslides {
+    transition: filter 0.3s;
+
+    &.disabled,
+    &.zooming {
+        position: fixed;
+        width: 100%;
+        z-index: 0;
+    }
+
+    &.disabled {
+        /*
+    filter: blur(10px);
+    transform: scale(1.1);
+    */
+        /* Blur makes scroll no accesible */
+        width: calc(~'100% - 10px');
+    }
+}

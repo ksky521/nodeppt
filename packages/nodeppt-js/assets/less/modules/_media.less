@@ -1,0 +1,64 @@
+/*=== 1.3 Responsive Media (videos, iframe...) === */
+
+.embed {
+    height: 0;
+    overflow: hidden;
+    /*aspect ratio:16:9*/
+    padding-bottom: 56.6%;
+    /*aspect ratio: 4:3*/
+    /*padding-bottom: 75%;*/
+    position: relative;
+
+    iframe,
+    object,
+    embed,
+    .echarts,
+    video {
+        height: 100%;
+        left: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    /* -- Responsive background video
+  https://fvsch.com/code/video-background/ -- */
+
+    .fullscreen > & {
+        bottom: 0;
+        height: auto;
+        left: 0;
+        padding-bottom: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+
+        /* 1. No object-fit support: */
+        & > iframe,
+        & > object,
+        & > .echarts,
+        & > .lang-mermaid,
+        & > embed,
+        & > video {
+            @media (min-aspect-ratio: 16 / 9) {
+                height: 300%;
+                top: -100%;
+            }
+
+            @media (max-aspect-ratio: 16 / 9) {
+                left: -100%;
+                width: 300%;
+            }
+
+            /* 2. If supporting object-fit, overriding (1): */
+            @supports (object-fit: cover) {
+                height: 100%;
+                left: 0;
+                object-fit: cover;
+                top: 0;
+                width: 100%;
+            }
+        }
+    }
+}

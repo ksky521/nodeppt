@@ -1,0 +1,38 @@
+/*==================================================
+6.3 flexblock.steps <ul class="flexblock steps">
+About, Philosophy...
+=================================================== */
+
+.steps li {
+    width: 100%;
+
+    img,
+    span {
+        display: block;
+        margin: 0 auto 0.8rem;
+    }
+
+    span {
+        font-size: 6.4rem;
+    }
+
+    @media (min-width: 768px) {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .steps li {
+        width: 25%;
+    }
+
+    .process {
+        border-left-style: solid;
+        border-left-width: 15px;
+        height: 0;
+        left: 0;
+        position: absolute;
+        top: 60px;
+        width: 0;
+    }
+}

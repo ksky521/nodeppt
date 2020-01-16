@@ -18,7 +18,7 @@ module.exports = () => ({
     // chainWebpack: [],
 
     // whether filename will contain hash part
-    filenameHashing: true,
+    filenameHashing: false,
 
     // boolean, use full build?
     runtimeCompiler: false,

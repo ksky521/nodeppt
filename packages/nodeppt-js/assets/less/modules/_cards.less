@@ -1,0 +1,140 @@
+/*===========================================
+10. Cards
+============================================= */
+
+[class*='card-'] {
+    &,
+    & > a {
+        clear: both;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+    }
+
+    .fullscreen &,
+    .fullscreen & > a {
+        min-height: 100vh;
+    }
+
+    figure img,
+    figure iframe {
+        display: block;
+        margin: 0 auto;
+    }
+
+    figure figcaption {
+        bottom: 0;
+        font-size: 1.4rem;
+        left: 0;
+        line-height: 2.4rem;
+        padding: 0.8rem 2.4rem;
+        position: absolute;
+        z-index: 2;
+
+        svg {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    [class*='card'][class*='bg-'] figure,
+    .fullscreen [class*='card'] figure {
+        max-height: 100%;
+        min-width: 380px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    [class*='card-'][class*='bg-'] figure img,
+    [class*='card-'][class*='bg-'] figure iframe,
+    .fullscreen [class*='card-'] figure img,
+    .fullscreen [class*='card-'] figure iframe {
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+.flex-content,
+[class*='card'] blockquote {
+    padding: 2.4rem;
+    position: relative;
+}
+
+[class*='card-'] .flex-content,
+[class*='card-'] blockquote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex-content p {
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .card-50 figure,
+    .card-50 blockquote,
+    .card-50 .flex-content {
+        width: 50%;
+    }
+
+    .card-30 figure,
+    .card-70 .flex-content,
+    .card-70 blockquote {
+        width: 30%;
+    }
+
+    .card-40 figure,
+    .card-60 .flex-content,
+    .card-60 blockquote {
+        width: 40%;
+    }
+
+    .card-60 figure,
+    .card-40 .flex-content,
+    .card-40 blockquote {
+        width: 60%;
+    }
+
+    .card-70 figure,
+    .card-30 .flex-content,
+    .card-30 blockquote {
+        width: 70%;
+    }
+
+    [class*='card']:nth-child(odd) figure {
+        order: 0;
+    }
+
+    [class*='card']:nth-child(even) figure {
+        order: 1;
+    }
+
+    .flex-content,
+    [class*='card'] blockquote {
+        padding: 4.8rem;
+    }
+
+    .fullscreen [class*='card'] .flex-content,
+    .fullscreen [class*='card'] blockquote {
+        padding: 6.4rem;
+    }
+}
+
+@media (max-width: 767px) {
+    [class*='card-'],
+    [class*='card-'] > a {
+        flex-flow: column;
+    }
+
+    .card figure,
+    .card header {
+        width: 100%;
+    }
+}

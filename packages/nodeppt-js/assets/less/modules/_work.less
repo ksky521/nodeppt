@@ -1,0 +1,107 @@
+/*=========================================
+8. Work/Resumé/CV <ul class="work">
+=========================================== */
+.work {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    h1 + &,
+    h2 + &,
+    h3 + &,
+    p + & {
+        margin-top: 4.8rem;
+    }
+
+    li {
+        flex: 1;
+        list-style: none;
+        margin: 0;
+        position: relative;
+    }
+
+    p {
+        margin-bottom: 0;
+        transition: 0.3s;
+    }
+
+    li a {
+        display: block;
+        float: left;
+        height: 100%;
+        padding: 2.4rem 0;
+        width: 100%;
+    }
+
+    li p {
+        padding-left: 1.2rem;
+    }
+
+    li.work-label p {
+        padding-left: 0;
+    }
+
+    li a:hover p:first-child {
+        padding-left: 1.6rem;
+    }
+
+    li p:last-child {
+        position: absolute;
+        right: 1.2rem;
+        top: 2.4rem;
+    }
+
+    li.work-label p:last-child {
+        right: 0;
+        top: 0;
+    }
+
+    &-label {
+        float: left;
+        font-weight: 600;
+        padding: 0 0 2.4rem;
+        width: 100%;
+    }
+
+    &-title {
+        display: block;
+        padding-right: 1.2rem;
+        width: 75%;
+    }
+}
+
+@media (min-width: 768px) {
+    .work-label p,
+    .work li p {
+        float: left;
+        margin-right: 2%;
+        width: 25%;
+    }
+
+    .work li.work-label p:last-child,
+    .work li p:last-child {
+        float: right;
+        margin-right: 0;
+        padding-right: 1.2rem;
+        position: relative;
+        right: auto;
+        text-align: right;
+        top: auto;
+    }
+
+    .work li p.work-date {
+        width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .work-client,
+    .work-label .work-services {
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+    }
+}

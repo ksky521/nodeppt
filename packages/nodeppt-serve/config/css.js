@@ -2,7 +2,7 @@
  * @file css webpack
  */
 
-const {findExisting} = require('nodeppt-shared-utils');
+// const {findExisting} = require('nodeppt-shared-utils');
 const getAssetPath = require('../lib/utils').getAssetPath;
 module.exports = (api, options) => {
     api.chainWebpack(webpackConfig => {
@@ -12,7 +12,10 @@ module.exports = (api, options) => {
 
         const shouldExtract = extract !== false;
 
-        const filename = getAssetPath(options, `css/[name]${options.filenameHashing ? '.[hash:8]' : ''}.css`);
+        const filename = getAssetPath(
+            options,
+            `css/[name]${options.filenameHashing || isProd ? '.[contenthash:8]' : ''}.css`
+        );
         const extractOptions = Object.assign(
             {
                 filename,
@@ -74,7 +77,7 @@ module.exports = (api, options) => {
             }
         }
         createCSSRule('css', /\.css$/);
-        createCSSRule('sass', /\.scss$/, 'sass-loader', loaderOptions.sass);
+        createCSSRule('less', /\.less$/, 'less-loader', loaderOptions.less);
 
         // inject CSS extraction plugin
         if (shouldExtract) {

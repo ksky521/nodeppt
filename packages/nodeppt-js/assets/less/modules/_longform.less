@@ -1,0 +1,67 @@
+/*=========================================
+15. Longform
+=========================================== */
+/* -- Posts = .wrap.longform -- */
+
+.longform {
+    width: 72rem;
+    /* Why 72rem=720px?
+  90-95 characters per line = better reading speed */
+
+    & .alignleft,
+    & .alignright {
+        max-width: 40%;
+    }
+
+    img.aligncenter,
+    figure.aligncenter {
+        margin-bottom: 3.2rem;
+        margin-top: 3.2rem;
+    }
+
+    ul,
+    ol {
+        margin-bottom: 3.2rem;
+    }
+
+    ul ol,
+    ol ul,
+    ul ul,
+    ol ol {
+        margin-bottom: 0;
+    }
+
+    figcaption p,
+    [class*='text-pull-'] p {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+    }
+
+    /* Mobile: video full width */
+    .text-pull.embed {
+        margin-left: -2.4rem;
+        margin-right: -2.4rem;
+        padding-bottom: 60.6%;
+    }
+
+    @media (min-width: 1280px) {
+        [class*='text-pull-'] {
+            max-width: 32%;
+        }
+
+        .text-pull-right {
+            margin-right: -256px;
+        }
+
+        .text-pull-left {
+            margin-left: -256px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .text-quote {
+            margin-left: -4.8rem;
+            margin-right: -4.8rem;
+        }
+    }
+}

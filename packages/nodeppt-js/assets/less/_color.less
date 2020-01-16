@@ -1,0 +1,914 @@
+// sass-lint:disable no-color-literals
+// sass-lint:disable no-vendor-prefixes
+/*=========================================
+19. Colors
+=========================================== */
+
+/* -- Disable elastic scrolling/bounce:
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
+
+body {
+    background-color: @body-bg;
+    color: @body-color;
+}
+
+:focus {
+    box-shadow: @focus-box-shadow;
+}
+
+svg {
+    fill: currentColor;
+}
+
+[class*='bg-'] a,
+[class*='bg-gradient-'] a {
+    color: @spindle;
+}
+
+.bg-brown a {
+    color: @link-color-secondary;
+}
+
+a,
+.bg-white a,
+.bg-light a,
+.bg-gradient-white a {
+    color: @link-color;
+}
+
+a:hover {
+    color: @link-hover;
+}
+
+.flexblock li > a,
+[class*='bg-'] li > a,
+[class*='bg-gradient-'] li > a,
+article header a {
+    color: inherit;
+}
+
+hr {
+    background: @hr-bg;
+}
+
+hr:after {
+    background-color: fade(@white, (0.8 * 100));
+    color: @body-color;
+}
+
+abbr,
+acronym {
+    border-bottom: 1px dotted @body-bg;
+}
+
+mark,
+ins {
+    background-color: fade(@pattens-blue, (0.8 * 100));
+    color: inherit;
+}
+
+::-moz-selection {
+    background-color: fade(@pattens-blue, (0.8 * 100));
+}
+
+::-webkit-selection {
+    background-color: fade(@pattens-blue, (0.8 * 100));
+}
+
+::selection {
+    background-color: fade(@pattens-blue, (0.8 * 100));
+}
+
+pre {
+    background: @white;
+    border: 1px solid fade(@stratos, (0.1 * 100));
+    box-shadow: 0 8px 16px fade(@stratos, (0.04 * 100)), 0 4px 16px fade(@black, (0.08 * 100));
+    &:hover {
+        box-shadow: 0 8px 16px rgba(0, 40, 160, 0.08), 0 8px 24px fade(@black, (0.08 * 100));
+    }
+}
+pre.no-style {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: none;
+    }
+}
+
+code,
+[class*='bg-'] pre {
+    background-color: fade(@white, (0.09 * 100));
+}
+
+.bg-white code {
+    background: fade(@stratos, (0.03 * 100));
+}
+
+/*================================================
+Slides - Backgrounds <section class="bg-primary">
+================================================== */
+
+/*3 Corp Colors*/
+
+@bg-color-names: primary, secondary, light, black, black-blue, blue, brown, gray, green, purple, red, white, facebook;
+@bg-colors: @royal-blue, @havelock-blue, @catskill-white, @cod-gray, @big-stone, @rhino, @gray-brown, @mischka,
+    @pine-green, @purple-heart, @cardinal, @white, @facebook;
+
+.bg-colors-mixin(@names; @colors; @index) when (iscolor(extract(@colors, @index))) and (@index > 0) {
+    .bg-colors-mixin(@names; @colors; (@index - 1));
+
+    @name: extract(@names, @index);
+    @color: extract(@colors, @index);
+
+    .bg-@{name} {
+        background-color: @color;
+    }
+}
+// prettier-ignore
+.bg-colors-mixin(@bg-color-names; @bg-colors;length(@bg-colors));
+
+[class*='bg-'] .bg-white {
+    color: @body-color;
+    text-shadow: none;
+}
+
+/* BG Apple Keynote*/
+
+.bg-apple {
+    background: linear-gradient(to bottom, @black 0%, #1a2028 50%, #293845 100%);
+}
+
+/*Font Color*/
+
+.bg-trans-dark,
+.bg-trans-gradient,
+.bg-primary,
+.bg-secondary,
+.bg-blue,
+.bg-green,
+.bg-purple,
+.bg-red,
+.bg-facebook,
+.bg-apple,
+[class*='bg-black'],
+[class*='bg-gradient-'] {
+    color: @white;
+    text-shadow: 0 1px 0 #013;
+}
+
+.bg-light p {
+    color: #456;
+}
+
+.bg-brown p {
+    color: #666;
+}
+
+/*Transparent/Opacity*/
+
+.bg-trans-dark {
+    background: fade(@black, (0.8 * 100));
+}
+
+.bg-trans-light {
+    background: fade(@black, (0.2 * 100));
+}
+
+/*Covers/Longforms...*/
+
+.bg-trans-gradient {
+    background: linear-gradient(to top, fade(@black, (0.8 * 100)) 0%, fade(@black, (0 * 100)) 100%);
+}
+
+/*Horizontal Gradient*/
+
+.bg-gradient-h {
+    background: linear-gradient(134deg, #32b 0, #62b 100%);
+}
+
+/*Vertical Gradient*/
+
+.bg-gradient-v {
+    background: linear-gradient(to top, #62b 0%, #32b 100%);
+}
+
+/*Radial Gradient*/
+
+.bg-gradient-r {
+    background: radial-gradient(ellipse at center, #62b 0%, #32b 100%);
+}
+
+/*White Gradient (vertical)*/
+
+.bg-gradient-white {
+    background: linear-gradient(180deg, #f2f4f6 0, @white 100%);
+    color: @body-color;
+    text-shadow: none;
+}
+
+/*Gray Gradient (horizontal)*/
+
+.bg-gradient-gray {
+    background: linear-gradient(90deg, #f7f9fb 0, #dee2e6 100%);
+    color: @body-color;
+    text-shadow: none;
+}
+
+/*Border/Frame*/
+
+.frame {
+    border: 0.8rem solid @white;
+}
+
+[class*='background'].frame {
+    border-width: 0.2rem;
+}
+
+/*Layer/Box Shadow*/
+
+.shadow,
+.pre {
+    position: relative;
+}
+
+.shadow:before,
+.shadow:after {
+    box-shadow: 0 16px 24px fade(@stratos, (0.3 * 100));
+}
+
+/*============================
+TYPOGRAPHY
+============================== */
+
+/* -- Horizontal separator  -- */
+
+.text-separator:before {
+    background-color: rgba(170, 0, 0, 0.8);
+}
+
+/* -- Pull Quote (Right/Left)  -- */
+
+[class*='text-pull-'] {
+    border-top: 4px solid fade(@black, (0.5 * 100));
+}
+
+img[class*='text-pull-'],
+figure[class*='text-pull-'] {
+    border-top: 0;
+}
+
+/* -- Context  -- */
+
+[class*='bg-'] .text-context:before {
+    background-color: @white;
+}
+
+.text-context:before,
+.bg-white .text-context:before {
+    background-color: fade(@stratos, (0.2 * 100));
+}
+
+/* -- Text shadow  -- */
+
+.text-shadow {
+    text-shadow: 0 0 40px fade(@black, (0.5 * 100));
+}
+
+/* -- time, ampersands, prepositions (for, of...), symbols...
+[class*='card-'] time,
+h1 span {
+  color: #abd;
+}
+
+/* -- <pre> comment  -- */
+
+.code-comment {
+    color: rgba(70, 170, 130, 0.9);
+    text-shadow: none;
+}
+
+/*=========================================
+Header/Nav
+=========================================== */
+
+header[role='banner'] {
+    background-color: @white;
+}
+
+.logo a {
+    color: inherit;
+}
+
+nav[role='navigation'] li {
+    &.active a {
+        background-color: #555;
+        color: @white;
+    }
+    a {
+        background-color: rgba(50, 50, 50, 0.9);
+        color: @white;
+        &:hover {
+            background-color: rgba(50, 50, 50, 0.7);
+        }
+    }
+}
+
+@socials: twitter, facebook, linkedin, dribbble, github, email;
+@socials-colors: #1da1f3, @facebook, #1683bb, #ea4c89, #60b044, #dd4b39;
+
+.socials-colors-mixin(@names; @colors; @index) when (iscolor(extract(@colors, @index))) and (@index > 0) {
+    .socials-colors-mixin(@names; @colors; (@index - 1));
+
+    @name: extract(@names, @index);
+    @color: extract(@colors, @index);
+
+    nav li.@{name} a:hover {
+        background-color: @color;
+    }
+}
+// prettier-ignore
+.socials-colors-mixin(@socials; @socials-colors;length(@socials-colors));
+
+/*===================================================
+.flexblock li hover/active
+===================================================== */
+
+.flexblock li.active a,
+.metrics li:hover,
+.specs li:hover,
+.reasons li:hover {
+    background-color: fade(@stratos, (0.03 * 100));
+}
+
+/*=========================================
+Features & Clients List
+=========================================== */
+
+.features li,
+.clients li {
+    background-color: fade(@white, (0.9 * 100));
+}
+
+[class*='bg-'] .features li,
+[class*='bg-'] .clients li {
+    background-color: fade(@white, (0.1 * 100));
+}
+
+.features li:hover,
+.clients li:hover {
+    box-shadow: 0 8px 16px fade(@stratos, (0.02 * 100)), 0 4px 16px fade(@black, (0.08 * 100));
+}
+
+/*============================
+.flexblock with border
+============================== */
+
+.border {
+    border-bottom: 1px solid fade(@stratos, (0.1 * 100));
+    border-right: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+.border li {
+    border-left: 1px solid fade(@stratos, (0.1 * 100));
+    border-top: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+.flexblock.border li li {
+    border: 0;
+}
+
+/*===========================================
+flexblock.steps
+============================================= */
+
+.steps li:nth-child(1) {
+    background-color: #e8eef7;
+}
+
+.steps li:nth-child(2) {
+    background-color: #dde5f3;
+}
+
+.steps li:nth-child(3) {
+    background-color: #cdd8ec;
+}
+
+.steps li:nth-child(4) {
+    background-color: #bbcdec;
+}
+
+.process {
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+}
+
+.steps li:hover,
+.steps.blink li:hover > a {
+    background-color: #b8cef7;
+}
+
+@media (min-width: 1024px) {
+    .process.step-2 {
+        border-left-color: #e8eef7;
+    }
+    .process.step-3 {
+        border-left-color: #dde5f3;
+    }
+    .process.step-4 {
+        border-left-color: #cdd8ec;
+    }
+    .steps li:hover + li [class*='step-'] {
+        border-left-color: #b8cef7;
+    }
+}
+
+/*=========================================================
+Items: You can use for settings, drag&drop, close/delete...
+=========================================================== */
+
+.specs li:after {
+    background: linear-gradient(
+        to right,
+        fade(@stratos, (0 * 100)) 0%,
+        fade(@stratos, (0.2 * 100)) 50%,
+        fade(@stratos, (0 * 100)) 100%
+    );
+}
+
+.specs li:last-child:after {
+    background: none;
+}
+
+/*=========================================================
+Why/Steps/Motivation/Reasons -  Decimal/Numbers
+=========================================================== */
+
+.reasons li:after {
+    background: linear-gradient(
+        to right,
+        fade(@stratos, (0 * 100)) 0%,
+        fade(@stratos, (0.2 * 100)) 50%,
+        fade(@stratos, (0 * 100)) 100%
+    );
+}
+
+.reasons li:last-child:after {
+    background: none;
+}
+
+/*=========================================
+Overlays
+=========================================== */
+
+.overlay {
+    background-color: fade(@black, (0.2 * 100));
+}
+
+li:hover .overlay {
+    background-color: fade(@black, (0.1 * 100));
+}
+
+.overlay,
+.overlay a {
+    color: @white;
+    text-shadow: 0 1px 0 #111;
+}
+
+/*=========================================
+Gallery li+.overlay+image
+=========================================== */
+
+.gallery li {
+    background-color: fade(@stratos, (0.06 * 100));
+    box-shadow: 0 1px 1px fade(@black, (0.2 * 100)), 0 4px 8px fade(@black, (0.03 * 100));
+}
+
+.gallery li figcaption {
+    background-color: @white;
+}
+
+.flexblock.gallery li:hover {
+    box-shadow: 0 1px 1px fade(@black, (0.2 * 100)), 0 4px 8px fade(@black, (0.08 * 100));
+}
+
+.gallery li footer {
+    border-top: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+.gallery li a {
+    color: @body-color;
+    text-shadow: none;
+}
+
+.flesblock.gallery li a footer {
+    color: #aaa;
+}
+
+/*Arrow */
+
+.gallery li figcaption:before {
+    border: 0.8rem solid @black;
+    border-color: transparent transparent @white @white;
+}
+
+/*=========================================
+Plans / Pricing
+=========================================== */
+
+.plans > li div,
+.flexblock.plans li:hover div {
+    background-color: @white;
+}
+
+.plans > li:hover,
+.plans > li:nth-child(2) {
+    box-shadow: 0 1px 1px fade(@black, (0.1 * 100)), 0 8px 16px fade(@black, (0.1 * 100));
+}
+
+.plans:hover li:nth-child(2):not(:hover) {
+    box-shadow: none;
+}
+
+.plans li h2 {
+    background-color: fade(@stratos, (0.5 * 100));
+    color: @white;
+}
+
+.plans ul li {
+    border-bottom: 1px solid fade(@stratos, (0.1 * 100));
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.plans > li > a {
+    color: @body-color;
+    text-shadow: none;
+}
+
+/*============================
+Activity/CV/Timeline/News
+============================== */
+
+.activity li {
+    border-top: 0.1rem solid fade(@stratos, (0.1 * 100));
+}
+
+.activity li:hover {
+    background-color: fade(@stratos, (0.02 * 100));
+}
+
+/*=========================================
+Resume/Work/CV/Portfolio
+=========================================== */
+
+.work-label,
+.work li a {
+    border-bottom: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+.work li:nth-child(odd) > a {
+    background-color: fade(@stratos, (0.03 * 100));
+}
+
+.work li a:hover {
+    background-color: fade(@stratos, (0.04 * 100));
+}
+
+/*===========================================
+Clients / Services / Logos...
+============================================= */
+
+.clients.border figcaption {
+    border-top: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+/*====================
+LOGOS
+====================== */
+
+/* --- Images (black logo/image) --- */
+
+img.blacklogo {
+    background: none;
+    filter: grayscale(100%) brightness(10%) contrast(100%);
+}
+
+/* --- Images (gray logo/image) --- */
+
+img.graylogo {
+    filter: grayscale(100%) brightness(10%) contrast(10%);
+}
+
+/* --- Images (white Logo/Image) --- */
+
+img.whitelogo {
+    filter: brightness(0) invert(1);
+}
+
+/* --- Logo/Images Hover --- */
+
+li:hover img.blacklogo,
+li:hover img.graylogo,
+img.blacklogo:hover,
+img.graylogo:hover {
+    background: none;
+    filter: grayscale(0%);
+    transition: all 0.6s ease;
+}
+
+/*=========================================================
+Cards
+=========================================================== */
+
+[class*='card-'] > a {
+    color: inherit;
+}
+
+/* ---  card ul specs --- */
+
+.description > li {
+    border-bottom: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+.description > li:last-child {
+    border-bottom: 0;
+}
+
+/*== Figure Background === */
+
+[class*='card-'][class*='bg-'] figure {
+    background-color: fade(@stratos, (0.06 * 100));
+}
+
+/*== Ficaption Cards === */
+
+[class*='card'] figcaption,
+[class*='card'] figcaption a {
+    background: linear-gradient(to bottom, fade(@black, (0 * 100)) 0%, fade(@black, (0.2 * 100)) 100%);
+    color: @white;
+}
+
+/*===CTA (Call to Action - Numbers, Price, Promo...)  ===== */
+
+@media (min-width: 768px) {
+    .cta .benefit {
+        border-image: linear-gradient(90deg, transparent, fade(@black, (0.4 * 100)) 50%, transparent) 1 100%;
+        border-left-width: 1px;
+        border-style: solid;
+    }
+}
+
+/*=========================================
+Tables
+=========================================== */
+
+table.table-dark {
+    td,
+    th,
+    thead {
+        border: 1px solid fade(@black, (0.5 * 100));
+    }
+    thead {
+        background-color: fade(@black, (0.3 * 100));
+    }
+    tr:nth-child(even) > td {
+        background: fade(@black, (0.1 * 100));
+    }
+    tr > td {
+        border-top: 1px solid fade(@black, (0.5 * 100));
+    }
+    td:hover,
+    tr:nth-child(even) > td:hover {
+        background-color: fade(@white, (0.5 * 100));
+    }
+}
+
+table td,
+th,
+thead {
+    border: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+tr:nth-child(even) > td {
+    background-color: fade(@stratos, (0.03 * 100));
+}
+
+tr > td {
+    border-bottom: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+td:hover,
+tr:nth-child(even) > td:hover {
+    background-color: fade(@stratos, (0.04 * 100));
+}
+
+/*============================
+Browser (Screenshots)
+============================== */
+
+.browser {
+    border: 1px solid fade(@stratos, (0.1 * 100));
+}
+
+.browser:hover {
+    box-shadow: 0 1px 1px fade(@black, (0.1 * 100)), 0 8px 16px fade(@black, (0.1 * 100));
+}
+
+/*=== Topbar === */
+
+.browser:before {
+    background-color: fade(@stratos, (0.1 * 100));
+    border-bottom: 1px solid fade(@stratos, (0.2 * 100));
+    color: fade(@white, (0.9 * 100));
+}
+
+.browser:hover:before {
+    background-color: fade(@stratos, (0.12 * 100));
+    color: @white;
+}
+
+/*=========================================
+Forms
+=========================================== */
+
+input,
+textarea {
+    background-color: #fafbfc;
+}
+
+input:focus,
+textarea:focus {
+    background-color: @white;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+input:focus::-moz-placeholder {
+    color: #ddd;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #ddd;
+}
+
+a.button,
+[class*='badge-'],
+button[type='submit'],
+input {
+    box-shadow: 0 10px 16px -8px fade(@stratos, (0.3 * 100));
+}
+
+button,
+input,
+select,
+textarea,
+button[type='submit'],
+input[type='submit'],
+.button,
+.button:hover,
+button[type='submit']:hover,
+input[type='submit']:hover {
+    border: 1px solid @royal-blue;
+}
+
+button[type='submit'],
+input[type='submit'],
+.button,
+.button:hover,
+button[type='submit']:hover,
+input[type='submit']:hover {
+    background-color: @royal-blue;
+    color: @white;
+    text-shadow: 0 1px 0 #123;
+}
+
+.button:active,
+button[type='submit']:active,
+input[type='submit']:active {
+    background-color: #17d;
+}
+
+.ghost,
+.ghost:hover {
+    background: none;
+    color: inherit;
+    text-shadow: none;
+}
+
+.bg-primary select,
+.bg-primary textarea,
+.bg-primary .button,
+.bg-primary button,
+.bg-primary button:hover,
+.bg-primary input,
+[class*='bg-gradient-'] .button,
+[class*='bg-'] a.button.ghost {
+    border-color: @white;
+}
+
+[class*='bg-'] a.button {
+    color: @white;
+}
+
+.bg-white a.button.ghost,
+.bg-gradient-white a.button.ghost {
+    border: 1px solid @royal-blue;
+    color: @body-color;
+}
+
+:disabled,
+button:disabled:hover {
+    background-color: #eee;
+    border-color: #eee;
+    color: #ccc;
+}
+
+fieldset {
+    background-color: fade(@stratos, (0.2 * 100));
+    border: 1px solid @royal-blue;
+}
+
+legend {
+    background-color: fade(@black, (0.6 * 100));
+    color: @white;
+}
+
+/* Inputs/Buttons - hover */
+
+input:hover,
+select:hover {
+    box-shadow: 0 0 8px fade(@black, (0.3 * 100));
+}
+
+/* App Store Badges */
+
+[class*='badge-'] {
+    background-color: @black;
+    border: 1px solid #345;
+}
+
+form .flexblock li:hover {
+    background-color: fade(@black, (0.05 * 100));
+}
+
+/*============================
+Table of Contents
+============================== */
+
+.toc,
+.toc ol > li:before,
+.chapter {
+    background-color: #f7f9fb;
+}
+
+.toc li .toc-page:before {
+    border-bottom: 1px dotted fade(@black, (0.9 * 100));
+}
+
+/*============================
+Slides (Counter/Arrows)
+============================== */
+
+#counter,
+#navigation a {
+    color: #abc;
+}
+
+#webslides:hover #navigation a:hover {
+    background-color: @index-overlay;
+    color: @white;
+}
+
+/*============================
+Footer
+============================== */
+
+footer[role='contentinfo'] {
+    background-color: @white;
+}
+
+/*============================
+Slides Index
+============================== */
+
+#webslides-zoomed {
+    background: @index-overlay;
+}
+
+#webslides-zoomed .column > .wrap-zoom {
+    background-color: @catskill-white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);
+    color: @mine-shaft;
+    &:hover {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+    &.current {
+        border: 0.6rem solid rgba(0, 20, 280, 0.2);
+    }
+}
+
+.text-slide-number {
+    color: #abc;
+}
