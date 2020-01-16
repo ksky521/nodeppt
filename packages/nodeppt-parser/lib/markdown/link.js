@@ -14,7 +14,10 @@ module.exports = md => {
             const href = tokens[idx].attrs[hrefIndex][1];
             if (href && href !== '#') {
                 if (aIndex < 0) {
-                    tokens[idx].attrPush(['target', '_blank']); // add new attribute
+                    if (/^http[s]?:\/\//.test(href)) {
+                        // 只是添加外链
+                        tokens[idx].attrPush(['target', '_blank']); // add new attribute
+                    }
                 } else {
                     tokens[idx].attrs[aIndex][1] = '_blank'; // replace value of existing attr
                 }
@@ -27,7 +30,6 @@ module.exports = md => {
         // pass token to default renderer.
         return defLinkOpen(tokens, idx, options, env, self);
     };
-
 };
 
 // module.exports = md => {
