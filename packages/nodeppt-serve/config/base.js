@@ -21,7 +21,8 @@ module.exports = (api, options) => {
                 fallback: {
                     loader: 'file-loader',
                     options: {
-                        name: genAssetSubPath(dir)
+                        name: genAssetSubPath(dir),
+                        esModule: false
                     }
                 }
             };
