@@ -41,6 +41,7 @@ program
 program
     .command('build [entry]')
     .option('-m, --map', 'Release sourcemap')
+    .option('-d, --dest <dir>', 'output directory')
     .description('build html file')
     .action((entry, cmd) => {
         require('nodeppt-serve').build(entry, cleanArgs(cmd));
@@ -97,7 +98,7 @@ if (!program.args[0] && process.argv[2] !== 'new') {
 
 function cleanArgs(cmd) {
     const args = {version: packageJson.version};
-    cmd.options.forEach(o => {
+    cmd.options.forEach((o) => {
         const key = o.long.replace(/^--/, '');
         // if an option is not present and Command has a method with the same name
         // it should not be copied

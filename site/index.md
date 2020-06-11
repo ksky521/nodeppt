@@ -2,7 +2,7 @@ title: nodeppt - 这可能是迄今为止最好的网页版演示库
 speaker: 三水清
 url: https://github.com/ksky521/nodeppt
 js:
-    - https://www.echartsjs.com/asset/theme/infographic.js
+    - https://echarts.cdn.apache.org/zh/asset/theme/infographic.js
 plugins:
     - echarts: {theme: infographic}
     - mermaid: {theme: forest}
