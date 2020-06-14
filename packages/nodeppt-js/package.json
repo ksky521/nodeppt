@@ -35,5 +35,6 @@
         "nodeppt-template-default": "^1.0.1",
         "username": "^5.1.0",
         "webslides": "1.5.0"
-    }
+    },
+    "gitHead": "9fba34ba1a8cc3ab149c2447c313e25b1e25093e"
 }

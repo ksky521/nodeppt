@@ -60,5 +60,6 @@
         "webpack-chain": "~6.3.0",
         "webpack-dev-server": "^3.9.0",
         "webpack-merge": "~4.2.2"
-    }
+    },
+    "gitHead": "9fba34ba1a8cc3ab149c2447c313e25b1e25093e"
 }
