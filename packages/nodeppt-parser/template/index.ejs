@@ -51,6 +51,11 @@
     window.pluginsOptions = {}
 <% } %>
 
+<% if(hasOwnProperty('webslidesOptions') && typeof webslidesOptions==='object' ) { %>
+    window.webslidesOptions = <%- JSON.stringify(webslidesOptions) %>
+<% }else { %>
+    window.webslidesOptions = {}
+<% } %>
 
 document.addEventListener('DOMContentLoaded', () => {
     let isPrintMode = false;
@@ -58,9 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
         isPrintMode = true;
         WebSlides.registerPlugin('scroll', function(){});
     }
-    const ws = new WebSlides({
+    const wsOptions = {
         loop: false
-    })
+    };
+    if(window.webslidesOptions){
+        for (let i in webslidesOptions){
+            if(webslidesOptions.hasOwnProperty(i)){
+                wsOptions[i] = webslidesOptions[i];
+            }
+        }
+    }
+    const ws = new WebSlides(wsOptions)
+
     window.wsInstance = ws;
     if(isPrintMode){
         ws.slides.forEach(s=>s.show())

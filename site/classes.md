@@ -2,6 +2,8 @@
 title: nodeppt 样式演示
 speaker: 三水清
 url: https://github.com/ksky521/nodeppt
+webslidesOptions:
+    autoslide: 5000
 
 <slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 
