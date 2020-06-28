@@ -1,20 +1,20 @@
 /**
  * @file base
  */
-const path = require('path');
+// const path = require('path');
 const webpack = require('webpack');
 const {transformer, formatter} = require('nodeppt-shared-utils');
 module.exports = (api, options) => {
     const {version} = api.getNodepptOptions();
-    api.chainWebpack(webpackConfig => {
+    api.chainWebpack((webpackConfig) => {
         const {getAssetPath, resolveLocal} = require('../lib/utils');
         const inlineLimit = 4096;
 
-        const genAssetSubPath = dir => {
+        const genAssetSubPath = (dir) => {
             return getAssetPath(options, `${dir}/[name]${options.filenameHashing ? '.[hash:8]' : ''}.[ext]`);
         };
 
-        const genUrlLoaderOptions = dir => {
+        const genUrlLoaderOptions = (dir) => {
             return {
                 limit: inlineLimit,
                 // use explicit fallback to avoid regression in url-loader>=1.1.0
@@ -22,9 +22,9 @@ module.exports = (api, options) => {
                     loader: 'file-loader',
                     options: {
                         name: genAssetSubPath(dir),
-                        esModule: false
-                    }
-                }
+                        esModule: false,
+                    },
+                },
             };
         };
         let entryName = 'app';
@@ -63,7 +63,7 @@ module.exports = (api, options) => {
             .end()
             .use('nodeppt-parser')
             .loader(require.resolve('nodeppt-parser'))
-            .options({plugins: options.plugins})
+            .options({plugins: options.plugins, template: options.baseTemplate})
             .end();
 
         webpackConfig.module
@@ -90,7 +90,7 @@ module.exports = (api, options) => {
             .use('file-loader')
             .loader(require.resolve('file-loader'))
             .options({
-                name: genAssetSubPath('img')
+                name: genAssetSubPath('img'),
             });
 
         webpackConfig.module
@@ -109,7 +109,7 @@ module.exports = (api, options) => {
 
         webpackConfig.plugin('banner').use(
             new webpack.BannerPlugin({
-                banner: `Created by nodeppt ${version} \n - Install: npm install -g nodeppt\n - Github: https://github.com/ksky521/nodeppt`
+                banner: `Created by nodeppt ${version} \n - Install: npm install -g nodeppt\n - Github: https://github.com/ksky521/nodeppt`,
             })
         );
 
@@ -120,8 +120,8 @@ module.exports = (api, options) => {
         webpackConfig.plugin('friendly-errors').use(require('friendly-errors-webpack-plugin'), [
             {
                 additionalTransformers: [transformer],
-                additionalFormatters: [formatter]
-            }
+                additionalFormatters: [formatter],
+            },
         ]);
 
         webpackConfig.plugin('progress').use(require('webpack/lib/ProgressPlugin'));

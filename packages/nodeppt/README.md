@@ -4,7 +4,6 @@
 
 [![Markpress npm badge](https://nodei.co/npm/nodeppt.png)](https://www.npmjs.com/package/nodeppt)
 
-
 **nodeppt 2.0** 基于[webslides](https://github.com/webslides/WebSlides)、webpack、markdown-it、posthtml 重构，[新效果](https://nodeppt.js.org)
 
 ## Install
@@ -95,10 +94,19 @@ plugins:
 -   css：css 文件数组，放到头部
 -   prismTheme：prism 配色，取值范围 `['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight']`
 -   plugins：目前支持 [echarts](https://echarts.baidu.com/) 和 [katex](https://katex.org) 两个插件
+-   pluginsOptions：插件的配置
+-   webslidesOptions：[webslides](https://github.com/webslides/WebSlides/wiki/Core-API#options)配置
+
+**webslidesOptions 对应的是 webslides 的配置，例如开启`autoslide`**：
+
+```yaml
+webslidesOptions:
+    autoslide: 5000
+```
 
 #### 插件
 
-目前 nodeppt 支持 [图表 echarts](https://echarts.baidu.com/) ，[流程图 mermaid](https://mermaidjs.github.io/)，[数学符号 KaTeX](https://katex.org) 3个插件。
+目前 nodeppt 支持 [图表 echarts](https://echarts.baidu.com/) ，[流程图 mermaid](https://mermaidjs.github.io/)，[数学符号 KaTeX](https://katex.org) 3 个插件。
 
 #### echarts
 
@@ -119,6 +127,7 @@ echarts 主题配色可以直接在`yaml`配置的 js 中引入。echarts 采用
     }]
 }
 ```
+
 详见[site/echarts.md](./site/echarts.md)
 
 #### mermaid
@@ -138,6 +147,7 @@ sequenceDiagram
 ```
 
 详见[site/mermaid.md](./site/mermaid.md)
+
 #### ketex
 
 参考：[markdown-it-katex](https://www.npmjs.com/package/markdown-it-katex)语法
@@ -443,7 +453,7 @@ module.exports = () => ({
     integrity: false,
 
     css: {
-        extract: true
+        extract: true,
         // modules: false,
         // localIdentName: '[name]_[local]_[hash:base64:5]',
         // sourceMap: false,
@@ -458,7 +468,7 @@ module.exports = () => ({
       proxy: null, // string | Object
       before: app => {}
     */
-    }
+    },
 });
 ```
 
@@ -477,7 +487,7 @@ module.exports = {
     // 分别对应 markdown-it和 posthtml 插件语法
     id: 'markdown-xxx',
     // 这里的 apply 是插件实际的内容，详细查看 markdown-it和 posthtml 插件开发
-    apply: () => {}
+    apply: () => {},
 };
 ```
 
@@ -498,8 +508,8 @@ window.WSPlugins_ = [
     {
         id: 'webslide_plugin_name',
         // 下面是对应的插件类
-        apply: class Plugin {}
-    }
+        apply: class Plugin {},
+    },
 ];
 ```
 

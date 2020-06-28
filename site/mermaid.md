@@ -35,6 +35,19 @@ sequenceDiagram
     Alice->John: Yes... John, how are you?
 ```
 
+<slide :class="size-60">
+## Mermaid can render state diagrams. {.aligncenter}
+
+```mermaid
+stateDiagram-v2
+    [*] --> Still
+    Still --> [*]
+
+    Still --> Moving
+    Moving --> Still
+    Moving --> Crash
+    Crash --> [*]
+```
 
 
 <slide :class="size-60">
