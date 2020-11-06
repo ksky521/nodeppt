@@ -39,7 +39,7 @@
         "markdown-it": "^10.0.0",
         "markdown-it-br": "^1.0.0",
         "markdown-it-jsx": "1.1.0",
-        "markdown-it-katex": "^2.0.3",
+        "@ksky521/markdown-it-katex":"^2.1.3",
         "markdown-it-span": "^1.0.0",
         "markdown-it-sup": "^1.0.0",
         "posthtml": "^0.12.0",
