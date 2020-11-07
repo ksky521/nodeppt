@@ -7,7 +7,7 @@ mdIt.use(prism, {
 });
 mdIt.use(require('markdown-it-sup'));
 mdIt.use(require('markdown-it-br'));
-mdIt.use(require('markdown-it-katex'));
+mdIt.use(require('@ksky521/markdown-it-katex'));
 
 mdIt.use(require('./markdown/jsx'));
 mdIt.use(require('./markdown/echarts'));
