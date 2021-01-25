@@ -42,6 +42,10 @@ module.exports = class Service {
         debug(projectOptions);
         // apply plugins.
         this.plugins.forEach(({id, apply}) => {
+            if (id.indexOf('markdown') === 0 || id.indexOf('posthtml') === 0) {
+                // 如果是以markdown 和posthtml开头的，则不是service插件，而是markdown-it和posthtml插件
+                return;
+            }
             apply(new PluginAPI(id, this), projectOptions);
         });
         if (projectOptions.chainWebpack) {
@@ -106,9 +110,9 @@ module.exports = class Service {
         return fn(args, rawArgv);
     }
     resolvePlugins(inlinePlugins, useBuiltIn) {
-        const idToPlugin = id => ({
+        const idToPlugin = (id) => ({
             id: id.replace(/^.\//, 'built-in:'),
-            apply: require(id)
+            apply: require(id),
         });
 
         let plugins;
@@ -121,7 +125,7 @@ module.exports = class Service {
             './config/css',
             './config/dev',
             './config/prod',
-            './config/app'
+            './config/app',
         ].map(idToPlugin);
 
         if (inlinePlugins) {
@@ -139,7 +143,7 @@ module.exports = class Service {
     resolveChainableWebpackConfig() {
         const chainableConfig = new Config();
         // apply chains
-        this.webpackChainFns.forEach(fn => fn(chainableConfig));
+        this.webpackChainFns.forEach((fn) => fn(chainableConfig));
         return chainableConfig;
     }
     resolveWebpackConfig(chainableConfig = this.resolveChainableWebpackConfig()) {
@@ -150,7 +154,7 @@ module.exports = class Service {
         let config = chainableConfig.toConfig();
         const original = config;
         // apply raw config fns
-        this.webpackRawConfigFns.forEach(fn => {
+        this.webpackRawConfigFns.forEach((fn) => {
             if (typeof fn === 'function') {
                 // function with optional return value
                 const res = fn(config);
@@ -181,7 +185,7 @@ function cloneRuleNames(to, from) {
     from.forEach((r, i) => {
         if (to[i]) {
             Object.defineProperty(to[i], '__ruleNames', {
-                value: r.__ruleNames
+                value: r.__ruleNames,
             });
             cloneRuleNames(to[i].oneOf, r.oneOf);
         }

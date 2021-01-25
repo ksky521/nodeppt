@@ -54,7 +54,6 @@ module.exports = (api, options) => {
             .add('node_modules')
             .add(api.resolve('node_modules'))
             .add(resolveLocal('node_modules'));
-
         webpackConfig.module
             .rule('markdown')
             .test(/\.(md|markdown)$/)
